@@ -5,7 +5,8 @@ Run from the repository root:
 
 Reads the markdown of every deck, exercise, note, sheet, take-home, quiz and pre-read, and the
 markdown cells and printed outputs of every notebook. A number matches a fact when it equals the
-fact's value, its percent, its lakh or its count at the precision the number is printed with. A
+fact's value, its percent, its lakh or its count at the precision the number is printed with, and a
+loss matches by its size, since it prints as "-Rs 71" or "a loss of Rs 71". A
 number that only counts the material itself (a slide, a week, a step, minutes, a date) is
 structural and is listed as such. Writes C2_W04_D03_facts_audit_INTERNAL.md and exits 1 when any
 number has no home.
@@ -57,6 +58,9 @@ def matches(token, unit, value):
         forms = [value / 1e7]
     else:
         forms = [value, value * 100]
+    # a loss is printed as its size beside the word loss or a minus sign before the Rs
+    if value < 0:
+        forms += [abs(x) for x in forms]
     for f in forms:
         if abs(round(f, d) - num) < 1e-9:
             return True

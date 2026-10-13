@@ -112,7 +112,7 @@ one time band.
 *Which pairs change rank when the strip is ranked for one zone and one time band?*
 
 ```notes
-LIVE, 40 minutes for the section, the row's after-class task done in class on notebook 03.
+LIVE, 40 minutes for the section, the row's after-class task done in class on notebook 10.
 Transition: the code change.
 ```
 

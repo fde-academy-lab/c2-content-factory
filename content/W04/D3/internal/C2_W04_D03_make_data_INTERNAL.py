@@ -1187,6 +1187,11 @@ def verify_toys(lines, month_df, kirana):
     ko["before"] = k["bills_with_rusk"] * ko["margin"]
     ko["after"] = (k["bills_with_rusk"] + ko["packs"]) * ko["margin"] - ko["discount_back"] - k["card_printing_rs"]
     ko["breakeven"] = (ko["incremental_margin"] - k["card_printing_rs"]) / ko["combos"]
+    # the same Rs 28 as a weighted average: a tea-only bill earns Rs 12 less Rs 1 with probability 0.04
+    ko["net_new_pack"] = ko["margin"] - k["combo_discount_rs"]
+    ko["per_bill"] = round(k["response_mid"] * ko["net_new_pack"], 4)
+    ko["tea_only_total"] = round(ko["tea_only"] * ko["per_bill"])
+    ko["both_cost"] = k["bills_with_both"] * k["combo_discount_rs"]
     check("kirana: support 0.15, confidence 0.25 from tea, rusk's share 0.20, lift 1.25",
           (ko["support"], ko["conf_tea_rusk"], ko["rusk_share"], ko["lift"]) == (0.15, 0.25, 0.2, 1.25))
     check("kirana: 450 tea bills without rusk, 18 packs, 168 combos",
@@ -1198,7 +1203,9 @@ def verify_toys(lines, month_df, kirana):
           (ko["sales_wrong"], ko["every_combo_wrong"], ko["no_discount_wrong"]) == (5040, 2016, 196))
     check("kirana: the second route, Rs 2,428 against Rs 2,400, is the same Rs 28",
           (ko["before"], ko["after"], ko["after"] - ko["before"]) == (2400, 2428, 28))
-    check("kirana: 2 and 6 percent give Rs -71 and Rs 127", (ko["ev_low"], ko["ev_high"]) == (-71, 127))
+    check("kirana: 2 and 6 percent give -Rs 71 and Rs 127", (ko["ev_low"], ko["ev_high"]) == (-71, 127))
+    check("kirana: the weighted average, Rs 0.44 on each of 450 bills, less Rs 150 and Rs 20, is Rs 28",
+          (ko["per_bill"], ko["tea_only_total"], ko["tea_only_total"] - ko["both_cost"] - k["card_printing_rs"]) == (0.44, 198, 28))
     return t, mo, ko
 
 
@@ -1309,16 +1316,20 @@ def toy_facts(f, t, mo, ko):
             ("incremental_margin", ko["incremental_margin"], "Rs 216", "18 packs x Rs 12"),
             ("discount_back", ko["discount_back"], "Rs 168", "Rs 1 on each of 168 combo bills"),
             ("ev", ko["ev"], "Rs 28", "Rs 216 less Rs 168 less Rs 20, the expected value a month"),
-            ("ev_low", ko["ev_low"], "Rs -71", "the same at 2 percent: 9 x 12 less 159 less 20"),
+            ("ev_low", ko["ev_low"], "-Rs 71", "the same at 2 percent: 9 x 12 less 159 less 20"),
             ("ev_high", ko["ev_high"], "Rs 127", "the same at 6 percent: 27 x 12 less 177 less 20"),
-            ("ev_rs2", ko["ev_rs2"], "Rs -140", "the same card at Rs 2 off, response held at 4 percent"),
+            ("ev_rs2", ko["ev_rs2"], "-Rs 140", "the same card at Rs 2 off, response held at 4 percent"),
             ("sales_wrong", ko["sales_wrong"], "Rs 5,040", "the trap: 168 combo bills x Rs 30 of rusk sales"),
             ("every_combo_wrong", ko["every_combo_wrong"], "Rs 2,016", "a distractor: every combo counted as incremental, 168 x Rs 12"),
             ("no_discount_wrong", ko["no_discount_wrong"], "Rs 196", "a distractor: the discount forgotten, Rs 216 less Rs 20"),
             ("before", ko["before"], "Rs 2,400", "rusk margin before the card, 200 x Rs 12"),
             ("after", ko["after"], "Rs 2,428", "rusk margin after it, 218 x Rs 12 less Rs 168 less Rs 20"),
             ("breakeven", round(ko["breakeven"], 4), "Rs 1.17", "the discount at which the card earns nothing, Rs 196 over 168"),
-            ("sales_multiple", 180, "180 times", "Rs 5,040 over Rs 28")):
+            ("sales_multiple", 180, "180 times", "Rs 5,040 over Rs 28"),
+            ("net_new_pack", ko["net_new_pack"], "Rs 11", "a new pack's margin less the Rs 1 its bill takes back"),
+            ("per_bill", ko["per_bill"], "Rs 0.44", "the expected value of one tea-only bill: 0.04 x Rs 11 plus 0.96 x Rs 0"),
+            ("tea_only_total", ko["tea_only_total"], "Rs 198", "450 tea-only bills x Rs 0.44"),
+            ("both_cost", ko["both_cost"], "Rs 150", "Rs 1 on each of the 150 bills that held both before the card")):
         f(S, f"toy_kirana_{key}", val, shown, inv(SUB5, why), f"{s9}, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7")
     for key, val, shown, why in (
             ("bills", 2000, "2,000", "the check question: bills a combo card reaches"),
@@ -1328,18 +1339,6 @@ def toy_facts(f, t, mo, ko):
             ("packs", 100, "100", "2,000 x 5 percent"),
             ("ev", 400, "Rs 400", "100 x Rs 10 less Rs 600")):
         f(S, f"toy_check_ev_{key}", val, shown, inv(SUB5, why), f"{s9}, notebook 09")
-    for key, val, shown, why, sub in (
-            ("bills", 1000, "1,000", "the Kahoot's lift sum: bills", SUB1),
-            ("a", 200, "200", "bills holding A", SUB1),
-            ("b", 100, "100", "bills holding B", SUB1),
-            ("both", 40, "40", "bills holding both", SUB1),
-            ("expected", 20, "20", "1,000 x 0.2 x 0.1", SUB1),
-            ("lift", 2.0, "2.00", "40 over 20", SUB1),
-            ("conf_ab", 0.2, "0.20", "a distractor: 40 of 200, a confidence", SUB1),
-            ("conf_ba", 0.4, "0.40", "a distractor: 40 of 100, the other confidence", SUB1),
-            ("support", 0.04, "0.04", "a distractor: 40 of 1,000, the support", SUB1),
-            ("basket_pairs", 3, "3", "a basket of three items adds three pairs", SUB3)):
-        f(S, f"toy_quiz_{key}", val, shown, f"invented for the Kahoot item on {sub}: {why}", "Kahoot")
 
 
 # =========================================================================== the facts file
@@ -1393,7 +1392,8 @@ def write_facts(case, strip, kalpa, toys):
     F = []
 
     def f(section, fid, value, shown, how, used):
-        F.append((section, fid, value, shown, how, renumber(used)))
+        # a toy names the new chapter and notebook numbers already; only the case's old ones move
+        F.append((section, fid, value, shown, how, used if fid.startswith("toy_") else renumber(used)))
 
     S = "ticket"
     f(S, "before_strip_ctr", 0.061, "6.1 percent", "clicks over impressions, 17 August to 6 September 2026, strip_log", "every file's ticket")
@@ -1727,7 +1727,10 @@ def write_facts(case, strip, kalpa, toys):
             ("kahoot_partner_conf", 0.76, "0.76", "invented: the partner's confidence toward it"),
             ("kahoot_partner_lift", 1.01, "1.01", "0.76 over 0.75"),
             ("kahoot_blend_sum", 0.076, "7.6 percent", "a distractor: 1.2 plus 6.4"),
-            ("kahoot_blend_gap", 0.026, "2.6 percent", "a distractor: 6.4 less 3.8")):
+            ("kahoot_blend_gap", 0.026, "2.6 percent", "a distractor: 6.4 less 3.8"),
+            ("kahoot_cart_pairs", 3, "3", "C033861 holds three items, so it adds three pairs, 3 x 2 / 2"),
+            ("kahoot_cart_ordered", 6, "6", "a distractor: each pair counted once in each order"),
+            ("kahoot_cart_square", 9, "9", "a distractor: every item paired with every item, itself included")):
         f(S, fid, val, shown, how, "Kahoot")
     S = "fallback"
     for name, (k, rows) in case["slices"].items():

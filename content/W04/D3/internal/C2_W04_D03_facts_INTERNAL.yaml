@@ -1277,7 +1277,7 @@ toy:
     value: 8
     shown: "eight"
     how: "invented for the concept chapter on Support, confidence and lift, derived by counting: items on the canteen's menu"
-    used_by: "half1 SECTION 1, notebook 07, notebook 05"
+    used_by: "half1 SECTION 1, notebook 01, notebook 05"
   - id: toy_canteen_pair_lines
     value: 30
     shown: "30"
@@ -1792,52 +1792,52 @@ toy:
     value: 1
     shown: "1"
     how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders with roti and no sabzi"
-    used_by: "half1 SECTION 1, notebook 07, cheat sheet panel 1"
+    used_by: "half1 SECTION 1, notebook 01, cheat sheet panel 1"
   - id: toy_canteen_sabzi_only
     value: 1
     shown: "1"
     how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders with sabzi and no roti"
-    used_by: "half1 SECTION 1, notebook 07, cheat sheet panel 1"
+    used_by: "half1 SECTION 1, notebook 01, cheat sheet panel 1"
   - id: toy_canteen_neither
     value: 7
     shown: "7"
     how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders with neither roti nor sabzi"
-    used_by: "half1 SECTION 1, notebook 07, cheat sheet panel 1"
+    used_by: "half1 SECTION 1, notebook 01, cheat sheet panel 1"
   - id: toy_canteen_roti_or_sabzi
     value: 5
     shown: "5"
     how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders holding roti or sabzi or both (a distractor)"
-    used_by: "half1 SECTION 1, notebook 07"
+    used_by: "half1 SECTION 1, notebook 01"
   - id: toy_canteen_roti_plus_sabzi
     value: 8
     shown: "8"
     how: "invented for the concept chapter on Support, confidence and lift, derived by counting: the trap: roti's 4 orders plus sabzi's 4, added without looking inside the orders"
-    used_by: "half1 SECTION 1, notebook 07, canteen_concepts Q1"
+    used_by: "half1 SECTION 1, notebook 01, canteen_concepts Q1"
   - id: toy_canteen_chaas_conf_low
     value: 0.6
     shown: "0.60"
     how: "invented for the concept chapter on The confidence trap; lift near one: lowest confidence toward chaas among the four items in four or more orders (papad)"
-    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+    used_by: "half1 SECTION 4, notebook 04, notes, cheat sheet panel 2"
   - id: toy_canteen_chaas_conf_high
     value: 1.0
     shown: "1.00"
     how: "invented for the concept chapter on The confidence trap; lift near one: highest, dal rice and sabzi"
-    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+    used_by: "half1 SECTION 4, notebook 04, notes, cheat sheet panel 2"
   - id: toy_canteen_chaas_lift_low
     value: 0.8
     shown: "0.80"
     how: "invented for the concept chapter on The confidence trap; lift near one: lowest lift with chaas among the same four (papad)"
-    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+    used_by: "half1 SECTION 4, notebook 04, notes, cheat sheet panel 2"
   - id: toy_canteen_chaas_lift_high
     value: 1.3333
     shown: "1.33"
     how: "invented for the concept chapter on The confidence trap; lift near one: highest, dal rice and sabzi"
-    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+    used_by: "half1 SECTION 4, notebook 04, notes, cheat sheet panel 2"
   - id: toy_canteen_items_four_or_more
     value: 4
     shown: "four"
     how: "invented for the concept chapter on The confidence trap; lift near one: items other than chaas in four or more of the twelve orders"
-    used_by: "half1 SECTION 4, notebook 11"
+    used_by: "half1 SECTION 4, notebook 04"
   - id: toy_canteen_floor_orders
     value: 3
     shown: "3"
@@ -1852,27 +1852,27 @@ toy:
     value: 0.6
     shown: "60 percent"
     how: "invented for the concept chapter on The confidence trap; lift near one: the chapter's check question: an item in 60 percent of a shop's bills"
-    used_by: "half1 SECTION 4, notebook 11"
+    used_by: "half1 SECTION 4, notebook 04"
   - id: toy_check_partner_conf
     value: 0.66
     shown: "0.66"
     how: "invented for the concept chapter on The confidence trap; lift near one: the partner's confidence toward it"
-    used_by: "half1 SECTION 4, notebook 11"
+    used_by: "half1 SECTION 4, notebook 04"
   - id: toy_check_partner_lift
     value: 1.1
     shown: "1.10"
     how: "invented for the concept chapter on The confidence trap; lift near one: 0.66 over 0.60"
-    used_by: "half1 SECTION 4, notebook 11"
+    used_by: "half1 SECTION 4, notebook 04"
   - id: toy_sweep_share_low
     value: 0.2
     shown: "0.2"
     how: "invented for the concept chapter on The confidence trap; lift near one: the sweep's lowest share for the popular item, lift held at one"
-    used_by: "notebook 11"
+    used_by: "notebook 04"
   - id: toy_sweep_share_high
     value: 0.9
     shown: "0.9"
     how: "invented for the concept chapter on The confidence trap; lift near one: the sweep's highest share"
-    used_by: "notebook 11"
+    used_by: "notebook 04"
   - id: toy_month_orders
     value: 600
     shown: "600"
@@ -2090,7 +2090,7 @@ toy:
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev_low
     value: -71
-    shown: "Rs -71"
+    shown: "-Rs 71"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same at 2 percent: 9 x 12 less 159 less 20"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev_high
@@ -2100,7 +2100,7 @@ toy:
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_ev_rs2
     value: -140
-    shown: "Rs -140"
+    shown: "-Rs 140"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same card at Rs 2 off, response held at 4 percent"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_sales_wrong
@@ -2138,6 +2138,26 @@ toy:
     shown: "180 times"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 5,040 over Rs 28"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_net_new_pack
+    value: 11
+    shown: "Rs 11"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a new pack's margin less the Rs 1 its bill takes back"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_per_bill
+    value: 0.44
+    shown: "Rs 0.44"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the expected value of one tea-only bill: 0.04 x Rs 11 plus 0.96 x Rs 0"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_tea_only_total
+    value: 198
+    shown: "Rs 198"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 450 tea-only bills x Rs 0.44"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_both_cost
+    value: 150
+    shown: "Rs 150"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 1 on each of the 150 bills that held both before the card"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_check_ev_bills
     value: 2000
     shown: "2,000"
@@ -2168,56 +2188,6 @@ toy:
     shown: "Rs 400"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 100 x Rs 10 less Rs 600"
     used_by: "half2 SECTION 9, notebook 09"
-  - id: toy_quiz_bills
-    value: 1000
-    shown: "1,000"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: the Kahoot's lift sum: bills"
-    used_by: "Kahoot"
-  - id: toy_quiz_a
-    value: 200
-    shown: "200"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: bills holding A"
-    used_by: "Kahoot"
-  - id: toy_quiz_b
-    value: 100
-    shown: "100"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: bills holding B"
-    used_by: "Kahoot"
-  - id: toy_quiz_both
-    value: 40
-    shown: "40"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: bills holding both"
-    used_by: "Kahoot"
-  - id: toy_quiz_expected
-    value: 20
-    shown: "20"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: 1,000 x 0.2 x 0.1"
-    used_by: "Kahoot"
-  - id: toy_quiz_lift
-    value: 2.0
-    shown: "2.00"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: 40 over 20"
-    used_by: "Kahoot"
-  - id: toy_quiz_conf_ab
-    value: 0.2
-    shown: "0.20"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: a distractor: 40 of 200, a confidence"
-    used_by: "Kahoot"
-  - id: toy_quiz_conf_ba
-    value: 0.4
-    shown: "0.40"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: a distractor: 40 of 100, the other confidence"
-    used_by: "Kahoot"
-  - id: toy_quiz_support
-    value: 0.04
-    shown: "0.04"
-    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: a distractor: 40 of 1,000, the support"
-    used_by: "Kahoot"
-  - id: toy_quiz_basket_pairs
-    value: 3
-    shown: "3"
-    how: "invented for the Kahoot item on Basket analysis on the order items: a basket of three items adds three pairs"
-    used_by: "Kahoot"
 
 public:
   - id: instamart_orders_per_store
@@ -3296,6 +3266,21 @@ kahoot_toy:
     value: 0.026
     shown: "2.6 percent"
     how: "a distractor: 6.4 less 3.8"
+    used_in: "Kahoot"
+  - id: kahoot_cart_pairs
+    value: 3
+    shown: "3"
+    how: "C033861 holds three items, so it adds three pairs, 3 x 2 / 2"
+    used_in: "Kahoot"
+  - id: kahoot_cart_ordered
+    value: 6
+    shown: "6"
+    how: "a distractor: each pair counted once in each order"
+    used_in: "Kahoot"
+  - id: kahoot_cart_square
+    value: 9
+    shown: "9"
+    how: "a distractor: every item paired with every item, itself included"
     used_in: "Kahoot"
 
 fallback:

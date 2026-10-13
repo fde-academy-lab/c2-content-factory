@@ -458,31 +458,39 @@ def kirana_bridge():
 
 def kirana_discount():
     """Expected value against the discount, and against the response the card assumes."""
-    tea_only, both, margin, printing = 450, 150, 12, 20
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 4.6), gridspec_kw={"width_ratios": [1.4, 1]})
-    ds = [x / 10 for x in range(0, 51)]
-    packs = round(tea_only * 0.04)
-    ev = [packs * margin - (both + packs) * d - printing for d in ds]
-    a1.plot(ds, ev, color=VIOLET, lw=3)
+    tea_only, both = int(v("toy_kirana_tea_only")), int(v("toy_kirana_both_bills"))
+    margin, printing = int(v("toy_kirana_margin")), int(v("toy_kirana_printing"))
+
+    def ev(response, off):
+        packs = round(tea_only * response)
+        return packs * margin - (both + packs) * off - printing
+
+    def rs(x):
+        return f"{'-' if x < 0 else ''}Rs {abs(x)}"
+
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(6.4, 5.4))
+    ds = [x / 10 for x in range(0, 31)]
+    a1.plot(ds, [ev(0.04, d) for d in ds], color=VIOLET, lw=3)
     a1.axhline(0, color=INK, lw=1.2)
-    a1.scatter([1, 2], [packs * margin - (both + packs) - printing, packs * margin - (both + packs) * 2 - printing],
-               s=90, color=[GREEN, ROSE], edgecolor=INK, zorder=3)
-    a1.text(1.12, 40, "Rs 1 off: Rs 28", fontsize=14, weight="bold", color=GREEN)
-    a1.text(2.12, -150, "Rs 2 off: Rs -140", fontsize=14, weight="bold", color=ROSE)
-    a1.set_xlabel("discount on a combo bill, Rs (response held at 4 percent)")
-    a1.set_ylabel("expected value, Rs a month")
-    a1.set_title("It crosses zero just past Rs 1", fontsize=15)
-    rs = [0.02, 0.04, 0.06]
-    vals = [round(tea_only * r) * margin - (both + round(tea_only * r)) - printing for r in rs]
+    a1.scatter([1, 2], [ev(0.04, 1), ev(0.04, 2)], s=90, color=[GREEN, ROSE], edgecolor=INK, zorder=3)
+    a1.text(1.12, ev(0.04, 1) + 25, f"Rs 1 off: {rs(ev(0.04, 1))}", fontsize=13, weight="bold", color=GREEN)
+    a1.text(2.12, ev(0.04, 2) - 10, f"Rs 2 off: {rs(ev(0.04, 2))}", fontsize=13, weight="bold", color=ROSE)
+    a1.set_xlabel("Rs off a combo bill (4 percent respond)")
+    a1.set_ylabel("Rs a month")
+    a1.set_ylim(-330, 260)
+    a1.set_title("Zero is crossed just past Rs 1", fontsize=14)
+    rates = [v("toy_kirana_response_low"), v("toy_kirana_response"), v("toy_kirana_response_high")]
+    vals = [ev(r, 1) for r in rates]
     a2.bar(range(3), vals, color=[ROSE if x < 0 else GREEN for x in vals], edgecolor=INK, width=0.6)
     for i, val in enumerate(vals):
-        a2.text(i, val + (6 if val >= 0 else -18), f"Rs {val}", ha="center", fontsize=14, weight="bold", color=INK)
+        a2.text(i, val + (8 if val >= 0 else -30), rs(val), ha="center", fontsize=13, weight="bold", color=INK)
     a2.axhline(0, color=INK, lw=1.2)
-    a2.set_xticks(range(3), ["2 percent", "4 percent", "6 percent"])
-    a2.set_xlabel("share of the 450 that add a pack")
-    a2.set_ylim(-110, 160)
-    a2.set_title("The assumed response decides the sign", fontsize=15)
-    fig.suptitle("Sharma Kirana's combo card, invented", fontsize=13, color=MUTED)
+    a2.set_xticks(range(3), [f"{r * 100:.0f} percent" for r in rates])
+    a2.set_xlabel("share of the 450 tea-only bills that add rusk")
+    a2.set_ylabel("Rs a month")
+    a2.set_ylim(-120, 170)
+    a2.set_title("The response decides the sign", fontsize=14)
+    fig.text(0.99, 0.005, "Sharma Kirana, one invented month", ha="right", fontsize=11, color=MUTED)
     fig.tight_layout()
     save(fig, "C2_W04_D03_kirana_discount_STUDENT.png")
 
