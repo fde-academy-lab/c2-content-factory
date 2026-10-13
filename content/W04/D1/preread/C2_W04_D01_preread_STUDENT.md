@@ -22,8 +22,22 @@ review before deciding on Friday, and the three people in the room who each lose
 leads with the wrong number, or hides the caveat they will raise, loses the room before the redesign
 is heard.
 
-**The questions on the way.** Which words will Tuesday use that today did not? What should you think
-about before you build the slide? What can you check tonight? What line is worth carrying in?
+**The questions on the way.** Which five topics does Tuesday teach? Which words will Tuesday use
+that today did not? What should you think about before you build the slide? What can you check
+tonight? What line is worth carrying in?
+
+---
+
+## Which five topics does Tuesday teach?
+
+Tuesday teaches the curriculum row's five topics first, in this order, each as its own chapter with
+its own notebook, then applies them to the Uber slide:
+
+1. The one-slide answer: claim, evidence, caveat, action
+2. What to leave out, and the appendix
+3. Defending under challenge: restate, answer, concede, what would change your mind
+4. The guesstimate: clarify, map, calculate, validate
+5. The AI-free written business case
 
 ---
 
