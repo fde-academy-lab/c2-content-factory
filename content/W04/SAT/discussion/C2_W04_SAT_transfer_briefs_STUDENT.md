@@ -43,8 +43,9 @@ changed, or what stayed, with a number or a named step wherever the brief gives 
 
 ## Brief 1. Rapido, Bengaluru: what should a guarantee for bike-taxi drivers pay for?
 
-Illustrative case: the company is real, and the scheme and every number below are hypothetical.
-Suppose Rapido's Bengaluru team guarantees bike-taxi drivers Rs 150 for every hour they stay logged in
+Illustrative case: the company is real, and the service, the scheme and every number below are
+hypothetical, so the brief says nothing about what Rapido runs today. Suppose Rapido's Bengaluru team
+runs bike taxis and guarantees their drivers Rs 150 for every hour they stay logged in
 within 500 metres of a metro station during the two busiest evening hours, so that riders leaving a
 station are picked up within three minutes. Six weeks in, logged-in hours near stations are up 35
 percent and completed rides from station pickups are up 4 percent; the share of station requests

@@ -3,9 +3,10 @@
 You work in pairs for 30 minutes. Each of you asks the other one question from this card and one of
 the follow-ups listed under it, scores the answer on the scorecard, and gives one sentence of
 feedback; then you swap seats. The questions are the week's interview transcripts and their
-AI-company variants. Every number in them is the week's synthetic case data or invented for the
-question, as each transcript says, and every hire-grade answer is in that day's transcript, in the
-day's `extras` folder, for reading after the round.
+AI-company variants. Every situation and number in them is the week's illustrative case, with
+synthetic data, or invented for the question, as each transcript says, so a question that names a
+company states no fact about it. Every hire-grade answer is in that day's transcript, in the day's
+`extras` folder, for reading after the round.
 
 **Who needs the answer.** You, before a screen that asks you to say the week's methods aloud, and
 your partner, who scores what you say.

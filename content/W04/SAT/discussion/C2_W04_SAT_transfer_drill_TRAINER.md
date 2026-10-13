@@ -85,8 +85,8 @@ monthly members, and the blend shifts whenever the plan mix shifts.
 | Back on the Retail tables | Anand books months, so the board's number is monthly with the spike in November, and the two costs are an empty shelf against stock left over. |
 
 **The follow-up.** "The sale opens on a different day this year. What do you align to?" Check how far
-before the festival the sale opens; if that distance moves, copy last year's weeks by distance from
-the sale, since the peak follows the sale.
+before the festival the sale opens; if that distance moves and the peak follows the sale, copy last
+year's weeks by distance from the sale.
 
 ## Brief 5. Kalpa Financial Services, the nudge toward a second product
 
@@ -108,7 +108,7 @@ touch them, and the plan to pay staff on products per customer is the Wells Farg
 | Line of the grid | The answer to listen for |
 |---|---|
 | The method | Monday's: a definition whose window the measured cannot move, with a guardrail; then Friday's festival-aligned forecast for the hubs. |
-| The metric that changed | On time against the promise made when the order was placed, with the share of promises moved printed beside it; the moved promise is a window the dispatchers control, the way Phoenix's schedulers set the "desired date" its wait times ran from. |
+| The metric that changed | On time against the promise made when the order was placed, with the share of promises moved printed beside it; the moved promise is a window the dispatchers control, the way Phoenix's scheduling staff set the "desired date" its wait times ran from. |
 | The constraint that changed | Dispatchers control the promised date, and the festival moved 19 days, from 20 October 2025 to 8 November 2026, so last October's peak copies into the wrong weeks. |
 | The error cost that changed | A parcel counted on time and delivered late costs a customer's trust and a refund, and it hides the hubs that need staff; an idle hub shift costs the shift, and a late festival parcel costs more than an ordinary one. |
 | What stays | The proxy test, a guardrail the measured cannot redirect, the festival-aligned copy scored on hidden weeks, and the plan priced in both directions. |

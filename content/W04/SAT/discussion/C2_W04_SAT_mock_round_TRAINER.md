@@ -2,9 +2,11 @@
 
 **TRAINER ONLY.** 30 minutes in pairs, run by the Academic TA after the transfer drill. Every learner
 holds `C2_W04_SAT_mock_card_STUDENT.md`: the week's transcript questions and their AI-company
-variants, the follow-ups to choose from, and the seven-line scorecard, each line 0 to 2, which is the
-spine's scorecard built on what Aced's guide says interviewers score (case file T2). The full
-hire-grade answers sit in the five transcripts, one per day, in each day's `extras` folder.
+variants, the follow-ups to choose from, and the seven-line scorecard, each line 0 to 2. The
+scorecard is the spine's own; its scope, structure and recommendation lines echo what Aced's guide
+says interviews test, structured thinking and a clear recommendation (checked 13 October 2026), and
+the other lines are the programme's. The full hire-grade answers sit in the five transcripts, one per
+day, in each day's `extras` folder.
 
 ---
 
