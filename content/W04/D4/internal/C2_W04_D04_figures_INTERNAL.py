@@ -168,7 +168,7 @@ ax.set_ylim(28, 61)
 save(fig, "retention_curves")
 
 # ------------------------------------------------------------------ 3. the blend decomposed
-fig, ax = plt.subplots(figsize=(9.0, 3.9))
+fig, ax = plt.subplots(figsize=(8.2, 3.7))
 months = ["2026-06", "2026-07", "2026-08", "2026-09"]
 for x, m in enumerate(months):
     bottom = 0
@@ -312,7 +312,7 @@ save(fig, "weekly_cohorts")
 # chapters teach on, read from the files the generator writes and checked against the facts file.
 roster = pd.read_csv(DATA / f"{STEM}_toy_gym_roster_STUDENT.csv", dtype=str).fillna("")
 GYM_COLS = ["jan", "feb", "mar", "apr", "may", "jun"]
-JOINED = {"2026-01": "January", "2026-02": "February", "2026-03": "March"}
+JOINED = {"jan": "January", "feb": "February", "mar": "March"}
 gym = {}
 for j, name in JOINED.items():
     rows = roster[roster["joined"] == j]
@@ -320,6 +320,37 @@ for j, name in JOINED.items():
     gym[name] = [int((rows[GYM_COLS[start_at + k]] == "1").sum()) for k in range(1, 6 - start_at)]
 assert gym == {"January": [8, 6, 5, 5, 5], "February": [7, 5, 3, 3], "March": [6, 4, 3]}, gym
 assert TOYS["toy_gym_roster"]["visited_by_age"] == {"Jan": [8, 6, 5, 5, 5], "Feb": [7, 5, 3, 3], "Mar": [6, 4, 3]}
+
+fig, ax = plt.subplots(figsize=(7.6, 3.3))
+x, groups = 0, []
+for j, name in JOINED.items():
+    rows = roster[roster["joined"] == j]
+    groups.append((x + (len(rows) - 1) / 2, f"{name} joiners"))
+    for _, r in rows.iterrows():
+        for i, col in enumerate(GYM_COLS):
+            v = r[col]
+            if v == "":
+                continue
+            zero = col == j
+            ax.scatter(x, -i, s=62, marker="o", linewidths=1.4,
+                       facecolor="white" if zero else (VIOLET if v == "1" else LINE),
+                       edgecolor=INK if zero else "none")
+        x += 1
+    x += 1.0
+ax.add_patch(plt.Rectangle((-0.6, -3.42), x - 0.6, 0.84, color=AMBER, alpha=0.16, lw=0))
+for gx, label in groups:
+    ax.text(gx, 0.85, label, ha="center", fontsize=13.5, color=INK)
+ax.set_yticks([-i for i in range(6)])
+ax.set_yticklabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun"], fontsize=13.5)
+ax.set_xticks([])
+ax.tick_params(axis="y", length=0)
+ax.set_xlim(-1.0, x - 0.8)
+ax.set_ylim(-7.6, 1.4)
+for sp in ax.spines.values():
+    sp.set_visible(False)
+ax.text(-0.9, -6.0, "ring: the joining month, never counted; dark: visited;\nlight: did not; "
+        "shaded: the April row the owner reads", ha="left", va="top", fontsize=12.5, color=MUTED)
+save(fig, "gym_register")
 
 fig, ax = plt.subplots(figsize=(7.6, 2.9))
 for i, (name, row) in enumerate(gym.items()):
@@ -405,14 +436,15 @@ STG = ["applied", "sat_test", "shortlisted", "accepted", "joined"]
 STG_LABEL = ["applied", "sat the test", "shortlisted", "accepted", "joined"]
 main_ = adm[(adm["programme"] == "main") & (adm["unit"] == "applications") & (adm["group"] == "all")]
 cyc = {c: main_[main_["cycle"] == c].set_index("stage")["count"].reindex(STG) for c in (2025, 2026)}
-fig, ax = plt.subplots(figsize=(9.6, 3.4))
+fig, ax = plt.subplots(figsize=(7.4, 3.1))
 for off, (c, colour) in zip((-0.21, 0.21), ((2025, LAV), (2026, VIOLET))):
     ax.bar([i + off for i in range(5)], cyc[c].values, width=0.4, color=colour,
            label="last cycle" if c == 2025 else "this cycle")
     for i, v in enumerate(cyc[c].values):
-        ax.text(i + off, v + 18, f"{v:,}", ha="center", fontsize=12)
+        ax.text(i + off, v - 22, f"{v:,}", ha="center", va="top", fontsize=12,
+                rotation=90 if v >= 1000 else 0, color="white" if c == 2026 else INK)
 ax.set_xticks(range(5))
-ax.set_xticklabels(STG_LABEL)
+ax.set_xticklabels(["applied", "sat the\ntest", "short-\nlisted", "accepted", "joined"], fontsize=13)
 ax.set_ylabel("applications")
 ax.set_ylim(0, 1150)
 ax.legend(frameon=False, ncol=2, loc="upper right")
@@ -456,6 +488,6 @@ save(fig, "college_acceptance")
 
 # Test inputs and expected outcomes
 # python3 content/W04/D4/internal/C2_W04_D04_figures_INTERNAL.py (after the generator)
-#     writes fourteen PNGs, one GIF and the GIF's first and last frames to whiteboards/, and prints each path
+#     writes fifteen PNGs, one GIF and the GIF's first and last frames to whiteboards/, and prints each path
 # the same run without the events file in data/
 #     stops at section 4 with FileNotFoundError, after the triangle, curves and blend pictures are written

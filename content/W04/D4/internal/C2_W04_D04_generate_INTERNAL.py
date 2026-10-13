@@ -1401,14 +1401,14 @@ for joined, lasts in GYM_LAST_AGE.items():
     for last in lasts:
         gym_id += 1
         cells = ["" if i < j else str(int(i - j <= last)) for i in range(len(GYM_MONTHS))]
-        roster.append([f"G{gym_id:02d}", joined] + cells)
+        roster.append([f"G{gym_id:02d}", GYM_COLS[j]] + cells)
 with open(DATA / f"{STEM}_toy_gym_roster_STUDENT.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f, lineterminator="\n")
     w.writerow(["member_id", "joined"] + GYM_COLS)
     w.writerows(roster)
 gym_age = {joined: [sum(1 for last in lasts if last >= k) for k in range(1, len(GYM_MONTHS) - GYM_MONTHS.index(joined))]
            for joined, lasts in GYM_LAST_AGE.items()}
-gym_cal = {m: {joined: (sum(1 for r in roster if r[1] == joined and r[2 + i] == "1"), 10)
+gym_cal = {m: {joined: (sum(1 for r in roster if r[1] == GYM_COLS[GYM_MONTHS.index(joined)] and r[2 + i] == "1"), 10)
                for joined in GYM_LAST_AGE if GYM_MONTHS.index(joined) < i}
            for i, m in enumerate(GYM_MONTHS)}
 check("the gym: thirty joiners, ten a month, counted by age as designed", gym_age == GYM_WANT and len(roster) == 30,
