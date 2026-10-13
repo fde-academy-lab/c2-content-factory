@@ -1,0 +1,9 @@
+example,month,cohort,members,visited
+gym,2026-01,joined before 2026,100,50
+gym,2026-02,joined before 2026,100,40
+gym,2026-02,joined in January 2026,400,210
+second gym,first month,X,200,120
+second gym,first month,Y,300,120
+second gym,second month,X,200,110
+second gym,second month,Y,300,108
+second gym,second month,Z,500,260

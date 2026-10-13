@@ -2,10 +2,10 @@
 
 Zomato Gold, Chennai. The membership dashboard reports month-two retention, the share of members two
 or more months past their signup month who ordered in the month, as flat at 38 percent from June to
-September 2026. Chapter 2 built the cohort table on all 53,089 members. Illustrative case: the
+September 2026. SECTION 6 built the cohort table on all 53,089 members, applying SECTIONs 1 to 3. Illustrative case: the
 company is real, the situation and the data are synthetic, built for this class.
 
-This is a drill at the close of chapter 2, on paper, with no code.
+This drill runs in the lab, on paper, with no code; it reads what SECTION 6 and notebook 06 built.
 
 **How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 
@@ -54,13 +54,13 @@ b) About 19 points lost after month one, then about 0.3 points a month
 c) A fall after month one that grows larger as the cohort ages
 d) Flat from month two on, which is why the dashboard reads flat
 
-### Q2. Which comparison says fairly which of January, April and July is the weakest cohort?
+### Q2. Which comparison ranks January, April and July fairly?
 
 *Level L2, a design call · asked in product-company screens.*
 
 a) Each cohort's rate in September, the latest month, so July is the strongest
 b) Each cohort's average over every month it has had, so the oldest looks weakest
-c) Each cohort at the same age, month one, 58, 53 and 49, so July is the weakest
+c) Each cohort at the same age, month one: 58, 53 and 49, so July starts lowest
 d) Each cohort's size, since the largest cohort carries the most weight in the blend
 
 ---
@@ -87,4 +87,4 @@ b) September's orders divided by September's members, taken from the orders tabl
 c) January's month-eight rate, since the oldest cohort shows where the others are heading
 d) The seven cohorts' September rates weighted by size, which must give 13,218 of 35,000
 
-**In code.** Notebook 02's empty your-turn cell builds the route in Q4 on all seven cohorts.
+**In code.** Notebook 06's empty your-turn cell builds the route in Q4 on all seven cohorts.

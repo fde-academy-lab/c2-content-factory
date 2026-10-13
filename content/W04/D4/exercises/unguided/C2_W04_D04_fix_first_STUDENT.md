@@ -9,8 +9,10 @@ step, members on iOS went from 71 to 70 and non-members on Android from 65 to 64
 first. Illustrative case: the company is real, the situation and the data are synthetic, built for
 this class.
 
-This is the afternoon's unguided set: 30 minutes in your group, the page first and the items after.
-It is the first of the day's two pages; the second, for Kalpa, comes after the lab.
+This is the afternoon's unguided set, SECTION 9, which applies the fix-first decision and its
+evidence from SECTION 8 to Gold: the page in your group, in SECTION 9's 13 writing minutes, and the
+six items in the lab. It is the first of the day's two pages; the second, for Kalpa, comes after the
+lab.
 
 **How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 

@@ -101,7 +101,7 @@ for k, v in {"Q4": "4", "Q8": "8", "Q12": "12", "FY": "23 24 26 27"}.items():
 
 SKIP_LINE = re.compile(r"^(Week 4, Day 4|Kicker:|```|# |\s*label: \d)")
 STRUCTURAL = re.compile(r"\b(S\d+|D\d+|L[1-6]|W4-3|Th[1-6]|T[1-3]|M[1-9]|F[1-6]|R[12])\b|\b(week|chapter|section|part|item|Q|month|day)\s+\d+\b|\b\d+\s+(minutes|minute|cells?)\b|"
-                        r"\bC2_W04_D04\w*|\b\d{2}[a-z]?\.(?!\d)|https?://\S+|\[[A-Z]+\]|\bnotebook \d+\b|\b0[1-4]\b(?!\.\d)", re.I)
+                        r"\bC2_W04_D04\w*|\b\d{2}[a-z]?\.(?!\d)|https?://\S+|\[[A-Z]+\]|\bnotebooks? \d+\b|\b0[1-9]\b(?!\.\d)", re.I)
 NUM = re.compile(r"(?<![\w.])(\d[\d,]*\.?\d*)(?![\w])")
 
 

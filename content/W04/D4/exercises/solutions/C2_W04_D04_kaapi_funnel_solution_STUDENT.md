@@ -21,13 +21,13 @@ two weeks on whichever step the room says loses customers.
 ## What does the drill test?
 
 It tests the three ways a funnel step misleads: a step people can skip, two units on one chart, and a
-change in the log mistaken for a change in behaviour. Each is the chapter 3 check moved to a new shop.
+change in the log mistaken for a change in behaviour. Each is a SECTION 7 check moved to a new shop.
 
 ## Why is each key right, and each other letter wrong?
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
-| Q1, the step above 100 percent | a | 6,000 sessions viewed a product and 5,000 searched, because the banner reaches products with no search | b is low and normal for browsing, never above 100; c is 60 percent; d cannot be, since a session counts once at a stage however many products it views |
+| Q1, the step above 100 percent | a | 6,000 sessions viewed a product and 5,000 searched, because the banner reaches products with no search | b is low and normal for browsing, never above 100; c is 60 percent; d cannot be, since a session counts once at a stage, no matter how many products it views |
 | Q2, the search team's rate | c | Among the sessions that searched, the share that went on to a product is one count over a count of the same sessions | a is the 120 percent artefact itself; b turns the step upside down; d divides by sessions that never searched |
 | Q3, the step counted in customers | b | 1,400 of the 2,400 customers who viewed a product added to a cart, 58 percent | a assumes the unit changes nothing; c divides by customers who searched, the step before the step before; d puts customers over sessions, two units in one rate |
 | Q4, counting or ordering | d | If the billing system's paid orders held while the app's order events fell, customers kept paying and only the log changed | a, b and c each place the fall in time, on a platform or at one step, and a fault in the log that shipped with the update would sit in the same place, so none of them tells counting from ordering |
@@ -44,6 +44,6 @@ orders, kept by a system the update did not touch, that did not fall.
 
 Every product release review asks these three questions in this order: can people skip the step, is
 the chart in sessions or in people, and does an independent record agree. Zomato Gold's Android
-checkout in chapter 3 passed all three: nobody skips the last step of a checkout, the rates were per
+checkout in SECTION 7 passed all three: nobody skips the last step of a checkout, the rates were per
 session throughout, and the order records in `member_months` count the same 27,212 September orders
 as the event log, so no orders went missing from the count after the release.

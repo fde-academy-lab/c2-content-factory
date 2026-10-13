@@ -15,9 +15,9 @@ to 30 September the app's auto-reorder feature ran, placing repeat orders for me
 the app team says the reorder feature has since been fixed.
 
 This set moves the afternoon's call to Kalpa, and its second page is the day's last write-up: the
-lab notebook's three sentences become its first lines. Item 1 can be sat at any time. Items 2 to 4
-sit on their own page and use what your lab notebook found, so sit them after the lab, and the
-practice set after them.
+lab notebook's three sentences become its first lines. Sit the whole set after notebook 10 in the
+lab: item 1 first, then items 2 to 4, whose page states what the notebook's your-turn cells found,
+and the practice set after them.
 
 **How to read an item.** Its level runs from L1, a count by hand, to L6, the call an interviewer asks for; "a design call" asks you to choose a way and say why. "Screens" are interviews, and a GCC is a global capability centre, a multinational company's own technology and analytics centre in India.
 

@@ -37,7 +37,7 @@ Sunday. Two Mondays are `(later - earlier).dt.days // 7` weeks apart. For exampl
 on Wednesday 19 August has the signup week of Monday 17 August; an order on Tuesday 25 August falls in
 the week of Monday 24 August, 7 days later, so it is her week 1.
 
-If the faculty session (tentative) slipped today and the fallback block ran, you built part 2 in class
+If the faculty session (tentative) slipped today and the fallback block ran, you built item 2 in class
 in pairs: rebuild it on your own tonight, then add the rest.
 
 Hand in one notebook that runs top to bottom, with these five things, each under a heading that is a
@@ -46,7 +46,7 @@ question:
 1. The number of members who joined from 3 August to 13 September, from `members`, and the six
    weekly cohorts' sizes, asserted to sum to it.
 2. The weekly cohort table: for each signup week, the share who ordered in weeks 1, 2, 3 and on, up
-   to the week of 21 September, built with one `pivot_table` as notebook 02 builds the monthly one.
+   to the week of 21 September, built with one `pivot_table` as notebook 06 builds the monthly one.
 3. Members on Android, add-to-cart to order per session, week by week from the week of 27 July to
    the week of 28 September, with the release week marked: sessions that placed an order over
    sessions that added to a cart.
