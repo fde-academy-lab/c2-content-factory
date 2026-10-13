@@ -1684,22 +1684,22 @@ def write_facts(case, strip, kalpa, toys):
     f(S, "kalpa_margin_distractor", 99, "Rs 99", "79 plus 20 (a distractor)", "Kalpa exercise")
     S = "practice_toy"
     for fid, val, shown, how in (
-            ("stationery_bills", 200, "200", "invented: a Nagpur stationery shop's bills in a week"),
-            ("stationery_notebooks", 90, "90", "invented: bills with notebooks"),
-            ("stationery_pens", 50, "50", "invented: bills with pens"),
-            ("stationery_both", 28, "28", "invented: bills with notebooks and pens"),
-            ("stationery_support", 0.14, "0.14", "28 of 200"),
-            ("stationery_pens_conf", 0.56, "0.56", "28 of 50, from pens to notebooks"),
-            ("stationery_notebooks_conf", 0.3111, "0.31", "28 of 90, from notebooks to pens"),
-            ("stationery_expected", 22.5, "22.5", "200 x 90/200 x 50/200"),
-            ("stationery_lift", 1.2444, "1.24", "28 over 22.5"),
-            ("stationery_glue", 80, "80", "invented: bills with glue"),
-            ("stationery_glue_notebooks", 36, "36", "invented: bills with glue and notebooks"),
-            ("stationery_glue_conf", 0.45, "0.45", "36 of 80"),
-            ("stationery_glue_expected", 36, "36", "200 x 80/200 x 90/200"),
-            ("stationery_glue_lift", 1.0, "1.00", "36 over 36"),
-            ("stationery_notebooks_share", 0.45, "45 percent", "90 of 200"),
-            ("stationery_glue_no_notebooks", 44, "44", "80 less 36"),
+            ("hardware_bills", 200, "200", "invented: a Nagpur hardware shop's bills in a week"),
+            ("hardware_paint", 90, "90", "invented: bills with paint"),
+            ("hardware_brushes", 50, "50", "invented: bills with brushes"),
+            ("hardware_both", 28, "28", "invented: bills with paint and brushes"),
+            ("hardware_support", 0.14, "0.14", "28 of 200"),
+            ("hardware_brushes_conf", 0.56, "0.56", "28 of 50, from brushes to paint"),
+            ("hardware_paint_conf", 0.3111, "0.31", "28 of 90, from paint to brushes"),
+            ("hardware_expected", 22.5, "22.5", "200 x 90/200 x 50/200"),
+            ("hardware_lift", 1.2444, "1.24", "28 over 22.5"),
+            ("hardware_sandpaper", 80, "80", "invented: bills with sandpaper"),
+            ("hardware_sandpaper_paint", 36, "36", "invented: bills with sandpaper and paint"),
+            ("hardware_sandpaper_conf", 0.45, "0.45", "36 of 80"),
+            ("hardware_sandpaper_expected", 36, "36", "200 x 80/200 x 90/200"),
+            ("hardware_sandpaper_lift", 1.0, "1.00", "36 over 36"),
+            ("hardware_paint_share", 0.45, "45 percent", "90 of 200"),
+            ("hardware_sandpaper_no_paint", 44, "44", "80 less 36"),
             ("practice_clicks", 1_500, "1,500", "30,000 x 0.05"),
             ("practice_views", 30_000, "30,000", "invented: cart-page views a day"),
             ("practice_ctr", 0.05, "5 percent", "invented: click-through"),
@@ -1763,7 +1763,9 @@ def write_facts(case, strip, kalpa, toys):
     f(S, "thursday_aug_size", 2.6, "2.6 times", "Thursday's ticket: the August cohort against a normal month (case file target)", "pre-read")
     f(S, "thursday_android_before", 0.58, "58 percent", "Thursday's ticket: members' add-to-cart to order on Android before 14 September (case file target)", "pre-read")
     f(S, "thursday_android_after", 0.44, "44 percent", "Thursday's ticket: the same after (case file target)", "pre-read")
-    f(S, "thursday_members", 60_000, "60,000", "Thursday's ticket: members signed up January to September 2026 (case file target)", "pre-read")
+    f(S, "thursday_members", 53_089, "53,089", "Thursday's ticket: members signed up January to September 2026 (the spine's Thursday ticket and the case file)", "pre-read")
+    f(S, "thursday_aug_members", 13_000, "13,000", "Thursday's ticket: the August cohort, 2.6 times the 5,000 a month of January to July (case file)", "pre-read")
+    f(S, "thursday_normal_month", 5_000, "5,000", "Thursday's ticket: members a month, January to July (case file)", "pre-read")
     S = "week_map"
     f(S, "monday_trips_per_hour_before", 1.9, "1.9", "Monday's target in the W04 spine, section 5", "slide two's week map")
     f(S, "monday_trips_per_hour_after", 1.6, "1.6", "Monday's target in the W04 spine, section 5", "slide two's week map")

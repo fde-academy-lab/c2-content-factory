@@ -3025,82 +3025,82 @@ exercise_numbers:
     used_in: "Kalpa exercise"
 
 practice_toy:
-  - id: stationery_bills
+  - id: hardware_bills
     value: 200
     shown: "200"
-    how: "invented: a Nagpur stationery shop's bills in a week"
+    how: "invented: a Nagpur hardware shop's bills in a week"
     used_in: "practice lab set"
-  - id: stationery_notebooks
+  - id: hardware_paint
     value: 90
     shown: "90"
-    how: "invented: bills with notebooks"
+    how: "invented: bills with paint"
     used_in: "practice lab set"
-  - id: stationery_pens
+  - id: hardware_brushes
     value: 50
     shown: "50"
-    how: "invented: bills with pens"
+    how: "invented: bills with brushes"
     used_in: "practice lab set"
-  - id: stationery_both
+  - id: hardware_both
     value: 28
     shown: "28"
-    how: "invented: bills with notebooks and pens"
+    how: "invented: bills with paint and brushes"
     used_in: "practice lab set"
-  - id: stationery_support
+  - id: hardware_support
     value: 0.14
     shown: "0.14"
     how: "28 of 200"
     used_in: "practice lab set"
-  - id: stationery_pens_conf
+  - id: hardware_brushes_conf
     value: 0.56
     shown: "0.56"
-    how: "28 of 50, from pens to notebooks"
+    how: "28 of 50, from brushes to paint"
     used_in: "practice lab set"
-  - id: stationery_notebooks_conf
+  - id: hardware_paint_conf
     value: 0.3111
     shown: "0.31"
-    how: "28 of 90, from notebooks to pens"
+    how: "28 of 90, from paint to brushes"
     used_in: "practice lab set"
-  - id: stationery_expected
+  - id: hardware_expected
     value: 22.5
     shown: "22.5"
     how: "200 x 90/200 x 50/200"
     used_in: "practice lab set"
-  - id: stationery_lift
+  - id: hardware_lift
     value: 1.2444
     shown: "1.24"
     how: "28 over 22.5"
     used_in: "practice lab set"
-  - id: stationery_glue
+  - id: hardware_sandpaper
     value: 80
     shown: "80"
-    how: "invented: bills with glue"
+    how: "invented: bills with sandpaper"
     used_in: "practice lab set"
-  - id: stationery_glue_notebooks
+  - id: hardware_sandpaper_paint
     value: 36
     shown: "36"
-    how: "invented: bills with glue and notebooks"
+    how: "invented: bills with sandpaper and paint"
     used_in: "practice lab set"
-  - id: stationery_glue_conf
+  - id: hardware_sandpaper_conf
     value: 0.45
     shown: "0.45"
     how: "36 of 80"
     used_in: "practice lab set"
-  - id: stationery_glue_expected
+  - id: hardware_sandpaper_expected
     value: 36
     shown: "36"
     how: "200 x 80/200 x 90/200"
     used_in: "practice lab set"
-  - id: stationery_glue_lift
+  - id: hardware_sandpaper_lift
     value: 1.0
     shown: "1.00"
     how: "36 over 36"
     used_in: "practice lab set"
-  - id: stationery_notebooks_share
+  - id: hardware_paint_share
     value: 0.45
     shown: "45 percent"
     how: "90 of 200"
     used_in: "practice lab set"
-  - id: stationery_glue_no_notebooks
+  - id: hardware_sandpaper_no_paint
     value: 44
     shown: "44"
     how: "80 less 36"
@@ -3582,9 +3582,19 @@ preread:
     how: "Thursday's ticket: the same after (case file target)"
     used_in: "pre-read"
   - id: thursday_members
-    value: 60000
-    shown: "60,000"
-    how: "Thursday's ticket: members signed up January to September 2026 (case file target)"
+    value: 53089
+    shown: "53,089"
+    how: "Thursday's ticket: members signed up January to September 2026 (the spine's Thursday ticket and the case file)"
+    used_in: "pre-read"
+  - id: thursday_aug_members
+    value: 13000
+    shown: "13,000"
+    how: "Thursday's ticket: the August cohort, 2.6 times the 5,000 a month of January to July (case file)"
+    used_in: "pre-read"
+  - id: thursday_normal_month
+    value: 5000
+    shown: "5,000"
+    how: "Thursday's ticket: members a month, January to July (case file)"
     used_in: "pre-read"
 
 week_map:

@@ -1,7 +1,7 @@
 # Can you run the pairs method on a store you have never seen?
 
 The practice set for the TA-led lab, after the Kalpa lab notebook. It moves the day's method to an
-invented store so the counts are small enough to do by hand: a Nagpur stationery shop's 200 bills
+invented store so the counts are small enough to do by hand: a Nagpur hardware shop's 200 bills
 from one week, and four pairs and three bundles from an invented quick-commerce strip. Every number on this
 page is invented for practice. The items climb from a hand count to a call a merchandiser, the person
 who decides which products are bundled and promoted, would pay for. Uplift, used in item 6, is the
@@ -28,14 +28,14 @@ Three words, defined once. **Support** is the share of bills holding both items.
 A to B is the share of A's bills that also hold B. **Lift** is the bills seen holding both over the
 bills chance alone would give, which is the total times A's share times B's share.
 
-| The stationery shop's week, invented | Bills |
+| The hardware shop's week, invented | Bills |
 |---|---|
 | All bills | 200 |
-| Bills with notebooks | 90 |
-| Bills with pens | 50 |
-| Bills with notebooks and pens | 28 |
-| Bills with glue | 80 |
-| Bills with glue and notebooks | 36 |
+| Bills with paint | 90 |
+| Bills with brushes | 50 |
+| Bills with paint and brushes | 28 |
+| Bills with sandpaper | 80 |
+| Bills with sandpaper and paint | 36 |
 
 **What you post.** Six letters in item order, with no spaces, in this shape:
 
@@ -45,12 +45,12 @@ Post exactly this shape: xxxxxx
 
 ---
 
-## What do the counts say about notebooks, pens and glue?
+## What do the counts say about paint, brushes and sandpaper?
 
 This comes up at work in every first pass over a basket table: four counts, three numbers, one
 sentence.
 
-### Q1. What is the lift of notebooks and pens?
+### Q1. What is the lift of paint and brushes?
 
 *Level L1 · asked in every analytics interview.*
 
@@ -59,13 +59,13 @@ b) 0.31
 c) 1.24
 d) 0.14
 
-### Q2. Glue and notebooks read a lift of exactly 1.00: what does that say?
+### Q2. Sandpaper and paint read a lift of exactly 1.00: what does that say?
 
 *Level L2 · asked in product-company interviews.*
 
-a) Glue and notebooks turn up together exactly as often as chance would put them
-b) Glue brings notebooks 45 percent of the time, which makes the pair a strong bundle
-c) Every bill with glue also holds notebooks, so the pair cannot be separated
+a) Sandpaper and paint turn up together exactly as often as chance would put them
+b) Sandpaper brings paint 45 percent of the time, which makes the pair a strong bundle
+c) Every bill with sandpaper also holds paint, so the pair cannot be separated
 d) The pair turns up less often than chance, so the two items compete
 
 ## Which pairs and bundles earn the strip's space?

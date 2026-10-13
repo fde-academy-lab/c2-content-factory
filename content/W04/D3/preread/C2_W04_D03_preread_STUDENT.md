@@ -38,6 +38,19 @@ On Thursday you answer the membership lead, who wants one cause and one fix with
 
 ---
 
+## Which five topics will Thursday teach, in the curriculum's words?
+
+Thursday's curriculum row names these five topics, in this order. Read the list once tonight and
+notice which words you already half know; nothing here is taught yet.
+
+1. Cohort construction
+2. Funnel stages, drop-off, denominators
+3. Retention curves: shape and floor
+4. Blended numbers against cohort truth
+5. The fix-first decision and its evidence
+
+---
+
 ## Which words will Thursday use that you may not know yet?
 
 Write what you think each one means tonight, from memory, in the right-hand column. Thursday's first
@@ -69,8 +82,8 @@ will be asked for it.
 
 Nothing needs installing, and each check takes under five minutes.
 
-1. Run Restart and Run All on Wednesday's four notebooks, 01 to 04. Each ends on its checks passing,
-   and if one does not, post its last error line in the cohort channel before the session.
+1. Run Restart and Run All on Wednesday's eleven notebooks, 01 to 11. Each ends on its checks
+   passing, and if one does not, post its last error line in the cohort channel before the session.
 2. Save your take-home notebook with its outputs showing, since a notebook that ran but was not saved
    looks empty to everyone else.
 

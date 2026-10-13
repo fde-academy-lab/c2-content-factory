@@ -1,72 +1,69 @@
-# Which pairs beat chance, and what is a strip slot worth?
+# Which pairs beat chance, and what is each one worth?
 
-Swiggy Instamart, Pune, Week 4 Wednesday. The cart page's strip fell from 6.1 to 3.8 percent click-through once it showed the items most often found in the same cart. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
+Week 4 Wednesday. The five topics on a hostel canteen's twelve lunch orders and a Pune corner shop's month, both invented, then on Swiggy Instamart's Pune carts, whose strip fell from 6.1 to 3.8 percent click-through once it showed the items most often found in the same cart. Illustrative case: the company is real, the situation and the data are synthetic, built for this class.
 
-## Panel 1: Which three counts does every pair get?
+## Panel 1: Support, confidence and lift, derived by counting: what does each answer?
 
-![The ten dots: chai in 6 orders, biscuit in 4, both in 3, beside the 2 by 2 table of counts](../whiteboards/C2_W04_D03_ten_dots_STUDENT.png)
+![The canteen's 2 by 2: roti in 4 orders, sabzi in 4, both in 3, beside the table of counts](../whiteboards/C2_W04_D03_canteen_two_by_two_STUDENT.png)
 
-| Count | The question it answers | Formula | On the ten dots |
+| Count | It answers | Formula | Roti and sabzi |
 |---|---|---|---|
-| Support | How often are both in a cart? | both / all | 3 / 10 = 0.30 |
-| Confidence | How reliably does A bring B? | both / A | 3 / 6 = 0.50 |
-| Lift | How far above chance? | both x all / (A x B) | 3 x 10 / (6 x 4) = 1.25 |
+| Support | How often together? | both / all | 3 / 12 = 0.25 |
+| Confidence | How reliably, from A? | both / A | 3 / 4 = 0.75 |
+| Lift | How far above chance? | both x all / (A x B) | 3 x 12 / (4 x 4) = 2.25 |
 
-**Crux:** Lift is carts seen holding both over the carts chance gives, the same from either side; it counts and never names a cause.
+**Crux:** Lift is the baskets seen holding both over the baskets chance gives, the same from either side; it counts a pull and never names a cause.
 
-## Panel 2: What did twelve carts say, and what did 40,000 say?
+## Panel 2: The confidence trap; lift near one: who is the worst partner?
 
-| Pair | Twelve carts | 40,000 carts |
+| Toward chaas, in 0.75 of orders | Confidence | Lift |
 |---|---|---|
-| bread, milk | confidence 1.00, lift 1.50 | confidence 0.74, lift 1.04 |
-| chips, cold drink | lift 2.67 on 2 carts | lift 3.39 on 2,000 carts |
-| ice cream, chocolate sauce | lift 12 on 1 cart | lift 4.60 on 100 carts |
+| dal rice, sabzi | 1.00 | 1.33 |
+| roti | 0.75 | 1.00 |
+| papad | 0.60 | 0.80 |
 
-**Crux:** A few carts can make a pull look strong; milk is in 71 percent of carts, so its pull with anything sits near one.
+Milk is in 71 percent of Instamart's carts; lift with milk runs 0.99 to 1.04.
 
-## Panel 3: Why did the click-through fall?
+**Crux:** The item in every basket is the worst bundle partner, because it was going in anyway.
 
-| Slots showing | Share of impressions after | Click-through after |
-|---|---|---|
-| milk | 50 percent, from 2 before | 1.2 percent |
-| everything else | 50 percent | 6.4 percent, from 6.2 |
-| blend | 0.5 x 1.2 + 0.5 x 6.4 | 3.8 percent |
+## Panel 3: Basket analysis on the order items: how do lines make pairs?
 
-**Crux:** The fall sits in the mix: milk took half the impressions, and 70 percent of slot 1, at 1.2 percent.
+```python
+baskets = lines.groupby("order_id").item.apply(set)
+pairs = Counter(p for b in baskets
+                for p in combinations(sorted(b), 2))
+```
 
-## Panel 4: Which pairs fill the strip?
+k items make k x (k - 1) / 2 pairs: 33 lines make 30; unsorted keys count 60.
 
-| Region | Rule | Pairs |
-|---|---|---|
-| Promote | lift 1.5 or more, support at least 1 percent (400 carts) | chips and cold drink 3.39, coriander and green chillies 3.00, bread and butter 2.21 |
-| Watch | strong lift below the floor | ice cream and chocolate sauce, 4.60 on 100 carts |
-| Trap | lift near one, above the floor: what a count ranks first | milk's pairs, 0.99 to 1.04 |
-| Ignore | lift near one, below the floor | most of the 1,221 pairs |
+**Crux:** Sort the names so each pair has one key; the table holds counts, never a ranking.
 
-**Crux:** Rank by lift above a support floor; a strong pair on few carts is tried before it takes a slot.
+## Panel 4: The support floor and the watch list: when is a pair too thin?
 
-## Panel 5: What is a slot worth in rupees?
+| Region | Rule | Canteen | Instamart |
+|---|---|---|---|
+| Promote | floor met, lift 1.5 up | roti and sabzi, 2.25 on 3 | chips and cold drink, 3.39 |
+| Watch | lift 1.5 up, below floor | gulab jamun and curd, 6.0 on 1 | ice cream and sauce, 4.60 on 100 |
+| Trap | floor met, near one | dal rice and chaas, 1.33 on 6 | milk's pairs, 0.99 to 1.04 |
 
-`60,000 views a day x 6.4% x 0.5 adds per click x Rs 9 margin = Rs 17,280 a day`
+**Crux:** A floor is a count set first, 3 orders or 400 carts; pure chance reads 8.57 on 2 orders.
 
-At 1.2 percent the slot earns Rs 3,240, a gap of Rs 14,040 a day or about Rs 4.2 lakh a month. Milk holds 1.5 slots' worth, so re-ranking recovers about Rs 6.3 lakh a month (Rs 3.9 lakh to Rs 9.3 lakh across the assumed ranges).
+## Panel 5: Cross-sell and upsell reasoning; expected value in rupees: what is a combo worth?
 
-**Crux:** Value is margin on the adds, less any discount handed back; Rs 80,197 a day of sales is never the gain.
+`value = margin on purchases it changes - discount on every bill - fixed cost`
 
-## Panel 6: Which check catches each trap?
+Sharma Kirana: 18 packs x Rs 12 = Rs 216, less Rs 168 handed back, less Rs 20 = Rs 28 a month; at 2 percent, -Rs 71. Rusk sales on every combo bill read Rs 5,040.
 
-| The trap | The check |
-|---|---|
-| Confidence 1.00, or a count ranking, read as a bundle | Lift: is the partner in most carts anyway? |
-| "Shoppers changed" | Split by suggested item: the rest rose to 6.4 |
-| Heavy buyers inflate a pair | Count each customer once: 3.39 falls to 2.56 |
-| A stock-out lowers a count | Set it aside: curd's share returns, its lift stays 1.01 |
-| Lift read as a cause | Only a holdout that changes the strip settles it |
+**Crux:** Cross-sell adds a second item, upsell a dearer one; each earns only on what it changes.
 
-**Crux:** Every count is asked "compared with what?" before it takes a slot.
+## Panel 6: The case: what did Instamart's carts say?
 
-## Panel 7: What does the interviewer listen for?
+Bread to milk read confidence 1.00 and lift 1.50 on twelve carts, and 0.74 and 1.04 on 40,000. The fall: 0.5 x 1.2 + 0.5 x 6.4 = 3.8 percent. A slot earns Rs 17,280 a day against Rs 3,240 showing milk; re-ranking recovers about Rs 6.3 lakh a month.
 
-"Lift, since it divides by the base rate: bread to milk reads 0.74, but milk is in 71 percent of carts, so lift is 1.04." An LLM shopping assistant's add-ons are scored by lift over a popularity baseline, then a holdout.
+**Crux:** Say the base rate, the floor and the cost line, and end on one decision.
 
-**Crux:** Name the base rate, the floor and the cost line, and end on one decision.
+## Panel 7: How do the five topics join?
+
+Three counts (0.25, 0.75, 2.25), then the trap (1.33 behind a confidence of 1.00), then the pairs table (30 pairs from 33 lines), then the floor (3 orders), then the rupees (Rs 28): each counted on the canteen or the kirana first.
+
+**Crux:** Every topic was counted by hand before Instamart's carts used it.
