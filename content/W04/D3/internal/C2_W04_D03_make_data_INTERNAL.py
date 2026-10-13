@@ -1328,6 +1328,7 @@ def toy_facts(f, t, mo, ko):
             ("sales_multiple", 180, "180 times", "Rs 5,040 over Rs 28"),
             ("net_new_pack", ko["net_new_pack"], "Rs 11", "a new pack's margin less the Rs 1 its bill takes back"),
             ("per_bill", ko["per_bill"], "Rs 0.44", "the expected value of one tea-only bill: 0.04 x Rs 11 plus 0.96 x Rs 0"),
+            ("no_response", round(1 - ko["response_mid"], 2), "0.96", "the share of tea-only bills that add nothing, 1 less 0.04"),
             ("tea_only_total", ko["tea_only_total"], "Rs 198", "450 tea-only bills x Rs 0.44"),
             ("both_cost", ko["both_cost"], "Rs 150", "Rs 1 on each of the 150 bills that held both before the card")):
         f(S, f"toy_kirana_{key}", val, shown, inv(SUB5, why), f"{s9}, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7")

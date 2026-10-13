@@ -2148,6 +2148,11 @@ toy:
     shown: "Rs 0.44"
     how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the expected value of one tea-only bill: 0.04 x Rs 11 plus 0.96 x Rs 0"
     used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_no_response
+    value: 0.96
+    shown: "0.96"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the share of tea-only bills that add nothing, 1 less 0.04"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
   - id: toy_kirana_tea_only_total
     value: 198
     shown: "Rs 198"
