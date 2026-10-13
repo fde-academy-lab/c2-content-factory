@@ -587,8 +587,8 @@ check("Kalpa: 120 members, C-0151 to C-0270; 11 to 14 joined a month from Januar
       and by_month.loc["2026-01":"2026-07"].between(11, 14).all() and by_month.get("2026-08") == 32
       and members["member_since"].max() == "2026-08-29")
 check("Kalpa: 107 joined by 19 August, the monsoon sale's last day, and 13 from 20 to 29 August",
-      (len(base), len(late_joiners)) == (107, 13) and min(since[c] for c in late_joiners) >= "2026-08-20", (len(base), len(late_joiners)),
-      (107, 13))
+      (len(base), len(late_joiners)) == (107, 13) and min(since[c] for c in late_joiners) >= "2026-08-20",
+      (len(base), len(late_joiners)), (107, 13))
 check("Kalpa: every placement falls from 20 August to 30 September, never before its member joined",
       reorders["day"].between(COMPARISON[0].isoformat(), AUTO_WINDOW[1].isoformat()).all()
       and (reorders["day"] >= reorders["customer_id"].map(since)).all())
@@ -915,8 +915,8 @@ facts = {
                      "so each was a member for the whole of both windows",
         "members_joined_by_month": {m: int(n) for m, n in by_month.items()},
         "window_days": {"comparison": len(days_in(COMPARISON)), "auto_reorder": len(days_in(AUTO_WINDOW))},
-        "late_example": {"customer_id": example, "member_since": since[example],
-                         "comparison_days": example_days, "comparison_days_missed": len(days_in(COMPARISON)) - example_days},
+        "late_example": {"customer_id": example, "member_since": since[example], "comparison_days": example_days,
+                         "comparison_days_missed": len(days_in(COMPARISON)) - example_days},
         "rows_in_log": len(reorders),
         "reorders_comparison": int(counts["comparison"]),
         "reorders_window": int(counts["window"]),
