@@ -6,7 +6,7 @@ The mess (invented) has two beats: Sunday's biryani every 7 days, and a guest di
 week. Growth shows only when the same point is compared a season apart: the guest weeks run 238,
 240, 242 and 244 kg, a climb of 2 kg a cycle.
 
-**Who needs the answer.** You, to check your letters. The mess manager orders on the reading you give.
+**Who needs the answer.** You, to check your letters. The mess manager (invented) orders on the reading you give.
 
 **The questions on the way.**
 
@@ -25,7 +25,7 @@ growth is read without the beat fooling you, and how a season's length is counte
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
 | Q1, which comparison reads growth | d | The same day a week back, or the same week a year back, compares the same point a season apart, so the beat cancels | a reads Sunday's biryani as growth; b sets Sunday against weekdays, which is the beat again; c compares neighbours, which a beat can move |
-| Q2, the season's length | a | Weeks 4, 8, 12 and 16 run 238, 240, 242 and 244 kg, about 48 kg above the other weeks: a repeat every four weeks | b names the weekly beat, which a weekly total cannot show, since each week holds one Sunday; c reads one rise where four repeat; d calls a fixed repeat noise |
+| Q2, the season's length | a | Weeks 4, 8, 12 and 16 run 238, 240, 242 and 244 kg, about 48 kg above the other weeks: a repeat every four weeks | b names the weekly beat, which a weekly total cannot show, since each week holds one Sunday; c reads one rise where four repeat; d calls a fixed repeat a wobble |
 | Q3, the climb | b | Each guest week against the one before compares the same point a season apart: 2 kg a cycle | a sets a guest week against an ordinary one, the beat; c folds the guest dinners into a mean and compares it with an ordinary week; d sets a guest week against an ordinary one, the beat again |
 
 ## Which item is worth arguing about?

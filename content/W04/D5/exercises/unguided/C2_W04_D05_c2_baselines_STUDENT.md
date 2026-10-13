@@ -1,4 +1,4 @@
-# Naive, seasonal naive and drift baselines: which copy does the hostel mess trust, and when does it fail?
+# Naive, seasonal naive and drift baselines: which copy does the invented hostel mess trust, and when does it fail?
 
 This set practises chapter 2, naive, seasonal naive and drift baselines, at the hostel mess
 (invented), where every number is invented. Item 1 is the chapter's live check; items 2 and 3 are sat
@@ -12,7 +12,7 @@ before the rice is ordered, and who pays for every kilogram cooked and thrown aw
 **The questions on the way.**
 
 - Which rule, and what does it say for next Sunday?
-- Which baseline do you trust after the mess has been closed?
+- Which baseline do you trust after the mess (invented) has been closed?
 - Which forecast fits a series that repeats and climbs?
 
 **What you post,** in this set's thread in the cohort channel: three letters in item order, with no
@@ -28,7 +28,7 @@ Post exactly this shape: xxx
 
 When a beat is strong, the plainest copy that respects it wins; the hard part is naming the beat.
 
-### Q1. The mess's last four days used 25, 26, 25 and 27 kg of rice and last Sunday 42 kg: which rule fits, and what does it say for next Sunday?
+### Q1. The mess's (invented) last four days used 25, 26, 25 and 27 kg of rice and last Sunday 42 kg: which rule fits, and what does it say for next Sunday?
 
 *Level L1 · the chapter's live check.*
 
@@ -39,7 +39,7 @@ d) The four days' mean, 25.75 kg: a smoothed day
 
 ## Which copy survives a closure and a climb?
 
-### Q2. The mess closes for Diwali week and reopens the week after: which baseline do you trust for that week, and why?
+### Q2. The mess (invented) closes for Diwali week and reopens the week after: which baseline do you trust for that week, and why?
 
 *Level L4, a design call · asked in retail analytics screens.*
 

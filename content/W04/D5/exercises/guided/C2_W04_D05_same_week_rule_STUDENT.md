@@ -6,7 +6,8 @@ of last year. Diwali fell on Thursday 31 October 2024 (the week of 28 October) a
 October 2025 (the week of 20 October). Illustrative case: the company is real, the situation and the
 data are synthetic, built for this class.
 
-The trainer builds this set with the room in chapter 5. It applies two of the day's topics, the
+The trainer works the first item with the room in chapter 5, beside S43 and S44, and the second and
+third are sat in the TA lab. It applies two of the day's topics, the
 naive, seasonal naive and drift baselines and holding out with MAE, to twelve of the case's weeks.
 The first item is fully worked, the second half worked,
 and the third is yours. Each item carries its level, from L1 for a count by hand to L6 for an

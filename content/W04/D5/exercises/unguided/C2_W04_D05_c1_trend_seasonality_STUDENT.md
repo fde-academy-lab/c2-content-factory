@@ -1,4 +1,4 @@
-# Trend and seasonality, read before modelling: what do the hostel mess's numbers say before any rule is chosen?
+# Trend and seasonality, read before modelling: what do the invented hostel mess's numbers say before any rule is chosen?
 
 This set practises chapter 1, trend and seasonality, read before modelling, on a world you have not
 seen yet: a hostel mess (invented). The mess cooks about 25 kg of rice on a weekday and about 40 kg
@@ -10,8 +10,8 @@ Saturday: a reading that takes Sunday's biryani for growth orders rice that sits
 
 **The questions on the way.**
 
-- Which comparison tells you whether the mess is growing?
-- How long is the mess's season, and what repeats?
+- Which comparison tells you whether the mess (invented) is growing?
+- How long is the invented mess's season, and what repeats?
 - Which reading of sixteen weeks shows the climb?
 
 **What you post,** in this set's thread in the cohort channel: three letters in item order, with no
@@ -27,7 +27,7 @@ Post exactly this shape: xxx
 
 A forecaster reads the beat before the climb, because a beat read as growth moves every later number.
 
-### Q1. The mess used 25 kg of rice on Monday and 40 kg on Sunday: which comparison tells you whether the mess is growing?
+### Q1. The mess (invented) used 25 kg of rice on Monday and 40 kg on Sunday: which comparison tells you whether it is growing?
 
 *Level L1 · the chapter's live check.*
 
@@ -57,7 +57,7 @@ b) Seven days: Sunday's biryani lifts every week by the same amount
 c) Sixteen weeks: the series rises once, to 244 kg in week 16
 d) There is no season: the weeks wobble around a level near 200 kg, nothing more
 
-### Q3. The manager plans next term's rice and asks whether the mess is growing: which reading of the sixteen weeks answers it?
+### Q3. The mess manager (invented) plans next term's rice and asks whether the mess is growing: which reading of the sixteen weeks answers it?
 
 *Level L3, a design call · asked in product-company screens.*
 

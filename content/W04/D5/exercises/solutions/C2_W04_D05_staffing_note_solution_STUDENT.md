@@ -35,16 +35,26 @@ reading a percentage against the right window.
 
 ## What does a hire-grade note say?
 
-> **Book 19,760 packer shifts for 12 October to 30 November 2026, peaking at 3,625 in the week of 19
-> October.** The peak falls two weeks before Diwali's week of 2 November, as it did in 2024 and 2025,
-> so the forecast copies each week by its distance from Diwali and adds the 4 percent a year the
-> centre grew. On thirteen hidden weeks it missed by 6,615 a week (about Rs 35,800 of idle shifts when it
-> ran that far high, Rs 1.65 lakh of late shipments when that far low), and on 2025's festival by 4,034 a week. Three facts would
-> move it: a sale that opens at a different distance from Diwali (re-align by the sale), a 2025 peak
-> capped by capacity (overtime reached 1,638 shifts that week), and growth other than 4 percent. To
-> finance: your 4 percent is right and your weeks are not; copied by calendar the peak lands on 5
-> October. To the vendor's sponsor: the fit is within 1.4 percent, and the forecast missed thirteen
-> hidden weeks by 16,400 a week.
+> **Book 19,760 packer shifts for 12 October to 30 November 2026 from the festival-aligned forecast,
+> peaking at 3,625 in the week of 19 October.** The peak falls two weeks before Diwali's week of 2
+> November, as it did in 2024 and 2025, so the forecast copies each week by its distance from Diwali
+> and adds the 4 percent a year the centre grew. Its typical miss on thirteen hidden weeks was 6,615
+> a week (about Rs 35,800 of idle shifts when it ran that far high, Rs 1.65 lakh of late shipments
+> when that far low); at the peak the hidden weeks' range means 3,413 to 3,906 shifts; and on 2025's
+> festival, with no growth added, it missed by 10,575 a week. Three facts would move it, each with
+> its check: a sale that opens at a different distance from Diwali (check the calendar's sale weeks,
+> then re-align by the sale), a 2025 peak capped by capacity (check: overtime reached 1,638 shifts
+> that week; orders that could not ship would settle it), and growth other than 4 percent (check the
+> next weeks against the same weeks a year earlier). To finance: your 4 percent is right and your
+> weeks are not; copied by calendar the peak lands on 5 October. To the vendor's sponsor: the fit is
+> within 1.4 percent, and the forecast missed thirteen hidden weeks by 16,400 a week.
+
+## Which item is worth arguing about?
+
+Q1's option b. Finance's rule tied festival-aligned on the hidden weeks, so a room short of time
+takes the tie as a draw. The tie is real and says nothing about the festival: the hidden weeks hold
+none, and on 2025's festival a calendar copy like finance's missed by 60,488 a week. The weeks that
+decide the plan are the ones the tie never tested.
 
 ## Where does the pattern live at work?
 

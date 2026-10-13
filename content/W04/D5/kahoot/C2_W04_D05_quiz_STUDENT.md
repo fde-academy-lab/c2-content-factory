@@ -56,7 +56,7 @@ head wrong, so the trainer says it again before the room leaves.
 - Yes, since a fit that close beats every simple rule
 - Yes, if the fit also holds on the festival weeks
 - Unknown until it is scored on weeks it never saw  <- correct
-- No, since a fit that close is always overfitted, copying noise
+- No, since a fit that close always copies history's wobble
 
 ---
 

@@ -42,10 +42,10 @@ numbers.
 
 Which line is right?
 
-a) X a season, Y a trend, Z noise
-b) X a trend, Y a season, Z noise
-c) X a trend, Y noise, Z a season
-d) X noise, Y a season, Z a trend
+a) X a season, Y a trend, Z a wobble
+b) X a trend, Y a season, Z a wobble
+c) X a trend, Y a wobble, Z a season
+d) X a wobble, Y a season, Z a trend
 
 ### Q2. A gift shop's festival moved a week later this year: what does festival-aligned forecast for this year's week 5?
 

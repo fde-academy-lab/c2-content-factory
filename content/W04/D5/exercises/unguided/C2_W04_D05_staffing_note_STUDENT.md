@@ -95,6 +95,6 @@ Write five lines to the regional operations head, in this order:
 |---|---|
 | First | The claim as the title: how many shifts, for which weeks, from which forecast |
 | Second | Where the peak falls, and why: distance from Diwali, with the week named |
-| Third | The error bar in shipments, priced in each direction, and the festival's own record from 2025 |
+| Third | The error bar: the typical miss in shipments priced in each direction, the peak week's range, and the honest record on 2025's festival, with no growth added |
 | Fourth | Three facts that would move the number, each with its check |
 | Fifth | One line to finance and one to the vendor's sponsor, each conceding the true part first |

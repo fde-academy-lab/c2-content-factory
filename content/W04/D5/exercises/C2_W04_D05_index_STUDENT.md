@@ -7,6 +7,9 @@ beginning 12 October to 30 November 2026, between a vendor's forecast 22 percent
 and finance's rule of last year plus 4 percent. Illustrative case: the company is real, the situation
 and the data are synthetic, built for this class. The exercises climb from a hand count (L1) to a
 design call a hiring panel asks (L5), and the Kalpa set moves the method to the programme's client.
+Each item also says where such questions are asked: a screen is an interview round, an analytics
+screen tests reading data, a product-company screen tests decisions, and a GCC, a global capability
+centre, is a multinational company's own technology centre in India.
 
 **Who needs the answer.** You, to know which set to open, when, and which of the five topics each
 item practises.
@@ -24,10 +27,10 @@ item practises.
 | Chapter 1's close, then the lab's opening 20 minutes | `unguided/C2_W04_D05_c1_trend_seasonality_STUDENT.md` | 3 | L1 to L3 | Growth read a season apart, a season's length counted, the climb read at the hostel mess (invented) |
 | Chapter 2's close, then the lab's opening 20 minutes | `unguided/C2_W04_D05_c2_baselines_STUDENT.md` | 3 | L1, L4 | Naive, seasonal naive and drift at the mess, a closure, and a copy that needs its climb |
 | Chapter 3's close, then the lab's opening 20 minutes | `unguided/C2_W04_D05_c3_holdout_mae_mape_STUDENT.md` | 4 | L2 to L4 | MAE and the lean, the same MAE at two costs, which days to hide, which score for whom |
-| Chapter 4's close, then the lab's opening 20 minutes | `unguided/C2_W04_D05_c4_beat_baseline_good_enough_STUDENT.md` | 3 | L2 to L5 | Fit against forecast, three models against the house bot, the note's first line |
-| Chapter 5, with the trainer | `guided/C2_W04_D05_same_week_rule_STUDENT.md` | 3 | L1, L2 | The seasonal naive built by hand on twelve weeks, then hidden and scored: worked, half worked, then yours |
-| Chapter 6's close, 15 minutes | `unguided/C2_W04_D05_ch2_scoreboard_STUDENT.md` | 3 | L3, L5 | A leaky score found in code, the direction read off an error table, and priced misses read for a decision |
-| Afternoon, 15 minutes in groups | `unguided/C2_W04_D05_staffing_note_STUDENT.md` | 4 and the note | L3 to L5 | The forecast picked, a week's shifts sized, the fact that would move the plan, the window a percentage is read against, then the staffing note |
+| Chapter 4's close, then the lab's opening 20 minutes | `unguided/C2_W04_D05_c4_beat_baseline_good_enough_STUDENT.md` | 3 | L2 to L5 | Fit against forecast, three models against the day's best rule, the note's first line |
+| Chapter 5 for item 1, with the trainer beside S43 and S44; items 2 and 3 in the lab | `guided/C2_W04_D05_same_week_rule_STUDENT.md` | 3 | L1, L2 | The seasonal naive built by hand on twelve weeks, then hidden and scored: worked, half worked, then yours |
+| The lab, after the four concept sets | `unguided/C2_W04_D05_ch6_scoreboard_STUDENT.md` | 3 | L3, L5 | A one-week-ahead score found in code, the direction read off an error table, and priced misses read for a decision |
+| Chapter 7, 8 minutes in groups for the lettered items; the note in the lab | `unguided/C2_W04_D05_staffing_note_STUDENT.md` | 4 and the note | L3 to L5 | The forecast picked, a week's shifts sized, the fact that would move the plan, the window a percentage is read against, then the staffing note |
 | Lab, after notebook 08 | `unguided/C2_W04_D05_kalpa_board_STUDENT.md` | 3 | L2, L5 | Kalpa's board number: the two scores, the forecast, its error bar |
 | Lab, the practice set | `practice/C2_W04_D05_lab_set_STUDENT.md` | 6 | L1 to L5 | The whole method on invented shops and series, ending on a miss priced in each direction |
 

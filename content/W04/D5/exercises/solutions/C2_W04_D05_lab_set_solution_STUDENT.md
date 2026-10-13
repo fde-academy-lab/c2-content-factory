@@ -26,7 +26,7 @@ rules, score, judgement, code order and a miss priced in each direction.
 
 | Problem | Key | Why it holds | Why the others fail |
 |---|---|---|---|
-| Q1, three series | b | X rises 3 a week; Y repeats 50, 50, 70, 50; Z has no steady climb and no repeat | a swaps X and Y; c calls Y's exact repeat noise; d calls Z's wobble a trend |
+| Q1, three series | b | X rises 3 a week; Y repeats 50, 50, 70, 50; Z has no steady climb and no repeat | a swaps X and Y; c calls Y's exact repeat a wobble; d calls Z's wobble a trend |
 | Q2, the gift shop | c | This year's week 5 is the week after this year's festival; last year the week after the festival was week 4, which sold 50 | a is naive, the festival week itself; b is the same calendar week, two weeks after last year's festival; d copies an earlier week of this year |
 | Q3, the MAE | a | The sizes 9, 6, 14, 3 and 4 sum to 36; over five, 7.2 | b averages the signed misses, 2.0, which is the lean, never the size; c is the sum before dividing; d is the largest single miss |
 | Q4, the pitch | d | A fit says nothing about weeks the model never saw; the first question is how it scored there against the simplest copy | a and b ask how it works before whether it works; c asks for a better fit, which is the problem |

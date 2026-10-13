@@ -13,8 +13,8 @@ order before anything is booked.
 **The questions on the way.**
 
 - Which forecast for day 5 do you trust, and why?
-- Which of three models earns a place over the house bot?
-- Which first line does the note to the milkman carry?
+- Which of three models earns a place over the day's best rule?
+- Which first line does the note to the milkman (invented) carry?
 
 **What you post,** in this set's thread in the cohort channel: three letters in item order, with no
 spaces, in this shape:
@@ -32,16 +32,16 @@ Post exactly this shape: xxx
 *Level L2 · the chapter's live check.*
 
 a) The curve, since it fits all four days with an error of 0 cups
-b) The line for now, and score both on unseen days before ordering
+b) Neither yet: order naive's 110 until one wins on unseen days
 c) Their average, 138.5 cups, since it splits the difference
 d) Neither, since four days are far too few for any forecast at all
 
-### Q2. At Flipkart Lucknow, three teams bring a model each against the house bot's 9,831 shipments a week: which line gives the right call on all three?
+### Q2. At Flipkart Lucknow, festival-aligned scores 6,615 shipments a week on the thirteen hidden weeks and the house bot 9,831; three teams bring a model each: which line gives the right call on all three?
 
 *Level L5, a design call · asked in product-company and GCC screens.*
 
-A model earns its place only on weeks it never saw, and only by enough to change a decision: enough
-shipments a week to change the packer shifts booked, at about 120 shipments a shift.
+A model earns its place only on weeks it never saw, only by beating the day's best rule, and only by
+enough to pay for itself: about 120 shipments make a shift, and a late shipment costs Rs 25.
 
 | Team | Model MAE | Scored on | Also |
 |---|---|---|---|
@@ -51,14 +51,14 @@ shipments a week to change the packer shifts booked, at about 120 shipments a sh
 
 Which line is right?
 
-a) Adopt A, B and C: each beats the bot's 9,831
+a) Adopt all three: each beats the bot's 9,831
 b) Skip A, adopt B, reject C for erring high
-c) Skip A, rescore B, use C for ordinary weeks
+c) Skip A, rescore B, retest C on more weeks
 d) Adopt A, rescore B, reject C for erring high
 
 ## What goes in the note?
 
-### Q3. The stall's seasonal naive beat the nephew's mean on seven hidden days, 4.0 cups a day against 12.4, and orders 3 cans a weekday and 2 on Sunday: which first line does the note to the milkman carry?
+### Q3. At the stall (invented), the seasonal naive beat the nephew's mean on seven hidden days, 4.0 cups a day against 12.4, and orders 3 cans a weekday and 2 on Sunday: which first line does the note to the milkman carry?
 
 *Level L4, a design call · asked in analytics screens.*
 

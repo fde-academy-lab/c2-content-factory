@@ -45,6 +45,9 @@ October 2026 to March 2027, Rs lakh:
 | March | 297.0 | 308.9 | 308.9 | 371.9 | 341.6 |
 | Six months, Rs crore | 18.93 | 19.69 | 19.69 | 23.09 | 21.77 |
 
+November 2025 and March 2026 both print as 297.0; to two places they are 296.97 and 297.02, which is
+why plus 4 percent gives 308.8 and 308.9.
+
 **What you post,** in this set's thread in the cohort channel: three letters in item order, with no spaces, in this shape:
 
 ```
