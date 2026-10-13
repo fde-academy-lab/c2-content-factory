@@ -299,6 +299,11 @@ hand_count:
   shown: '-124'
   how: aligned minus actual
   used_in: chapter 1
+- id: aligned_nogrowth_miss
+  value: -12000
+  shown: -12,000
+  how: 'festival-aligned with no growth, as October 2025 could run it: 28 Oct 2024 minus the actual'
+  used_in: half1 S44, notebook 05, notes
 - id: peak_2024
   value: 401000
   shown: 401,000
@@ -641,6 +646,36 @@ holdout:
   shown: '7'
   how: weeks the aligned baseline sat below the actual
   used_in: chapter 2 second route
+- id: aligned_mape
+  value: 0.030491
+  shown: 3.05 percent
+  how: aligned's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: finance_mape
+  value: 0.030491
+  shown: 3.05 percent
+  how: finance's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: bot_mape
+  value: 0.044883
+  shown: 4.49 percent
+  how: bot's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: drift_mape
+  value: 0.068033
+  shown: 6.80 percent
+  how: drift's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: naive_mape
+  value: 0.068247
+  shown: 6.82 percent
+  how: naive's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
+- id: vendor_mape
+  value: 0.074725
+  shown: 7.47 percent
+  how: vendor's MAPE on the 13 hidden weeks
+  used_in: notebook 06, half2 D2
 - id: aligned_err_min_pct
   value: -0.058573
   shown: -5.9 percent
@@ -1416,6 +1451,66 @@ rolling_origin:
   value: 34.892157
   shown: about 35
   how: naive's average miss over festival-aligned's
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_06
+  value: 401000
+  shown: 401,000
+  how: festival-aligned with no growth for 6 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_06
+  value: -17200
+  shown: -17,200
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_13
+  value: 356200
+  shown: 356,200
+  how: festival-aligned with no growth for 13 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_13
+  value: -12800
+  shown: -12,800
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_20
+  value: 296900
+  shown: 296,900
+  how: festival-aligned with no growth for 20 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_20
+  value: -12000
+  shown: -12,000
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_10_27
+  value: 180600
+  shown: 180,600
+  how: festival-aligned with no growth for 27 Oct 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_10_27
+  value: -8000
+  shown: -8,000
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_11_03
+  value: 212700
+  shown: 212,700
+  how: festival-aligned with no growth for 3 Nov 2025
+  used_in: fallback part 2
+- id: aligned_nogrowth_miss_11_03
+  value: -15200
+  shown: -15,200
+  how: that minus actual
+  used_in: fallback part 2
+- id: aligned_nogrowth_mae
+  value: 13040.0
+  shown: 13,040
+  how: festival-aligned's five misses with no growth, averaged
+  used_in: fallback part 2
+- id: ratio_nogrowth
+  value: 5.458589
+  shown: about 5.5
+  how: naive's average miss over that
   used_in: fallback part 2
 backtest_2025:
 - id: bot_mae
@@ -2385,6 +2480,23 @@ interview:
   shown: one and a half and two times
   how: overtime at these multiples of a shift's cost (assumed)
   used_in: transcripts
+error_range:
+- id: peak_low_spare_rs
+  value: 137990.727092
+  shown: Rs 1.4 lakh
+  how: booked at the forecast, the week of 19 Oct 2026's spare shipments at the range's low end, at Rs
+    5.42
+  used_in: half2 S7, notes, staffing note
+- id: peak_high_late_rs
+  value: 843610.344828
+  shown: Rs 8.4 lakh
+  how: booked at the forecast, its late shipments at the range's high end, at Rs 25
+  used_in: half2 S7, notes, staffing note
+- id: mae_share_of_level
+  value: 0.03038
+  shown: 3.0 percent
+  how: festival-aligned's MAE over the hidden weeks' average week
+  used_in: half2 S7, notes
 toys:
 - id: ai_users
   value: 200000
@@ -2667,6 +2779,21 @@ exercises:
   shown: '0.3'
   how: 31 shipments a week over 120 a shift
   used_in: chapter 2 set
+- id: pair1_vs_aligned
+  value: 3184.923077
+  shown: 3,185
+  how: team A's MAE above festival-aligned's
+  used_in: chapter 4 set
+- id: pair3_lead
+  value: 415.076923
+  shown: '415'
+  how: team C's lead over festival-aligned, shipments a week
+  used_in: chapter 4 set
+- id: pair3_lead_rs
+  value: 10376.923077
+  shown: about Rs 10,400
+  how: 'the most that lead saves a week: each shipment a late one at Rs 25'
+  used_in: chapter 4 set
 - id: ch1_series_a
   value:
   - 100
@@ -3577,6 +3704,13 @@ guesstimate:
   shown: 8 years
   how: years before a household replaces it, assumption, range 6 to 10
   used_in: half2, transcript
+- id: replace_years_range
+  value:
+  - 6
+  - 10
+  shown: 6 to 10 years
+  how: the replacement years' assumed range
+  used_in: half2 D4, transcript
 - id: replacement
   value: 18750000.0
   shown: about 1.9 crore
@@ -4731,6 +4865,22 @@ toy:
   - notebook 04
   - notes
   - c4 set
+- id: toy_ch4_curve_next_d2
+  value: 46
+  shown: '46'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the next second
+    difference: 18 + 28'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
+- id: toy_ch4_curve_next_d1
+  value: 58
+  shown: '58'
+  how: 'invented for the concept chapter on Beating the baseline; the vendor curve tested: the next first
+    difference: 12 + 46'
+  used_by:
+  - half1 SECTION 4
+  - notebook 04
 - id: toy_ch4_curve_mean
   value: 138.5
   shown: '138.5'
@@ -5206,6 +5356,26 @@ good_enough:
   shown: 100 shipments
   how: a rule that beat festival-aligned by this much a week
   used_in: half2 SECTION 7, notebook 04, notebook 07
+- id: better_saves_rs
+  value: 2500
+  shown: Rs 2,500
+  how: 'the most an MAE 100 lower saves a week: 100 late shipments at Rs 25'
+  used_in: half2 SECTION 7, notebook 07, notes
+- id: better_saves_low_rs
+  value: 541.666667
+  shown: Rs 542
+  how: 'the least it saves a week: 100 spare shipments at Rs 5.42'
+  used_in: half2 SECTION 7, notebook 07, notes
+- id: better_window_low_rs
+  value: 4333.333333
+  shown: Rs 4,300
+  how: the same over the eight window weeks, low end
+  used_in: half2 SECTION 7, notebook 07
+- id: better_window_high_rs
+  value: 20000
+  shown: Rs 20,000
+  how: the same over the eight window weeks, high end
+  used_in: half2 SECTION 7, notebook 07
 - id: better_shifts_moved
   value:
   - 1
@@ -5249,3 +5419,99 @@ good_enough:
   shown: '10'
   how: its forecast rows
   used_in: notebook 04
+sensitivity:
+- id: aligned_late15_idle500_rs
+  value: 848503.333333
+  shown: Rs 8.5 lakh
+  how: aligned's hidden-week misses at Rs 15 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late15_idle500_rs
+  value: 908916.666667
+  shown: Rs 9.1 lakh
+  how: vendor's hidden-week misses at Rs 15 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late15_idle650_rs
+  value: 899438.333333
+  shown: Rs 9.0 lakh
+  how: aligned's hidden-week misses at Rs 15 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late15_idle650_rs
+  value: 1173041.666667
+  shown: Rs 11.7 lakh
+  how: vendor's hidden-week misses at Rs 15 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late15_idle800_rs
+  value: 950373.333333
+  shown: Rs 9.5 lakh
+  how: aligned's hidden-week misses at Rs 15 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late15_idle800_rs
+  value: 1437166.666667
+  shown: Rs 14.4 lakh
+  how: vendor's hidden-week misses at Rs 15 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late25_idle500_rs
+  value: 1300983.333333
+  shown: Rs 13.0 lakh
+  how: aligned's hidden-week misses at Rs 25 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late25_idle500_rs
+  value: 927916.666667
+  shown: Rs 9.3 lakh
+  how: vendor's hidden-week misses at Rs 25 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late25_idle650_rs
+  value: 1351918.333333
+  shown: Rs 13.5 lakh
+  how: aligned's hidden-week misses at Rs 25 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late25_idle650_rs
+  value: 1192041.666667
+  shown: Rs 11.9 lakh
+  how: vendor's hidden-week misses at Rs 25 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late25_idle800_rs
+  value: 1402853.333333
+  shown: Rs 14.0 lakh
+  how: aligned's hidden-week misses at Rs 25 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late25_idle800_rs
+  value: 1456166.666667
+  shown: Rs 14.6 lakh
+  how: vendor's hidden-week misses at Rs 25 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late40_idle500_rs
+  value: 1979703.333333
+  shown: Rs 19.8 lakh
+  how: aligned's hidden-week misses at Rs 40 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late40_idle500_rs
+  value: 956416.666667
+  shown: Rs 9.6 lakh
+  how: vendor's hidden-week misses at Rs 40 late and Rs 500 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late40_idle650_rs
+  value: 2030638.333333
+  shown: Rs 20.3 lakh
+  how: aligned's hidden-week misses at Rs 40 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late40_idle650_rs
+  value: 1220541.666667
+  shown: Rs 12.2 lakh
+  how: vendor's hidden-week misses at Rs 40 late and Rs 650 an idle shift
+  used_in: half1 S56, transcripts
+- id: aligned_late40_idle800_rs
+  value: 2081573.333333
+  shown: Rs 20.8 lakh
+  how: aligned's hidden-week misses at Rs 40 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_late40_idle800_rs
+  value: 1484666.666667
+  shown: Rs 14.8 lakh
+  how: vendor's hidden-week misses at Rs 40 late and Rs 800 an idle shift
+  used_in: half1 S56, transcripts
+- id: vendor_cheaper_corners
+  value: 5
+  shown: 5 of 9
+  how: cost pairs from the ticket's ranges at which the vendor's misses cost less
+  used_in: half1 S56, transcripts

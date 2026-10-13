@@ -669,6 +669,9 @@ def stall_facts(F, stall, tables, y, ahead, S):
           ["half1 SECTION 4", "notebook 04"])
     F.toy("ch4_differences", d1 + d2 + [d3], "4, -6, 12; -10, 18; 28", concept(4, "the four days' differences, three rounds deep"), ["half1 SECTION 4", "notebook 04"])
     F.toy("ch4_curve", cubic5, str(cubic5), concept(4, "the curve through all four days, extended to day 5"), ["half1 SECTION 4", "notebook 04", "notes", "c4 set"])
+    F.toy("ch4_curve_next_d2", d2[-1] + d3, str(d2[-1] + d3), concept(4, "the next second difference: 18 + 28"), ["half1 SECTION 4", "notebook 04"])
+    F.toy("ch4_curve_next_d1", d1[-1] + d2[-1] + d3, str(d1[-1] + d2[-1] + d3), concept(4, "the next first difference: 12 + 46"),
+          ["half1 SECTION 4", "notebook 04"])
     F.toy("ch4_curve_mean", (cubic5 + line5) / 2, f"{(cubic5 + line5) / 2:.1f}", concept(4, "the average of the curve and the line, a wrong option"), ["c4 set"])
     for name, f in (("line", line5), ("curve", cubic5), ("naive", days5[3])):
         F.toy(f"ch4_miss_{name}", abs(f - days5[4]), f"{abs(f - days5[4]):.0f}", concept(4, f"the {name}'s miss on day 5"),
@@ -719,6 +722,22 @@ def stall_facts(F, stall, tables, y, ahead, S):
     better = 100
     moved_w = [math.ceil(ahead["aligned"][i] / PER_SHIFT) - math.ceil((ahead["aligned"][i] - better) / PER_SHIFT) for i in WINDOW]
     F.add("good_enough", "better_by", better, "100 shipments", "a rule that beat festival-aligned by this much a week", "half2 SECTION 7, notebook 04, notebook 07")
+    F.add("good_enough", "better_saves_rs", better * LATE_RS, f"Rs {better * LATE_RS:,}",
+          "the most an MAE 100 lower saves a week: 100 late shipments at Rs 25", "half2 SECTION 7, notebook 07, notes")
+    F.add("good_enough", "better_saves_low_rs", better * OVER_RS, f"Rs {better * OVER_RS:,.0f}",
+          "the least it saves a week: 100 spare shipments at Rs 5.42", "half2 SECTION 7, notebook 07, notes")
+    F.add("good_enough", "better_window_low_rs", 8 * better * OVER_RS, f"Rs {round(8 * better * OVER_RS, -2):,.0f}",
+          "the same over the eight window weeks, low end", "half2 SECTION 7, notebook 07")
+    F.add("good_enough", "better_window_high_rs", 8 * better * LATE_RS, f"Rs {8 * better * LATE_RS:,}",
+          "the same over the eight window weeks, high end", "half2 SECTION 7, notebook 07")
+    for late in (LATE_LOW, LATE_RS, LATE_HIGH):       # does the priced ranking survive the ticket's cost ranges?
+        for idle in (IDLE_LOW, IDLE_SHIFT_RS, IDLE_HIGH):
+            for m in ("aligned", "vendor"):
+                c = S[m]["under"] * late + S[m]["over"] * idle / PER_SHIFT
+                F.add("sensitivity", f"{m}_late{late}_idle{idle}_rs", c, lakh(c), f"{m}'s hidden-week misses at Rs {late} late and Rs {idle} an idle shift", "half1 S56, transcripts")
+    wins = sum(S["vendor"]["under"] * late + S["vendor"]["over"] * idle / PER_SHIFT < S["aligned"]["under"] * late + S["aligned"]["over"] * idle / PER_SHIFT
+               for late in (LATE_LOW, LATE_RS, LATE_HIGH) for idle in (IDLE_LOW, IDLE_SHIFT_RS, IDLE_HIGH))
+    F.add("sensitivity", "vendor_cheaper_corners", wins, f"{wins} of 9", "cost pairs from the ticket's ranges at which the vendor's misses cost less", "half1 S56, transcripts")
     F.add("good_enough", "better_shifts_moved", moved_w, ", ".join(map(str, moved_w)),
           "shifts such a rule would book differently in each window week, 12 Oct to 30 Nov 2026", "half2 SECTION 7, notebook 07")
     F.add("good_enough", "better_weeks_moved", sum(1 for m in moved_w if m), f"{sum(1 for m in moved_w if m)} of 8",
@@ -828,6 +847,8 @@ def main():
     F.add("ticket", "over_rs", OVER_RS, "Rs 5.42", "650 / 120, the cost of one shipment planned and not shipped", "chapter 3")
     F.add("ticket", "cost_ratio", LATE_RS / OVER_RS, "4.6", "25 / 5.42", "chapter 3")
     F.add("ticket", "plan_quantile", QUANTILE, "0.82", "25 / (25 + 5.42)", "chapter 3")
+    F.add("ticket", "quantile_scale_rs", LATE_RS + OVER_RS, f"Rs {LATE_RS + OVER_RS:.2f}",
+          "the two costs added: the priced miss is this times the pinball loss at 0.82", "transcripts")
     F.add("ticket", "cost_sum", LATE_RS + OVER_RS, "30.42", "25 + 5.42", "chapter 3")
     F.add("ticket", "diwali_2024", "2024-10-31", "Thursday 31 October 2024", "F5; the week of 28 Oct 2024", "ticket")
     F.add("ticket", "diwali_2025", "2025-10-20", "Monday 20 October 2025", "F5; the week of 20 Oct 2025", "ticket")
@@ -847,6 +868,8 @@ def main():
     F.add("hand_count", "naive_miss", y[54] - y[55], n(y[54] - y[55]), "naive minus actual", "chapter 1")
     F.add("hand_count", "bot_miss", y[3] - y[55], n(y[3] - y[55]), "bot minus actual", "chapter 1")
     F.add("hand_count", "aligned_miss", fa55 - y[55], n(fa55 - y[55]), "aligned minus actual", "chapter 1")
+    F.add("hand_count", "aligned_nogrowth_miss", y[4] - y[55], n(y[4] - y[55]),
+          "festival-aligned with no growth, as October 2025 could run it: 28 Oct 2024 minus the actual", "half1 S44, notebook 05, notes")
     F.add("hand_count", "peak_2024", y[2], n(y[2]), "the 2024 peak, week of 14 Oct 2024, two weeks before Diwali", "chapter 1")
     F.add("hand_count", "peak_2025", y[53], n(y[53]), "the 2025 peak, week of 6 Oct 2025, two weeks before Diwali", "chapter 1")
     F.add("hand_count", "bot_peak_2025", y[2], n(y[2]), "the bot's biggest 2025 week is 13 Oct 2025, a copy of 14 Oct 2024", "chapter 1")
@@ -903,6 +926,9 @@ def main():
     errs = [(y[i] - hold["aligned"][i]) / hold["aligned"][i] for i in HOLDOUT]
     cushion = round(quantile(errs, QUANTILE), 3)       # the planner rounds it to a tenth of a percent
     F.add("holdout", "aligned_low_weeks", 13 - S["aligned"]["high_weeks"], f"{13 - S['aligned']['high_weeks']}", "weeks the aligned baseline sat below the actual", "chapter 2 second route")
+    for m in ("aligned", "finance", "bot", "drift", "naive", "vendor"):
+        mp = sum(abs(hold[m][i] - y[i]) / y[i] for i in HOLDOUT) / len(HOLDOUT)
+        F.add("holdout", f"{m}_mape", mp, pct(mp, 2), f"{m}'s MAPE on the 13 hidden weeks", "notebook 06, half2 D2")
     F.add("holdout", "aligned_err_min_pct", min(errs), pct(min(errs)), "the aligned baseline's lowest error, actual minus forecast over forecast", "chapter 3")
     F.add("holdout", "aligned_err_max_pct", max(errs), pct(max(errs)), "its highest error", "chapter 3")
     F.add("holdout", "cushion_pct", cushion, pct(cushion), "the 0.82 quantile of those 13 errors, rounded to a tenth of a percent", "chapter 3")
@@ -974,6 +1000,12 @@ def main():
     F.add("rolling_origin", "naive_mae", rn, n(rn), "naive's five one-week-ahead misses, averaged", "fallback part 2")
     F.add("rolling_origin", "aligned_mae", ra, n(ra), "festival-aligned's five misses, averaged", "fallback part 2")
     F.add("rolling_origin", "ratio", rn / ra, f"about {rn / ra:.0f}", "naive's average miss over festival-aligned's", "fallback part 2")
+    for i in range(53, 58):                           # the same five steps with no growth, which October 2025 could not measure
+        F.add("rolling_origin", f"aligned_nogrowth_{week(i):%m_%d}", y[i - 51], n(y[i - 51]), f"festival-aligned with no growth for {dmy(i)}", "fallback part 2")
+        F.add("rolling_origin", f"aligned_nogrowth_miss_{week(i):%m_%d}", y[i - 51] - y[i], n(y[i - 51] - y[i]), "that minus actual", "fallback part 2")
+    ra0 = sum(abs(y[i - 51] - y[i]) for i in range(53, 58)) / 5
+    F.add("rolling_origin", "aligned_nogrowth_mae", ra0, n(ra0), "festival-aligned's five misses with no growth, averaged", "fallback part 2")
+    F.add("rolling_origin", "ratio_nogrowth", rn / ra0, f"about {rn / ra0:.1f}", "naive's average miss over that", "fallback part 2")
 
     # ---- the 2025 festive back-test
     for m, s in B.items():
@@ -1077,6 +1109,12 @@ def main():
     F.add("interview", "peak_high_late_rs", (hi_d - plan[pk]) * LATE_RS, lakh((hi_d - plan[pk]) * LATE_RS),
           "the plan's late shipments at the high end, at Rs 25", "transcripts")
     F.add("interview", "peak_low_shifts", math.ceil(lo_d / PER_SHIFT), n(math.ceil(lo_d / PER_SHIFT)), "shifts the low end needs", "transcripts")
+    F.add("error_range", "peak_low_spare_rs", (ahead["aligned"][pk] - lo_d) * OVER_RS, lakh((ahead["aligned"][pk] - lo_d) * OVER_RS),
+          "booked at the forecast, the week of 19 Oct 2026's spare shipments at the range's low end, at Rs 5.42", "half2 S7, notes, staffing note")
+    F.add("error_range", "peak_high_late_rs", (hi_d - ahead["aligned"][pk]) * LATE_RS, lakh((hi_d - ahead["aligned"][pk]) * LATE_RS),
+          "booked at the forecast, its late shipments at the range's high end, at Rs 25", "half2 S7, notes, staffing note")
+    F.add("error_range", "mae_share_of_level", S["aligned"]["mae"] / (sum(y[i] for i in HOLDOUT) / len(HOLDOUT)),
+          pct(S["aligned"]["mae"] / (sum(y[i] for i in HOLDOUT) / len(HOLDOUT))), "festival-aligned's MAE over the hidden weeks' average week", "half2 S7, notes")
     F.add("interview", "peak_high_shifts", math.ceil(hi_d / PER_SHIFT), n(math.ceil(hi_d / PER_SHIFT)), "shifts the high end needs", "transcripts")
     srt_e = sorted(errs)
     pos = QUANTILE * (len(errs) + 1)
@@ -1194,6 +1232,10 @@ def main():
     F.add("exercises", "pair1_gap", S["bot"]["mae"] - 9_800, n(S["bot"]["mae"] - 9_800), "the bot's MAE minus team A's", "chapter 2 set")
     F.add("exercises", "pair1_gap_shifts", (S["bot"]["mae"] - 9_800) / PER_SHIFT, f"{(S['bot']['mae'] - 9_800) / PER_SHIFT:.1f}",
           "31 shipments a week over 120 a shift", "chapter 2 set")
+    F.add("exercises", "pair1_vs_aligned", 9_800 - S["aligned"]["mae"], n(9_800 - S["aligned"]["mae"]), "team A's MAE above festival-aligned's", "chapter 4 set")
+    F.add("exercises", "pair3_lead", S["aligned"]["mae"] - 6_200, n(S["aligned"]["mae"] - 6_200), "team C's lead over festival-aligned, shipments a week", "chapter 4 set")
+    F.add("exercises", "pair3_lead_rs", (S["aligned"]["mae"] - 6_200) * LATE_RS, f"about Rs {round((S['aligned']['mae'] - 6_200) * LATE_RS, -2):,.0f}",
+          "the most that lead saves a week: each shipment a late one at Rs 25", "chapter 4 set")
     F.add("exercises", "ch1_series_a", [100, 104, 108, 112, 116, 120, 124, 128, 132, 136, 140, 144], "100, 104, 108", "invented: a climb", "chapter 1 set")
     F.add("exercises", "ch1_series_b", [100, 130, 100, 70] * 3, "100, 130, 100, 70", "invented: a repeat of four", "chapter 1 set")
     F.add("exercises", "ch1_series_c", [100, 132, 104, 76, 108, 140, 112, 84, 116, 148, 120, 92], "100, 132, 104, 76", "invented: both", "chapter 1 set")
@@ -1241,6 +1283,8 @@ def main():
           pct(kmae["vendor"] / kmae["seasonal_naive"] - 1, 0), "vendor MAE over the seasonal naive's, minus one", "lab")
     for m in months:
         F.add("kalpa_months", f"rev_{m.replace('-', '_')}", rev[m], lakh(rev[m]), f"Kalpa revenue, {m}", "lab")
+    F.add("kalpa_months", "nov_mar_two_places", [round(rev["2025-11"] / 1e5, 2), round(rev["2026-03"] / 1e5, 2)],
+          f"{rev['2025-11'] / 1e5:.2f} and {rev['2026-03'] / 1e5:.2f}", "Nov 2025 and Mar 2026 in Rs lakh to two places, which one place prints alike", "Kalpa board set")
     for m in hold_m:
         F.add("kalpa_months", f"v4_{m.replace('-', '_')}", v4sums[m], lakh(v4sums[m]), f"sum of v4 orders.amount, {m}", "lab")
         F.add("kalpa_months", f"vendor_{m.replace('-', '_')}", kv[m], lakh(kv[m]), f"the vendor's forecast from Mar 2026, {m}", "lab, Kalpa set")
@@ -1333,6 +1377,7 @@ def main():
     F.add("guesstimate", "households", hh, "30 crore", "Indian households, assumption, range 28 to 32 crore", "half2, transcript")
     F.add("guesstimate", "own_share", own, "half", "share of households with a two-wheeler, assumption, range 40 to 60 percent", "half2, transcript")
     F.add("guesstimate", "replace_years", years, "8 years", "years before a household replaces it, assumption, range 6 to 10", "half2, transcript")
+    F.add("guesstimate", "replace_years_range", [6, 10], "6 to 10 years", "the replacement years' assumed range", "half2 D4, transcript")
     F.add("guesstimate", "replacement", repl, f"about {repl / 1e7:.1f} crore", "30 crore x 0.5 / 8", "half2, transcript")
     F.add("guesstimate", "first_time", first, "15 percent", "first-time buyers on top, assumption, range 10 to 20 percent", "half2, transcript")
     F.add("guesstimate", "estimate", est, f"about {est / 1e7:.1f} crore", "replacement x 1.15, 2.16 unrounded", "half2, transcript")

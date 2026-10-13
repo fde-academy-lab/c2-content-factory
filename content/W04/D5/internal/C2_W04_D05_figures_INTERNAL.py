@@ -265,19 +265,20 @@ def festival_calendar(copy=True):
             ax.add_patch(plt.Rectangle((c, -row), 0.92, 0.8, color=ROSE if hot else TINT))
             ax.text(c + 0.46, -row + 0.4, dm(first + c), ha="center", va="center", fontsize=13, zorder=5,
                     color="white" if hot else INK,
-                    bbox=dict(facecolor=TINT, edgecolor="none", pad=1.5) if (copy and row == 2 and c == 3) else None)
+                    bbox=dict(facecolor=TINT, edgecolor="none", pad=1.5) if (copy and row == 2 and c == 1) else None)
         ax.text(-0.2, -row + 0.4, f"{yr}", ha="right", va="center", fontsize=15)
         ax.text(8.1, -row + 0.4, f"Diwali {label}", va="center", fontsize=14, color=ROSE)
-    if copy:
-        ax.add_patch(plt.Rectangle((3, -2), 0.92, 0.8, fill=False, edgecolor=INK, lw=2.5, hatch="//"))
-        ax.text(3.46, -2.45, "the house bot's copy of 2025's Diwali week:\nthe week of 19 Oct 2026, two weeks early",
-                ha="center", va="top", fontsize=13)
+    if copy:                                    # round three's vote asks for the bot's busiest week, then where the rush goes
+        ax.add_patch(plt.Rectangle((1, -2), 0.92, 0.8, fill=False, edgecolor=INK, lw=2.5, hatch="//"))
+        ax.add_patch(plt.Rectangle((3, -2), 0.92, 0.8, fill=False, edgecolor=GREEN, lw=3.5))
+        ax.text(1.46, -2.45, "the bot's busiest:\n5 Oct, a copy\nof 2025's peak", ha="center", va="top", fontsize=13)
+        ax.text(3.46, -2.45, "the rush:\n19 Oct, two weeks\nbefore Diwali's", ha="center", va="top", fontsize=13, color=GREEN)
     else:
         ax.text(3.46, -2.45, "2026: where will a copy of last year put the rush?\nround three asks",
                 ha="center", va="top", fontsize=13)
     ax.text(3.9, 1.15, "each box is one week, labelled by its Monday; red: the week holding Diwali",
             ha="center", fontsize=13, color=MUTED)
-    ax.set_xlim(-1.2, 10.5); ax.set_ylim(-3.3, 1.5)
+    ax.set_xlim(-1.2, 10.5); ax.set_ylim(-3.6, 1.5)
     ax.axis("off")
     ax.set_title("Diwali's week moves: one week earlier in 2025, two weeks later in 2026", fontsize=16)
     save(fig, "festival_calendar" if copy else "festival_calendar_open")
@@ -289,7 +290,8 @@ def backtest():
     xs = list(range(len(idx)))
     ax.plot(xs, [y[i] for i in idx], color=INK, lw=2.8, marker="o", label="2025 actual")
     ax.plot(xs, [back["bot"][i] for i in idx], color=ROSE, lw=2, ls="--", marker="s", label="house bot: same calendar week of 2024")
-    ax.plot(xs, [back["aligned"][i] for i in idx], color=VIOLET, lw=2, ls="--", marker="^", label="festival-aligned: same distance from Diwali, plus 4 percent")
+    ax.plot(xs, [y[gen.aligned_source(i)] for i in idx], color=VIOLET, lw=2, ls="--", marker="^",   # no growth, as September 2025 could run it
+            label="festival-aligned: same distance from Diwali, no growth")
     ax.set_xticks(xs)
     ax.set_xticklabels([dm(i) for i in idx])
     ax.axvline(3, color=ROSE, ls=":", lw=1.3)
@@ -410,8 +412,8 @@ def rolling_origin():
     xs = list(range(len(idx)))
     ax.plot(xs, [y[i] for i in idx], color=INK, lw=2.8, marker="o", label="actual")
     ax.plot(xs, [y[i - 1] for i in idx], color=ROSE, lw=2, ls="--", marker="s", label="naive: the week before")
-    ax.plot(xs, [round(y[i - 51] * gen.DRIFT) for i in idx], color=VIOLET, lw=2, ls="--", marker="^",
-            label="festival-aligned: 2024 at the same distance, plus 4 percent")
+    ax.plot(xs, [y[i - 51] for i in idx], color=VIOLET, lw=2, ls="--", marker="^",            # no growth: October 2025 could not measure it
+            label="festival-aligned: 2024 at the same distance, no growth")
     ax.set_xticks(xs)
     ax.set_xticklabels([dm(i) + " 2025" for i in idx])
     ax.set_ylim(150_000, 470_000)
@@ -474,14 +476,15 @@ def stall_three_rules():
     fig, ax = plt.subplots(figsize=(12, 4.4))
     xs = list(range(len(t)))
     ax.bar(xs, t.cups, color=[TINT] * 7 + [LINE], edgecolor=VIOLET, lw=1.5)
-    for x, v in zip(xs, t.cups):
-        ax.text(x, v + 2, str(v), ha="center", fontsize=13)
     last = xs[-1]
-    ax.plot(last - 0.2, 103, "D", ms=11, color=MUTED)
-    ax.plot(last + 0.2, 104.67, "D", ms=11, color=AMBER)
-    ax.plot(last + 0.3, 61, "D", ms=11, color=ROSE)
-    ax.text(last + 0.45, 118, "naive 103,\ndrift 104.7", va="center", fontsize=13, color=INK)
-    ax.text(last + 0.45, 66, "seasonal\nnaive 61", va="center", fontsize=13, color=ROSE)
+    for x, v in zip(xs, t.cups):
+        ax.text(x, v + 2 if x < last else v / 2, str(v), ha="center", fontsize=13)   # the last bar's label sits inside it
+    ax.plot(last - 0.25, 103, "D", ms=11, color=MUTED)
+    ax.plot(last + 0.25, 104.67, "D", ms=11, color=AMBER)
+    ax.plot(last + 0.25, 61, "D", ms=11, color=ROSE)
+    ax.text(last - 0.25, 109, "naive\n103", ha="center", va="bottom", fontsize=13, color=MUTED)   # one label per marker
+    ax.text(last + 0.45, 104.67, "drift\n104.7", va="center", fontsize=13, color=AMBER)
+    ax.text(last + 0.45, 61, "seasonal\nnaive 61", va="center", fontsize=13, color=ROSE)
     ax.set_xticks(xs)
     ax.set_xticklabels([f"{d:%a}\n{d.day} {d:%b}" for d in t.date], fontsize=12)
     ax.set_xlim(-0.6, last + 2.4)
@@ -590,12 +593,14 @@ def stall_fit_forecast():
     xs, vals = [1, 2, 3, 4], [100, 104, 98, 110]
     line = np.polyfit(xs, vals, 1)
     curve = np.polyfit(xs, vals, 3)
-    grid = np.linspace(0.8, 5.05, 200)
+    grid = np.linspace(1, 5, 200)                     # day 1 to day 5 and no further, so the curve ends on its 168
     fig, ax = plt.subplots(figsize=(12, 4.6))
     ax.plot(grid, np.polyval(curve, grid), color=ROSE, lw=2.5, label="the curve through all four days")
     ax.plot(grid, np.polyval(line, grid), color=VIOLET, lw=2.5, ls="--", label="the straight line")
     ax.plot(xs, vals, "o", ms=11, color=INK, label="the four days the rules saw")
     ax.plot([5], [102], "s", ms=12, color=GREEN, label="day 5, what sold: 102")
+    ax.plot([5], [np.polyval(curve, 5)], "o", ms=9, color=ROSE)
+    ax.plot([5], [np.polyval(line, 5)], "o", ms=9, color=VIOLET)
     ax.text(5.1, 168, "curve: 168", fontsize=13, color=ROSE, va="center")
     ax.text(5.1, 109, "line: 109", fontsize=13, color=VIOLET, va="center")
     ax.text(5.1, 98, "sold: 102", fontsize=13, color=GREEN, va="center")
