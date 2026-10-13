@@ -327,13 +327,16 @@ def chapter_parts(name):
     A chapter named topic first keeps its short question for the pills, the footer and the cover's
     strip, which have room for about 22 characters, and its opener prints the topic over the
     question. A name with no topic before a lower-case question comes back whole, as it always has,
-    and so does a question that holds a colon itself, such as "Who asks: the lead or the CEO?".
+    and so does a question that holds a colon itself, such as "Who asks: the lead or the CEO?",
+    whose topic half opens on a question word and whose question half does not. A row subtopic that
+    opens on a question word still splits when a question follows it:
+    `What to measure and why; the proxy test: what is a number for?` keeps its topic whole.
     The split falls at the last colon, so a topic with a colon of its own stays whole:
     `Definitions: numerator, denominator, window, exclusions: which four lines define it?` becomes
     ("Definitions: numerator, denominator, window, exclusions", "Which four lines define it?").
     """
     m = TOPIC_FIRST.match(name)
-    if not m or QUESTION_WORD.match(m.group("topic")):
+    if not m or (QUESTION_WORD.match(m.group("topic")) and not QUESTION_WORD.match(m.group("question"))):
         return None, name
     question = m.group("question")
     return m.group("topic").strip(), question[:1].upper() + question[1:]
