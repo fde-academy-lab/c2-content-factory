@@ -157,25 +157,27 @@ Transition: the eight numbers.
 
 | # | City number |
 |---|---|
-| 1 | Enrolled drivers online in the first peak hour |
-| 2 | Rider requests per online hour, by zone |
-| 3 | Share of offers accepted this week |
-| 4 | New driver sign-ups this week |
+| 1 | Rider rating at month end |
+| 2 | Share of offers accepted this week |
+| 3 | Gross bookings for the quarter |
+| 4 | Enrolled drivers online in the first peak hour |
 | 5 | Top-up paid for the month |
-| 6 | Rider rating at month end |
-| 7 | Drivers who left the platform next quarter |
-| 8 | Gross bookings for the quarter |
+| 6 | New driver sign-ups this week |
+| 7 | Drivers who left the platform the next quarter |
+| 8 | Rider requests per online hour, by zone |
 
-a) 1, 2, 3 and 4 lead; 5, 6, 7 and 8 lag
+a) 2, 4, 6 and 8 lead; the other four lag
 
-b) 1, 3, 5 and 7 lead; 2, 4, 6 and 8 lag
+b) 1, 2, 4 and 8 lead; the other four lag
 
-c) 1 and 2 lead; the other six lag
+c) 2, 4 and 8 lead; the other five lag
 
-d) 3, 5 and 8 lead; the other five lag
+d) 2, 3, 5 and 6 lead; the other four lag
 
 ```notes
-LIVE, 12 minutes. Letters first, then each group defends two of its calls aloud.
+LIVE, 12 minutes. The eight numbers and the options are the handout's Q1, in its order
+(exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md); its Q2 is the defence. Letters first, then
+each group defends two of its calls aloud.
 Transition: the answer.
 ```
 
@@ -184,8 +186,8 @@ Transition: the answer.
 
 ```mermaid
 flowchart LR
-    I["<b>Leading: 1 to 4</b><br/>drivers online in the first hour,<br/>requests per online hour,<br/>acceptance, sign-ups"] --> N["<b>North star</b><br/>completed peak trips<br/>per enrolled driver"]
-    N --> C["<b>Lagging: 5 to 8</b><br/>the month's top-up, ratings,<br/>departures, the quarter's bookings"]
+    I["<b>Leading: 2, 4, 6 and 8</b><br/>acceptance, drivers online<br/>in the first hour, sign-ups,<br/>requests per online hour"] --> N["<b>North star</b><br/>completed peak trips<br/>per enrolled driver"]
+    N --> C["<b>Lagging: 1, 3, 5 and 7</b><br/>ratings, the quarter's bookings,<br/>the month's top-up, departures"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class I,C known

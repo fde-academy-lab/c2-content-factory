@@ -94,7 +94,7 @@ proposes one is expected to name its guardrail in the same breath.
 | # | Proposed north star | How it could be hit while riders wait longer |
 |---|---|---|
 | 1 | Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest |
-| 2 | Peak online hours per enrolled driver per week | Drivers sit online in zones with no riders |
+| 2 | Peak online hours per enrolled driver per week | Drivers sit online in zones with few riders |
 | 3 | Enrolled drivers | Drivers sign up for the Rs 300 floor and never drive |
 
 | Guardrail | What it reads |

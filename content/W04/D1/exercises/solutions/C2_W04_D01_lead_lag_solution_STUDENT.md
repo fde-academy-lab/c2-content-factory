@@ -38,8 +38,9 @@ for G4 the answer is nothing.
 Swiggy Instamart's Maxxsaver unlocks extra discounts once a cart passes a threshold. Launched at the
 start of the quarter to 30 June 2025, it had been used by "over 28% of our MTUs", the letter's
 monthly transacting users; Instamart's average order value rose 16 percent quarter on quarter to
-Rs 612, and Swiggy wrote that cart consolidation led by Maxxsaver lowered order growth (Swiggy's Q1
-FY26 shareholder letter, checked 13 October 2026). A north star of orders per month, read with no
+Rs 612, and Swiggy wrote that cart consolidation led by Maxxsaver, with letting go of some low-value
+orders and unprofitable users, drove lower order growth (Swiggy's Q1 FY26 shareholder letter, checked
+13 October 2026). A north star of orders per month, read with no
 guardrail on value, would have shown that change as a fall.
 
 ## What does notebook 09 confirm?

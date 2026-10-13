@@ -499,7 +499,7 @@ value: Rs 612 | label: average order value | note: up 16 percent on the quarter,
 value: NOV | label: Eternal's headline | note: net order value: the value of orders before discounts (GOV), minus the discounts
 ```
 
-**Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold, so some users put more into fewer orders. Swiggy puts the slower order growth down to that and to letting go of some low-value orders and unprofitable users: orders per user alone would read the quarter as a fall, and the letter adds that the ramp-up kept contribution flat. **Eternal**, whose businesses include Zomato and Blinkit, stopped disclosing gross order value in its letter for the quarter to 30 June 2026 "as NOV more accurately reflects underlying performance": a discount is value handed back to the customer, which gross order value still counts.
+**Swiggy Instamart's Maxxsaver** unlocks extra discounts once a cart passes a threshold, so some users put more into fewer orders. Swiggy puts the slower order growth down to that and to letting go of some low-value orders and unprofitable users: orders per user alone would read the quarter as a fall, and the letter adds that the ramp-up kept contribution flat. **Eternal**, whose businesses include Zomato and Blinkit, stopped disclosing gross order value from its letter for the quarter to 30 June 2026, saying in its food delivery line that "NOV more accurately reflects underlying performance": a discount is value handed back to the customer, which gross order value still counts.
 
 ```notes
 LIVE, 1 minute. Each company chose a headline number that matched what it was trying to do;

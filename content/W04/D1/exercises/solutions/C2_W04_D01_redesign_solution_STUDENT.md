@@ -40,8 +40,8 @@ groups overlap and where the acceptance floor sits is a trade-off the test measu
 ## Where does moving a headline number to a net figure show up at work?
 
 Eternal defines net order value as GOV minus discounts (its Q1 FY26 shareholder letter), and in its
-Q1 FY27 letter it stopped disclosing GOV because, in its words, "NOV more accurately reflects
-underlying performance" (both checked 12 October 2026). The redesign makes a similar move: the hourly
+Q1 FY27 letter's food delivery line it stopped disclosing GOV because, in its words, "NOV more
+accurately reflects underlying performance" (both checked 13 October 2026). The redesign makes a similar move: the hourly
 Rs 300 floor stays, but hours alone stop earning it, and the city judges the scheme by completed trips per
 driver, with hours kept off the headline.
 

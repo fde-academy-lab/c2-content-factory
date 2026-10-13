@@ -26,7 +26,7 @@ flowchart LR
 |---|---|---|---|
 | 13. Which line would have caught it? | 35 | S1 to S3 | The five SEC facts on S1; the match on S2 |
 | 14. Does each number survive its owner? | 40 | S4 and S5 | The definition template, `exercises/guided/C2_W04_D01_definition_STUDENT.md` |
-| 15. Which numbers lead, and which lag? | 30 | S6 to S8 | S6's eight numbers, read from the slide; `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md` numbers its eight differently, so it stays for the practice lab and is not handed out here |
+| 15. Which numbers lead, and which lag? | 30 | S6 to S8 | `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md` as the handout: S6 prints its Q1 in the same order with the same letters, S6's defence is its Q2 and S8 its Q3, so a room that sits it here skips it in the lab |
 | 16. What do you say to the teams who lose? | 15 | S9 and S10 | The [D] section of `extras/C2_W04_D01_transcript_STUDENT.md`; `trainer/C2_W04_D01_interview_scorecards_TRAINER.md` |
 
 Cut section 15 first if time runs short.
