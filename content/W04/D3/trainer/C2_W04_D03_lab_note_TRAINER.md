@@ -1,7 +1,7 @@
 # TA lab note: the pairs method on Kalpa's baskets, then the practice set
 
 **TRAINER ONLY.** For the TA who runs the practice lab after the faculty block (tentative). The lab
-re-runs levels L1 to L3 on Kalpa Retail's baskets in notebook 04, then works the practice set. The
+re-runs levels L1 to L3 on Kalpa Retail's baskets in notebook 11, then works the practice set. The
 programme's facts set no length for the lab, so the parts below run in this order and the practice
 set is cut from its end when time runs short. Never cut the twelve baskets or the two your-turn
 cells.
@@ -15,10 +15,10 @@ each promotion is worth before any money is spent.
 | Order | Part | File |
 |---|---|---|
 | 1 | The twelve baskets counted by hand on paper | The table below, printed one per group |
-| 2 | The same twelve confirmed in code | Notebook 04, cell 4 |
-| 3 | Your turn: the charger's share and its lift with every product | Notebook 04, cell 6, empty |
-| 4 | Your turn: the strongest pair above a 5 percent floor, and the thin pair | Notebook 04, cell 8, empty |
-| 5 | The data checks and the three lines for merchandising | Notebook 04, cells 9 to 11 |
+| 2 | The same twelve confirmed in code | Notebook 11, cell 4 |
+| 3 | Your turn: the charger's share and its lift with every product | Notebook 11, cell 6, empty |
+| 4 | Your turn: the strongest pair above a 5 percent floor, and the thin pair | Notebook 11, cell 8, empty |
+| 5 | The data checks and the three lines for merchandising | Notebook 11, cells 9 to 11 |
 | 6 | Items 2 and 3 of the Kalpa unguided set, sat after the lab | `exercises/unguided/C2_W04_D03_kalpa_charger_STUDENT.md` |
 | 7 | The practice set | `exercises/practice/C2_W04_D03_lab_set_STUDENT.md` |
 

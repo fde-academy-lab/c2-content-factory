@@ -24,8 +24,8 @@ Say each of these aloud, in one sentence, before reading on:
    admits pairs on thinner ground.
 3. A pair that leads the city and leads the slice is a pair the strip can trust in that slice.
 
-If any sentence would not come out, re-read chapter 3's watch-list slide and notebook 03's floor
-cell before checking numbers.
+If any sentence would not come out, re-read chapter 6 and notebook 06 on the floor, then chapter 10's
+watch-list slide and notebook 10's floor cell, before checking numbers.
 
 ## Did your slice give these numbers?
 

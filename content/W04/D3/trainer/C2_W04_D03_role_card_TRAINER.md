@@ -1,6 +1,6 @@
 # Role card: the category manager who wants milk in every slot
 
-**TRAINER ONLY.** The TA plays this role in the afternoon's unguided block (half two, S40), and the
+**TRAINER ONLY.** The TA plays this role in the afternoon's unguided block (half two, S71), and the
 trainer plays it in the fallback's second transcript. Read it once before the session; say the lines
 in your own voice.
 

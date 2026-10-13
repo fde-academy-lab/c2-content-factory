@@ -10,7 +10,7 @@ independence, no Apriori and no algorithm that finds frequent itemsets.
 | Part | Minutes | Slides | Materials |
 |---|---|---|---|
 | The watch-list trial for ice cream and chocolate sauce | 35 | S2 to S4 | The four decision cards on S2, drawn on the board; the TA plays the growth lead |
-| One zone, one time band | 40 | S5 to S7 | Notebook 03 with the slice line from S5; the take-home's four slices plus the stock-out weeks |
+| One zone, one time band | 40 | S5 to S7 | Notebook 10 with the slice line from S5; the take-home's four slices plus the stock-out weeks |
 | The storm and the Pop-Tarts | 20 | S8 and S9 | Nothing printed |
 | The second transcript, the category manager who wants a redesign | 25 | S10 to S12 | `trainer/C2_W04_D03_interview_TRAINER.md`, the [D] transcript and its scorecard |
 

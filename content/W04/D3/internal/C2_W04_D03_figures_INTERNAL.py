@@ -638,27 +638,6 @@ def milk_everywhere():
     save(fig, "C2_W04_D03_milk_everywhere_STUDENT.png")
 
 
-def actual_vs_expected():
-    """For four pairs, the carts expected to hold both if independent against the carts that do."""
-    pairs = [("bread and milk", "bread_milk"), ("eggs and milk", "eggs_milk"),
-             ("chips and cold drink", "chips_cold"), ("ice cream and choc sauce", "ice_choc")]
-    fig, axes = plt.subplots(1, 4, figsize=(12.5, 4.6))
-    for a, (label, key) in zip(axes, pairs):
-        e, o = v(f"{key}_expected"), v(f"{key}_carts")
-        a.bar([0, 1], [e, o], color=[LINE, VIOLET], edgecolor=INK, width=0.6)
-        for x, val in ((0, e), (1, o)):
-            a.text(x, val * 1.02, f"{val:,}", ha="center", va="bottom", fontsize=12, color=INK)
-        a.set_xticks([0, 1], ["expected", "seen"])
-        a.set_yticks([])
-        a.spines["left"].set_visible(False)
-        a.set_ylim(0, max(e, o) * 1.25)
-        a.set_title(f"{label}\nlift {s(key + '_lift')}", fontsize=13)
-    fig.suptitle("Carts holding both: expected if independent, against what 40,000 carts show",
-                 fontsize=15, weight="bold", color=INK)
-    fig.tight_layout()
-    save(fig, "C2_W04_D03_actual_vs_expected_STUDENT.png")
-
-
 def strip_daily():
     """Daily strip click-through and milk's share of slot impressions, 17 August to 27 September."""
     log = pd.read_csv(DATA / "C2_W04_D03_strip_log_STUDENT.csv", parse_dates=["date"])
@@ -783,31 +762,6 @@ def heavy_tenth():
     save(fig, "C2_W04_D03_heavy_tenth_STUDENT.png")
 
 
-def stockout():
-    """Curd's share of carts by zone and week, the two stock-out cells near zero."""
-    carts = pd.read_csv(DATA / "C2_W04_D03_carts_STUDENT.csv", parse_dates=["placed_date"])
-    items = pd.read_csv(DATA / "C2_W04_D03_cart_items_STUDENT.csv")
-    curd = set(items.loc[items.item == "curd", "cart_id"])
-    carts["curd"] = carts.cart_id.isin(curd)
-    carts["week"] = (carts.placed_date.dt.day - 1) // 7 + 1
-    grid = carts.pivot_table(index="zone", columns="week", values="curd", aggfunc="mean")
-    grid = grid.loc[grid.mean(axis=1).sort_values(ascending=False).index]
-    fig, ax = plt.subplots(figsize=(12.5, 4.6))
-    im = ax.imshow(grid.values, cmap="Purples", vmin=0, vmax=0.35, aspect="auto")
-    for i in range(grid.shape[0]):
-        for j in range(grid.shape[1]):
-            val = grid.values[i, j]
-            ax.text(j, i, f"{val * 100:.0f}%", ha="center", va="center", fontsize=13,
-                    color=WHITE if val > 0.2 else ROSE, weight="bold")
-    ax.set_xticks(range(4), ["week 1\n1-7 Sep", "week 2\n8-14 Sep", "week 3\n15-21 Sep",
-                             "week 4\n22-28 Sep"])
-    ax.set_yticks(range(len(grid)), grid.index)
-    ax.spines[:].set_visible(False)
-    ax.set_title("Share of carts holding curd, by zone and week")
-    fig.tight_layout()
-    save(fig, "C2_W04_D03_stockout_STUDENT.png")
-
-
 def slot_value():
     """The rupee value of one slot a day, and what re-ranking recovers in a month."""
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 4.3), gridspec_kw={"width_ratios": [1.1, 1]})
@@ -845,12 +799,10 @@ def main():
     shrinking_universe()
     areas()
     milk_everywhere()
-    actual_vs_expected()
     strip_daily()
     ctr_by_slot()
     action_map()
     heavy_tenth()
-    stockout()
     slot_value()
 
 

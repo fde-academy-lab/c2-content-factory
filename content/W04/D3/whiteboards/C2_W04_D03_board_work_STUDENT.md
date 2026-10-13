@@ -1,39 +1,124 @@
-# What goes on the board, in order, from the ten dots to the priced strip?
+# What goes on the board, in order, from the concept map to the priced strip?
 
-Swiggy Instamart, Pune: the cart page's strip of three suggested items, whose click-through fell from
-6.1 to 3.8 percent after it began showing the items most often found in the same cart. Illustrative
-case: the company is real, the situation and the data are synthetic, built for this class.
+A hostel canteen's twelve lunch orders and a Pune corner shop's month, both invented, carry the five
+topics; then Swiggy Instamart, Pune: the cart page's strip of three suggested items, whose
+click-through fell from 6.1 to 3.8 percent after it began showing the items most often found in the
+same cart. Illustrative case: the company is real, the situation and the data are synthetic, built
+for this class.
 
 **Who needs the answer.** Anyone redrawing the day: each drawing below goes up in this order, and the
 last one is what the board holds when the day ends.
 
 **The questions on the way.**
 
-- What do ten orders look like as counts?
-- What do the twelve cards count to?
+- How do the five topics join?
+- What do the canteen's twelve orders count to?
 - How does confidence shrink the world?
 - Which pairs beat chance, drawn as one concept board?
+- What does the kirana's combo card earn?
+- What do the twelve cards count to?
 - Where does lift join the week?
 - How do two click-through rates make 3.8 percent?
 - Where does each pair sit on the action map?
 - What is a slot worth?
 - What does the board hold at the close?
 
-## What do ten tea-stall orders look like as counts?
+## How do the five topics join?
 
-Drawn before the room sits down, beside the ten dots. The orders are invented.
+Drawn before the room sits down, on the left of the board, and left up all day; each box gets its
+number as its chapter closes.
+
+```mermaid
+flowchart TB
+    T1["<b>1 · Support, confidence and lift,</b><br/><b>derived by counting</b><br/>chapters 1, 2, 3"] --> T2["<b>2 · The confidence trap;</b><br/><b>lift near one</b><br/>chapter 4"]
+    T2 --> T3["<b>3 · Basket analysis on</b><br/><b>the order items</b><br/>chapter 5"]
+    T3 --> T4["<b>4 · The support floor</b><br/><b>and the watch list</b><br/>chapter 6"]
+    T4 --> T5["<b>5 · Cross-sell and upsell;</b><br/><b>expected value in rupees</b><br/>chapter 9"]
+    T5 --> C["<b>The case and the lab</b><br/>chapters 7, 8, 10;<br/>notebook 11"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class T1,T2,T3,T4,T5 lit
+    class C known
+```
+
+## What do the canteen's twelve orders count to?
+
+Written as the groups call their counts from the canteen cards in chapters 1 to 3, before any formula
+is named. The orders are invented.
 
 ```mermaid
 flowchart LR
-    B["<b>both</b><br/>3 orders"] --> S["<b>support</b><br/>3 / 10 = 0.30"]
-    C["<b>chai</b><br/>6 orders"] --> F["<b>confidence</b><br/>chai to biscuit<br/>3 / 6 = 0.50"]
-    B --> F
-    E["<b>chance</b><br/>10 x 0.6 x 0.4 = 2.4"] --> L["<b>lift</b><br/>3 / 2.4 = 1.25"]
+    B["<b>roti and sabzi</b><br/>roti 4, sabzi 4, both 3"] --> S["<b>support</b><br/>3 / 12 = 0.25"]
+    B --> F["<b>confidence</b><br/>roti to sabzi<br/>3 / 4 = 0.75"]
+    E["<b>chance</b><br/>12 x 4/12 x 4/12 = 1.33"] --> L["<b>lift</b><br/>3 / 1.33 = 2.25"]
     B --> L
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class B,C,E known
+    class B,S,F,E known
     class L lit
+```
+
+## How does confidence shrink the world?
+
+Drawn in chapter 2 on the canteen, and again in chapter 7 on the twelve carts.
+
+```mermaid
+flowchart LR
+    A["<b>all twelve orders</b>"] --> B["<b>dal rice's orders</b><br/>6 of them"]
+    B --> C["<b>with papad too</b><br/>3 of 6 = 0.50"]
+    A --> D["<b>papad's orders</b><br/>5 of them"]
+    D --> E["<b>with dal rice too</b><br/>3 of 5 = 0.60"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class A,B,D known
+    class C,E lit
+```
+
+## Which pairs beat chance, drawn as one concept board?
+
+Built through chapters 1 to 6: the example goes up with the cards, each question as its count is
+called, the sketches as each picture is drawn, and the two pitfalls last.
+
+```mermaid
+flowchart LR
+    subgraph A["The example"]
+        A1["<b>a hostel canteen</b><br/>roti in 4, sabzi in 4,<br/>both in 3 of 12"]
+    end
+    subgraph Q["Questions"]
+        direction TB
+        Q1["<b>how often?</b><br/>support 0.25"] ~~~ Q2["<b>how reliably?</b><br/>confidence 0.75"] ~~~ Q3["<b>against chance?</b><br/>lift 2.25"]
+    end
+    subgraph S["Sketches"]
+        direction TB
+        S1["<b>two circles</b><br/>beside the 2 by 2"] ~~~ S2["<b>the world shrinks</b><br/>12 orders, 6 with dal rice"] ~~~ S3["<b>seen against chance</b><br/>3 against 1.33"]
+    end
+    subgraph P["Pitfalls"]
+        direction TB
+        P1["<b>the popular partner</b><br/>chaas in 9 of 12"] ~~~ P2["<b>thin support</b><br/>lift 6.0 on one order"]
+    end
+    A --> Q --> S --> P
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef trap fill:#FFF1F1,stroke:#C0392B,color:#5C1111
+    class A1,Q1,Q2,S1,S2,S3 known
+    class Q3 lit
+    class P1,P2 trap
+```
+
+## What does the kirana's combo card earn?
+
+Built left to right in chapter 9, one bar at a time. The month is invented.
+
+```mermaid
+flowchart LR
+    N["<b>new packs</b><br/>450 tea-only bills<br/>x 4 percent = 18"] --> M["<b>margin</b><br/>18 x Rs 12 = Rs 216"]
+    M --> D["<b>handed back</b><br/>Rs 1 on 168 bills<br/>= Rs 168"]
+    D --> P["<b>printing</b><br/>Rs 20"]
+    P --> V["<b>expected value</b><br/>Rs 28 a month"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class N,M,D,P known
+    class V lit
 ```
 
 ## What do the twelve cards count to?
@@ -48,53 +133,9 @@ flowchart LR
     class A,B,C known
 ```
 
-## How does confidence shrink the world?
-
-```mermaid
-flowchart LR
-    A["<b>all twelve carts</b><br/>milk in 8"] --> B["<b>only the bread carts</b><br/>4 of them"]
-    B --> C["<b>bread carts with milk</b><br/>4 of 4 = 1.00"]
-    A -.-> D["<b>lift asks</b><br/>is 1.00 more than<br/>milk's own 8 of 12?"]
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    class A,B,C known
-    class D unknown
-```
-
-## Which pairs beat chance, drawn as one concept board?
-
-Built through chapter 1: the example goes up with the dots, each question as its count is called,
-the sketches as each picture is drawn, and the two pitfalls last.
-
-```mermaid
-flowchart LR
-    subgraph A["The example"]
-        A1["<b>a tea stall</b><br/>chai in 6, biscuit in 4,<br/>both in 3 of 10"]
-    end
-    subgraph Q["Questions"]
-        direction TB
-        Q1["<b>how often?</b><br/>support 0.30"] ~~~ Q2["<b>how reliably?</b><br/>confidence 0.50"] ~~~ Q3["<b>against chance?</b><br/>lift 1.25"]
-    end
-    subgraph S["Sketches"]
-        direction TB
-        S1["<b>two circles</b><br/>beside the 2 by 2"] ~~~ S2["<b>the world shrinks</b><br/>12 carts, 4 with bread"] ~~~ S3["<b>seen against expected</b><br/>4 against 2.67"]
-    end
-    subgraph P["Pitfalls"]
-        direction TB
-        P1["<b>the popular partner</b><br/>milk in 8 of 12"] ~~~ P2["<b>thin support</b><br/>lift 12 on one cart"]
-    end
-    A --> Q --> S --> P
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef trap fill:#FFF1F1,stroke:#C0392B,color:#5C1111
-    class A1,Q1,Q2,S1,S2,S3 known
-    class Q3 lit
-    class P1,P2 trap
-```
-
 ## Where does lift join the week?
 
-Added under Wednesday's node at the close of chapter 1, and left up all day.
+Added under Wednesday's node at the close of chapter 3, and left up all day.
 
 ```mermaid
 flowchart LR
@@ -120,8 +161,9 @@ flowchart LR
 
 ## Where does each pair sit on the action map?
 
-The wall board, with the pair cards placed. Support runs across with the 1 percent floor at the
-middle, and lift runs up; the positions are sketched, and notebook 03's picture draws them to scale.
+The wall board, with the pair cards placed in chapter 10. Support runs across with the 1 percent
+floor at the middle, and lift runs up; the positions are sketched, and notebook 10's picture draws
+them to scale. Chapter 6 drew the same four regions for the canteen.
 
 ```mermaid
 quadrantChart
