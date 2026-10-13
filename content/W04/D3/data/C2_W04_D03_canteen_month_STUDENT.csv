@@ -1,0 +1,1580 @@
+order_id,item
+M001,chaas
+M001,roti
+M001,papad
+M002,chaas
+M002,dal rice
+M003,chaas
+M003,roti
+M003,sabzi
+M003,papad
+M004,papad
+M005,chaas
+M005,sabzi
+M005,lassi
+M006,chaas
+M007,papad
+M008,chaas
+M008,papad
+M009,chaas
+M009,sabzi
+M010,chaas
+M010,sabzi
+M011,chaas
+M011,dal rice
+M012,chaas
+M012,dal rice
+M012,papad
+M012,curd
+M013,chaas
+M013,dal rice
+M013,sabzi
+M014,chaas
+M014,roti
+M014,sabzi
+M015,chaas
+M015,sabzi
+M015,papad
+M016,chaas
+M016,sabzi
+M016,papad
+M016,boiled egg
+M017,chaas
+M017,roti
+M018,dal rice
+M019,chaas
+M019,sabzi
+M020,chaas
+M020,roti
+M020,sabzi
+M021,chaas
+M021,dal rice
+M021,fruit plate
+M022,dal rice
+M022,roti
+M022,sabzi
+M023,chaas
+M023,dal rice
+M023,roti
+M023,gulab jamun
+M024,chaas
+M024,dal rice
+M024,roti
+M025,roti
+M025,sabzi
+M026,chaas
+M026,roti
+M026,papad
+M027,dal rice
+M027,sabzi
+M028,chaas
+M028,roti
+M028,sabzi
+M028,papad
+M029,chaas
+M030,chaas
+M030,roti
+M030,sabzi
+M031,dal rice
+M031,roti
+M032,sabzi
+M032,papad
+M033,sabzi
+M033,papad
+M034,roti
+M034,sabzi
+M035,dal rice
+M035,roti
+M035,sabzi
+M036,chaas
+M036,dal rice
+M036,sabzi
+M036,papad
+M037,chaas
+M037,dal rice
+M037,roti
+M037,sabzi
+M038,chaas
+M038,dal rice
+M038,papad
+M039,chaas
+M039,kheer
+M040,chaas
+M041,chaas
+M041,papad
+M042,chaas
+M042,dal rice
+M042,roti
+M043,chaas
+M043,sabzi
+M043,papad
+M043,fruit plate
+M044,chaas
+M044,dal rice
+M044,roti
+M044,sabzi
+M045,chaas
+M045,dal rice
+M045,roti
+M045,sabzi
+M046,papad
+M047,chaas
+M048,roti
+M049,dal rice
+M049,roti
+M049,papad
+M050,chaas
+M051,chaas
+M051,dal rice
+M051,roti
+M051,sabzi
+M052,chaas
+M052,dal rice
+M052,roti
+M053,chaas
+M053,dal rice
+M053,roti
+M053,sabzi
+M053,papad
+M054,dal rice
+M054,roti
+M055,chaas
+M055,dal rice
+M055,roti
+M055,sabzi
+M055,boiled egg
+M056,chaas
+M056,dal rice
+M056,roti
+M056,papad
+M057,chaas
+M057,dal rice
+M057,roti
+M058,chaas
+M058,roti
+M058,sabzi
+M058,papad
+M059,chaas
+M059,sabzi
+M060,chaas
+M060,dal rice
+M061,chaas
+M061,dal rice
+M061,sabzi
+M061,gulab jamun
+M062,chaas
+M062,dal rice
+M062,roti
+M063,papad
+M064,chaas
+M064,dal rice
+M065,dal rice
+M065,papad
+M066,chaas
+M066,dal rice
+M066,roti
+M067,chaas
+M068,chaas
+M068,dal rice
+M068,roti
+M069,papad
+M070,chaas
+M070,dal rice
+M070,roti
+M070,boiled egg
+M071,chaas
+M071,papad
+M072,chaas
+M072,dal rice
+M072,roti
+M073,chaas
+M073,dal rice
+M073,sabzi
+M074,chaas
+M075,chaas
+M076,chaas
+M076,dal rice
+M077,dal rice
+M077,roti
+M078,dal rice
+M079,chaas
+M079,papad
+M080,chaas
+M080,sabzi
+M081,dal rice
+M081,papad
+M082,chaas
+M082,dal rice
+M083,chaas
+M083,boiled egg
+M084,chaas
+M084,dal rice
+M084,sabzi
+M084,pickle
+M084,boiled egg
+M085,chaas
+M086,dal rice
+M087,chaas
+M087,sabzi
+M087,papad
+M088,chaas
+M088,sabzi
+M088,papad
+M088,curd
+M088,rasgulla
+M089,chaas
+M090,roti
+M090,sabzi
+M091,chaas
+M091,sabzi
+M091,papad
+M092,dal rice
+M092,papad
+M093,dal rice
+M093,roti
+M093,papad
+M093,curd
+M094,dal rice
+M094,roti
+M094,papad
+M095,chaas
+M095,dal rice
+M095,roti
+M095,sabzi
+M095,papad
+M096,chaas
+M096,sabzi
+M096,papad
+M097,chaas
+M097,dal rice
+M097,roti
+M097,sabzi
+M098,chaas
+M098,dal rice
+M098,roti
+M099,chaas
+M099,dal rice
+M099,sabzi
+M100,chaas
+M100,roti
+M101,chaas
+M101,roti
+M101,papad
+M102,chaas
+M102,roti
+M102,sabzi
+M103,papad
+M103,pickle
+M104,dal rice
+M104,roti
+M104,sabzi
+M105,chaas
+M105,dal rice
+M106,dal rice
+M106,roti
+M106,sabzi
+M106,papad
+M107,dal rice
+M107,roti
+M107,papad
+M108,chaas
+M108,dal rice
+M108,roti
+M109,chaas
+M109,papad
+M110,chaas
+M111,chaas
+M111,dal rice
+M112,roti
+M112,papad
+M113,chaas
+M113,dal rice
+M113,sabzi
+M113,papad
+M114,dal rice
+M114,sabzi
+M115,chaas
+M115,dal rice
+M115,roti
+M116,chaas
+M116,dal rice
+M116,sabzi
+M116,papad
+M117,chaas
+M117,dal rice
+M117,papad
+M118,papad
+M119,chaas
+M119,dal rice
+M119,roti
+M119,lassi
+M120,chaas
+M120,dal rice
+M120,papad
+M120,lassi
+M121,chaas
+M121,dal rice
+M121,sabzi
+M121,papad
+M122,chaas
+M122,dal rice
+M122,papad
+M123,chaas
+M123,roti
+M124,roti
+M125,chaas
+M125,dal rice
+M125,roti
+M125,curd
+M126,chaas
+M126,dal rice
+M126,sabzi
+M127,chaas
+M127,dal rice
+M127,sabzi
+M127,papad
+M128,chaas
+M128,dal rice
+M128,papad
+M129,roti
+M130,chaas
+M130,dal rice
+M130,sabzi
+M130,gulab jamun
+M131,chaas
+M132,roti
+M132,sabzi
+M132,papad
+M133,roti
+M134,chaas
+M134,roti
+M134,sabzi
+M135,chaas
+M135,sabzi
+M136,chaas
+M136,roti
+M137,chaas
+M137,dal rice
+M137,papad
+M138,chaas
+M139,chaas
+M139,sabzi
+M139,papad
+M140,dal rice
+M140,roti
+M141,chaas
+M141,sabzi
+M142,chaas
+M143,chaas
+M143,dal rice
+M143,sabzi
+M143,papad
+M144,chaas
+M144,roti
+M144,papad
+M145,dal rice
+M145,roti
+M145,papad
+M146,chaas
+M146,dal rice
+M146,roti
+M146,papad
+M147,chaas
+M147,papad
+M148,chaas
+M148,roti
+M148,sabzi
+M149,chaas
+M149,roti
+M149,sabzi
+M150,chaas
+M150,dal rice
+M150,lassi
+M151,chaas
+M151,dal rice
+M151,roti
+M151,sabzi
+M152,chaas
+M152,dal rice
+M152,roti
+M152,pickle
+M153,chaas
+M153,papad
+M153,gulab jamun
+M154,chaas
+M154,dal rice
+M155,sabzi
+M156,chaas
+M157,chaas
+M157,dal rice
+M157,sabzi
+M158,chaas
+M158,roti
+M158,sabzi
+M159,chaas
+M159,dal rice
+M159,roti
+M159,sabzi
+M160,chaas
+M161,sabzi
+M161,papad
+M162,dal rice
+M162,roti
+M162,papad
+M163,chaas
+M163,sabzi
+M164,dal rice
+M164,sabzi
+M164,papad
+M165,chaas
+M165,papad
+M165,pickle
+M166,dal rice
+M166,papad
+M167,chaas
+M167,dal rice
+M167,sabzi
+M167,papad
+M168,chaas
+M168,dal rice
+M168,sabzi
+M168,papad
+M169,chaas
+M169,roti
+M170,chaas
+M170,dal rice
+M170,sabzi
+M170,kheer
+M171,chaas
+M171,dal rice
+M171,roti
+M171,sabzi
+M172,chaas
+M172,dal rice
+M172,roti
+M172,sabzi
+M172,papad
+M173,roti
+M173,sabzi
+M174,dal rice
+M174,sabzi
+M174,papad
+M175,roti
+M175,sabzi
+M175,papad
+M176,chaas
+M176,dal rice
+M177,dal rice
+M177,roti
+M177,sabzi
+M178,chaas
+M178,roti
+M178,boiled egg
+M179,chaas
+M179,dal rice
+M179,roti
+M180,chaas
+M180,papad
+M180,curd
+M181,chaas
+M181,papad
+M182,chaas
+M182,dal rice
+M182,sabzi
+M182,papad
+M183,dal rice
+M183,roti
+M183,papad
+M184,chaas
+M184,dal rice
+M184,roti
+M184,papad
+M185,chaas
+M185,dal rice
+M185,roti
+M185,sabzi
+M186,chaas
+M186,dal rice
+M186,roti
+M186,sabzi
+M187,chaas
+M187,roti
+M187,papad
+M188,chaas
+M188,dal rice
+M189,chaas
+M189,dal rice
+M190,roti
+M190,papad
+M190,gulab jamun
+M190,jalebi
+M191,chaas
+M191,sabzi
+M192,dal rice
+M192,roti
+M192,sabzi
+M192,papad
+M193,chaas
+M193,dal rice
+M193,roti
+M194,chaas
+M194,dal rice
+M194,roti
+M194,sabzi
+M194,papad
+M195,chaas
+M195,dal rice
+M195,roti
+M195,sabzi
+M196,dal rice
+M196,sabzi
+M197,chaas
+M197,dal rice
+M198,roti
+M198,papad
+M199,sabzi
+M200,dal rice
+M201,dal rice
+M201,sabzi
+M201,papad
+M201,gulab jamun
+M202,chaas
+M202,dal rice
+M203,chaas
+M203,roti
+M203,papad
+M203,gulab jamun
+M204,chaas
+M204,dal rice
+M204,sabzi
+M205,chaas
+M205,sabzi
+M206,chaas
+M206,roti
+M206,boiled egg
+M207,chaas
+M208,chaas
+M208,gulab jamun
+M208,kheer
+M209,chaas
+M209,papad
+M210,chaas
+M210,dal rice
+M211,dal rice
+M211,sabzi
+M212,chaas
+M212,roti
+M212,boiled egg
+M213,chaas
+M213,dal rice
+M213,pickle
+M214,chaas
+M214,dal rice
+M214,roti
+M214,papad
+M215,chaas
+M215,dal rice
+M215,sabzi
+M216,chaas
+M216,papad
+M217,chaas
+M217,roti
+M217,sabzi
+M217,papad
+M217,gulab jamun
+M218,chaas
+M218,roti
+M218,papad
+M218,pickle
+M219,sabzi
+M220,chaas
+M220,papad
+M221,chaas
+M221,dal rice
+M221,roti
+M221,papad
+M222,chaas
+M222,roti
+M223,chaas
+M223,papad
+M224,chaas
+M224,roti
+M225,chaas
+M225,dal rice
+M225,papad
+M226,dal rice
+M226,sabzi
+M227,dal rice
+M227,sabzi
+M227,papad
+M228,chaas
+M229,chaas
+M229,papad
+M230,roti
+M231,chaas
+M231,dal rice
+M231,roti
+M231,sabzi
+M232,chaas
+M232,dal rice
+M233,chaas
+M234,papad
+M235,chaas
+M235,dal rice
+M235,sabzi
+M235,jalebi
+M236,chaas
+M236,roti
+M236,sabzi
+M236,pickle
+M237,chaas
+M237,sabzi
+M238,sabzi
+M239,chaas
+M239,dal rice
+M239,roti
+M239,papad
+M240,chaas
+M240,roti
+M241,chaas
+M241,papad
+M242,chaas
+M242,papad
+M243,chaas
+M243,roti
+M243,sabzi
+M243,papad
+M244,chaas
+M244,roti
+M244,sabzi
+M244,papad
+M245,chaas
+M245,sabzi
+M245,papad
+M246,dal rice
+M246,roti
+M246,papad
+M247,chaas
+M247,roti
+M248,roti
+M249,chaas
+M249,dal rice
+M249,papad
+M250,chaas
+M251,chaas
+M251,dal rice
+M251,roti
+M252,chaas
+M252,roti
+M252,sabzi
+M253,dal rice
+M253,roti
+M254,chaas
+M255,chaas
+M255,dal rice
+M255,papad
+M256,sabzi
+M257,papad
+M257,rasgulla
+M258,chaas
+M258,sabzi
+M259,roti
+M259,papad
+M260,chaas
+M260,dal rice
+M261,chaas
+M261,dal rice
+M261,papad
+M261,boiled egg
+M262,chaas
+M262,dal rice
+M262,roti
+M262,sabzi
+M263,chaas
+M263,dal rice
+M264,chaas
+M264,papad
+M265,chaas
+M265,roti
+M265,papad
+M266,chaas
+M266,roti
+M266,sabzi
+M267,chaas
+M267,dal rice
+M267,sabzi
+M268,chaas
+M268,roti
+M268,sabzi
+M268,papad
+M269,chaas
+M269,dal rice
+M269,roti
+M269,papad
+M270,chaas
+M270,sabzi
+M271,chaas
+M271,dal rice
+M271,roti
+M271,sabzi
+M272,roti
+M272,sabzi
+M272,papad
+M273,chaas
+M273,papad
+M274,dal rice
+M274,sabzi
+M275,chaas
+M275,dal rice
+M275,roti
+M275,sabzi
+M275,papad
+M276,chaas
+M276,dal rice
+M276,sabzi
+M277,chaas
+M277,sabzi
+M278,chaas
+M278,dal rice
+M278,roti
+M278,sabzi
+M279,roti
+M279,sabzi
+M280,chaas
+M281,chaas
+M282,chaas
+M282,dal rice
+M282,sabzi
+M282,papad
+M283,chaas
+M283,dal rice
+M283,roti
+M283,papad
+M284,chaas
+M284,dal rice
+M284,roti
+M285,chaas
+M285,dal rice
+M285,roti
+M286,chaas
+M286,dal rice
+M286,papad
+M286,pickle
+M287,chaas
+M287,dal rice
+M288,chaas
+M288,dal rice
+M289,dal rice
+M289,roti
+M290,chaas
+M290,dal rice
+M290,roti
+M290,papad
+M291,roti
+M291,papad
+M292,chaas
+M292,dal rice
+M293,papad
+M294,dal rice
+M295,chaas
+M295,dal rice
+M296,chaas
+M296,roti
+M296,papad
+M297,roti
+M298,chaas
+M298,dal rice
+M298,roti
+M298,sabzi
+M299,chaas
+M299,roti
+M299,papad
+M299,boiled egg
+M300,chaas
+M300,dal rice
+M301,dal rice
+M301,papad
+M302,chaas
+M302,dal rice
+M302,papad
+M302,gulab jamun
+M303,chaas
+M304,chaas
+M304,roti
+M304,sabzi
+M305,chaas
+M305,dal rice
+M305,roti
+M305,papad
+M306,chaas
+M307,chaas
+M307,sabzi
+M307,papad
+M308,chaas
+M308,dal rice
+M308,sabzi
+M309,chaas
+M310,chaas
+M310,roti
+M311,chaas
+M311,sabzi
+M312,chaas
+M312,dal rice
+M313,chaas
+M313,dal rice
+M314,chaas
+M314,roti
+M314,pickle
+M315,chaas
+M315,roti
+M315,sabzi
+M316,chaas
+M316,dal rice
+M316,sabzi
+M317,chaas
+M317,roti
+M317,papad
+M317,curd
+M318,dal rice
+M319,chaas
+M319,dal rice
+M319,papad
+M319,gulab jamun
+M320,sabzi
+M320,kheer
+M321,chaas
+M321,papad
+M322,chaas
+M322,papad
+M323,chaas
+M323,dal rice
+M324,roti
+M325,chaas
+M325,dal rice
+M325,papad
+M326,chaas
+M326,dal rice
+M326,roti
+M326,sabzi
+M326,papad
+M327,chaas
+M327,dal rice
+M327,roti
+M328,chaas
+M328,dal rice
+M328,sabzi
+M329,chaas
+M329,dal rice
+M330,chaas
+M331,roti
+M331,sabzi
+M332,chaas
+M332,roti
+M332,sabzi
+M333,chaas
+M333,dal rice
+M333,roti
+M333,papad
+M334,chaas
+M334,dal rice
+M335,chaas
+M335,roti
+M336,chaas
+M336,dal rice
+M336,sabzi
+M337,chaas
+M337,dal rice
+M337,pickle
+M338,chaas
+M338,roti
+M338,papad
+M339,chaas
+M339,dal rice
+M339,pickle
+M340,sabzi
+M341,dal rice
+M342,dal rice
+M343,dal rice
+M343,papad
+M344,chaas
+M344,dal rice
+M344,sabzi
+M344,papad
+M345,chaas
+M345,dal rice
+M346,chaas
+M346,dal rice
+M346,papad
+M347,dal rice
+M347,papad
+M348,sabzi
+M349,chaas
+M349,roti
+M349,sabzi
+M349,papad
+M350,chaas
+M350,dal rice
+M350,roti
+M350,sabzi
+M351,dal rice
+M351,roti
+M352,chaas
+M352,dal rice
+M352,roti
+M352,sabzi
+M353,chaas
+M353,dal rice
+M353,roti
+M353,curd
+M353,pickle
+M353,gulab jamun
+M354,chaas
+M354,roti
+M354,papad
+M355,chaas
+M355,dal rice
+M356,chaas
+M356,dal rice
+M356,roti
+M357,chaas
+M357,roti
+M357,sabzi
+M358,chaas
+M358,roti
+M358,sabzi
+M359,chaas
+M359,sabzi
+M360,roti
+M361,chaas
+M361,roti
+M362,chaas
+M362,dal rice
+M362,papad
+M363,chaas
+M363,sabzi
+M364,chaas
+M364,sabzi
+M364,papad
+M364,jalebi
+M365,dal rice
+M365,sabzi
+M366,chaas
+M366,roti
+M366,fruit plate
+M367,chaas
+M367,roti
+M367,sabzi
+M367,papad
+M368,chaas
+M368,dal rice
+M368,papad
+M369,chaas
+M369,roti
+M370,chaas
+M370,sabzi
+M371,dal rice
+M372,sabzi
+M372,pickle
+M373,chaas
+M373,dal rice
+M373,roti
+M373,sabzi
+M374,dal rice
+M374,roti
+M374,sabzi
+M375,chaas
+M375,dal rice
+M375,roti
+M375,papad
+M375,pickle
+M376,chaas
+M376,sabzi
+M377,chaas
+M377,dal rice
+M377,papad
+M378,chaas
+M378,dal rice
+M378,sabzi
+M379,roti
+M379,sabzi
+M380,dal rice
+M380,papad
+M381,chaas
+M381,dal rice
+M381,roti
+M381,sabzi
+M382,dal rice
+M382,roti
+M382,papad
+M382,pickle
+M383,chaas
+M383,dal rice
+M383,roti
+M383,sabzi
+M384,chaas
+M384,dal rice
+M385,chaas
+M385,dal rice
+M385,sabzi
+M385,gulab jamun
+M386,chaas
+M386,jalebi
+M387,chaas
+M387,dal rice
+M387,sabzi
+M387,papad
+M388,chaas
+M388,dal rice
+M388,roti
+M388,sabzi
+M389,chaas
+M389,roti
+M389,papad
+M390,chaas
+M390,dal rice
+M390,papad
+M391,dal rice
+M391,roti
+M392,chaas
+M392,roti
+M392,papad
+M393,chaas
+M394,chaas
+M394,dal rice
+M394,papad
+M395,chaas
+M395,dal rice
+M396,roti
+M396,papad
+M396,pickle
+M397,rasgulla
+M398,chaas
+M398,sabzi
+M398,papad
+M398,gulab jamun
+M399,chaas
+M399,dal rice
+M400,roti
+M400,papad
+M400,curd
+M400,fruit plate
+M401,chaas
+M401,roti
+M401,gulab jamun
+M402,dal rice
+M402,roti
+M403,dal rice
+M403,papad
+M404,chaas
+M404,roti
+M404,papad
+M405,dal rice
+M405,papad
+M406,chaas
+M406,curd
+M407,chaas
+M407,roti
+M408,chaas
+M408,dal rice
+M408,sabzi
+M408,pickle
+M408,rasgulla
+M409,chaas
+M409,sabzi
+M410,dal rice
+M410,roti
+M410,sabzi
+M411,chaas
+M411,dal rice
+M411,sabzi
+M411,rasgulla
+M412,chaas
+M412,roti
+M412,sabzi
+M412,curd
+M413,chaas
+M413,papad
+M414,dal rice
+M414,papad
+M415,chaas
+M415,dal rice
+M415,papad
+M416,dal rice
+M417,roti
+M417,sabzi
+M417,papad
+M417,jalebi
+M418,sabzi
+M419,chaas
+M419,dal rice
+M419,sabzi
+M419,papad
+M420,chaas
+M420,dal rice
+M420,sabzi
+M421,chaas
+M421,dal rice
+M421,roti
+M421,sabzi
+M421,papad
+M422,sabzi
+M422,papad
+M423,chaas
+M423,sabzi
+M424,dal rice
+M425,dal rice
+M425,roti
+M425,sabzi
+M426,dal rice
+M426,papad
+M427,chaas
+M428,chaas
+M428,dal rice
+M428,kheer
+M429,chaas
+M429,dal rice
+M430,chaas
+M430,sabzi
+M431,chaas
+M431,dal rice
+M432,papad
+M433,chaas
+M433,sabzi
+M434,chaas
+M434,dal rice
+M435,chaas
+M435,dal rice
+M435,roti
+M435,papad
+M436,chaas
+M436,roti
+M437,chaas
+M438,sabzi
+M439,chaas
+M439,sabzi
+M440,chaas
+M440,dal rice
+M440,roti
+M441,chaas
+M441,dal rice
+M441,roti
+M441,sabzi
+M441,papad
+M442,chaas
+M442,dal rice
+M442,roti
+M442,sabzi
+M443,chaas
+M443,roti
+M444,roti
+M444,sabzi
+M444,papad
+M445,chaas
+M445,curd
+M446,chaas
+M446,roti
+M447,chaas
+M447,roti
+M447,pickle
+M448,roti
+M448,sabzi
+M448,papad
+M449,chaas
+M450,chaas
+M450,dal rice
+M450,roti
+M450,lassi
+M451,chaas
+M451,dal rice
+M451,papad
+M452,chaas
+M452,dal rice
+M452,roti
+M452,curd
+M453,chaas
+M453,dal rice
+M453,roti
+M453,sabzi
+M454,chaas
+M454,sabzi
+M454,papad
+M455,chaas
+M455,roti
+M455,sabzi
+M456,dal rice
+M456,sabzi
+M457,rasgulla
+M458,chaas
+M458,roti
+M458,sabzi
+M459,chaas
+M459,sabzi
+M459,papad
+M460,chaas
+M460,dal rice
+M460,roti
+M461,chaas
+M461,papad
+M461,fruit plate
+M462,chaas
+M462,sabzi
+M462,papad
+M463,chaas
+M463,sabzi
+M463,papad
+M464,chaas
+M464,dal rice
+M465,dal rice
+M465,sabzi
+M466,chaas
+M466,dal rice
+M466,papad
+M467,chaas
+M467,roti
+M467,papad
+M468,sabzi
+M468,papad
+M469,sabzi
+M469,curd
+M470,chaas
+M470,dal rice
+M470,roti
+M470,papad
+M470,jalebi
+M471,chaas
+M471,roti
+M471,gulab jamun
+M472,chaas
+M473,chaas
+M473,dal rice
+M473,roti
+M474,chaas
+M474,roti
+M475,chaas
+M475,dal rice
+M476,chaas
+M476,sabzi
+M476,papad
+M477,chaas
+M477,dal rice
+M477,sabzi
+M477,papad
+M478,papad
+M478,rasgulla
+M479,chaas
+M479,sabzi
+M479,curd
+M480,dal rice
+M480,roti
+M480,papad
+M481,chaas
+M481,sabzi
+M482,dal rice
+M482,roti
+M482,papad
+M482,pickle
+M482,boiled egg
+M483,chaas
+M484,chaas
+M484,sabzi
+M484,papad
+M485,dal rice
+M485,sabzi
+M486,chaas
+M486,sabzi
+M487,roti
+M487,pickle
+M488,chaas
+M488,sabzi
+M489,chaas
+M489,dal rice
+M489,roti
+M489,papad
+M490,chaas
+M490,dal rice
+M490,roti
+M491,chaas
+M492,chaas
+M492,roti
+M493,chaas
+M494,chaas
+M494,roti
+M495,chaas
+M495,roti
+M495,sabzi
+M496,chaas
+M496,roti
+M496,sabzi
+M497,dal rice
+M497,roti
+M497,pickle
+M498,roti
+M499,chaas
+M499,roti
+M499,sabzi
+M499,papad
+M500,chaas
+M500,dal rice
+M500,roti
+M500,sabzi
+M501,chaas
+M502,roti
+M502,gulab jamun
+M502,jalebi
+M503,roti
+M503,sabzi
+M503,papad
+M504,chaas
+M504,dal rice
+M504,roti
+M504,papad
+M505,dal rice
+M505,roti
+M505,sabzi
+M505,lassi
+M506,chaas
+M507,chaas
+M508,chaas
+M508,dal rice
+M508,papad
+M509,dal rice
+M510,chaas
+M510,papad
+M511,dal rice
+M511,roti
+M512,dal rice
+M512,roti
+M513,chaas
+M513,dal rice
+M513,roti
+M513,papad
+M514,chaas
+M514,dal rice
+M514,papad
+M515,chaas
+M515,sabzi
+M516,chaas
+M516,dal rice
+M516,roti
+M516,pickle
+M517,chaas
+M517,dal rice
+M517,roti
+M517,sabzi
+M517,papad
+M518,chaas
+M518,dal rice
+M518,roti
+M518,sabzi
+M519,dal rice
+M520,chaas
+M520,sabzi
+M520,papad
+M521,chaas
+M521,dal rice
+M522,chaas
+M522,dal rice
+M522,roti
+M523,chaas
+M523,dal rice
+M523,roti
+M524,chaas
+M525,chaas
+M525,dal rice
+M525,sabzi
+M525,papad
+M526,dal rice
+M526,sabzi
+M527,chaas
+M527,papad
+M528,dal rice
+M528,roti
+M528,kheer
+M529,chaas
+M529,roti
+M530,chaas
+M530,dal rice
+M530,roti
+M530,sabzi
+M530,gulab jamun
+M531,chaas
+M532,roti
+M532,papad
+M533,chaas
+M533,dal rice
+M533,sabzi
+M534,sabzi
+M534,pickle
+M535,chaas
+M535,dal rice
+M535,roti
+M536,dal rice
+M537,roti
+M537,sabzi
+M538,chaas
+M538,dal rice
+M538,sabzi
+M538,pickle
+M539,dal rice
+M539,sabzi
+M539,pickle
+M540,chaas
+M540,roti
+M540,sabzi
+M540,papad
+M541,chaas
+M541,dal rice
+M541,roti
+M542,dal rice
+M542,roti
+M542,sabzi
+M543,chaas
+M543,roti
+M544,dal rice
+M544,sabzi
+M544,papad
+M545,chaas
+M545,dal rice
+M546,chaas
+M546,dal rice
+M546,sabzi
+M546,papad
+M547,dal rice
+M548,roti
+M549,dal rice
+M549,roti
+M549,sabzi
+M550,roti
+M551,dal rice
+M551,papad
+M552,roti
+M552,sabzi
+M553,chaas
+M553,papad
+M553,gulab jamun
+M553,fruit plate
+M554,chaas
+M554,dal rice
+M554,lassi
+M555,chaas
+M555,papad
+M556,chaas
+M556,roti
+M557,chaas
+M557,dal rice
+M557,roti
+M557,papad
+M558,chaas
+M558,roti
+M558,papad
+M559,dal rice
+M560,chaas
+M561,chaas
+M561,dal rice
+M561,roti
+M561,curd
+M562,dal rice
+M562,roti
+M562,papad
+M563,chaas
+M563,sabzi
+M563,papad
+M563,gulab jamun
+M564,chaas
+M564,dal rice
+M564,sabzi
+M564,pickle
+M565,chaas
+M565,dal rice
+M566,papad
+M567,chaas
+M567,dal rice
+M567,roti
+M568,chaas
+M568,roti
+M568,sabzi
+M569,chaas
+M569,dal rice
+M569,lassi
+M570,chaas
+M570,roti
+M570,sabzi
+M570,papad
+M571,chaas
+M571,dal rice
+M572,chaas
+M572,dal rice
+M572,roti
+M572,papad
+M573,chaas
+M573,roti
+M573,sabzi
+M574,chaas
+M574,dal rice
+M574,sabzi
+M574,pickle
+M575,dal rice
+M575,roti
+M575,sabzi
+M575,papad
+M576,chaas
+M576,dal rice
+M576,roti
+M576,sabzi
+M577,chaas
+M578,chaas
+M579,chaas
+M579,dal rice
+M579,roti
+M579,papad
+M580,chaas
+M581,chaas
+M581,dal rice
+M581,pickle
+M582,roti
+M582,sabzi
+M583,dal rice
+M583,sabzi
+M584,chaas
+M584,sabzi
+M585,chaas
+M585,dal rice
+M585,sabzi
+M586,sabzi
+M586,papad
+M587,chaas
+M587,dal rice
+M587,papad
+M588,chaas
+M588,dal rice
+M588,sabzi
+M588,curd
+M589,dal rice
+M589,roti
+M590,chaas
+M590,roti
+M591,chaas
+M591,dal rice
+M591,sabzi
+M591,papad
+M592,chaas
+M592,roti
+M593,roti
+M593,papad
+M594,chaas
+M594,dal rice
+M594,sabzi
+M595,chaas
+M595,roti
+M595,papad
+M596,chaas
+M596,sabzi
+M597,chaas
+M597,dal rice
+M597,roti
+M598,dal rice
+M599,roti
+M599,sabzi
+M599,curd
+M600,chaas
+M600,sabzi

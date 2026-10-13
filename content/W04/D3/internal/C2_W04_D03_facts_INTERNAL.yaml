@@ -33,12 +33,12 @@ ticket:
     value: 40000
     shown: "40,000"
     how: "carts in the carts table"
-    used_in: "the ticket, notebook 02"
+    used_in: "the ticket, notebook 08"
   - id: customers
     value: 12000
     shown: "12,000"
     how: "customers in the sample, every September cart of each"
-    used_in: "notebook 02, notes"
+    used_in: "notebook 08, notes"
   - id: zones
     value: 8
     shown: "eight"
@@ -48,7 +48,7 @@ ticket:
     value: 59
     shown: "59"
     how: "distinct items in cart_items (the case file says about 60)"
-    used_in: "notebook 02, notes"
+    used_in: "notebook 08, notes"
   - id: cart_window
     value: "1 to 28 September 2026"
     shown: "1 to 28 September"
@@ -58,661 +58,661 @@ ticket:
     value: 0.38
     shown: "38 percent"
     how: "carts placed by the 1,200 customers with the most carts, over 40,000"
-    used_in: "ticket caveat, notebook 03, deck"
+    used_in: "ticket caveat, notebook 10, deck"
   - id: heavy_customers
     value: 1200
     shown: "1,200"
     how: "the top tenth of 12,000 customers"
-    used_in: "notebook 03, notes"
+    used_in: "notebook 10, notes"
   - id: heavy_carts_min
     value: 12
     shown: "12"
     how: "fewest carts held by any top-tenth customer"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: light_carts_max
     value: 5
     shown: "5"
     how: "most carts held by anyone outside the top tenth"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
 
 strip:
   - id: milk_slot_ctr_after
     value: 0.012
     shown: "1.2 percent"
     how: "clicks over impressions on slots suggesting toned milk, after"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: other_slot_ctr_after
     value: 0.064
     shown: "6.4 percent"
     how: "the same for every other suggestion, after"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: other_slot_ctr_before
     value: 0.062
     shown: "6.2 percent"
     how: "every suggestion other than milk, before"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: milk_share_after
     value: 0.5018
     shown: "50 percent"
     how: "milk's share of slot impressions, after (case file 44, corrected)"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: milk_share_before
     value: 0.02
     shown: "2 percent"
     how: "milk's share of slot impressions under the curated list"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: ctr_before_milk_slot3
     value: 0.012
     shown: "1.2 percent"
     how: "click-through on slot 3, milk, before"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_before_other_slot1
     value: 0.075
     shown: "7.5 percent"
     how: "click-through on slot 1, other, before"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_before_other_slot2
     value: 0.0612
     shown: "6.1 percent"
     how: "click-through on slot 2, other, before"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_before_other_slot3
     value: 0.0491
     shown: "4.9 percent"
     how: "click-through on slot 3, other, before"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_after_milk_slot1
     value: 0.0138
     shown: "1.4 percent"
     how: "click-through on slot 1, milk, after"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_after_milk_slot2
     value: 0.0113
     shown: "1.1 percent"
     how: "click-through on slot 2, milk, after"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_after_milk_slot3
     value: 0.009
     shown: "0.9 percent"
     how: "click-through on slot 3, milk, after"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_after_other_slot1
     value: 0.082
     shown: "8.2 percent"
     how: "click-through on slot 1, other, after"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_after_other_slot2
     value: 0.0675
     shown: "6.7 percent"
     how: "click-through on slot 2, other, after"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: ctr_after_other_slot3
     value: 0.0539
     shown: "5.4 percent"
     how: "click-through on slot 3, other, after"
-    used_in: "the slot picture, notebook 02"
+    used_in: "the slot picture, notebook 08"
   - id: milk_share_after_slot1
     value: 0.7013
     shown: "70 percent"
     how: "milk's share of slot 1's impressions after the change"
-    used_in: "notebook 02, the slot picture"
+    used_in: "notebook 08, the slot picture"
   - id: milk_share_after_slot2
     value: 0.5034
     shown: "50 percent"
     how: "milk's share of slot 2's impressions after the change"
-    used_in: "notebook 02, the slot picture"
+    used_in: "notebook 08, the slot picture"
   - id: milk_share_after_slot3
     value: 0.3008
     shown: "30 percent"
     how: "milk's share of slot 3's impressions after the change"
-    used_in: "notebook 02, the slot picture"
+    used_in: "notebook 08, the slot picture"
   - id: views_a_day_after
     value: 60000
     shown: "60,000"
     how: "slot-1 impressions a day, the mean of 7 to 27 September; every view shows all three slots"
-    used_in: "chapter 3 cascade, notebook 03"
+    used_in: "SECTION 10 cascade, notebook 10"
   - id: views_a_day_before
     value: 58800
     shown: "58,800"
     how: "the same for 17 August to 6 September"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: views_day_low
     value: 53777
     shown: "53,777"
     how: "the quietest day after the change"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: views_day_high
     value: 68687
     shown: "68,687"
     how: "the busiest day after the change"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: daily_ctr_after_low
     value: 0.0355
     shown: "3.6 percent"
     how: "lowest daily strip click-through after the change"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: daily_ctr_after_high
     value: 0.0397
     shown: "4.0 percent"
     how: "highest daily strip click-through after the change"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: daily_ctr_before_low
     value: 0.058
     shown: "5.8 percent"
     how: "lowest daily strip click-through before the change"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: daily_ctr_before_high
     value: 0.064
     shown: "6.4 percent"
     how: "highest daily strip click-through before the change"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: add_rate_observed
     value: 0.5
     shown: "0.5"
     how: "adds over clicks after the change, strip_log"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: margin_per_line_observed
     value: 8.99
     shown: "Rs 9.0"
     how: "mean margin_rs of a cart_items line, milk aside"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: milk_margin
     value: 2.0
     shown: "Rs 2"
     how: "margin_rs on a pouch of toned milk"
-    used_in: "notebook 03, transcript"
+    used_in: "notebook 10, transcript"
   - id: price_per_add_observed
     value: 41.77
     shown: "Rs 42"
     how: "unit price of the same items, weighted by adds"
-    used_in: "notebook 03, the gross-sales trap"
+    used_in: "notebook 10, the gross-sales trap"
   - id: strip_rows
     value: 1512
     shown: "1,512"
     how: "rows in strip_log"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
 
 full_data:
   - id: toned_milk_share
     value: 0.71
     shown: "71 percent"
     how: "share of the 40,000 carts holding toned milk"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: toned_milk_carts
     value: 28400
     shown: "28,400"
     how: "carts holding toned milk"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: bread_share
     value: 0.34
     shown: "34 percent"
     how: "share of the 40,000 carts holding bread"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: bread_carts
     value: 13600
     shown: "13,600"
     how: "carts holding bread"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: eggs_share
     value: 0.29
     shown: "29 percent"
     how: "share of the 40,000 carts holding eggs"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: eggs_carts
     value: 11600
     shown: "11,600"
     how: "carts holding eggs"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: curd_share
     value: 0.26
     shown: "26 percent"
     how: "share of the 40,000 carts holding curd"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: curd_carts
     value: 10400
     shown: "10,400"
     how: "carts holding curd"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: bananas_share
     value: 0.23
     shown: "23 percent"
     how: "share of the 40,000 carts holding bananas"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: bananas_carts
     value: 9200
     shown: "9,200"
     how: "carts holding bananas"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: onions_share
     value: 0.22
     shown: "22 percent"
     how: "share of the 40,000 carts holding onions"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: onions_carts
     value: 8800
     shown: "8,800"
     how: "carts holding onions"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: tomatoes_share
     value: 0.2
     shown: "20 percent"
     how: "share of the 40,000 carts holding tomatoes"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: tomatoes_carts
     value: 8000
     shown: "8,000"
     how: "carts holding tomatoes"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: potatoes_share
     value: 0.18
     shown: "18 percent"
     how: "share of the 40,000 carts holding potatoes"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: potatoes_carts
     value: 7200
     shown: "7,200"
     how: "carts holding potatoes"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: coriander_share
     value: 0.15
     shown: "15 percent"
     how: "share of the 40,000 carts holding coriander"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: coriander_carts
     value: 6000
     shown: "6,000"
     how: "carts holding coriander"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: chips_share
     value: 0.12
     shown: "12 percent"
     how: "share of the 40,000 carts holding chips"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: chips_carts
     value: 4800
     shown: "4,800"
     how: "carts holding chips"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: cold_drink_share
     value: 0.123
     shown: "12.3 percent"
     how: "share of the 40,000 carts holding cold drink"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: cold_drink_carts
     value: 4920
     shown: "4,920"
     how: "carts holding cold drink"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: green_chillies_share
     value: 0.08
     shown: "8 percent"
     how: "share of the 40,000 carts holding green chillies"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: green_chillies_carts
     value: 3200
     shown: "3,200"
     how: "carts holding green chillies"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: paneer_share
     value: 0.08
     shown: "8 percent"
     how: "share of the 40,000 carts holding paneer"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: paneer_carts
     value: 3200
     shown: "3,200"
     how: "carts holding paneer"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: butter_share
     value: 0.06
     shown: "6 percent"
     how: "share of the 40,000 carts holding butter"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: butter_carts
     value: 2400
     shown: "2,400"
     how: "carts holding butter"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: ice_cream_share
     value: 0.04
     shown: "4 percent"
     how: "share of the 40,000 carts holding ice cream"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: ice_cream_carts
     value: 1600
     shown: "1,600"
     how: "carts holding ice cream"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: chocolate_sauce_share
     value: 0.0136
     shown: "1.36 percent"
     how: "share of the 40,000 carts holding chocolate sauce"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: chocolate_sauce_carts
     value: 544
     shown: "544"
     how: "carts holding chocolate sauce"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: bread_milk_carts
     value: 10064
     shown: "10,064"
     how: "carts holding both bread and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_milk_support
     value: 0.2516
     shown: "25.2 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_milk_conf_ab
     value: 0.74
     shown: "0.74"
     how: "confidence bread to toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_milk_conf_ba
     value: 0.3544
     shown: "0.35"
     how: "confidence toned milk to bread"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_milk_lift
     value: 1.0423
     shown: "1.04"
     how: "lift of bread and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_milk_expected
     value: 9656
     shown: "9,656"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: eggs_milk_carts
     value: 8468
     shown: "8,468"
     how: "carts holding both eggs and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: eggs_milk_support
     value: 0.2117
     shown: "21.2 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: eggs_milk_conf_ab
     value: 0.73
     shown: "0.73"
     how: "confidence eggs to toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: eggs_milk_conf_ba
     value: 0.2982
     shown: "0.30"
     how: "confidence toned milk to eggs"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: eggs_milk_lift
     value: 1.0282
     shown: "1.03"
     how: "lift of eggs and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: eggs_milk_expected
     value: 8236
     shown: "8,236"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: chips_cold_carts
     value: 2000
     shown: "2,000"
     how: "carts holding both chips and cold drink"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: chips_cold_support
     value: 0.05
     shown: "5.0 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: chips_cold_conf_ab
     value: 0.4167
     shown: "0.42"
     how: "confidence chips to cold drink"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: chips_cold_conf_ba
     value: 0.4065
     shown: "0.41"
     how: "confidence cold drink to chips"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: chips_cold_lift
     value: 3.3875
     shown: "3.39"
     how: "lift of chips and cold drink"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: chips_cold_expected
     value: 590
     shown: "590"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: ice_choc_carts
     value: 100
     shown: "100"
     how: "carts holding both ice cream and chocolate sauce"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: ice_choc_support
     value: 0.0025
     shown: "0.25 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: ice_choc_conf_ab
     value: 0.0625
     shown: "0.06"
     how: "confidence ice cream to chocolate sauce"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: ice_choc_conf_ba
     value: 0.1838
     shown: "0.18"
     how: "confidence chocolate sauce to ice cream"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: ice_choc_lift
     value: 4.5956
     shown: "4.60"
     how: "lift of ice cream and chocolate sauce"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: ice_choc_expected
     value: 22
     shown: "22"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: coriander_chillies_carts
     value: 1440
     shown: "1,440"
     how: "carts holding both coriander and green chillies"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: coriander_chillies_support
     value: 0.036
     shown: "3.6 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: coriander_chillies_conf_ab
     value: 0.24
     shown: "0.24"
     how: "confidence coriander to green chillies"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: coriander_chillies_conf_ba
     value: 0.45
     shown: "0.45"
     how: "confidence green chillies to coriander"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: coriander_chillies_lift
     value: 3.0
     shown: "3.00"
     how: "lift of coriander and green chillies"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: coriander_chillies_expected
     value: 480
     shown: "480"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: bread_butter_carts
     value: 1800
     shown: "1,800"
     how: "carts holding both bread and butter"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_butter_support
     value: 0.045
     shown: "4.5 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_butter_conf_ab
     value: 0.1324
     shown: "0.13"
     how: "confidence bread to butter"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_butter_conf_ba
     value: 0.75
     shown: "0.75"
     how: "confidence butter to bread"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_butter_lift
     value: 2.2059
     shown: "2.21"
     how: "lift of bread and butter"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bread_butter_expected
     value: 816
     shown: "816"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: onions_tomatoes_carts
     value: 3000
     shown: "3,000"
     how: "carts holding both onions and tomatoes"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: onions_tomatoes_support
     value: 0.075
     shown: "7.5 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: onions_tomatoes_conf_ab
     value: 0.3409
     shown: "0.34"
     how: "confidence onions to tomatoes"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: onions_tomatoes_conf_ba
     value: 0.375
     shown: "0.38"
     how: "confidence tomatoes to onions"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: onions_tomatoes_lift
     value: 1.7045
     shown: "1.70"
     how: "lift of onions and tomatoes"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: onions_tomatoes_expected
     value: 1760
     shown: "1,760"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: curd_milk_carts
     value: 7436
     shown: "7,436"
     how: "carts holding both curd and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: curd_milk_support
     value: 0.1859
     shown: "18.6 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: curd_milk_conf_ab
     value: 0.715
     shown: "0.71"
     how: "confidence curd to toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: curd_milk_conf_ba
     value: 0.2618
     shown: "0.26"
     how: "confidence toned milk to curd"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: curd_milk_lift
     value: 1.007
     shown: "1.01"
     how: "lift of curd and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: curd_milk_expected
     value: 7384
     shown: "7,384"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: bananas_milk_carts
     value: 6624
     shown: "6,624"
     how: "carts holding both bananas and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bananas_milk_support
     value: 0.1656
     shown: "16.6 percent"
     how: "both over 40,000"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bananas_milk_conf_ab
     value: 0.72
     shown: "0.72"
     how: "confidence bananas to toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bananas_milk_conf_ba
     value: 0.2332
     shown: "0.23"
     how: "confidence toned milk to bananas"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bananas_milk_lift
     value: 1.0141
     shown: "1.01"
     how: "lift of bananas and toned milk"
-    used_in: "chapter 2 and 3"
+    used_in: "SECTIONs 8 and 10"
   - id: bananas_milk_expected
     value: 6532
     shown: "6,532"
     how: "carts expected to hold both if independent"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: common_items
     value: 50
     shown: "50"
     how: "items other than milk in at least 2 percent of carts"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: common_conf_low
     value: 0.701
     shown: "0.70"
     how: "lowest confidence to milk among them"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: common_conf_high
     value: 0.74
     shown: "0.74"
     how: "highest confidence to milk among them"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: common_lift_low
     value: 0.9873
     shown: "0.99"
     how: "lowest lift with milk among them"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: common_lift_high
     value: 1.0423
     shown: "1.04"
     how: "highest lift with milk among them"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: pairs_seen
     value: 1711
     shown: "1,711"
     how: "distinct pairs found in at least one cart"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: lines
     value: 189424
     shown: "189,424"
     how: "rows in cart_items"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
   - id: double_loop_checks
     value: 68440000
     shown: "about 68 million"
     how: "1,711 possible pairs tested against each of 40,000 carts"
-    used_in: "notes, chapter 2 sizing"
+    used_in: "notes, SECTION 8 sizing"
   - id: pair_increments
     value: 432803
     shown: "about 433,000"
     how: "pairs added by Counter: each cart adds one per pair it holds"
-    used_in: "notes, chapter 2 sizing"
+    used_in: "notes, SECTION 8 sizing"
   - id: items_per_cart
     value: 4.74
     shown: "4.7"
     how: "mean distinct items in a cart"
-    used_in: "notes, chapter 2 sizing"
+    used_in: "notes, SECTION 8 sizing"
   - id: bread_milk_excess
     value: 0.0423
     shown: "4 percent"
@@ -722,34 +722,34 @@ full_data:
     value: 10.82
     shown: "10.8"
     how: "pairs Counter adds for an average cart"
-    used_in: "notes, chapter 2 sizing"
+    used_in: "notes, SECTION 8 sizing"
   - id: bread_price
     value: 45
     shown: "Rs 45"
     how: "bread's price in cart_items"
-    used_in: "chapter 3, the margin definition"
+    used_in: "SECTION 10, the margin definition"
   - id: bread_margin
     value: 6.7
     shown: "Rs 6.70"
     how: "bread's margin in cart_items"
-    used_in: "chapter 3, the margin definition"
+    used_in: "SECTION 10, the margin definition"
   - id: cart_value_median
     value: 262.0
     shown: "Rs 262"
     how: "median cart value"
-    used_in: "notebook 02"
+    used_in: "notebook 08"
 
 floor:
   - id: support_floor
     value: 0.01
     shown: "1 percent"
     how: "the support floor the room sets"
-    used_in: "chapter 3"
+    used_in: "SECTION 10"
   - id: plot_floor
     value: 0.001
     shown: "0.1 percent"
     how: "the least support a pair needs to be drawn on the action map"
-    used_in: "chapter 3 picture"
+    used_in: "SECTION 10 picture"
   - id: plot_floor_carts
     value: 40
     shown: "40"
@@ -759,74 +759,74 @@ floor:
     value: 1221
     shown: "1,221"
     how: "pairs with support of at least 0.1 percent"
-    used_in: "chapter 3 picture, drill 2"
+    used_in: "SECTION 10 picture, drill 2"
   - id: watch_band_low
     value: 0.002
     shown: "0.2 percent"
     how: "the low end of the band searched for a strong thin pair"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: watch_band_low_carts
     value: 80
     shown: "80"
     how: "0.2 percent of 40,000 carts"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: common_floor
     value: 0.02
     shown: "2 percent"
     how: "an item counts as common at this share of carts (the case file)"
-    used_in: "chapter 2"
+    used_in: "SECTION 8"
   - id: kalpa_floor
     value: 0.05
     shown: "5 percent"
     how: "the lab's support floor (the case file)"
-    used_in: "notebook 04, lab note"
+    used_in: "notebook 11, lab note"
   - id: support_floor_carts
     value: 400
     shown: "400"
     how: "1 percent of 40,000 carts"
-    used_in: "chapter 3"
+    used_in: "SECTION 10"
   - id: floor_pairs
     value: 246
     shown: "246"
     how: "pairs at or above the floor"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: floor_pairs_lift_1_5
     value: 4
     shown: "4"
     how: "of those, pairs at lift 1.5 or more"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: fifth_pair_lift
     value: 1.0917
     shown: "1.09"
     how: "the fifth pair above the floor, butter and tomatoes"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: watch_band_pairs
     value: 616
     shown: "616"
     how: "pairs between 0.2 and 1 percent support"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: tiny_pairs
     value: 849
     shown: "849"
     how: "pairs below 0.2 percent support"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: tiny_lift_max
     value: 1.8125
     shown: "1.8"
     how: "highest lift among them"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
 
 caveats:
   - id: chips_cold_lift_per_customer
     value: 2.5599
     shown: "2.56"
     how: "lift with every customer counted once (each cart weighs one over its customer's carts)"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: bread_milk_lift_per_customer
     value: 1.0397
     shown: "1.04"
     how: "the same for bread and milk"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: chips_cold_lift_size
     value: 2.4753
     shown: "2.48"
@@ -861,229 +861,229 @@ caveats:
     value: 0.73
     shown: "73 percent"
     how: "share of chips-and-cold-drink carts placed by the top tenth"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: milk_share_afternoon
     value: 0.69
     shown: "69 percent"
     how: "share of afternoon carts holding milk"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: milk_share_evening
     value: 0.68
     shown: "68 percent"
     how: "share of evening carts holding milk"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: milk_share_morning
     value: 0.8
     shown: "80 percent"
     how: "share of morning carts holding milk"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: milk_share_night
     value: 0.66
     shown: "66 percent"
     how: "share of night carts holding milk"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: bread_milk_lift_morning
     value: 1.0278
     shown: "1.03"
     how: "bread and milk lift among morning carts"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: bread_milk_lift_afternoon
     value: 1.0499
     shown: "1.05"
     how: "bread and milk lift among afternoon carts"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: bread_milk_lift_evening
     value: 1.0495
     shown: "1.05"
     how: "bread and milk lift among evening carts"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: bread_milk_lift_night
     value: 1.0336
     shown: "1.03"
     how: "bread and milk lift among night carts"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: stockout_zones
     value: "Hadapsar and Viman Nagar"
     shown: "Hadapsar and Viman Nagar"
     how: "the two zones"
-    used_in: "ticket caveat, chapter 3"
+    used_in: "ticket caveat, SECTION 10"
   - id: stockout_week
     value: "15 to 21 September 2026"
     shown: "15 to 21 September"
     how: "week three"
-    used_in: "chapter 3"
+    used_in: "SECTION 10"
   - id: stockout_carts
     value: 2583
     shown: "2,583"
     how: "carts in the two zones in week three"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: stockout_curd_carts
     value: 12
     shown: "12"
     how: "of those, carts with curd"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: curd_share_stockout
     value: 0.0046
     shown: "0.5 percent"
     how: "curd's share in the two zones in week three"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: curd_share_elsewhere
     value: 0.2776
     shown: "27.8 percent"
     how: "curd's share everywhere else"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: curd_cell_low
     value: 0.2509
     shown: "25 percent"
     how: "lowest curd share in any other zone-week"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: curd_cell_high
     value: 0.303
     shown: "30 percent"
     how: "highest curd share in any other zone-week"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: curd_share_all
     value: 0.26
     shown: "26.0 percent"
     how: "curd's share of all 40,000 carts"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: curd_share_kept
     value: 0.2776
     shown: "27.8 percent"
     how: "curd's share with the two zone-weeks set aside"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: curd_milk_lift_all
     value: 1.007
     shown: "1.01"
     how: "curd and milk lift, all carts"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: curd_milk_lift_kept
     value: 1.0083
     shown: "1.01"
     how: "curd and milk lift, the two zone-weeks set aside"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: curd_milk_support_all
     value: 0.1859
     shown: "18.6 percent"
     how: "curd with milk over all carts"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: curd_milk_support_kept
     value: 0.1984
     shown: "19.8 percent"
     how: "curd with milk, the two zone-weeks set aside"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
 
 slot_value:
   - id: views_assumed
     value: 60000
     shown: "60,000"
     how: "cart-page views a day, the after-change mean in strip_log"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: add_rate_assumed
     value: 0.5
     shown: "0.5"
     how: "assumption, range 0.4 to 0.6 (strip_log reads 0.50)"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: add_rate_low
     value: 0.4
     shown: "0.4"
     how: "the range's low end"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: add_rate_high
     value: 0.6
     shown: "0.6"
     how: "the range's high end"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: margin_assumed
     value: 9
     shown: "Rs 9"
     how: "assumption, range Rs 7 to Rs 11"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: margin_low
     value: 7
     shown: "Rs 7"
     how: "the range's low end"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: margin_high
     value: 11
     shown: "Rs 11"
     how: "the range's high end"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: impressions_a_day
     value: 180000
     shown: "180,000"
     how: "60,000 views a day, each showing three slots"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: value_per_click_mid
     value: 4.5
     shown: "Rs 4.50"
     how: "0.5 adds a click x Rs 9"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: value_per_click_low
     value: 2.8
     shown: "Rs 2.80"
     how: "0.4 x Rs 7, the low end"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: value_per_click_high
     value: 6.6
     shown: "Rs 6.60"
     how: "0.6 x Rs 11, the high end"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: slot_value_other_day
     value: 17280
     shown: "Rs 17,280"
     how: "60,000 x 0.064 x 0.5 x 9"
-    used_in: "chapter 3, cheat sheet"
+    used_in: "SECTION 10, cheat sheet"
   - id: slot_value_milk_day
     value: 3240
     shown: "Rs 3,240"
     how: "60,000 x 0.012 x 0.5 x 9"
-    used_in: "chapter 3, cheat sheet"
+    used_in: "SECTION 10, cheat sheet"
   - id: slot_gap_day
     value: 14040
     shown: "Rs 14,040"
     how: "17,280 less 3,240, a slot a day"
-    used_in: "chapter 3"
+    used_in: "SECTION 10"
   - id: slot_gap_month
     value: 421200
     shown: "Rs 4.2 lakh"
     how: "14,040 x 30, a slot a month (the case file's Rs 4.2 lakh)"
-    used_in: "chapter 3"
+    used_in: "SECTION 10"
   - id: slot_value_other_month
     value: 518400
     shown: "Rs 5.2 lakh"
     how: "17,280 x 30"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: slot_value_milk_month
     value: 97200
     shown: "Rs 1.0 lakh"
     how: "3,240 x 30"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: milk_slots_worth
     value: 1.5
     shown: "1.5"
     how: "three slots times milk's half of the impressions"
-    used_in: "chapter 3"
+    used_in: "SECTION 10"
   - id: recoverable_month
     value: 631800
     shown: "Rs 6.3 lakh"
     how: "14,040 x 3 x 0.50 x 30: what re-ranking recovers on milk's half"
-    used_in: "chapter 3, half2, notes"
+    used_in: "SECTION 10, half2, notes"
   - id: ceiling_month
     value: 1263600
     shown: "Rs 12.6 lakh"
     how: "14,040 x 3 x 30: only if every slot showed milk (the case file's Rs 12.6 lakh)"
-    used_in: "notebook 03"
+    used_in: "notebook 10"
   - id: recoverable_low
     value: 393120
     shown: "Rs 3.9 lakh"
     how: "add rate 0.4 and margin Rs 7"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: recoverable_high
     value: 926640
     shown: "Rs 9.3 lakh"
     how: "add rate 0.6 and margin Rs 11"
-    used_in: "chapter 3, notebook 03"
+    used_in: "SECTION 10, notebook 10"
   - id: clicks_a_day
     value: 3840
     shown: "3,840"
@@ -1093,12 +1093,12 @@ slot_value:
     value: 1920
     shown: "1,920"
     how: "60,000 x 0.064 x 0.5"
-    used_in: "notebook 03, the trap"
+    used_in: "notebook 10, the trap"
   - id: gross_sales_day
     value: 80197
     shown: "Rs 80,197"
     how: "1,920 adds x the average price of an added item"
-    used_in: "notebook 03, the trap"
+    used_in: "notebook 10, the trap"
   - id: ice_cream_views_day
     value: 2400
     shown: "2,400"
@@ -1170,169 +1170,1054 @@ twelve_rows:
     value: 8
     shown: "8"
     how: "carts of the twelve holding milk"
-    used_in: "chapter 1, notebook 01, cheat sheet"
+    used_in: "SECTION 7, notebook 07, cheat sheet"
   - id: twelve_bread
     value: 4
     shown: "4"
     how: "carts holding bread"
-    used_in: "chapter 1, notebook 01"
+    used_in: "SECTION 7, notebook 07"
   - id: twelve_bread_milk
     value: 4
     shown: "4"
     how: "carts holding bread and milk"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_bread_support
     value: 0.3333
     shown: "0.33"
     how: "4 of 12"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_bread_milk_conf
     value: 1.0
     shown: "1.00"
     how: "4 of 4"
-    used_in: "chapter 1, cheat sheet"
+    used_in: "SECTION 7, cheat sheet"
   - id: twelve_milk_to_bread_conf
     value: 0.5
     shown: "0.50"
     how: "4 of 8"
-    used_in: "chapter 1, notebook 01"
+    used_in: "SECTION 7, notebook 07"
   - id: twelve_bread_milk_expected
     value: 2.6667
     shown: "2.67"
     how: "(4/12) x (8/12) x 12"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_bread_milk_lift
     value: 1.5
     shown: "1.50"
     how: "4 over 2.67"
-    used_in: "chapter 1, cheat sheet"
+    used_in: "SECTION 7, cheat sheet"
   - id: twelve_chips
     value: 3
     shown: "3"
     how: "carts holding chips"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_cold
     value: 3
     shown: "3"
     how: "carts holding a cold drink"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_chips_cold
     value: 2
     shown: "2"
     how: "carts holding both"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_chips_cold_support
     value: 0.1667
     shown: "0.17"
     how: "2 of 12"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_chips_cold_conf
     value: 0.6667
     shown: "0.67"
     how: "2 of 3"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_chips_cold_expected
     value: 0.75
     shown: "0.75"
     how: "(3/12) x (3/12) x 12"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_chips_cold_lift
     value: 2.6667
     shown: "2.67"
     how: "2 over 0.75"
-    used_in: "chapter 1, cheat sheet"
+    used_in: "SECTION 7, cheat sheet"
   - id: twelve_ice_choc
     value: 1
     shown: "1"
     how: "the one cart with both"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
   - id: twelve_ice_choc_lift
     value: 12.0
     shown: "12"
     how: "1 over (1/12)"
-    used_in: "chapter 1"
+    used_in: "SECTION 7"
 
 toy:
-  - id: tea_orders
-    value: 10
-    shown: "10"
-    how: "invented: ten tea-stall orders"
-    used_in: "chapter 1"
-  - id: tea_chai
-    value: 6
-    shown: "6"
-    how: "invented: orders with chai"
-    used_in: "chapter 1"
-  - id: tea_biscuit
-    value: 4
-    shown: "4"
-    how: "invented: orders with biscuit"
-    used_in: "chapter 1"
-  - id: tea_both
-    value: 3
-    shown: "3"
-    how: "invented: orders with both"
-    used_in: "chapter 1"
-  - id: tea_support
-    value: 0.3
-    shown: "0.30"
-    how: "3 of 10"
-    used_in: "chapter 1"
-  - id: tea_conf
-    value: 0.5
-    shown: "0.50"
-    how: "3 of 6"
-    used_in: "chapter 1"
-  - id: tea_conf_back
-    value: 0.75
-    shown: "0.75"
-    how: "3 of 4, biscuit to chai"
-    used_in: "chapter 1"
-  - id: tea_expected
-    value: 2.4
-    shown: "2.4"
-    how: "10 x 0.6 x 0.4"
-    used_in: "chapter 1"
-  - id: tea_lift
-    value: 1.25
-    shown: "1.25"
-    how: "3 over 2.4"
-    used_in: "chapter 1"
-  - id: tea_bag
-    value: 9
-    shown: "9"
-    how: "invented: orders with a carry bag"
-    used_in: "chapter 1"
-  - id: tea_bag_conf
-    value: 0.75
-    shown: "0.75"
-    how: "biscuit to bag: 3 of 4"
-    used_in: "chapter 1"
-  - id: tea_bag_lift
-    value: 0.8333
-    shown: "0.83"
-    how: "0.75 over 0.9"
-    used_in: "chapter 1"
-  - id: tea_chai_share
-    value: 0.6
-    shown: "0.60"
-    how: "6 of 10 orders hold chai"
-    used_in: "chapter 1, the second route"
-  - id: tea_biscuit_share
-    value: 0.4
-    shown: "0.40"
-    how: "4 of 10 orders hold biscuit"
-    used_in: "chapter 1, the second route"
   - id: weight_example_carts
     value: 4
     shown: "4"
     how: "invented: a shopper with four carts"
-    used_in: "chapter 3, counting each customer once"
+    used_in: "SECTION 10, counting each customer once"
   - id: weight_example
     value: 0.25
     shown: "0.25"
     how: "one over four: each of that shopper's carts weighs 0.25"
-    used_in: "chapter 3, counting each customer once"
+    used_in: "SECTION 10, counting each customer once"
+  - id: toy_canteen_orders
+    value: 12
+    shown: "12"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: a hostel canteen's lunch orders, table data/C2_W04_D03_canteen_order_lines_STUDENT.csv"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06, notes, cheat sheet, canteen_concepts set"
+  - id: toy_canteen_lines
+    value: 33
+    shown: "33"
+    how: "invented for the concept chapter on Basket analysis on the order items: order lines, one row per item in an order"
+    used_by: "half1 SECTION 5, notebook 05, notes, cheat sheet"
+  - id: toy_canteen_items
+    value: 8
+    shown: "eight"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: items on the canteen's menu"
+    used_by: "half1 SECTION 1, notebook 07, notebook 05"
+  - id: toy_canteen_pair_lines
+    value: 30
+    shown: "30"
+    how: "invented for the concept chapter on Basket analysis on the order items: pairs counted once per order: 9 three-line orders give 27, 3 two-line orders give 3"
+    used_by: "half1 SECTION 5, notebook 05, Kahoot, notes, cheat sheet, canteen_concepts Q5"
+  - id: toy_canteen_distinct_pairs
+    value: 13
+    shown: "13"
+    how: "invented for the concept chapter on Basket analysis on the order items: distinct pairs found in at least one order"
+    used_by: "half1 SECTION 5, notebook 05"
+  - id: toy_canteen_pair_lines_both_orders
+    value: 60
+    shown: "60"
+    how: "invented for the concept chapter on Basket analysis on the order items: the trap: every pair counted once in each order of its two names"
+    used_by: "half1 SECTION 5, notebook 05"
+  - id: toy_canteen_possible_pairs
+    value: 28
+    shown: "28"
+    how: "invented for the concept chapter on Basket analysis on the order items: pairs eight items could form, 8 x 7 / 2 (a distractor)"
+    used_by: "half1 SECTION 5, notebook 05"
+  - id: toy_canteen_three_line_orders
+    value: 9
+    shown: "nine"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders with three lines"
+    used_by: "half1 SECTION 5, notebook 05"
+  - id: toy_canteen_two_line_orders
+    value: 3
+    shown: "three"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders with two lines"
+    used_by: "half1 SECTION 5, notebook 05"
+  - id: toy_canteen_pairs_from_three
+    value: 27
+    shown: "27"
+    how: "invented for the concept chapter on Basket analysis on the order items: nine three-line orders, three pairs each"
+    used_by: "half1 SECTION 5, notebook 05"
+  - id: toy_canteen_four_item_pairs
+    value: 6
+    shown: "six"
+    how: "invented for the concept chapter on Basket analysis on the order items: a basket of four items adds 4 x 3 / 2 pairs"
+    used_by: "half1 SECTION 5, notebook 05, canteen_concepts Q5"
+  - id: toy_canteen_chaas_orders
+    value: 9
+    shown: "9"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding chaas"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_chaas_share
+    value: 0.75
+    shown: "0.75"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: chaas's share of the twelve orders, 9 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_dal_rice_orders
+    value: 6
+    shown: "6"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding dal rice"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_dal_rice_share
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: dal rice's share of the twelve orders, 6 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_papad_orders
+    value: 5
+    shown: "5"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding papad"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_papad_share
+    value: 0.4167
+    shown: "0.42"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: papad's share of the twelve orders, 5 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_roti_orders
+    value: 4
+    shown: "4"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding roti"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_roti_share
+    value: 0.3333
+    shown: "0.33"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: roti's share of the twelve orders, 4 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_sabzi_orders
+    value: 4
+    shown: "4"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding sabzi"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_sabzi_share
+    value: 0.3333
+    shown: "0.33"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: sabzi's share of the twelve orders, 4 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_curd_orders
+    value: 2
+    shown: "2"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding curd"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_curd_share
+    value: 0.1667
+    shown: "0.17"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: curd's share of the twelve orders, 2 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_pickle_orders
+    value: 2
+    shown: "2"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding pickle"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_pickle_share
+    value: 0.1667
+    shown: "0.17"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: pickle's share of the twelve orders, 2 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_gulab_jamun_orders
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders, of the twelve, holding gulab jamun"
+    used_by: "half1 SECTION 1 to SECTION 6, notebooks 01 to 06"
+  - id: toy_canteen_gulab_jamun_share
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: gulab jamun's share of the twelve orders, 1 of 12"
+    used_by: "half1 SECTION 1 to SECTION 4, notebooks 01 to 04"
+  - id: toy_canteen_roti_sabzi_both
+    value: 3
+    shown: "3"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders holding roti and sabzi"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_roti_sabzi_support
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 3 of 12 orders hold roti and sabzi"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_roti_sabzi_conf_ab
+    value: 0.75
+    shown: "0.75"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: confidence from roti to sabzi, 3 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_sabzi_conf_ba
+    value: 0.75
+    shown: "0.75"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: confidence from sabzi to roti, 3 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_sabzi_expected
+    value: 1.3333
+    shown: "1.33"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 12 x 4/12 x 4/12, the orders chance alone gives roti and sabzi"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_roti_sabzi_lift
+    value: 2.25
+    shown: "2.25"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 3 seen over 1.33 expected for roti and sabzi"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_dal_papad_both
+    value: 3
+    shown: "3"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders holding dal rice and papad"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_dal_papad_support
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 3 of 12 orders hold dal rice and papad"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_dal_papad_conf_ab
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: confidence from dal rice to papad, 3 of 6"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_papad_conf_ba
+    value: 0.6
+    shown: "0.60"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: confidence from papad to dal rice, 3 of 5"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_papad_expected
+    value: 2.5
+    shown: "2.5"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 12 x 6/12 x 5/12, the orders chance alone gives dal rice and papad"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_dal_papad_lift
+    value: 1.2
+    shown: "1.20"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 3 seen over 2.50 expected for dal rice and papad"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_roti_chaas_both
+    value: 3
+    shown: "3"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders holding roti and chaas"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_roti_chaas_support
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 3 of 12 orders hold roti and chaas"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_roti_chaas_conf_ab
+    value: 0.75
+    shown: "0.75"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: confidence from roti to chaas, 3 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_chaas_conf_ba
+    value: 0.3333
+    shown: "0.33"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: confidence from chaas to roti, 3 of 9"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_chaas_expected
+    value: 3.0
+    shown: "3"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 12 x 4/12 x 9/12, the orders chance alone gives roti and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_roti_chaas_lift
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: 3 seen over 3.00 expected for roti and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_dal_chaas_both
+    value: 6
+    shown: "6"
+    how: "invented for the concept chapter on The confidence trap; lift near one: orders holding dal rice and chaas"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_dal_chaas_support
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 6 of 12 orders hold dal rice and chaas"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_dal_chaas_conf_ab
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on The confidence trap; lift near one: confidence from dal rice to chaas, 6 of 6"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_chaas_conf_ba
+    value: 0.6667
+    shown: "0.67"
+    how: "invented for the concept chapter on The confidence trap; lift near one: confidence from chaas to dal rice, 6 of 9"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_chaas_expected
+    value: 4.5
+    shown: "4.5"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 12 x 6/12 x 9/12, the orders chance alone gives dal rice and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_dal_chaas_lift
+    value: 1.3333
+    shown: "1.33"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 6 seen over 4.50 expected for dal rice and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_sabzi_chaas_both
+    value: 4
+    shown: "4"
+    how: "invented for the concept chapter on The confidence trap; lift near one: orders holding sabzi and chaas"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_sabzi_chaas_support
+    value: 0.3333
+    shown: "0.33"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 4 of 12 orders hold sabzi and chaas"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_sabzi_chaas_conf_ab
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on The confidence trap; lift near one: confidence from sabzi to chaas, 4 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_sabzi_chaas_conf_ba
+    value: 0.4444
+    shown: "0.44"
+    how: "invented for the concept chapter on The confidence trap; lift near one: confidence from chaas to sabzi, 4 of 9"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_sabzi_chaas_expected
+    value: 3.0
+    shown: "3"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 12 x 4/12 x 9/12, the orders chance alone gives sabzi and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_sabzi_chaas_lift
+    value: 1.3333
+    shown: "1.33"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 4 seen over 3.00 expected for sabzi and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_papad_chaas_both
+    value: 3
+    shown: "3"
+    how: "invented for the concept chapter on The confidence trap; lift near one: orders holding papad and chaas"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_papad_chaas_support
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 3 of 12 orders hold papad and chaas"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_papad_chaas_conf_ab
+    value: 0.6
+    shown: "0.60"
+    how: "invented for the concept chapter on The confidence trap; lift near one: confidence from papad to chaas, 3 of 5"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_papad_chaas_conf_ba
+    value: 0.3333
+    shown: "0.33"
+    how: "invented for the concept chapter on The confidence trap; lift near one: confidence from chaas to papad, 3 of 9"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_papad_chaas_expected
+    value: 3.75
+    shown: "3.75"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 12 x 5/12 x 9/12, the orders chance alone gives papad and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_papad_chaas_lift
+    value: 0.8
+    shown: "0.80"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 3 seen over 3.75 expected for papad and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_papad_pickle_both
+    value: 2
+    shown: "2"
+    how: "invented for the concept chapter on The support floor and the watch list: orders holding papad and pickle"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_papad_pickle_support
+    value: 0.1667
+    shown: "0.17"
+    how: "invented for the concept chapter on The support floor and the watch list: 2 of 12 orders hold papad and pickle"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_papad_pickle_conf_ab
+    value: 0.4
+    shown: "0.40"
+    how: "invented for the concept chapter on The support floor and the watch list: confidence from papad to pickle, 2 of 5"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_papad_pickle_conf_ba
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on The support floor and the watch list: confidence from pickle to papad, 2 of 2"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_papad_pickle_expected
+    value: 0.8333
+    shown: "0.83"
+    how: "invented for the concept chapter on The support floor and the watch list: 12 x 5/12 x 2/12, the orders chance alone gives papad and pickle"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_papad_pickle_lift
+    value: 2.4
+    shown: "2.40"
+    how: "invented for the concept chapter on The support floor and the watch list: 2 seen over 0.83 expected for papad and pickle"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_gulab_curd_both
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on The support floor and the watch list: orders holding gulab jamun and curd"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_gulab_curd_support
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on The support floor and the watch list: 1 of 12 orders hold gulab jamun and curd"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_gulab_curd_conf_ab
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on The support floor and the watch list: confidence from gulab jamun to curd, 1 of 1"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_gulab_curd_conf_ba
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on The support floor and the watch list: confidence from curd to gulab jamun, 1 of 2"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_gulab_curd_expected
+    value: 0.1667
+    shown: "0.17"
+    how: "invented for the concept chapter on The support floor and the watch list: 12 x 1/12 x 2/12, the orders chance alone gives gulab jamun and curd"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_gulab_curd_lift
+    value: 6.0
+    shown: "6.00"
+    how: "invented for the concept chapter on The support floor and the watch list: 1 seen over 0.17 expected for gulab jamun and curd"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_curd_chaas_both
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders holding curd and chaas"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_curd_chaas_support
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 of 12 orders hold curd and chaas"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_curd_chaas_conf_ab
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from curd to chaas, 1 of 2"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_curd_chaas_conf_ba
+    value: 0.1111
+    shown: "0.11"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from chaas to curd, 1 of 9"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_curd_chaas_expected
+    value: 1.5
+    shown: "1.5"
+    how: "invented for the concept chapter on Basket analysis on the order items: 12 x 2/12 x 9/12, the orders chance alone gives curd and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_curd_chaas_lift
+    value: 0.6667
+    shown: "0.67"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 seen over 1.50 expected for curd and chaas"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_roti_pickle_both
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders holding roti and pickle"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_roti_pickle_support
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 of 12 orders hold roti and pickle"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_roti_pickle_conf_ab
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from roti to pickle, 1 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_pickle_conf_ba
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from pickle to roti, 1 of 2"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_pickle_expected
+    value: 0.6667
+    shown: "0.67"
+    how: "invented for the concept chapter on Basket analysis on the order items: 12 x 4/12 x 2/12, the orders chance alone gives roti and pickle"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_roti_pickle_lift
+    value: 1.5
+    shown: "1.50"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 seen over 0.67 expected for roti and pickle"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_dal_curd_both
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders holding dal rice and curd"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_dal_curd_support
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 of 12 orders hold dal rice and curd"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_dal_curd_conf_ab
+    value: 0.1667
+    shown: "0.17"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from dal rice to curd, 1 of 6"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_curd_conf_ba
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from curd to dal rice, 1 of 2"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_curd_expected
+    value: 1.0
+    shown: "1"
+    how: "invented for the concept chapter on Basket analysis on the order items: 12 x 6/12 x 2/12, the orders chance alone gives dal rice and curd"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_dal_curd_lift
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 seen over 1.00 expected for dal rice and curd"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_roti_papad_both
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders holding roti and papad"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_roti_papad_support
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 of 12 orders hold roti and papad"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_roti_papad_conf_ab
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from roti to papad, 1 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_papad_conf_ba
+    value: 0.2
+    shown: "0.20"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from papad to roti, 1 of 5"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_roti_papad_expected
+    value: 1.6667
+    shown: "1.67"
+    how: "invented for the concept chapter on Basket analysis on the order items: 12 x 4/12 x 5/12, the orders chance alone gives roti and papad"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_roti_papad_lift
+    value: 0.6
+    shown: "0.60"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 seen over 1.67 expected for roti and papad"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_dal_sabzi_both
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Basket analysis on the order items: orders holding dal rice and sabzi"
+    used_by: "notebooks 01 to 06, half1 SECTIONs 1 to 6"
+  - id: toy_canteen_dal_sabzi_support
+    value: 0.0833
+    shown: "0.08"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 of 12 orders hold dal rice and sabzi"
+    used_by: "notebooks 01 and 05, half1 SECTIONs 1 and 5"
+  - id: toy_canteen_dal_sabzi_conf_ab
+    value: 0.1667
+    shown: "0.17"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from dal rice to sabzi, 1 of 6"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_sabzi_conf_ba
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Basket analysis on the order items: confidence from sabzi to dal rice, 1 of 4"
+    used_by: "notebooks 02 to 05, half1 SECTIONs 2 to 5"
+  - id: toy_canteen_dal_sabzi_expected
+    value: 2.0
+    shown: "2"
+    how: "invented for the concept chapter on Basket analysis on the order items: 12 x 6/12 x 4/12, the orders chance alone gives dal rice and sabzi"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6"
+  - id: toy_canteen_dal_sabzi_lift
+    value: 0.5
+    shown: "0.50"
+    how: "invented for the concept chapter on Basket analysis on the order items: 1 seen over 2.00 expected for dal rice and sabzi"
+    used_by: "notebooks 03 to 06, half1 SECTIONs 3 to 6, notes, cheat sheet"
+  - id: toy_canteen_roti_only
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders with roti and no sabzi"
+    used_by: "half1 SECTION 1, notebook 07, cheat sheet panel 1"
+  - id: toy_canteen_sabzi_only
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders with sabzi and no roti"
+    used_by: "half1 SECTION 1, notebook 07, cheat sheet panel 1"
+  - id: toy_canteen_neither
+    value: 7
+    shown: "7"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders with neither roti nor sabzi"
+    used_by: "half1 SECTION 1, notebook 07, cheat sheet panel 1"
+  - id: toy_canteen_roti_or_sabzi
+    value: 5
+    shown: "5"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: orders holding roti or sabzi or both (a distractor)"
+    used_by: "half1 SECTION 1, notebook 07"
+  - id: toy_canteen_roti_plus_sabzi
+    value: 8
+    shown: "8"
+    how: "invented for the concept chapter on Support, confidence and lift, derived by counting: the trap: roti's 4 orders plus sabzi's 4, added without looking inside the orders"
+    used_by: "half1 SECTION 1, notebook 07, canteen_concepts Q1"
+  - id: toy_canteen_chaas_conf_low
+    value: 0.6
+    shown: "0.60"
+    how: "invented for the concept chapter on The confidence trap; lift near one: lowest confidence toward chaas among the four items in four or more orders (papad)"
+    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+  - id: toy_canteen_chaas_conf_high
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on The confidence trap; lift near one: highest, dal rice and sabzi"
+    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+  - id: toy_canteen_chaas_lift_low
+    value: 0.8
+    shown: "0.80"
+    how: "invented for the concept chapter on The confidence trap; lift near one: lowest lift with chaas among the same four (papad)"
+    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+  - id: toy_canteen_chaas_lift_high
+    value: 1.3333
+    shown: "1.33"
+    how: "invented for the concept chapter on The confidence trap; lift near one: highest, dal rice and sabzi"
+    used_by: "half1 SECTION 4, notebook 11, notes, cheat sheet panel 2"
+  - id: toy_canteen_items_four_or_more
+    value: 4
+    shown: "four"
+    how: "invented for the concept chapter on The confidence trap; lift near one: items other than chaas in four or more of the twelve orders"
+    used_by: "half1 SECTION 4, notebook 11"
+  - id: toy_canteen_floor_orders
+    value: 3
+    shown: "3"
+    how: "invented for the concept chapter on The support floor and the watch list: the floor on the twelve orders: a pair must sit in three before its lift is read"
+    used_by: "half1 SECTION 6, notebook 06, canteen_concepts Q6"
+  - id: toy_canteen_lift_bar
+    value: 1.5
+    shown: "1.5"
+    how: "invented for the concept chapter on The support floor and the watch list: the lift a pair needs above the floor to be promoted, as the case uses"
+    used_by: "half1 SECTION 6, notebook 06"
+  - id: toy_check_popular_share
+    value: 0.6
+    shown: "60 percent"
+    how: "invented for the concept chapter on The confidence trap; lift near one: the chapter's check question: an item in 60 percent of a shop's bills"
+    used_by: "half1 SECTION 4, notebook 11"
+  - id: toy_check_partner_conf
+    value: 0.66
+    shown: "0.66"
+    how: "invented for the concept chapter on The confidence trap; lift near one: the partner's confidence toward it"
+    used_by: "half1 SECTION 4, notebook 11"
+  - id: toy_check_partner_lift
+    value: 1.1
+    shown: "1.10"
+    how: "invented for the concept chapter on The confidence trap; lift near one: 0.66 over 0.60"
+    used_by: "half1 SECTION 4, notebook 11"
+  - id: toy_sweep_share_low
+    value: 0.2
+    shown: "0.2"
+    how: "invented for the concept chapter on The confidence trap; lift near one: the sweep's lowest share for the popular item, lift held at one"
+    used_by: "notebook 11"
+  - id: toy_sweep_share_high
+    value: 0.9
+    shown: "0.9"
+    how: "invented for the concept chapter on The confidence trap; lift near one: the sweep's highest share"
+    used_by: "notebook 11"
+  - id: toy_month_orders
+    value: 600
+    shown: "600"
+    how: "invented for the concept chapter on The support floor and the watch list: a month of the canteen's orders in which no item depends on another, data/C2_W04_D03_canteen_month_STUDENT.csv"
+    used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_month_items
+    value: 14
+    shown: "14"
+    how: "invented for the concept chapter on The support floor and the watch list: items on the month's menu, the eight plus six rarer specials"
+    used_by: "notebook 06"
+  - id: toy_month_lines
+    value: 1579
+    shown: "1,579"
+    how: "invented for the concept chapter on The support floor and the watch list: order lines in the month"
+    used_by: "notebook 06"
+  - id: toy_month_pairs
+    value: 63
+    shown: "63"
+    how: "invented for the concept chapter on The support floor and the watch list: distinct pairs found in at least one of the 600 orders"
+    used_by: "notebook 06"
+  - id: toy_month_thin_pairs
+    value: 19
+    shown: "19"
+    how: "invented for the concept chapter on The support floor and the watch list: pairs on one or two orders"
+    used_by: "notebook 06"
+  - id: toy_month_thin_above_6
+    value: 1
+    shown: "1"
+    how: "invented for the concept chapter on The support floor and the watch list: of those, pairs reading lift above 6"
+    used_by: "notebook 06"
+  - id: toy_month_thin_top_lift
+    value: 8.5714
+    shown: "8.57"
+    how: "invented for the concept chapter on The support floor and the watch list: gulab jamun and jalebi, the strongest pair on one or two orders"
+    used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_month_thin_top_orders
+    value: 2
+    shown: "2"
+    how: "invented for the concept chapter on The support floor and the watch list: orders holding gulab jamun and jalebi"
+    used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_month_gulab_jamun_orders
+    value: 20
+    shown: "20"
+    how: "invented for the concept chapter on The support floor and the watch list: orders of the 600 holding gulab jamun"
+    used_by: "notebook 06"
+  - id: toy_month_jalebi_orders
+    value: 7
+    shown: "7"
+    how: "invented for the concept chapter on The support floor and the watch list: orders of the 600 holding jalebi"
+    used_by: "notebook 06"
+  - id: toy_month_thin_top_expected
+    value: 0.2333
+    shown: "0.23"
+    how: "invented for the concept chapter on The support floor and the watch list: what chance alone gives the pair"
+    used_by: "notebook 06"
+  - id: toy_month_one_top_lift
+    value: 5.8824
+    shown: "5.88"
+    how: "invented for the concept chapter on The support floor and the watch list: curd and fruit plate, the strongest pair on a single order"
+    used_by: "notebook 06"
+  - id: toy_month_thick_floor
+    value: 30
+    shown: "30"
+    how: "invented for the concept chapter on The support floor and the watch list: orders a pair needs to count as thick in the month, Week 1 Thursday's thirty"
+    used_by: "half1 SECTION 6, notebook 06"
+  - id: toy_month_thick_pairs
+    value: 10
+    shown: "10"
+    how: "invented for the concept chapter on The support floor and the watch list: pairs on 30 or more orders"
+    used_by: "half1 SECTION 6, notebook 06"
+  - id: toy_month_thick_low
+    value: 0.8981
+    shown: "0.90"
+    how: "invented for the concept chapter on The support floor and the watch list: lowest lift among them"
+    used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_month_thick_high
+    value: 1.0
+    shown: "1.00"
+    how: "invented for the concept chapter on The support floor and the watch list: highest lift among them"
+    used_by: "half1 SECTION 6, notebook 06, notes"
+  - id: toy_kirana_bills
+    value: 1000.0
+    shown: "1,000"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Sharma Kirana's bills in one month"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_tea_bills
+    value: 600.0
+    shown: "600"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: bills holding tea"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_rusk_bills
+    value: 200.0
+    shown: "200"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: bills holding rusk"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_both_bills
+    value: 150.0
+    shown: "150"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: bills holding both"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_tea_only
+    value: 450.0
+    shown: "450"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: tea bills with no rusk, the ones a combo card could reach"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_support
+    value: 0.15
+    shown: "0.15"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 of 1,000"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_tea_share
+    value: 0.6
+    shown: "0.60"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 600 of 1,000"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_rusk_share
+    value: 0.2
+    shown: "0.20"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 200 of 1,000"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_conf_tea_rusk
+    value: 0.25
+    shown: "0.25"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 of 600"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_conf_rusk_tea
+    value: 0.75
+    shown: "0.75"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 of 200"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_expected
+    value: 120.0
+    shown: "120"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 1,000 x 0.60 x 0.20"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_lift
+    value: 1.25
+    shown: "1.25"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 over 120"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_rusk_price
+    value: 30.0
+    shown: "Rs 30"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a rusk pack's price"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_rusk_cost
+    value: 18.0
+    shown: "Rs 18"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a rusk pack's cost to the shop"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_margin
+    value: 12.0
+    shown: "Rs 12"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 30 less Rs 18"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_discount
+    value: 1.0
+    shown: "Rs 1"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the combo card's discount on a bill holding both"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_printing
+    value: 20.0
+    shown: "Rs 20"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: printing the cards for the month"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_response
+    value: 0.04
+    shown: "4 percent"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: assumption: share of the 450 that add a pack, range 2 to 6 percent"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_response_low
+    value: 0.02
+    shown: "2 percent"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: assumption, low end"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_response_high
+    value: 0.06
+    shown: "6 percent"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: assumption, high end"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_packs
+    value: 18
+    shown: "18"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 450 x 4 percent, the incremental packs"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_packs_low
+    value: 9
+    shown: "9"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 450 x 2 percent"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_packs_high
+    value: 27
+    shown: "27"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 450 x 6 percent"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_combos
+    value: 168.0
+    shown: "168"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 150 who bought both anyway plus the 18 new ones"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_incremental_margin
+    value: 216.0
+    shown: "Rs 216"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 18 packs x Rs 12"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_discount_back
+    value: 168.0
+    shown: "Rs 168"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 1 on each of 168 combo bills"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_ev
+    value: 28.0
+    shown: "Rs 28"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 216 less Rs 168 less Rs 20, the expected value a month"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_ev_low
+    value: -71.0
+    shown: "Rs -71"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same at 2 percent: 9 x 12 less 159 less 20"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_ev_high
+    value: 127.0
+    shown: "Rs 127"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same at 6 percent: 27 x 12 less 177 less 20"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_ev_rs2
+    value: -140.0
+    shown: "Rs -140"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the same card at Rs 2 off, response held at 4 percent"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_sales_wrong
+    value: 5040.0
+    shown: "Rs 5,040"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the trap: 168 combo bills x Rs 30 of rusk sales"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_every_combo_wrong
+    value: 2016.0
+    shown: "Rs 2,016"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a distractor: every combo counted as incremental, 168 x Rs 12"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_no_discount_wrong
+    value: 196.0
+    shown: "Rs 196"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: a distractor: the discount forgotten, Rs 216 less Rs 20"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_before
+    value: 2400.0
+    shown: "Rs 2,400"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: rusk margin before the card, 200 x Rs 12"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_after
+    value: 2428.0
+    shown: "Rs 2,428"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: rusk margin after it, 218 x Rs 12 less Rs 168 less Rs 20"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_breakeven
+    value: 1.1667
+    shown: "Rs 1.17"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the discount at which the card earns nothing, Rs 196 over 168"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_kirana_sales_multiple
+    value: 180
+    shown: "180 times"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: Rs 5,040 over Rs 28"
+    used_by: "half2 SECTION 9, notebook 09, notes, cheat sheet panel 5, canteen_concepts Q7"
+  - id: toy_check_ev_bills
+    value: 2000
+    shown: "2,000"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the check question: bills a combo card reaches"
+    used_by: "half2 SECTION 9, notebook 09"
+  - id: toy_check_ev_response
+    value: 0.05
+    shown: "5 percent"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the share that add one extra pack"
+    used_by: "half2 SECTION 9, notebook 09"
+  - id: toy_check_ev_margin
+    value: 10
+    shown: "Rs 10"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the margin on that pack"
+    used_by: "half2 SECTION 9, notebook 09"
+  - id: toy_check_ev_cost
+    value: 600
+    shown: "Rs 600"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: the cards' cost"
+    used_by: "half2 SECTION 9, notebook 09"
+  - id: toy_check_ev_packs
+    value: 100
+    shown: "100"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 2,000 x 5 percent"
+    used_by: "half2 SECTION 9, notebook 09"
+  - id: toy_check_ev_ev
+    value: 400
+    shown: "Rs 400"
+    how: "invented for the concept chapter on Cross-sell and upsell reasoning; expected value in rupees: 100 x Rs 10 less Rs 600"
+    used_by: "half2 SECTION 9, notebook 09"
+  - id: toy_quiz_bills
+    value: 1000
+    shown: "1,000"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: the Kahoot's lift sum: bills"
+    used_by: "Kahoot"
+  - id: toy_quiz_a
+    value: 200
+    shown: "200"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: bills holding A"
+    used_by: "Kahoot"
+  - id: toy_quiz_b
+    value: 100
+    shown: "100"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: bills holding B"
+    used_by: "Kahoot"
+  - id: toy_quiz_both
+    value: 40
+    shown: "40"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: bills holding both"
+    used_by: "Kahoot"
+  - id: toy_quiz_expected
+    value: 20
+    shown: "20"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: 1,000 x 0.2 x 0.1"
+    used_by: "Kahoot"
+  - id: toy_quiz_lift
+    value: 2.0
+    shown: "2.00"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: 40 over 20"
+    used_by: "Kahoot"
+  - id: toy_quiz_conf_ab
+    value: 0.2
+    shown: "0.20"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: a distractor: 40 of 200, a confidence"
+    used_by: "Kahoot"
+  - id: toy_quiz_conf_ba
+    value: 0.4
+    shown: "0.40"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: a distractor: 40 of 100, the other confidence"
+    used_by: "Kahoot"
+  - id: toy_quiz_support
+    value: 0.04
+    shown: "0.04"
+    how: "invented for the Kahoot item on Support, confidence and lift, derived by counting: a distractor: 40 of 1,000, the support"
+    used_by: "Kahoot"
+  - id: toy_quiz_basket_pairs
+    value: 3
+    shown: "3"
+    how: "invented for the Kahoot item on Basket analysis on the order items: a basket of three items adds three pairs"
+    used_by: "Kahoot"
 
 public:
   - id: instamart_orders_per_store
@@ -1354,22 +2239,22 @@ public:
     value: 0.28
     shown: "over 28 percent"
     how: "Maxxsaver users among MTUs (W4)"
-    used_in: "chapter 3, notes"
+    used_in: "SECTION 10, notes"
   - id: maxxsaver_aov
     value: 612
     shown: "Rs 612"
     how: "Maxxsaver AOV, up 16 percent (W4)"
-    used_in: "chapter 3, notes"
+    used_in: "SECTION 10, notes"
   - id: osco_transactions
     value: 1200000
     shown: "about 1.2 million"
     how: "Osco Drug transactions, 1992 (W2)"
-    used_in: "chapter 2, notes"
+    used_in: "SECTION 8, notes"
   - id: uber_cross_use
     value: 3
     shown: "over three times"
     how: "bookings of consumers who use rides and delivery (W4)"
-    used_in: "chapter 3, notes"
+    used_in: "SECTION 10, notes"
   - id: walmart_poptarts
     value: 7
     shown: "about seven times"
@@ -1379,7 +2264,7 @@ public:
     value: 0.16
     shown: "16 percent"
     how: "Instamart AOV growth quarter on quarter, Q1 FY26 letter (W4, checked 12 October 2026)"
-    used_in: "chapter 3, notes"
+    used_in: "SECTION 10, notes"
   - id: uber_both_share
     value: 0.2
     shown: "about one in five"
@@ -1528,589 +2413,589 @@ pairs_detail:
     value: 0.06
     shown: "0.060"
     how: "share of carts holding apples"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: atta_share
     value: 0.09
     shown: "0.090"
     how: "share of carts holding atta"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: bath_soap_share
     value: 0.03
     shown: "0.030"
     how: "share of carts holding bath soap"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: batteries_share
     value: 0.008
     shown: "0.008"
     how: "share of carts holding batteries"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: biscuits_share
     value: 0.1
     shown: "0.100"
     how: "share of carts holding biscuits"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: capsicum_share
     value: 0.04
     shown: "0.040"
     how: "share of carts holding capsicum"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: carrots_share
     value: 0.04
     shown: "0.040"
     how: "share of carts holding carrots"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: cheese_slices_share
     value: 0.03
     shown: "0.030"
     how: "share of carts holding cheese slices"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: chocolate_bar_share
     value: 0.045
     shown: "0.045"
     how: "share of carts holding chocolate bar"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: coffee_share
     value: 0.02
     shown: "0.020"
     how: "share of carts holding coffee"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: cucumber_share
     value: 0.05
     shown: "0.050"
     how: "share of carts holding cucumber"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: curry_leaves_share
     value: 0.03
     shown: "0.030"
     how: "share of carts holding curry leaves"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: detergent_share
     value: 0.03
     shown: "0.030"
     how: "share of carts holding detergent"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: diapers_share
     value: 0.015
     shown: "0.015"
     how: "share of carts holding diapers"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: dish_soap_share
     value: 0.035
     shown: "0.035"
     how: "share of carts holding dish soap"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: garlic_share
     value: 0.06
     shown: "0.060"
     how: "share of carts holding garlic"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: ghee_share
     value: 0.025
     shown: "0.025"
     how: "share of carts holding ghee"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: ginger_share
     value: 0.07
     shown: "0.070"
     how: "share of carts holding ginger"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: green_peas_share
     value: 0.02
     shown: "0.020"
     how: "share of carts holding green peas"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: ice_cubes_share
     value: 0.01
     shown: "0.010"
     how: "share of carts holding ice cubes"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: jaggery_share
     value: 0.015
     shown: "0.015"
     how: "share of carts holding jaggery"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: ketchup_share
     value: 0.03
     shown: "0.030"
     how: "share of carts holding ketchup"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: lemons_share
     value: 0.06
     shown: "0.060"
     how: "share of carts holding lemons"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: maggi_noodles_share
     value: 0.06
     shown: "0.060"
     how: "share of carts holding maggi noodles"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: mint_share
     value: 0.02
     shown: "0.020"
     how: "share of carts holding mint"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: mosquito_repellent_share
     value: 0.015
     shown: "0.015"
     how: "share of carts holding mosquito repellent"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: namkeen_share
     value: 0.05
     shown: "0.050"
     how: "share of carts holding namkeen"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: paper_cups_share
     value: 0.009
     shown: "0.009"
     how: "share of carts holding paper cups"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: pav_share
     value: 0.04
     shown: "0.040"
     how: "share of carts holding pav"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: peanuts_share
     value: 0.025
     shown: "0.025"
     how: "share of carts holding peanuts"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: poha_share
     value: 0.045
     shown: "0.045"
     how: "share of carts holding poha"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: rice_share
     value: 0.06
     shown: "0.060"
     how: "share of carts holding rice"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: rusk_share
     value: 0.03
     shown: "0.030"
     how: "share of carts holding rusk"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: sabudana_share
     value: 0.012
     shown: "0.012"
     how: "share of carts holding sabudana"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: sanitary_pads_share
     value: 0.02
     shown: "0.020"
     how: "share of carts holding sanitary pads"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: shampoo_share
     value: 0.02
     shown: "0.020"
     how: "share of carts holding shampoo"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: spinach_share
     value: 0.05
     shown: "0.050"
     how: "share of carts holding spinach"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: sugar_share
     value: 0.07
     shown: "0.070"
     how: "share of carts holding sugar"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: sunflower_oil_share
     value: 0.04
     shown: "0.040"
     how: "share of carts holding sunflower oil"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: tea_share
     value: 0.065
     shown: "0.065"
     how: "share of carts holding tea"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: tissues_share
     value: 0.02
     shown: "0.020"
     how: "share of carts holding tissues"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: toor_dal_share
     value: 0.05
     shown: "0.050"
     how: "share of carts holding toor dal"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: toothpaste_share
     value: 0.025
     shown: "0.025"
     how: "share of carts holding toothpaste"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: by_count_bread_toned_milk
     value: 10064
     shown: "10,064"
     how: "carts holding bread and toned milk, ranked by count"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: by_count_eggs_toned_milk
     value: 8468
     shown: "8,468"
     how: "carts holding eggs and toned milk, ranked by count"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: by_count_curd_toned_milk
     value: 7436
     shown: "7,436"
     how: "carts holding curd and toned milk, ranked by count"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: by_count_bananas_toned_milk
     value: 6624
     shown: "6,624"
     how: "carts holding bananas and toned milk, ranked by count"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: by_count_onions_toned_milk
     value: 6248
     shown: "6,248"
     how: "carts holding onions and toned milk, ranked by count"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: by_count_tomatoes_toned_milk
     value: 5680
     shown: "5,680"
     how: "carts holding tomatoes and toned milk, ranked by count"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: pair_chips_cold_drink_carts
     value: 2000
     shown: "2,000"
     how: "carts holding chips and cold drink"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_chips_cold_drink_support
     value: 0.05
     shown: "0.0500"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_chips_cold_drink_lift
     value: 3.3875
     shown: "3.3875"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_coriander_green_chillies_carts
     value: 1440
     shown: "1,440"
     how: "carts holding coriander and green chillies"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_coriander_green_chillies_support
     value: 0.036
     shown: "0.0360"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_coriander_green_chillies_lift
     value: 3.0
     shown: "3.0000"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_bread_butter_carts
     value: 1800
     shown: "1,800"
     how: "carts holding bread and butter"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_bread_butter_support
     value: 0.045
     shown: "0.0450"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_bread_butter_lift
     value: 2.2059
     shown: "2.2059"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_onions_tomatoes_carts
     value: 3000
     shown: "3,000"
     how: "carts holding onions and tomatoes"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_onions_tomatoes_support
     value: 0.075
     shown: "0.0750"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_onions_tomatoes_lift
     value: 1.7045
     shown: "1.7045"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_butter_tomatoes_carts
     value: 524
     shown: "524"
     how: "carts holding butter and tomatoes"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_butter_tomatoes_support
     value: 0.0131
     shown: "0.0131"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_butter_tomatoes_lift
     value: 1.0917
     shown: "1.0917"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_chocolate_sauce_ice_cream_carts
     value: 100
     shown: "100"
     how: "carts holding chocolate sauce and ice cream"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_chocolate_sauce_ice_cream_support
     value: 0.0025
     shown: "0.0025"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_chocolate_sauce_ice_cream_lift
     value: 4.5956
     shown: "4.5956"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_batteries_tomatoes_carts
     value: 87
     shown: "87"
     how: "carts holding batteries and tomatoes"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_batteries_tomatoes_support
     value: 0.0022
     shown: "0.0022"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_batteries_tomatoes_lift
     value: 1.3594
     shown: "1.3594"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_bath_soap_cucumber_carts
     value: 80
     shown: "80"
     how: "carts holding bath soap and cucumber"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_bath_soap_cucumber_support
     value: 0.002
     shown: "0.0020"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_bath_soap_cucumber_lift
     value: 1.3333
     shown: "1.3333"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_namkeen_poha_carts
     value: 116
     shown: "116"
     how: "carts holding namkeen and poha"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_namkeen_poha_support
     value: 0.0029
     shown: "0.0029"
     how: "their support"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: pair_namkeen_poha_lift
     value: 1.2889
     shown: "1.2889"
     how: "their lift"
-    used_in: "notebook 03 output"
+    used_in: "notebook 10 output"
   - id: curd_aundh_w1
     value: 0.2619
     shown: "26 percent"
     how: "curd's share in Aundh, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_aundh_w2
     value: 0.2869
     shown: "29 percent"
     how: "curd's share in Aundh, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_aundh_w3
     value: 0.2967
     shown: "30 percent"
     how: "curd's share in Aundh, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_aundh_w4
     value: 0.2952
     shown: "30 percent"
     how: "curd's share in Aundh, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_baner_w1
     value: 0.2946
     shown: "29 percent"
     how: "curd's share in Baner, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_baner_w2
     value: 0.27
     shown: "27 percent"
     how: "curd's share in Baner, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_baner_w3
     value: 0.2785
     shown: "28 percent"
     how: "curd's share in Baner, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_baner_w4
     value: 0.2746
     shown: "27 percent"
     how: "curd's share in Baner, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_camp_w1
     value: 0.296
     shown: "30 percent"
     how: "curd's share in Camp, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_camp_w2
     value: 0.271
     shown: "27 percent"
     how: "curd's share in Camp, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_camp_w3
     value: 0.2801
     shown: "28 percent"
     how: "curd's share in Camp, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_camp_w4
     value: 0.2741
     shown: "27 percent"
     how: "curd's share in Camp, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hadapsar_w1
     value: 0.2509
     shown: "25 percent"
     how: "curd's share in Hadapsar, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hadapsar_w2
     value: 0.2699
     shown: "27 percent"
     how: "curd's share in Hadapsar, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hadapsar_w3
     value: 0.0021
     shown: "0 percent"
     how: "curd's share in Hadapsar, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hadapsar_w4
     value: 0.283
     shown: "28 percent"
     how: "curd's share in Hadapsar, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hinjewadi_w1
     value: 0.2763
     shown: "28 percent"
     how: "curd's share in Hinjewadi, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hinjewadi_w2
     value: 0.2725
     shown: "27 percent"
     how: "curd's share in Hinjewadi, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hinjewadi_w3
     value: 0.284
     shown: "28 percent"
     how: "curd's share in Hinjewadi, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_hinjewadi_w4
     value: 0.283
     shown: "28 percent"
     how: "curd's share in Hinjewadi, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kalyani_nagar_w1
     value: 0.303
     shown: "30 percent"
     how: "curd's share in Kalyani Nagar, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kalyani_nagar_w2
     value: 0.2587
     shown: "26 percent"
     how: "curd's share in Kalyani Nagar, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kalyani_nagar_w3
     value: 0.2607
     shown: "26 percent"
     how: "curd's share in Kalyani Nagar, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kalyani_nagar_w4
     value: 0.2717
     shown: "27 percent"
     how: "curd's share in Kalyani Nagar, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kothrud_w1
     value: 0.2948
     shown: "29 percent"
     how: "curd's share in Kothrud, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kothrud_w2
     value: 0.2742
     shown: "27 percent"
     how: "curd's share in Kothrud, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kothrud_w3
     value: 0.2694
     shown: "27 percent"
     how: "curd's share in Kothrud, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_kothrud_w4
     value: 0.2819
     shown: "28 percent"
     how: "curd's share in Kothrud, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_viman_nagar_w1
     value: 0.2638
     shown: "26 percent"
     how: "curd's share in Viman Nagar, week 1"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_viman_nagar_w2
     value: 0.2575
     shown: "26 percent"
     how: "curd's share in Viman Nagar, week 2"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_viman_nagar_w3
     value: 0.0076
     shown: "1 percent"
     how: "curd's share in Viman Nagar, week 3"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: curd_viman_nagar_w4
     value: 0.2954
     shown: "30 percent"
     how: "curd's share in Viman Nagar, week 4"
-    used_in: "chapter 3 picture, notebook 03"
+    used_in: "SECTION 10 picture, notebook 10"
   - id: bread_milk_expected_share
     value: 0.2414
     shown: "0.241"
     how: "bread's share times milk's share"
-    used_in: "chapter 2, notebook 02"
+    used_in: "SECTION 8, notebook 08"
   - id: after_strip_ctr_exact
     value: 0.0379
     shown: "0.0379"
     how: "the after rate before rounding to 3.8 percent"
-    used_in: "notebook 02 output"
+    used_in: "notebook 08 output"
   - id: milk_impressions_a_day
     value: 90325
     shown: "90,325"
     how: "milk impressions a day after the change, all three slots"
-    used_in: "notebook 03, the second route"
+    used_in: "notebook 10, the second route"
   - id: milk_lift_band_low
     value: 0.96
     shown: "0.96"
     how: "the case file's band for lift with milk, low end"
-    used_in: "notebook 02 check"
+    used_in: "notebook 08 check"
   - id: milk_lift_band_high
     value: 1.08
     shown: "1.08"
     how: "the case file's band for lift with milk, high end"
-    used_in: "notebook 02 check"
+    used_in: "notebook 08 check"
 
 predict_options:
   - id: option_rs_50000
     value: 50000
     shown: "Rs 50,000"
     how: "invented distractor on the month-recovered predict slide"
-    used_in: "chapter 3 predict"
+    used_in: "SECTION 10 predict"
   - id: option_rs_2_lakh
     value: 200000
     shown: "Rs 2 lakh"
     how: "invented distractor"
-    used_in: "chapter 3 predict"
+    used_in: "SECTION 10 predict"
   - id: option_rs_6_lakh
     value: 600000
     shown: "Rs 6 lakh"
     how: "the rounded key"
-    used_in: "chapter 3 predict"
+    used_in: "SECTION 10 predict"
   - id: option_rs_50_lakh
     value: 5000000
     shown: "Rs 50 lakh"
     how: "invented distractor"
-    used_in: "chapter 3 predict"
+    used_in: "SECTION 10 predict"
 
 exercise_numbers:
   - id: slot_value_no_add_rate
@@ -2754,22 +3639,22 @@ kalpa_lab:
     value: 1000
     shown: "1,000"
     how: "v4 orders, every one with lines"
-    used_in: "notebook 04, lab note"
+    used_in: "notebook 11, lab note"
   - id: kalpa_baskets
     value: 812
     shown: "812"
     how: "consumer orders, the basket base"
-    used_in: "notebook 04, lab note"
+    used_in: "notebook 11, lab note"
   - id: kalpa_business
     value: 188
     shown: "188"
     how: "Business orders, one product in bulk"
-    used_in: "notebook 04"
+    used_in: "notebook 11"
   - id: kalpa_lines_max
     value: 8
     shown: "8"
     how: "most lines in a consumer basket"
-    used_in: "notebook 04"
+    used_in: "notebook 11"
   - id: kalpa_charger_all_orders
     value: 0.696
     shown: "69.6 percent"
@@ -2844,12 +3729,12 @@ kalpa_lab:
     value: 8.12
     shown: "about 8"
     how: "1 percent of the consumer baskets"
-    used_in: "notebook 04"
+    used_in: "notebook 11"
   - id: kalpa_floor_baskets
     value: 40.6
     shown: "about 41"
     how: "5 percent of the consumer baskets"
-    used_in: "notebook 04"
+    used_in: "notebook 11"
   - id: kalpa_twelve_ids
     value: "KR-00001, KR-00002, KR-00004, KR-00005, KR-00006, KR-00008, KR-00009, KR-00011, KR-00157, KR-00190, KR-00340, KR-00938"
     shown: ""
@@ -2859,19 +3744,19 @@ kalpa_lab:
     value: 9
     shown: "9"
     how: "of the twelve, baskets with the charger (0.75)"
-    used_in: "lab note, notebook 04"
+    used_in: "lab note, notebook 11"
   - id: kalpa_twelve_screen_conf
     value: 0.6667
     shown: "0.67"
     how: "screen protector to charger on the twelve"
-    used_in: "lab note, notebook 04"
+    used_in: "lab note, notebook 11"
   - id: kalpa_twelve_screen_lift
     value: 0.8889
     shown: "0.89"
     how: "their lift on the twelve"
-    used_in: "lab note, notebook 04"
+    used_in: "lab note, notebook 11"
   - id: kalpa_twelve_pair_lift
     value: 2.6667
     shown: "2.67"
     how: "earphones and case on the twelve"
-    used_in: "lab note, notebook 04"
+    used_in: "lab note, notebook 11"
