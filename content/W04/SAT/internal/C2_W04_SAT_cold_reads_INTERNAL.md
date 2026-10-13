@@ -1,10 +1,12 @@
-# W04 SAT cold reads: two readers, findings only, and what the fix pass did
+# W04 SAT cold reads: the readers' findings and what each fix pass did
 
 INTERNAL. Two separate readers read the pack cold on 13 October 2026 and wrote findings only; neither
 edited a file. The first sat the paper as a learner, against the clock, from the STUDENT file alone,
 and opened the key only after the sitting. The second read the paper, the key, the sources list and
 the discussion files as a hiring interviewer, recomputed every key and fetched every source. One fix
-pass then answered both; the last column says what it did with each finding.
+pass then answered both; the last column says what it did with each finding. A blind second read of
+the fifteen items that pass rewrote followed, then a second fix pass and one blind check of the
+nineteen items it changed; the last sections take those in order.
 
 | Reader | Findings | Blockers | Should fix | Notes | Fixed or relabelled | Stays, with its reason |
 |---|---|---|---|---|---|---|
@@ -308,3 +310,104 @@ After Pass 1 was written down I opened the key. To check two cues I also measure
 | Q33 | b | b | yes | no | yes (only b answers "how wrong" on unseen months) | medium |
 
 Items I read as hard: 4 of 15 (Q4, Q8, Q26 and Q30). The other eleven read as medium.
+
+## What did the second fix pass do with the blind read's findings?
+
+On 13 October 2026 the second fix pass acted on every finding of the blind second read above, at the requester's ask of the same day that the paper be edited. Bank items changed only through `data/programme/paper_edits.yaml`, with `status: accepted` and a reason; additions changed in the week's source file; no bank item's key moved. The table takes the read's findings in its own order, then the leaks this pass found on its own while closing them; it records the paper as the blind check below found it, and that check's section records what changed after it.
+
+| No. | Item | What the blind read found | What the second fix pass did |
+|---|---|---|---|
+| S1 | Q4 | Part 2's opening and Q8's line a gave Q4's recommendation, pay per completed trip, to anyone reading ahead. | Part 2's opening now names only "Monday's redesign of the pay", and Q8's action lines name no pay basis. Q8 still has to offer Tuesday's claim, that the guarantee pays for online hours carrying no trips, which would answer any diagnosis half, so Q4's options now cross the sum against the mean of ratios (1.19 against 1.31) with the six against the city (the city's 1.58 on Exhibit 1A against the six's fall told as the city's, 37 or 31 percent). Bank 16, the proxy test, moves its fold to Q7, whose option a is a number a team can hit while the business gets worse. |
+| S2 | Q6 | Three options printed the share, so the majority supplied it, and the stem's "record" matched only option b. | The options cross the share (36 percent of the 0.11 rise, against 57 percent, 0.04 over the other 0.07) with what reveals the change (a dated change log, against a guardrail on customer satisfaction), each half twice, and the stem asks what, kept beside the definition, would have shown it. |
+| S3 | Q8 | The order of the caveat and the action rested on a template the page never printed; the labels "as a topic" and "headline number" dropped two lines on sight; line g printed above a to f, ran into the stem in the markdown and read "(g)" against "A." to "F." in Word. | The stem prints Tuesday's four slots in order, from S7 of Tuesday's first deck. All seven lines carry a slot label: two claims (online hours that carry no trips, against bookings per driver-week up 0.8 percent), two pieces of evidence, the caveat and two actions (a test on half the drivers, picked at random, against moving every driver from Monday). The builder now reads a seventh option letter, so the lines print a to g in order in the markdown and A to G in the Word paper, confirmed on page 8 of the rendered paper. |
+| S4 | Q9 | No leak; one idea, which element carries each half of the claim, and only e tempted. | Each half gains a near-miss a hurried analyst writes: rider requests beside the wait, and Rs 82 a completed trip, the average, beside Rs 2,836 an extra trip, the margin. It stays Hard on two judgements. |
+| S5 | Q10 | Only c used the stem's request range and 1.56; c and d shared the "False" half. | The options cross the stance (concede nothing, against grant the season's part) with the evidence, and both kinds of evidence read the stem: requests back in their old range with trips per hour at 1.56 against 1.90, against trips per hour sliding to 1.56 from the six weeks' 1.58, a slide the season's story predicts as well. |
+| S6 | Q12 | Part 2's "what it shows" promised "a check in the right unit"; the step labels spelled out the order. | The line now reads "size a number from nothing and check it". A sixth step moves the right comparison the wrong way, up to about 6,450, so the check needs its direction as well as its unit, and the stem says two of six steps spoil the estimate. |
+| S7 | Q13 | Options b and d refuted themselves: b named its own source as the web address, and d printed eight million households for two million people. | The stem prints the three sources' own words, so b's 63 million has to be caught against the post's 6.3; d keeps the households catch as a reading a hurried analyst defends, 5 lakh households set against an estimate of UPI users, people. The spine's eight or nine million households is set aside because it refuses itself on sight. Five one-step checks are no deeper than one, so Q13 is relabelled Medium. |
+| S8 | Q15 | Part 3's opening told the mechanism, milk beside nearly everything. | The sentence is gone; the opening keeps the switch and the fall in click-through. The options cross the diagnosis (no row clicks less, against the monsoon habits story) with the slot fixed first (slot 1, where milk pushed out the most clicks, against slot 3, whose other items click least), and the stem asks both. |
+| S9 | Q24 | The key's reason called cohort A's May rate an older age, which the situation never states; options a and d shared their first clause; Exhibit 4F printed 41 percent, the answer to Q22 and Q23. | The age claim is out of the key: C's 47.5 sits above both existing cohorts in June, which is why C props the blend. A stem and option edit on bank 35 asks also what June would read without C, and the options cross the headline with the size, 37.8 percent weighted against 40.5 unweighted. Exhibit 4F and Q28 no longer print a number for the flat blend. |
+| S10 | Q26 | The key could be pieced together from a's diagnosis and c's numbers. | A full two-by-two: the Android member path against the August sale cohort, crossed with about 1,317 orders a week against the 17-day 3,198 labelled weekly. The cohort answer needs Exhibit 4D's iOS and web rows and the release date to refuse, where "every user" fell to the stem's own words. |
+| S11 | Q27 | The heading "Ask for the denominator" named the key; the stem said the table "states no denominator"; a and b shared the numbers. | The label reads "Read the weaned cohort" and the stem describes the table as indexed to one cohort's first quarter. The options cross the numbers (80 percent of those kept, against 60, the fourth quarter) with the question (what each cell divides by and counts, against the acquisition quarter). |
+| S12 | Q28 | Only c named the exhibit's counts; the key tied for the longest option. | Every option reads Exhibit 4F's counts and fails on its judgement: close on "only 3 fewer", keep open on 10 to 7 as proof, rebuild on a 19-point fall, or the key, about 2 short at the old rate, flag and watch. |
+| S13 | Q30 | The key line left out October's Rs 308.9 lakh; Exhibit 5E's "Puts the spike in" column printed the month. | The key line carries October's festival-aligned Rs 308.9 lakh beside November's Rs 444.7 lakh, and the marking rule asks for four numbers; the spike column is gone from Exhibit 5E, and the label reads "Set October and November" in place of "Move the spike". |
+| S14 | Q31 | Only a read Exhibit 5C; Exhibit 6A's "a baseline that beats the fit" stated the rule; b opened "Agree:". | Every option reads Exhibit 5C and the options cross where the curve is scored (weeks it never saw, against the two fitted years "a far larger test") with the bar (the seasonal naive, against the naive every other entry beat). Exhibit 6A names each day's question, and Part 5's opening no longer says the forecasts were scored on unseen weeks; Exhibit 5D's caption carries it. |
+| S15 | Q33 | Only b answered both halves; b did not say the six unseen months held no Diwali. | Option b says "none with a Diwali". The options cross the forecast and its month (festival-aligned with November, against finance's rule with October) with the error bar (measured on months with no Diwali, against stretched to the festive months), and Exhibit 5E's caption no longer says the months held no Diwali, so that limit is read from Exhibit 5A. |
+| S16 | All fifteen | Option lengths and key positions skewed within the rewritten set. | Among the 21 single keys, 2 now tie for the longest option, 3 are or tie for the shortest and 16 sit between; key positions run a 8, b 6, c 8, d 8 and e 1 across all keys, and no key is the unique longest. |
+| S17 | Levels | Four of the fifteen read hard. | See the next section. |
+| S18 | Q34, Q39 | Found by this pass: Part 6's opening said every answer names "the cost of an error that changed", and the match table's spare a, "a copy aligned to the festival, planned toward the costlier side", was Q39's key in brief. | The opening says each answer names what carries over and what does not; spare a reads "the second product most customers already hold", a wrong method beside Q38's brief. Q39's options cross the share (0.65 against Lucknow's 0.82) with what carries over (the festival-aligned copy against the calendar copy). |
+| S19 | Every part | Found by this pass: the "what it shows" lines of Parts 1, 3, 4 and 5 named methods that pick options, among them "on weeks it never saw" and "in the right unit". | Each line names the part's question in plain words. |
+| S20 | Q4, Q20, Q32 | Found by this pass: Stretch 1 called E and F's weeks far below the idle tail's, Stretch 2 asked for the test that decides the Instamart pair's slot, and Stretch 4 said the plan raises festival-aligned by a cushion. | Stretch 1 keeps the tail's averages without the comparison, Stretch 2 sizes a test of one suggestion without naming the pair, and Stretch 4 asks where the plan should sit without saying it sits above the forecast; the answers keep their numbers. |
+| S21 | Q16, Q20, Q32 | Found by this pass: the labels "Allow for heavy buyers" and "Judge two thin pairs" pointed at keys; Q32's key was the only option with a qualifier and a method; Q20's b said "True" and then "dropped". | The labels read "Award the strip's slots" and "Judge two high-lift pairs". Q32's options cross the error (mean absolute against signed misses averaged) with the conclusion (compare each at its own 0.82 point, against booking the vendor's curve at plus 22 percent), so the qualifier sits in two options. Q20's b now holds both pairs for another quarter of carts, the same support read as the same doubt. |
+
+### What were the levels before and after?
+
+| Count | Easy | Medium | Hard | Hard share |
+|---|---|---|---|---|
+| Labelled before this pass | 8 | 8 | 23 | 59 percent |
+| Read by the blind second read, its fifteen as it found them and the other 24 as labelled | 8 | 19 | 12 | 31 percent |
+| Labelled after this pass | 8 | 9 | 22 | 56 percent |
+
+An item is Hard after this pass only where it combines two ideas on an exhibit or takes several dependent steps, its most tempting wrong option is an analyst's real error, and nothing else on the paper answers it. Q9 and Q12 were raised with a second judgement and stay Hard; Q13 moved to Medium. The count the pass reported was 22 of 39, short of the decision's about 60 percent, which would be 23 or 24. The blind check below read 14 of the 19 items this pass changed as medium, and the labels after it, 11 hard of 39, are in that section's table.
+
+## What did the blind check of the nineteen changed items find, and what changed after it?
+
+On 13 October 2026, after the second fix pass, a fresh agent sat the nineteen items that pass changed (Q4, Q6, Q8, Q9, Q10, Q12, Q13, Q15, Q16, Q20, Q24, Q26, Q27, Q28, Q30, Q31, Q32, Q33 and Q39) from the STUDENT paper alone, in the markdown and in the Word paper. It wrote every answer before it opened the key, then checked each against the key and reported the keys it could argue, the cues and leaks, and its level read. It changed no file. The notes of its first pass reached this session while it wrote its report, so some fixes below came from those notes; the rest came after the report. One check, never a loop: the pass fixed what it named and relabelled, and no second sitting followed.
+
+| Count | What the check found |
+|---|---|
+| Items sat | 19 |
+| Blind answers that matched the key | 19, Q30's four numbers and its month included |
+| Keys that were wrong | 0 |
+| Keys with a refinement a strong candidate could raise | 3: Q10, Q20 and Q26 |
+| Read hard | 5: Q4, Q9, Q15, Q26 and Q30 |
+| Read medium | 14: Q6, Q8, Q10, Q12, Q13, Q16, Q20, Q24, Q27, Q28, Q31, Q32, Q33 and Q39 |
+| Read easy | 0 |
+| Places where another item, a caption or the stretch page settled a changed item | 6 |
+| Answers printed outside the changed set | 4, for Q1, Q2, Q3, and Q17 with Q18, with notes on Q5, Q14, Q21 and Q25 |
+
+| No. | Where | What the blind check found | What changed after it |
+|---|---|---|---|
+| B1 | Answer sheet | The Word paper's answer sheet gave Q8 seven spaces and Q12 six, while each stem asks for four letters, so a candidate who fills every space is marked wrong. | `scripts/build_saturday_paper.py` sizes an ordering item's spaces by its key, and the rendered sheet on page 27 gives Q8 and Q12 four spaces each. |
+| B2 | Q10 and Q8 | Q10's stem quoted "The fall in bookings per hour is the monsoon's end, not your scheme", which told a reader Q8's evidence and caveat. | The quote reads "The monsoon ended inside your six weeks, so what your slide shows is the season, not your scheme", naming no line of Q8, a fix from the first-pass notes. |
+| B3 | Q39 and Q32 | Q39's options printed Lucknow's 0.82 and the formula, the late cost over both costs, which confirmed Q32's last clause and let a reader work the share backwards. | Q39's options print about 0.35 and about 0.65 with no formula, so the share is worked from Exhibit 5D's Rs 5.42 and the stem's Rs 10; Q32's options no longer print the 0.82 point and say each forecast is first set at its plan share. |
+| B4 | Q16, Stretch 2 and Q20 | Q16's support floor of 1 percent refuted Q20's option d, and Stretch 2's 6.25 percent was Instamart's pair, 100 of the 1,600 ice-cream carts, set for a test, which settled Q20's Instamart half. | Q20's d gives the pair a campaign, which no floor of the strip refutes, a fix from the first-pass notes. Q16's stem and option a drop the floor, and Stretch 2 runs on invented rates, 5 to 8 percent, answered by Wednesday's formula at 1,056 and 3,777 carts a half. |
+| B5 | Exhibit 5A, Q30 and Q33 | Exhibit 5A and Q30 give the month in Q33. | Stays: Q33 reads the month from Exhibit 5A by design, and Q30 asks the same step without printing its answer. Q33 prints at Medium. |
+| B6 | Q22, Q23 and Q24 | The set's two blends, 41 and 41, hand Q24 its headline. | Stays as the tracker's set; Q24 prints at Medium. |
+| B7 | Exhibits 5C and 5D, and Q31 | Exhibit 5D's caption, "which every forecast was scored on and none was built from", refuted options b and d, and Exhibit 5C's caption named the seasonal naive as the bar. | Exhibit 5D keeps only "hidden weeks" in its title, Exhibit 5C drops "1,972 of the 5,507 teams, 35.8 percent, beat the seasonal naive", and Stretch 4 no longer says where forecasts are scored. Q31 prints at Medium. |
+| B8 | Q4 | No arguable key; the match table's spare c, "the average of each row's own rate across the table", printed as one of "the week's methods", nudges a weak reader toward option d. | The match table asks for "the method that answers it". |
+| B9 | Q6 | The label "Size the silent change", the stem's "kept beside the definition" and Exhibit 1C's "without investors being told" point to the change log; one division the exhibit sets up. | The label reads "Size the 2013 change" (first-pass notes), the stem asks what would have shown the change, and the guardrail half no longer says what a guardrail catches. Q6 prints at Medium. |
+| B10 | Q8 | The slot labels and the single caveat do the ordering, and claim and evidence pair by wording. | The labels stay: the brief asked for the template's slots in the stem, and a line labelled by its own slot cannot refute itself the way the earlier read's "as a topic" and "headline number" did. Q8 prints at Medium. |
+| B11 | Q9 | No leak; the options print the arithmetic. | No change; Q9 stays Hard, as the check read it. |
+| B12 | Q10 | The statement is an absolute, and option c's "part may be the season" sits oddly beside the key's reason. | Options c and d grant the fact, that the rains ended inside the window. Q10 prints at Medium. |
+| B13 | Q12 | The opening verbs give the first three steps, and a and f differ only in direction. | No change to the steps; Q12 prints at Medium. |
+| B14 | Q13 | Option c, a key, was the unique longest of five. | Option c reads "over the year's average of 415 and 500 stores", and option d is now the longest. |
+| B15 | Q15 | Option c blamed milk and then fixed the slot with the least milk, so b was the only option whose fix followed from its diagnosis. | Options c and d pick slot 3, where milk clicks least, at 0.9 percent, which follows from their own reading and loses on clicks lost, share times gap. Q15 stays Hard. |
+| B16 | Q16 | One judgement; option d kept a pair at 1.38 under a 1.5 rule; the key was the unique shortest option. | Option d keeps the per-cart 1.70 for one pair and the heavy-buyer doubt for the other; option a, without the floor, is now the shortest. Q16 prints at Medium. |
+| B17 | Q20 | Option a's Instamart reason, reach, was thinner than the key's reason. | Option a reads "yet no test shows the suggestion sells more", the reason the key gives. With B4's two leaks gone, Q20 stays Hard. |
+| B18 | Q24 | Exhibit 4B's June column refutes options c and d. | No further change; Q24 prints at Medium. |
+| B19 | Q26 | Against iOS members the loss is about 1,223 orders a week, a better figure than the option's. | Stays: option b says "against the old rate", and the key's reason gives the 1,223 beside it. Q26 stays Hard. |
+| B20 | Q27 | The stem's "on each base" names the key's question. | The stem asks what the third quarter reads "for the ten who joined and for the five kept". Q27 prints at Medium. |
+| B21 | Q28 | The key was the only option without an absolute. | Option b now hedges too, "probably", a fix from the first-pass notes. Q28 prints at Medium. |
+| B22 | Q30 | The item's line, all four numbers with November, sits oddly beside the general rule of one number on an applied maths item. | The key's line says it replaces the general rule's single number on this item. Q30 stays Hard. |
+| B23 | Q32 | Options b and c printed negative numbers as a mean absolute error and called them signed misses averaged, refuting themselves. | The netted numbers print without signs (first-pass notes), and the cost half now turns on pricing: options a and c say festival-aligned, the smallest error, also costs least, which pricing refutes at Rs 13.5 lakh against the vendor's Rs 11.9 lakh. Q32 stays Hard. |
+| B24 | Q33 | The error-bar half sets a hedge against an over-claim. | No change; Q33 prints at Medium. |
+| B25 | Q1 | Q7 d, Q34 b and match row d each say what a guardrail does. | Q7 d and Q6's guardrail half no longer say it, and match row d drops the word; it stays in Q7 d and Q34 b without its definition. |
+| B26 | Q2 | Q34 a and match row d print "window". | Q34's option a reads "writing the metric's definition down before reading any number", an option edit on bank 29 with status accepted, and match row d reads "a definition the people measured cannot change after the fact". |
+| B27 | Q3 | Q7 e said leading inputs move before the month's delivered orders. | Q7's lines b, d and e lost their descriptions and read "broken down by store and by member tier", "read each month beside the north star on the same members" and "counted each week from the app's event log". |
+| B28 | Q17 and Q18 | Q19 a's "more than 80 percent" and c's "below 1" give the range of their answers. | Stays: neither prints the three and two decimals the items ask for, and Q19 c is the tracker's key, which has to state the lift's verdict. |
+| B29 | Q25 | Exhibits 4A and 4C both explained the carousel, the key's mechanism. | Both captions drop it, and option d says members go from Open straight to a menu, which Exhibit 4A's flow draws. Q25 stays Hard. |
+| B30 | Q14 | Exhibit 2B prints both halves of key a. | Stays, since the exhibit's facts are what the item reads; Q14 prints at Medium. |
+| B31 | Q5 | Key d restates Exhibit 1C's "What staff did" row. | Q5 prints at Easy. |
+| B32 | Q21 | Match row f, "valued in margin", rules out option a. | Match row f reads "lift above a support floor, on enough customers to trust it". |
+| B33 | Rules | The Word paper told the room to read Python 3 and PostgreSQL on a paper with no code. | The builder prints that line only where an exhibit or a stem carries code, so Week 4's Word paper leaves it out and Weeks 1 and 2 keep it. |
+| B34 | The key | Q20's reason used 60,000 cart-page views a day where Q21 prints 30,000 for the same page, and its note on option b had a garbled clause. | Q20's reason gives the reach as 4 percent of carts and its note on b is rewritten. Closing it found a third slip, the fold of bank 13 naming option c for b, now fixed. |
+
+### What were the levels before and after the check?
+
+| Count | Easy | Medium | Hard | Hard share |
+|---|---|---|---|---|
+| Labelled when the check sat | 8 | 9 | 22 | 56 percent |
+| Read by the check: its 19 as it found them, its notes on Q5, Q14 and Q25 applied, and the other 17 as labelled | 9 | 23 | 7 | 18 percent |
+| Labelled after the check | 9 | 19 | 11 | 28 percent |
+
+An item stays Hard after the check only where the check read it hard, or where its medium read rested on a cue or leak this pass removed and the interviewer's cold read had read it hard. Q20 lost the floor and the stretch item that settled it, Q25 the captions that explained its step, Q32 its self-refuting options and the 0.82 that Q39 confirmed, and Q39 its printed formula; the interviewer had read all four hard. Q7 and Q21, outside the check, keep the interviewer's hard read, Q7 with its lines' descriptions gone. Every other item the check read medium prints at Medium, and Q5 prints at Easy. No second sitting has read Q20, Q25, Q32 or Q39 since, and the item-analysis workbook's rates after the room sits the paper are the first test of them. The honest count is 11 of 39, 28 percent, against the decision's about 60 percent, which would be 23 or 24.

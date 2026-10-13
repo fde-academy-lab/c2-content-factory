@@ -237,7 +237,7 @@ Transition: six drivers from the case's own data.
 | E | Shamshabad | 10 → 16 | 18 → 3 | 4 of 14 |
 | F | Rajendranagar | 10 → 14 | 17 → 2 | 3 of 12 |
 
-The before week begins 10 August 2026 and the after week 21 September 2026. These are twelve rows of the case's own `driver_weeks`; E and F drive in two of the three outer zones, where riders are few.
+The before week begins 10 August 2026 and the after week 21 September 2026. These are twelve rows of the case's own `driver_weeks`; E and F drive in two of the three outer zones, where riders are few. E and F also keep shorter weeks than most drivers who idle like them, which chapter 2's full data shows.
 
 ```notes
 LIVE, 6 minutes, StatQuest: say each number aloud. Add the hours column for the before week (60)

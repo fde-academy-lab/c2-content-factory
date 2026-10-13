@@ -225,8 +225,9 @@ W2:
 W4:
   29:
     status: accepted
-    why: Options b and c ran 21 and 31 characters against 60 for option a, under the paper's balance rule; each now says what it is, a guardrail the measured team cannot move and the rupee amount each kind of wrong nudge costs, at 49 and 47 characters, and the same three options stay correct. A learner's cold read took the first wording of c, a cost in each direction, as the practice of pricing both errors, which carries over, so c now names the amounts, which change.
+    why: Options b and c ran 21 and 31 characters against 60 for option a, under the paper's balance rule; each now says what it is, a guardrail the measured team cannot move and the rupee amount each kind of wrong nudge costs, at 49 and 47 characters. A learner's cold read took the first wording of c, a cost in each direction, as the practice of pricing both errors, which carries over, so c now names the amounts, which change. A blind check on 13 October 2026 found that option a's list, numerator, denominator and window, printed the answer to Q2, so option a now names the same practice without the list, at 62 characters, at the requester's ask of the same day that the paper be edited; the same three options stay correct.
     options:
+      a: writing the metric's definition down before reading any number
       b: attaching a guardrail the measured team cannot move
       c: the rupee amount each kind of wrong nudge costs
     stem:
@@ -247,10 +248,17 @@ W4:
       a: Promote it, since more than 80 percent of the case buyers also put a charger into the same basket as the case.
   35:
     status: accepted
-    why: The key, option a, was the longest option by one character; option c, the reading that a flat blend needs no action, now says it held from May to June, at 92 characters, and the same option stays correct. An earlier wording printed the 41 percent that Q22 and Q23 ask for, which a learner's cold read caught. Option d, the tracker's "the data is inconsistent", fell at a glance, so it now names the decline and blames the new cohort by setting two ages side by side, which a hiring interviewer's cold read asked for; the same option stays correct.
+    why: The key, option a, was the longest option by one character, so option c once said retention held steady from May to June, and an earlier c printed the 41 percent that Q22 and Q23 ask for. A blind second read on 13 October 2026 found the key could still be pieced together, since options a and d shared their first clause, and read the item as one idea once Q22 and Q23 are done. The requester asked on 13 October 2026 for the paper to be edited, so the four options now cross two halves, the headline and the size of the hidden fall, each half printed twice. Option a keeps the tracker's headline, a large new cohort in its first month hid the existing cohorts' fall, and adds June's blend without cohort C, 1,510 of 4,000, about 37.8 percent; option b keeps the headline with 40.5, the unweighted average of 46 and 35; options c and d blame the new cohort on a comparison of C's June with A's May. The same option stays correct.
     options:
-      c: Retention held steady from May to June, so the membership plan needs no change this quarter.
-      d: Both existing cohorts declined, and cohort C retains less than cohort A did in May, so the new members are the weaker ones.
+      a: Both existing cohorts fell and a large new cohort in its first month hid it; without C, June's blend reads about 37.8 percent.
+      b: Both existing cohorts fell and a large new cohort in its first month hid it; without C, June's blend reads about 40.5 percent.
+      c: The new members are the weaker ones, since C retains less than A did in May; without C, June's blend reads about 37.8 percent.
+      d: The new members are the weaker ones, since C retains less than A did in May; without C, June's blend reads about 40.5 percent.
+    stem:
+      status: accepted
+      why: The tracker's stem asks only for the honest headline, which a blind second read on 13 October 2026 found one idea once Q22 and Q23 have computed both blends. The requester asked on 13 October 2026 for the paper to be edited, so the stem also asks what June's blend would read without cohort C, a second step on the set's own numbers that sizes the fall the headline names; the key is the tracker's.
+      text: |-
+        What is the honest headline for June, and what would June's blend read without cohort C?
   41:
     stem:
       status: accepted

@@ -5,7 +5,8 @@
 
 01 counts the twelve rows by hand (14 cells); 02 runs the full driver_weeks, the trap and the
 your-turn cell (21 cells); 03 prices the gaming, builds the definition and runs the caveats and the
-SQL second route (16 cells); 04 is the Kalpa lab, whose two finding cells ship empty (11 cells).
+SQL second route (16 cells); 04 is the Kalpa lab, whose hand-count cell and two finding cells ship
+empty (13 cells).
 Plain pandas, the standard library and matplotlib; each notebook defines its own three-line check.
 Every number a cell prints sits in internal/C2_W04_D01_facts_INTERNAL.yaml under its id.
 """
@@ -172,6 +173,8 @@ totals
         online hour from 1.90 to 1.19. The city fell to 1.58, and the six fall further because they
         were chosen to show the mechanism: two of them, E and F, logged hours with almost no trips,
         a third of this sample. How common such drivers are in the city is chapter 2's question.
+        E and F also keep shorter weeks than most drivers who idle like them, which chapter 2's
+        full data shows.
 
         ## Which drivers moved the ratio, and in which direction?
 
@@ -769,18 +772,31 @@ def nb04():
         synthetic.
 
         **The situation.** The head of Retail-Plus, who owns Kalpa's paid membership tier, wants a
-        growth number for the tier: reorders placed per member. The app can place a reorder on its own
-        (an auto-reorder) as well as when a member taps it, and an auto-reorder window ran from 10 to
-        30 September 2026. The comparison is the three weeks before it, 20 August to 9 September 2026;
-        both sit after the monsoon sale's last day, 19 August. The table `kalpa_app_reorders` has one
-        row per reorder placement: `reorder_id`, `customer_id`, `placed_ts`, `product_id`, `value_rs`
-        (the reorder's booked value, whatever happened to it), `auto` (True when the app placed it on
-        its own) and `status`: delivered, cancelled, merged (its items joined the member's next order)
-        or pending.
+        growth number for the tier: reorders placed per member. A member places a reorder by tapping
+        the app's Reorder button, and the app can also place one on its own, an auto-reorder; its
+        auto-reorder feature ran from 10 to 30 September 2026. The comparison is the three weeks
+        before that, 20 August to 9 September 2026, and both windows sit after the monsoon sale's
+        last day, 19 August.
 
-        **Who needs the answer.** The head of Retail-Plus, who is about to take "reorders per member"
-        to the growth review, the meeting where each team's numbers are judged, as the tier's number. If it can rise while the tier earns less, the
-        review rewards the app for placing orders nobody receives.
+        **The data.**
+
+        | Table | Columns | Rows |
+        |---|---|---|
+        | `kalpa_members` | `customer_id`, `tier`, `member_since` (the day the membership started; the table records no end date) | the tier's 120 members, the same table this week's Thursday lab reads |
+        | `kalpa_app_reorders` | `reorder_id`, `customer_id`, `placed_ts`, `value_rs` (the placement's booked value, whatever happened to it), `auto` (True when the app placed it on its own), `status`, `order_id` (the order in Kalpa's warehouse that the placement became, blank if none) | one row per reorder placement, 20 August to 30 September 2026 |
+
+        A placement's `status` is delivered or returned (it became an order, which was delivered, or
+        delivered and sent back), cancelled (the order it became was cancelled, or the placement was
+        cancelled before it became one; `order_id` tells the two apart), merged (its items joined a
+        basket the member already had open, so it never became an order of its own, and they reach
+        the member only if the member checks that basket out) or pending (still waiting). Orders
+        members place themselves through the normal checkout are not in `kalpa_app_reorders`, which
+        logs reorder placements only.
+
+        **Who needs the answer.** The head of Retail-Plus, who is about to take "reorders per
+        member" to the growth review, the meeting where each team's numbers are judged, as the
+        tier's number. If the number does not track what members receive, the review judges the tier
+        on the wrong thing.
 
         **The questions on the way.**
 
@@ -790,6 +806,9 @@ def nb04():
         4. Which reorders are these, and what happened to them?
         '''),
         code(SETUP + STYLE + '''
+import matplotlib.dates as mdates
+from matplotlib.ticker import MaxNLocator
+
 members = pd.read_csv("../data/C2_W04_D01_kalpa_members_STUDENT.csv")
 reorders = pd.read_csv("../data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv")
 reorders["day"] = reorders["placed_ts"].str[:10]
@@ -799,71 +818,96 @@ print(f"{len(members)} Retail-Plus members; {len(reorders)} reorder placements f
         ## What does the table hold, before anything is counted?
 
         This cell draws three plain views of the whole table, both windows together: what a
-        placement is worth, how many each member made, and when the members joined the tier.
+        placement is worth, how many placements each member made, and how many members the tier
+        held on each day of the two windows. It also keeps the members who had joined by 19 August
+        as `base`, the members the per-member comparison counts.
         '''),
         code('''
 fig, ax = plt.subplots(figsize=(6.4, 2.8))
-ax.hist(reorders["value_rs"], bins=30, color=VIOLET)
+ax.hist(reorders["value_rs"], bins=range(0, 5001, 250), color=VIOLET, edgecolor="white")
+ax.yaxis.set_major_locator(MaxNLocator(integer=True))
 ax.set_xlabel("booked value of one placement, Rs")
 ax.set_title("What a placement is worth, both windows together", loc="left")
 plt.show()
 fig, ax = plt.subplots(figsize=(6.4, 2.8))
-ax.hist(reorders.groupby("customer_id").size(), bins=range(0, 16), color=LAV, edgecolor="white")
-ax.set_xlabel("placements per member, both windows together")
+ax.hist(reorders.groupby("customer_id").size(), bins=range(1, 7), color=LAV, edgecolor="white", align="left")
+ax.set_xlabel("placements per member, both windows together (members with at least one)")
 ax.set_title("How many placements each member made", loc="left")
 plt.show()
+days = pd.date_range("2026-08-19", "2026-09-30")
+joined = [(members["member_since"] <= d.strftime("%Y-%m-%d")).sum() for d in days]
 fig, ax = plt.subplots(figsize=(6.4, 2.8))
-members["member_since"].str[:7].value_counts().sort_index().plot.bar(ax=ax, color=MUTED)
-ax.set_title("When the 120 members joined Retail-Plus", loc="left")
+ax.axvspan(pd.Timestamp("2026-08-20"), pd.Timestamp("2026-09-10"), color=LAV, alpha=0.25, lw=0)
+ax.axvspan(pd.Timestamp("2026-09-10"), pd.Timestamp("2026-10-01"), color=MUTED, alpha=0.10, lw=0)
+ax.step(days, joined, where="post", color=VIOLET, lw=2)
+ax.text(pd.Timestamp("2026-08-21"), 124, "comparison, 20 Aug to 9 Sep", color=INK, fontsize=9)
+ax.text(pd.Timestamp("2026-09-11"), 124, "auto-reorder window, 10 to 30 Sep", color=INK, fontsize=9)
+ax.text(pd.Timestamp("2026-08-19"), joined[0] - 4, f"{joined[0]} by 19 Aug", color=INK, fontsize=9)
+ax.text(pd.Timestamp("2026-09-29"), joined[-1] - 4, f"{joined[-1]} from 29 Aug", color=INK, fontsize=9, ha="right")
+ax.set_ylim(95, 128)
+ax.set_ylabel("members who had joined")
+ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+ax.set_title("How many members the tier held on each day of the two windows", loc="left")
 plt.show()
+base = members.loc[members["member_since"] <= "2026-08-19", "customer_id"]
+print(len(base), "members had joined by 19 August")
 '''),
         md('''
         ## What do seven members' rows say, counted by hand?
 
         Your TA hands out a sheet with seven members' placements and booked values in the two
-        windows: RP-0002, RP-0012, RP-0014, RP-0021, RP-0023, RP-0031 and RP-0040. Before the ratio
-        code runs, add up each window's placements and booked value for the seven, divide by seven,
-        and write the two ratios (window over comparison) on the sheet. The seven cancels out of each
-        ratio, so the per-member form gives the same answer as the totals; it is the form the head of
-        Retail-Plus reports. Working without the sheet, type these two lines into the empty cell
-        below first and run them, where False is the comparison window and True the auto-reorder
-        window:
+        windows: C-0152, C-0184, C-0211, C-0215, C-0224, C-0240 and C-0264, all seven in the tier
+        for the whole of both windows. Before the ratio code runs, add up each window's placements
+        and booked value for the seven, divide by seven, and write the two ratios (window over
+        comparison) on the TA's sheet. The seven cancels out of each ratio, so the per-member form
+        gives the same answer as the totals; it is the form the head of Retail-Plus reports. Working
+        without the sheet, type these two lines into the empty cell below and run them, where False
+        is the comparison window and True the auto-reorder window:
 
         ```python
-        seven = ["RP-0002", "RP-0012", "RP-0014", "RP-0021", "RP-0023", "RP-0031", "RP-0040"]
+        seven = ["C-0152", "C-0184", "C-0211", "C-0215", "C-0224", "C-0240", "C-0264"]
         print(reorders[reorders["customer_id"].isin(seven)].groupby(["customer_id", reorders["day"] >= "2026-09-10"])["value_rs"].agg(["size", "sum"]))
         ```
-
+        '''),
+        empty(),
+        md('''
         ## What do reorders placed per member and booked value per member do across the two windows?
 
-        **Predict before you run.** From the comparison window to the auto-reorder window, reorders
-        placed per member a) fell; b) held about level; c) rose by up to a third; d) rose by more than
-        a third. And booked value per member a) fell; b) held about level; c) rose by up to a third;
-        d) rose by more than a third.
+        The per-member figures divide both windows by the same 107 members in `base`, the ones
+        already in the tier when the comparison window opened on 20 August, because a member who
+        joined later had fewer of its days to reorder in: one who joined on 25 August had 16 of its 21.
 
-        **Your turn.** Then type these lines into the same empty cell and run it again:
+        **Predict before you run.** From the comparison window to the auto-reorder window, reorders
+        placed per member a) fell; b) stayed exactly level; c) rose, by a third or less; d) rose by
+        more than a third. And booked value per member a) fell; b) stayed exactly level; c) rose, by
+        a third or less; d) rose by more than a third.
+
+        **Your turn.** Type these lines into the empty cell below and run it:
 
         ```python
-        comparison = reorders[reorders["day"].between("2026-08-20", "2026-09-09")]
-        window = reorders[reorders["day"].between("2026-09-10", "2026-09-30")]
-        placed = (len(window) / 120) / (len(comparison) / 120)
-        booked = window["value_rs"].sum() / comparison["value_rs"].sum()
+        comparison = reorders[reorders["day"].between("2026-08-20", "2026-09-09") & reorders["customer_id"].isin(base)]
+        window = reorders[reorders["day"].between("2026-09-10", "2026-09-30") & reorders["customer_id"].isin(base)]
+        placed = (len(window) / len(base)) / (len(comparison) / len(base))
+        booked = (window["value_rs"].sum() / len(base)) / (comparison["value_rs"].sum() / len(base))
         print(round(placed, 2), round(booked, 2))
         ```
 
-        `.between(start, end)` keeps the days from the first date to the second, both included.
+        `.between(start, end)` keeps the days from the first date to the second, both included, and
+        `.isin(base)` keeps the 107 members' rows.
         '''),
         empty(),
         md('''
         ## Which reorders are these, and what happened to them?
 
         **Your turn.** Type these lines into the empty cell below and run it, then say in one
-        sentence to your neighbour what the window's placements were and what became of them:
+        sentence to your neighbour what the window's placements were and what became of them. The
+        third line counts the placements in each window that became an order in the warehouse:
 
         ```python
         print(window.groupby(["auto", "status"]).size())
         print(comparison.groupby(["auto", "status"]).size())
-        print(window["value_rs"].mean(), comparison["value_rs"].mean())
+        print(window["order_id"].notna().sum(), comparison["order_id"].notna().sum())
+        print(round(window["value_rs"].mean()), round(comparison["value_rs"].mean()))
         ```
         '''),
         empty(),
@@ -871,24 +915,30 @@ plt.show()
         This cell checks the table itself, so a wrong count in your cells cannot come from a broken file.
         '''),
         code('''
+since = reorders["customer_id"].map(members.set_index("customer_id")["member_since"])
 check("120 Retail-Plus members, one row each", len(members) == 120 and members["customer_id"].is_unique)
 check("every placement has a unique id", reorders["reorder_id"].is_unique)
 check("every placement falls between 20 August and 30 September", reorders["day"].between("2026-08-20", "2026-09-30").all())
-check("every status is delivered, cancelled, merged or pending", reorders["status"].isin(["delivered", "cancelled", "merged", "pending"]).all())
+check("every status is delivered, returned, cancelled, merged or pending",
+      reorders["status"].isin(["delivered", "returned", "cancelled", "merged", "pending"]).all())
 check("every booked value is positive", (reorders["value_rs"] > 0).all())
-check("every placement belongs to a member", reorders["customer_id"].isin(members["customer_id"]).all())
+check("every placement belongs to a member and falls on or after the day the member joined",
+      since.notna().all() and (reorders["day"] >= since).all())
+check("no warehouse order appears twice", reorders["order_id"].dropna().is_unique)
 '''),
         md('''
         ## What does the lab hand on?
 
         Write on the TA's sheet: your two ratios from the hand count and from the full table, the one
         sentence on what the window's placements were and what became of them, and which line of a
-        complete definition would have stopped "reorders per member" being paid for that.
+        complete definition would have stopped "reorders per member" rising for that.
 
         **The check a senior analyst runs.** The baseline (the comparison window), the denominator
-        (the 120 members in both windows), the evidence that the thing the number stands for moved
-        (booked value and what was delivered), and a second way to the same answer (the hand count
-        against the full table).
+        (the same 107 members in both windows), the evidence that the thing the number stands for
+        moved (booked value and what became an order), and a second way to the same answer: the
+        ratio of the two windows' totals equals the ratio of the per-member figures, because both
+        windows divide by the same 107. The seven's hand count leans the same way and lands
+        elsewhere, because seven members are a sample of the tier.
 
         The unguided exercise that follows writes the growth plan's own north star, delivered orders
         per active customer per month, on the same seven-line template as the morning's.

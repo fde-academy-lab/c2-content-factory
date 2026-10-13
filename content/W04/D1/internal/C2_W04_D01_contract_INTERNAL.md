@@ -47,9 +47,22 @@ Written by `C2_W04_D01_generate_INTERNAL.py`; every line must read PASS.
 | PASS | twelve rows: hours 60 to 74, trips 114 to 88 |  |  |
 | PASS | twelve rows: 1.90 to 1.19 trips per hour |  |  |
 | PASS | twelve-row hand count at least 0.05 from the city's 1.58 |  |  |
-| PASS | Kalpa: 120 Retail-Plus members |  |  |
-| PASS | Kalpa plant: reorders placed per member 1.22 times | 1.22 | 1.22 |
-| PASS | Kalpa plant: booked value per member 0.96 times | 0.96 | 0.96 |
-| PASS | Kalpa plant: no reorder in the window delivered, each cancelled, merged or pending |  |  |
-| PASS | Kalpa lab twelve rows: seven members, both ratios at least 0.05 from the plants | (1.35, 0.88) |  |
-| PASS | shared constants: the two Kalpa windows |  |  |
+| PASS | the idle tail averages 39 peak online hours a driver-week after the launch; E and F log 16 and 14 | 38.9 | 39 |
+| PASS | the case tables (drivers, driver_weeks, zone_weeks) are byte-identical to origin/main |  |  |
+| PASS | Kalpa: kalpa_members is Thursday's kalpa_memberships, byte for byte |  |  |
+| PASS | Kalpa: 120 members, C-0151 to C-0270; 11 to 14 joined a month from January to July, 32 in August, the last on 29 August |  |  |
+| PASS | Kalpa: 107 joined by 19 August, the monsoon sale's last day, and 13 from 20 to 29 August | (107, 13) | (107, 13) |
+| PASS | Kalpa: every placement falls from 20 August to 30 September, never before its member joined |  |  |
+| PASS | Kalpa join, log to warehouse: every placement with an order_id is a v4 app order of 20 August to 9 September, with its customer, date, amount and status |  |  |
+| PASS | Kalpa join, warehouse to log: each of v4's 10 Retail-Plus app orders of that window appears exactly once | 10 | 10 |
+| PASS | Kalpa: the comparison window holds members' own placements only, the rest merged with no order_id |  |  |
+| PASS | Kalpa: every placement in the window is the app's own, cancelled, merged or pending, with no order_id |  |  |
+| PASS | Kalpa: v4's 7 Retail-Plus app orders of 10 to 30 September are members' own checkouts, outside the log | 7 | 7 |
+| PASS | Kalpa plant: reorders placed per member, the 107, 1.22 times | 1.22 | 1.22 |
+| PASS | Kalpa plant: booked value per member, the 107, any status, 0.96 times | 0.96 | 0.96 |
+| PASS | Kalpa plant: none of the window's placements delivered |  |  |
+| PASS | Kalpa: v4's scale, a few tenths of a placement per member per window | (0.34, 0.41) |  |
+| PASS | Kalpa: over all 120 members both ratios print otherwise, so the base of 107 changes the answer | (1.17, 0.9) |  |
+| PASS | Kalpa lab twelve rows: seven of the 107 with placements in both windows, both ratios at least 0.05 from 1.22 and 0.96 | (1.33, 0.84) |  |
+| PASS | Kalpa: v4's monsoon sale runs 5 to 19 August for Retail-Plus, its last day the shared constant | ('2026-08-05', '2026-08-19') |  |
+| PASS | shared constants: the two Kalpa windows and the monsoon sale's last day, equal to Thursday's |  |  |

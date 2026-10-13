@@ -1,11 +1,13 @@
 day: W04/D1, Monday 26 October 2026
-written_by: C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026
+written_by: C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026; the Kalpa
+  lab rebuilt on Thursday's membership table, 13 October 2026
 source_tables:
   drivers: data/C2_W04_D01_drivers_STUDENT.csv
   driver_weeks: data/C2_W04_D01_driver_weeks_STUDENT.csv
   zone_weeks: data/C2_W04_D01_zone_weeks_STUDENT.csv
-  kalpa_members: data/C2_W04_D01_kalpa_members_STUDENT.csv
-  kalpa_app_reorders: data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv
+  kalpa_members: data/C2_W04_D01_kalpa_members_STUDENT.csv (a byte copy of Thursday's data/C2_W04_D04_kalpa_memberships_STUDENT.csv)
+  kalpa_app_reorders: data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv (its order_id rows are orders of
+    content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql)
 numbers:
 - id: launch_date
   value: '2026-08-31'
@@ -1059,6 +1061,12 @@ numbers:
   unit: share
   how: 2 of the six drivers (E and F) sit in the idle tail
   used_by: L1; L2
+- id: idle_hours_per_driver_week_after
+  value: 39
+  unit: peak online hours a driver-week
+  how: idle_hours_after 42,000 over 180 drivers and six weeks (38.9), to the nearest hour; E and F log
+    16 and 14
+  used_by: 'the twelve rows: the card''s two idle drivers keep shorter weeks than the tail''s average'
 - id: acceptance_change_points
   value: 13
   unit: points
@@ -1387,67 +1395,135 @@ twelve_rows:
   topup_rs: 3850
 kalpa:
   members: 120
+  members_base: 107
+  members_joined_in_comparison: 13
+  base_rule: members whose member_since is on or before 19 August 2026, the monsoon sale's last day, so
+    each was a member for the whole of both windows
   members_joined_by_month:
-    2026-01: 20
-    2026-02: 20
-    2026-03: 20
-    2026-04: 20
-    2026-05: 20
-    2026-06: 20
-  reorders_comparison: 427
-  reorders_window: 521
+    2026-01: 11
+    2026-02: 12
+    2026-03: 13
+    2026-04: 12
+    2026-05: 13
+    2026-06: 13
+    2026-07: 14
+    2026-08: 32
+  window_days:
+    comparison: 21
+    auto_reorder: 21
+  late_example:
+    customer_id: C-0191
+    member_since: '2026-08-25'
+    comparison_days: 16
+    comparison_days_missed: 5
+  rows_in_log: 89
+  reorders_comparison: 36
+  reorders_window: 44
+  booked_comparison_rs: 108270
+  booked_window_rs: 103940
+  placed_per_member:
+    comparison: 0.336
+    window: 0.411
+  booked_per_member_rs:
+    comparison: 1011.9
+    window: 971.4
+  mean_value_rs:
+    comparison: 3008
+    window: 2362
+  mean_value_ratio: 0.79
+  status_comparison:
+    cancelled: 2
+    delivered: 4
+    merged: 29
+    returned: 1
+  status_window:
+    cancelled: 22
+    merged: 16
+    pending: 6
+  orders_in_comparison: 10
+  orders_in_comparison_base: 7
+  merged_in_comparison_base: 29
+  v4_app_orders_in_window_outside_log: 7
+  all_members:
+    reorders_comparison: 41
+    reorders_window: 48
+    placed_ratio: 1.17
+    booked_ratio: 0.9
+  lab_rule: the first seven of the 107, in id order, with placements in both windows whose hand count
+    leans the way the full table does and sits at least 0.10 from each of its two ratios
   lab_twelve_rows:
-  - customer_id: RP-0002
-    placed_comparison: 4
-    placed_window: 6
-    booked_comparison_rs: 2035
-    booked_window_rs: 1914
-  - customer_id: RP-0012
-    placed_comparison: 4
-    placed_window: 5
-    booked_comparison_rs: 1648
-    booked_window_rs: 1369
-  - customer_id: RP-0014
-    placed_comparison: 3
-    placed_window: 4
-    booked_comparison_rs: 1337
-    booked_window_rs: 1097
-  - customer_id: RP-0021
-    placed_comparison: 5
-    placed_window: 6
-    booked_comparison_rs: 2021
-    booked_window_rs: 1672
-  - customer_id: RP-0023
-    placed_comparison: 4
-    placed_window: 6
-    booked_comparison_rs: 1742
-    booked_window_rs: 1606
-  - customer_id: RP-0031
-    placed_comparison: 4
-    placed_window: 5
-    booked_comparison_rs: 1532
-    booked_window_rs: 1390
-  - customer_id: RP-0040
+  - customer_id: C-0152
     placed_comparison: 2
+    placed_window: 2
+    booked_comparison_rs: 6690
+    booked_window_rs: 2950
+  - customer_id: C-0184
+    placed_comparison: 2
+    placed_window: 1
+    booked_comparison_rs: 7620
+    booked_window_rs: 2010
+  - customer_id: C-0211
+    placed_comparison: 1
     placed_window: 3
-    booked_comparison_rs: 1093
-    booked_window_rs: 1045
+    booked_comparison_rs: 1970
+    booked_window_rs: 5110
+  - customer_id: C-0215
+    placed_comparison: 1
+    placed_window: 1
+    booked_comparison_rs: 1940
+    booked_window_rs: 2290
+  - customer_id: C-0224
+    placed_comparison: 1
+    placed_window: 3
+    booked_comparison_rs: 3790
+    booked_window_rs: 6660
+  - customer_id: C-0240
+    placed_comparison: 1
+    placed_window: 1
+    booked_comparison_rs: 4350
+    booked_window_rs: 3400
+  - customer_id: C-0264
+    placed_comparison: 1
+    placed_window: 1
+    booked_comparison_rs: 3490
+    booked_window_rs: 2690
+  lab_totals:
+    placed_comparison: 9
+    placed_window: 12
+    booked_comparison_rs: 29850
+    booked_window_rs: 25110
   lab_hand_count:
-    placed_ratio: 1.35
-    booked_ratio: 0.88
+    placed_ratio: 1.33
+    booked_ratio: 0.84
+  lab_mean_of_member_ratios:
+    placed_ratio: 1.5
+    booked_ratio: 1.11
+  base_cut_on_20_august:
+    members: 108
+    placed_ratio: 1.19
+    booked_ratio: 0.92
+  monsoon_sale:
+    first_day: '2026-08-05'
+    last_day: '2026-08-19'
+    campaign_id: CMP-MONSOON-26
+  window_three_weeks_earlier:
+  - '2026-07-30'
+  - '2026-08-19'
   audience: TRAINER until the lab counts them
 plants:
 - id: kalpa_reorders_per_member_ratio
   value: 1.22
-  how: reorders placed per member, 10 to 30 September over 20 August to 9 September
+  how: reorders placed per member, the 107 who joined by 19 August, 10 to 30 September over 20 August
+    to 9 September
   found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_booked_value_per_member_ratio
   value: 0.96
-  how: booked value of reorders per member, any status, the same two windows
+  how: booked value of reorders per member, any status, the same 107 and the same two windows
   found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_window_none_delivered
   value: true
-  how: every reorder in the window is an auto-reorder that was cancelled, merged or pending
+  how: every placement in the window is an auto-reorder that was cancelled, merged or pending, and none
+    became an order
   found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell
 shared_constants:
   kalpa_comparison_window:

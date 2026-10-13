@@ -106,8 +106,33 @@ def main():
     assert len(PRINTED) == 39, len(PRINTED)
     hard = sum(1 for i in PRINTED if i["level"] == "Hard")
     mins = sum(i["min"] for i in PRINTED)
-    assert hard == 23 and mins <= 120, (hard, mins)
+    assert hard == 11 and mins <= 120, (hard, mins)
+    # The levels after the blind check of 13 October 2026: an item stays Hard where that check read it
+    # hard, or where its medium read rested on a cue this pass removed and the interviewer's cold read
+    # had read it hard; the provenance's levels row carries the rule.
+    assert sorted(i["q"] for i in PRINTED if i["level"] == "Hard") == [4, 7, 9, 15, 20, 21, 25, 26, 30, 32, 39]
+    assert [i["q"] for i in PRINTED if i["level"] == "Easy"] == [1, 3, 5, 11, 29, 35, 36, 37, 38]
     print(f"PASS  shape: 39 items, {hard} hard ({hard / 39:.0%}), {mins:g} minutes at the blueprint's pace")
+
+    # ---------------------------------------------------------------- words elsewhere name no answer
+    # The second fix pass took out every line the blind second read of 13 October 2026 found naming a
+    # key, and the lines this pass found doing the same; none may come back.
+    paper = (ROOT / "content/W04/SAT/paper/C2_W04_SAT_recap_paper_STUDENT.md").read_text(encoding="utf-8")
+    for leak in ("a check in the right unit", "a baseline that beats the fit", "Ask for the denominator",
+                 "so it now appears beside nearly everything", "41 percent", "Puts the spike in",
+                 "The redesign pays per completed peak trip", "Allow for heavy buyers", "Move the spike",
+                 "states no denominator", "planned toward the costlier side", "Design the test",
+                 "raises festival-aligned by", "well above the single weeks", "which it never saw. Diwali",
+                 "defend it without retreating", "the cost of an error that changed",
+                 "The fall in bookings per hour is the monsoon's end", "Size the silent change",
+                 # and the lines the blind check of the same day named
+                 "kept beside the definition", "which falls when", "which move before",
+                 "which tells the team early", "numerator, denominator and window", "whose window",
+                 "valued in margin", "letter of the week's method", "support floor of 1 percent", "above the floor",
+                 "carousel", "35.8 percent, beat the seasonal naive", "none was built from", "were scored on",
+                 "0.82", "over both costs", "6.25", "9.45", "on each base", "whose other items click least"):
+        assert leak not in paper, ("a line names an answer again", leak)
+    print("PASS  no part opening, caption, label, spare or stretch line names a timed item's answer")
 
     # ---------------------------------------------------------------- Part 1
     head, rows = table(part_exhibit(1))
@@ -154,9 +179,13 @@ def main():
     mean_b = sum(int(r[6]) / int(r[3]) for r in before) / 6
     mean_a = sum(int(r[6]) / int(r[3]) for r in after) / 6
     assert round(mean_b, 2) == 1.90 and round(mean_a, 2) == 1.31
-    assert "1.31" in options(it)["d"]
-    keyed(it, "1.90 to 1.19", "10 hours", "30 trips")
-    show(it, "60 to 74 hours, 114 to 88 trips, 1.19; mean of ratios 1.31 in option d")
+    ops = options(it)
+    assert "1.31" in ops["a"] and "1.31" in ops["d"] and "1.19" in ops["c"]
+    assert round((1.90 - 1.19) / 1.90 * 100) == 37 and "37 percent" in ops["c"]
+    assert round((1.90 - 1.31) / 1.90 * 100) == 31 and "31 percent" in ops["a"]
+    assert close(num(1, "tph_after"), 1.58) and "1.58" in ops["d"]
+    keyed(it, "1.90 to 1.19", "1.58", "E and F")
+    show(it, "60 to 74 hours, 114 to 88 trips, 1.19 against the city's 1.58; 1.31 and 37 percent refused")
 
     it = BY_ID["tf-target"]
     keyed(it, "True", "nobody asked for")
@@ -165,8 +194,12 @@ def main():
     it = BY_ID["wells-silent"]
     share = Fraction(4, 100) / Fraction(11, 100)
     assert round(float(share) * 100) == 36
-    keyed(it, "36 percent", "0.04 of 0.11", "dated log")
-    show(it, "0.04 of 0.11 is 36 percent; the dated change log")
+    part_over_part = Fraction(4, 100) / Fraction(7, 100)
+    assert round(float(part_over_part) * 100) == 57
+    ops = options(it)
+    assert "57 percent" in ops["a"] and "57 percent" in ops["d"] and "36 percent" in ops["c"]
+    keyed(it, "36 percent", "0.04 of the 0.11", "dated log")
+    show(it, "0.04 of 0.11 is 36 percent, 0.04 over 0.07 is 57; the dated change log")
 
     it = BY_ID["kalpa-sheet"]
     plants = {p["id"]: p["value"] for p in FACTS[1]["plants"]}
@@ -178,6 +211,9 @@ def main():
     assert it["key"] == "c, d, e"
     ops = options(it)
     assert ops["c"].startswith("Exclusions") and ops["d"].startswith("Guardrail") and "add-to-cart" in ops["e"]
+    # Lines b, d and e name their element without saying what a leading input or a guardrail does,
+    # which Q1 and Q3 ask.
+    assert "early" not in ops["b"] and "falls" not in ops["d"] and "before" not in ops["e"]
     show(it, "Monday's lab plants 1.22, 0.96, none delivered (521 over 427 placements)")
 
     # ---------------------------------------------------------------- Part 2
@@ -190,22 +226,34 @@ def main():
     print("PASS  Exhibit 2A: Rs 314 to Rs 260, Rs 5,817 to Rs 5,861 and Rs 165, from Monday's facts")
 
     it = BY_ID["slide-order"]
-    assert it["key"] == "c, d, b, a"
+    assert it["key"] == "e, b, d, f"
     ops = options(it)
-    assert "claim" in ops["c"] and "evidence" in ops["d"] and "caveat" in ops["b"] and "action" in ops["a"]
-    show(it, "claim, evidence, caveat, action; the topic title and the 24 percent line left out")
+    assert len(ops) == 7 and sorted(ops) == list("abcdefg")
+    assert ops["e"].startswith("The claim") and ops["b"].startswith("The evidence")
+    assert ops["d"].startswith("The caveat") and ops["f"].startswith("The action")
+    assert "Rs 314 to Rs 260" in ops["b"] and "half the drivers, picked at random" in ops["f"]
+    stem = " ".join(bsp.parts(it)[0])
+    for slot in ("the claim, written as the title", "the evidence", "the caveat", "the action"):
+        assert slot in stem, ("the stem prints the template's four slots", slot)
+    assert round((num(1, "rs_per_driver_week_after") / num(1, "rs_per_driver_week_before") - 1) * 100, 1) == 0.8
+    assert "0.8 percent" in ops["c"] and "Rs 5,817 to Rs 5,861" in ops["g"]
+    show(it, "the template's four slots in the stem; per-hour claim and evidence, the test as the action")
 
     it = BY_ID["keep-two"]
     d2 = {n["id"]: n["value"] for n in FACTS[2]["numbers"]}
     assert d2["topup_per_extra_trip_rs"] == 2836
     assert round(19_000_000 / (230_900 - 224_200)) == 2836
     assert it["key"] == "a, c" and "4.8 to 4.6" in options(it)["a"] and "2,836" in options(it)["c"]
-    assert "269,773 to 347,583" in options(it)["b"]
-    assert num(1, "offers_before") == 269773 and num(1, "offers_after") == 347583
-    show(it, "the wait and Rs 2,836 an extra trip (Rs 1.9 crore over 6,700)")
+    assert "251,910 to 256,556" in options(it)["b"]
+    assert round(19_000_000 / num(1, "trips_after")) == 82 and "Rs 82" in options(it)["d"]
+    show(it, "the wait and Rs 2,836 an extra trip; Rs 82 a completed trip and the requests refused")
 
     it = BY_ID["concede"]
-    keyed(it, "False", "1.56 against 1.90")
+    keyed(it, "False", "1.56 against 1.90", "old range")
+    ops = options(it)
+    assert "1.58" in ops["b"] and "1.58" in ops["d"] and "old range" in ops["a"]
+    assert "rains ended inside the window" in ops["c"] and "rains ended inside the window" in ops["d"]
+    assert d2["tph_last_three_after"] < d2["tph_after_exact"]
     stem = it["text"].split("\n")[0]
     for n in ("41,161", "42,602", "41,155", "42,719", "1.56"):
         assert n in stem, ("the stem must print what the keyed reply uses", n)
@@ -231,10 +279,19 @@ def main():
     assert num(1, "requests_before") > num(1, "trips_before")
     assert "2.13" in options(it)["c"] and "3,900" in options(it)["c"]
     assert close(d2["driver_hours_per_trip_before"], 0.53) and close(d2["driver_hours_per_request_chain"], 0.60)
-    show(it, "8,333 an hour over 1.68 is 4,960, times 1.15 is 5,700; 3,900 checks trips against requests")
+    # The check moves the answer down to the case's own rate; step f multiplies by the same ratio.
+    case_hours = num(1, "hours_before") / num(1, "trips_before")
+    down = trips_hour / (1 / case_hours) * 1.15
+    up = trips_hour / per_driver * 1.15 * ((1 / per_driver) / case_hours)
+    assert round(down, -2) == 5000 == d2["drivers_at_case_tph"] and round(up, -1) == 6450
+    assert "down to about 5,000 to 5,700" in options(it)["a"] and "up to about 6,450" in options(it)["f"]
+    show(it, "4,960 and 5,700; checked down to 5,000; 3,900 the wrong unit, 6,450 the wrong direction")
 
     it = BY_ID["four-checks"]
     assert it["key"] == "a, c"
+    stem = " ".join(bsp.parts(it)[0])
+    assert "6.3 million concurrent users in a minute" in stem and "802 million daily" in stem
+    assert "63 million" in options(it)["b"] and 2_000_000 / 4 == 500_000 and "5 lakh" in options(it)["d"]
     assert round(24.07e9 / 30 / 1e6) == 802
     assert round(66968 / ((415 + 500) / 2), 1) == 146.4
     assert d2["dmart_revenue_per_store_average"] == 146.4 and d2["dmart_stores_fy25_end"] == 415
@@ -274,7 +331,12 @@ def main():
     lost = [round(pct(r[1]) * (pct(r[4]) - pct(r[2])) * 100, 2) for r in rows[:3]]
     assert lost == [4.76, 2.85, 1.35], lost
     assert round(0.5 * 1.2 + 0.5 * 6.4, 1) == 3.8
-    keyed(it, "slot 1", "70 percent")
+    keyed(it, "slot 1", "70 percent", "Neither milk nor other items")
+    assert "slot 3" in options(it)["c"] and "Neither milk" in options(it)["c"] and "slot 1" in options(it)["a"]
+    # The slot-3 options pick the slot where milk's rate is lowest, which the rows confirm, and lose on
+    # clicks lost, share times gap.
+    milk = [pct(r[2]) for r in rows[:3]]
+    assert milk.index(min(milk)) == 2 and "0.9 percent" in options(it)["c"] and "0.9 percent" in options(it)["d"]
     show(it, "clicks lost per 100 impressions 4.76, 2.85, 1.35; 0.5 x 1.2 + 0.5 x 6.4 = 3.8")
 
     it = BY_ID["heavy"]
@@ -292,6 +354,7 @@ def main():
     assert round(cv["onions_tomatoes_lift_size"], 2) == 1.38 and round(cv["onions_tomatoes_lift_both"], 2) == 1.38
     assert round(cv["chips_cold_heavy_share"], 2) == 0.73 and close(tk["heavy_tenth_share"], 0.38)
     keyed(it, "Chips and cold drink only", "1.95", "1.38")
+    assert "support floor" not in it["text"] and "1.70 per cart" in options(it)["d"]
     show(it, "per cart 3.39 and 1.70; corrected 1.95 and 1.38 against the 1.5 rule")
 
     for no, want in ((30, "0.825"), (31, "0.97")):
@@ -310,8 +373,9 @@ def main():
     assert close(kl["kalpa_thin_support"], 0.0025, 0.0001)
     assert fd["ice_choc_carts"] == 100 and round(fd["ice_choc_lift"], 1) == 4.6 and close(fd["ice_cream_share"], 0.04)
     assert round(2 / 812 * 100, 2) == 0.25 and round(100 / 40000 * 100, 2) == 0.25
-    assert fd["ice_choc_expected"] == 22 and S(3, "slot_value")["ice_cream_views_day"] == 2400
-    keyed(it, "True", "2 baskets")
+    assert fd["ice_choc_expected"] == 22
+    keyed(it, "True", "2 baskets", "no test shows the suggestion sells more")
+    assert "0.25 percent" in options(it)["b"] and options(it)["b"].startswith("True")
     show(it, "2 of 812 and 100 of 40,000, both 0.25 percent; lift 4.0 swings to 2 or 6")
 
     it = BY_ID["margin"]
@@ -343,8 +407,15 @@ def main():
     assert round(may * 100) == 41 and round(june * 100) == 41
     show(BY_NO[33], "1,640 of 4,000")
     show(BY_NO[34], "2,460 of 6,000")
-    assert BY_NO[35]["key"] == "a"
-    show(BY_NO[35], "both cohorts fell; C props the blend")
+    it = BY_NO[35]
+    assert it["key"] == "a"
+    without_c = (1000 * 0.46 + 3000 * 0.35) / 4000
+    unweighted = (46 + 35) / 2
+    assert round(without_c * 100, 1) == 37.8 and unweighted == 40.5
+    ops = options(it)
+    assert "37.8" in ops["a"] and "40.5" in ops["b"] and "37.8" in ops["c"] and "40.5" in ops["d"]
+    assert "41" not in " ".join(ops.values())
+    show(it, "both cohorts fell; without C June reads 1,510 of 4,000, 37.8; 40.5 unweighted")
 
     it = BY_ID["funnel-units"]
     rows = it["exhibit"]["table"]["rows"]
@@ -360,7 +431,8 @@ def main():
     assert round(ses["Add to cart"] / ses["Menu view"] * 100) == 34
     assert round(mem["Add to cart"] / mem["Menu view"] * 100) == 61
     assert [round(ses[k] / ses["Open"] * 100) for k in ("Search", "Menu view", "Add to cart")] == [68, 80, 27]
-    keyed(it, "61 percent", "a step members can skip")
+    keyed(it, "61 percent", "a step members can skip", "from Open straight to a menu")
+    assert "carousel" not in it["exhibit"]["caption"] and "carousel" not in part_exhibit(4)["caption"]
     show(it, "118, 34 and 61 percent; option b's 68, 80, 27 over the opening sessions")
 
     it = BY_ID["android"]
@@ -374,7 +446,9 @@ def main():
     pairs = {(r[0], r[1]): (r[2], r[3]) for r in rows}
     assert pairs[("Members", "Android")] == ("58 percent", "44 percent")
     assert pairs[("Non-members", "Android")] == ("52 percent", "51 percent")
-    keyed(it, "1,317", "Rs 4.0 to 6.6 lakh")
+    keyed(it, "member path", "1,317", "Rs 4.0 to 6.6 lakh")
+    ops = options(it)
+    assert "3,198" in ops["a"] and "1,317" in ops["c"] and "August sale cohort" in ops["c"] and "3,198" in ops["d"]
     show(it, "14 points of 22,841 carts over 17 days is 1,317 a week; Rs 4.0 to 6.6 lakh")
 
     it = BY_ID["swiggy"]
@@ -384,7 +458,8 @@ def main():
     toy = next(t for t in FACTS[4]["toys"] if t["id"] == "toy_weaned")["values"]
     assert all_ten == toy["all_ten"] and kept == toy["strong_five"]
     assert all_ten[2] * 10 == 40 and kept[2] * 20 == 80 and kept[3] * 20 == 60
-    keyed(it, "40 percent per user who joined", "80 per user who stayed")
+    keyed(it, "40 percent of the users who joined and 80 percent of those kept", "divides by")
+    assert "60 percent" in options(it)["c"] and "divides by" in options(it)["c"]
     show(it, "4 of 10 is 40 percent, 4 of 5 is 80; the toy from Thursday's facts")
 
     it = BY_ID["kalpa-window"]
@@ -397,8 +472,11 @@ def main():
                    (c["window"]["carts"], c["window"]["checkouts"])]
     assert [round(b / a * 100) for a, b in got] == [82, 83, 64]
     assert round(11 * 10 / 12 - 7, 2) == 2.17 and kp["blend_printed"] == "41 percent"
-    keyed(it, "7 of 11", "10 of 12", "about 2 short")
-    show(it, "28 of 34, 10 of 12, 7 of 11; 9.17 expected, 7 seen; blend 41 percent")
+    keyed(it, "7 of 11", "10 of 12", "about 2 checkouts short")
+    ops = options(it)
+    assert 10 - 7 == 3 and "3 fewer" in ops["a"] and round((10 - 7) / 10 * 100) == 30 and "30 percent" in ops["b"]
+    assert round(83 - 64) == 19 and "19-point" in ops["c"]
+    show(it, "28 of 34, 10 of 12, 7 of 11; 9.17 expected, 7 seen; the flat blend printed without its number")
 
     # ---------------------------------------------------------------- Part 5
     head, rows = table(part_exhibit(5))
@@ -420,8 +498,8 @@ def main():
     kw = S(5, "kalpa_window")
     assert kw["seasonal_naive_2026_10"] == km["rev_2025_10"] and kw["seasonal_naive_2026_11"] == km["rev_2025_11"]
     assert kw["aligned_2026_11"] == round(km["rev_2025_10"] * 1.04) and round(kw["aligned_2026_11"] / 1e5, 1) == 444.7
-    assert round(kw["aligned_2026_10"] / 1e5, 1) == 308.8
-    for s in ("427.6", "297.0", "444.7", "November"):
+    assert round(kw["aligned_2026_10"] / 1e5, 1) == 308.8 and round(297.0 * 1.04, 1) == 308.9
+    for s in ("427.6", "297.0", "444.7", "308.9", "November"):
         assert s in it["key"], s
     show(it, "seasonal naive 427.6 and 297.0; festival-aligned November 427.6 x 1.04 = 444.7")
 
@@ -435,8 +513,12 @@ def main():
     assert rows["Naive, the last day seen"] == f"{pub['m5_naive']:.3f}"
     assert close(pub["m5_beat_snaive_pct"], 0.358, 0.0001) and pub["m5_products"] == 3049
     assert 1 - pub["m5_beat_snaive_pct"] > 0.5 and round(1972 / 5507, 3) == 0.358
-    assert "1,972 of the 5,507 teams, 35.8 percent" in it["exhibit"]["caption"].replace("\n", " ")
-    keyed(it, "A fit is no forecast", "against it on hidden weeks")
+    # The caption no longer names the bar; the key's reason keeps the 35.8 percent with its source.
+    m5_why = next(a for a in SOURCE["additions"] if a["id"] == "m5")["why"]
+    assert "35.8" not in it["exhibit"]["caption"] and "1,972 of the 5,507 teams, 35.8" in " ".join(m5_why.split())
+    keyed(it, "A fit is no forecast", "0.847", "weeks it never saw")
+    ops = options(it)
+    assert "1.752" in ops["b"] and "1.752" in ops["c"] and "0.847" in ops["d"] and "same two years" in ops["d"]
     show(it, "M5 scores from Friday's facts; 35.8 percent beat the seasonal naive, so most did not")
 
     it = BY_ID["asym"]
@@ -460,7 +542,16 @@ def main():
     iv = S(5, "interview")
     assert round(iv["own_raised_cost_aligned_rs"] / 1e5, 1) == 8.8 and round(iv["own_raised_cost_vendor_rs"] / 1e5, 1) == 10.0
     assert round(16400 / 6615.076923 - 1, 2) == 1.48
-    keyed(it, "the vendor costs least", "own 0.82 point")
+    keyed(it, "6,615, 9,831 and 16,400", "the vendor costs least, about Rs 11.9 lakh", "plan share")
+    ops = options(it)
+    # Options a and c claim the smallest error also costs least; priced, it does not.
+    assert "festival-aligned, with the smallest error, also costs least" in ops["a"]
+    assert "festival-aligned, with the smallest error, also costs least" in ops["c"]
+    assert min(mae, key=mae.get) == "Festival-aligned" and cost["Festival-aligned"] > cost["The vendor's curve"]
+    netted = {k: abs(v[0] - v[1]) / 13 for k, v in got.items()}
+    assert [round(netted[k]) for k in ("Festival-aligned", "Same week last year", "The vendor's curve")] == [346, 8708, 16108]
+    assert "About 346, 8,708 and 16,108" in ops["b"] and "About 346, 8,708 and 16,108" in ops["c"]
+    assert "plan share" in ops["b"] and "0.82" not in " ".join(ops.values())
     show(it, "MAE 6,615, 9,831, 16,400; priced Rs 13.5, 30.5 and 11.9 lakh; at 0.82, 8.8 against 10.0")
 
     it = BY_ID["kalpa-board"]
@@ -477,17 +568,22 @@ def main():
     mid = (kw["finance_total"] + kw["vendor_total"]) / 2
     assert round(mid / 1e7, 2) == 21.39 and round(kw["seasonal_naive_total"] * 1.13 / 1e7, 2) == 21.39
     assert round(kx["vendor_fit_max_pct"] * 100, 1) == 1.8
-    keyed(it, "19.69", "November", "2.08", "3.5 lakh")
+    keyed(it, "19.69", "November", "2.08", "3.5 lakh", "none with a Diwali")
+    assert len(it["exhibit"]["table"]["head"]) == 4, "Exhibit 5E prints no spike column"
+    assert not "2026-04" <= t5["diwali_2026"][:7] <= "2026-09", "the six unseen months hold no Diwali"
+    ops = options(it)
+    assert "October" in ops["a"] and "festive months too" in ops["c"] and "festive months too" in ops["d"]
     show(it, "Rs 19.69 crore, Rs 2.08 crore under the plan line; misses 3.5, 11.7 and 38.8 lakh")
 
     # ---------------------------------------------------------------- Part 6
     it = BY_NO[29]
     assert it["key"] == "a, b, d" and "twenty times" in it["text"]
+    assert options(it)["a"] == "writing the metric's definition down before reading any number"
     show(it, "the definition, the guardrail and the baseline stay; the cost of an error changes")
-    want = {"brief-logistics": "a definition whose window the measured cannot move, with a guardrail",
+    want = {"brief-logistics": "a definition the people measured cannot change after the fact",
             "brief-health": "each funnel step over the step before, in one unit",
             "brief-connect": "cohorts by start month, each read at the same age",
-            "brief-finance": "lift above a support floor, valued in margin"}
+            "brief-finance": "lift above a support floor, on enough customers to trust it"}
     for iid, word in want.items():
         it = BY_ID[iid]
         assert it["bank_word"] == word, (iid, it["bank_word"])
@@ -496,13 +592,32 @@ def main():
     share10 = 10 / (10 + 650 / 120)
     assert round(share10, 2) == 0.65 and round((650 / 120) / (10 + 650 / 120), 2) == 0.35
     keyed(it, "0.65", "festival-aligned copy")
-    show(it, "10 over 10 plus 5.42 is 0.65; 0.35 is the share upside down")
+    ops = options(it)
+    assert round((650 / 120) / (10 + 650 / 120), 2) == 0.35 and "0.35" in ops["a"] and "0.35" in ops["b"]
+    assert "0.82" not in " ".join(ops.values()), "Q39 prints no 0.82, which would read Q32's quantile"
+    assert "calendar weeks" in ops["c"] and "0.65" in ops["c"]
+    assert "over both costs" not in " ".join(ops.values()), "the share is worked, never printed as a formula"
+    show(it, "10 over 10 plus 5.42 is 0.65; 0.35, the share upside down, and the calendar copy refused")
 
     # ---------------------------------------------------------------- the stretch page
     assert round(33440 / 1.90, -2) == 17600 == num(1, "hours_to_carry_idle_trips")
     sv = S(3, "slot_value")
     assert sv["trial_n_full"] == 1105 and sv["trial_n_half"] == 4014
-    print("PASS  stretch answers: 17,600 hours; 1,105 and 4,014 ice-cream carts an arm")
+    # Wednesday's formula, (z for 5 percent two-sided plus z for 80 percent power) squared times the
+    # two variances over the squared gap, gives Wednesday's 1,105 and 4,014; Stretch 2 runs it on
+    # invented rates, 5 to 8 percent, so it points at no pair on the paper.
+    from statistics import NormalDist
+    z = NormalDist().inv_cdf(0.975) + NormalDist().inv_cdf(0.8)
+
+    def arm(p1, p2):
+        return z * z * (p1 * (1 - p1) + p2 * (1 - p2)) / (p2 - p1) ** 2
+    assert round(arm(0.0625, 0.0945)) == 1105 and round(arm(0.0625, 0.0785)) == 4014
+    assert round(arm(0.05, 0.08)) == 1056 and round(arm(0.05, 0.065)) == 3777
+    assert arm(0.05, 0.065) / arm(0.05, 0.08) > 3
+    s2 = SOURCE["stretch"][1]
+    assert "5 percent" in s2["text"] and "8 percent" in s2["text"] and "invented" in s2["text"]
+    assert "1,056" in s2["answer"] and "3,777" in s2["answer"]
+    print("PASS  stretch answers: 17,600 hours; 1,056 and 3,777 carts a half on invented rates")
 
     assert len(LINES) == 39, len(LINES)
     print(f"\nRESULT: PASS ({len(LINES)} items proved)")
@@ -517,8 +632,14 @@ if __name__ == "__main__":
 #     Prints the shape line, the exhibit lines and 39 item lines, PASS Q1 to PASS Q39, each with
 #     the item's id or bank number, its key and what was checked, then the stretch line and
 #     "RESULT: PASS (39 items proved)", exit 0.
-# The same run with the twelve-rows key changed to b in the source file
-#     keyed() fails at Q4, because option b does not carry "1.90 to 1.19", and the run exits 1.
+# The same run with the twelve-rows key changed to c in the source file
+#     keyed() fails at Q4, because option c does not carry "1.58", and the run exits 1.
+# The same run with "41 percent" put back into Exhibit 4F's caption
+#     The leak check fails before any item is proved, naming the phrase, and the run exits 1.
+# The same run with Q32's option b given back "compare each at its own 0.82 point"
+#     The leak check fails on "0.82", since that number would tell a reader the share Q39 asks for.
+# The same run with Q6 labelled Hard again in the source file
+#     The shape check fails: 12 hard items against the 11 the blind check's rule leaves.
 # The same run with a cell of Exhibit 4C retyped, 52,948 to 52,984
 #     The funnel-units check fails against Thursday's facts file, sep_sessions_add_to_cart.
 # The same run with the margin item's discount raised to Rs 4 in its stem only

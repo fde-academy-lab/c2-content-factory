@@ -10,12 +10,49 @@ Who: Kavya Nair, senior analyst, Kalpa Retail data team
 LIVE, one minute. The morning built the tree, the list, the card and the rule. The afternoon hands the
 workbook to a director: chapter 6, then the escalated case alone, the debrief of the room's wrong
 numbers, the director's edit in pairs, the interview drill, and the close.
+Transition: which of the six curriculum topics does chapter 6 finish after lunch?
+```
+
+---
+
+## S0. What will today teach? Six topics across six chapters
+*Which curriculum topic does each chapter teach, in how many minutes, and which two does chapter 6 finish?*
+
+| The curriculum's topic | Chapter | The chapters' minutes |
+|---|---|---|
+| The customer table in Excel: structure, filters, freeze panes | 1, and 6 for filters | 30 and 30 |
+| Pivot tables: build, slice, refresh; what they cannot do | 1 and 2 | 30 each |
+| XLOOKUP: exact match, the not-found path, and the nearest-match trap | 3 | 30 |
+| Presenting one number: denominator, period, comparison, the sentence beside it | 4 | 30 |
+| The tool operating rule: warehouse, pandas, Excel | 5 | 30 |
+| Keeping the sheet and the source from drifting | 5, 6 and the second case | 30, 30 and 40 |
+
+```mermaid
+flowchart LR
+    T1["<b>1 Customer table</b><br/>Thursday's export"] --> T2["<b>2 Pivot tables</b><br/>Monday's quarters"]
+    T1 --> T3["<b>3 XLOOKUP</b><br/>Wednesday's fifty"]
+    T2 --> T4["<b>4 One number</b><br/>Q2 against Q1"]
+    T2 --> T5["<b>5 The tool rule</b><br/>Tuesday's join"]
+    T3 --> T5
+    T4 --> T5
+    T5 --> T6["<b>6 No drift</b><br/>Monday's control totals"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef bet fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    class T2,T3,T4,T5 known
+    class T1,T6 bet
+```
+
+```notes
+LIVE, 1 minute. The morning taught chapters 1 to 5. Chapter 6 finishes the two dark topics: the
+customer table's filters, at the foot of a filtered list, and keeping the sheet and the source from
+drifting, on the Checks tab. The escalated case then practises all six, and the second case
+practises the last one.
 Transition: when a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number? The chief of staff's last condition rides on it.
 ```
 
 ---
 
-## SECTION 6: Can a director break it?
+## SECTION 6: Keeping the sheet and the source from drifting: can a director break it?
 *When a director takes the workbook in the room, what can they break, and which checks catch it before anyone reads a wrong number? The chief of staff's last condition rides on it.*
 
 ```notes
