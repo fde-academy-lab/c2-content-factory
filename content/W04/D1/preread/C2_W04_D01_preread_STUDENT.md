@@ -45,11 +45,12 @@ its own notebook, then applies them to the Uber slide:
 
 | Word | What it means on a slide | Monday's example |
 |---|---|---|
-| Claim | The one sentence the slide exists to say, written as its title | "Pay the floor for completed peak trips, with an acceptance floor" is a claim; "Peak guarantee: six-week review" is only a topic |
+| Claim | The one sentence the slide exists to say, written as its title | "Keep the Rs 300 floor only for weeks that clear the acceptance floor" is a claim; "Peak guarantee: six-week review" is only a topic |
 | Evidence | The one number that carries the claim, with its denominator said | Trips per peak online hour, 1.90 before and 1.58 after |
 | Caveat | What the evidence cannot show, said on the slide where the people who care will see it | The fall could be partly the monsoon's end; the three weeks with most requests already read 1.60 |
 | Action | What the reader should do, with its cost in rupees and in weeks | Change the rule for the next six weeks and test it, with the saving stated as a range |
 | Appendix | The pages behind the slide, each kept for a question someone will ask | One page per role: the question driver operations, marketing and finance will each raise |
+| AI-free | Written alone with no AI tool open, so the page shows only your own reasoning; Tuesday's business case is one page on a short Kalpa brief, handed in | Round 3's one-page definition was written by a group; Tuesday's page is written by you alone |
 
 ---
 

@@ -17,9 +17,9 @@ to redraw the board from memory before Tuesday.
 
 ## Which six topics does Monday teach, and how do they join?
 
-Goes up first, before anything else, and stays up all day. The six boxes are the curriculum row's
-six topics in its order; each concept chapter lights its own box when it closes, and the case node
-fills after the break.
+Goes up while S2 to S4 are on screen, and stays up all day. The six boxes are the curriculum row's
+six topics in its order, drawn unlit; each concept chapter lights its own box when it closes, and the
+case node fills after the break. The drawing below is the map at the end of chapter 6, every box lit.
 
 ```mermaid
 flowchart TD
@@ -30,31 +30,29 @@ flowchart TD
     C4["<b>4. Definitions: numerator,<br/>denominator, window, exclusions</b>"]
     C5["<b>5. Gaming, and definitions<br/>that resist it</b>"]
     C6["<b>6. The metric definition<br/>artifact</b>"]
-    U["<b>Applied to: Uber, Hyderabad</b><br/>chapters 7 to 11"]
+    U["<b>Applied to: Uber, Hyderabad</b><br/>7 applies 1 and 4; 8 applies 4 and 5<br/>9 applies 2, 3, 5 and 6<br/>10 applies 5 and 6; 11 applies all six"]
     E -.-> C1
     E -.-> C4
     C1 --> C2
     C2 --> C3
     C1 --> C4
     C4 --> C5
+    C2 --> C6
     C3 --> C6
     C5 --> C6
     C6 --> U
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
-    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
-    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
-    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
     class C1,C2,C3,C4,C5,C6 lit
-    class E known
-    class U kalpa
+    class E,U known
 ```
 
 ---
 
 ## Where does today's ticket sit in the week?
 
-Goes up second, beside the six topics. Monday is lit; the other days stay dashed until they come.
+Shown on S2, before the six topics, and drawn beside them if the board has room. Monday is lit; the
+other days stay dashed until they come.
 
 ```mermaid
 flowchart TD
@@ -91,6 +89,24 @@ flowchart TD
     class M lit
     class T,W,H,F,S unknown
     class K1,K3,K4,K5 kalpa
+```
+
+---
+
+## What goes up at the ticket, before chapter 1?
+
+At S5 the room picks the number the city team would put in Monday's headline. Write it with the
+board's question above it, and leave both up until the case board grows around them after the break.
+
+```mermaid
+flowchart TD
+    Q["<b>What makes a number safe to pay for?</b>"]
+    H["<b>The room's headline</b><br/>peak online hours up 24 percent"]
+    Q --> H
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class Q lit
+    class H unknown
 ```
 
 ---
@@ -164,7 +180,7 @@ flowchart TD
     S["<b>The school's rule</b><br/>40 / 50 = 80.0"]
     D["<b>Denominator</b><br/>calendar days<br/>40 / 60 = 66.7"]
     E1["<b>Exclusions</b><br/>medical out of both<br/>40 / 48 = 83.3"]
-    E2["<b>Exclusions</b><br/>medical counted present<br/>42 / 50 = 84.0"]
+    E2["<b>Numerator</b><br/>medical counted present<br/>42 / 50 = 84.0"]
     W["<b>Window</b><br/>last 20 working days<br/>14 / 20 = 70.0"]
     R --> S
     R --> D
@@ -226,15 +242,15 @@ flowchart LR
 
 ## Which four questions must a number answer before anyone is paid for it?
 
-The case's board, drawn after the break (S57), empty but for its anchor, chapter 1's canteen.
-Each case chapter fills one region.
+The case's board, grown at S57 around the question and the headline written at S5: its three
+questions go up, and its anchor, chapter 1's canteen. Each case chapter fills one region.
 
 ```mermaid
 flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens 200 to 400, plates stay 200<br/>(invented numbers)"]
     Q1["<b>What is it for?</b>"]
-    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
+    Q2["<b>How could it rise while<br/>riders gained little?</b>"]
     Q3["<b>What stops that?</b>"]
     Q --> A
     Q --> Q1
@@ -275,7 +291,7 @@ flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens doubled, plates did not"]
     Q1["<b>What is it for?</b><br/>riders picked up faster;<br/>hours need no rider"]
-    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
+    Q2["<b>How could it rise while<br/>riders gained little?</b>"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo's unused accounts"]
     Q --> A
@@ -315,13 +331,13 @@ flowchart LR
 
 ## What does the board hold after chapter 8?
 
-The second region filled: how the number rose while riders were served no better.
+The second region filled: how the number rose while riders gained little.
 
 ```mermaid
 flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise while<br/>riders were served no better?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
+    Q2["<b>How could it rise while<br/>riders gained little?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo"]
     P2["<b>Pitfall: the unit moves the number</b><br/>Delhi Metro; offers and requests"]
@@ -366,7 +382,7 @@ Built one region at a time: the north star, then each guardrail with the gaming 
 ```mermaid
 flowchart TD
     N["<b>North star</b><br/>completed peak trips per enrolled<br/>driver online at peak, per week"]
-    G1["<b>Guardrail 1</b><br/>offers accepted over offers shown,<br/>at or above a floor"]
+    G1["<b>Guardrail 1</b><br/>offers accepted over offers shown,<br/>at or above an acceptance floor"]
     G2["<b>Guardrail 2</b><br/>median rider wait at peak"]
     G3["<b>Guardrail 3, the budget</b><br/>top-up per completed trip"]
     L1["<b>Input</b><br/>enrolled drivers online<br/>in the first peak hour"]
@@ -397,11 +413,11 @@ flowchart LR
     Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
     Q3["<b>What stops that?</b><br/>north star and guardrails"]
     S1["<b>The tree</b><br/>north star and inputs"]
-    S2["<b>The seesaw</b><br/>star up, guardrail down"]
-    S3["<b>The window's start</b><br/>who starts the clock"]
+    S2["<b>The seesaw</b><br/>paid number up,<br/>guardrail down"]
+    S3["<b>The clock's start</b><br/>who starts it"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
     P2["<b>Units move numbers</b><br/>Delhi Metro"]
-    P3["<b>The measured set the start</b><br/>VA"]
+    P3["<b>Who sets the start?</b><br/>VA"]
     Q --> Q1
     Q --> Q2
     Q --> Q3
@@ -428,7 +444,7 @@ The afternoon's first drawing, chapter 10: write, price, defend, score.
 ```mermaid
 flowchart LR
     W["<b>Write, 12 minutes</b><br/>the seven lines, three guardrails<br/>(two for riders), the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
-    P --> D["<b>Defend, about 7 minutes</b><br/>each role attacks once;<br/>a line must answer"]
+    P --> D["<b>Defend, 6.5 minutes</b><br/>each role attacks once;<br/>a line must answer"]
     D --> S["<b>Score, 1 minute</b><br/>answered, conceded<br/>or lost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -447,7 +463,7 @@ flowchart LR
     G["<b>Goal</b><br/>riders picked up faster"] --> N["<b>North star</b><br/>numerator, denominator,<br/>window"]
     N --> R["<b>Guardrails</b><br/>what must not<br/>get worse"]
     R --> L["<b>Leading input</b><br/>what moves first"]
-    L --> T["<b>The test</b><br/>zones as the unit"]
+    L --> T["<b>The test</b><br/>its unit named"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G lit
@@ -460,6 +476,6 @@ flowchart LR
 
 The six topics' map stays up with every box lit, and the finished case board beside it, with three lines written under it:
 
-- Pay for completed peak trips per enrolled driver online at peak, per week.
-- Guard it with the share of offers accepted (a floor between 0.46 and 0.78), the median rider wait and the top-up per completed trip.
-- Paying for hours sent Rs 1.159 crore, 61 percent of the Rs 1.9 crore top-up, to driver-weeks that accepted fewer than half their offers.
+- Judge the scheme by completed peak trips per enrolled driver online at peak, per week.
+- Guard it with the share of offers accepted, at or above an acceptance floor set between 0.46 and 0.78 (between 0.43 and 0.67 once accepted trips the driver cancels count as declined), the median rider wait and the top-up per completed trip.
+- Paying for hours sent Rs 1.159 crore, 61 percent of the Rs 1.9 crore top-up, to driver-weeks that accepted fewer than half their offers, so the Rs 300 floor is paid only for weeks that clear the acceptance floor.

@@ -60,8 +60,8 @@ d) 1, 8, 3, 4, 7
 
 ## Problem 2. Which numbers move first, and which guardrail does each north star need?
 
-Sit `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md`, three items, unless your group sat it in
-the metric clinic. Post its three letters on their own line.
+Sit `exercises/unguided/C2_W04_D01_lead_lag_STUDENT.md`, three items, even if your group ran the
+metric clinic's drill, which uses its own slide. Post its three letters on their own line.
 
 ---
 

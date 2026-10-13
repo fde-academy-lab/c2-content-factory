@@ -249,7 +249,10 @@ lab: notebook 12, the Kalpa set, the lead-and-lag drill, the lab set and the con
 (`trainer/C2_W04_D01_lab_note_TRAINER.md`). The lab note is kept as merged and predates the concept
 sets, so this sheet schedules them: after the lab note's four parts the TA runs the six sets' Q2 and
 Q3, 12 items, about 20 minutes, and opens their six solution files; if the lab reaches its end first,
-the 12 items go home as self-study before Saturday.
+the 12 items go home as self-study before Saturday. The clinic reads S6's eight numbers from its slide
+and never hands out the lead-and-lag file, which numbers the eight differently, so the lab runs that
+drill whether or not the clinic ran: the lab note's "unless the room sat it in the metric clinic" no
+longer applies, and the lab set's problem 2 now says so to the room.
 
 ## When does each notebook run?
 
