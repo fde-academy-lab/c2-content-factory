@@ -173,14 +173,13 @@ break and fills the board region by region. Transition: chapter 1.
 
 ---
 
-## SECTION 1: "What to measure and why; the proxy test": what is a number for?
+## SECTION 1: What to measure and why; the proxy test: what is a number for?
 *Say what a number is for, and test whether a team could raise it while the thing it stands for got worse.*
 
 ```notes
 LIVE, 30 seconds. Concept 1 of 6, 13 minutes, the longest, because it opens on the instinct round
-the curriculum row asks for. The topic sits in quotation marks because it is the row's subtopic,
-word for word. Every number in this chapter except the bank's on its last slide is
-invented. Notebook 01 runs beside the chapter. Transition: what a metric is, and who needs the answer.
+the curriculum row asks for. The topic is the row's subtopic, word for word. Every number in this
+chapter except the bank's on its last slide is invented. Notebook 01 runs beside the chapter. Transition: what a metric is, and who needs the answer.
 ```
 
 ---

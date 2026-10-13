@@ -111,7 +111,7 @@ from its id.
 | Monday's kirana is Balaji Kirana, in Hyderabad | The brief: Tuesday's is Ramesh's and Wednesday's is Sharma Kirana in Pune |
 | The chase ends on 147 and loses by 12 to the other side's 159 | The plan printed 148 in one place and "lost by 12" in another; the spine's "lost by 12" is kept |
 | Chapter 4's window is the term's last 20 working days, read 14 / 20 = 70.0 | The plan read 14 / 20 as "the second month alone", and this register's second month holds 25 working days |
-| Chapter 1's topic is in quotation marks on its opener | `scripts/build_deck.py` reads a topic opening on "What" as a question; outside this folder, so the report names it |
+| Chapter 1's opener carries the row's words with no quotation marks | The first build quoted them, because `scripts/build_deck.py` read a topic opening on "What" as a question; pull request 254 fixed that rule on main (80d0952), which this branch merged, so the quotes came off |
 | The fallback deck's sections became 13 to 16 | 6 to 9 collided with the new concept chapters, and 12 is the lab's notebook number |
 | The lab notebook was renamed to 12 and not executed again | The brief keeps the lab as merged; the build script rebuilds it only when asked for by number |
 | Notebook 07 lost its canteen cells and gained a picture of the offers each driver accepted, counts only | The canteen belongs to chapter 1; the picture keeps three pictures and adds no new case figure |
