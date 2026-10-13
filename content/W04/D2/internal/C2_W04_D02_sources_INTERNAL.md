@@ -25,8 +25,10 @@ All fetched and read on 12 October 2026.
 | M6 | The Tribune, 9 August 2026: 64.06 lakh journeys a day; Republic World, 18 September 2026: 82,44,903 boardings on 17 September 2026; PTI via LatestLY, 30 May 2018: line utilisation 45,35,932, a trip across three lines counted three times (fetched with curl, WebFetch returned 403); Deccan Herald (PTI), 30 August 2023: a journey counts each line a rider uses, which the mid-check key's item 2 now says | https://www.tribuneindia.com/news/delhi/delhi-metro-records-99-95-train-punctuality-in-2026-dmrc/ ; https://www.republicworld.com/india/delhi-metro-breaks-all-time-record-with-8244-lakh-footfall-as-dtc-strike-sends-rush-soaring-2026-09-18-137241 ; https://www.latestly.com/agency-news/dmrc-uses-new-count-metric-on-traffic-flow-doesnt-share-ridership-190870.html/amp ; https://www.deccanherald.com/india/delhi/delhi-metro-records-highest-ever-footfall-on-aug-29-2666561 (checked 12 October 2026) |
 
 Drivers online at Hyderabad's evening peak: R2 holds no figure, and a web search on 12 October 2026
-found only undated or decade-old counts of Uber drivers signed up in the city, a different unit. The
-slot reads "to be found" in every file.
+found only undated or decade-old counts of Uber drivers signed up in the city, a different unit. A
+second search on 13 October 2026 found rider-side figures only (Uber's 2025 usage data naming
+Hyderabad among its busiest cities) and no count of drivers online at any hour. The slot reads "to be
+found" in every file, and the room's check stays the case data's own ratio.
 
 ## Where does the pack depart from its sources, and why?
 

@@ -34,11 +34,16 @@ Wednesday").
 | Rs 12.6 lakh a month over three slots | Rs 6.3 lakh recovered, Rs 12.6 lakh kept only as the ceiling and a distractor | Rs 12.6 lakh held only if every slot showed milk; `strip_log` shows milk on half the impressions |
 | Causal testing "taken up in Week 5" (the draft's own wording) | Monday's faculty session on A/B testing (tentative) | `docs/faculty/Sessions.md` puts experiment design in W4-1; Week 5 is regression and classification |
 
-## Which items stay open?
+## Which items were left open, and how did each close?
 
-- The StatQuest video's length is not verified.
-- The cohort's group count is not in the programme facts; the run sheet says groups of about four, as
-  the build weeks use, and the decks no longer name a number of groups.
+- The StatQuest video's length stays unverified. On 13 October 2026 YouTube answered automated reads
+  with a rate limit on the watch page (HTTP 429) and a sign-in wall from its player endpoint
+  (LOGIN_REQUIRED), and the only listing that names a length is an unofficial aggregator, so the
+  notes keep "length not verified" and print no length.
+- The group count closed on 13 October 2026. The programme facts state 35 learners in nine build
+  groups (`cohort.students`, `cohort.build_groups`), so the run sheet names nine groups, eight of four
+  and one of three, and counts every print run from them; the learner files keep "groups of about
+  four", which is true of all nine.
 
 ## Which cold-read findings were not fixed, and why?
 
