@@ -27,7 +27,7 @@ because it is low sends the team to a step that works.
 
 This cycle's 1,000 applications came from 900 applicants, since some applied in two rounds. The
 sister programme, this cycle: 1,000 applications, 300 sat its optional test, and 320 were
-shortlisted, 230 who sat the test and 90 on board marks alone.
+shortlisted, 230 who sat the test and 90 on school results alone.
 
 **What you post.** Five letters in item order, with no spaces, in this shape:
 
@@ -92,7 +92,7 @@ skip, and the number is made by the way it is counted.
 *Level L3 · asked in every analytics screen.*
 
 a) The shortlist holds 90 students who never sat the test
-b) The test's scores were out of more than 100 marks
+b) The test's scores ran above 100, so the rate did too
 c) Some applications were counted twice, once in each round
 d) Shortlisting really is the strongest step in the programme
 

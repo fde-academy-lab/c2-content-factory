@@ -2158,7 +2158,7 @@ toys:
     sat_test: 300
     shortlisted: 320
     shortlisted_test_takers: 230
-    shortlisted_board_marks: 90
+    shortlisted_on_school_results: 90
     test_to_shortlist_percent: 106.7
     printed: 107 percent
     among_test_takers_percent: 76.7

@@ -1477,7 +1477,7 @@ ADM += [("sister", "2026", 7, "applications", "all", "applied", 1000),
         ("sister", "2026", 7, "applications", "all", "sat_test", 300),
         ("sister", "2026", 7, "applications", "all", "shortlisted", 320),
         ("sister", "2026", 7, "applications", "sat the test", "shortlisted", 230),
-        ("sister", "2026", 7, "applications", "board marks", "shortlisted", 90)]
+        ("sister", "2026", 7, "applications", "school results", "shortlisted", 90)]
 with open(DATA / f"{STEM}_toy_admissions_STUDENT.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f, lineterminator="\n")
     w.writerow(["programme", "cycle", "fee_deadline_days", "unit", "group", "stage", "count"])
@@ -1622,7 +1622,7 @@ toys += [
     {"id": "toy_sister_programme", "label": "invented, the college's sister programme with an optional test",
      "how": TOY_HOW + "Funnel stages, drop-off, denominators",
      "values": {"applications": 1000, "sat_test": 300, "shortlisted": 320, "shortlisted_test_takers": 230,
-                "shortlisted_board_marks": 90, "test_to_shortlist_percent": 106.7, "printed": "107 percent",
+                "shortlisted_on_school_results": 90, "test_to_shortlist_percent": 106.7, "printed": "107 percent",
                 "among_test_takers_percent": 76.7, "printed_fix": "77 percent", "shortlisted_over_applications": 32.0,
                 "test_takers_over_applications": 30.0, "skipped_the_test_percent": 70.0},
      "used_by": "SECTION 4's artefact slide; notebook 04; drill c4 Q4 and Q5"},

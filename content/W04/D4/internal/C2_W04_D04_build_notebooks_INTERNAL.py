@@ -443,8 +443,8 @@ def nb02():
         **What happened.** The answer is b: 60, 50 and 40 percent at age two. Ranked at the same age,
         January is strongest and March weakest, the reverse of April's calendar row. March reads 60, 40,
         30: it has lived only three ages and is still falling, so its floor is open. A batch that has not
-        lived enough ages to show its floor is the plain-words version of what the IITGN faculty session
-        W4-3 (tentative) calls censoring.
+        lived enough ages to show its floor is the plain-words version of censoring, the name used by
+        the IITGN faculty session W4-3 (tentative) this afternoon.
 
         ## Your turn: which floors can be called today?
 
@@ -792,8 +792,8 @@ def nb04():
         ## Why does one step pass 100 percent?
 
         The college's sister programme (invented) makes its entrance test optional: of 1,000
-        applications, 300 sat the test, and 320 were shortlisted, 230 who sat the test and 90 on board
-        marks alone. **The plausible wrong answer.** "Test to shortlist reads 107 percent, our best
+        applications, 300 sat the test, and 320 were shortlisted, 230 who sat the test and 90 on school
+        results alone. **The plausible wrong answer.** "Test to shortlist reads 107 percent, our best
         step." 320 ÷ 300 puts 90 students who never sat the test over the test-takers. A rate above 100
         says the numerator holds people who never passed the denominator's step, so the step is one
         people can skip, and the 107 is an **artefact**, a number made by the way the count is taken.

@@ -761,7 +761,7 @@ Transition: a step that reads above 100 percent.
 |---|---|
 | Applied | 1,000 |
 | Sat the optional test | 300 |
-| Shortlisted | 320: 230 who sat the test, 90 on board marks alone |
+| Shortlisted | 320: 230 who sat the test, 90 on school results alone |
 
 **What breaks.** "Test to shortlist reads 107 percent, our best step": 320 ÷ 300 puts 90 students who never sat the test over the test-takers. A rate above 100 says the numerator holds people who never passed the denominator's step, so the step is one people can skip, and the 107 is an **artefact**, a number made by the way the count is taken. **The fix.** Count the shortlist among those who sat the test: 230 ÷ 300 = 77 percent.
 

@@ -251,7 +251,7 @@ college selects half by design, and it read 50 in both cycles. **A low step is a
 moves against its own past.**
 
 **WATCH OUT.** A step above 100 percent. The sister programme's test is optional: 300 sat it and 320
-were shortlisted, 230 who sat the test and 90 on board marks alone, so "test to shortlist" reads 107
+were shortlisted, 230 who sat the test and 90 on school results alone, so "test to shortlist" reads 107
 percent. The 107 is an **artefact**, a number made by the way the count is taken; counted among those
 who sat the test, the step reads 230 of 300, 77 percent.
 
