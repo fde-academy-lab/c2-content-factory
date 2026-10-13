@@ -17,7 +17,7 @@ product you know is one you can defend for a product you are handed.
 
 **The questions on the way.** What does the redesign reward, said to a driver in one sentence? What
 number would you pay a team for in a product you use every day, written on seven lines? How could
-that team hit it while the product got worse? Which single number carries the redesign on
+that team hit it while the product got no better? Which single number carries the redesign on
 Tuesday's slide? What is the proxy test, in one line?
 
 About 45 minutes, alone, on one page. Bring the page to Tuesday's session.
@@ -54,7 +54,7 @@ and each choice is yours to defend.
 
 ---
 
-## How could that team hit the number while the product got worse?
+## How could that team hit the number while the product got no better?
 
 Under your table, write the two ways a team paid on your number could hit it while customers were
 served worse. Next to each, name the line of your definition that catches it. If neither line
@@ -67,7 +67,7 @@ catches one of them, add a guardrail and say what it would catch.
 Tuesday puts the redesign on one slide in front of the driver-operations lead, the marketing lead
 and the finance partner, and every slide is carried by one number. Choose the one you would put at
 the top from the day's case, write it with its denominator, its window and its before and after
-values, and in one sentence say why that number and none of the others. Notebooks 01 to 03 print
+values, and in one sentence say why that number and none of the others. Notebooks 07 to 09 print
 every number you might choose.
 
 ---

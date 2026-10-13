@@ -15,9 +15,44 @@ to redraw the board from memory before Tuesday.
 
 ---
 
+## Which six topics does Monday teach, and how do they join?
+
+Goes up while S2 to S4 are on screen, and stays up all day. The six boxes are the course outline's
+six topics in its order, drawn unlit; each concept chapter lights its own box when it closes, and the
+case node fills after the break. The drawing below is the map at the end of chapter 6, every box lit.
+
+```mermaid
+flowchart TD
+    E["<b>Weeks 1 to 3</b><br/>numerator and denominator,<br/>like with like, the grain"]
+    C1["<b>1. What to measure and why;<br/>the proxy test</b>"]
+    C2["<b>2. North-star and<br/>guardrail metrics</b>"]
+    C3["<b>3. Leading against<br/>lagging indicators</b>"]
+    C4["<b>4. Definitions: numerator,<br/>denominator, window, exclusions</b>"]
+    C5["<b>5. Gaming, and definitions<br/>that resist it</b>"]
+    C6["<b>6. The metric definition<br/>artifact</b>"]
+    U["<b>Applied to: Uber, Hyderabad</b><br/>7 applies 1 and 4; 8 applies 4 and 5<br/>9 applies 2, 3, 5 and 6<br/>10 applies 5 and 6; 11 applies all six"]
+    E -.-> C1
+    E -.-> C4
+    C1 --> C2
+    C2 --> C3
+    C1 --> C4
+    C4 --> C5
+    C2 --> C6
+    C3 --> C6
+    C5 --> C6
+    C6 --> U
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class C1,C2,C3,C4,C5,C6 lit
+    class E,U known
+```
+
+---
+
 ## Where does today's ticket sit in the week?
 
-Goes up first, before the ticket is discussed. Monday is lit; the other days stay dashed until they come.
+Shown on S2, before the six topics, and drawn beside them if the board has room. Monday is lit; the
+other days stay dashed until they come.
 
 ```mermaid
 flowchart TD
@@ -58,34 +93,27 @@ flowchart TD
 
 ---
 
-## Which four questions must a number answer before anyone is paid for it?
+## What goes up at the ticket, before chapter 1?
 
-The day's concept board, empty but for its anchor. Each chapter fills one region.
+At S5 the room picks the number the city team would put in Monday's headline. Write it with the
+board's question above it, and leave both up until the case board grows around them after the break.
 
 ```mermaid
-flowchart LR
+flowchart TD
     Q["<b>What makes a number safe to pay for?</b>"]
-    A["<b>Anchor: the canteen token</b><br/>tokens 200 to 400, plates stay 200<br/>(invented numbers)"]
-    Q1["<b>What is it for?</b>"]
-    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
-    Q3["<b>What stops that?</b>"]
-    Q --> A
-    Q --> Q1
-    Q --> Q2
-    Q --> Q3
+    H["<b>The room's headline</b><br/>peak online hours up 24 percent"]
+    Q --> H
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
     class Q lit
-    class A known
-    class Q1,Q2,Q3 unknown
+    class H unknown
 ```
 
 ---
 
 ## What happens to a token once servers are paid per token?
 
-The canteen, invented numbers: tokens double from 200 to 400 a day while plates stay at 200.
+Chapter 1's canteen, invented numbers: tokens double from 200 to 400 a day while plates stay at 200.
 
 ```mermaid
 flowchart LR
@@ -97,6 +125,143 @@ flowchart LR
     classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
     class G,P,N known
     class C,D bad
+```
+
+---
+
+## Why did a pass rate rise while licences fell?
+
+Chapter 2's driving school, invented numbers: the hoarding's rate times the share who took the test
+gives licences per learner who enrolled.
+
+```mermaid
+flowchart LR
+    R["<b>The hoarding's rate</b><br/>passed / took the test<br/>0.60 to 0.90"] --> N["<b>The north star</b><br/>licences per learner enrolled<br/>0.60 to 0.36, which is 0.90 x 0.40"]
+    T["<b>The guardrail</b><br/>took the test / enrolled<br/>1.00 to 0.40"] --> N
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class R bad
+    class T known
+    class N lit
+```
+
+---
+
+## When does a chase first look lost?
+
+Chapter 3's chase, invented numbers: the runs an over needed, written after each mark, against the
+result.
+
+```mermaid
+flowchart LR
+    O0["<b>Start</b><br/>160 / 20 = 8.0"] --> O5["<b>After over 5</b><br/>130 / 15 = 8.7"] --> O10["<b>After over 10, 60 for 3</b><br/>100 / 10 = 10.0<br/>the warning: leading"] --> O20["<b>After over 20</b><br/>147, lost by 12<br/>the result: lagging"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class O0,O5 known
+    class O10 lit
+    class O20 bad
+```
+
+---
+
+## Which line moved each reading of one register?
+
+Chapter 4's register, invented numbers: one student's term, five honest readings.
+
+```mermaid
+flowchart TD
+    R["<b>One register</b><br/>60 days: 10 holidays,<br/>40 present, 8 absent, 2 medical"]
+    S["<b>The school's rule</b><br/>40 / 50 = 80.0"]
+    D["<b>Denominator</b><br/>calendar days<br/>40 / 60 = 66.7"]
+    E1["<b>Exclusions</b><br/>medical out of both<br/>40 / 48 = 83.3"]
+    E2["<b>Numerator</b><br/>medical counted present<br/>42 / 50 = 84.0"]
+    W["<b>Window</b><br/>last 20 working days<br/>14 / 20 = 70.0"]
+    R --> S
+    R --> D
+    R --> E1
+    R --> E2
+    R --> W
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class R lit
+    class S known
+    class D,E1,E2,W unknown
+```
+
+---
+
+## Which line stops each way of gaming?
+
+Chapter 5's Balaji Kirana, invented numbers: 50 marked done, 40 confirmed by the customer's OTP.
+
+```mermaid
+flowchart LR
+    G1["<b>The paid person counts</b><br/>the boy presses done"] --> L1["<b>A count the person served confirms</b><br/>the customer's OTP"]
+    G2["<b>No receipt is needed</b><br/>done with no OTP"] --> L2["<b>A receipt in the numerator</b>"]
+    G3["<b>The person timed starts the clock</b><br/>a typed dispatch time"] --> L3["<b>A clock the system starts</b><br/>the shop's bill"]
+    G4["<b>A quiet change</b><br/>attempts start to count"] --> L4["<b>Changes dated on the page</b>"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class G1,G2,G3,G4 bad
+    class L1,L2,L3,L4 known
+```
+
+---
+
+## What are the seven lines of the page?
+
+Chapter 6's skeleton: lines 1 to 4 make a number computable, lines 5 to 7 make it safe to pay for.
+The weak page, "Deliveries, monthly, plus 20 percent", fills only lines 1 and 3.
+
+```mermaid
+flowchart LR
+    N["<b>1 Numerator</b><br/>with its receipt"] --> D["<b>2 Denominator</b><br/>count printed"] --> W["<b>3 Window</b>"] --> E["<b>4 Exclusions</b><br/>each change dated"]
+    E --> R["<b>5 Not rewarded</b>"] --> G["<b>6 Guardrails</b>"] --> M["<b>7 Gaming note</b>"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    classDef bad fill:#FBE9EF,stroke:#D63A6A,color:#1A0F5C
+    classDef kalpa fill:#FFF7E6,stroke:#C98A00,color:#5C3D00
+    class N,D,W,E known
+    class R,G,M lit
+```
+
+---
+
+## Which four questions must a number answer before anyone is paid for it?
+
+The case's board, grown at S57 around the question and the headline written at S5: its three
+questions go up, and its anchor, chapter 1's canteen. Each case chapter fills one region.
+
+```mermaid
+flowchart LR
+    Q["<b>What makes a number safe to pay for?</b>"]
+    A["<b>Anchor: the canteen token</b><br/>tokens 200 to 400, plates stay 200<br/>(invented numbers)"]
+    Q1["<b>What is it for?</b>"]
+    Q2["<b>How could it rise while<br/>riders gained little?</b>"]
+    Q3["<b>What stops that?</b>"]
+    Q --> A
+    Q --> Q1
+    Q --> Q2
+    Q --> Q3
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    classDef unknown fill:#FFFFFF,stroke:#B8B2D6,color:#6B6690,stroke-dasharray:4 3
+    class Q lit
+    class A known
+    class Q1,Q2,Q3 unknown
 ```
 
 ---
@@ -117,7 +282,7 @@ flowchart LR
 
 ---
 
-## What does the board hold after chapter 1?
+## What does the board hold after chapter 7?
 
 The first region filled: what the number is for, and the first pitfall.
 
@@ -126,7 +291,7 @@ flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     A["<b>Anchor: the canteen token</b><br/>tokens doubled, plates did not"]
     Q1["<b>What is it for?</b><br/>riders picked up faster;<br/>hours need no rider"]
-    Q2["<b>How could it rise while<br/>riders were served no better?</b>"]
+    Q2["<b>How could it rise while<br/>riders gained little?</b>"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo's unused accounts"]
     Q --> A
@@ -164,15 +329,15 @@ flowchart LR
 
 ---
 
-## What does the board hold after chapter 2?
+## What does the board hold after chapter 8?
 
-The second region filled: how the number rose while riders were served no better.
+The second region filled: how the number rose while riders gained little.
 
 ```mermaid
 flowchart LR
     Q["<b>What makes a number safe to pay for?</b>"]
     Q1["<b>What is it for?</b><br/>riders picked up faster"]
-    Q2["<b>How could it rise while<br/>riders were served no better?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
+    Q2["<b>How could it rise while<br/>riders gained little?</b><br/>online but idle, in thin zones:<br/>180 drivers, 15 percent"]
     Q3["<b>What stops that?</b>"]
     P1["<b>Pitfall: no usage condition</b><br/>Wells Fargo"]
     P2["<b>Pitfall: the unit moves the number</b><br/>Delhi Metro; offers and requests"]
@@ -217,7 +382,7 @@ Built one region at a time: the north star, then each guardrail with the gaming 
 ```mermaid
 flowchart TD
     N["<b>North star</b><br/>completed peak trips per enrolled<br/>driver online at peak, per week"]
-    G1["<b>Guardrail 1</b><br/>offers accepted over offers shown,<br/>at or above a floor"]
+    G1["<b>Guardrail 1</b><br/>offers accepted over offers shown,<br/>at or above an acceptance floor"]
     G2["<b>Guardrail 2</b><br/>median rider wait at peak"]
     G3["<b>Guardrail 3, the budget</b><br/>top-up per completed trip"]
     L1["<b>Input</b><br/>enrolled drivers online<br/>in the first peak hour"]
@@ -239,7 +404,7 @@ flowchart TD
 
 ## What makes a number safe to pay for, now that the board is finished?
 
-The finished board, which is panel one of the cheat sheet.
+The finished case board, which is panel two of the cheat sheet.
 
 ```mermaid
 flowchart LR
@@ -248,11 +413,11 @@ flowchart LR
     Q2["<b>Can it rise badly?</b><br/>idle hours, thin zones"]
     Q3["<b>What stops that?</b><br/>north star and guardrails"]
     S1["<b>The tree</b><br/>north star and inputs"]
-    S2["<b>The seesaw</b><br/>star up, guardrail down"]
-    S3["<b>The window's start</b><br/>who starts the clock"]
+    S2["<b>The seesaw</b><br/>paid number up,<br/>guardrail down"]
+    S3["<b>The clock's start</b><br/>who starts it"]
     P1["<b>No usage condition</b><br/>Wells Fargo"]
     P2["<b>Units move numbers</b><br/>Delhi Metro"]
-    P3["<b>The measured set the start</b><br/>VA"]
+    P3["<b>Who sets the start?</b><br/>VA"]
     Q --> Q1
     Q --> Q2
     Q --> Q3
@@ -274,13 +439,13 @@ flowchart LR
 
 ## How does round 3 of the war game run?
 
-The afternoon's first drawing: write, price, defend, score.
+The afternoon's first drawing, chapter 10: write, price, defend, score.
 
 ```mermaid
 flowchart LR
-    W["<b>Write, 14 minutes</b><br/>the seven lines, three guardrails<br/>(two for riders), the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
-    P --> D["<b>Defend, 10 minutes</b><br/>each role attacks once;<br/>a line must answer"]
-    D --> S["<b>Score, 3 minutes</b><br/>answered, conceded<br/>or lost"]
+    W["<b>Write, 12 minutes</b><br/>the seven lines, three guardrails<br/>(two for riders), the gaming note"] --> P["<b>Price</b><br/>the saving, with its<br/>assumption stated"]
+    P --> D["<b>Defend, 6.5 minutes</b><br/>each role attacks once;<br/>a line must answer"]
+    D --> S["<b>Score, 1 minute</b><br/>answered, conceded<br/>or lost"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class W,P,D known
@@ -291,14 +456,14 @@ flowchart LR
 
 ## What structure does a hire-grade answer give the interviewer?
 
-Goal, north star, guardrails, leading input, the test: the order a strong candidate says it aloud.
+Chapter 11: goal, north star, guardrails, leading input, the test, the order a strong candidate says it aloud.
 
 ```mermaid
 flowchart LR
     G["<b>Goal</b><br/>riders picked up faster"] --> N["<b>North star</b><br/>numerator, denominator,<br/>window"]
     N --> R["<b>Guardrails</b><br/>what must not<br/>get worse"]
     R --> L["<b>Leading input</b><br/>what moves first"]
-    L --> T["<b>The test</b><br/>zones as the unit"]
+    L --> T["<b>The test</b><br/>its unit named"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G lit
@@ -309,8 +474,8 @@ flowchart LR
 
 ## What is on the board when the day ends?
 
-The finished concept board from the morning stays up all afternoon, with three lines written under it:
+The six topics' map stays up with every box lit, and the finished case board beside it, with three lines written under it:
 
-- Pay for completed peak trips per enrolled driver online at peak, per week.
-- Guard it with the share of offers accepted (a floor between 0.46 and 0.78), the median rider wait and the top-up per completed trip.
-- Paying for hours sent Rs 1.159 crore, 61 percent of the Rs 1.9 crore top-up, to driver-weeks that accepted fewer than half their offers.
+- Judge the scheme by completed peak trips per enrolled driver online at peak, per week.
+- Guard it with the share of offers accepted, at or above an acceptance floor set between 0.46 and 0.78 (between 0.43 and 0.67 once accepted trips the driver cancels count as declined), the median rider wait and the top-up per completed trip.
+- Paying for hours sent Rs 1.159 crore, 61 percent of the Rs 1.9 crore top-up, to driver-weeks that accepted fewer than half their offers, so the Rs 300 floor is paid only for weeks that clear the acceptance floor.

@@ -1,196 +1,249 @@
-# Is the number the scheme pays for measuring what the city wants?
+# Business metric design: which number should the plan chase, and what stops it being gamed?
 
-**The ticket. Uber, Hyderabad, the driver app's peak-hour earnings guarantee.**
+Week 4, Monday. About 12 minutes to read; the take-home's self-check,
+`takehome/C2_W04_D01_selfcheck_STUDENT.md`, takes 10 more.
 
-*Illustrative case: the company is real, the situation and the data are synthetic, built for this class.*
+Monday teaches six topics on everyday examples whose numbers are invented and small enough to count
+by hand: a school canteen, a driving school, a cricket chase, one student's register and Balaji
+Kirana, a corner shop in Hyderabad. Then Uber's Hyderabad driver app uses all six to judge a
+peak-hour earnings guarantee. Illustrative case: the company is real, the situation and the data are
+synthetic, built for this class.
 
-On Monday 31 August 2026 the Hyderabad city team launched a peak-hour earnings guarantee for
-enrolled drivers: a driver who stays online through a whole peak window (two windows a day, three
-hours each) is guaranteed a floor of Rs 300 per peak online hour, and Uber pays the gap between the
-driver's trip earnings in the window and the floor as a top-up. The launch note's goal: "more drivers
-on the road at peak, so riders are picked up faster".
+---
 
-| Measure | Before (weeks of 20 Jul to 24 Aug) | After (weeks of 31 Aug to 5 Oct) |
-|---|---|---|
-| Peak online hours, all enrolled drivers | 118,000 | 146,300, up 24 percent |
-| Completed peak trips | 224,200 | 230,900, up 3 percent |
-| Trips per peak online hour | 1.90 | 1.58 |
-| Offers accepted over offers shown, at peak | 0.86 | 0.73 |
-| Accepted trips the driver then cancelled, share | 0.04 | 0.09 |
-| Peak online hours with no completed trip, share | 0.22 | 0.38 |
-| Median rider wait at peak, minutes | 4.8 | 4.6 |
-| Rider requests at peak that went unfulfilled, share | 0.11 | 0.10 |
-| Top-up paid | Rs 0 | Rs 1.9 crore |
+## What can you do after Monday?
 
-**Data:** `drivers` (1,200 drivers, 140 joined after the launch), `driver_weeks` (one row per driver
-per week: hours, offers, accepted, cancels, trips, hours with no trip, bookings, top-up) and
-`zone_weeks` (one row per zone per week: rider requests, fulfilled, median wait). A request one
-driver declines is offered to the next, so `driver_weeks` counts offers and `zone_weeks` counts
-requests. **The ask, due Friday:** is the scheme working, which metric should it pay for, and is
-anyone gaming it? **Caveats:** the monsoon ended inside the after window; 140 drivers are new; the
-app counts a driver as online whenever the app is open; three outer zones (Shamshabad, Rajendranagar,
-Patancheru) get few requests; drivers can be online on more than one platform; trip earnings are not
-in the data, so a week's top-up cannot be rebuilt from its bookings.
+- You can test whether a team could raise a number while the goal got no better.
+- You can pick one north star and the guardrails that catch the harmful ways of hitting it.
+- You can tell a number that warns from one that confirms.
+- You can write the four lines that make a number computable.
+- You can name four ways a paid number is gamed and the line that stops each.
+- You can fill the seven-line page a company adopts.
 
-**Who needs the answer.** The city head, who decides on Friday whether the scheme continues,
-changes or spreads to two more cities.
+## Which map holds the day?
 
+```mermaid
+flowchart LR
+    C1["<b>1</b> What to measure<br/>and why; the<br/>proxy test"] --> C2["<b>2</b> North-star<br/>and guardrail<br/>metrics"]
+    C2 --> C3["<b>3</b> Leading against<br/>lagging indicators"]
+    C1 --> C4["<b>4</b> Definitions:<br/>numerator, denominator,<br/>window, exclusions"]
+    C4 --> C5["<b>5</b> Gaming, and<br/>definitions that<br/>resist it"]
+    C3 --> C6["<b>6</b> The metric<br/>definition artifact"]
+    C5 --> C6
+    C6 --> U["<b>The case</b><br/>Uber, Hyderabad;<br/>chapters 7 to 11"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class C1,C2,C3,C4,C5,C6 lit
+    class U known
+```
 
-## What does "peak online hours up 24 percent" stand for, and what did six drivers do?
+Chapters 1 to 3 choose the number; chapters 4 and 5 write it down so it cannot be gamed; chapter 6
+puts both on one page.
 
-**Who needs the answer.** The city head, who was about to read a 24 percent rise as success.
+---
 
-**The questions on the way.** What is a proxy? What do six drivers' weeks say, counted by hand? Why
-do the six fall further than the city?
+## What to measure and why; the proxy test: what is a number for?
 
-### What is a proxy?
+**Who needs the answer.** A school canteen's owner (invented), whose kitchen cooks rice to the token
+count and who pays the servers by it.
 
-A canteen pays its servers per token handed out (invented). Tokens double from 200 a day to 400
-while plates stay at 200, because each plate now gets two. That is a **proxy**: a number standing in
-for the thing wanted, which drifts once it is paid for. Peak online hours stand in for drivers ready
-to pick riders up, and the guarantee paid for the hours.
+**The questions on the way.** What is a number for? What happens once people are paid on it?
 
-**Say it to a driver.** "We paid for an open app, and from some drivers an open app is all we got."
+A **metric** is a number a person watches in order to decide something; a **target** is a metric with
+a value somebody is asked to hit. The canteen (invented) serves 200 plates a day and hands a token
+with each. From day 6 the servers are paid per token, and tokens go from 200 a day to 400 while
+plates stay at 200: tokens per plate rise from 1.0 to 2.0. Cooking 150 g for every token, the
+kitchen cooks 60 kg for 30 kg eaten: Rs 1,500 thrown away a day at Rs 50 a kg.
 
-### What do six drivers' weeks say, counted by hand?
+![Ten days at a school canteen (invented): tokens doubled on day 6, plates stayed at 200](../whiteboards/C2_W04_D01_canteen_tokens_STUDENT.png)
 
-Twelve rows of the case data: six drivers, one week before the launch (10 August) and one after (21 September):
+A **proxy** is a number that stands in for the thing wanted. The **proxy test** asks whether a team
+could hit the number while the thing it stands for got worse or stayed the same. Any target bends
+behaviour toward itself. Wells Fargo judged staff on products sold, through sales targets and
+bonuses, and showed investors a cross-sell number, products per household (cross-selling is selling
+an existing customer one more product); both counted accounts
+nobody used, and the bank paid USD 185 million in penalties in 2016 to two US regulators and Los
+Angeles (checked 13 October 2026).
 
-| Driver | Hours, before then after | Trips, before then after |
-|---|---|---|
-| A | 10 then 11 | 21 then 22 |
-| B | 9 then 10 | 17 then 18 |
-| C | 11 then 12 | 22 then 23 |
-| D | 10 then 11 | 19 then 20 |
-| E, Shamshabad | 10 then 16 | 18 then 3 |
-| F, Rajendranagar | 10 then 14 | 17 then 2 |
+**In the interview.** [S] How would you measure the success of a new feature? Name a number that
+is hard to raise while what the feature is for gets no better. Chapter 7 tests Uber's hours.
 
-Add the hours: 60 before, 74 after, up 23 percent. Add the trips: 114 before, 88 after, down 23
-percent. Divide once: 114 over 60 is 1.90 trips per hour; 88 over 74 is 1.19.
+## North-star and guardrail metrics: which number to chase?
 
-**The maths, made intuitive.** Picture each hour as a box of trips: E and F added boxes and lost
-almost every trip, so trips per box fell for the six together.
+**Who needs the answer.** A family choosing a driving school (invented) from its hoarding.
 
-### Why do the six fall further than the city?
+**The questions on the way.** Why did the hoarding's rate rise? Which number catches the move?
 
-The city went from 1.90 to 1.58 and the six to 1.19, because two of the six, E and F, are in the
-idle tail found below: a third of the sample against 15 percent of drivers city-wide, chosen to show
-the mechanism.
+The school has four instructors with 25 learners each. In 2025 all 100 took the licence test and 60
+passed, 0.60. In 2026 the instructors booked the test only for the learners they were surest of: 40
+took it and 36 passed, 0.90. The rate rose by half while 24 fewer learners got a licence: licences
+per learner who enrolled fell from 0.60 to 0.36, which is 0.90 x 0.40.
 
-**What it cost elsewhere.** Wells Fargo's cross-sell ratio counted accounts per household with no
-condition that anyone used them; the bank paid USD 185 million in penalties in 2016 and, in 2020, USD 3
-billion to resolve US Justice Department and SEC investigations (CFPB, 8 September 2016; SEC release
-2020-38; checked 12 October 2026).
+![A driving school (invented): the pass rate rose as the share who took the test fell](../whiteboards/C2_W04_D01_driving_seesaw_STUDENT.png)
 
-**Explorer scene M1** (`demos/C2_W04_D01_week_explorer_STUDENT.html`, shipped with the week): raise
-the guarantee and watch new hours sit still in the outer zones.
+A **north star** is the one number that best captures the value the people served get: licences
+per enrolled learner. The hoarding chased the pass rate instead. A **guardrail** is watched beside the
+number being chased so that hitting it does no hidden harm: beside the pass rate, the share who took
+the test, 1.00 then 0.40, catches this move. A rate can rise because its denominator
+shrank, a **seesaw**, so print the count beside the rate. Swiggy's letter says Maxxsaver, Instamart's
+extra discount on bigger carts, sometimes brings "a slightly lower number of orders by the same user";
+it puts the slower order growth down to that and to letting go of some low-value orders and
+unprofitable users, credits the 16 percent rise in average order value, to Rs 612, to wider selection
+and Maxxsaver, and says the ramp-up kept contribution flat (checked 13 October 2026). Orders per user
+alone would read that quarter as a fall, and order value alone as a success.
 
+**In the interview.** [F] North-star against guardrail, with one example pair. Chapter 9 gives
+Uber's.
 
-## What are the city's totals, and what is trips per online hour?
+## Leading against lagging indicators: which number warns?
 
-**Who needs the answer.** The analyst putting one city number on the Friday memo.
+**Who needs the answer.** A T20 captain (invented), who can change the batting order after over 10
+and cannot change the scoreboard after over 20.
 
-**The questions on the way.** How is a rate added up? Did rider demand fall? What does a quick
-average say?
+**The questions on the way.** When does the chase first look lost? When is the loss confirmed?
 
-### How is a rate added up?
+The other side made 159, so 160 wins in 20 overs (invented). Six an over for ten overs makes 60 for
+3, so 100 are still needed from 10 overs: 10.0 an over, up from 8.0 at the start. The side ends on
+147 and loses by 12, which the scoreboard confirms only after over 20.
 
-Add every trip, add every hour, divide once. Two invented drivers show why: one makes 2.0 trips an
-hour over 10 hours (20 trips), the other 0.5 over 40 hours (20 trips). Together: 40 trips over 50
-hours, 0.80. Averaging their two rates gives 1.25, because the slow 40-hour week counts no more than
-the busy 10-hour one.
+![A T20 chase (invented): the runs an over needed passed 10 at over 10, and the loss was confirmed at over 20](../whiteboards/C2_W04_D01_chase_rate_STUDENT.png)
 
-On the full table one `groupby` per window gives 1.90 and 1.58; notebook 03 checks it in SQL.
+A **leading indicator** moves before the north star, while the team can still act, and history
+shows it predicts the north star; a **lagging indicator** confirms the north star after the result is
+fixed. Read a leading number beside its
+guardrail, the wickets a side loses by swinging at every ball: 10 an over with 7 wickets in hand is a
+different chase from 10 an over with 2. Timing and
+job are separate questions, so one number can be a guardrail and a leading number at once. On the
+case, Uber's share of offers accepted fell to 0.729 in the launch week and stayed there, while
+bookings per online hour kept falling for two more weeks.
 
-### Did rider demand fall?
+## Definitions: numerator, denominator, window, exclusions: which four lines?
 
-The tempting excuse is fewer riders, but `zone_weeks` says requests rose 1.8 percent, from 251,910
-to 256,556. Declined requests are offered again, so offers per request went from 1.07 to 1.35.
+**Who needs the answer.** A principal (invented) printing one attendance figure on a transfer
+certificate, and two clerks who must compute it alike.
 
-### What does a quick average say?
+**The questions on the way.** How many numbers can one register give? Which line moved each?
 
-Average each driver-week's own rate and the after window prints 1.71, above the true 1.58: the
-true fall is 0.32, and the average shows 0.19 of it, hiding about two-fifths for the same reason as
-the two drivers. **The check:** recompute from the sums. Swiggy's letters write each
-metric down this carefully: platform frequency is completed orders per transacting user per month,
-4.53 in the quarter to 30 September 2024 (Q2 FY25 letter, checked 12 October 2026).
+Week 1 Monday wrote every rate as a **numerator** over a **denominator**. Two more lines finish the
+job: the **window**, the stretch of time the count covers, and the **exclusions**, what leaves both
+counts, with the date of any change. A count, such as licences in a year, has no denominator; in its
+place it says what one unit is and how repeats are removed. One student's 60-day term (invented) holds 10 holidays, so 50
+working days: present 40, absent 8, medical leave 2.
 
-**Say it to a driver.** "We add every trip and every hour first, so a long idle week counts in full."
+| The line that changed | Reading |
+|---|---|
+| None, the school's rule: 40 / 50 | 80.0 percent |
+| Denominator, calendar days: 40 / 60 | 66.7 percent |
+| Exclusions, medical leave out of both counts: 40 / 48 | 83.3 percent |
+| Numerator, medical leave counted present: 42 / 50 | 84.0 percent |
+| Window, the last 20 working days: 14 / 20 | 70.0 percent |
 
+Every reading is honest, and only a written definition says which one the certificate means; with
+a scholarship (invented) set at 75 percent, the wrong line costs the student. Delhi Metro's "line
+utilisation" count read 45,35,932 on 29 May 2018 against nearly 27 lakh riders a day that February,
+since a rider changing across three lines counts three times: a new unit and a new window at once,
+and after the change Delhi Metro did not share the old daily figure (checked 13 October 2026).
 
-## Which drivers and zones drive the fall?
+**In the interview.** [F] What makes a metric gameable, and how do you write one that is not?
 
-**Who needs the answer.** The city head, who is about to extend the scheme to two more cities.
+## Gaming, and definitions that resist it: how is a number gamed?
 
-**The questions on the way.** Who sits under one trip an hour, and where? What decision would the
-celebrated number have sent?
+**Who needs the answer.** The owner of Balaji Kirana (invented), who pays the delivery boy Rs 20 per
+delivery marked done.
 
-### Who sits under one trip an hour?
+**The questions on the way.** What can rise with no parcel delivered? Which line stops each way?
 
-After the launch, 180 drivers, 15 percent of the city, made fewer than one trip per peak online hour,
-the idle tail: their hours went to 2.1 times their level while their trips fell 12 percent, and 72
-percent of their new hours sat in the three outer zones. The other 880 drivers who joined before the
-launch made 1.90 trips an hour throughout. Acceptance alone finds the same 180: none of their weeks
-accepted more than 0.46 of its offers, and no other week fewer than 0.78.
+**Gaming** is raising a number without doing what it stands for: false reporting, which receipts and
+audits stop, or honest work steered to the count, which pay design and guardrails catch. In four
+weeks the boy marked all 50 orders done and customers confirmed 40 with their OTP, the one-time code
+read out at the door: Rs 1,000 paid on his count against Rs 800 on theirs. On the dispatch time he
+types himself every order is on time; on the shop's bill clock 35 of 50 are, 0.70. All 6 complaints
+sit on the 10 orders with no OTP.
 
-### What decision would the celebrated number have sent?
+![Balaji Kirana's four weeks (invented): pay and on-time read higher on the counts the boy controls](../whiteboards/C2_W04_D01_kirana_two_counts_STUDENT.png)
 
-**The plausible wrong memo:** "Peak online hours up 24 percent. Supply target met. Extend the scheme
-to two more cities." **The check:** trips per peak online hour fell from 1.90 to 1.58 and the median
-wait barely moved. **The fix:** keep the floor only for weeks that accept half the offers shown.
+| How it is gamed | At the shop (invented) | In public, or in the case | The line that stops it |
+|---|---|---|---|
+| The paid person controls the count | The boy presses done | The illustrative Uber case: an open app counts as online | A count the person served confirms |
+| No receipt or use is needed | Done with no OTP | Wells Fargo: accounts nobody used | A receipt condition in the numerator |
+| The person timed starts the clock | He types the dispatch time | US Veterans Affairs: the next open slot typed as the "desired date" | A clock the system starts |
+| A quiet change of definition | Attempts start to count | Wells Fargo, 2013: accounts for sending money abroad added | Changes dated on the page |
 
-**The maths, made intuitive.** A rate is a blend. 100 drivers at 1.9 trips an hour and 20 new drivers
-online as long at 0.2 blend to about 1.62 (invented numbers), though none of the 100 drives differently.
+A definition resists gaming when its numerator needs a receipt, its denominator is set by someone
+other than the people paid, its clock starts at a time the system records, its exclusions are dated,
+and it says what it does not reward. At Phoenix, 30 of the 40 primary-care schedulers and
+supervisors asked said they set the desired date from the next open appointment, so long waits read as
+zero days (checked 13 October 2026).
 
-Delhi Metro's "line utilisation" read 45,35,932 on 29 May 2018 against about 27 lakh riders a day,
-since a journey across three lines counted three times (LatestLY, checked 12 October 2026).
+## The metric definition artifact: what does the page hold?
+
+**Who needs the answer.** The shop's owner, whose son wants "deliveries up 20 percent".
+
+**The questions on the way.** What are the seven lines? What does a weak page lack?
+
+The **metric definition artifact** is one page a company adopts, so teams argue about one written
+thing. Four lines make the number computable: numerator, denominator, window, exclusions. Three make
+it safe to pay for: what it does not reward, the guardrails, and the gaming note, which says what
+each guardrail catches. "Deliveries, monthly, plus 20 percent" holds two lines; "plus 20 percent" is a
+target, which says how much and never what.
+
+| Line | Balaji Kirana's page (invented) |
+|---|---|
+| Numerator | Deliveries confirmed with the customer's OTP |
+| Denominator | Orders billed that week, the count printed beside the rate |
+| Window | The calendar week |
+| Exclusions | Orders cancelled before dispatch, each change dated |
+| Not rewarded | A done press with no OTP, a typed dispatch time, a shrinking order count |
+| Guardrails | Complaints per 100 orders billed; confirmed deliveries within 30 minutes of the bill |
+| Gaming note | Complaints catch an OTP asked for by phone; the bill clock catches a dispatch time typed late |
+
+Over four weeks it reads 40 of 50, 0.80, with its guardrails at 12 per 100 and 0.75. A growth target
+added as a guardrail, such as orders up 20 percent, catches nothing, so it never earns a line.
+
+**In the interview.** [D] Three departments each want their own target; how do you get to one, and
+what do you say to the two who lose?
+
+---
+
+## The case: what did six drivers, then 12,860 driver-weeks, say?
+
+**Who needs the answer.** Uber's Hyderabad city head, who decides on Friday whether to extend the
+peak-hour guarantee to two more cities.
+
+**The questions on the way.** What does the ticket say? What do six drivers say by hand? What do
+the full tables say, and where does the fall sit?
+
+**The ticket.** From Monday 31 August 2026 an enrolled driver online through a whole peak window is
+guaranteed Rs 300 per peak online hour, and Uber tops up the gap. Six weeks on, peak online hours are
+up 24 percent, completed peak trips up 3 percent, trips per peak online hour down from 1.90 to 1.58,
+and Rs 1.9 crore has been paid in top-up. The caveats: the monsoon ended inside the window, 140
+drivers are new, the app counts a driver as online whenever it is open, and three outer zones get few
+requests.
+
+**Chapter 7, by hand, applying the proxy test and the four definition lines.** Six drivers, one week
+before and one after: hours 60 then 74, trips 114 then 88, so trips per peak online hour fell from
+1.90 to 1.19. Drivers E and F, in Shamshabad and Rajendranagar, went to 16 and 14 hours with 3 and 2
+trips. Hours fail the proxy test: an open app needs no rider.
+
+**Chapter 8, the full tables, applying the definition lines and gaming.** Rider requests rose 1.8
+percent, so demand did not fall. Averaging each driver-week's rate prints 1.71 and hides two-fifths
+of the fall; the ratio of the sums, 1.58, is the number. 180 drivers, 15 percent, made under one trip
+an hour after the launch, the **idle tail**: hours 2.1 times their level before, trips 0.88 times,
+and 72 percent of their new hours in the three outer zones. The fall survives the 140 new drivers
+(still 1.58) and the three busiest weeks (1.60).
 
 **Say it to a driver.** "Most of you drove as before; about one driver in seven sat online where
 nobody was asking."
 
+## The case: what should the scheme pay for, and what did paying for hours cost?
 
-## What can the data not show, and what would settle each doubt?
+**Who needs the answer.** The city head, who signs the next six weeks, and the finance partner.
 
-**Who needs the answer.** The finance partner, who will say the monsoon's end explains the fall.
+**The questions on the way.** What did hours cost? What does the page say?
 
-**The questions on the way.** Which doubts does the fall survive? Which stay open?
-
-| Doubt | The check | What it found |
-|---|---|---|
-| Data quality: online means the app is open | Share of online hours with no trip | 0.22 to 0.38 |
-| Mix: 140 new drivers | The rate without them | Still 1.58 |
-| Season: the monsoon ended | The three weeks with most requests; the launch week | 1.60; a step from 1.88 to 1.64, requests steady |
-| Zones | Core zones only | 1.90 to 1.79: most of the fall is in the outer zones |
-| Two apps at once | Hourly data and the other app | Open: Uber cannot see the other app |
-| Selection | Who enrolled | Every driver here enrolled, so no group to compare |
-| Cause | The scheme or the season | Open until the redesign is tested |
-
-US Veterans Affairs measured waits from a "desired date" schedulers typed in; at Phoenix, 30 of 79
-staff interviewed had used the wrong date (VA OIG report 14-02603-267, checked 12 October 2026). A
-driver starts every online hour by opening the app, so paying per hour hands the clock to the paid.
-
-**Say it to a driver.** "New drivers and the weather do not explain the fall; it sits in the quiet zones."
-
-
-## What should the scheme pay for, and what did paying for hours cost?
-
-**Who needs the answer.** The city head, who signs the next six weeks, and finance, who owns the
-budget.
-
-**The questions on the way.** What are a north star, a guardrail and an input? What does the
-definition say? What did hours cost, and what would the redesign save? What do the roles say?
-
-### What are a north star, a guardrail and an input?
-
-The **north star** is the number the city judges the scheme by: completed peak trips per enrolled
-driver online at peak, per week. Three **guardrails** must not get worse while it rises: for riders,
-the share of offers accepted (at or above a floor) and the median wait; for the budget, top-up per
-trip. Read them as a seesaw: if the north star rises while a guardrail moves the wrong way, riders or
-the budget paid for it. An **input** moves first: drivers online in the first hour of each peak
-window, and rider requests per online hour by zone. Leading says when a number moves, so acceptance
-is a guardrail and a leading number at once.
-
-### What does the full definition say?
+**Chapter 9, applying the north star and guardrails, leading inputs, gaming and the page.** Rs 1.159
+crore of the Rs 1.9 crore, 61 percent, went to driver-weeks that accepted fewer than half their
+offers. The page the room fills:
 
 | Line | The redesign |
 |---|---|
@@ -198,99 +251,63 @@ is a guardrail and a leading number at once.
 | Denominator | Enrolled drivers online at least one peak hour that week, the count printed |
 | Window | The calendar week |
 | Exclusions | Trips cancelled by either side, test accounts, trips outside the windows |
-| What it does not reward | Hours online; declines; a shrinking base, which lifts the rate with no extra trip |
-| Guardrails | Riders: accepted share over a floor, median wait. Budget: top-up per trip |
-| Gaming note | Declining and cherry-picking; lost supply; a runaway top-up |
+| Not rewarded | Hours online; declines; a shrinking enrolled base |
+| Guardrails | Riders: accepted share over an acceptance floor, read with the cancel share; median wait. Budget: top-up per trip |
+| Gaming note | Declining, cherry-picking and accept-then-cancel; lost supply; a runaway top-up |
 
-Uber's 2025 annual report (its 10-K) counts an UberX Share ride with three paying riders as three
-trips (checked 12 October 2026). The north star read 35.76 trips per online driver-week before and
-35.89 after; it would rise if drivers quit, so it is never read without the wait.
+The north star read 35.76 trips per online driver-week before and 35.89 after, while acceptance fell
+from 0.863 to 0.730 and the top-up cost Rs 82.3 a trip. The leading inputs are drivers online in the
+first peak hour and requests per online hour by zone. The explorer
+(`demos/C2_W04_D01_week_explorer_STUDENT.html`) draws the drift, the seesaw, the page and the lead.
 
-### What did hours cost, and what would the redesign save?
+## The case: does the page survive the roles, and what wins the interview?
 
-Rs 1.9 crore bought 6,700 more peak trips, about Rs 2,836 each, 17 times the Rs 165 fare, and Rs
-1.159 crore of it went to driver-weeks that accepted fewer than half their offers: below the floor
-the top-up shrank by whatever the next trip earned, so declining cost nothing. The redesign keeps the
-floor only for driver-weeks that accept at least half their offers, an accepted trip later cancelled
-counting as declined. It saves Rs 92.7 lakh if a fifth of the idle tail's top-up is still paid and
-Rs 58 lakh if half is: an assumption with a range, which a test settles.
+**Who needs the answer.** The three people who lose something under a change, and you, in a product
+screen.
 
-### What do the three roles say?
+**The questions on the way.** What do the roles say? What would the redesign save? What does a
+hire-grade answer do?
 
-Driver operations says drivers will log off: true for the idle tail, and the wait by zone shows any
-loss. Marketing says new terms look like bait: true, so the floor stays for drivers who accept.
-Finance blames the monsoon: partly, but the rate stepped down in the launch week itself.
+**Chapter 10, applying gaming and the page.** Driver operations says drivers will log off: true for
+the idle tail, and the wait by zone shows any loss. Marketing says new terms look like bait, so the
+Rs 300 floor stays for drivers who clear the acceptance floor. Finance blames the monsoon, and the
+rate stepped down in the launch week itself. The weeks under half accepted are exactly the idle
+tail's, so keeping the Rs 300 floor only for weeks that accept at least half saves Rs 92.7 lakh if a
+fifth of the idle tail's top-up is still paid and Rs 58 lakh if half is, an assumption a test
+settles.
 
-A north star read alone misleads the other way too: Maxxsaver helped raise Swiggy Instamart's average
-order value 16 percent to Rs 612 while cart consolidation lowered order growth, so orders per user
-would have read a success as a fall (Q1 FY26 letter, checked 12 October 2026).
+**Chapter 11, applying all six.** A hire-grade answer clarifies the goal and the decision, then
+gives a north star with its lines, three guardrails, a leading input and a test with its unit
+named: drivers cross zone lines, so the candidate switches the whole city between the old rule and the
+new one, window by window. Weak: "hours are up 24 percent, so it works." Hire-grade: "trips per online
+hour fell from 1.90 to 1.58, stepping down in the launch week; I would not extend it, and would test
+the Rs 300 floor kept only for weeks that accept at least half their offers." For an AI coding assistant, suggestions accepted is the proxy, and
+suggested text still in the code at the next commit is the outcome.
 
-**Explorer scenes M2 to M4:** the seesaw, the definition rebuilt line by line on the twelve rows,
-and acceptance turning before bookings per hour.
-
-**Say it to a driver.** "The floor now pays for trips you complete, if you say yes to most offers."
-
-
-## How would you measure the success of a new feature, in an interview?
-
-**Who needs the answer.** You, in a product or analytics screen.
-
-**The questions on the way.** What does a hire-grade answer do? How does it move to an AI product?
-
-### What does a hire-grade answer do?
-
-It clarifies first (the goal, who is in it, what counts as harm, which decision rides on it, against
-what), then gives the structure: goal, a north star with its lines, three guardrails, a leading input,
-and a test with zones as its unit. Weak: "hours are up 24 percent, so it works." Hire-grade: "trips
-per online hour fell from 1.90 to 1.58, stepping down in the launch week; outer-zone waits fell from
-6.6 to 5.95 minutes at about Rs 46,000 per extra trip; I would not extend it, and would test a floor
-kept only for weeks that accept most offers." The transcript carries the follow-ups."
-
-### How does it move to an AI product?
-
-An AI coding assistant's team reports suggestions accepted, a proxy it can raise by showing fewer,
-safer suggestions. The outcome is suggested text still in the code at the next commit, per developer
-with a seat, read beside time to merge; the guardrails are build failures and reverts on suggested
-code, security findings and rewritten lines; teams are the test's unit. Programme-written; no company
-figure.
-
-## Which real cases show each way a number goes wrong?
-
-- **No usage condition:** Wells Fargo's cross-sell ratio (SEC order, Release 34-88257).
-- **The measured start the window:** VA's "desired date" (its Office of Inspector General, 2014).
-- **A definition changed in silence:** Wells Fargo's unannounced 2013 addition of remittance
-  accounts, 0.04 of that year's 0.11 rise in the ratio (SEC order).
-- **A headline moved from gross to net:** Eternal, whose businesses include Zomato and Blinkit,
-  stopped disclosing gross order value for net order value (Q1 FY27 letter).
-- **A count that goes negative:** Airbnb's nights booked net of cancellations, minus 4.1 million in
-  March 2020 (its listing filing, Form S-1, 2020).
-- **A bar set at any use at all:** Spotify's monthly active user, any account with more than zero
-  milliseconds of consumption in thirty days (annual report, Form 20-F for 2025).
-
-All six were checked on 12 October 2026.
-
-
-## Which words does the day use?
+## Which words did Monday use?
 
 | Term | What it means |
 |---|---|
+| Metric | A number a person watches in order to decide something |
+| Target | A metric with a value somebody is asked to hit |
 | Proxy | A number that stands in for the thing wanted |
-| Proxy test | Could a team hit this number while the thing it stands for got worse? |
-| North star | The one number a plan exists to move |
-| Guardrail | A number that must not get worse while the north star rises |
-| Leading input | A number that moves before the north star and can be acted on this week |
-| Lagging number | A number that confirms the north star after the fact |
-| Idle tail | The 180 drivers under one trip per peak online hour after the launch |
-| Offer | One rider request shown to one driver |
-| Top-up | What Uber pays to lift a driver's peak hour to the Rs 300 floor |
-| Bookings | The fares riders paid |
+| Proxy test | Could a team hit this number while the thing it stands for got no better? |
+| North star | The one number that best captures the value the people served get |
+| Guardrail | A number watched beside the number being chased, which must not get worse as it rises |
+| Acceptance floor | The least share of offers a driver-week must accept to earn the Rs 300 floor |
+| Leading indicator | A number that moves before the north star, while the team can act |
+| Lagging indicator | A number that confirms the north star after the result is fixed |
+| Window | The stretch of time a count covers |
+| Exclusions | What leaves both counts, each change dated |
 | Gaming | Raising a number without doing what it stands for |
-
+| Receipt condition | A numerator that counts only what the person served confirmed |
+| Metric definition artifact | The seven-line page a company adopts |
+| Idle tail | The 180 drivers under one trip per peak online hour after the launch |
 
 ## So is the number the scheme pays for measuring what the city wants?
 
-No. Hours rose 24 percent while trips per peak online hour fell from 1.90 to 1.58 and the wait barely
-moved, and Rs 1.159 crore of the Rs 1.9 crore top-up went to driver-weeks that declined most offers.
+No. Hours rose 24 percent while trips per peak online hour fell from 1.90 to 1.58 and the wait fell
+only from 4.8 to 4.6 minutes, and Rs 1.159 crore of the Rs 1.9 crore top-up went to driver-weeks that declined most offers.
 Judge the scheme by completed peak trips per enrolled driver online at peak, read with acceptance, the
-wait by zone and the top-up per trip, and keep the floor only for weeks that accept at least half
-their offers. Tuesday puts that on one slide.
+wait by zone and the top-up per trip, and keep the Rs 300 floor only for weeks that accept at least
+half their offers. Tuesday puts that on one slide.

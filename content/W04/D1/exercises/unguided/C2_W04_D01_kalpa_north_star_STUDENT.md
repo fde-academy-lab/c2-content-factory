@@ -27,7 +27,7 @@ the board growth while customers received nothing more.
 denominator? Which guardrail catches frequency bought with low-value orders? Which numbers move
 first? Which comparison window keeps a sale out of the reading?
 
-You sit this set after the lab's notebook, `notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb`, using
+You sit this set after the lab's notebook, `notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb`, using
 the morning's template: the north star's name, its seven lines (numerator, denominator, window,
 exclusions, what it does not reward, guardrails, gaming note) and its leading inputs. Items marked **Design** ask for the best-fit approach, the fact
 that would switch it, or the second route that would confirm a number.

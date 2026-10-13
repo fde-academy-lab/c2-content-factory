@@ -1,6 +1,7 @@
 day: W04/D1, Monday 26 October 2026
 written_by: C2_W04_D01_generate_INTERNAL.py, the W04 D1 finishing session, 12 October 2026; the Kalpa
-  lab rebuilt on Thursday's membership table, 13 October 2026
+  lab rebuilt on Thursday's membership table, 13 October 2026; the six concept chapters' invented tables
+  and their toy_ ids, 13 October 2026
 source_tables:
   drivers: data/C2_W04_D01_drivers_STUDENT.csv
   driver_weeks: data/C2_W04_D01_driver_weeks_STUDENT.csv
@@ -8,37 +9,43 @@ source_tables:
   kalpa_members: data/C2_W04_D01_kalpa_members_STUDENT.csv (a byte copy of Thursday's data/C2_W04_D04_kalpa_memberships_STUDENT.csv)
   kalpa_app_reorders: data/C2_W04_D01_kalpa_app_reorders_STUDENT.csv (its order_id rows are orders of
     content/W02/D1/data/C2_W02_D01_warehouse_v4_STUDENT.sql)
+  canteen_days: data/C2_W04_D01_canteen_days_STUDENT.csv (invented, chapter 1)
+  school_bus_days: data/C2_W04_D01_school_bus_days_STUDENT.csv (invented, chapter 1's your-turn)
+  driving_school: data/C2_W04_D01_driving_school_STUDENT.csv (invented, chapter 2)
+  chase_overs: data/C2_W04_D01_chase_overs_STUDENT.csv (invented, chapter 3)
+  attendance_register: data/C2_W04_D01_attendance_register_STUDENT.csv (invented, chapter 4)
+  kirana_deliveries: data/C2_W04_D01_kirana_deliveries_STUDENT.csv (invented, chapters 5 and 6)
 numbers:
 - id: launch_date
   value: '2026-08-31'
   unit: date
   how: the scheme's first day, a Monday
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: window_before
   value: 2026-07-20 to 2026-08-30
   unit: dates
   how: six weeks beginning 20 July
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: window_after
   value: 2026-08-31 to 2026-10-11
   unit: dates
   how: six weeks beginning 31 August
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: floor_rs_per_hour
   value: 300
   unit: Rs per peak online hour
   how: the guarantee's floor (synthetic terms)
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: peak_windows_per_day
   value: 2
   unit: windows
   how: two peak windows a day (synthetic terms)
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: peak_window_hours
   value: 3
   unit: hours
   how: each window three hours long
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: max_peak_hours_per_week
   value: 42
   unit: hours
@@ -53,12 +60,12 @@ numbers:
   value: 1200
   unit: drivers
   how: rows of drivers
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: drivers_new
   value: 140
   unit: drivers
   how: joined_month 2026-09
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 mix
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L4 mix
 - id: drivers_pre_launch
   value: 1060
   unit: drivers
@@ -68,27 +75,27 @@ numbers:
   value: 12
   unit: zones
   how: rows of zone_weeks per week
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: zones_outer
   value: 3
   unit: zones
   how: Shamshabad, Rajendranagar, Patancheru
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: hours_before
   value: 118000
   unit: hours
   how: sum of peak_online_hours, before
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: trips_before
   value: 224200
   unit: trips
   how: sum of peak_trips, before
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: tph_before
   value: 1.9
   unit: trips per peak online hour
   how: sum of trips / sum of hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: offers_before
   value: 269773
   unit: offers
@@ -108,12 +115,13 @@ numbers:
   value: 0.863
   unit: share
   how: sum accepted / sum offers
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2; guardrail 1
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2; guardrail
+    1
 - id: driver_cancel_share_before
   value: 0.037
   unit: share
   how: sum driver cancels / sum accepted
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: no_trip_hours_before
   value: 25960
   unit: hours
@@ -123,7 +131,8 @@ numbers:
   value: 0.22
   unit: share
   how: sum hours with no trip / sum hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 data quality
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L4 data
+    quality
 - id: bookings_before_rs
   value: 36993000
   unit: Rs
@@ -163,12 +172,13 @@ numbers:
   value: 0.11
   unit: share
   how: 1 - fulfilled / requests
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: median_wait_before
   value: 4.8
   unit: minutes
   how: middle value of the 72 zone-week medians
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; guardrail 2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; guardrail
+    2
 - id: offers_per_request_before
   value: 1.07
   unit: offers
@@ -183,17 +193,17 @@ numbers:
   value: 146300
   unit: hours
   how: sum of peak_online_hours, after
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: trips_after
   value: 230900
   unit: trips
   how: sum of peak_trips, after
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: tph_after
   value: 1.58
   unit: trips per peak online hour
   how: sum of trips / sum of hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2
 - id: offers_after
   value: 347583
   unit: offers
@@ -213,12 +223,13 @@ numbers:
   value: 0.73
   unit: share
   how: sum accepted / sum offers
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L2; guardrail 1
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L2; guardrail
+    1
 - id: driver_cancel_share_after
   value: 0.09
   unit: share
   how: sum driver cancels / sum accepted
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: no_trip_hours_after
   value: 55614
   unit: hours
@@ -228,7 +239,8 @@ numbers:
   value: 0.38
   unit: share
   how: sum hours with no trip / sum hours
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L4 data quality
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L4 data
+    quality
 - id: bookings_after_rs
   value: 38098500
   unit: Rs
@@ -268,12 +280,13 @@ numbers:
   value: 0.1
   unit: share
   how: 1 - fulfilled / requests
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: median_wait_after
   value: 4.6
   unit: minutes
   how: middle value of the 72 zone-week medians
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; guardrail 2
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; guardrail
+    2
 - id: offers_per_request_after
   value: 1.35
   unit: offers
@@ -288,12 +301,12 @@ numbers:
   value: 24
   unit: percent
   how: 146,300 / 118,000 - 1
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: trips_change_pct
   value: 3
   unit: percent
   how: 230,900 / 224,200 - 1
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: requests_change_pct
   value: 1.8
   unit: percent
@@ -303,12 +316,12 @@ numbers:
   value: 0
   unit: Rs
   how: sum of topup_rs, before
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes
 - id: topup_after_rs
   value: 19000000
   unit: Rs
   how: sum of topup_rs, after (Rs 1.9 crore)
-  used_by: the ticket; half1 S1; notebook 01 cell 1; cheat sheet panel 1; notes; L3
+  used_by: the ticket; half1 S5 and S55; notebook 07 cell 1; the cheat sheet's header; notes; L3
 - id: topup_low_acceptance_rs
   value: 11590000
   unit: Rs
@@ -555,12 +568,12 @@ numbers:
   value: 0.859
   unit: share
   how: week of 2026-07-20
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_07_20
   value: 309.9
   unit: Rs
   how: week of 2026-07-20
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_07_20_rs
   value: 6064080
   unit: Rs
@@ -595,12 +608,12 @@ numbers:
   value: 0.864
   unit: share
   how: week of 2026-07-27
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_07_27
   value: 315.5
   unit: Rs
   how: week of 2026-07-27
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_07_27_rs
   value: 6120675
   unit: Rs
@@ -635,12 +648,12 @@ numbers:
   value: 0.865
   unit: share
   how: week of 2026-08-03
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_03
   value: 311.1
   unit: Rs
   how: week of 2026-08-03
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_03_rs
   value: 6135195
   unit: Rs
@@ -675,12 +688,12 @@ numbers:
   value: 0.867
   unit: share
   how: week of 2026-08-10
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_10
   value: 316.7
   unit: Rs
   how: week of 2026-08-10
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_10_rs
   value: 6179580
   unit: Rs
@@ -715,12 +728,12 @@ numbers:
   value: 0.861
   unit: share
   how: week of 2026-08-17
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_17
   value: 317.6
   unit: Rs
   how: week of 2026-08-17
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_17_rs
   value: 6218520
   unit: Rs
@@ -755,12 +768,12 @@ numbers:
   value: 0.862
   unit: share
   how: week of 2026-08-24
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_24
   value: 310.3
   unit: Rs
   how: week of 2026-08-24
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_24_rs
   value: 6274950
   unit: Rs
@@ -795,12 +808,12 @@ numbers:
   value: 0.729
   unit: share
   how: week of 2026-08-31
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_08_31
   value: 271.0
   unit: Rs
   how: week of 2026-08-31
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_08_31_rs
   value: 6454965
   unit: Rs
@@ -835,12 +848,12 @@ numbers:
   value: 0.735
   unit: share
   how: week of 2026-09-07
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_07
   value: 261.7
   unit: Rs
   how: week of 2026-09-07
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_07_rs
   value: 6525255
   unit: Rs
@@ -875,12 +888,12 @@ numbers:
   value: 0.729
   unit: share
   how: week of 2026-09-14
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_14
   value: 259.1
   unit: Rs
   how: week of 2026-09-14
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_14_rs
   value: 6444240
   unit: Rs
@@ -915,12 +928,12 @@ numbers:
   value: 0.731
   unit: share
   how: week of 2026-09-21
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_21
   value: 256.5
   unit: Rs
   how: week of 2026-09-21
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_21_rs
   value: 6321645
   unit: Rs
@@ -955,12 +968,12 @@ numbers:
   value: 0.726
   unit: share
   how: week of 2026-09-28
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_09_28
   value: 256.9
   unit: Rs
   how: week of 2026-09-28
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_09_28_rs
   value: 6229575
   unit: Rs
@@ -995,12 +1008,12 @@ numbers:
   value: 0.731
   unit: share
   how: week of 2026-10-05
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: rs_per_hour_2026_10_05
   value: 257.4
   unit: Rs
   how: week of 2026-10-05
-  used_by: explorer M4; Tuesday
+  used_by: explorer M4; half1 S28; notebook 09; Tuesday
 - id: bookings_2026_10_05_rs
   value: 6122820
   unit: Rs
@@ -1091,12 +1104,12 @@ numbers:
   value: 0.39
   unit: share
   how: top-up to driver-weeks at or above half accepted, over all top-up
-  used_by: L5; S28 option b
+  used_by: L5; half1 S78 option b
 - id: driver_weeks_total
   value: 12860
   unit: driver-weeks
   how: rows of driver_weeks, twelve weeks
-  used_by: notebook 02; S17
+  used_by: notebook 08; half1 S68
 - id: tph_fall
   value: 0.32
   unit: trips per peak online hour
@@ -1167,6 +1180,26 @@ numbers:
   unit: Rs
   how: Rs 1.9 crore over the 6,700 extra trips
   used_by: the interview's sizing
+- id: fulfil_rate_before
+  value: 0.89
+  unit: share
+  how: completed peak trips over rider requests, before
+  used_by: the interview's sizing, net of demand
+- id: trips_expected_after_old_rate
+  value: 228335
+  unit: trips
+  how: 256,556 requests after, at the before window's fulfilment rate
+  used_by: the interview's sizing, net of demand
+- id: extra_trips_net_of_demand
+  value: 2565
+  unit: trips
+  how: 230,900 less the trips the old fulfilment rate gives on the new requests
+  used_by: the interview's sizing, net of demand
+- id: topup_per_net_extra_trip_rs
+  value: 7400
+  unit: Rs
+  how: Rs 1.9 crore over the extra trips net of demand, to the nearest hundred
+  used_by: the interview's sizing, net of demand
 - id: topup_per_extra_trip_fares
   value: 17.2
   unit: fares
@@ -1217,14 +1250,32 @@ numbers:
   unit: trips per peak online hour
   how: the window flagged at 7 September, so the launch week counts as before; after
   used_by: the lab set's Parsons problem, option d
+- id: idle_online_driver_weeks_after
+  value: 1080
+  unit: driver-weeks
+  how: idle-tail driver-weeks with at least one peak online hour, after
+  used_by: notebook 10, the log-off test
+- id: online_driver_weeks_after_idle_off
+  value: 5354
+  unit: driver-weeks
+  how: 6,434 online driver-weeks after, less the idle tail's 1,080
+  used_by: notebook 10, the log-off test
+- id: north_star_after_idle_off
+  value: 36.88
+  unit: trips per online driver-week
+  how: the north star after the launch with the idle tail's driver-weeks taken out
+  used_by: notebook 10, the log-off test; half2 S94, follow-up 3
+- id: idle_tph_before
+  value: 1.9
+  unit: trips per peak online hour
+  how: the idle tail, before
+  used_by: notebook 10, driver operations' objection
+- id: idle_tph_after
+  value: 0.8
+  unit: trips per peak online hour
+  how: the idle tail, after
+  used_by: notebook 10, driver operations' objection
 toys:
-- id: toy_canteen
-  label: invented
-  values:
-    tokens_before: 200
-    tokens_after: 400
-    plates: 200
-  used_by: L1 the proxy
 - id: toy_two_drivers
   label: invented
   values:
@@ -1238,7 +1289,8 @@ toys:
     total_hours: 50
     ratio_of_sums: 0.8
     mean_of_ratios: 1.25
-  used_by: L2 ratio of sums; the long, slow week pulls the average up, as on the city
+  used_by: 'case chapter 8 (half1 S70), notebook 08, notes, board work: the long, slow week pulls the
+    average up, as on the city'
 - id: toy_mix
   label: invented
   values:
@@ -1247,7 +1299,1403 @@ toys:
     idle_drivers: 20
     idle_rate: 0.2
     blend: 1.62
-  used_by: L3 the mix behind a rate
+  used_by: the mix behind a rate (notes)
+- id: toy_canteen_table
+  value:
+  - day: 1
+    servers_paid_per_token: 'no'
+    tokens: 200
+    plates: 200
+  - day: 2
+    servers_paid_per_token: 'no'
+    tokens: 200
+    plates: 200
+  - day: 3
+    servers_paid_per_token: 'no'
+    tokens: 200
+    plates: 200
+  - day: 4
+    servers_paid_per_token: 'no'
+    tokens: 200
+    plates: 200
+  - day: 5
+    servers_paid_per_token: 'no'
+    tokens: 200
+    plates: 200
+  - day: 6
+    servers_paid_per_token: 'yes'
+    tokens: 400
+    plates: 200
+  - day: 7
+    servers_paid_per_token: 'yes'
+    tokens: 400
+    plates: 200
+  - day: 8
+    servers_paid_per_token: 'yes'
+    tokens: 400
+    plates: 200
+  - day: 9
+    servers_paid_per_token: 'yes'
+    tokens: 400
+    plates: 200
+  - day: 10
+    servers_paid_per_token: 'yes'
+    tokens: 400
+    plates: 200
+  unit: rows
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: data/C2_W04_D01_canteen_days_STUDENT.csv,
+    ten days of tokens and plates'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_days
+  value: 10
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: five days before
+    the pay change and five after'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_plates
+  value: 200
+  unit: plates a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: plates served every
+    day, before and after'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set; Kahoot
+- id: toy_canteen_tokens_before
+  value: 200
+  unit: tokens a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: days 1 to 5, one
+    token a plate'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_tokens_after
+  value: 400
+  unit: tokens a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: days 6 to 10, once
+    servers are paid per token'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_tokens_per_plate_before
+  value: 1.0
+  unit: tokens per plate
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 200 / 200'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_tokens_per_plate_after
+  value: 2.0
+  unit: tokens per plate
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 400 / 200'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_tokens_rise_pct
+  value: 100
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 400 / 200 - 1'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_rice_kg_per_plate
+  value: 0.15
+  unit: kg
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 150 g of rice a plate'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_rice_from_plates_kg
+  value: 30
+  unit: kg a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 200 x 0.15'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_rice_from_tokens_kg
+  value: 60
+  unit: kg a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 400 x 0.15'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_rice_wasted_kg
+  value: 30
+  unit: kg a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 60 - 30'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_rice_rs_per_kg
+  value: 50
+  unit: Rs a kg
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: the price of rice'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_waste_rs_day
+  value: 1500
+  unit: Rs a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 30 kg x Rs 50'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_waste_rs_five_days
+  value: 7500
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: Rs 1,500 x the five
+    paid days'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_canteen_waste_rs_month
+  value: 45000
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: Rs 1,500 x 30 days,
+    if the rule ran a month'
+  used_by: half1 SECTION 1; notebook 01; notes; proxy_test set
+- id: toy_bus_table
+  value:
+  - day: 1
+    driver_paid_per_km: 'no'
+    km_logged: 40
+    children_dropped_home: 30
+  - day: 2
+    driver_paid_per_km: 'no'
+    km_logged: 40
+    children_dropped_home: 30
+  - day: 3
+    driver_paid_per_km: 'no'
+    km_logged: 40
+    children_dropped_home: 30
+  - day: 4
+    driver_paid_per_km: 'no'
+    km_logged: 40
+    children_dropped_home: 30
+  - day: 5
+    driver_paid_per_km: 'no'
+    km_logged: 40
+    children_dropped_home: 30
+  - day: 6
+    driver_paid_per_km: 'yes'
+    km_logged: 55
+    children_dropped_home: 30
+  - day: 7
+    driver_paid_per_km: 'yes'
+    km_logged: 55
+    children_dropped_home: 30
+  - day: 8
+    driver_paid_per_km: 'yes'
+    km_logged: 55
+    children_dropped_home: 30
+  - day: 9
+    driver_paid_per_km: 'yes'
+    km_logged: 55
+    children_dropped_home: 30
+  - day: 10
+    driver_paid_per_km: 'yes'
+    km_logged: 55
+    children_dropped_home: 30
+  unit: rows
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: data/C2_W04_D01_school_bus_days_STUDENT.csv,
+    the faded second example'
+  used_by: notebook 01's your-turn cell; notes
+- id: toy_bus_km_before
+  value: 40
+  unit: km a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: days 1 to 5'
+  used_by: notebook 01; notes
+- id: toy_bus_km_after
+  value: 55
+  unit: km a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: days 6 to 10, once
+    the driver is paid per km'
+  used_by: notebook 01; notes
+- id: toy_bus_children
+  value: 30
+  unit: children a day
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: children dropped
+    home, every day'
+  used_by: notebook 01; notes
+- id: toy_bus_km_per_child_before
+  value: 1.33
+  unit: km per child
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 40 / 30'
+  used_by: notebook 01
+- id: toy_bus_km_per_child_after
+  value: 1.83
+  unit: km per child
+  label: invented
+  how: 'invented for the concept chapter on What to measure and why; the proxy test: 55 / 30'
+  used_by: notebook 01
+- id: toy_driving_table
+  value:
+  - year: 2025
+    instructor: A
+    enrolled: 25
+    took_test: 25
+    passed: 16
+  - year: 2025
+    instructor: B
+    enrolled: 25
+    took_test: 25
+    passed: 15
+  - year: 2025
+    instructor: C
+    enrolled: 25
+    took_test: 25
+    passed: 15
+  - year: 2025
+    instructor: D
+    enrolled: 25
+    took_test: 25
+    passed: 14
+  - year: 2026
+    instructor: A
+    enrolled: 25
+    took_test: 11
+    passed: 10
+  - year: 2026
+    instructor: B
+    enrolled: 25
+    took_test: 10
+    passed: 9
+  - year: 2026
+    instructor: C
+    enrolled: 25
+    took_test: 10
+    passed: 9
+  - year: 2026
+    instructor: D
+    enrolled: 25
+    took_test: 9
+    passed: 8
+  unit: rows
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: data/C2_W04_D01_driving_school_STUDENT.csv,
+    four instructors over two years'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_enrolled
+  value: 100
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: four instructors x 25, both
+    years'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_took_2025
+  value: 100
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: every learner took the test'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_passed_2025
+  value: 60
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: 16 + 15 + 15 + 14'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_took_2026
+  value: 40
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: each instructor books only
+    the learners they are surest of: 11 + 10 + 10 + 9'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_passed_2026
+  value: 36
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: 10 + 9 + 9 + 8'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_fewer_licences
+  value: 24
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: 60 - 36, licences lost while
+    the hoarding''s rate rose'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_pass_rate_2025
+  value: 0.6
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: passed / took the test,
+    2025: the number the school''s hoarding prints'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set; Kahoot
+- id: toy_driving_took_share_2025
+  value: 1.0
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: took the test / enrolled,
+    2025: the guardrail'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_per_enrolled_2025
+  value: 0.6
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: passed / enrolled, 2025:
+    licences per learner who paid'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_pass_rate_2026
+  value: 0.9
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: passed / took the test,
+    2026: the number the school''s hoarding prints'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set; Kahoot
+- id: toy_driving_took_share_2026
+  value: 0.4
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: took the test / enrolled,
+    2026: the guardrail'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_per_enrolled_2026
+  value: 0.36
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: passed / enrolled, 2026:
+    licences per learner who paid'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_d_pass_rate_2026
+  value: 0.889
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: instructor D, 8 / 9, the
+    faded example'
+  used_by: notebook 02's your-turn cell
+- id: toy_driving_d_took_share_2026
+  value: 0.36
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: instructor D, 9 / 25'
+  used_by: notebook 02's your-turn cell
+- id: toy_driving_d_per_enrolled_2026
+  value: 0.32
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: instructor D, 8 / 25'
+  used_by: notebook 02's your-turn cell
+- id: toy_driving_d_per_enrolled_2025
+  value: 0.56
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: instructor D, 14 / 25'
+  used_by: notebook 02's your-turn cell
+- id: toy_chase_table
+  value:
+  - over: 1
+    runs: 6
+    wickets_lost: 0
+  - over: 2
+    runs: 6
+    wickets_lost: 0
+  - over: 3
+    runs: 6
+    wickets_lost: 1
+  - over: 4
+    runs: 6
+    wickets_lost: 0
+  - over: 5
+    runs: 6
+    wickets_lost: 0
+  - over: 6
+    runs: 6
+    wickets_lost: 0
+  - over: 7
+    runs: 6
+    wickets_lost: 1
+  - over: 8
+    runs: 6
+    wickets_lost: 0
+  - over: 9
+    runs: 6
+    wickets_lost: 0
+  - over: 10
+    runs: 6
+    wickets_lost: 1
+  - over: 11
+    runs: 7
+    wickets_lost: 0
+  - over: 12
+    runs: 8
+    wickets_lost: 0
+  - over: 13
+    runs: 9
+    wickets_lost: 1
+  - over: 14
+    runs: 10
+    wickets_lost: 0
+  - over: 15
+    runs: 8
+    wickets_lost: 0
+  - over: 16
+    runs: 9
+    wickets_lost: 1
+  - over: 17
+    runs: 10
+    wickets_lost: 0
+  - over: 18
+    runs: 11
+    wickets_lost: 1
+  - over: 19
+    runs: 9
+    wickets_lost: 1
+  - over: 20
+    runs: 6
+    wickets_lost: 0
+  unit: rows
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: data/C2_W04_D01_chase_overs_STUDENT.csv,
+    twenty overs of runs and wickets'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_other_side
+  value: 159
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: the first innings'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_target
+  value: 160
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 159 + 1, the runs that
+    win'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_runs_per_over_first_ten
+  value: 6
+  unit: runs an over
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: overs 1 to 10'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_score_after_10
+  value: 60
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 6 x 10'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_wickets_after_10
+  value: 3
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: in overs 3, 7 and 10'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_in_hand_after_10
+  value: 7
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 10 - 3, the guardrail
+    read beside the rate needed'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_rate_start
+  value: 8.0
+  unit: runs an over
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 160 / 20'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set; Kahoot
+- id: toy_chase_rate_after_10
+  value: 10.0
+  unit: runs an over
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: (160 - 60) / 10'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_score_after_5
+  value: 30
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 6 x 5'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_rate_after_5
+  value: 8.7
+  unit: runs an over
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: (160 - 30) / 15'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_score_after_15
+  value: 102
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 60 + 7 + 8 + 9 + 10 +
+    8'
+  used_by: notebook 03
+- id: toy_chase_rate_after_15
+  value: 11.6
+  unit: runs an over
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: (160 - 102) / 5, the faded
+    example'
+  used_by: notebook 03's your-turn cell
+- id: toy_chase_wickets_after_15
+  value: 4
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: in overs 3, 7, 10 and
+    13'
+  used_by: notebook 03
+- id: toy_chase_in_hand_after_15
+  value: 6
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 10 - 4, the faded example'
+  used_by: notebook 03's your-turn cell
+- id: toy_chase_final
+  value: 147
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 60 + 87'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_wickets_final
+  value: 7
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: three, then four more'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_margin
+  value: 12
+  unit: runs
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 159 - 147, lost by'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_register_table
+  value:
+  - day: 1
+    status: present
+  - day: 2
+    status: present
+  - day: 3
+    status: present
+  - day: 4
+    status: present
+  - day: 5
+    status: absent
+  - day: 6
+    status: present
+  - day: 7
+    status: holiday
+  - day: 8
+    status: present
+  - day: 9
+    status: present
+  - day: 10
+    status: present
+  - day: 11
+    status: present
+  - day: 12
+    status: present
+  - day: 13
+    status: absent
+  - day: 14
+    status: holiday
+  - day: 15
+    status: present
+  - day: 16
+    status: present
+  - day: 17
+    status: present
+  - day: 18
+    status: holiday
+  - day: 19
+    status: present
+  - day: 20
+    status: present
+  - day: 21
+    status: holiday
+  - day: 22
+    status: absent
+  - day: 23
+    status: present
+  - day: 24
+    status: present
+  - day: 25
+    status: present
+  - day: 26
+    status: present
+  - day: 27
+    status: present
+  - day: 28
+    status: holiday
+  - day: 29
+    status: present
+  - day: 30
+    status: absent
+  - day: 31
+    status: present
+  - day: 32
+    status: present
+  - day: 33
+    status: present
+  - day: 34
+    status: present
+  - day: 35
+    status: holiday
+  - day: 36
+    status: present
+  - day: 37
+    status: present
+  - day: 38
+    status: present
+  - day: 39
+    status: absent
+  - day: 40
+    status: present
+  - day: 41
+    status: present
+  - day: 42
+    status: holiday
+  - day: 43
+    status: present
+  - day: 44
+    status: present
+  - day: 45
+    status: holiday
+  - day: 46
+    status: absent
+  - day: 47
+    status: present
+  - day: 48
+    status: present
+  - day: 49
+    status: holiday
+  - day: 50
+    status: medical
+  - day: 51
+    status: medical
+  - day: 52
+    status: present
+  - day: 53
+    status: absent
+  - day: 54
+    status: present
+  - day: 55
+    status: present
+  - day: 56
+    status: holiday
+  - day: 57
+    status: present
+  - day: 58
+    status: present
+  - day: 59
+    status: absent
+  - day: 60
+    status: present
+  unit: rows
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: data/C2_W04_D01_attendance_register_STUDENT.csv,
+    one student''s term'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_days
+  value: 60
+  unit: calendar days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
+    term'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_holidays
+  value: 10
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: eight
+    Sundays and two festival days'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_working
+  value: 50
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: 60
+    - 10'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_present
+  value: 40
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
+    student''s days present'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_absent
+  value: 8
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: days
+    absent'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_medical
+  value: 2
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: days
+    on medical leave'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_pct_school
+  value: 80.0
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
+    / working days'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set; Kahoot
+- id: toy_register_pct_calendar
+  value: 66.7
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
+    / calendar days'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_pct_medical_out
+  value: 83.3
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: medical
+    leave out of both counts'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_pct_medical_present
+  value: 84.0
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: medical
+    leave counted present'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_window_days
+  value: 20
+  unit: working days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
+    window: the term''s last 20 working days'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_window_present
+  value: 14
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
+    in the last 20 working days'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_window_absent
+  value: 4
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: absent
+    in the last 20 working days'
+  used_by: notebook 04
+- id: toy_register_window_medical
+  value: 2
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: medical
+    in the last 20 working days'
+  used_by: notebook 04
+- id: toy_register_pct_window
+  value: 70.0
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: 14
+    / 20'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_register_pct_window_medical_out
+  value: 77.8
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: 14
+    / 18, the faded example'
+  used_by: notebook 04's your-turn cell
+- id: toy_register_first_working
+  value: 30
+  unit: working days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
+    term''s first 30 working days'
+  used_by: notebook 04
+- id: toy_register_first_present
+  value: 26
+  unit: days
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: present
+    in the first 30 working days'
+  used_by: notebook 04
+- id: toy_register_threshold_pct
+  value: 75
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on Definitions: numerator, denominator, window, exclusions: the
+    scholarship''s attendance rule in the trap'
+  used_by: half1 SECTION 4; notebook 04; notes; four_definition_lines set
+- id: toy_kirana_table
+  value:
+  - order_id: K01
+    week: 1
+    day: 1
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 12
+    minutes_from_bill: 15
+    complaint: false
+  - order_id: K02
+    week: 1
+    day: 1
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 19
+    minutes_from_bill: 22
+    complaint: false
+  - order_id: K03
+    week: 1
+    day: 1
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 11
+    minutes_from_bill: 34
+    complaint: false
+  - order_id: K04
+    week: 1
+    day: 2
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 42
+    complaint: false
+  - order_id: K05
+    week: 1
+    day: 2
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 12
+    minutes_from_bill: 41
+    complaint: false
+  - order_id: K06
+    week: 1
+    day: 3
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 9
+    minutes_from_bill: 21
+    complaint: false
+  - order_id: K07
+    week: 1
+    day: 5
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 9
+    minutes_from_bill: 25
+    complaint: false
+  - order_id: K08
+    week: 1
+    day: 5
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 25
+    minutes_from_bill: 28
+    complaint: false
+  - order_id: K09
+    week: 1
+    day: 5
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 11
+    minutes_from_bill: 14
+    complaint: false
+  - order_id: K10
+    week: 1
+    day: 6
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 9
+    minutes_from_bill: 47
+    complaint: false
+  - order_id: K11
+    week: 1
+    day: 6
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 11
+    minutes_from_bill: 53
+    complaint: false
+  - order_id: K12
+    week: 1
+    day: 7
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 16
+    minutes_from_bill: 19
+    complaint: false
+  - order_id: K13
+    week: 2
+    day: 8
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 11
+    minutes_from_bill: 14
+    complaint: false
+  - order_id: K14
+    week: 2
+    day: 9
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 18
+    minutes_from_bill: 30
+    complaint: false
+  - order_id: K15
+    week: 2
+    day: 9
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 10
+    minutes_from_bill: 20
+    complaint: false
+  - order_id: K16
+    week: 2
+    day: 9
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 18
+    minutes_from_bill: 33
+    complaint: true
+  - order_id: K17
+    week: 2
+    day: 10
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 13
+    minutes_from_bill: 24
+    complaint: false
+  - order_id: K18
+    week: 2
+    day: 10
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 15
+    minutes_from_bill: 53
+    complaint: false
+  - order_id: K19
+    week: 2
+    day: 11
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 15
+    minutes_from_bill: 18
+    complaint: true
+  - order_id: K20
+    week: 2
+    day: 12
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 25
+    complaint: false
+  - order_id: K21
+    week: 2
+    day: 13
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 13
+    minutes_from_bill: 18
+    complaint: false
+  - order_id: K22
+    week: 2
+    day: 13
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 23
+    complaint: false
+  - order_id: K23
+    week: 2
+    day: 13
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 21
+    minutes_from_bill: 26
+    complaint: false
+  - order_id: K24
+    week: 2
+    day: 14
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 14
+    minutes_from_bill: 53
+    complaint: false
+  - order_id: K25
+    week: 2
+    day: 14
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 23
+    minutes_from_bill: 53
+    complaint: false
+  - order_id: K26
+    week: 3
+    day: 15
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 19
+    minutes_from_bill: 22
+    complaint: false
+  - order_id: K27
+    week: 3
+    day: 15
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 23
+    complaint: false
+  - order_id: K28
+    week: 3
+    day: 16
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 11
+    minutes_from_bill: 15
+    complaint: false
+  - order_id: K29
+    week: 3
+    day: 16
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 33
+    complaint: true
+  - order_id: K30
+    week: 3
+    day: 16
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 19
+    minutes_from_bill: 22
+    complaint: false
+  - order_id: K31
+    week: 3
+    day: 17
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 17
+    minutes_from_bill: 25
+    complaint: false
+  - order_id: K32
+    week: 3
+    day: 17
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 18
+    minutes_from_bill: 21
+    complaint: false
+  - order_id: K33
+    week: 3
+    day: 17
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 9
+    minutes_from_bill: 30
+    complaint: false
+  - order_id: K34
+    week: 3
+    day: 18
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 22
+    minutes_from_bill: 25
+    complaint: false
+  - order_id: K35
+    week: 3
+    day: 19
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 26
+    minutes_from_bill: 52
+    complaint: false
+  - order_id: K36
+    week: 3
+    day: 19
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 24
+    minutes_from_bill: 27
+    complaint: false
+  - order_id: K37
+    week: 3
+    day: 21
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 34
+    complaint: true
+  - order_id: K38
+    week: 4
+    day: 22
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 16
+    minutes_from_bill: 30
+    complaint: false
+  - order_id: K39
+    week: 4
+    day: 22
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 17
+    minutes_from_bill: 25
+    complaint: false
+  - order_id: K40
+    week: 4
+    day: 22
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 23
+    minutes_from_bill: 26
+    complaint: false
+  - order_id: K41
+    week: 4
+    day: 23
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 18
+    minutes_from_bill: 27
+    complaint: true
+  - order_id: K42
+    week: 4
+    day: 23
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 9
+    minutes_from_bill: 30
+    complaint: false
+  - order_id: K43
+    week: 4
+    day: 23
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 13
+    minutes_from_bill: 16
+    complaint: false
+  - order_id: K44
+    week: 4
+    day: 25
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 21
+    minutes_from_bill: 26
+    complaint: false
+  - order_id: K45
+    week: 4
+    day: 26
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 53
+    complaint: false
+  - order_id: K46
+    week: 4
+    day: 27
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 17
+    minutes_from_bill: 22
+    complaint: false
+  - order_id: K47
+    week: 4
+    day: 28
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 13
+    minutes_from_bill: 16
+    complaint: false
+  - order_id: K48
+    week: 4
+    day: 28
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 14
+    minutes_from_bill: 22
+    complaint: false
+  - order_id: K49
+    week: 4
+    day: 28
+    marked_done: true
+    otp_confirmed: false
+    minutes_from_typed_dispatch: 28
+    minutes_from_bill: 50
+    complaint: true
+  - order_id: K50
+    week: 4
+    day: 28
+    marked_done: true
+    otp_confirmed: true
+    minutes_from_typed_dispatch: 20
+    minutes_from_bill: 41
+    complaint: false
+  unit: rows
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: data/C2_W04_D01_kirana_deliveries_STUDENT.csv,
+    Balaji Kirana''s four weeks of deliveries'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set; half1 SECTION 6; notebook 06; notes; artifact
+    set
+- id: toy_kirana_orders
+  value: 50
+  unit: orders
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: orders billed and
+    sent out in four weeks'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set; half1 SECTION 6; notebook 06; notes; artifact
+    set
+- id: toy_kirana_week_orders
+  value:
+  - 12
+  - 13
+  - 12
+  - 13
+  unit: orders a week
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: 12, 13, 12 and 13'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
+- id: toy_kirana_week_confirmed
+  value:
+  - 10
+  - 10
+  - 10
+  - 10
+  unit: orders a week
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: 10 confirmed each week'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
+- id: toy_kirana_marked
+  value: 50
+  unit: orders
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: marked done by the
+    delivery boy'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set; Kahoot
+- id: toy_kirana_confirmed
+  value: 40
+  unit: orders
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: confirmed by the customer''s
+    OTP'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set; half1 SECTION 6; notebook 06; notes; artifact
+    set; Kahoot
+- id: toy_kirana_unconfirmed
+  value: 10
+  unit: orders
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: marked done with no
+    OTP'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_complaints
+  value: 6
+  unit: complaints
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: all on orders with
+    no OTP'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_complaints_per_100
+  value: 12
+  unit: per 100 orders billed
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 6 complaints / 50
+    orders billed x 100, guardrail 1 on the page'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set; half1 SECTION 6; notebook 06; notes; artifact
+    set
+- id: toy_kirana_pay_rs
+  value: 20
+  unit: Rs a delivery
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: the delivery boy''s
+    rate'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_pay_marked_rs
+  value: 1000
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 50 x Rs 20'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_pay_confirmed_rs
+  value: 800
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 40 x Rs 20'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_pay_gap_rs
+  value: 200
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 1,000 - 800'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_pay_raised_rs
+  value: 25
+  unit: Rs a delivery
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: the trap: the owner
+    raises the rate'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_pay_raised_marked_rs
+  value: 1250
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 50 x Rs 25'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_ontime_typed
+  value: 1.0
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: within 30 minutes
+    of the dispatch time the boy typed'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_ontime_bill
+  value: 0.7
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: within 30 minutes
+    of the shop''s bill'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_ontime_bill_count
+  value: 35
+  unit: orders
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 35 of 50'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set
+- id: toy_kirana_confirmed_ontime
+  value: 30
+  unit: orders
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: OTP-confirmed and
+    within 30 minutes of the bill'
+  used_by: half1 SECTION 5; notebook 05; notes; gaming set; half1 SECTION 6; notebook 06; notes; artifact
+    set
+- id: toy_kirana_confirmed_ontime_share
+  value: 0.75
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: 30 / 40, guardrail 2 on the
+    page'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
+- id: toy_kirana_pay_confirmed_ontime_rs
+  value: 600
+  unit: Rs
+  label: invented
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 30 x Rs 20, the faded
+    example'
+  used_by: notebook 05's your-turn cell
+- id: toy_kirana_confirmed_share
+  value: 0.8
+  unit: share
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: 40 / 50, OTP-confirmed deliveries
+    per order billed'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
+- id: toy_artifact_lines
+  value: 7
+  unit: lines
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: numerator, denominator, window,
+    exclusions, what it does not reward, guardrails, gaming note'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set; Kahoot
+- id: toy_artifact_weak_lines
+  value: 2
+  unit: lines
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: the weak page ''Deliveries,
+    monthly, plus 20 percent'' names what is counted and the window'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
+- id: toy_artifact_weak_missing
+  value: 5
+  unit: lines
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: 7 - 2'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
+- id: toy_artifact_target_pct
+  value: 20
+  unit: percent
+  label: invented
+  how: 'invented for the concept chapter on The metric definition artifact: the weak page''s target, which
+    is no line of a definition'
+  used_by: half1 SECTION 6; notebook 06; notes; artifact set
 twelve_rows:
 - driver: A
   driver_id: d_0001
@@ -1515,16 +2963,16 @@ plants:
   value: 1.22
   how: reorders placed per member, the 107 who joined by 19 August, 10 to 30 September over 20 August
     to 9 September
-  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_booked_value_per_member_ratio
   value: 0.96
   how: booked value of reorders per member, any status, the same 107 and the same two windows
-  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
+  found_in: notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the empty your-turn cell
 - id: kalpa_window_none_delivered
   value: true
   how: every placement in the window is an auto-reorder that was cancelled, merged or pending, and none
     became an order
-  found_in: notebooks/C2_W04_D01_04_kalpa_lab_STUDENT.ipynb, the second your-turn cell
+  found_in: notebooks/C2_W04_D01_12_kalpa_lab_STUDENT.ipynb, the second your-turn cell
 shared_constants:
   kalpa_comparison_window:
   - '2026-08-20'

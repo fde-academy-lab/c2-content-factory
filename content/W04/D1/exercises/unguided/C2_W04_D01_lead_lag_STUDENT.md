@@ -16,7 +16,7 @@ before anyone sees it; a north star without a guardrail pays for the drift.
 **The questions on the way.** Which of eight numbers move first? Which reasons defend two of those
 calls? Which guardrail does each of three proposed north stars need?
 
-You sit this set in the practice lab, or in section 8 of the metric clinic if the tentative faculty
+You sit this set in the practice lab, or in section 15 of the metric clinic if the tentative faculty
 block does not run. Every item has one right answer. Items marked **Design** ask for the best-fit
 approach, the fact that would switch it, or the second route that would confirm a number.
 
@@ -32,7 +32,7 @@ Post exactly this shape: xxx
 |---|---|
 | North star | The one number the scheme exists to move. Here: completed peak trips per enrolled driver online at peak, per week |
 | Leading number | A number that moves before the north star does, which the city team can act on this week, for example by moving drivers toward zones where requests per online hour are high |
-| Lagging number | A number that confirms the north star after the trips have happened: a bill, a rating, a departure, a quarter's total |
+| Lagging number | A number that confirms the north star after the trips have happened: a bill, a rating, a complaint, a week's total |
 | Guardrail | A number that must not get worse while the north star rises, because it catches one way of hitting the north star badly. Leading and lagging say when a number moves, and a guardrail is a job a number does, so one number can be both |
 | Offer | One rider request shown to one driver; a request one driver declines is offered to the next |
 
@@ -45,14 +45,14 @@ it can still change this week.
 
 | # | A number on the city's dashboard |
 |---|---|
-| 1 | Rider rating at month end |
+| 1 | Rider rating of this week's trips |
 | 2 | Share of offers accepted this week |
-| 3 | Gross bookings for the quarter |
-| 4 | Enrolled drivers online in the first peak hour |
-| 5 | Top-up paid for the month |
+| 3 | Gross bookings this week |
+| 4 | Enrolled drivers online in this week's first peak hours |
+| 5 | Top-up paid for this week |
 | 6 | New driver sign-ups this week |
-| 7 | Drivers who left the platform the next quarter |
-| 8 | Rider requests per online hour, by zone |
+| 7 | Rider complaints filed about this week's trips |
+| 8 | Rider requests per online hour this week, by zone |
 
 ### Q1. Which list holds every leading number among the eight, and nothing else?
 
@@ -71,14 +71,14 @@ d) 2, 3, 5 and 6
 A call on a dashboard is only as good as the reason said beside it, because the next person to read
 the dashboard will move a number only if the reason convinces them. On the case data the share of
 offers accepted fell to 0.729 in the launch week itself and stayed there, while gross bookings per
-online hour, the weekly form of number 3, fell to Rs 271 that week, Rs 261.7 the next and Rs 259.1
+online hour, number 3 read per online hour, fell to Rs 271 that week, Rs 261.7 the next and Rs 259.1
 the third.
 
 ### Q2. Which reason defends calling number 2 leading and number 3 lagging?
 
 a) A share always moves before a rupee total, so number 2 must lead number 3
 
-b) The city team reads acceptance every day, while finance reads bookings once a quarter
+b) The city team reads acceptance every day, while finance reads the bookings only once a week
 
 c) Acceptance hit its new level in the launch week; bookings add up trips already done
 
@@ -94,12 +94,12 @@ proposes one is expected to name its guardrail in the same breath.
 | # | Proposed north star | How it could be hit while riders wait longer |
 |---|---|---|
 | 1 | Completed peak trips per enrolled driver per week | Drivers accept short trips and decline the rest |
-| 2 | Peak online hours per enrolled driver per week | Drivers sit online in zones with no riders |
-| 3 | Enrolled drivers | Drivers sign up for the floor and never drive |
+| 2 | Peak online hours per enrolled driver per week | Drivers sit online in zones with few riders |
+| 3 | Enrolled drivers | Drivers sign up for the Rs 300 floor and never drive |
 
 | Guardrail | What it reads |
 |---|---|
-| G1 | Share of offers accepted, at or above a floor the city sets |
+| G1 | Share of offers accepted, at or above an acceptance floor the city sets |
 | G2 | Share of online hours with no completed trip |
 | G3 | Share of enrolled drivers online at least one peak hour that week |
 | G4 | Total peak online hours across the city |
@@ -118,7 +118,7 @@ d) 1 with G1, 2 with G2, 3 with G3
 
 ## Where do you check your calls on the data?
 
-Open notebook 03, `notebooks/C2_W04_D01_03_definition_and_cost_STUDENT.ipynb`, and find the cell
-under "Which number moved first?". It prints the share of offers accepted and the bookings per online
+Open notebook 09, `notebooks/C2_W04_D01_09_north_star_guardrails_cost_STUDENT.ipynb`, and find the cell
+under "Which number settled first?". It prints the share of offers accepted and the bookings per online
 hour for the three weeks after the launch, which are the two numbers Q2 asks you to defend. Then post
 your three letters.
