@@ -11,19 +11,19 @@ from this page alone.
 |---|---|---|
 | Trainer | The day's trainer | Runs the board, says the lines below, writes every count the room calls out before any formula is named |
 | TA | The day's TA | Hands out the packs, moves between tables, asks the stall questions, plays the category manager in the afternoon |
-| Groups | About four learners each, as in the build weeks | Count the cards, fill one grid per pair, place the pair cards, defend one placement |
+| Groups | Nine groups, eight of four learners and one of three, the cohort's 35 in the build weeks' nine groups | Count the cards, fill one grid per pair, place the pair cards, defend one placement |
 
 ## What must be printed or set up before the room sits down?
 
 | Material | File | How many |
 |---|---|---|
-| Twelve cart cards | `whiteboards/C2_W04_D03_cart_cards_STUDENT.md`, the first table | One pack per group, cut one card per cart |
-| The 2 by 2 grid | The same file, the second table | Three per group, one per pair |
+| Twelve cart cards | `whiteboards/C2_W04_D03_cart_cards_STUDENT.md`, the first table | Nine packs, one per group, cut one card per cart |
+| The 2 by 2 grid | The same file, the second table | Twenty-seven, three per group, one per pair |
 | The ten dots and their counts | `whiteboards/C2_W04_D03_board_work_STUDENT.md`, the first drawing | Drawn on the board before the room sits |
 | The action-map board | The board work's sixth drawing: four regions, support across with the floor in the middle, lift up | One, on the wall or the whiteboard |
-| Pair cards | `whiteboards/C2_W04_D03_pair_cards_STUDENT.md` | One set of nine per group, held back until notebook 03's first cells have run |
+| Pair cards | `whiteboards/C2_W04_D03_pair_cards_STUDENT.md` | Nine sets of nine, one per group, held back until notebook 03's first cells have run |
 | The category manager's role card | `trainer/C2_W04_D03_role_card_TRAINER.md` | One copy, for the TA |
-| Tape for the pair cards, markers | | One roll and four markers per group |
+| Tape for the pair cards, markers | | Nine rolls and 36 markers, one roll and four markers per group |
 
 ## How do the minutes run?
 

@@ -3540,8 +3540,8 @@ public:
 - id: m5_beat_snaive_pct
   value: 0.358
   shown: 35.8 percent
-  how: 'M5: 1,972 teams, 35.8 percent of them, beat the seasonal naive (the accuracy paper, checked 12
-    Oct 2026)'
+  how: 'M5: 1,972 of the 5,507 teams, 35.8 percent, beat the seasonal naive (the accuracy paper, checked
+    12 Oct 2026)'
   used_in: half1 S14, notes
 - id: m5_snaive_period
   value: 7
