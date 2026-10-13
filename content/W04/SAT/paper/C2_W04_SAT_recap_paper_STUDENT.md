@@ -49,7 +49,14 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 On Monday 31 August 2026 Uber's Hyderabad city team launched a peak-hour earnings guarantee for enrolled drivers: a floor of Rs 300 per peak online hour, with Uber paying the gap between a driver's trip earnings in the peak window and the floor as a top-up. The launch note's goal was more drivers on the road at peak, so riders are picked up faster. Exhibit 1A sets the six weeks after the launch against the six weeks before. The city head must decide whether to extend the scheme to two more cities. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab the same method ran on Kalpa Retail, where the head of Retail-Plus had proposed reorders per member as the growth plan's number.
 
-**Exhibit 1A.** Uber Hyderabad's peak-hour guarantee, the six weeks beginning 20 July 2026 against the six beginning 31 August 2026, the launch day.
+**Exhibit 1A.** How the guarantee pays, and Uber Hyderabad's peak numbers, the six weeks beginning 20 July 2026 against the six beginning 31 August 2026, the launch day.
+
+```mermaid
+flowchart LR
+  H["Peak online hours<br/>times Rs 300"] --> C{"Trip earnings in the<br/>peak window below it?"}
+  C -->|yes| T["Uber pays the gap<br/>as a top-up"]
+  C -->|no| N["No top-up"]
+```
 
 | Measure | Six weeks before | Six weeks after |
 |---|---|---|
@@ -173,7 +180,15 @@ e) Leading input: add-to-cart events per active app member, which move before th
 
 On Tuesday the city head asked for Monday's redesign on one slide at Thursday's city review: five minutes, with the driver-operations lead, the marketing lead and the finance partner in the room, each of whom loses something under it. The redesign pays per completed peak trip, with a floor on the share of offers a driver accepts. The number the slide must explain is in Exhibit 2A. In the afternoon the city head asked a second question with no dataset: roughly how many drivers must be online at the weekday evening peak to keep the median rider wait under five minutes. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab each learner presented Kalpa's north star on one slide to a Kalpa head, then sized Anand's new-store question against DMart.
 
-**Exhibit 2A.** The same peak bookings read three ways, Uber Hyderabad, the six weeks before the launch and the six weeks after.
+**Exhibit 2A.** Who sits in Thursday's review, and the same peak bookings read three ways, Uber Hyderabad, the six weeks before the launch and the six weeks after.
+
+```mermaid
+flowchart LR
+  S["One slide, five minutes,<br/>Thursday's city review"] --> CH["The city head decides:<br/>keep, end or change the scheme"]
+  D["Driver-operations lead"] --> CH
+  M["Marketing lead"] --> CH
+  F["Finance partner"] --> CH
+```
 
 | Read | Six weeks before | Six weeks after |
 |---|---|---|
@@ -267,7 +282,14 @@ d) The check is sound, since DMRC's average day and its record day bracket the e
 
 Swiggy Instamart's cart page in Pune shows a strip of three suggested items under the cart. Until 6 September 2026 the strip was a curated list by category; from Monday 7 September it ranked items by how often they sit in the same cart as the items already in it, counted over the previous four weeks. Toned milk is in 71 percent of Pune carts, so it now appears beside nearly everything, and the strip's click-through, clicks over impressions, fell from 6.1 percent in the three weeks before the switch to 3.8 percent in the three weeks after. The category manager and the growth lead want the pairs the strip should show and a rupee value on a slot. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab Kalpa Retail's merchandising team wanted every product paired with the Rs 199 phone charger, "because it is in 80 percent of baskets".
 
-**Exhibit 3A.** Swiggy Instamart, Pune: the ticket's headline numbers.
+**Exhibit 3A.** Swiggy Instamart, Pune: the strip before and after the switch, and the ticket's headline numbers.
+
+```mermaid
+flowchart LR
+  C["Cart page"] --> S["Strip of three<br/>suggested slots"]
+  S --> B["To 6 September:<br/>a curated list by category"]
+  S --> A["From 7 September: items ranked<br/>by how often they share a cart"]
+```
 
 | Measure | Value |
 |---|---|
@@ -377,7 +399,13 @@ d) Rs 2,625: the 375 new adds at the Rs 7 left after the discount, paid on those
 
 Zomato Gold's membership dashboard for Chennai reports month-two retention flat at 38 percent in June, July, August and September 2026: of the members two or more months past their signup month, the share who ordered in the month. Exhibit 4A gives each signup month's own month-one rate. The August cohort signed up in a sale week on a discounted first month. On Monday 14 September 2026 a new checkout flow shipped on Android. The membership lead asks whether it is a cohort problem or an everyone problem, which step of the order flow owns the loss, and what should be fixed first. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab the head of Retail-Plus put the same questions about Kalpa Retail's tier.
 
-**Exhibit 4A.** Zomato Gold, Chennai: members by signup month in 2026, and the share who ordered in month one, the calendar month after signup. 53,089 members joined from January to September.
+**Exhibit 4A.** Zomato Gold, Chennai: the order flow a member walks through, where the lower path from Open is the home carousel, which opens a menu without a search, and members by signup month in 2026 with the share who ordered in month one, the calendar month after signup. 53,089 members joined from January to September.
+
+```mermaid
+flowchart LR
+  O["Open"] --> S["Search"] --> V["Menu view"] --> A["Add to cart"] --> C["Checkout start"] --> P["Order placed"]
+  O --> V
+```
 
 | Signup month | Members | Ordered in month one |
 |---|---|---|
@@ -503,6 +531,11 @@ d) Rebuild checkout now: a 19-point fall is the largest move in the tier's funne
 Flipkart's Lucknow fulfilment centre has 104 weeks of outbound shipments, the weeks beginning 30 September 2024 to 21 September 2026. The planner must book packer shifts for the eight festive weeks beginning 12 October to 30 November 2026, and a packer packs about 120 shipments a shift. Finance's rule is the same weeks last year plus 4 percent; a vendor's curve promises 22 percent more. Every forecast was also scored on the thirteen weeks beginning 29 June to 21 September 2026, which it never saw. Diwali's dates are in Exhibit 5A. Illustrative case: the company is real, the situation and the data are synthetic, built for this class. In the lab Anand Iyer, Kalpa Retail's finance controller, had the same choice for the board: two forecasts eighteen points apart.
 
 **Exhibit 5A.** Diwali in the Government of India's holiday lists for 2024, 2025 and 2026 (DoPT, as reproduced by staffnews.in, checked 13 October 2026).
+
+```mermaid
+flowchart LR
+  A["2024: Thu 31 Oct,<br/>week beginning 28 Oct"] --> B["2025: Mon 20 Oct,<br/>week beginning 20 Oct"] --> C["2026: Sun 8 Nov,<br/>week beginning 2 Nov"]
+```
 
 | Year | Diwali | The week it falls in |
 |---|---|---|

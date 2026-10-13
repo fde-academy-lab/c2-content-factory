@@ -75,8 +75,13 @@ parts:
       where the head of Retail-Plus had proposed reorders per member as the growth plan's number.
     exhibits:
       - caption: >-
-          Uber Hyderabad's peak-hour guarantee, the six weeks beginning 20 July 2026 against the six
-          beginning 31 August 2026, the launch day.
+          How the guarantee pays, and Uber Hyderabad's peak numbers, the six weeks beginning 20 July
+          2026 against the six beginning 31 August 2026, the launch day.
+        mermaid: |-
+          flowchart LR
+            H["Peak online hours<br/>times Rs 300"] --> C{"Trip earnings in the<br/>peak window below it?"}
+            C -->|yes| T["Uber pays the gap<br/>as a top-up"]
+            C -->|no| N["No top-up"]
         table:
           head:
             - Measure
@@ -106,8 +111,14 @@ parts:
       slide to a Kalpa head, then sized Anand's new-store question against DMart.
     exhibits:
       - caption: >-
-          The same peak bookings read three ways, Uber Hyderabad, the six weeks before the launch and
-          the six weeks after.
+          Who sits in Thursday's review, and the same peak bookings read three ways, Uber Hyderabad,
+          the six weeks before the launch and the six weeks after.
+        mermaid: |-
+          flowchart LR
+            S["One slide, five minutes,<br/>Thursday's city review"] --> CH["The city head decides:<br/>keep, end or change the scheme"]
+            D["Driver-operations lead"] --> CH
+            M["Marketing lead"] --> CH
+            F["Finance partner"] --> CH
         table:
           head:
             - Read
@@ -133,7 +144,13 @@ parts:
       with the Rs 199 phone charger, "because it is in 80 percent of baskets".
     exhibits:
       - caption: >-
-          Swiggy Instamart, Pune: the ticket's headline numbers.
+          Swiggy Instamart, Pune: the strip before and after the switch, and the ticket's headline
+          numbers.
+        mermaid: |-
+          flowchart LR
+            C["Cart page"] --> S["Strip of three<br/>suggested slots"]
+            S --> B["To 6 September:<br/>a curated list by category"]
+            S --> A["From 7 September: items ranked<br/>by how often they share a cart"]
         table:
           head:
             - Measure
@@ -158,8 +175,14 @@ parts:
       about Kalpa Retail's tier.
     exhibits:
       - caption: >-
-          Zomato Gold, Chennai: members by signup month in 2026, and the share who ordered in month
-          one, the calendar month after signup. 53,089 members joined from January to September.
+          Zomato Gold, Chennai: the order flow a member walks through, where the lower path from Open is
+          the home carousel, which opens a menu without a search, and members by signup month in 2026
+          with the share who ordered in month one, the calendar month after signup. 53,089 members
+          joined from January to September.
+        mermaid: |-
+          flowchart LR
+            O["Open"] --> S["Search"] --> V["Menu view"] --> A["Add to cart"] --> C["Checkout start"] --> P["Order placed"]
+            O --> V
         table:
           head:
             - Signup month
@@ -191,6 +214,9 @@ parts:
       - caption: >-
           Diwali in the Government of India's holiday lists for 2024, 2025 and 2026 (DoPT, as
           reproduced by staffnews.in, checked 13 October 2026).
+        mermaid: |-
+          flowchart LR
+            A["2024: Thu 31 Oct,<br/>week beginning 28 Oct"] --> B["2025: Mon 20 Oct,<br/>week beginning 20 Oct"] --> C["2026: Sun 8 Nov,<br/>week beginning 2 Nov"]
         table:
           head:
             - Year

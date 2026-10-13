@@ -46,8 +46,8 @@ possible baseline and what beating it would prove."
 
 You have answered that condition three times already. Friday's naive and seasonal naive were the
 dumbest honest forecasts, Wednesday's chance count was the baseline every pair had to beat, and
-Thursday's cohorts read at the same age were the honest comparison a blend kept hiding. A model is the next tool
-for the same question, and it is held to the same test.
+Thursday's cohorts read at the same age were the honest comparison a blend kept hiding. A model is
+the next tool for the same question, and it is held to the same test.
 
 ## What do you do before Monday?
 
