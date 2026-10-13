@@ -17,12 +17,12 @@ invented gym and an invented college. Part two applies them to Zomato Gold.
 
 ## What can you do after Thursday?
 
-- **Cohort construction.** You can fix each member's joining month, count a cohort's row by age by
-  hand, and build the whole table with one `pivot_table`.
+- **Cohort construction.** You can fix each member's joining month, count a cohort's row by hand and
+  build the table with one `pivot_table`.
 - **Retention curves: shape and floor.** You can read how fast a cohort falls, call its floor only
   once two ages agree within a point, and rank cohorts at the same age.
-- **Blended numbers against cohort truth.** You can take a flat blended number apart into its cohorts
-  and rebuild it as a size-weighted average that lands on the direct count.
+- **Blended numbers against cohort truth.** You can rebuild a flat blended number from its cohorts as a
+  size-weighted average that lands on the direct count.
 - **Funnel stages, drop-off, denominators.** You can read each step over the step before in one named
   unit, spot a step people can skip, and find the step that moved.
 - **The fix-first decision and its evidence.** You can choose between two problems, size the loss with
@@ -40,8 +40,7 @@ flowchart LR
     class H lit
 ```
 
-Thursday compares a blended number with its cohorts and a funnel with its own past. Censoring was
-only named; the IITGN faculty session this afternoon (tentative) takes it up.
+Censoring is only named today; the IITGN faculty session this afternoon (tentative) takes it up.
 
 ## How do the day's five topics connect?
 
@@ -76,10 +75,8 @@ carries its evidence (5).
 
 ![The cohort triangle: each signup month's share who ordered, by months since joining](../whiteboards/C2_W04_D04_cohort_triangle_STUDENT.png)
 
-Call it **the triangle**. Each row is a cohort, the members who joined in one calendar month, and each
-column is an age, months since joining. Every Gold row drops to about 38.5 percent in month two, then
-slides about 0.3 points a month (a point is the gap between two percentages). Down the first column,
-each cohort starts lower: 58 percent for January, 49 for July and 31 for August.
+Call it **the triangle**: each row is a cohort, the members who joined in one calendar month, and
+each column an age, months since joining; part two reads it row by row and column by column.
 
 ---
 
@@ -345,15 +342,14 @@ once: a wrong call sends the fix to the wrong team.
 - What does each group of the twelve keep, month by month?
 - What does the dashboard count?
 
-Cohort construction, as the gym showed, fixes each member's joining month before any rate. Twelve
-members from the case data, counted by months since joining: May's four kept 3, 2, 1 and 1 of 4,
+Twelve members from the case data, counted by months since joining: May's four kept 3, 2, 1 and 1 of 4,
 June's three 2, 1 and 1 of 3, and the five from the August sale week 0 of 5 in month one. Each later
 group starts lower. Counted from month two, as the dashboard does, the card reads 2 of 7 in August
 and in September: the five sale-week members are outside the count until October.
 
-**WATCH OUT.** Comparing cohorts in one calendar month. In September the sale-week member's month one
-sits beside May's month four, and the youngest always looks best. Compare cohorts at the same age; to
-look for a shock that hit everyone, read one calendar month across all of them.
+**WATCH OUT.** Comparing cohorts in one calendar month: in September the sale-week member's month
+one sits beside May's month four. Compare cohorts at the same age, and read one calendar month across
+them only to look for a shock that hit everyone.
 
 **The answer.** An average over groups of different ages names none of them: fix each entry month
 first.
@@ -370,13 +366,10 @@ hides a weak August cohort, the fix waits a month too long.
 - What is September's 38 made of?
 - What is outside the count?
 
-**Two ways to build the table, and the call.** A loop over the 241,492 member-months hides the age
-rule inside it; one `pivot_table`, once each row carries its age, states the rule once. The call is
-the pivot; a table too big for memory would move to SQL as a `GROUP BY` on cohort and age.
-
-**In SQL, and the trap in a sparse table.** The same table as a `GROUP BY`, on member_months, which
-holds a row for every member in every month since she joined, with or without an order (it runs as
-written on Postgres and on SQLite):
+**Two ways to build the table, and the trap in a sparse one.** A loop over the 241,492 member-months
+hides the age rule; one `pivot_table` states it once, and a table too big for memory moves to SQL. The
+query below runs as written on Postgres and on SQLite, on member_months, which holds a row for every
+member in every month since she joined, orders or none:
 
 ```sql
 WITH aged AS (
@@ -396,14 +389,14 @@ GROUP BY cohort_month, age
 ORDER BY cohort_month, age;
 ```
 
-It prints January's row as 58.0, 38.7 and down to 36.9, the triangle's. Run the same query on a table
-that holds a row only when a member ordered, and every cell reads 100 percent: the members who did not
-order have left the denominator. The cohort is the denominator, so the table under the query must keep
-the months with no order, or the query must divide by each cohort's size from `members`.
+It prints January's row as 58.0, 38.7 and down to 36.9. On a table holding a row only when a member
+ordered, every cell reads 100 percent, since the members who did not order have left the denominator:
+keep the months with no order, or divide by each cohort's size from `members`.
 
-Read as Retention curves: shape and floor taught, every row drops to about 38.5 percent in month two,
-reaches its floor there by our rule, then erodes slowly, and each cohort starts lower in month one. Counted directly, the dashboard prints
-38.2, 38.0, 37.9 and 37.8 percent from June to September, 13,218 of 35,000 in September. Its name
+Every row drops to about 38.5 percent in month two, reaches its floor there by our rule, then erodes
+slowly, and each cohort starts lower in month one: 58 percent for January, 49 for July and 31 for
+August. Counted directly, the dashboard prints 38.2, 38.0, 37.9 and 37.8 percent from June to
+September, 13,218 of 35,000 in September. Its name
 misleads: it counts every member aged two or more, so it is no cohort's month-two column.
 
 ![The table filling one month at a time, with the dashboard drawn beside it](../whiteboards/C2_W04_D04_cohort_fill_STUDENT.gif)
@@ -413,12 +406,11 @@ misleads: it counts every member aged two or more, so it is no cohort's month-tw
 **The trap, exactly.** "Month-two retention is 38 percent and flat, so nothing changed": the August
 cohort gets no action, and October's drop arrives as a surprise.
 
-**The decomposition, and the second route.** As Blended numbers against cohort truth showed on the
-gym, the 38 is a size-weighted average: September's seven cohorts give 13,218 orderers of 35,000, the
-direct count to the last digit. Each month one more cohort of about 5,000 enters at about 38.5
-percent, just above the older cohorts' slide, which props September by about half a point: held to
-June's four cohorts, it reads 37.3. The bigger reasons the number looks flat are the slow slide and a
-count that never sees month one, where each new cohort starts lower.
+**The decomposition, and the second route.** The 38 is a size-weighted average: September's seven
+cohorts give 13,218 orderers of 35,000, the direct count to the last digit. A new cohort of about
+5,000 enters each month near 38.5, which props September by about half a point (held to June's four
+cohorts, it reads 37.3); the number looks flat mostly because the slide is slow and the count never
+sees month one.
 
 **What the count leaves out.** The August cohort, 13,000 members, is outside the September count.
 Counting everyone who joined before each month, the four months read 40.9, 40.0, 39.5 and 35.9
@@ -444,14 +436,13 @@ room blames is fine: blaming the wrong step sends engineers to one that works.
 - When did members' Android rate break, and where inside the checkout?
 - What can the data not show?
 
-**Four ways to look, and the call.** The overall rate shows that something fell without saying where; the lowest
-step, at 34 percent, is low every month; each step over the step before shows where people stop; and
-that step split by membership, platform and date shows who and since when. The call: the last two,
-the four funnel rules from the college at work.
+**Four ways to look, and the call.** The overall rate shows that something fell without saying
+where, and the lowest step, at 34 percent, is low every month. The call takes the other two: each
+step over the step before shows where people stop, and that step split by membership, platform and
+date shows who and since when.
 
 A **session** is one visit to the app. In September, Gold members' search to menu view reads 118
-percent per session, because the home carousel, the row of restaurants on the home screen, opens a
-menu with no search. The 118 is an artefact, like the sister programme's 107; among the sessions that
+percent per session, because the home carousel opens a menu with no search. The 118 is an artefact, like the sister programme's 107; among the sessions that
 searched, 89 percent opened a menu. Menu view to add-to-cart reads 34 percent per session and 61 per
 member, both true, with the unit named. In this data every step except search to menu view reads
 higher per member, since a member who fails in one session can succeed in another; a member who
@@ -479,13 +470,9 @@ puts 7 percent of a cohort back on day seven in the top 25 percent for activatio
 | A renamed Android event | Order records against the event log | The same 27,212 September orders |
 | The August cohort aged across the cut | Members who joined before August | Android 70.3 to 53.6, iOS 68.6 to 69.3 |
 | Sessions against members | The unit named | 34 and 61, both true |
-| Joiners order more after joining | Gold's 60 percent | They join expecting to order more |
+| Joiners order more after joining | Gold's 60 percent (Zomato's letter of 19 May 2023, checked 12 October 2026) | They join expecting to order more; with no comparison group it says nothing about cause |
 
 A cut moved a week keeps the fall: it dates it, and cannot test tracking.
-
-**IN THE FIELD.** Zomato's letter of 19 May 2023 says Gold reached 1.8 million members in Q4 FY23 and
-members' order frequency rose about 60 percent after joining (checked 12 October 2026): it describes
-members, with no comparison group, so it says nothing about what Gold caused.
 
 **The answer.** Checkout start to order placed, for members on Android, since the 14 September
 release: 72.5 to 55 percent.
@@ -499,14 +486,13 @@ release: 72.5 to 55 percent.
 - How big is each loss?
 - Which goes first, and what would reverse it?
 
-The college's page carries over line by line. Android members added to a cart 22,841 times in 17 days
-after the release. At 58 percent against 44, that is about 1,317 orders a week if no failed cart came
-back; counted in orders placed, which keeps those that did, 1,133 to 1,266, about a quarter of the
-5,064 orders a week Android members placed before the release: Rs 3.4 to 6.6 lakh of order value at Rs 300 to Rs 500 an order, of which
-Zomato keeps its fees. The checkout goes first: a fix ends a weekly loss, and until it ships, Android
-members go back to the old checkout today, or half of them get the old path for two days, which
-confirms the cause and stops most of the loss. Retention cannot see it:
-most members it cost an order still ordered that month.
+Android members' 22,841 carts in the 17 days after the release, at 58 percent against 44, lose about
+1,317 orders a week if no failed cart came back; counted in orders placed, which keeps those that did,
+1,133 to 1,266, about a quarter of the 5,064 orders a week Android members placed before the release:
+Rs 3.4 to 6.6 lakh of order value at Rs 300 to Rs 500 an order, of which Zomato keeps its fees. The
+checkout goes first: a fix ends a weekly loss, and until it ships, Android members go back to the old
+checkout today, or half of them get the old path for two days, which confirms the cause and stops
+most of the loss. Retention cannot see it: most members it cost an order still ordered that month.
 
 **WATCH OUT.** Two wrong fixes: another sale, whose cohort enters the dashboard at month two and pulls
 it down again, and work on search to menu view, a step that never broke.
@@ -520,15 +506,6 @@ another sale, work out whether this one's members, at 0.23 orders each in month 
 an organic member, pay back their discount.
 
 ---
-
-## Where does this show up in the work?
-
-| Situation | The decision | What the wrong reading costs |
-|---|---|---|
-| A subscription app's retention review | Whether a flat number needs action | A weak cohort found late |
-| A release review | Which step engineers fix first | Weeks on a step that only looked broken |
-
-The lab meets the same questions at Kalpa Retail's Retail-Plus tier.
 
 ## Can you answer these without notes?
 
@@ -561,14 +538,13 @@ notes).
 draft kept, its launch cohort keeps 24 percent at week four against 36 for a later weekly cohort
 (invented). The transcript is in `extras/`.
 
-**The guesstimate: how many people ride the Delhi Metro on a weekday?** Estimate people first, then
-their trips, and only then check against what the Delhi Metro Rail Corporation (DMRC) publishes,
-after asking what it counts. DMRC counts a "passenger journey" for each line a rider uses, so a trip
-with one change counts twice (Deccan Herald, 30 August 2023). Its daily average of 64.06 lakh (The
-Tribune, 9 August 2026) and its record 82,44,903 "boardings" on 17 September 2026 (Republic World)
-look like that same count, each checked 12 October 2026. So before validating, divide DMRC's count by
-one plus the share of trips that change lines once, an assumption you state, and then by the trips
-each rider makes in a day.
+**The guesstimate: how many people ride the Delhi Metro on a weekday?** Estimate people, then trips,
+and check against the Delhi Metro Rail Corporation (DMRC) only after asking what it counts: a
+"passenger journey" for each line a rider uses, so a trip with one change counts twice (Deccan Herald,
+30 August 2023). Its daily average of 64.06 lakh (The Tribune, 9 August 2026) and its record 82,44,903
+"boardings" on 17 September 2026 (Republic World), each checked 12 October 2026, look like that count:
+divide by one plus the share of trips that change lines, an assumption you state, then by each
+rider's trips a day.
 
 ## Which words did Thursday use?
 
@@ -589,7 +565,7 @@ each rider makes in a day.
 | Overall conversion | The last step over the first, which the step rates multiply to | 24 percent at the college |
 | Artefact | A number made by the counting | Search to menu view: 118 percent |
 | Unit | What a rate counts: sessions, members, applications or applicants | 34 per session, 61 per member |
-| Comparator | A group on the same step that held while another fell; it places the fall in one group, and it is no control group, since it often met the same change | iOS members, 71 to 70 |
+| Comparator | A group on the same step that held while another fell; it places the fall, and it is no control group | iOS members, 71 to 70 |
 
 ## Where should you read next, and how long does each take?
 

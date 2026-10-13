@@ -129,6 +129,7 @@ Each choice the fix pass made where the findings or the rules left one:
 | Reveal 2 and the tracking strike | Reveal 2 is handed at S53; tracking is struck at S64 on the order records | Reveal 2 prints S53's split; a moved cut dates the fall and cannot test tracking |
 | The cohort table in SQL | The notes' part two carry a `GROUP BY` query and the sparse-table trap | The interviewer's read found no SQL; the query ran on Postgres 16 and on SQLite in the session and printed notebook 06's rows |
 | The fallback deck | SECTIONs 12 to 15, 120 minutes, no Kahoot line | Its SECTIONs 7 to 10 collided with the day's; S9 runs 18 minutes so the parts sum to 120 |
+| The notes' length | Outside the five topic sections the notes run 2,965 words by a prose count (code, pictures and links left out), the topic sections 2,588 more | The spine caps the notes at 3,000 words and the brief lets the topic sections exceed it; the fixes had pushed the rest to 3,262, so the head's picture paragraph, the two-row "where does this show up" table and the Zomato field note (now a cell of the doubts table) went, and part two was tightened |
 
 | Read, finding | What stayed | Why |
 |---|---|---|
