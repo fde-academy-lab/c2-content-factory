@@ -22,7 +22,7 @@ What does the marketing lead want? What does the finance partner want? What does
 | **The honest reason** | Supply at peak is driver operations' job, and hours are what the team can move this week, with onboarding calls and log-in nudges. |
 | **How their own team could hit it while riders gained little** | Nudge drivers to log in wherever they are, including the quiet outer zones, so hours rise with no trip behind them. |
 | **Round 1, said aloud** | "Hours are up 24 percent, from 118,000 to 146,300. The scheme did what it was built to do." |
-| **Round 3, the attack** | "Pay for trips and drivers will log off. Supply at peak will fall, and you will have to explain it to riders." |
+| **Round 3, the attack** | "Judge drivers on trips and gate the floor, and drivers will log off. Supply at peak will fall, and you will have to explain it to riders." |
 | **The part that is true** | True for the idle tail: 180 drivers whose hours went to 2.1 times while their trips fell 12 percent. |
 | **The answer the room should reach** | The other 880 drivers who were there before the launch made 1.90 trips an hour in both windows, so their supply is real and stays paid. For the 180 there are three cases: they go back to their old rate, which adds trips; they game the new floor, which the cancel share beside acceptance catches; or they quit, and their 33,440 trips after the launch would need about 17,600 more peak hours from the others. The wait by zone shows any real loss, and drivers' earnings per online hour are read weekly for the first month. |
 | **What they lose** | The headline that made the scheme look like a success. |
