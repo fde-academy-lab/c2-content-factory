@@ -74,7 +74,7 @@ lab after class. Explorer: the home screen, Wednesday lit. Transition: the five 
 | 4 | The support floor and the watch list | 6 | 12 | 06 |
 | 5 | Cross-sell and upsell reasoning; expected value in rupees | 9, after lunch | 18 | 09 |
 
-Chapters 7 and 8 apply the topics to Swiggy Instamart's Pune carts before lunch, chapter 10 after it, and the lab runs them on Kalpa Retail's order lines in notebook 11.
+Chapters 7 and 8 apply the topics to Swiggy Instamart's Pune carts before lunch, chapter 10 after it, and the lab runs them on Kalpa Retail's order lines in notebook 11. A slide numbered D is for self-study, and each interview line carries this programme's tag: [S] a staple asked everywhere, [F] frequent in product-company and global capability centre screens, [D] a differentiator.
 
 ```notes
 LIVE, 2 minutes. Read the five topics down the second column once: these are the words the
@@ -140,7 +140,7 @@ each chapter with that chapter's box filled. Transition: the case these topics w
 | Company, city, part of the app | Swiggy Instamart, Pune: the cart page's strip of three suggested items, each in a slot |
 | The change | Monday 7 September 2026: a curated list became the items most often found in the same cart; toned milk is in 71 percent of carts, so it now sits beside nearly everything |
 | The metric | Strip click-through, clicks over impressions (an impression is one showing of one slot): 6.1 percent from 17 August to 6 September, 3.8 percent from 7 to 27 September |
-| The data | `carts` (cart_id, customer_id, placed_date, zone, time_band, cart_value_rs): a sample of 40,000 carts, every September cart of 12,000 customers in eight zones; `cart_items` (cart_id, item, quantity, price_rs, margin_rs); `strip_log` (date, slot, anchor_item, the cart item a suggestion sits beside, suggested_item, impressions, clicks, adds, the suggestions put in the cart) |
+| The data | `carts` (cart_id, customer_id, placed_date, zone, time_band, cart_value_rs): a sample of 40,000 carts, every cart 12,000 customers placed from 1 to 28 September, in eight zones; `cart_items` (cart_id, item, quantity, price_rs, margin_rs); `strip_log` (date, slot, anchor_item, the cart item a suggestion sits beside, suggested_item, impressions, clicks, adds, the suggestions put in the cart) |
 | The ask, due Friday | Rank the pairs the strip should show, explain the fall, put a rupee value on a slot |
 | Who asks | The growth lead, who owns the strip's clicks and orders, and the category manager, who decides which products are promoted; Friday's review is the weekly meeting where both defend their numbers |
 | Caveats | Curd ran out in two zones in week three; the top tenth of customers place 38 percent of carts; the strip causes some of the pairs it counts, since a milk add from the strip puts bread and milk in one cart; a cart is one order, a customer places many |
@@ -310,7 +310,7 @@ confidence and lift, derived by counting". Same cards. Transition: who needs it.
 ```timeline
 label: Question 1 | title: What does "of those" count? | body: The baskets with A, then those with B too.
 label: Question 2 | title: Does direction matter? | body: Dal rice to papad against papad to dal rice.
-label: Question 3 | title: How far can it swing? | body: Gulab jamun and curd, one order.
+label: Question 3 | title: How far can it swing? | body: Papad and pickle, two orders.
 label: Question 4 | title: What can it not say? | body: Whether a pair is special at all.
 ```
 
@@ -334,8 +334,9 @@ icon: check | eyebrow: d | title: 1.00 | body: Every papad order holds dal rice.
 
 ```notes
 LIVE, 3 minutes. Put the common wrong answer to the room in its own words first: "confidence is
-the chance the two go together, so it reads the same both ways". Vote, argue, vote again. Option c
-is support, which the room met in chapter 1. Transition: both directions, counted.
+the chance the two go together, so it reads the same both ways". Vote, argue, vote again; the
+split is usually a against b. Option c is support, which the room met in chapter 1. Transition:
+both directions, counted.
 ```
 
 ---
@@ -356,12 +357,12 @@ Transition: how far direction can swing a number.
 
 ---
 
-## S14. Direction can swing a pair from 1.00 to 0.50
+## S14. Direction can swing a pair from 1.00 to 0.40
 *How far apart can the two directions sit, and when do they agree?*
 
 ![Confidence one way against the other for all 13 pairs of the twelve invented orders, with the diagonal where both ways are equal](../whiteboards/C2_W04_D03_canteen_direction_STUDENT.png)
 
-The formula, named last: confidence from A to B is the baskets holding both over the baskets holding A. Gulab jamun's one order holds curd, 1.00, while curd's two orders hold gulab jamun once, 0.50. Roti and sabzi read 0.75 both ways only because each sits in 4 orders.
+The formula, named last: confidence from A to B is the baskets holding both over the baskets holding A. Pickle's two orders both hold papad, 1.00, while papad's five orders hold pickle twice, 0.40. Roti and sabzi read 0.75 both ways only because each sits in 4 orders.
 
 ```python
 # orders holding dal rice: 6
@@ -448,7 +449,7 @@ multiplication. The chapter stays with counts and shares. Transition: the predic
 
 ```cards
 icon: circle-off | eyebrow: a | title: 0 | body: Items that ignore each other never meet. | tone: light
-icon: divide | eyebrow: b | title: 1.33 | body: A third of the roti orders hold sabzi. | tone: light
+icon: divide | eyebrow: b | title: 1.33 | body: A third of roti's 4 orders, if sabzi ignored roti. | tone: light
 icon: shopping-basket | eyebrow: c | title: 3 | body: Three orders hold both on the cards. | tone: light
 icon: hash | eyebrow: d | title: 4 | body: Roti's own count. | tone: light
 ```
@@ -456,8 +457,8 @@ icon: hash | eyebrow: d | title: 4 | body: Roti's own count. | tone: light
 ```notes
 LIVE, 2 minutes. Two misconceptions said aloud: "expected means what I expect to see", when it
 means what chance alone would give; and "ignoring each other means never meeting", when two
-items that ignore each other still share baskets at their own rates. Vote, argue, vote again.
-Transition: the proportion, counted.
+items that ignore each other still share baskets at their own rates. Vote, argue, vote again;
+the split is usually b against c. Transition: the proportion, counted.
 ```
 
 ---
@@ -482,7 +483,7 @@ less often than chance; near one, chance; above one, a pull. Transition: the sam
 
 ![Lift as a ratio of two areas on the unit square for roti and sabzi: chance 0.11 against seen 0.25](../whiteboards/C2_W04_D03_canteen_areas_STUDENT.png)
 
-The formula, named last: lift = seen / chance = both x all / (A x B) = 3 x 12 / (4 x 4) = 2.25. The second route is confidence over the partner's share: 0.75 / 0.33 = 2.25 from either side, which is why lift has no direction.
+The formula, named last: lift = seen / chance = both x all / (A x B) = 3 x 12 / (4 x 4) = 2.25. The second route is confidence over the partner's share: 0.75 / (4/12) = 2.25 from either side, which is why lift has no direction.
 
 ```python
 # chance: all orders x both shares
@@ -508,7 +509,7 @@ overlap. Check question: "Papad is in 5 orders, chaas in 9, both in 3. Chance? L
 
 1. Chance alone gives a pair all baskets times A's share times B's share.
 2. Lift is the seen count over the chance count, and it reads the same from both sides.
-3. Lift below one means together less often than chance, near one means chance, above one a pull.
+3. Lift below one means together less often than chance, exactly one means chance, and above one more often.
 4. Lift 2.25 never means roti makes anyone buy 2.25 times the sabzi; only a change at the counter tested fairly shows cause.
 
 **In the interview.** [S] "Which of the three counts cannot be fooled by popularity?" Lift, because it divides by the partner's share; chapter 4 shows the trap it avoids.
@@ -528,15 +529,17 @@ flowchart LR
 
 ```notes
 LIVE, 2 minutes 30 seconds. Rule 4 is this chapter's trap: the number is right and the sentence is wrong.
-The test that would show cause is this week's Monday faculty session on A/B testing (tentative).
+The decision it misleads is a roti promotion run to sell sabzi, whose sabzi sales need not move as
+the number seems to promise; the fix is a change at the counter, tested fairly. The test that would
+show cause is this week's Monday faculty session on A/B testing (tentative).
 Checkpoint: three learners say roti and sabzi's three numbers from the board, 0.25, 0.75 and 2.25.
 Fill the map's third box. Transition: chapter 4, the item in every order.
 ```
 
 ---
 
-## SECTION 4: The confidence trap; lift near one: who is the worst partner?
-*Why the item in most baskets reads like a bundle with everything, and how lift divides that popularity out.*
+## SECTION 4: The confidence trap; lift near one: does 1.00 mean a bundle?
+*Why the item in most baskets reads like a bundle with everything, why its lift can never climb far above one, and what near one means today.*
 
 ```notes
 LIVE, 30 seconds. Chapter 4 of the concept block, on the topic "The confidence trap; lift near
@@ -589,13 +592,14 @@ splits between a and c. Vote, two minutes with a neighbour, vote again. Transiti
 
 ![Confidence toward chaas and lift with chaas for the four items in four or more of the twelve invented orders](../whiteboards/C2_W04_D03_chaas_partner_STUDENT.png)
 
-Chance alone puts chaas in 12 x 6/12 x 9/12 = 4.5 of dal rice's 6 orders; 6 are seen, so lift is 6 / 4.5 = 1.33, and 1.00 / 0.75 gives the same. Every item in four or more orders reads confidence 0.60 to 1.00 toward chaas, and every lift with chaas sits between 0.80 and 1.33.
+Chance alone puts chaas in 12 x 6/12 x 9/12 = 4.5 of dal rice's 6 orders; 6 are seen, so lift is 6 / 4.5 = 1.33, and 1.00 / 0.75 gives the same. That is as high as any lift with chaas can go: a partner cannot hold chaas more than every time, so lift stops at one over chaas's 0.75, 1.33. Every item in four or more orders reads confidence 0.60 to 1.00 toward chaas, and lift 0.80 to 1.33.
 
 ```notes
 LIVE, 3 minutes. The trap, exactly: 1.00 read as a bundle; the decision it misleads is a combo
 board filled with chaas beside everything, which changes nothing, since chaas was already in nine
-of twelve orders. The check: chaas's own share. The fix: read lift. On twelve orders anything
-from about 0.8 to 1.3 tells the same story, chance; chapter 6 shows why a few orders swing it.
+of twelve orders. The check: chaas's own share. The fix: read lift. Today, near one means under
+the 1.5 bar chapter 6 sets, too weak a pull to act on; on twelve orders a lift of 1.33 is also
+within luck's reach, as chapter 6's month shows.
 Transition: what popularity does to confidence, in general.
 ```
 
@@ -606,7 +610,7 @@ Transition: what popularity does to confidence, in general.
 
 ![An invented sweep: as the popular item's share rises from 20 to 90 percent, an ignoring partner's confidence rises with it and lift stays at one](../whiteboards/C2_W04_D03_popular_sweep_STUDENT.png)
 
-The rule, named last: for a partner that ignores it, confidence toward an item equals that item's share, so the most popular item wins every confidence ranking, while lift stays at one.
+The rule, named last: for a partner that ignores it, confidence toward an item equals that item's share, so the most popular item tops the confidence ranking beside almost every item, while lift stays at one.
 
 ```python
 # the popular item's share, invented
@@ -618,7 +622,8 @@ for share in [0.2, 0.5, 0.9]:
 ```
 
 ```notes
-LIVE, 2 minutes 30 seconds. Explorer: scene W3, the slider that raises the popular item's share while lift
+LIVE, 2 minutes 30 seconds. Notebook 04's cells 6 to 10 run the chaas pairs and the sweep for any learner
+who wants the code. Explorer: scene W3, the slider that raises the popular item's share while lift
 stays put. Check question: "An item is in 60 percent of a shop's bills. A partner reads confidence
 0.66 toward it. Bundle them?" Lift 1.10, near one: no, since the partner's buyers take it about
 as often as everyone does. Transition: the rules.
@@ -626,13 +631,13 @@ as often as everyone does. Transition: the rules.
 
 ---
 
-## S25. Lift is the count popularity cannot fool
+## S25. Lift divides the popular item's share out
 *What should a learner keep from chapter 4, and where is the trap met next?*
 
 1. A base rate is how common an item is in all baskets anyway.
-2. An item in most baskets earns high confidence toward everything, near its own share.
-3. Lift divides the base rate out, so only lift can rank partners of a popular item.
-4. The item in every basket is the worst bundle partner, because it was going into the basket anyway.
+2. Confidence toward an item in most baskets is high from every partner, so its size says nothing.
+3. Beside one item, confidence ranks candidates by share times pull; lift divides the share out.
+4. Lift with an item cannot pass one over its share, 1.33 for chaas, so the popular item stays under the 1.5 bar.
 
 **In the interview.** [S] Weak answer: "confidence, since dal rice to chaas is 1.00". Hire-grade: "lift, since chaas is in 0.75 of orders anyway, so 1.00 is only 1.33 times chance."
 
@@ -650,11 +655,12 @@ flowchart LR
 ```
 
 ```notes
-LIVE, 8 minutes, 2 for the rules and 6 for the drill. The Feynman line for the room to repeat: "the item in every basket is the worst
-bundle partner, because it was going into the basket anyway". Where the room has met this: the
+LIVE, 8 minutes, 2 for the rules and 6 for the drill. The Feynman line for the room to repeat: "the item in every basket makes a
+weak bundle partner, because it was going into the basket anyway". Where the room has met this: the
 "frequently bought together" strip on any shopping app. Then the first concept drill, items 1 to
 4 of `exercises/unguided/C2_W04_D03_canteen_concepts_STUDENT.md`, on paper, 6 minutes inside this
-chapter's 18. Fill the map's fourth box, then a break of 10 minutes. Transition after the break:
+chapter's 18. Checkpoint: every group posts its four letters. Fill the map's fourth box, then a
+break of 10 minutes. Transition after the break:
 chapter 5, every pair at once.
 ```
 
@@ -702,14 +708,14 @@ why sort the two names; which pair tops the table. Transition: the prediction.
 
 ```cards
 icon: list | eyebrow: a | title: 33 | body: One pair for every order line. | tone: light
-icon: shopping-basket | eyebrow: b | title: 30 | body: Three pairs for each three-line order, one for each two-line order. | tone: light
-icon: copy | eyebrow: c | title: 60 | body: Every pair counted in both orders of its two names. | tone: light
+icon: shopping-basket | eyebrow: b | title: 30 | body: Each order's own pairs, added up. | tone: light
+icon: copy | eyebrow: c | title: 60 | body: Every pair, its names read both ways round. | tone: light
 icon: layout-grid | eyebrow: d | title: 28 | body: Every pair the eight menu items could form. | tone: light
 ```
 
 ```notes
 LIVE, 2 minutes. The misconception: "33 lines, so 33 pairs". Vote, then count one order by hand
-before the reveal. Transition: one order, by hand.
+before the reveal; the split is usually a against b. Transition: one order, by hand.
 ```
 
 ---
@@ -730,11 +736,14 @@ flowchart LR
     class R lit
 ```
 
-A basket of three items holds three pairs, four items hold six, and k items hold k x (k - 1) / 2. Nine three-line orders give 27 and three two-line orders give 3, so 30. The names are sorted first, so chaas with dal rice and dal rice with chaas are one key; left unsorted, the count reads 60 and every pair is counted twice.
+A basket of three items holds three pairs, four items hold six, and k items hold k x (k - 1) / 2. Nine three-line orders give 27 and three two-line orders give 3, so 30. The names are sorted first, so chaas with dal rice and dal rice with chaas are one key. Left unsorted, a pair can land under two keys and its count splits; counted with its names both ways round, as `permutations` does, every pair counts twice and the total reads 60.
 
 ```notes
-LIVE, 3 minutes. Work T01 into its three pairs on the board. The trap, exactly: keys left
-unsorted, 60 pair counts against 30, every pair's count doubled. A one-item basket adds no pair.
+LIVE, 3 minutes. Work T01 into its three pairs on the board. The trap, exactly: 60 pair counts
+against 30, from counting each pair with its names both ways round, or a pair's count split across
+two keys when the names are left unsorted. The decision it misleads is a ranking built on doubled
+or split counts; the check is each basket's k x (k - 1) / 2 added up; the fix is sorted names and
+`combinations`. A one-item basket adds no pair.
 Transition: the five lines that do it for every basket.
 ```
 
@@ -810,7 +819,7 @@ list". Transition: who needs it.
 
 ---
 
-## S31. One order can make a lift of 6
+## S31. A floor is the fewest baskets a lift needs
 *Who needs the answer, and which questions lead to it?*
 
 **The topic.** The support floor and the watch list.
@@ -838,13 +847,14 @@ is the fewest baskets a pair must sit in before anyone acts on its lift. Transit
 icon: equal | eyebrow: a | title: About 1.2 | body: Items that ignore each other stay near one. | tone: light
 icon: trending-up | eyebrow: b | title: About 2 | body: Luck can double a lift, no more. | tone: light
 icon: trending-up | eyebrow: c | title: About 3 | body: Luck can triple it. | tone: light
-icon: zap | eyebrow: d | title: Above 6 | body: One or two orders can read anything. | tone: light
+icon: zap | eyebrow: d | title: Above 6 | body: More than six times chance. | tone: light
 ```
 
 ```notes
 LIVE, 2 minutes. Prediction one, on the canteen's own pair first: gulab jamun and curd read 6.0;
 promote it, drop it, watch it with a trial, or lower the floor until it qualifies? Then this
-prediction, on 600 orders where nothing is going on by construction. Transition: the month.
+prediction, on 600 orders where nothing is going on by construction; the split is usually a
+against b. Transition: the month.
 ```
 
 ---
@@ -854,7 +864,7 @@ prediction, on 600 orders where nothing is going on by construction. Transition:
 
 ![Lift against the orders behind each pair in 600 invented orders where no item depends on another](../whiteboards/C2_W04_D03_month_luck_STUDENT.png)
 
-Nothing in this month pulls any item toward another, yet gulab jamun and jalebi read lift 8.57 on 2 orders. The 10 pairs on 30 or more orders read 0.90 to 1.00, close to the one that chance gives. A lift on a handful of baskets says more about luck than about the pair.
+Nothing in this month pulls any item toward another, yet gulab jamun and jalebi read lift 8.57 on 2 orders. The 10 pairs on 30 or more orders read 0.90 to 1.00, a shade under one because every order must hold at least one item. In between, three pairs on 4 to 7 orders still pass 1.5, up to 1.83, and none on 8 or more orders does. A lift on a handful of baskets says more about luck than about the pair.
 
 ```notes
 LIVE, 3 minutes. Read the picture left to right: wild on the left, flat on the right. Explorer:
@@ -869,7 +879,7 @@ twelve orders.
 
 ![The canteen's 13 pairs on an action map: a floor of three orders, a lift bar of 1.5, four regions](../whiteboards/C2_W04_D03_canteen_action_map_STUDENT.png)
 
-The rule, named last: read a lift only at or above the floor, here 3 of the 12 orders, and promote only at a lift of 1.5 or more. Roti and sabzi, 2.25 on three orders, is promoted; papad and pickle, 2.40 on two, and gulab jamun and curd, 6.0 on one, are watched; dal rice and chaas, 1.33 on six, sits in the trap region, near one on plenty of orders.
+The rule, named last: set the floor where luck stops carrying a lift past the bar, read a lift only at or above it, and promote only at 1.5 or more. In the month that floor is 8 orders; twelve orders are too few for any floor, so 3 here only shows the sort. Roti and sabzi, 2.25 on three orders, lands in promote and would still be trialled first; papad and pickle (2.40 on two), roti and pickle (1.50 on one) and gulab jamun and curd (6.0 on one) are watched; dal rice and chaas, 1.33 on six, is the trap, near one on plenty of orders.
 
 ```python
 FLOOR, BAR = 3, 1.5     # orders, lift
@@ -883,9 +893,12 @@ print(region(3, 2.25), region(2, 2.40))
 
 ```notes
 LIVE, 4 minutes. The floor is a decision, stated as a count: 3 of 12 orders here, 1 percent of
-40,000 carts in the case, 5 percent of the lab's baskets. A watch-list entry is the pair, its lift
-and support, the trial (where, for how long, against which other half of customers) and the pass
-rule, written before the trial starts. How long a trial must run is a sample-size question, parked
+40,000 carts in the case, 5 percent of the lab's baskets. With no month of pure chance to hand,
+Week 1's thirty is the safe default. A watch-list entry is the pair, its lift and support, the
+trial (where, for how long, against which other half of customers) and the pass rule: the pair is
+promoted only if the half that sees it buys the pair more often than the other half, by a gap
+written down before the trial starts. Notebook 06's cells 7 and 8 sort the thirteen pairs and draw
+this map. How long a trial must run is a sample-size question, parked
 for the IITGN faculty session (tentative). Transition: the rules.
 ```
 
@@ -895,9 +908,9 @@ for the IITGN faculty session (tentative). Transition: the rules.
 *What should a learner keep from chapter 6, and where is the floor used next?*
 
 1. A lift on one or two baskets swings by luck, so it is read only above a floor.
-2. The floor is a decision stated as a count of baskets, set before the ranking is read.
-3. A strong pair below the floor goes on a watch list with a trial and a pass rule set first.
-4. A pair near one is ignored at any support; the trap region is the one a count ranks first.
+2. The floor is a count of baskets set where luck stops carrying a lift past the bar, before the ranking is read.
+3. A strong pair below the floor goes on a watch list: a trial on a random half of customers, its pass rule written first, shows whether the pull is real and whether it sells.
+4. A pair near one is never promoted: below the floor it is ignored, and above it, where a count ranks it first, it is the trap.
 
 **In the interview.** [F] "A pair has a high lift on very few baskets; act or not?" Watch it: test it on a random half of customers with a pass rule set first.
 
@@ -926,7 +939,9 @@ boxes filled; chapter 9 fills the last after lunch. Transition: the case, opened
 
 ```notes
 LIVE, 30 seconds. The first case chapter, level L1. Receipts on the table: twelve cart cards per
-group. No laptop opens in this chapter. Transition: what the chapter answers, and for whom.
+group. Laptops stay shut while the cards are counted; notebook 07 repeats the count in code and runs
+in the lab or the evening, or at S42 if the drill finishes early. Transition: what the chapter
+answers, and for whom.
 ```
 
 ---
@@ -952,20 +967,20 @@ case's own carts. Transition: where the case ends.
 
 ---
 
-## S37. Where today ends: three pairs, one floor, Rs 6.3 lakh
+## S37. Where today ends: pairs, a floor, a rupee figure
 *What will the growth lead carry out of the room?*
 
 ```cards
-icon: list-checks | eyebrow: Promote | title: Three pairs above a floor | body: Lift 3.39 for chips and cold drink, 3.00 for coriander and green chillies, 2.21 for bread and butter, each in at least 1 percent of carts, the floor. Milk takes no slot. | tone: light
-icon: eye | eyebrow: Watch | title: One strong, thin pair | body: Ice cream and chocolate sauce: lift 4.60 on 100 carts, tested before it is promoted. | tone: light
-icon: indian-rupee | eyebrow: Price | title: A slot, in rupees | body: Rs 17,280 a day with a pair that beats chance, Rs 3,240 with milk; re-ranking recovers Rs 6.3 lakh a month. | tone: dark
+icon: list-checks | eyebrow: Promote | title: Pairs above a floor | body: The pairs that beat chance on enough carts, each with its support and its lift, ranked by lift. | tone: light
+icon: eye | eyebrow: Watch | title: One strong, thin pair | body: A pair with a high lift on too few carts, tested before it is promoted. | tone: light
+icon: indian-rupee | eyebrow: Price | title: A slot, in rupees | body: What a slot earns a day and what a month recovers, each assumption said with its range. | tone: dark
 ```
 
 ```notes
-LIVE, 2 minutes. Show the finished answer once, then earn it (fast.ai). Every word on the three
-cards is now one the room can read: lift and the floor from chapters 3 and 6, and the rupees from
-chapter 9 after lunch. Leave the cause of the fall open: chapter 8 finds it. Transition: twelve
-carts.
+LIVE, 2 minutes. Show the finished answer's shape once, then earn it (fast.ai). Every word on the
+three cards is now one the room can read: lift and the floor from chapters 3 and 6, and the rupees
+from chapter 9 after lunch. The numbers arrive in chapter 10, so its predictions stay open. Leave
+the cause of the fall open too: chapter 8 finds it. Transition: twelve carts.
 ```
 
 ---
@@ -1000,30 +1015,31 @@ before the reveal.
 
 ---
 
-## S39. How reliably does bread bring milk on twelve carts?
-*Bread is in 4 carts and milk in 8. What is the confidence from bread to milk?*
+## S39. Bread to milk is 1.00; milk to bread?
+*All four bread carts hold milk, and milk is in 8 of the 12. What is the confidence from milk to bread?*
 
 ```cards
-icon: percent | eyebrow: a | title: 0.33 | body: Bread's own share of the twelve carts. | tone: light
-icon: percent | eyebrow: b | title: 0.50 | body: The share of milk carts that hold bread. | tone: light
-icon: percent | eyebrow: c | title: 0.75 | body: Three of the four bread carts hold milk. | tone: light
-icon: percent | eyebrow: d | title: 1.00 | body: Every bread cart holds milk. | tone: light
+icon: equal | eyebrow: a | title: 1.00 | body: The same both ways, like support. | tone: light
+icon: percent | eyebrow: b | title: 0.50 | body: Milk's carts are the denominator now. | tone: light
+icon: percent | eyebrow: c | title: 0.33 | body: Bread's share of all twelve carts. | tone: light
+icon: percent | eyebrow: d | title: 0.67 | body: Milk's share of all twelve carts. | tone: light
 ```
 
 ```notes
-LIVE, 2 minutes. Groups commit in writing. Option b is the reverse direction, milk to bread, which
-reads 4 of 8: chapter 2's lesson that confidence has a direction. Transition: the count.
+LIVE, 2 minutes. The drill gave bread to milk; this asks the other direction, which no item of the
+guided set computed. Groups commit in writing; the split is usually a against b. Option a is
+chapter 2's misconception on the case's carts. Transition: the count.
 ```
 
 ---
 
-## S40. Answer: d, confidence 1.00 and lift 1.50
+## S40. Answer: b, 0.50 the other way; lift 1.50 both ways
 *How do the three counts read for bread and milk?*
 
 ```mermaid
 flowchart LR
     A["<b>support</b><br/>both in 4 of 12<br/>0.33"] --> B["<b>confidence</b><br/>bread to milk<br/>4 of 4 = 1.00"]
-    B --> C["<b>expected</b><br/>12 x 4/12 x 8/12<br/>= 2.67"]
+    B --> C["<b>expected by chance</b><br/>12 x 4/12 x 8/12<br/>= 2.67"]
     C --> D["<b>lift</b><br/>4 / 2.67<br/>= 1.50"]
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
@@ -1031,12 +1047,13 @@ flowchart LR
     class D lit
 ```
 
-All four bread carts hold milk, so confidence is 1.00. Milk is in 8 of 12 carts anyway, so chance alone puts it in 2.67 of the four bread carts. Lift is 4 / 2.67 = 1.50: on these twelve carts, bread brings milk half again as often as chance would.
+All four bread carts hold milk, so bread to milk is 1.00; milk's 8 carts hold bread 4 times, so milk to bread is 0.50. Milk is in 8 of 12 carts anyway, so chance alone puts it in 2.67 of the four bread carts, and lift is 4 / 2.67 = 1.50 from either side: on these twelve carts, bread and milk meet half again as often as chance would.
 
 ```notes
 LIVE, 4 minutes. Walk the four boxes left to right, writing each number on the board; these are
-chapters 1 to 3's counts on new numbers. Read the reverse confidence too: milk to bread is 4 of 8,
-0.50. Lift is the same from both sides. Transition: what confidence threw away.
+chapters 1 to 3's counts on new numbers. Then the reverse confidence, milk to bread, 4 of 8, 0.50:
+the same four carts, two sentences, as chapter 2 showed. Lift is the same from both sides.
+Transition: what confidence threw away.
 ```
 
 ---
@@ -1085,8 +1102,8 @@ icon: shopping-cart | eyebrow: d | title: Onions and tomatoes | body: The cookin
 ```
 
 ```notes
-LIVE, 2 minutes. Vote, argue in pairs, vote again. Write the split on the board. Transition: the
-count.
+LIVE, 2 minutes. Vote, argue in pairs, vote again; the split is usually a against b. Write it on
+the board. Transition: the count.
 ```
 
 ---
@@ -1139,7 +1156,7 @@ label: Question 4 | title: Why did the click-through fall? | body: Split by what
 
 ```notes
 LIVE, 5 minutes, opening on the five-minute paper check
-`exercises/unguided/C2_W04_D03_ch1_one_pair_STUDENT.md`: four counts from the case, three numbers
+`exercises/unguided/C2_W04_D03_ch8_one_pair_STUDENT.md`: four counts from the case, three numbers
 and a second route, letters posted before the notebook runs. Then read the four questions; each
 ends on a number from notebook 08. Transition: the five lines.
 ```
@@ -1177,7 +1194,9 @@ On twelve carts lift read 1.50 because all four bread carts happened to hold mil
 ```notes
 LIVE, 4 minutes. Read the picture as two areas, the same picture chapter 3 drew for roti and
 sabzi: bread's band times milk's band is the overlap chance gives; the overlap seen is barely
-bigger. Explorer: scene W1. Transition: is bread special, or is every item like this?
+bigger. The 4 percent above chance is no pull: bigger carts hold any two staples more often, and
+the interview extra counts chance within each cart size. Explorer: scene W1. Transition: is bread
+special, or is every item like this?
 ```
 
 ---
@@ -1204,11 +1223,11 @@ Transition: the chart.
 
 ![Confidence toward milk and lift with milk for the nine most common items](../whiteboards/C2_W04_D03_milk_everywhere_STUDENT.png)
 
-For all 50 items in at least 2 percent of carts, confidence toward milk runs 0.70 to 0.74, near milk's own 0.71, and lift runs 0.99 to 1.04. This is chapter 4's chaas at the scale of a city: lift divides milk's popularity out.
+For all 50 items in at least 2 percent of carts, confidence toward milk runs 0.70 to 0.74, near milk's own 0.71, and lift runs 0.99 to 1.04. This is chapter 4's chaas at the scale of a city: lift divides milk's popularity out, and no item's lift with milk can pass one over its share, 1 / 0.71 = 1.41, under the 1.5 bar.
 
 ```notes
 LIVE, 3 minutes. The left panel is what the new strip ranked by; the right panel is what it
-should have read. The Feynman line again: "the item in every bag is the worst bundle partner,
+should have read. The Feynman line again: "the item in every bag makes a weak bundle partner,
 because it was going in the bag anyway". Explorer: scene W3. Transition: a company that met this
 trap.
 ```
@@ -1218,14 +1237,16 @@ trap.
 ## S50. Amazon met the same popular-partner trap
 *Where has a real recommender met the item that sits beside everything?*
 
-**Amazon.** Amazon Science's history of the company's recommendation algorithm says that counting how often buyers of one item bought another would make a few bestsellers, such as Harry Potter books and trash bags, the top recommendations for every customer. The fix compared what was seen with what chance would predict, which is lift in spirit. Later the team measured the base rate, how likely an item is anyway, with any given purchase, scaling heavy buyers down, because they inflate every count (Amazon Science, checked 13 October 2026).
+**Amazon.** Amazon Science's history of the company's recommendation algorithm says that counting how often buyers of one item bought another would make a few bestsellers, such as Harry Potter books and trash bags, the top recommendations for every customer. The fix scored how much more likely buyers of one item were to buy another than the average customer, a difference in probabilities; lift makes the same comparison with chance as a ratio, which rare items inflate. Later the team found that buyers of one item are heavier buyers of everything, so it measured the increased likelihood of a purchase with any given purchase, discounting heavy buyers (Amazon Science, checked 13 October 2026).
 
 The cost of the trap is a recommendation slot spent on an item the shopper was buying anyway.
 
 ```notes
 LIVE, 2 minutes. Name the decision and the cost: a slot shown to everyone that moves nothing. The
-heavy-buyer point returns after lunch as the top tenth of customers. Transition: four pairs side
-by side.
+heavy-buyer point returns after lunch as the top tenth of customers. The row asks for one legend
+told accurately: in 1992 about 1.2 million baskets from Osco Drug stores showed beer and diapers
+together in the early evening, and the chain does not appear to have moved any shelf (The
+Register, checked 12 October 2026). Transition: four pairs side by side.
 ```
 
 ---
@@ -1277,8 +1298,9 @@ Milk took half the slot impressions at 1.2 percent; everything else clicked at 6
 ```notes
 LIVE, 8 minutes. This is notebook 08's your-turn cell: each learner splits the after rows by
 whether the slot suggested milk before the answer is shown. A blended rate is a mix of two rates,
-Thursday's topic in preview. Checkpoint: every learner's your-turn cell prints 1.2 and 6.4
-percent. Transition: the slot milk took, for self-study, then the case's answer so far.
+Thursday's topic in preview. The decision the habits answer misleads is a redesign of the strip,
+when only what it ranks needs to change. Checkpoint: every learner's your-turn cell prints 1.2 and
+6.4 percent. Transition: the slot milk took, for self-study, then the case's answer so far.
 ```
 
 ---
