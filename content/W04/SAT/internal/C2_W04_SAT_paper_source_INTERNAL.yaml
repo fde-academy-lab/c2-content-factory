@@ -50,15 +50,15 @@ banks:
   sat-briefs:
     style: match
     instruction: >-
-      Each numbered row opens a Kalpa brief. Write the letter of the week's method that answers
-      it. Each letter is used once at most, and two are not used.
+      Each numbered row opens a Kalpa brief. Write the letter of the method that answers it. Each
+      letter is used once at most, and two are not used.
     options:
       - the second product most customers already hold
       - cohorts by start month, each read at the same age
       - the average of each row's own rate across the table
-      - a definition whose window the measured cannot move, with a guardrail
+      - a definition the people measured cannot change after the fact
       - each funnel step over the step before, in one unit
-      - lift above a support floor, valued in margin
+      - lift above a support floor, on enough customers to trust it
 
 # The printed order. Bank items by number, the additions by id.
 parts:
@@ -173,9 +173,8 @@ parts:
       about Kalpa Retail's tier.
     exhibits:
       - caption: >-
-          Zomato Gold, Chennai: the order flow a member walks through, where the lower path from Open is
-          the home carousel, which opens a menu without a search, and members by signup month in 2026
-          with the share who ordered in month one, the calendar month after signup. September's 5,089
+          Zomato Gold, Chennai: the order flow a member walks through, and members by signup month in
+          2026 with the share who ordered in month one, the calendar month after signup. September's 5,089
           members, too new for a month-one rate, bring January to September to 53,089.
         mermaid: |-
           flowchart LR
@@ -289,7 +288,7 @@ folded:
     why: The set's two blends both read 41 percent while cohorts A and B both fall, which is bank 12's statement worked on numbers.
   13:
     into: "new:funnel-units"
-    why: Option c divides every step by the sessions that opened the app, the single denominator bank 13 calls false, and its reason says why each step takes the step before as its base.
+    why: Option b divides every step by the sessions that opened the app, the single denominator bank 13 calls false, and its reason says why each step takes the step before as its base.
   14:
     into: "new:m5"
     why: The sponsor's case is a curve that fits two years within 2 percent, and the key says a fit is no forecast, which is bank 14's false statement refused on the M5 scoreboard.
@@ -495,6 +494,7 @@ notes:
       each cohort at the same age before I read the blend.
   35:
     label: "Choose the honest headline"
+    level: Medium
     min: 3
     why: >-
       A and B both fell, A from 50 to 46 and B from 38 to 35, and C, a third of June's members in its
@@ -640,7 +640,7 @@ additions:
   - id: tf-target
     label: "Judge the statement on a case"
     type: True or false
-    level: Medium
+    level: Easy
     min: 2.5
     tag: "[F]"
     roles: BA, FDE
@@ -692,9 +692,9 @@ additions:
       People paid on a number move it the cheapest way open to them, so I write each definition
       asking how the people measured could raise it without the outcome moving.
   - id: wells-silent
-    label: "Size the silent change"
+    label: "Size the 2013 change"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[F]"
     roles: BA, FDE
@@ -703,11 +703,11 @@ additions:
     anchor: >-
       What makes a metric gameable, and how do you write one that is not?
     text: |-
-      Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what, kept beside the definition, would have shown it to investors?
+      Exhibit 1C's last row is the 2013 change. What share of Wells Fargo's 2013 rise in the ratio came from the change of definition alone, and what would have shown it to investors?
       (a) About 57 percent, 0.04 against the other 0.07; a dated log of each change to what is counted, with that year's ratio also on the old definition.
       (b) About 36 percent, 0.04 of the 0.11 rise in the ratio; a dated log of each change to what is counted, with that year's ratio also on the old definition.
-      (c) About 36 percent, 0.04 of the 0.11 rise in the ratio; a guardrail on customer satisfaction, which falls when customers are sold accounts they did not ask for.
-      (d) About 57 percent, 0.04 against the other 0.07; a guardrail on customer satisfaction, which falls when customers are sold accounts they did not ask for.
+      (c) About 36 percent, 0.04 of the 0.11 rise in the ratio; a guardrail on customer satisfaction, read from the surveys the bank sends to its retail customers.
+      (d) About 57 percent, 0.04 against the other 0.07; a guardrail on customer satisfaction, read from the surveys the bank sends to its retail customers.
     why: >-
       0.04 of the 0.11 rise is about 36 percent, and it came from counting a new kind of account, so
       that much of the year's rise reflected no change in what households held. 57 percent sets the
@@ -759,10 +759,10 @@ additions:
     text: |-
       Meera Raghavan, Kalpa Retail's CEO, wants one number for the growth plan and the numbers that stop it being gamed. The head of Retail-Plus proposed reorders per member, and the lab found Exhibit 1D. Which lines of the plan's definition sheet are right? Mark every correct option.
       (a) North star: reorders placed per Retail-Plus member per month, which the window shows rising 1.22 times
-      (b) Leading input: last quarter's audited revenue, which tells the team early where the plan stands
+      (b) Leading input: last quarter's audited revenue, broken down by store and by member tier
       (c) Exclusions: placements cancelled, merged into a later order or still pending, so a reorder nobody received never counts
-      (d) Guardrail: revenue per active customer, which falls when frequency is bought with low-value orders
-      (e) Leading input: add-to-cart events per active app member, which move before the month's delivered orders
+      (d) Guardrail: revenue per active customer, read each month beside the north star on the same members
+      (e) Leading input: add-to-cart events per active app member, counted each week from the app's event log
     why: >-
       The lab found placements per member up 1.22 times while their booked value per member fell to
       0.96, and none of the window's placements became an order a member received: the app placed
@@ -785,7 +785,7 @@ additions:
   - id: slide-order
     label: "Build the slide"
     type: Order the steps
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[S]"
     roles: BA
@@ -874,7 +874,7 @@ additions:
   - id: concede
     label: "Judge the defence"
     type: True or false
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[F]"
     roles: BA, FDE
@@ -883,11 +883,11 @@ additions:
     anchor: >-
       A stakeholder's objection is partly right; how do you answer it?
     text: |-
-      At the review the finance partner says: "The fall in bookings per hour is the monsoon's end, not your scheme." In the last three of the six weeks after the launch, weekly peak rider requests ran from 41,161 to 42,602, against 41,155 to 42,719 in the six weeks before, and trips per peak online hour ran at 1.56. Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. True or false, and why?
-      (a) True: concede nothing and answer from the stem: weekly requests came back inside their old range while trips per hour stayed at 1.56 against 1.90.
-      (b) True: concede nothing and answer from the stem: trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
-      (c) False: grant that part may be the season, then show weekly requests back inside their old range while trips per hour stayed at 1.56 against 1.90.
-      (d) False: grant that part may be the season, then show trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
+      At the review the finance partner says: "The monsoon ended inside your six weeks, so what your slide shows is the season, not your scheme." In the last three of the six weeks after the launch, weekly peak rider requests ran from 41,161 to 42,602, against 41,155 to 42,719 in the six weeks before, and trips per peak online hour ran at 1.56. Statement: the strongest reply concedes nothing, since any concession hands the objector the meeting. True or false, and why?
+      (a) True: concede nothing, and answer the objection from the stem: weekly requests came back inside their old range while trips per hour stayed at 1.56 against 1.90.
+      (b) True: concede nothing, and answer the objection from the stem: trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
+      (c) False: grant that the rains ended inside the window, then show weekly requests back inside their old range while trips per hour stayed at 1.56 against 1.90.
+      (d) False: grant that the rains ended inside the window, then show trips per hour kept sliding, to 1.56 in the last three weeks against 1.58 over all six.
     why: >-
       False. The defence has four moves: restate the objection until its owner agrees, answer from
       the evidence, concede what is true, and say what would change your mind. Finance is partly
@@ -952,7 +952,7 @@ additions:
   - id: estimate-order
     label: "Order the estimate"
     type: Order the steps
-    level: Hard
+    level: Medium
     min: 4
     tag: "[S]"
     roles: BA, DS
@@ -1009,7 +1009,7 @@ additions:
       Before the review, a colleague lines up five checks on four numbers. Three come from published sources: NPCI counted 24.07 billion UPI transactions in September 2026, "averaging 802 million daily transactions" (Outlook Money, 2 October 2026); "Flipkart recorded 6.3 million concurrent users in a minute" (Flipkart Stories, 9 October 2026); and DMart's FY26 total revenue was Rs 66,968 crore, with 85 stores added to reach 500 (Avenue Supermarts, 2 May 2026). The fourth is a city invented for a drill. Which checks are sound? Mark every correct option.
       (a) UPI, September 2026: 24.07 billion transactions over the month's 30 days, 802 million a day, set against an estimate of payments a day
       (b) Flipkart, 9 October 2026: 63 million concurrent users in a minute as the festive season opened, set against an estimate of users online at peak
-      (c) DMart, FY26: Rs 66,968 crore over the average of 415 stores at the year's start and 500 at its end, about Rs 146 crore a store, set against an estimate of revenue a store
+      (c) DMart, FY26: Rs 66,968 crore over the year's average of 415 and 500 stores, about Rs 146 crore a store, set against an estimate of revenue a store
       (d) A city of two million people, invented for a drill: 5 lakh households at four people to a household, set against an estimate of the city's UPI users
       (e) UPI, September 2026: the same 802 million a day, set against an estimate of the payments made on Diwali day itself
     why: >-
@@ -1041,7 +1041,7 @@ additions:
   - id: metro
     label: "Read the metro counts"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[S]"
     roles: BA, DS
@@ -1126,8 +1126,8 @@ additions:
       The growth lead's draft for the category manager reads: "Shoppers clicked the strip less after the monsoon, so the strip needs a redesign." Using Exhibit 3B, which reading holds, and which slot is fixed first?
       (a) Shoppers clicked less after the monsoon, and slot 1 fell furthest, from 7.5 percent, so slot 1's suggestions are redesigned first.
       (b) Neither milk nor other items click less; milk went from 2 to 50 percent of impressions, so slot 1, at 70 percent milk, is re-ranked first.
-      (c) Neither milk nor other items click less; milk went from 2 to 50 percent of impressions, so slot 3, whose other items click least, is re-ranked first.
-      (d) Shoppers clicked less after the monsoon, and slot 3's other items click least of the three, so slot 3's suggestions are redesigned first.
+      (c) Neither milk nor other items click less; milk went from 2 to 50 percent of impressions, so slot 3, where milk clicks least, at 0.9 percent, is re-ranked first.
+      (d) Shoppers clicked less after the monsoon, and slot 3's milk clicks least, at 0.9 percent, so slot 3's suggestions are redesigned first.
     why: >-
       Milk's click-through held at 1.2 percent and other items rose from 6.2 to 6.4, so no row fell;
       what changed is milk's share of the impressions, from 2 to 50 percent, and half the impressions
@@ -1135,25 +1135,25 @@ additions:
       its share times the gap it opens, 0.70 times (8.2 less 1.4), about 4.76 clicks per 100
       impressions in slot 1; 0.50 times (6.8 less 1.1), about 2.85 in slot 2; and 0.30 times (5.4
       less 0.9), about 1.35 in slot 3. So slot 1 is re-ranked first, by lift above a support floor.
-      Slot 3's other items click least because it is the third slot, before and after the switch,
-      and it loses the fewest clicks to milk.
+      Milk clicks least in slot 3, at 0.9 percent, and slot 3 still loses the fewest clicks to milk,
+      since milk holds only 30 percent of its impressions.
     wrong:
       a: >-
         Slot 1 did fall furthest, and the cause is milk's 70 percent share of its impressions; milk
         held at 1.2 percent and other items rose in every slot, so no shopper habit changed.
       c: >-
-        Slot 3 clicks lowest because it is the third slot, before and after the switch, and it loses
-        the fewest clicks to milk, about 1.35 per 100 impressions against 4.76 in slot 1.
+        Milk's 0.9 percent in slot 3 is the lowest rate, and the loss is share times gap: milk costs
+        slot 3 about 1.35 clicks per 100 impressions against 4.76 in slot 1, so slot 1 comes first.
       d: >-
-        Every row held or rose, so the habit story names a cause the rows refuse, and slot 3's low
-        rate is its position, the slot that loses least to milk.
+        Every row held or rose, so the habit story names a cause the rows refuse, and milk's low rate
+        in slot 3 sits on its smallest share, the slot that loses least to milk.
     answer: >-
       Before I name a cause for a blended rate I split it into its parts; here every part held and
       the mix moved, so the fix is the ranking, starting with slot 1.
   - id: heavy
     label: "Award the strip's slots"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 4
     tag: "[F]"
     roles: BA, DS
@@ -1178,15 +1178,15 @@ additions:
           - [Chips and cold drink, "4,800", "4,920", "2,000", "2.48", "1.95"]
           - [Onions and tomatoes, "8,800", "8,000", "3,000", "1.38", "1.38"]
     text: |-
-      The strip gives a slot only to a pair with a lift of at least 1.5, above a support floor of 1 percent of carts. Exhibit 3C holds two pairs' counts and their lifts recomputed for cart size and for heavy buyers. Which pairs keep a slot?
-      (a) Both: per cart they read 3.39 and 1.70, both above 1.5 and above the floor, and the recomputed lifts only restate the same carts.
+      The strip gives a slot only to a pair with a lift of at least 1.5. Exhibit 3C holds two pairs' counts and their lifts recomputed for cart size and for heavy buyers. Which pairs keep a slot?
+      (a) Both: per cart they read 3.39 and 1.70, both above 1.5, and the recomputed lifts only restate the same carts.
       (b) Neither: 73 percent of the chips-and-cold-drink carts come from a tenth of the customers, so its lift belongs to a few heavy buyers.
       (c) Chips and cold drink only: it holds 1.95 after both corrections, while onions and tomatoes falls from 1.70 to 1.38.
-      (d) Onions and tomatoes only: its lift moved least when recomputed, from 1.70 to 1.38, so it is the steadier pair to give the slot.
+      (d) Onions and tomatoes only: at 1.70 per cart it clears 1.5 on the most carts, 3,000, while chips and cold drink rests on a tenth of the customers.
     why: >-
       Per cart, chips and cold drink has a support of 2,000 over 40,000, 5.0 percent, against chance's
       0.12 times 0.123, so a lift of 3.39; onions and tomatoes, 7.5 percent against 0.22 times 0.20,
-      a lift of 1.70. Both clear the floor. Heavy buyers repeat a pair across many carts, and bigger
+      a lift of 1.70. Heavy buyers repeat a pair across many carts, and bigger
       carts hold any pair by chance, so the expected count is sized by each cart and each customer
       counted once. Corrected for both, chips and cold drink still reads 1.95 and keeps its slot;
       onions and tomatoes reads 1.38, below the 1.5 rule, and loses its slot. Amazon's team met the
@@ -1200,8 +1200,9 @@ additions:
         73 percent from the top tenth inflates the lift, and the correction removes that: chips and
         cold drink still reads 1.95 with each customer counted once and cart size allowed for.
       d: >-
-        A small move proves nothing; onions and tomatoes ends at 1.38, below the strip's 1.5, which
-        is what decides the slot.
+        It keeps the per-cart lift for one pair and the heavy-buyer doubt for the other; with both
+        corrections onions and tomatoes reads 1.38, below 1.5, and chips and cold drink still reads
+        1.95.
     answer: >-
       Lift divides by the base rate, and the base rate itself must be measured per customer and per
       cart size, or heavy buyers make every pair look stronger than it is.
@@ -1231,29 +1232,32 @@ additions:
           - [Ice cream and chocolate sauce, "Swiggy Instamart, Pune, September", "100 carts", "40,000", "4.6"]
     text: |-
       Statement: a pair with a lift of about 4 and a support of about 0.25 percent belongs on a watch list, to be counted again or tested, before it belongs in a campaign. Judge it on both pairs in Exhibit 3E. True or false, and why?
-      (a) True: Kalpa's lift rests on 2 baskets, so one basket moves it by half; Instamart's 100 carts beat chance but reach only carts holding ice cream.
-      (b) True: both pairs sit at the same support of 0.25 percent, so both wait on the watch list for another quarter of carts before any test is run.
+      (a) True: Kalpa's lift rests on 2 baskets, so one basket moves it by half; Instamart's 100 carts beat chance, yet no test shows the suggestion sells more.
+      (b) True: both pairs sit at the same support of 0.25 percent, and ice cream is in only 4 percent of carts, so both wait a quarter of carts before any test.
       (c) False: a lift of 4 is four times what chance gives, and a lift that far above 1 earns a campaign slot whatever the pair's support turns out to be.
-      (d) False: Instamart's 100 carts are enough to act on, so its pair goes straight into the strip while Kalpa's pair waits for more baskets to arrive.
+      (d) False: Instamart's 100 carts are over four times the 22 chance gives, so its pair earns a campaign beside the 4 percent of carts holding ice cream now.
     why: >-
       True. Both pairs have a support of 0.25 percent, 2 of 812 and 100 of 40,000, and each waits for
       evidence before it gets a campaign. Kalpa's lift rests on 2 baskets, so one basket more makes it
       6 and one fewer makes it 2. Instamart's pair is real, 100 carts against the 22 chance gives,
-      but the strip would show it only beside ice cream, about 2,400 of 60,000 cart-page views a day
-      if views follow carts; it goes to a small test in which a random half of shoppers in two zones
-      see it, with the decision rule fixed before it starts. Wednesday's lab put the car pair on its
-      watch list for the same reason.
+      and those carts cannot show that suggesting sauce sells more of it, since shoppers who buy both
+      may buy both anyway; it goes to a small test in which a random half of shoppers in two zones see
+      the suggestion, with the decision rule fixed before it starts, and the strip would show it only
+      beside ice cream, in 4 percent of carts. Wednesday's lab put the car pair on its watch list for
+      the same reason.
     wrong:
       b: >-
         The same support hides two different counts: Instamart's 100 carts already beat the 22 chance
-        gives, so another quarter of carts adds nothing it lacks, which is a test of whether showing
-        sauce sells sauce; only Kalpa's 2 baskets need counting again.
+        gives, so another quarter of carts adds nothing. What the pair lacks is a test of whether
+        showing sauce sells sauce, sized for the 4 percent of carts that hold ice cream; only Kalpa's
+        2 baskets need counting again.
       c: >-
         A lift on a handful of baskets moves by luck, and a slot a pair cannot fill earns nothing
         however high its lift.
       d: >-
-        100 carts show the pair is real; they cannot show that suggesting sauce sells sauce, which
-        only a test of the suggestion can.
+        100 carts against the 22 chance gives show the pair is real; they cannot show that suggesting
+        sauce sells sauce, which only a test of the suggestion can, and the pair reaches only the 4
+        percent of carts that hold ice cream.
     answer: >-
       A high lift on a thin support goes on a watch list with a test designed for it; it earns a slot
       when the test shows the suggestion adds margin.
@@ -1309,7 +1313,7 @@ additions:
     exhibit:
       caption: >-
         Zomato Gold members in Chennai, September 2026: the order flow counted in sessions and in
-        members. The home carousel opens a restaurant's menu without a search.
+        members.
       table:
         head:
           - Step
@@ -1327,7 +1331,7 @@ additions:
       (a) Menu view to add-to-cart is the loss: at 34 percent it is the lowest step of the flow, so the menu pages are the first thing to fix.
       (b) Every step should be divided by the 194,211 sessions that opened the app, which puts search at 68, menu view at 80 and add-to-cart at 27 percent.
       (c) A step above 100 percent means the event log counts menu views twice, so every count after search is suspect until the log is rebuilt.
-      (d) Search is a step members can skip, since carousel menus need none, so that step tops 100 percent; per member, menu to cart is 61 percent.
+      (d) Search is a step members can skip, going from Open straight to a menu, so that step tops 100 percent; per member, menu to cart is 61 percent.
     why: >-
       Each step is over the step before, in one unit. Per session, search to menu view is 155,729
       over 131,974, 118 percent, because the carousel opens menus without a search: search is a step
@@ -1409,7 +1413,7 @@ additions:
   - id: swiggy
     label: "Read the weaned cohort"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[F]"
     roles: BA, DS
@@ -1432,7 +1436,7 @@ additions:
           - ["All ten users, active", "7", "5", "4", "3"]
           - ["The five kept after the weakest five are weaned away, active", "5", "5", "4", "3"]
     text: |-
-      Swiggy's shareholder letter for July to September 2025 says it "weaned away certain users from the platform with low potential Lifetime values", and it prints a table of Instamart cohort spend indexed to one cohort's first quarter. Exhibit 4E is invented. A deck shows this cohort's third quarter after the weakest five are weaned away and calls it strong retention. What does the third quarter read on each base, and what do you ask before trusting a published cohort chart?
+      Swiggy's shareholder letter for July to September 2025 says it "weaned away certain users from the platform with low potential Lifetime values", and it prints a table of Instamart cohort spend indexed to one cohort's first quarter. Exhibit 4E is invented. A deck shows this cohort's third quarter after the weakest five are weaned away and calls it strong retention. What does the third quarter read for the ten who joined and for the five kept, and what do you ask before trusting a published cohort chart?
       (a) 40 percent of the users who joined and 80 percent of those kept; ask what each cell divides by, users who joined or kept, and whether it counts users, orders or spend.
       (b) 40 percent of the users who joined and 80 percent of those kept; ask whether the cohort was acquired in a sale quarter, which would explain a strong cohort.
       (c) 40 percent of the users who joined and 60 percent of those kept; ask what each cell divides by, users who joined or kept, and whether it counts users, orders or spend.
@@ -1461,7 +1465,7 @@ additions:
   - id: kalpa-window
     label: "Answer the app team"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 3.5
     tag: "[D]"
     roles: BA
@@ -1486,10 +1490,10 @@ additions:
           - ["10 to 30 September, the auto-reorder window", "11", "7", 64 percent]
     text: |-
       The app team says the auto-reorder feature has been fixed and asks the head of Retail-Plus to close the ticket, since blended retention has not moved. Which reply holds on Exhibit 4F?
-      (a) Close it: 7 checkouts from 11 carts is only 3 fewer than the 10 from 12 before, the noise any three weeks of carts carry, so the step needs no further look.
-      (b) Keep it open: checkouts fell from 10 to 7 against the three weeks before, 30 percent fewer, which proves the feature still breaks the checkout step.
+      (a) Close it: 7 checkouts from 11 carts is only 3 fewer than the 10 from 12 before, within the noise three weeks of carts can carry, so the step can be left alone.
+      (b) Keep it open: checkouts fell from 10 to 7 against the three weeks before, 30 percent fewer, so the feature is probably still breaking the checkout step.
       (c) Rebuild checkout now: 7 of 11 against 10 of 12 is a 19-point fall, the largest move in the tier's funnel, and a full three-week window is enough to act on.
-      (d) Keep it open: 7 of 11 carts checked out against 10 of 12 before, about 2 checkouts short at the old rate; flag the step and read the next three weeks.
+      (d) Keep it open: 7 of 11 carts checked out against 10 of 12 before, about 2 checkouts short at the old rate; flag the step, then read the next three weeks.
     why: >-
       Checkout per cart fell from 82 and 83 percent to 64 inside the window, which is the stage's
       conversion by date that settles the dispute. It rests on 11 carts: at the earlier 10 in 12,
@@ -1505,7 +1509,8 @@ additions:
         close.
       b: >-
         10 to 7 ignores that carts fell from 12 to 11, so about 2 checkouts are missing, and 11 carts
-        can flag the step without proving anything.
+        can flag the step without showing what breaks it; the next three weeks say whether it is the
+        feature.
       c: >-
         Eleven carts and about 2 missing checkouts are a reason to look, never to rebuild; the next
         three weeks confirm or clear it.
@@ -1549,8 +1554,9 @@ additions:
       festival-aligned copy, which swaps last year's two months: November 2026, Diwali's month, gets
       last year's Diwali month, Rs 427.6 lakh times 1.04, about Rs 444.7 lakh, and October 2026 gets
       last year's November, Rs 297.0 lakh times 1.04, about Rs 308.9 lakh on the printed figure
-      (Friday's unrounded revenue gives Rs 308.8 lakh). Accept the four numbers to the nearest lakh
-      with November named. November 2024, straight after a Diwali on 31 October, shows no lift, so
+      (Friday's unrounded revenue gives Rs 308.8 lakh). Mark it right only with all four numbers, to
+      the nearest lakh, and November named; on this item that line replaces the general rule's single
+      number. November 2024, straight after a Diwali on 31 October, shows no lift, so
       the festival's lift sits in its run-up; an answer that gives November the Diwali week and says
       part of the run-up may land in late October 2026 has gone further and is right. Both Octobers
       in the exhibit are about 1.44 times their November, which is the festival.
@@ -1560,7 +1566,7 @@ additions:
   - id: m5
     label: "Answer the sponsor"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 4
     tag: "[F]"
     roles: BA, DS
@@ -1571,9 +1577,8 @@ additions:
     exhibit:
       caption: >-
         The M5 forecasting competition, 2020: Walmart's daily unit sales of 3,049 products, every
-        entry scored on 28 days it never saw; 1,972 of the 5,507 teams, 35.8 percent, beat the
-        seasonal naive. From the official scores workbook and the accuracy paper, checked 13 October
-        2026.
+        entry scored on 28 days it never saw. From the official scores workbook and the accuracy
+        paper, checked 13 October 2026.
       table:
         head:
           - Entry
@@ -1628,8 +1633,7 @@ additions:
       How do you evaluate a forecast?
     exhibit:
       caption: >-
-        Lucknow's thirteen hidden weeks, beginning 29 June to 21 September 2026, which every forecast
-        was scored on and none was built from. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late
+        Lucknow's thirteen hidden weeks, beginning 29 June to 21 September 2026. An idle packer-shift costs Rs 650 for 120 shipments, Rs 5.42 for each shipment planned and not shipped, and a late
         shipment costs Rs 25; both are assumptions.
       table:
         head:
@@ -1643,40 +1647,42 @@ additions:
           - [The vendor's curve, "211,300", "1,900", "12"]
     text: |-
       What is each forecast's mean absolute error a week, which costs least on these weeks with its misses priced, and what follows for the plan?
-      (a) 6,615, 9,831 and 16,400 a week; the vendor costs least, about Rs 11.9 lakh, so the plan books its curve at plus 22 percent for the festive weeks.
-      (b) About minus 346, minus 8,708 and 16,108 a week, the signed misses averaged; the vendor costs least, Rs 11.9 lakh, only because it errs high; compare each at its own 0.82 point.
-      (c) About minus 346, minus 8,708 and 16,108 a week, the signed misses averaged; the vendor costs least, about Rs 11.9 lakh, so the plan books its curve at plus 22 percent.
-      (d) 6,615, 9,831 and 16,400 a week; the vendor costs least, Rs 11.9 lakh, only because it errs high, the cheap side; compare each at its own 0.82 point.
+      (a) 6,615, 9,831 and 16,400 a week; festival-aligned, with the smallest error, also costs least once its misses are priced, so the plan books its numbers exactly as they stand.
+      (b) About 346, 8,708 and 16,108 a week; the vendor costs least, about Rs 11.9 lakh, only because it errs high, the cheap side, so each is first set at the plan share its two costs give.
+      (c) About 346, 8,708 and 16,108 a week; festival-aligned, with the smallest error, also costs least once its misses are priced, so the plan books its numbers exactly as they stand.
+      (d) 6,615, 9,831 and 16,400 a week; the vendor costs least, about Rs 11.9 lakh, only because it errs high, the cheap side, so each is first set at the plan share its two costs give.
     why: >-
       Mean absolute error adds the misses with their signs dropped and divides by the weeks: 85,996
       over 13 is 6,615 for festival-aligned, 127,800 over 13 is 9,831 for the copy of last year, and
       213,200 over 13 is 16,400 for the vendor, about 148 percent above festival-aligned. Priced, a
       spare shipment costs Rs 5.42 and a late one Rs 25: the vendor's misses cost about Rs 11.9 lakh,
       festival-aligned's Rs 13.5 lakh and the copy's Rs 30.5 lakh, so the vendor is cheapest only
-      because it errs high, the cheap side, by an amount nobody chose. The fair comparison moves each
-      forecast to its own 0.82 point, 25 over 25 plus 5.42: there festival-aligned and the copy cost
+      because it errs high, the cheap side, by an amount nobody chose. The fair comparison sets each
+      forecast at its plan share, its own 0.82 point, 25 over 25 plus 5.42: there festival-aligned and the copy cost
       about Rs 8.8 lakh each and the vendor Rs 10.0 lakh. These weeks hold no festival, so only the
       festival can separate festival-aligned from the copy, and the plan books festival-aligned raised
       toward its 0.82 point, because a late shipment costs about 4.6 times a spare one.
     wrong:
       a: >-
-        The vendor is cheap on these weeks only because it runs high on the cheap side, by an amount
-        nobody chose; at its own 0.82 point it costs more than festival-aligned, and its 22 percent
-        was never tested on a festival.
+        The smallest error is not the smallest cost when a late shipment costs about 4.6 times a spare
+        one: festival-aligned's 45,248 late shipments price its misses at about Rs 13.5 lakh against
+        the vendor's Rs 11.9 lakh, and even the forecast that goes to the plan is first set at its plan
+        share, never booked as it stands.
       b: >-
-        Signed misses cancel, so festival-aligned's 40,748 high and 45,248 low net to almost nothing
-        while the packing floor pays for every one of them; the mean absolute error drops the signs,
-        6,615, 9,831 and 16,400.
+        346, 8,708 and 16,108 net each forecast's high misses against its low ones before the sign is
+        dropped, so festival-aligned's 40,748 high and 45,248 low read 346 a week while the packing
+        floor pays for every one of them; the mean absolute error adds them, 6,615, 9,831 and 16,400.
       c: >-
-        Signed misses cancel where the floor pays for every miss, and booking the cheapest curve as
-        it stands keeps a high bias nobody chose.
+        Netting the high misses against the low ones hides what the floor pays for, and priced misses
+        put the vendor below festival-aligned, Rs 11.9 lakh against Rs 13.5 lakh, since a late shipment
+        costs about 4.6 times a spare one.
     answer: >-
       I fix the measure before scoring, in the business's unit, then price each direction of miss and
       compare forecasts at the quantile the two costs set, never at the raw error alone.
   - id: kalpa-board
     label: "Choose the board sentence"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 4
     tag: "[D]"
     roles: BA, FDE
@@ -1835,10 +1841,10 @@ additions:
       Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes.
     text: |-
       Amazon India, a fulfilment centre's festive packer plan (illustrative case: the company is real, and every number below except Amazon's own figure is hypothetical). Amazon says its Great Indian Festival 2025 drew over 276 crore customer visits, 70 percent of them from tier 2 and 3 cities. Suppose its centre in a tier 2 city pays Rs 650 for an idle packer-shift of 120 shipments, as Lucknow does, while a late shipment costs it Rs 10, against Lucknow's Rs 25. What share of weeks should its plan cover, and what carries over from Lucknow unchanged?
-      (a) About 0.82, Lucknow's share, as an idle shift costs Rs 650 at both centres; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
-      (b) About 0.82, Lucknow's share, as an idle shift costs Rs 650 at both centres; and the copy of last year's calendar weeks carries over as the plainest baseline.
-      (c) About 0.65, the late cost over both costs; and the copy of last year's calendar weeks carries over as the plainest baseline.
-      (d) About 0.65, the late cost over both costs; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+      (a) About 0.35; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
+      (b) About 0.35; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
+      (c) About 0.65; the copy of last year's calendar weeks carries over, the plainest baseline any plan has.
+      (d) About 0.65; the festival-aligned copy, the held-out latest weeks and pricing both directions carry over.
     why: >-
       A spare shipment costs Rs 650 over 120, about Rs 5.42, and a late one Rs 10 here, so the plan
       should cover 10 over 10 plus 5.42 of weeks, about 0.65, where Lucknow's Rs 25 gave about 0.82.
@@ -1848,11 +1854,11 @@ additions:
       cost of an empty shelf against stock left over.
     wrong:
       a: >-
-        The share comes from both costs, and with the late shipment at Rs 10 the costlier side weighs
-        less, so the plan covers fewer weeks than Lucknow's 0.82.
+        0.35 puts the cheap cost on top: the share to cover is the late cost over the sum, 10 over 10
+        plus 5.42, about 0.65, below Lucknow's 0.82 because a late shipment costs less here.
       b: >-
-        The share has to be read again from the new late cost, and the calendar copy is the part that
-        never carries over, since Diwali moves from year to year.
+        0.35 is the share upside down, and the calendar copy is the part that never carries over,
+        since Diwali moves from year to year.
       c: >-
         The calendar copy is the part that never carries over: Diwali moves,
         from 20 October 2025 to 8 November 2026, so Lucknow's plan copied last year's weeks by their
@@ -1873,14 +1879,14 @@ stretch:
       drivers' earnings per online hour every week, and read the wait zone by zone, since the idle
       tail sat in the outer zones where riders wait longest.
   - text: |-
-      A growth lead wants to test one suggestion: half the shoppers in two zones, picked at random, see a second item beside the first. Today 6.25 percent of carts holding the first item also hold the second, and a rise to 9.45 percent would pay for the slot. How many carts holding the first item does each half need, at 5 percent significance and 80 percent power, and what happens to that count if only half of the rise is new buying?
+      A growth lead wants to test one suggestion: half the shoppers in two zones, picked at random, see a second item beside the first. With invented numbers, today 5 percent of carts holding the first item also hold the second, and a rise to 8 percent would pay for the slot. How many carts holding the first item does each half need, at 5 percent significance and 80 percent power, and what happens to that count if only half of the rise is new buying?
     answer: >-
-      About 1,105 carts holding the first item in each half to see 6.25 rise to 9.45 percent, and
-      about 4,014 if only half of that rise is new buying, since halving the effect more than triples
-      the count. Randomise shoppers, never carts, fix the length before day one from that count, and
-      read the share of first-item carts that add the second, with margin per shopper as the
-      guardrail and the threshold set in advance. The numbers are Wednesday's ice cream and chocolate
-      sauce, 100 of the 1,600 ice-cream carts in Pune.
+      About 1,056 carts holding the first item in each half to see 5 rise to 8 percent, and about
+      3,777 if only half of that rise is new buying, since halving the effect more than triples the
+      count. Randomise shoppers, never carts, fix the length before day one from that count, and read
+      the share of first-item carts that add the second, with margin per shopper as the guardrail and
+      the threshold set in advance. The rates are invented; Wednesday's ice cream and chocolate sauce,
+      6.25 to 9.45 percent, needs about 1,105 and 4,014 carts a half by the same formula.
   - text: |-
       An AI writing assistant launched two months ago, and its weekly active users hit a record in launch week and are still near it. Is the product sticking?
     answer: >-
@@ -1891,7 +1897,7 @@ stretch:
       the record because each new week adds a cohort. If the later cohorts flatten by week six while
       the launch cohort keeps sliding, the product sticks for the users who came looking for it.
   - text: |-
-      A planner reads where the plan should sit, against the chosen forecast, from the same thirteen hidden weeks the forecasts were scored on. Is that circular, and what would you do instead?
+      A planner reads where the plan should sit, against the chosen forecast, from the same thirteen weeks that chose the forecast. Is that circular, and what would you do instead?
     answer: >-
       Yes, and every forecast was tuned the same way, which is why each is compared at its own 0.82
       point; with thirteen weeks the point is loose, 2.6 percent by one reading and 4.1 by another

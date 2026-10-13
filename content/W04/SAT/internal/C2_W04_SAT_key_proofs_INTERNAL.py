@@ -106,7 +106,12 @@ def main():
     assert len(PRINTED) == 39, len(PRINTED)
     hard = sum(1 for i in PRINTED if i["level"] == "Hard")
     mins = sum(i["min"] for i in PRINTED)
-    assert hard == 22 and mins <= 120, (hard, mins)
+    assert hard == 11 and mins <= 120, (hard, mins)
+    # The levels after the blind check of 13 October 2026: an item stays Hard where that check read it
+    # hard, or where its medium read rested on a cue this pass removed and the interviewer's cold read
+    # had read it hard; the provenance's levels row carries the rule.
+    assert sorted(i["q"] for i in PRINTED if i["level"] == "Hard") == [4, 7, 9, 15, 20, 21, 25, 26, 30, 32, 39]
+    assert [i["q"] for i in PRINTED if i["level"] == "Easy"] == [1, 3, 5, 11, 29, 35, 36, 37, 38]
     print(f"PASS  shape: 39 items, {hard} hard ({hard / 39:.0%}), {mins:g} minutes at the blueprint's pace")
 
     # ---------------------------------------------------------------- words elsewhere name no answer
@@ -118,7 +123,14 @@ def main():
                  "The redesign pays per completed peak trip", "Allow for heavy buyers", "Move the spike",
                  "states no denominator", "planned toward the costlier side", "Design the test",
                  "raises festival-aligned by", "well above the single weeks", "which it never saw. Diwali",
-                 "defend it without retreating", "the cost of an error that changed"):
+                 "defend it without retreating", "the cost of an error that changed",
+                 "The fall in bookings per hour is the monsoon's end", "Size the silent change",
+                 # and the lines the blind check of the same day named
+                 "kept beside the definition", "which falls when", "which move before",
+                 "which tells the team early", "numerator, denominator and window", "whose window",
+                 "valued in margin", "letter of the week's method", "support floor of 1 percent", "above the floor",
+                 "carousel", "35.8 percent, beat the seasonal naive", "none was built from", "were scored on",
+                 "0.82", "over both costs", "6.25", "9.45", "on each base", "whose other items click least"):
         assert leak not in paper, ("a line names an answer again", leak)
     print("PASS  no part opening, caption, label, spare or stretch line names a timed item's answer")
 
@@ -199,6 +211,9 @@ def main():
     assert it["key"] == "c, d, e"
     ops = options(it)
     assert ops["c"].startswith("Exclusions") and ops["d"].startswith("Guardrail") and "add-to-cart" in ops["e"]
+    # Lines b, d and e name their element without saying what a leading input or a guardrail does,
+    # which Q1 and Q3 ask.
+    assert "early" not in ops["b"] and "falls" not in ops["d"] and "before" not in ops["e"]
     show(it, "Monday's lab plants 1.22, 0.96, none delivered (521 over 427 placements)")
 
     # ---------------------------------------------------------------- Part 2
@@ -237,6 +252,7 @@ def main():
     keyed(it, "False", "1.56 against 1.90", "old range")
     ops = options(it)
     assert "1.58" in ops["b"] and "1.58" in ops["d"] and "old range" in ops["a"]
+    assert "rains ended inside the window" in ops["c"] and "rains ended inside the window" in ops["d"]
     assert d2["tph_last_three_after"] < d2["tph_after_exact"]
     stem = it["text"].split("\n")[0]
     for n in ("41,161", "42,602", "41,155", "42,719", "1.56"):
@@ -317,6 +333,10 @@ def main():
     assert round(0.5 * 1.2 + 0.5 * 6.4, 1) == 3.8
     keyed(it, "slot 1", "70 percent", "Neither milk nor other items")
     assert "slot 3" in options(it)["c"] and "Neither milk" in options(it)["c"] and "slot 1" in options(it)["a"]
+    # The slot-3 options pick the slot where milk's rate is lowest, which the rows confirm, and lose on
+    # clicks lost, share times gap.
+    milk = [pct(r[2]) for r in rows[:3]]
+    assert milk.index(min(milk)) == 2 and "0.9 percent" in options(it)["c"] and "0.9 percent" in options(it)["d"]
     show(it, "clicks lost per 100 impressions 4.76, 2.85, 1.35; 0.5 x 1.2 + 0.5 x 6.4 = 3.8")
 
     it = BY_ID["heavy"]
@@ -334,6 +354,7 @@ def main():
     assert round(cv["onions_tomatoes_lift_size"], 2) == 1.38 and round(cv["onions_tomatoes_lift_both"], 2) == 1.38
     assert round(cv["chips_cold_heavy_share"], 2) == 0.73 and close(tk["heavy_tenth_share"], 0.38)
     keyed(it, "Chips and cold drink only", "1.95", "1.38")
+    assert "support floor" not in it["text"] and "1.70 per cart" in options(it)["d"]
     show(it, "per cart 3.39 and 1.70; corrected 1.95 and 1.38 against the 1.5 rule")
 
     for no, want in ((30, "0.825"), (31, "0.97")):
@@ -352,8 +373,8 @@ def main():
     assert close(kl["kalpa_thin_support"], 0.0025, 0.0001)
     assert fd["ice_choc_carts"] == 100 and round(fd["ice_choc_lift"], 1) == 4.6 and close(fd["ice_cream_share"], 0.04)
     assert round(2 / 812 * 100, 2) == 0.25 and round(100 / 40000 * 100, 2) == 0.25
-    assert fd["ice_choc_expected"] == 22 and S(3, "slot_value")["ice_cream_views_day"] == 2400
-    keyed(it, "True", "2 baskets")
+    assert fd["ice_choc_expected"] == 22
+    keyed(it, "True", "2 baskets", "no test shows the suggestion sells more")
     assert "0.25 percent" in options(it)["b"] and options(it)["b"].startswith("True")
     show(it, "2 of 812 and 100 of 40,000, both 0.25 percent; lift 4.0 swings to 2 or 6")
 
@@ -410,7 +431,8 @@ def main():
     assert round(ses["Add to cart"] / ses["Menu view"] * 100) == 34
     assert round(mem["Add to cart"] / mem["Menu view"] * 100) == 61
     assert [round(ses[k] / ses["Open"] * 100) for k in ("Search", "Menu view", "Add to cart")] == [68, 80, 27]
-    keyed(it, "61 percent", "a step members can skip")
+    keyed(it, "61 percent", "a step members can skip", "from Open straight to a menu")
+    assert "carousel" not in it["exhibit"]["caption"] and "carousel" not in part_exhibit(4)["caption"]
     show(it, "118, 34 and 61 percent; option b's 68, 80, 27 over the opening sessions")
 
     it = BY_ID["android"]
@@ -491,7 +513,9 @@ def main():
     assert rows["Naive, the last day seen"] == f"{pub['m5_naive']:.3f}"
     assert close(pub["m5_beat_snaive_pct"], 0.358, 0.0001) and pub["m5_products"] == 3049
     assert 1 - pub["m5_beat_snaive_pct"] > 0.5 and round(1972 / 5507, 3) == 0.358
-    assert "1,972 of the 5,507 teams, 35.8 percent" in it["exhibit"]["caption"].replace("\n", " ")
+    # The caption no longer names the bar; the key's reason keeps the 35.8 percent with its source.
+    m5_why = next(a for a in SOURCE["additions"] if a["id"] == "m5")["why"]
+    assert "35.8" not in it["exhibit"]["caption"] and "1,972 of the 5,507 teams, 35.8" in " ".join(m5_why.split())
     keyed(it, "A fit is no forecast", "0.847", "weeks it never saw")
     ops = options(it)
     assert "1.752" in ops["b"] and "1.752" in ops["c"] and "0.847" in ops["d"] and "same two years" in ops["d"]
@@ -518,9 +542,16 @@ def main():
     iv = S(5, "interview")
     assert round(iv["own_raised_cost_aligned_rs"] / 1e5, 1) == 8.8 and round(iv["own_raised_cost_vendor_rs"] / 1e5, 1) == 10.0
     assert round(16400 / 6615.076923 - 1, 2) == 1.48
-    keyed(it, "6,615, 9,831 and 16,400", "the vendor costs least", "own 0.82 point")
+    keyed(it, "6,615, 9,831 and 16,400", "the vendor costs least, about Rs 11.9 lakh", "plan share")
     ops = options(it)
-    assert "minus 346" in ops["b"] and "minus 346" in ops["c"] and "plus 22 percent" in ops["a"]
+    # Options a and c claim the smallest error also costs least; priced, it does not.
+    assert "festival-aligned, with the smallest error, also costs least" in ops["a"]
+    assert "festival-aligned, with the smallest error, also costs least" in ops["c"]
+    assert min(mae, key=mae.get) == "Festival-aligned" and cost["Festival-aligned"] > cost["The vendor's curve"]
+    netted = {k: abs(v[0] - v[1]) / 13 for k, v in got.items()}
+    assert [round(netted[k]) for k in ("Festival-aligned", "Same week last year", "The vendor's curve")] == [346, 8708, 16108]
+    assert "About 346, 8,708 and 16,108" in ops["b"] and "About 346, 8,708 and 16,108" in ops["c"]
+    assert "plan share" in ops["b"] and "0.82" not in " ".join(ops.values())
     show(it, "MAE 6,615, 9,831, 16,400; priced Rs 13.5, 30.5 and 11.9 lakh; at 0.82, 8.8 against 10.0")
 
     it = BY_ID["kalpa-board"]
@@ -547,11 +578,12 @@ def main():
     # ---------------------------------------------------------------- Part 6
     it = BY_NO[29]
     assert it["key"] == "a, b, d" and "twenty times" in it["text"]
+    assert options(it)["a"] == "writing the metric's definition down before reading any number"
     show(it, "the definition, the guardrail and the baseline stay; the cost of an error changes")
-    want = {"brief-logistics": "a definition whose window the measured cannot move, with a guardrail",
+    want = {"brief-logistics": "a definition the people measured cannot change after the fact",
             "brief-health": "each funnel step over the step before, in one unit",
             "brief-connect": "cohorts by start month, each read at the same age",
-            "brief-finance": "lift above a support floor, valued in margin"}
+            "brief-finance": "lift above a support floor, on enough customers to trust it"}
     for iid, word in want.items():
         it = BY_ID[iid]
         assert it["bank_word"] == word, (iid, it["bank_word"])
@@ -561,16 +593,31 @@ def main():
     assert round(share10, 2) == 0.65 and round((650 / 120) / (10 + 650 / 120), 2) == 0.35
     keyed(it, "0.65", "festival-aligned copy")
     ops = options(it)
-    assert round(25 / (25 + 650 / 120), 2) == 0.82 and "0.82" in ops["a"] and "0.82" in ops["b"]
+    assert round((650 / 120) / (10 + 650 / 120), 2) == 0.35 and "0.35" in ops["a"] and "0.35" in ops["b"]
+    assert "0.82" not in " ".join(ops.values()), "Q39 prints no 0.82, which would read Q32's quantile"
     assert "calendar weeks" in ops["c"] and "0.65" in ops["c"]
-    show(it, "10 over 10 plus 5.42 is 0.65; Lucknow's 0.82 and the calendar copy refused")
+    assert "over both costs" not in " ".join(ops.values()), "the share is worked, never printed as a formula"
+    show(it, "10 over 10 plus 5.42 is 0.65; 0.35, the share upside down, and the calendar copy refused")
 
     # ---------------------------------------------------------------- the stretch page
     assert round(33440 / 1.90, -2) == 17600 == num(1, "hours_to_carry_idle_trips")
     sv = S(3, "slot_value")
     assert sv["trial_n_full"] == 1105 and sv["trial_n_half"] == 4014
-    assert 100 / (40000 * 0.04) == 0.0625
-    print("PASS  stretch answers: 17,600 hours; 1,105 and 4,014 ice-cream carts an arm")
+    # Wednesday's formula, (z for 5 percent two-sided plus z for 80 percent power) squared times the
+    # two variances over the squared gap, gives Wednesday's 1,105 and 4,014; Stretch 2 runs it on
+    # invented rates, 5 to 8 percent, so it points at no pair on the paper.
+    from statistics import NormalDist
+    z = NormalDist().inv_cdf(0.975) + NormalDist().inv_cdf(0.8)
+
+    def arm(p1, p2):
+        return z * z * (p1 * (1 - p1) + p2 * (1 - p2)) / (p2 - p1) ** 2
+    assert round(arm(0.0625, 0.0945)) == 1105 and round(arm(0.0625, 0.0785)) == 4014
+    assert round(arm(0.05, 0.08)) == 1056 and round(arm(0.05, 0.065)) == 3777
+    assert arm(0.05, 0.065) / arm(0.05, 0.08) > 3
+    s2 = SOURCE["stretch"][1]
+    assert "5 percent" in s2["text"] and "8 percent" in s2["text"] and "invented" in s2["text"]
+    assert "1,056" in s2["answer"] and "3,777" in s2["answer"]
+    print("PASS  stretch answers: 17,600 hours; 1,056 and 3,777 carts a half on invented rates")
 
     assert len(LINES) == 39, len(LINES)
     print(f"\nRESULT: PASS ({len(LINES)} items proved)")
@@ -589,6 +636,10 @@ if __name__ == "__main__":
 #     keyed() fails at Q4, because option c does not carry "1.58", and the run exits 1.
 # The same run with "41 percent" put back into Exhibit 4F's caption
 #     The leak check fails before any item is proved, naming the phrase, and the run exits 1.
+# The same run with Q32's option b given back "compare each at its own 0.82 point"
+#     The leak check fails on "0.82", since that number would tell a reader the share Q39 asks for.
+# The same run with Q6 labelled Hard again in the source file
+#     The shape check fails: 12 hard items against the 11 the blind check's rule leaves.
 # The same run with a cell of Exhibit 4C retyped, 52,948 to 52,984
 #     The funnel-units check fails against Thursday's facts file, sep_sessions_add_to_cart.
 # The same run with the margin item's discount raised to Rs 4 in its stem only
