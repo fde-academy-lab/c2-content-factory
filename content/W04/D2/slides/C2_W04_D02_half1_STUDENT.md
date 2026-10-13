@@ -982,7 +982,8 @@ d) Fewer drivers sat idle after the launch
 ```notes
 LIVE, 2 minutes. Per driver-week means per active driver-week: one driver with a row that week.
 Each learner writes a letter. Expect votes on a, since new drivers are the obvious change.
-Explorer scene T2, the denominator picker, stays closed until every letter is written; it opens on S40.
+Explorer scene T2, the denominator picker, stays closed until every letter is written, then opens
+here, before S40 draws the three readings side by side.
 Transition: the reveal.
 ```
 
@@ -1001,8 +1002,7 @@ up while hours climbed, down as trips per hour kept falling. Where the extra hou
 idle tail's 180 drivers doubled their online hours, to about 39 a week, while completing 12 percent
 fewer trips; the other 880 added under one hour a week. Ask which role will quote the amber
 line. Expect the driver-operations lead, since it is closest to what a driver takes home in a week;
-notebook 04's table gives each role its favourite. Explorer scene T2 lets learners pick the
-denominator.
+notebook 04's table gives each role its favourite.
 Transition: the trap in that amber line.
 ```
 
