@@ -35,6 +35,21 @@ operations head.
 
 ---
 
+## Which five topics does Friday teach?
+
+Friday teaches five topics, in the curriculum's words and in this order, each on a simple example
+before the Flipkart case uses it. Read the names tonight; nothing here asks you to know them yet.
+
+| # | Friday's topic |
+|---|---|
+| 1 | Trend and seasonality, read before modelling |
+| 2 | Naive, seasonal naive and drift baselines |
+| 3 | Holding out; MAE and MAPE in the business's units |
+| 4 | Beating the baseline; the vendor curve tested |
+| 5 | The good-enough call and the forecast note |
+
+---
+
 ## Which words will Friday use that you may not know yet?
 
 Write what you think each one means tonight, from memory, in the right-hand column. Friday's first
@@ -64,9 +79,9 @@ a week this October? Bring your answer as one sentence, since you will be asked 
 
 Nothing needs installing, and each check takes under five minutes.
 
-1. Run Restart and Run All on Thursday's four notebooks, 01 to 04. Notebooks 01 to 03 end on their
-   checks passing; notebook 04 passes its checks near the top and then stops at the cells you filled
-   in the lab. If a check fails, bring its last error line to the TA before the session.
+1. Run Restart and Run All on Thursday's nine notebooks, 01 to 08 and 12. Notebooks 01 to 08 end on
+   their checks passing; notebook 12, the lab, passes its checks near the top and then runs the cells
+   you filled in. If a check fails, bring its last error line to the TA before the session.
 2. Save your take-home notebook with its outputs showing, since a notebook that ran but was not saved
    looks empty to everyone else.
 

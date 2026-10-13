@@ -46,7 +46,7 @@ question:
 1. The number of members who joined from 3 August to 13 September, from `members`, and the six
    weekly cohorts' sizes, asserted to sum to it.
 2. The weekly cohort table: for each signup week, the share who ordered in weeks 1, 2, 3 and on, up
-   to the week of 21 September, built with one `pivot_table` as notebook 02 builds the monthly one.
+   to the week of 21 September, built with one `pivot_table` as notebook 06 builds the monthly one.
 3. Members on Android, add-to-cart to order per session, week by week from the week of 27 July to
    the week of 28 September, with the release week marked: sessions that placed an order over
    sessions that added to a cart.
