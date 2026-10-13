@@ -56,15 +56,17 @@ as a product company does.
 > read it with three guardrails: for riders, the share of offers drivers accept, with the share they
 > accept and then cancel beside it, and the rider's wait at peak, zone by zone; for the budget, the
 > top-up per completed trip. One leading input: rider requests per online hour, by zone, which tells
-> the city where to send drivers. And I would test any change with zones as the unit, since drivers
-> in one zone compete for the same riders, with its length and its metrics fixed before it starts."
+> the city where to send drivers. And I would choose the test's unit first: drivers in one zone
+> compete for the same riders and drive across zone lines, so I would switch the whole city between
+> the old rule and the new one, window by window, with the length and the metrics fixed before it
+> starts."
 
 ```mermaid
 flowchart LR
     G["<b>Goal</b><br/>riders picked up faster"] --> N["<b>North star</b><br/>completed peak trips per<br/>enrolled driver online at peak"]
     N --> R["<b>Guardrails</b><br/>riders: acceptance, the wait by zone<br/>budget: top-up per trip"]
     N --> L["<b>Leading input</b><br/>rider requests per<br/>online hour, by zone"]
-    R --> T["<b>The test</b><br/>zones as the unit,<br/>length fixed in advance"]
+    R --> T["<b>The test</b><br/>the city switched<br/>window by window,<br/>length fixed in advance"]
     L --> T
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
@@ -94,8 +96,8 @@ stops. Online hours count an open app, and the guarantee paid for exactly that.
 | The cause | None | The rate stepped down in the launch week itself, from 1.88 to 1.64, while weekly requests stayed between about 41,000 and 44,000: a season drifts, and this stepped on the launch date |
 | The segment | None | 180 drivers, 15 percent, made under one trip an hour; 72 percent of their new hours sat in the three outer zones |
 | The zones | None | Outer-zone waits fell from 6.6 to 5.95 minutes, about 185 extra trips there, at about Rs 46,000 a trip |
-| The cost | None | Rs 1.9 crore bought 6,700 more peak trips, about Rs 2,836 each, 17 times the Rs 165 fare; Rs 1.159 crore went to driver-weeks that accepted under half their offers |
-| The decision | "Roll it out to more cities" | Hold the extension; keep the floor only for driver-weeks that accept at least half their offers, an accepted trip later cancelled counting as declined; test it by zone first |
+| The cost | None | Rs 1.9 crore bought 6,700 more peak trips, about Rs 2,836 each, 17 times the Rs 165 fare; net of the 1.8 percent rise in requests about 2,565 came from the scheme, near Rs 7,400 each; Rs 1.159 crore went to driver-weeks that accepted under half their offers |
+| The decision | "Roll it out to more cities" | Hold the extension; keep the Rs 300 floor only for driver-weeks that accept at least half their offers, an accepted trip later cancelled counting as declined; test that first, the whole city switched between rules window by window |
 | What would change it | Nothing | If, without the hourly floor, outer-zone waits went back up to 6.6 minutes, keep a smaller floor in those three zones only |
 
 ## Which seven checks does a pair tick for each answer?
@@ -141,7 +143,13 @@ trainer's reading and compare it with yours.
 >
 > **Candidate:** "A season drifts; this stepped on the launch date, which is my argument for cause
 > until a test settles it. Now the money: Rs 1.9 crore bought 6,700 more peak trips, about Rs 2,836
-> each, 17 times the average fare. What share of the top-up went to weeks where drivers declined most
+> each, 17 times the average fare. Requests rose 1.8 percent too, so some of those trips would have
+> come anyway. At the old fulfilment rate, how many trips would the new requests alone give?"
+>
+> **Interviewer:** "About 228,335, against 230,900 completed."
+>
+> **Candidate:** "So about 2,565 extra trips came from the scheme, near Rs 7,400 each, before any
+> allowance for the season. What share of the top-up went to weeks where drivers declined most
 > offers?"
 >
 > **Interviewer:** "61 percent."
@@ -157,9 +165,10 @@ trainer's reading and compare it with yours.
 > about Rs 85.7 lakh of top-up in those zones: about Rs 46,000 per extra trip, a price nobody would
 > pay. My answer: not a success at that price, and I would not extend it. I would keep the Rs 300
 > floor only for driver-weeks that accept at least half their offers, an accepted trip the driver
-> then cancels counting as declined, which gives every trip its value back, and test that by zone
-> before any new city. What would change my mind: if, without the hourly floor, outer-zone waits went
-> back up to 6.6 minutes, I would keep a smaller floor in those three zones only."
+> then cancels counting as declined, so declining costs the week's top-up, and test that before any
+> new city, switching the whole city between the old rule and the new one window by window. What
+> would change my mind: if, without the hourly floor, outer-zone waits went back up to 6.6 minutes,
+> I would keep a smaller floor in those three zones only."
 
 ---
 
@@ -180,7 +189,7 @@ trainer's reading and compare it with yours.
 | "Your north star went from 35.76 to 35.89. Did the scheme work?" | "It barely moved, and it would rise if drivers quit, so I never read it alone: the north star says whether each paid driver works, and the wait by zone says whether riders gained." |
 | "Driver cancellations after accepting more than doubled. What does your acceptance floor do now?" | "The floor counts an accepted trip the driver then cancels as declined. Even the 880 drivers outside the idle tail went from cancelling 0.037 of what they accepted to 0.077, so the cancel share sits beside acceptance every week." |
 | "If the 180 quit, who carries their trips?" | "They completed 33,440 peak trips after the launch; at 1.90 an hour the other drivers would need about 17,600 more peak hours. Three cases: they go back to their old rate, they game the new floor, or they quit; for the first month I would watch drivers online in the first peak hour and drivers' earnings per online hour every week." |
-| "Randomise what, when drivers share riders?" | "Zones, or zones switched on and off by week. Two rules inside one zone would compete for the same riders. The test runs at least four weeks, since bookings per hour took three weeks to settle, with the length fixed before it starts." |
+| "Randomise what, when drivers share riders?" | "Not single drivers, since two rules inside one zone would compete for the same riders, and not zones alone, since drivers cross zone lines to reach the better rule. I would switch the whole city between the old rule and the new one, window by window in a random order, and run it at least four weeks, since bookings per hour took three weeks to settle, with the length fixed before it starts." |
 | "Why the median wait, and not the slowest riders?" | "The middle of the zones' medians hides the outer zones and the tail; with ride-level data I would weight the wait by requests and read the slowest tenth of riders beside the median, zone by zone." |
 
 ---
@@ -232,7 +241,7 @@ measured time to merge in a team-level test.
 | Guardrails | Offers accepted, with cancels beside it; the rider's wait; top-up per completed trip | Build failures and reverts on commits with suggested code; security findings in accepted code; suggested lines rewritten within weeks |
 | Leading input | Rider requests per online hour, by zone | Acceptance, an input nobody is paid on |
 | The gaming | The app left open in a quiet zone; offers declined, or accepted and then cancelled | Fewer, shorter, safer suggestions shown; short suggestions accepted and deleted |
-| How it is settled | A test with zones as the unit | A test with teams as the unit, the current rule against a new one |
+| How it is settled | A test with the whole city switched between rules window by window | A test with teams as the unit, the current rule against a new one |
 
 In the table, a **commit** is a saved change to the code, a **revert** undoes one, **time to merge** is
 how long a change waits before it joins the main code, and a **build failure** is code that does not
@@ -265,7 +274,7 @@ on.
 | Clarify | "Which team is right?" | "What is the scheme for, and what does each team need to see to do its job?" |
 | The call | Gives each team its own target | One north star tied to the goal: completed peak trips per enrolled driver online at peak, per calendar week |
 | The teams who lose | Promises to revisit next quarter | Says none of the three numbers is the target, then places each: hours beside trips per online hour as supply's diagnostic; the enrolled count printed beside the rate; for finance, a total cap on the top-up and its cost per extra trip |
-| The evidence | None | Hours rose 24 percent while trips per online hour fell from 1.90 to 1.58, and the old rule paid about Rs 2,836 per extra trip |
+| The evidence | None | Hours rose 24 percent while trips per online hour fell from 1.90 to 1.58, and the old rule paid about Rs 2,836 per extra trip, near Rs 7,400 net of the rise in requests |
 | What would change it | Nothing | "If the wait by zone rose under the new rule, I would revisit the acceptance floor, starting in the outer zones" |
 
 > **Candidate, to all three:** "None of your three numbers is the one we judge the scheme by: hours
@@ -275,8 +284,9 @@ on.
 > you own the input that moves first, rider requests per online hour by zone, which says where to
 > send drivers. Marketing, the enrolled count is printed beside the rate every week, so a shrinking
 > base shows at once. Finance, you get a total cap on the top-up and its cost per extra trip: the old
-> rule paid about Rs 2,836 for each one. If the wait by zone rose under the new rule, I would revisit
-> the acceptance floor, starting in the outer zones."
+> rule paid about Rs 2,836 for each one, near Rs 7,400 once the rise in requests is netted out. If the
+> wait by zone rose under the new rule, I would revisit the acceptance floor, starting in the outer
+> zones."
 
 | Follow-up | A hire-grade answer in one breath |
 |---|---|

@@ -208,7 +208,7 @@ flowchart LR
     G["<b>Goal</b><br/>riders picked up faster"] --> N["<b>North star</b><br/>numerator, denominator,<br/>window"]
     N --> R["<b>Guardrails</b><br/>what must not<br/>get worse"]
     R --> L["<b>Leading input</b><br/>what moves first"]
-    L --> T["<b>The test</b><br/>zones as the unit"]
+    L --> T["<b>The test</b><br/>its unit named"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class G lit
@@ -234,7 +234,7 @@ Transition: two answers side by side.
 | Beat | Weak answer | Hire-grade answer |
 |---|---|---|
 | Clarify | Starts on metrics at once | Asks what the scheme is for, what counts as harm, which decision rides on it and against what |
-| Structure | Lists hours, satisfaction, a survey | Goal, one north star with its lines, three guardrails, a leading input, the test by zone |
+| Structure | Lists hours, satisfaction, a survey | Goal, one north star with its lines, three guardrails, a leading input, the test with its unit |
 | The trap | "Hours are up 24 percent, so it works" | Trips per online hour fell from 1.90 to 1.58, stepping down in the launch week, and the north star barely moved |
 | Segment and zones | None | 180 drivers added hours on fewer trips, mostly in the outer zones, where waits fell 6.6 to 5.95 minutes at about Rs 46,000 per extra trip |
 | Decision and cost | "Roll it out to more cities" | Hold it: Rs 2,836 per extra trip, about Rs 7,400 net of the rise in requests; the Rs 300 floor only for weeks accepting half their offers; a test |
@@ -278,7 +278,7 @@ Transition: the same question at an AI company.
 | Guardrails | Accepted share of offers; rider wait; top-up per trip | Build failures and reverts on suggested code; security findings; rewritten lines |
 | Leading input | Rider requests per online hour, by zone | Acceptance, an input nobody is paid on |
 | The gaming | Stay online, decline the offers | Fewer, safer suggestions shown; short ones accepted, then deleted |
-| How it is settled | A test with zones as the unit | A test with teams as the unit, old rule against new |
+| How it is settled | A test with its unit chosen: zones, or the city switched window by window | A test with teams as the unit, old rule against new |
 
 Programme-written: the variant names no company and no figure. A commit is a saved change to the code; time to merge is how long a change waits before it joins the main code. A seat is one developer's paid licence, a revert undoes a change already made, and a security finding is a weakness a security scan or review reports.
 
