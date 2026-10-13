@@ -20,9 +20,7 @@ Subtopics in the row: 5
 | SECTION 5: Cohort construction on twelve Gold members: who entered when? | 1 | half1 S35 to S44 | notebooks/C2_W04_D04_05_case_cohort_construction_STUDENT.ipynb |
 | SECTION 6: Retention curves and blended numbers on 53,089 members: what is the 38 made of? | 1, 3, 4 | half1 S45 to S54, D1 | notebooks/C2_W04_D04_06_case_retention_and_blend_STUDENT.ipynb |
 | SECTION 7: Funnel stages, drop-off, denominators on the event log: which stage owns the loss? | 2 | half1 S55 to S65 | notebooks/C2_W04_D04_07_case_funnel_denominators_STUDENT.ipynb |
-| SECTION 9: The fix-first decision on Zomato Gold: what is fixed first? | 5 | half2 S73 to S77 | none |
-| SECTION 10: The retention walk in an interview: what does a hire say? | all | half2 S78 to S81 | none |
-| SECTION 11: The five topics recalled: what does the room carry? | all | half2 S82 to S84 | none |
+| SECTION 9: The fix-first decision on Zomato Gold: what is fixed first? | 5, and 1 to 5 in its close | half2 S73 to S84 | notebooks/C2_W04_D04_09_case_fix_first_decision_STUDENT.ipynb |
 
-The lab notebook, `notebooks/C2_W04_D04_12_kalpa_lab_cohort_and_funnel_STUDENT.ipynb`, re-runs all
+The lab notebook, `notebooks/C2_W04_D04_10_kalpa_lab_cohort_and_funnel_STUDENT.ipynb`, re-runs all
 five topics on Kalpa's Retail-Plus tier and takes the number after the day's last SECTION.

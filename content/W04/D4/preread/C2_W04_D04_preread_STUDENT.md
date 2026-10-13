@@ -79,8 +79,8 @@ a week this October? Bring your answer as one sentence, since you will be asked 
 
 Nothing needs installing, and each check takes under five minutes.
 
-1. Run Restart and Run All on Thursday's nine notebooks, 01 to 08 and 12. Notebooks 01 to 08 end on
-   their checks passing; notebook 12, the lab, passes its checks near the top and then runs the cells
+1. Run Restart and Run All on Thursday's ten notebooks, 01 to 10. Notebooks 01 to 09 end on their
+   checks passing; notebook 10, the lab, passes its checks near the top and then runs the cells
    you filled in. If a check fails, bring its last error line to the TA before the session.
 2. Save your take-home notebook with its outputs showing, since a notebook that ran but was not saved
    looks empty to everyone else.

@@ -15,7 +15,7 @@ to 30 September the app's auto-reorder feature ran, placing repeat orders for me
 the app team says the reorder feature has since been fixed.
 
 This set moves the afternoon's call to Kalpa, and its second page is the day's last write-up: the
-lab notebook's three sentences become its first lines. Sit the whole set after notebook 12 in the
+lab notebook's three sentences become its first lines. Sit the whole set after notebook 10 in the
 lab: item 1 first, then items 2 to 4, whose page states what the notebook's your-turn cells found,
 and the practice set after them.
 

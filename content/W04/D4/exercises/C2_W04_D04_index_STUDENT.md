@@ -44,7 +44,7 @@ items to redo on a topic that did not land.
 | Lab, on paper, after notebook 06 | `unguided/C2_W04_D04_case_retention_and_blend_STUDENT.md` | 4 | L2, L3 | Three Gold cohort rows read by age; the plain average against the weighted blend; the second route |
 | Lab, on paper, after notebook 08 | `unguided/C2_W04_D04_c5_fix_first_evidence_STUDENT.md` | 2 | L5 | The college's order of work and the fact that would change the call; the cost line with its unit and range |
 | SECTION 9, the page in groups; the items in the lab | `unguided/C2_W04_D04_fix_first_STUDENT.md` | 6 | L5, L6 | The five-line page for Gold, the loss in orders and rupees, the order of work, the app team answered |
-| Lab, after notebook 12 | `unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` | 4 | L5 | The head of Retail-Plus's call on Kalpa's own counts, and the second page |
+| Lab, after notebook 10 | `unguided/C2_W04_D04_kalpa_retail_plus_STUDENT.md` | 4 | L5 | The head of Retail-Plus's call on Kalpa's own counts, and the second page |
 | Lab, the practice set | `practice/C2_W04_D04_lab_set_STUDENT.md` | 6 | L1 to L5 | The whole method on an invented tiffin subscription, with the cohort table's lines put in order |
 | Lab, after the practice set | `practice/C2_W04_D04_kaapi_funnel_STUDENT.md` | 4 | L3, L4 | A four-stage funnel at an invented bakery app: the skippable step, the unit, counting against ordering |
 

@@ -8,8 +8,9 @@ Header: WEEK 4  ·  DAY 4  ·  COHORT AND FUNNEL
 *When two problems compete for one team, choose the step that moved, show it with a comparator, a date and a cost, and concede the true part of the objection, on the same college's two problems.*
 
 ```notes
-Sixty trainer minutes: the fifth topic on the college (10), the fix-first call on Zomato Gold,
-unguided (25), the interview walk and the AI-company variant (10), the Kahoot and the close (15).
+Sixty trainer minutes: the fifth topic on the college, SECTION 8 (10), then SECTION 9 (50): the
+fix-first call on Zomato Gold, unguided (25), the interview walk and the AI-company variant (10),
+and the Kahoot and the close (15).
 Then the IITGN faculty session W4-3 runs (tentative), or the weaned-users fallback if it slips.
 LIVE, 10 minutes. Laptops closed; notebook 08 afterwards or in the lab; drill c5 runs in the lab.
 If late: S70 in one sentence. Styles: Veritasium (the
@@ -178,14 +179,16 @@ Transition: SECTION 9, the call on Zomato Gold.
 ---
 
 ## SECTION 9: The fix-first decision on Zomato Gold: what is fixed first?
-*The morning found two problems, a dashboard that reads 38 because of who it counts and one broken step on Android. With the page SECTION 8 built, which goes first, on what evidence, at what cost, and what does the app team's lead say?*
+*The morning found two problems, a dashboard that reads 38 because of who it counts and one broken step on Android. With the page SECTION 8 built, which goes first, on what evidence, at what cost, and what does the app team's lead say? The chapter closes on the same call walked as an interview answer, and on the day's five topics recalled in the Kahoot.*
 
 ```notes
-LIVE, 25 minutes, unguided, in the nine groups: 12 minutes of slides and 13 of writing; the set's
-items run in the lab. Hand out: the fix-first set and the role card to the TA. If late: S76 in one
-sentence. L5. Styles: the case method (the app team's lead
-argues from a role card and is partly right), Feynman (the call in one sentence a membership lead
-could repeat).
+LIVE, 50 minutes in three parts: the call on Gold, unguided, in the nine groups, 25 (12 minutes of
+slides and 13 of writing, the set's items in the lab); the interview walk and the AI variant, 10,
+from S78; the Kahoot and the close, 15, from S82. Notebook 09 computes the page's numbers from the
+case's own data, afterwards or in the lab. Hand out: the fix-first set and the role card to the TA.
+If late: S76 in one sentence, S80 read in two sentences, and the close keeps the sentence and
+Friday's ticket. L5 and L6. Styles: the case method (the app team's lead argues from a role card and
+is partly right), Feynman (the call in one sentence a membership lead could repeat).
 Transition: the task.
 ```
 
@@ -204,7 +207,7 @@ label: 4 | title: The objection | body: The app team's lead, answered with the s
 label: 5 | title: What would change it | body: The one fact that would reverse the order | tone: dark
 ```
 
-Each group writes the five lines for the membership lead on one page, the fix-first set's page, and then answers its items. After the lab, the Kalpa set's second page asks for the same five lines for Kalpa's head of Retail-Plus. Every number comes from the morning's notebooks.
+Each group writes the five lines for the membership lead on one page, the fix-first set's page, and then answers its items. After the lab, the Kalpa set's second page asks for the same five lines for Kalpa's head of Retail-Plus. Every number comes from the morning's notebooks, and notebook 09 computes the page from the case's own data.
 
 ```notes
 LIVE, 2 minutes to set up; the groups write for 13 minutes in all, between this slide and the
@@ -299,18 +302,6 @@ Transition: the interview.
 
 ---
 
-## SECTION 10: The retention walk in an interview: what does a hire say?
-*"Retention dropped; walk me through your investigation." How does a hire-grade candidate, one whose answer gets the job, order it with all five topics, and how does the same idea apply to an AI product?*
-
-```notes
-LIVE, 10 minutes. L6. If late: S80 read in two sentences. Pairs work from S79's table only: one asks the question, one answers in the
-hire-grade order, and they swap; the full transcript in the extras folder is for the evening. The
-AI variant is read aloud, 3 minutes, no discussion; explorer scene Th4 carries it.
-Transition: the chapter's questions.
-```
-
----
-
 ## S78. The interview: three questions, five topics
 *Who needs the answer, and which smaller questions lead to it?*
 
@@ -323,6 +314,10 @@ label: 3 | title: What comes after the walk? | body: The member who has not left
 ```
 
 ```notes
+The interview walk, 10 minutes of SECTION 9, L6. Pairs work from S79's table only: one asks the
+question, one answers in the hire-grade order, and they swap; the full transcript in the extras
+folder is for the evening. The AI variant is read aloud, 3 minutes, no discussion; explorer scene Th4
+carries it. If late: S80 read in two sentences.
 LIVE, 1 minute. Every step of the walk is one of the morning's topics; name each as it comes.
 Transition: the order of the walk.
 ```
@@ -415,17 +410,6 @@ Transition: the Kahoot.
 
 ---
 
-## SECTION 11: The five topics recalled: what does the room carry?
-*Which of the day's calls can the room make in seconds, one topic at a time, and what does the day close on before Friday's ticket?*
-
-```notes
-LIVE, 15 minutes. The two questions (1), the Kahoot (10) and the close (4). If late: the close
-keeps the sentence and Friday's ticket.
-Transition: the chapter's questions.
-```
-
----
-
 ## S82. The close: two questions, five topics
 *Who needs the answer, and which smaller questions lead to it?*
 
@@ -437,6 +421,8 @@ label: 2 | title: What does the day close on? | body: The sentence to the member
 ```
 
 ```notes
+The Kahoot and the close, 15 minutes of SECTION 9: the two questions (1), the Kahoot (10) and the
+close (4). If late: the close keeps the sentence and Friday's ticket.
 LIVE, 1 minute. Read the two questions.
 Transition: the Kahoot.
 ```
