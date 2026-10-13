@@ -366,7 +366,7 @@ hides a weak August cohort, the fix waits a month too long.
 **The questions on the way.**
 
 - What does each cohort keep on all 53,089 members?
-- What does the dashboard print, counted directly?
+- What does the dashboard print, and why does it hold?
 - What is September's 38 made of?
 - What is outside the count?
 
@@ -441,7 +441,7 @@ room blames is fine: blaming the wrong step sends engineers to one that works.
 
 - Why does one step pass 100 percent?
 - Per session or per member?
-- Whose conversion fell, and where inside the checkout?
+- When did members' Android rate break, and where inside the checkout?
 - What can the data not show?
 
 **Four ways to look, and the call.** The overall rate shows that something fell without saying where; the lowest
@@ -469,7 +469,7 @@ It sits in members on Android after one date; the app team is right about everyw
 
 **WATCH OUT.** A "good" retention number with no definition: Amplitude, a product-analytics vendor,
 puts 7 percent of a cohort back on day seven in the top 25 percent for activation among more than
-2,600 companies, with no method given (its blog, checked 12 October 2026).
+2,600 companies, with no method given (its blog, checked 13 October 2026).
 
 | The doubt | The check | What it found |
 |---|---|---|

@@ -303,7 +303,7 @@ Transition: the interview.
 *"Retention dropped; walk me through your investigation." How does a hire-grade candidate, one whose answer gets the job, order it with all five topics, and how does the same idea apply to an AI product?*
 
 ```notes
-LIVE, 10 minutes. L6. Pairs work from S79's table only: one asks the question, one answers in the
+LIVE, 10 minutes. L6. If late: S80 read in two sentences. Pairs work from S79's table only: one asks the question, one answers in the
 hire-grade order, and they swap; the full transcript in the extras folder is for the evening. The
 AI variant is read aloud, 3 minutes, no discussion; explorer scene Th4 carries it.
 Transition: the chapter's questions.

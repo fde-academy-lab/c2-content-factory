@@ -1905,7 +1905,7 @@ def nb07():
         either way keeps the fall, 58 to 47 and 56 to 43, and the weekly series dates it to the release
         week. (4) The 55 rests on 18,273 checkout starts, so chance moves it by under a point if sessions
         were independent; sessions cluster within members, so the honest margin is somewhat wider and
-        still far under the 17.5-point fall. The non-members' comparator rests on 1,600, so "held" there
+        still far smaller than the fall from 72.5 to 55. The non-members' comparator rests on 1,600, so "held" there
         means within about 2.5 points. After
         a checkout with no order, the member ordered within a day 36.5 percent of the time before the
         release and 35.1 after; failures nearly doubled, from 1,921 to 3,386 a week, so more came back,

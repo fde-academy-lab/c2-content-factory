@@ -858,7 +858,8 @@ Transition: after the break, the case opens on the ticket read in full.
 *The ticket read in full, the causes listed before any data, and twelve members of the case counted by hand by age, as SECTION 1 counted the gym.*
 
 ```notes
-LIVE, 15 minutes. Laptops closed; the twelve-row card is on every table. Styles: the case method
+LIVE, 15 minutes. Laptops closed; the twelve-row card is on every table. Hand out: the hypothesis
+board template at S38, the card and the guided set at S39. If late: S37 is read without discussion. Styles: the case method
 (the hypothesis board), StatQuest (the twelve counted aloud), Veritasium (two predictions).
 Notebook 05 reproduces every count.
 Transition: the chapter's questions.
@@ -1093,7 +1094,8 @@ Transition: SECTION 6 and the full data.
 *Every cohort's curve on the full data, the dashboard's flat 38 rebuilt from its cohorts, and the cohort the count leaves out, as SECTIONs 2 and 3 read the gym.*
 
 ```notes
-LIVE, 30 minutes. Laptops open; notebook 06. Styles: Krish Naik (one pivot_table, line by line),
+LIVE, 30 minutes. Laptops open; notebook 06. Hand out: reveal 1 at S47, reveal 2 at S53. If late:
+D1 stays self-study. Styles: Krish Naik (one pivot_table, line by line),
 Veritasium (three predictions), 3Blue1Brown (the triangle, the stacked count), StatQuest (the
 weighted average on seven numbers). Explorer scene Th1.
 Transition: the chapter's questions.
@@ -1110,7 +1112,7 @@ Applies: Cohort construction (SECTION 1); Retention curves: shape and floor (SEC
 
 ```timeline
 label: 1 | title: What does each cohort keep, month by month? | body: One pivot_table on member_months
-label: 2 | title: What does the dashboard print, counted directly? | body: June to September
+label: 2 | title: What does the dashboard print, and why does it hold? | body: June to September
 label: 3 | title: What is September's 38 made of? | body: The weighted average, cohort by cohort
 label: 4 | title: What is outside the count? | body: The August cohort | tone: dark
 ```
@@ -1171,7 +1173,7 @@ month three. Members come back after a month with no order, so the floor is the 
 a typical month, and the 38 who order are not always the same 38. If the room wants the motion, open
 whiteboards/C2_W04_D04_cohort_fill_STUDENT.gif, which fills the triangle one month at a time with
 the dashboard drawn beside it, or explorer scene Th1, which adds a "next month" button.
-Transition: what the dashboard prints over the same months.
+Transition: why the dashboard holds over the same months.
 ```
 
 ---
@@ -1197,7 +1199,7 @@ Transition: the direct count.
 ---
 
 ## S49. Answer: a slow slide, refilled each month
-*What does the dashboard print, counted directly from member_months?*
+*What does the dashboard print, counted directly, and what holds it near 38?*
 
 ```stats
 value: 38.2 | label: June | note: 7,722 of 20,217 members
@@ -1349,7 +1351,8 @@ Transition: SECTION 7, the order flow.
 *Gold's order flow read step over step in a named unit, the step that passes 100 percent, and the fall split by membership, platform and date, as SECTION 4 read the college.*
 
 ```notes
-LIVE, 30 minutes. Notebook 07. Styles: Brilliant (the five rates before any explanation),
+LIVE, 30 minutes. Notebook 07. Hand out: reveal 3 at S62. If late: S62's weekly picture described,
+and S64's four self-study rows left to the notes. Styles: Brilliant (the five rates before any explanation),
 Veritasium (three predictions), the case method (the app team's partly right chart), Krish Naik
 (the release split built line by line). Explorer scene Th3.
 Transition: the chapter's questions.
@@ -1368,7 +1371,7 @@ Applies: Funnel stages, drop-off, denominators (SECTION 4).
 label: 1 | title: Which step owns the loss? | body: Five rates, before any split
 label: 2 | title: Why does one step pass 100 percent? | body: A step members can skip
 label: 3 | title: Per session or per member? | body: Two units, two questions
-label: 4 | title: Whose conversion fell, and where? | body: Platform, membership, date, then the size
+label: 4 | title: When did the Android rate break, and where? | body: Platform, membership, date, then the size
 label: 5 | title: What can the data not show? | body: Seven doubts, each with its check | tone: dark
 ```
 
@@ -1527,7 +1530,7 @@ checkout starts held; bring the split that shows completion fell, for members, o
 the release. Only members on Android fell, so the place to look is something in the new flow that
 members see. The 55 rests on 18,273 checkout starts, so chance moves it by under a point if sessions were
 independent; sessions cluster within members, so the honest margin is somewhat wider and still far
-under the 17.5-point fall. The non-members' comparator rests on 1,600, so "held" there means
+smaller than the fall from 72.5 to 55. The non-members' comparator rests on 1,600, so "held" there means
 within about 2.5 points. The
 afternoon's role card replays this dispute.
 Transition: the checks before the call.
@@ -1586,7 +1589,7 @@ flowchart LR
 
 ```notes
 Source:
-https://www.amplitude.com/blog/7-percent-retention-rule (checked 12 October 2026)
+https://www.amplitude.com/blog/7-percent-retention-rule (checked 13 October 2026)
 A "good" retention number needs its definition: Amplitude, a product-analytics vendor, says 7
 percent of a cohort back on day seven puts a product in the top 25 percent for activation among the
 more than 2,600 companies it studied, and its blog gives no method. Say so if the room asks for a
