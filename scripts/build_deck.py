@@ -317,6 +317,8 @@ def chapter_name(title):
 
 
 TOPIC_FIRST = re.compile(r"^(?P<topic>.+?):\s+(?P<question>[a-z].*\?)$")
+QUESTION_WORD = re.compile(r"^(?:who|whom|whose|what|which|when|where|why|how|can|could|does|do|"
+                           r"did|is|are|was|were|will|would|should|has|have)\b", re.I)
 
 
 def chapter_parts(name):
@@ -324,10 +326,11 @@ def chapter_parts(name):
 
     A chapter named topic first keeps its short question for the pills, the footer and the cover's
     strip, which have room for about 22 characters, and its opener prints the topic over the
-    question. A name with no topic before a lower-case question comes back whole, as it always has.
+    question. A name with no topic before a lower-case question comes back whole, as it always has,
+    and so does a question that holds a colon itself, such as "Who asks: the lead or the CEO?".
     """
     m = TOPIC_FIRST.match(name)
-    if not m:
+    if not m or QUESTION_WORD.match(m.group("topic")):
         return None, name
     question = m.group("question")
     return m.group("topic").strip(), question[:1].upper() + question[1:]
@@ -956,9 +959,11 @@ def build(src, out, footer):
             # chapter 6 prints 06; a SECTION with no number takes its place in the file.
             sec = SECTION_TITLE.match(title)
             number = int(sec.group(1)) if sec and sec.group(1) else current + 1
+            # A topic travels as a keyword only when there is one, so a wrapper written for the
+            # old positional call, as the Week 1 Monday deck build has, still works.
             topic, question = chapter_parts(chapter_name(title))
             section_slide(s, prs, number, question, promise, chapters, current,
-                          footer, total, n, topic=topic)
+                          footer, total, n, **({"topic": topic} if topic else {}))
             set_notes(s, notes)
             continue
         m = SLIDE_ID.match(title)
