@@ -1543,6 +1543,13 @@ toys:
   label: invented
   how: 'invented for the concept chapter on North-star and guardrail metrics: 10 + 9 + 9 + 8'
   used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
+- id: toy_driving_fewer_licences
+  value: 24
+  unit: learners
+  label: invented
+  how: 'invented for the concept chapter on North-star and guardrail metrics: 60 - 36, licences lost while
+    the hoarding''s rate rose'
+  used_by: half1 SECTION 2; notebook 02; notes; north_star_guardrails set
 - id: toy_driving_pass_rate_2025
   value: 0.6
   unit: share
@@ -1708,6 +1715,13 @@ toys:
   label: invented
   how: 'invented for the concept chapter on Leading against lagging indicators: in overs 3, 7 and 10'
   used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
+- id: toy_chase_in_hand_after_10
+  value: 7
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 10 - 3, the guardrail
+    read beside the rate needed'
+  used_by: half1 SECTION 3; notebook 03; notes; leading_lagging set
 - id: toy_chase_rate_start
   value: 8.0
   unit: runs an over
@@ -1745,6 +1759,19 @@ toys:
   label: invented
   how: 'invented for the concept chapter on Leading against lagging indicators: (160 - 102) / 5, the faded
     example'
+  used_by: notebook 03's your-turn cell
+- id: toy_chase_wickets_after_15
+  value: 4
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: in overs 3, 7, 10 and
+    13'
+  used_by: notebook 03
+- id: toy_chase_in_hand_after_15
+  value: 6
+  unit: wickets
+  label: invented
+  how: 'invented for the concept chapter on Leading against lagging indicators: 10 - 4, the faded example'
   used_by: notebook 03's your-turn cell
 - id: toy_chase_final
   value: 147
@@ -2491,9 +2518,10 @@ toys:
   used_by: half1 SECTION 5; notebook 05; notes; gaming set
 - id: toy_kirana_complaints_per_100
   value: 12
-  unit: per 100
+  unit: per 100 orders billed
   label: invented
-  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 6 / 50 x 100'
+  how: 'invented for the concept chapter on Gaming, and definitions that resist it: 6 complaints / 50
+    orders billed x 100, guardrail 1 on the page'
   used_by: half1 SECTION 5; notebook 05; notes; gaming set; half1 SECTION 6; notebook 06; notes; artifact
     set
 - id: toy_kirana_pay_rs

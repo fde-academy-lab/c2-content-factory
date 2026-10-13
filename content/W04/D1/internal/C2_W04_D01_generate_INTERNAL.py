@@ -1055,6 +1055,8 @@ toy("toy_driving_passed_2025", int(dsum.loc[2025, "passed"]), "learners", 2, "16
 toy("toy_driving_took_2026", int(dsum.loc[2026, "took_test"]), "learners", 2,
     "each instructor books only the learners they are surest of: 11 + 10 + 10 + 9", CH[2])
 toy("toy_driving_passed_2026", int(dsum.loc[2026, "passed"]), "learners", 2, "10 + 9 + 9 + 8", CH[2])
+toy("toy_driving_fewer_licences", int(dsum.loc[2025, "passed"] - dsum.loc[2026, "passed"]), "learners", 2,
+    "60 - 36, licences lost while the hoarding's rate rose", CH[2])
 for y in (2025, 2026):
     toy(f"toy_driving_pass_rate_{y}", round(float(dsum.loc[y, "passed"] / dsum.loc[y, "took_test"]), 2), "share", 2,
         f"passed / took the test, {y}: the number the school's hoarding prints", CH[2] + "; Kahoot")
@@ -1078,6 +1080,8 @@ toy("toy_chase_target", CHASE_TARGET, "runs", 3, "159 + 1, the runs that win", C
 toy("toy_chase_runs_per_over_first_ten", 6, "runs an over", 3, "overs 1 to 10", CH[3])
 toy("toy_chase_score_after_10", int(chase_runs.iloc[9]), "runs", 3, "6 x 10", CH[3])
 toy("toy_chase_wickets_after_10", int(chase["wickets_lost"][:10].sum()), "wickets", 3, "in overs 3, 7 and 10", CH[3])
+toy("toy_chase_in_hand_after_10", 10 - int(chase["wickets_lost"][:10].sum()), "wickets", 3,
+    "10 - 3, the guardrail read beside the rate needed", CH[3])
 toy("toy_chase_rate_start", chase_need[0], "runs an over", 3, "160 / 20", CH[3] + "; Kahoot")
 toy("toy_chase_rate_after_10", chase_need[10], "runs an over", 3, "(160 - 60) / 10", CH[3])
 toy("toy_chase_score_after_5", int(chase_runs.iloc[4]), "runs", 3, "6 x 5", CH[3])
@@ -1085,6 +1089,10 @@ toy("toy_chase_rate_after_5", round(chase_need[5], 1), "runs an over", 3, "(160 
 toy("toy_chase_score_after_15", int(chase_runs.iloc[14]), "runs", 3, "60 + 7 + 8 + 9 + 10 + 8", "notebook 03")
 toy("toy_chase_rate_after_15", round(chase_need[15], 1), "runs an over", 3, "(160 - 102) / 5, the faded example",
     "notebook 03's your-turn cell")
+toy("toy_chase_wickets_after_15", int(chase["wickets_lost"][:15].sum()), "wickets", 3, "in overs 3, 7, 10 and 13",
+    "notebook 03")
+toy("toy_chase_in_hand_after_15", 10 - int(chase["wickets_lost"][:15].sum()), "wickets", 3,
+    "10 - 4, the faded example", "notebook 03's your-turn cell")
 toy("toy_chase_final", int(chase_runs.iloc[-1]), "runs", 3, "60 + 87", CH[3])
 toy("toy_chase_wickets_final", int(chase["wickets_lost"].sum()), "wickets", 3, "three, then four more", CH[3])
 toy("toy_chase_margin", CHASE_OTHER_SIDE - int(chase_runs.iloc[-1]), "runs", 3, "159 - 147, lost by", CH[3])
@@ -1123,8 +1131,8 @@ toy("toy_kirana_confirmed", int(kirana["otp_confirmed"].sum()), "orders", 5, "co
     CH[5] + "; " + CH[6] + "; Kahoot")
 toy("toy_kirana_unconfirmed", int((~kirana["otp_confirmed"]).sum()), "orders", 5, "marked done with no OTP", CH[5])
 toy("toy_kirana_complaints", int(kirana["complaint"].sum()), "complaints", 5, "all on orders with no OTP", CH[5])
-toy("toy_kirana_complaints_per_100", round(100 * int(kirana["complaint"].sum()) / len(kirana)), "per 100", 5,
-    "6 / 50 x 100", CH[5] + "; " + CH[6])
+toy("toy_kirana_complaints_per_100", round(100 * int(kirana["complaint"].sum()) / len(kirana)),
+    "per 100 orders billed", 5, "6 complaints / 50 orders billed x 100, guardrail 1 on the page", CH[5] + "; " + CH[6])
 toy("toy_kirana_pay_rs", PAY_RS, "Rs a delivery", 5, "the delivery boy's rate", CH[5])
 toy("toy_kirana_pay_marked_rs", PAY_RS * int(kirana["marked_done"].sum()), "Rs", 5, "50 x Rs 20", CH[5])
 toy("toy_kirana_pay_confirmed_rs", PAY_RS * int(kirana["otp_confirmed"].sum()), "Rs", 5, "40 x Rs 20", CH[5])
