@@ -337,15 +337,28 @@ def footer_band(slide, footer, number, total, section=False, chapters=None, curr
           align=PP_ALIGN.RIGHT)
 
 
-def section_slide(slide, prs, number, title, promise, chapters, current, footer, total, index):
-    """A chapter opener: the big numeral, the chapter's name, its promise, and where it sits."""
+def section_slide(slide, prs, number, title, promise, chapters, current, footer, total, index,
+                  topic=None):
+    """A chapter opener: the big numeral, the chapter's name, its promise, and where it sits.
+
+    A chapter named topic first, as `## SECTION 3: ROW_NUMBER, RANK and DENSE_RANK: who makes it at
+    a tie?`, prints the topic in lavender over its question, so the opener names what the chapter
+    teaches before what it asks, and the question keeps its one 40-point line.
+    """
     background(slide, prs, "dark")
     header(slide, dark=True)
     label(slide, MARGIN + 0.22, 1.25, 4.0, f"{number:02d}", 96, LAV, font=brand.TITLE_FONT, h=1.5)
-    label(slide, MARGIN + 0.22, 2.85, WIDTH - 0.5, clean(title), 40, WHITE, font=brand.TITLE_FONT,
+    top = 2.85
+    if topic:
+        size = 20
+        while size > 14 and tracked_width(topic, size) > WIDTH - 0.5:
+            size -= 1
+        label(slide, MARGIN + 0.22, 2.78, WIDTH - 0.5, clean(topic), size, LAV, bold=True)
+        top = 3.3
+    label(slide, MARGIN + 0.22, top, WIDTH - 0.5, clean(title), 40, WHITE, font=brand.TITLE_FONT,
           h=0.8)
     if promise:
-        label(slide, MARGIN + 0.22, 3.85, 10.4, clean(promise), 15, _c("#E4E1F1"))
+        label(slide, MARGIN + 0.22, top + 1.0, 10.4, clean(promise), 15, _c("#E4E1F1"))
     if chapters:
         x, y = MARGIN + 0.22, 5.55
         gap = 0.12
