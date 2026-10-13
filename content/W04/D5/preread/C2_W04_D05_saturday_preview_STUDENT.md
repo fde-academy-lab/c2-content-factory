@@ -1,7 +1,7 @@
 # What should you bring to Saturday, when the week's five methods move to other companies?
 
-Read this on the Friday evening of Week 4: about 8 minutes of reading and two checks to run, so that Saturday
-can start on its paper from the first minute.
+Read this on the Friday evening of Week 4: about 10 minutes of reading and two checks to run, so that
+Saturday can start on its paper from the first minute.
 
 ---
 
@@ -23,6 +23,34 @@ flowchart LR
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
     class P lit
 ```
+
+---
+
+## Which questions will Saturday ask aloud?
+
+These are Saturday's subtopics as the curriculum words them: nine interview anchors, asked in the
+solution discussion and the mock-interview round. Read them tonight as questions; the answers are
+Saturday's work.
+
+- [S] How would you measure the success of a new feature? Walk your metric design.
+- [F] North-star against guardrail, with one example pair.
+- [S] Support, confidence, lift: which cannot be fooled by popularity, and why?
+- [S] Retention dropped: walk me through your investigation.
+- [F] Blended retention is flat while every cohort declines; how?
+- [S] What baseline must any forecast beat before it earns trust?
+- [F] A pair has lift 4 and support 0.3 percent; act or not?
+- [D] Kalpa Financial Services asks 'which customers should we nudge first'; say what stays the same in your method and what changes.
+- [D] Two forecasts, eighteen points apart; choose one for the board and present its error.
+
+The tags: [S] a staple asked everywhere, [F] frequent in GCC and product screens, [D] a
+differentiator.
+
+| Term in the anchors | What it means, as the week used it |
+|---|---|
+| North-star, guardrail | The one number a team steers by; the number beside it that must not get worse |
+| Support, confidence, lift | How often a pair is bought; how often the second follows the first; that against chance |
+| Cohort, blend | A group that joined in the same month; the average across groups of different sizes |
+| Baseline | The simplest rule that could be right, which a forecast must beat on periods it never saw |
 
 ---
 
@@ -57,8 +85,8 @@ error costs that business more, too much capacity or too little? Bring the answe
 
 Nothing needs installing, and each check takes under five minutes.
 
-1. Run Restart and Run All on Friday's four notebooks, 01 to 04. Each ends on its checks passing, and
-   if one does not, post its last error line in the cohort channel before Saturday.
+1. Run Restart and Run All on Friday's eight notebooks, 01 to 08. Each ends on its checks passing,
+   and if one does not, post its last error line in the cohort channel before Saturday.
 2. Save your take-home notebook with its outputs showing, since a notebook that ran but was not saved
    looks empty to everyone else.
 

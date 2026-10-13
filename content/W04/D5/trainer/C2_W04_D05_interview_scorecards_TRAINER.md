@@ -18,11 +18,11 @@ rupees. Every hire-grade 2 below rests on a line the answer says.
 | Criterion | Weak | Typical | Hire-grade | The hire-grade line that earns it |
 |---|---|---|---|---|
 | Clarified the scope | 0 | 0 | 2 | Four clarifiers: the decision and how far ahead it must reach (ten weeks), the cost of a miss each way, whether the festival and the sale move, whether any forecast met unseen weeks |
-| Named the hidden weeks and the unit | 0 | 1 | 2 | Thirteen weeks forecast from one origin, 22 June, covering the ten-week reach; the miss in shipments and the quantile loss at 0.82 in rupees, both fixed before scoring |
-| Saw the paradox | 0 | 0 | 2 | A fit within 1.4 percent beside a hidden-week miss of 16,400, almost all bias; the cheapest raw misses from the forecast that loses at its own 0.82 point; and on these weeks festival-aligned is the seasonal naive plus 4 percent, so they cost the same and only the festival separates them |
-| Sized it with a unit | 0 | 0 | 2 | 9,831 against 6,615 against 16,400 shipments a week; Rs 8.8 lakh against Rs 10.0 lakh; 10 of 13 weeks covered |
-| Said what would change their mind | 0 | 0 | 2 | A sale at a different distance from Diwali re-lines the weeks; a first sale week outside the hidden weeks' range re-opens the plan; overtime that absorbs a short week lowers the cushion |
-| Tied it to a decision and its cost | 0 | 0 | 2 | The plan covers demand in 0.82 of weeks because a late shipment costs Rs 25 and a spare one Rs 5.42, and it covered 10 of the 13 hidden weeks |
+| Named the hidden weeks and the unit | 0 | 1 | 2 | Thirteen weeks forecast from one origin, 22 June, covering the ten-week reach; the miss in shipments and the same misses priced in rupees each way, both fixed before scoring |
+| Saw the paradox | 0 | 0 | 2 | A fit within 1.4 percent beside a hidden-week miss of 16,400, almost all bias; the cheapest raw misses from the forecast nobody chose to run high; and on these weeks festival-aligned is the seasonal naive plus 4 percent, so only the festival separates them. A candidate who adds each forecast's own 0.82 point goes beyond Friday's row, which the fallback hour teaches |
+| Sized it with a unit | 0 | 0 | 2 | 9,831 against 6,615 against 16,400 shipments a week; the misses priced, Rs 13.5 lakh against Rs 11.9 lakh; 19,760 shifts booked at the forecast |
+| Said what would change their mind | 0 | 0 | 2 | A sale at a different distance from Diwali re-lines the weeks; a first sale week outside the hidden weeks' range re-opens the plan; overtime that absorbs a short week makes a short week cheaper |
+| Tied it to a decision and its cost | 0 | 0 | 2 | The plan books 19,760 shifts with an error bar of 6,615 shipments a week, about Rs 35,800 if it runs high and Rs 1.65 lakh if low; since a late shipment costs 4.6 times a spare one, any margin goes above the forecast |
 | Gave the structure before the number | 1 | 1 | 2 | "Five steps: the test, the measure, the bar to beat, the price, and what the test cannot see", said before any figure, and the answer follows that order |
 | Total, of 14 | 1 | 2 | 14 | |
 
@@ -41,7 +41,8 @@ direction or asks about the festival, which is where the hire is decided.
   what it covers; the plan's last week is ten weeks past the data, so thirteen also covers the reach
   FPP3 asks a test set to span. The copies need only a year of history, so they could be tested on far
   more, from many origins through 2025's festival, and that rolling test is the next one to run.
-- "Your 2.6 percent came from the weeks you score on; isn't that circular?" Yes, and each forecast
+- Beyond the row, after the fallback hour: "Your 2.6 percent came from the weeks you score on; isn't
+  that circular?" Yes, and each forecast
   was tuned the same way, which is why each is compared at its own 0.82 point; how much the tuning
   flatters each depends on its own misses. On these weeks festival-aligned,
   finance's rule and the seasonal naive come out as one forecast, each at Rs 8.8 lakh, so only the
@@ -69,7 +70,8 @@ direction or asks about the festival, which is where the hire is decided.
 
 ## How do the [D] answers score?
 
-Used in the fallback (part 4, S13, 25 minutes): read in pairs, played, then scored.
+Used in the fallback (part 5, S17, 25 minutes): read in pairs, played, then scored. Its numbers use
+the fallback hour's raised plan, which part 3 builds beyond Friday's row.
 
 | Criterion | Weak | Hire-grade | The hire-grade line that earns it |
 |---|---|---|---|

@@ -1,9 +1,9 @@
 # The festival calendar card
 
-**TRAINER ONLY until S29.** Print the card below large and keep it face down. Round one's S12 shows
-the room where Diwali falls in each year and stops there. In round three, ask the room "Which week
-does the bot put Diwali in this year?", take the vote on S28, and turn the card on S29: it adds the
-house bot's copy to the strip S12 showed.
+**TRAINER ONLY until half two's S4.** Print the card below large and keep it face down. In chapter 5,
+round one, half one's S46 shows the room where Diwali falls in each year and stops there. In chapter
+7, round three, ask the room "Which week does the bot put Diwali in this year?", take the vote on half
+two's S3, and turn the card on S4: it adds the house bot's copy to the strip S46 showed.
 
 ## What does the card say?
 

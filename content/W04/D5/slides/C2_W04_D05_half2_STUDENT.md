@@ -178,7 +178,7 @@ Chapter 4's call at Flipkart's scale: the decision unit is a shift of 120 shipme
 ```notes
 LIVE, 4 minutes. Ask the c4 set's second item aloud if it was not sat before lunch: three teams'
 models against the house bot's 9,831. The plan quantile is the spine's addition beyond the row's five
-subtopics; the fallback deck's part 4 and notebook 07's depth section carry it, so park any "how far
+subtopics; the fallback deck's part 3 and notebook 07's depth section carry it, so park any "how far
 above?" question there by name. Transition: what the other forecasts would cost.
 ```
 
@@ -354,7 +354,8 @@ expected minus 500 to minus 700, more homes bought than planned, renovation capa
 inventory write-down of about USD 304 million and the business wound down. The guardrail sat on the
 margin, which suggests the forecast's error was wider than the band; and a forecast used to bid wins
 where it guesses high, so the homes bought carried its errors one way. Two more follow-ups sit in the
-transcripts: the cushion read from the scored weeks, and the overtime that may cap the peak.
+transcripts: the cushion read from the scored weeks, beyond the row, and the overtime that may cap
+the peak.
 Transition: the same idea at an AI company.
 ```
 

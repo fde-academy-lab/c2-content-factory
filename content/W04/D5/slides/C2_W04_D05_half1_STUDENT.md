@@ -638,7 +638,7 @@ with like. Ten minutes' break follows. Transition: after the break, chapter 4.
 
 ```notes
 LIVE, 1 minute. Concept 4 of 4, 20 minutes, after the break. Two of the row's subtopics share this
-Chapter because both rest on one decision. Notebook 04 runs beside it. Transition: who needs the
+chapter because both rest on one decision. Notebook 04 runs beside it. Transition: who needs the
 verdict.
 ```
 

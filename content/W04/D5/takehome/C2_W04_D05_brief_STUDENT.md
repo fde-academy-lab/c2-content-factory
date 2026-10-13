@@ -24,7 +24,7 @@ be trusted.
 
 ## What do you build, and what do you hand in?
 
-Start from a copy of notebook 02, which reads `content/W04/D5/data/C2_W04_D05_weekly_shipments_STUDENT.csv`
+Start from a copy of notebook 06, which reads `content/W04/D5/data/C2_W04_D05_weekly_shipments_STUDENT.csv`
 and the vendor's file beside it. Move the split by changing one line in its second cell, `split = 91`,
 to `split = 100`: the last week every rule may see becomes 24 August 2026, the 100th row (position
 99), and the four rows after it are hidden. Every later cell counts the hidden weeks for itself. One

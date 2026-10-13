@@ -4,6 +4,39 @@
 research ledger (`docs/detailing/W04_research_cases.md`, R2, and `W04_research_teaching.md`, R1) or
 afresh in this session where marked.
 
+## What did the concept-first rebuild of 13 October 2026 check afresh?
+
+Forecasting: Principles and Practice was re-read on 13 October 2026 for every line the four concept
+chapters quote or paraphrase:
+
+| Section | What was checked | Used for | Link, checked 13 October 2026 |
+|---|---|---|---|
+| 2.3, time series patterns | A trend "exists when there is a long-term increase or decrease in the data"; seasonality "is always of a fixed and known period"; "one series can have more than one seasonal pattern"; a cycle shows "rises and falls that are not of a fixed frequency" | Chapter 1, S10 and its notes; the notes' first section; notebook 01 | https://otexts.com/fpp3/graphics.html#sec-tspatterns |
+| 3.2, time series components | The additive decomposition y = S + T + R when the seasonal swings do not vary with the level; the multiplicative S x T x R when they are proportional to it | Chapter 1, S10; the notes; notebook 01's named-last cell | https://otexts.com/fpp3/decomposition.html#sec-components |
+| 5.2, some simple forecasting methods | Naive: the forecast equals the last observation; seasonal naive: the last observed value from the same season; drift: the last value plus h times the average change, the line from the first observation to the last | Chapter 2, S17 and S18's notes; the notes' formulas; notebook 02's named-last cell | https://otexts.com/fpp3/toolbox.html#sec-simple-methods |
+| 5.8, evaluating point forecast accuracy | The test set "should ideally be at least as large as the maximum forecast horizon required"; "A model which fits the training data well will not necessarily forecast well. A perfect fit can always be obtained by using a model with enough parameters"; MAE as the mean of the absolute errors; percentage errors "infinite or undefined if y_t = 0" and "extreme values if any y_t is close to zero"; the error written as actual minus forecast | Chapters 3 and 4; notebooks 03 and 04; the notes; the fallback's S5 | https://otexts.com/fpp3/toolbox.html#sec-accuracy |
+
+The pack writes a miss as the forecast minus what sold, so a positive miss is spare stock; the deck's
+S25 notes and notebook 03 say that the book writes it the other way round, with the same size.
+
+## What did the rebuild decide where the plan or the brief left it open?
+
+| Decision | Why |
+|---|---|
+| Four concept chapters for five subtopics: SECTION 4 carries subtopics 4 and 5, each with half its 20 minutes | The approved plan's chapter 4 joins them, and the gate accepts a chapter whose topic holds both names |
+| Chapter 3's misses are -10, +5 and 0, a lean of -1.7 and Rs 150, where the plan wrote +10, -5 and 0, +1.7 and Rs 120 | The generator's data, with the miss as forecast minus sold, give the signs and the price; the plan's text mixed the two sign conventions |
+| Chapter 4's line and curve are worked with the standard library, least squares and Lagrange's form, where the plan named numpy.polyfit | The Week 4 rule asks for pandas and the standard library first, and the deck already teaches the curve by differences |
+| The deck's S32 key is a, the line, which misses day 5 by 7 against naive's 8 | The earlier draft keyed c; the numbers decide |
+| Each concept notebook's faded your-turn uses the stall's own days, never the mess, and its check is typed with the code | The mess belongs to the exercise sets, so the notebooks do not answer them; an executed check on an empty cell would fail the build |
+| No mermaid map cell in the notebooks | Mermaid does not render in the Codespace's notebook view; the first cell names the eight notebooks in words |
+| Concept notebook 03 runs 16 cells, under the brief's 18 | The plan's peek cell was dropped: its numbers were not in the facts file, and the deck states the peek in words |
+| The main path books the plan at the forecast, 19,760 shifts, 3,625 at the peak; the plan quantile, 0.82 and 20,275, sits in the fallback's part 3 and notebook 07's depth section, labelled beyond the row | The brief moves the quantile to the fallback; the staffing note, the day sheet, the exercises and the transcripts follow |
+| The Kahoot's item 7 tests the same miss priced short and over; item 8 tests growth read a season apart; the window item moves to the staffing note as Q4 | Every subtopic needs an item; item 7's plan share went beyond the row |
+| `ch2_scoreboard` keeps its file name though chapter 6 applies it | Saturday's and other days' files may cite the name; its title and solution say chapter 6 |
+| The cheat sheet's first panel is the concept map; the festival plot moves to panel 6, the case | The brief asks for a topic panel printing the map; the anchor test holds, since the map recaps the day |
+| The notes keep under 3,000 words by dropping the twelve-week table, the second field note and the AI paragraph's detail | The plan's ceiling; the deck and notebook 05 carry the table |
+| The pre-read lists Saturday's nine interview anchors verbatim with a four-row terms table, and keeps the Saturday timetable of the Week 4 spine | The row's Saturday subtopics are the anchors; the spine's timetable wins over the row's |
+
 ## Which sources does the pack cite?
 
 | Source | Used for | Link, checked 12 October 2026 |
@@ -32,16 +65,18 @@ afresh in this session where marked.
 | Both transcripts sit in `extras/` as STUDENT files, the scorecards in `trainer/` | The fallback deck shows the [D] transcript to the room, so the room needs it; the scoring stays with the trainer |
 | The take-home holds out four weeks, as the spine says, where the row says three months | The spine is approved after the row and wins |
 | The notes run to just under 3,000 words, under the standard's 4,000 to 5,000 | The spine sets 2,000 to 3,000 for Friday and wins |
-| The class sets carry 15 items and the practice set 6, 9 of the 21 design items | The spine's "about 14" counts the class sets; the TA lab's practice set is listed apart |
-| S12 shows Diwali's 2026 week and stops; the house bot's misplacement is revealed in round three, at S28, S29 and the festival calendar card | The spine's L1 also places the 2026 copy, which would spend the tournament's round-three twist and the Veritasium vote before they run |
-| The decks open on the ticket, with no quote cover | Acceptance line 1: the first minute is a ticket, with no quote |
-| The plan's 2.6 percent cushion is read from the same thirteen weeks it is scored on | Every forecast is compared at its own 0.82 point on those weeks, so the tuning is equal; the 2025 festival is the check that shares no weeks |
+| The sets carry 32 items, 14 of them design calls, with at least one item per subtopic | The plan's four concept sets add 13 items to the case sets; the practice set is listed apart |
+| Half one's S46 shows Diwali's 2026 week and stops; the house bot's misplacement is revealed in round three, at half two's S3 and S4 and the festival calendar card | The spine's L1 also places the 2026 copy, which would spend the tournament's round-three twist and the Veritasium vote before they run |
+| The decks open on the topic, the week map, the topics slide and the concept map, then the ticket in one slide, with no quote cover | The concept-first doctrine: the topics lead the morning and the case carries the day; no quote cover, per acceptance line 1 |
+| Beyond the row, the 2.6 percent cushion is read from the same thirteen weeks it is scored on | Every forecast is compared at its own 0.82 point on those weeks, so the tuning is equal; the 2025 festival is the check that shares no weeks |
 | The horizon is ten weeks, from the last week of data to the week of 30 November, where earlier drafts used the plan's eight weeks | FPP3 sets the test against "the maximum forecast horizon required"; the interviewer's read caught the confusion |
 | The scorecard keeps the spine's seven criteria and folds technical soundness into what a 2 requires | The spine fixes seven criteria (Aced, T2); the interviewer asked for an eighth |
 | Flipkart's real 2026 sale date, 9 October, stays off learner pages | The synthetic calendar puts the sale in the third and second weeks before Diwali's week; printing the real date beside it contradicts the case |
 | The explorer's Friday scenes, on branch `w04-explorer`, still carry the case file's old constants | Coordination: the report names every Friday number the scenes should show, by facts id |
 
 ## Which cold-read findings were left as they are, and why?
+
+These are the merged pack's reads; their slide numbers are that pack's numbering.
 
 | Finding | Why it stays |
 |---|---|

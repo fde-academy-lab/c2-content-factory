@@ -1,8 +1,8 @@
 # Role cards: finance, and the vendor's sponsor
 
-**TRAINER ONLY.** In round three of the tournament (half one, S37) the trainer plays finance and the
-TA plays the vendor's sponsor; in the afternoon's staffing note (half two, S4) both object again, and
-the fallback's second transcript replays them. Read both cards once before the session and say the
+**TRAINER ONLY.** In round three of the tournament (chapter 7, half two S10) the trainer plays
+finance and the TA plays the vendor's sponsor; in the staffing note (half two, S14) both object again,
+and the fallback's second transcript replays them. Read both cards once before the session and say the
 lines in your own voice.
 
 Flipkart, the Lucknow fulfilment centre. Illustrative case: the company is real, the situation and
@@ -88,9 +88,10 @@ Concede only to an answer that makes the four moves in order:
    last year can."
 2. **Answer from the evidence:** a fit is no forecast; on hidden weeks it missed by 16,400 and its
    misses grow the further it looks; its festive peak lands on 5 October.
-3. **Concede what is true:** its fit is close, and leaning high is the right instinct; the plan leans
-   high on purpose, festival-aligned plus 2.6 percent, whose misses on the same weeks price at Rs 8.8
-   lakh, flattered a little because the 2.6 was read from those weeks.
+3. **Concede what is true:** its fit is close, and leaning high is the right instinct at these costs:
+   the plan books festival-aligned and prices both directions, about Rs 35,800 a week if it runs high
+   against Rs 1.65 lakh if low, so any margin belongs above it, sized on purpose. How far above is the
+   plan quantile, beyond today's row, which the fallback hour reads at 2.6 percent.
 4. **Say what would change it:** the model scored on 2025's festival from data up to 22 September 2025,
    beating the copy counted from Diwali, before it books a shift.
 

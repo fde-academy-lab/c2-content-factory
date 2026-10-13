@@ -25,19 +25,21 @@ weeks it never saw before you trust its story.
 
 ## Which words does an interviewer expect, and what did this class call them?
 
-Use the field's word in the room; the class's word is how you remember it.
+Use the field's word in the room; the class's word is how you remember it. The last two rows, the
+plan share and the quantile loss, go beyond Friday's five topics: the fallback hour and notebook 07's
+depth section teach them, and a strong candidate reaches for them only after the four moves land.
 
 | The field's word | What this class called it | What it means |
 |---|---|---|
 | Seasonal naive baseline | The house bot | A copy of the same week last year |
 | Naive baseline | Naive | A repeat of the last week seen |
-| Hold-out, or test set | The hidden weeks | The latest weeks, kept out of every rule's forecast; here they also set the cushion, so each forecast is compared at its own 0.82 point |
+| Hold-out, or test set | The hidden weeks | The latest weeks, kept out of every rule's forecast and used to score it |
 | Typical miss, with a range | The error bar | Festival-aligned's average miss on unseen weeks, 6,615 a week; 5 of the 13 hidden weeks missed by more, so the lowest-to-highest range answers "how wrong could it be" |
 | Forecast origin | The week we forecast from | The last week a rule may see |
 | Forecast horizon | How far ahead the plan reaches | The farthest week ahead the forecast must reach: ten here, from 21 September to the week of 30 November |
 | Rolling-origin back-test, or time-series cross-validation | Rolling the origin | Forecasting again from many origins, each scored on the weeks after it |
-| Newsvendor critical ratio | The plan share, 0.82 | Late cost over late plus spare cost: the share of weeks the plan should cover |
-| Quantile loss, or pinball loss, at 0.82 | The misses priced | Each miss priced by its direction; at Rs 25 late and Rs 5.42 spare it is the quantile loss at 0.82, in rupees |
+| Newsvendor critical ratio, beyond the row | The plan share, 0.82 | Late cost over late plus spare cost: the share of weeks a plan should cover |
+| Quantile loss, or pinball loss, at 0.82, beyond the row | The misses priced | Each miss priced by its direction; at Rs 25 late and Rs 5.42 spare it is the quantile loss at 0.82, in rupees |
 
 ## Transcript 1: "How do you evaluate a forecast?"
 
@@ -82,11 +84,11 @@ untested number to the plan.
 |---|---|---|
 | Said first | "I would train a few models and see which does best." | "Five steps: the test, the measure, the bar to beat, the price, and what the test cannot see." |
 | The test | "I would split the weeks 80 to 20 at random, train each model on the 80 and score it on the 20." A random split lets a model learn from weeks that come after the ones it forecasts. | "I hold out the latest thirteen weeks as the test set and forecast all of them from one origin, 22 June. The plan's last week is ten weeks past the data, so thirteen covers the reach." |
-| The measure | "RMSE or MAPE, whichever comes out lowest." | "Two, fixed before anyone scores: the average miss in shipments, because shifts are booked in shipments, and the same misses priced at Rs 25 late and Rs 5.42 spare, the quantile loss at 0.82 in rupees, because that is what this plan pays." |
+| The measure | "RMSE or MAPE, whichever comes out lowest." | "Two, fixed before anyone scores: the average miss in shipments, because shifts are booked in shipments, and the same misses priced at Rs 25 late and Rs 5.42 spare, because that is what this plan pays." |
 | The bar to beat | "The vendor's model fits within 2 percent, so it is probably the best." | "The seasonal naive, a copy of the same week last year, misses by 9,831 a week and festival-aligned by 6,615; on these weeks festival-aligned is that copy plus 4 percent, so the gap is the growth. The vendor's curve fits its past within 1.4 percent and misses by 16,400, almost all of it bias that grows with the weeks ahead, the mark of a wrong trend." |
-| The price | Not reached. | "Priced as they stand, the vendor's misses cost least, only because it runs high, the cheap side. Moved each to its own 0.82 point, festival-aligned costs Rs 8.8 lakh, the seasonal naive the same and the vendor Rs 10.0 lakh: these weeks rule out the vendor and cannot rank my rule above the copy of last year. The plan, festival-aligned plus 2.6 percent, covered 10 of the 13 weeks, though the 2.6 was read from them." |
+| The price | Not reached. | "Priced as they stand, the vendor's misses cost least, only because it runs high, the cheap side. So the plan books festival-aligned at the forecast, 19,760 shifts, and prices its error bar both ways. One step further, beyond the row: moved each to its own 0.82 point, festival-aligned costs Rs 8.8 lakh, the seasonal naive the same and the vendor Rs 10.0 lakh, so these weeks rule out the vendor and cannot rank my rule above the copy of last year." |
 | What the test cannot see | Not reached. | "It cannot see the festival, since the hidden weeks hold none, so I back-test 2025's: the calendar copy missed by 58,250 a week and festival-aligned by 4,034, or 10,575 without the growth measured later. I would roll the origin through that festival before trusting the festive error. Shipments are also only what the centre packed, and the 2025 peak ran on overtime, so demand may have been capped." |
-| What would change it | Not reached. | "A sale that opens a different distance before Diwali, which re-lines the weeks; a first sale week outside the range the hidden weeks ran, which re-opens the plan; and overtime that absorbs a short week, which lowers the cushion." |
+| What would change it | Not reached. | "A sale that opens a different distance before Diwali, which re-lines the weeks; a first sale week outside the range the hidden weeks ran, which re-opens the plan; and overtime that absorbs a short week, which makes a short week cheaper." |
 
 **The answer most candidates give** sits between the two columns: "I would hold out the last couple of
 months, compare each model's MAPE with a copy of last year's same weeks, and send the lowest." It keeps
@@ -99,8 +101,8 @@ plan, the price of each direction and the festival the test cannot see. It score
 |---|---|
 | "MAE in shipments or MAPE in percent, and when?" | "MAE in shipments when the cost is per shipment and the plan books shipments. To compare centres of different sizes I would use MASE, each miss scaled by the seasonal naive's average miss in training, since the series has a yearly season, or WAPE, the total miss over the total shipped. MAPE explodes when an actual sits near zero, and for the same miss it scores a forecast above the actual worse than one below, since the percent is taken of the smaller number. On these thirteen weeks no actual sits near zero and MAPE ranks the rules as MAE does, so here it changes nothing; at a store with near-zero days it would (Forecasting: Principles and Practice, section 5.8, checked 12 October 2026)." |
 | "Suppose the festival moves by three weeks this year. What breaks?" | "Every calendar copy, the seasonal naive and finance's rule, puts the peak three weeks off, the way it put this case's peak two weeks off. A copy by distance from the festival moves with it. I would also check that the sale still opens the same distance before the festival, since the peak follows the sale; if it moves, I copy by distance from the sale." |
-| "You set the cushion on the weeks you scored. Isn't that circular?" | "Yes, and each forecast was tuned the same way, which is why I compare them each at its own 0.82 point; how much the tuning flatters each depends on its own misses. With thirteen weeks the point is loose: read by another common convention it is 4.1 percent instead of 2.6. The cure is a rolling origin: from 29 September 2025 every week has a year behind it, so the copies can be forecast from many origins, 2025's festival included, and the cushion set on weeks the final test never touches." |
-| "In your peak week, 1,638 of 3,485 shifts were overtime. What does that do to your plan?" | "The data say overtime carried the 2025 peak, so first I would ask what an overtime shift costs and whether any orders missed their dispatch date, since a capped peak makes every copy of it run low. If overtime can absorb a short week, being short costs only the overtime premium: at one and a half times a shift's cost the share to cover falls to 0.33, at twice it is 0.50, so the plan would sit at or below the forecast. The 0.82 holds only while a short shipment is truly late." |
+| Beyond the row: "You set the cushion on the weeks you scored. Isn't that circular?" | "Yes, and each forecast was tuned the same way, which is why I compare them each at its own 0.82 point; how much the tuning flatters each depends on its own misses. With thirteen weeks the point is loose: read by another common convention it is 4.1 percent instead of 2.6. The cure is a rolling origin: from 29 September 2025 every week has a year behind it, so the copies can be forecast from many origins, 2025's festival included, and the cushion set on weeks the final test never touches." |
+| "In your peak week, 1,638 of 3,485 shifts were overtime. What does that do to your plan?" | "The data say overtime carried the 2025 peak, so first I would ask what an overtime shift costs and whether any orders missed their dispatch date, since a capped peak makes every copy of it run low. If overtime can absorb a short week, being short costs only the overtime premium: at one and a half times a shift's cost the share to cover falls to 0.33, at twice it is 0.50, so the plan would sit at or below the forecast. The 0.82, a step beyond the row, holds only while a short shipment is truly late." |
 | "What did forecast error cost Zillow, and which guardrail failed?" | "Zillow Offers bought homes to resell, which needed price forecasts three to six months ahead, and it set a public guardrail on its unit economics, what it made or lost on each home, of plus or minus 200 basis points, 2 percentage points, around breakeven. Its forecasts missed in both directions by far more than it had modelled, and unit economics swung about 1,200 basis points, 12 percentage points, to an expected minus 500 to minus 700 in the fourth quarter of 2021. It also bought more homes than planned and ran short of renovation capacity. It wrote down about USD 304 million of homes bought above what they would now sell for, wound the business down and cut about 25 percent of its workforce (Zillow's Q3 2021 shareholder letter, checked 12 October 2026). The guardrail sat on the margin, which suggests the price forecast's error three to six months out was wider than the whole band. And a price forecast used to bid wins most where it guesses high, so the homes Zillow bought carried its errors one way: the letter says it bought homes 'at higher prices than our current estimates of future selling prices'." |
 
 ### How does the same question come up at an AI company?
@@ -154,7 +156,9 @@ This variant is written for this programme and quotes no company's figures.
 
 ## Transcript 2: when finance and the vendor's sponsor each want their forecast in front of the plan, which goes?
 
-It is tagged [D], a differentiator, and the fallback hour runs it.
+It is tagged [D], a differentiator, and the fallback hour runs it after part 3, the plan quantile,
+which goes beyond Friday's five topics. Its numbers use that hour's raised plan, festival-aligned plus
+2.6 percent, 20,275 packer shifts; the day itself books 19,760 at the forecast.
 
 ### What does the interviewer say?
 
@@ -213,8 +217,7 @@ technical follow-up: a test that never lets a model see the future, a measure th
 decision pays, and an honest range.
 
 Carry four numbers into a real screen and let the rest come out only when asked: the test's length,
-the seasonal naive's miss, the winner's miss, and the priced comparison at each forecast's own 0.82
-point. A string of exact figures sounds rehearsed; four that you can explain sound like work you did.
+the seasonal naive's miss, the winner's miss, and the misses priced in each direction. A string of exact figures sounds rehearsed; four that you can explain sound like work you did.
 
 ## Where are the sources?
 

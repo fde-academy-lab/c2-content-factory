@@ -25,7 +25,7 @@ Say each of these aloud, in one sentence, before reading on:
 3. A forecast made further ahead misses by more, so the last weeks of a forecast are its worst.
 4. A test shorter than the plan cannot tell you how a rule does over the whole plan.
 
-If a sentence would not come out, re-read chapter 2's hold-out slides and notebook 02's split cell
+If a sentence would not come out, re-read chapter 3's hold-out slides, chapter 6's split of the case's weeks and notebook 06's split cell
 before checking numbers.
 
 ## Did your rules give these numbers?

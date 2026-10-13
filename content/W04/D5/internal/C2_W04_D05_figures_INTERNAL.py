@@ -254,7 +254,7 @@ def holdout_reveal():
 def festival_calendar(copy=True):
     """The three Diwali weeks, each box labelled by its own Monday; copy=True hatches the house bot's copy in.
 
-    S12 shows the strip without the copy and round three's card adds it, so the twist is not spent early.
+    Half one's S46 shows the strip without the copy and round three's card adds it, so the twist is not spent early.
     """
     fig, ax = plt.subplots(figsize=(13, 3.9))
     years = [(2024, 0, 0, "Thu 31 Oct"), (2025, 1, 52, "Mon 20 Oct"), (2026, 2, 104, "Sun 8 Nov")]
