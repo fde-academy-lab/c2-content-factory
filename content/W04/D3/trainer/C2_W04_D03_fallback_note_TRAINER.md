@@ -10,7 +10,7 @@ independence, no Apriori and no algorithm that finds frequent itemsets.
 | Part | Minutes | Slides | Materials |
 |---|---|---|---|
 | The watch-list trial for ice cream and chocolate sauce | 35 | S2 to S4 | The four decision cards on S2, drawn on the board; the TA plays the growth lead |
-| One zone, one time band | 40 | S5 to S7 | Notebook 03 with the slice line from S5; the take-home's four slices plus the stock-out weeks |
+| One zone, one time band | 40 | S5 to S7 | Notebook 10 with the slice line from S5; the take-home's four slices plus the stock-out weeks |
 | The storm and the Pop-Tarts | 20 | S8 and S9 | Nothing printed |
 | The second transcript, the category manager who wants a redesign | 25 | S10 to S12 | `trainer/C2_W04_D03_interview_TRAINER.md`, the [D] transcript and its scorecard |
 
@@ -22,6 +22,15 @@ independence, no Apriori and no algorithm that finds frequent itemsets.
 | The slices | The city's top two pairs lead every slice; thin ground in Hinjewadi at night, 649 carts, where three pairs on 7 to 10 carts slip in above bread with butter; curd's fall to 0.2 percent of Hadapsar's carts in week three and its return to 28 percent in week four | A pair below the slice's floor that looks exciting: "how many carts is that lift resting on?" |
 | The storm | A sale tied to an event needs a forecast with the event in it, which is Friday's question; a pattern seen twice is thin ground | "Is strawberry Pop-Tarts with a storm a pair, like chips with cold drink?" |
 | The transcript | The four moves, answered from the log: non-milk slots rose from 6.2 to 6.4, so whatever habits did, they did not lower those clicks; a layout earns its own test | A pair that dismisses the manager: "which part of their sentence is a test worth keeping?" |
+
+## What replaces the take-home when the slices run in class?
+
+When the slices part runs, three of the take-home's four slices have been done in the room. Tonight's
+take-home then keeps its brief and changes its slice: each learner takes the slice their group did not
+run in class, and a learner whose group ran all four takes Aundh in the evening
+(`zone == "Aundh"` and `time_band == "evening"`, 1,756 carts), which no part of the day touches. The self-check
+carries no numbers for that slice, so the paragraph is marked on its reasoning: the floor as a count,
+the pair it refuses and why, and one call.
 
 ## What do you say about the faculty session?
 

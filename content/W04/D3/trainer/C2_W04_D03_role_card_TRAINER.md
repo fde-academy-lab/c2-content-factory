@@ -1,8 +1,7 @@
 # Role card: the category manager who wants milk in every slot
 
-**TRAINER ONLY.** The TA plays this role in the afternoon's unguided block (half two, S40), and the
-trainer plays it in the fallback's second transcript. Read it once before the session; say the lines
-in your own voice.
+**TRAINER ONLY.** The TA plays this role in the afternoon's unguided block (half two, S71). Read it
+once before the session; say the lines in your own voice.
 
 Swiggy Instamart, Pune. Illustrative case: the company is real, the situation and the data are
 synthetic, built for this class.
@@ -36,11 +35,12 @@ Concede only to an answer that makes Tuesday's four moves in order:
    bread is 1.04, so the slot shows shoppers what they were buying anyway.
 3. **Concede what is true:** milk belongs in the cart, which is why it needs no reminder; keep it on
    the home screen and in search.
-4. **Say what would change their mind:** a two-zone test where milk's slots clicked like the rest
-   would put milk back.
+4. **Say what would change their mind:** a test with shoppers randomised, in which a milk slot
+   earned as much margin per shopper as the suggestion it replaced, would put milk back. A milk slot
+   that merely clicked like the rest would not, since those adds could be pouches bought anyway.
 
 Do not move for an answer that calls milk a bad product, that drops milk from search or the home
-screen, or that quotes Rs 80,197 of sales as the strip's gain.
+screen, or that quotes about Rs 80,200 of sales as the strip's gain.
 
 ## How do you close the exchange?
 

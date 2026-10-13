@@ -2,6 +2,10 @@
 
 Answers: 1d 2a 3b
 
+**Applies:** Cross-sell and upsell reasoning; expected value in rupees (chapter 9, items 1 and 2); The
+confidence trap; lift near one (chapter 4, item 2); The support floor and the watch list (chapter 6,
+item 3).
+
 The set costed merchandising's proposal to bundle every product with the Rs 199 phone charger. The
 charger lists at Rs 199 and costs Kalpa Rs 120, so a Rs 20 bundle discount leaves Rs 59 of margin on
 each charger. Items 2 and 3 rest on what the lab's counts found, and are read after the lab.
@@ -18,7 +22,7 @@ bundle budget wherever the numbers point.
 
 ## What does the set test?
 
-It tests the morning's last step moved to Kalpa: a discount's margin, a bundle costed against what it
+It tests chapter 10's last step moved to Kalpa: a discount's margin, a bundle costed against what it
 can buy, and a plan that treats a strong pair and a thin pair differently.
 
 ## Why is each key right, and each other letter wrong?
@@ -27,7 +31,7 @@ can buy, and a plan that treats a strong pair and a thin pair differently.
 |---|---|---|---|
 | Q1, the margin left | d | Rs 199 less Rs 20 less Rs 120 is Rs 59 | a forgets the discount, Rs 79; b is the bundled price with the cost forgotten; c adds the discount to the margin, Rs 99 |
 | Q2, what the charger bundle costs and buys | a | A product already in most baskets, with lift just under one beside every common product, gains almost nothing from a bundle, and the discount is paid on every charger sold anyway | b treats a lift near one as a free action, when the discount is paid regardless; c pays the discount only on added chargers, which no bundle can do; d buys a gap nobody showed the bundle would close |
-| Q3, the strong pair and the thin pair | b | A strong pair above the floor, mostly Retail-Plus, is bundled for that tier with its uplift stated as a range; the thin pair is watched | a leads with the pair resting on the fewest baskets; c waits a year for an answer the counts give today; d rolls out the least supported pair everywhere |
+| Q3, the strong pair and the thin pair | b | A strong pair above the floor is bundled for the segment its baskets come from, with its uplift stated as a range; the thin pair is watched | a leads with the pair resting on the fewest baskets; c waits a year for an answer the counts give today; d rolls out the least supported pair everywhere |
 
 ## Which item is worth arguing about?
 

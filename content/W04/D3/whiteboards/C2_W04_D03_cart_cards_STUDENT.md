@@ -5,7 +5,8 @@ cart. The twelve are carts taken from the case's 40,000 Pune carts of 1 to 28 Se
 Illustrative case: the company is real, the situation and the data are synthetic, built for this
 class.
 
-**Who needs the answer.** Your group, which counts these cards by hand before any code opens.
+**Who needs the answer.** Your group, which counts these cards by hand in chapter 7, the twelve-cart
+drill, before any code opens.
 
 **The questions on the way.**
 
@@ -43,8 +44,8 @@ how many of those hold B; then count how many hold B at all.
 
 Write the three numbers under the grid only after the counts are on it: support is the top-left
 cell over 12; confidence from A to B is the top-left cell over the A row's total; lift is the top-left
-cell over what chance gives, which is 12 x (A total / 12) x (B total / 12). For the tea stall's chai
-and biscuit that was 10 x (6 / 10) x (4 / 10) = 2.4 orders, and lift was 3 / 2.4 = 1.25.
+cell over what chance gives, which is 12 x (A total / 12) x (B total / 12). For the canteen's roti
+and sabzi that was 12 x (4 / 12) x (4 / 12) = 1.33 orders, and lift was 3 / 1.33 = 2.25.
 
 The pairs the room counts, in order: bread and toned milk; chips and cold drink; ice cream and
 chocolate sauce.

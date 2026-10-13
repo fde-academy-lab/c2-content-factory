@@ -2,9 +2,15 @@
 
 Answers: 1c 2a 3b 4b 5a 6c
 
-The set ran the day's method on an invented kirana shop and an invented strip. Tea and rusk read lift
-1.25 from 30 bills where chance gives 24. Sugar and tea read exactly 1.00, which is chance. Of four
-invented pairs, B and D earn slots, A is chance and C goes on the watch list. A slot shown 30,000
+**Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3, items 1 and 2); The
+confidence trap; lift near one (chapter 4, items 2 and 6); Basket analysis on the order items (chapter
+5, item 5); The support floor and the watch list (chapter 6, items 3 and 6); Cross-sell and upsell
+reasoning; expected value in rupees (chapter 9, items 4 and 6).
+
+The set ran the day's method on an invented hardware shop and an invented strip. Paint and brushes
+read lift 1.24 from 28 bills where chance gives 22.5. Sandpaper and paint read exactly 1.00, which is
+chance. Of four
+invented pairs, B and D earn slots, A is a trap near one and C goes on the watch list. A slot shown 30,000
 times a day earns Rs 7,500 of margin and hands Rs 2,250 back as discount, leaving Rs 5,250.
 
 **Who needs the answer.** You, to check your six letters before tomorrow. The same counts and the same
@@ -27,9 +33,9 @@ the order the counting code runs in, and a plan for three bundles.
 
 | Item | Key | Why it holds | Why the others fail |
 |---|---|---|---|
-| Q1, tea and rusk's lift | c | Expected is 200 x 0.6 x 0.2 = 24; seen 30; 30 / 24 = 1.25 | a is the confidence from rusk, 30 of 40; b is the confidence from tea, 30 of 120; d is the support, 30 of 200 |
-| Q2, a lift of 1.00 | a | Seen 48 equals expected 48: the pair turns up exactly as often as chance | b reads a confidence of 0.60 as a bundle; c is false, since 32 sugar bills hold no tea; d describes a lift below one |
-| Q3, the four pairs | b | B and D clear the 1 percent floor and a lift of 1.5; A is chance; C is too thin for a slot | a gives C a slot below the floor; c gives A a slot at chance; d admits C, below the floor |
+| Q1, paint and brushes' lift | c | Expected is 200 x 90/200 x 50/200 = 22.5; seen 28; 28 / 22.5 = 1.24 | a is the confidence from brushes, 28 of 50; b is the confidence from paint, 28 of 90; d is the support, 28 of 200 |
+| Q2, a lift of 1.00 | a | Seen 36 equals expected 36: the pair turns up exactly as often as chance | b reads a confidence of 0.45 as a bundle, when paint is in 45 percent of all bills anyway; c is false, since 44 sandpaper bills hold no paint; d describes a lift below one |
+| Q3, the four pairs | b | B and D clear the 1 percent floor and a lift of 1.5; A is a trap, near one on plenty of bills; C is too thin for a slot and goes on the watch list | a gives C a slot below the floor; c gives A a slot at chance; d admits C, below the floor |
 | Q4, the slot's day | b | 30,000 x 0.05 x 0.5 = 750 adds; 750 x Rs 10 = Rs 7,500; less 750 x Rs 3 = Rs 2,250; Rs 5,250 | a forgets the discount; c leaves out the add rate, 1,500 clicks x Rs 10; d is sales, 750 x Rs 30 |
 | Q5, the order of the lines | a | The sets come first, then the single counts, then the pair counts, then lift reads the counts | b counts items before any set exists; c computes lift before any count exists; d counts pairs before the sets exist |
 | Q6, three bundles | c | Y beats chance on enough bills and carries a margin to price; Z is watched; X is chance | a runs the thinnest bundle first; b runs a bundle at chance; d spends three discounts to learn what the counts already say |

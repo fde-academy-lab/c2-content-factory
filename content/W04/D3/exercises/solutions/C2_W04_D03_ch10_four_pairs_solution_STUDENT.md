@@ -2,6 +2,9 @@
 
 Answers: 1c 2a 3b 4a
 
+**Applies:** The support floor and the watch list (chapter 6, items 1, 3 and 4), with lift from chapter
+3; The confidence trap; lift near one (chapter 4, item 2).
+
 The drill read four pairs from 40,000 Instamart carts. Under a floor of 1 percent of carts and a lift
 of at least 1.5, chips and cold drink (3.39) and onions and tomatoes (1.70) earn slots. Bread and milk
 sits at lift 1.04, which is chance. Ice cream and chocolate sauce reads 4.60 on 100 carts, below the
@@ -30,7 +33,7 @@ it does.
 | Q1, the pairs that earn a slot | c | Only chips and cold drink and onions and tomatoes clear both the 1 percent floor and a lift of 1.5 | a drops onions and tomatoes, which clears both bars; b admits ice cream, below the floor; d admits ice cream and ignores the floor |
 | Q2, ranking by support | a | Bread and milk tops by support because milk is in most carts, and its lift of 1.04 says the pair is chance | b names the wrong top pair and calls 7.5 percent thin; c names the wrong top pair; d names a pair at the bottom of a support ranking |
 | Q3, the strong thin pair | b | The pair is real but shows only beside ice cream, so it goes to a trial whose pass rule is fixed before it starts | a gives it a slot on 100 carts before any test; c throws away a pair that may hold up; d moves the rule to fit the pair |
-| Q4, why the floor sits at 1 percent | a | At 0.1 percent, 1,221 pairs pass, many resting on about 40 carts, where lift moves by luck | b is false, since chips and cold drink sit at 5.0 percent; c is false, since milk's pairs sit far above the floor; d names no reason a floor exists |
+| Q4, why the floor sits at 1 percent | a | At 0.1 percent, 1,221 pairs pass, many resting on about 40 carts, where luck alone can carry a lift past the bar, as chapter 6's month of pure chance showed | b is false, since chips and cold drink sit at 5.0 percent; c is false, since milk's pairs sit far above the floor; d names no reason a floor exists |
 
 ## Which item is worth arguing about?
 

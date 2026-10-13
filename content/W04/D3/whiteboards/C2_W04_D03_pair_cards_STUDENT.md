@@ -1,7 +1,7 @@
 # Where does each pair belong on the action map?
 
-Handed out in chapter 3, once notebook 03 has ranked the pairs above the floor and listed the thin
-ones below it, so every number here is one the room has already computed in notebooks 02 and 03. Print one set per group and cut along the table's lines, one card
+Handed out in chapter 10, once notebook 10 has ranked the pairs above the floor and listed the thin
+ones below it, so every number here is one the room has already computed in notebooks 08 and 10. Print one set per group and cut along the table's lines, one card
 per pair. Each group places its cards on the wall's action map and defends one placement in a
 sentence. Swiggy Instamart, Pune, 40,000 carts. Illustrative case: the company is real, the situation
 and the data are synthetic, built for this class.

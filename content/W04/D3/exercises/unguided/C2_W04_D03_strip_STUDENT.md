@@ -8,9 +8,13 @@ Friday: rank the pairs the strip should show, explain the fall, and put a rupee 
 Illustrative case: the company is real, the situation and the data are synthetic, built for this
 class.
 
-This is the afternoon's unguided set, run on notebook 03 in the same 35 minutes as each group's
+This is the afternoon's unguided set, run on notebook 10 in the same group work as each group's
 one-page strip: the page is what the group hands in, and these four items ask the same steps, so a
 group posts its four letters once its page is done.
+
+**Applies:** Cross-sell and upsell reasoning; expected value in rupees (chapter 9, item 1); The support
+floor and the watch list (chapter 6, item 1); The confidence trap; lift near one (chapter 4, items 3
+and 4); the case's doubts (chapter 10, item 2).
 
 **Who needs the answer.** The growth lead, who takes one strip and one rupee figure to Friday's
 review, where the category manager will argue for milk. A figure that overstates the gain spends the
@@ -18,7 +22,7 @@ growth lead's credibility the first time finance checks it.
 
 **The questions on the way.**
 
-- What does re-ranking recover in a month?
+- What does taking milk out recover in a month?
 - What survives the heavy-buyer check?
 - How do you answer the category manager?
 - How would the same idea score an AI shopping assistant?
@@ -44,12 +48,12 @@ Post exactly this shape: xxxx
 
 ---
 
-## What is a slot worth, and what does re-ranking recover?
+## What is a slot worth, and what does taking milk out recover?
 
 This comes up at work whenever a placement is sold internally: a team asks for a slot and finance
 asks what the slot earns.
 
-### Q1. Milk holds half of the three slots' impressions: what does re-ranking recover in a month?
+### Q1. Milk holds half of the three slots' impressions: what does taking milk out recover in a month?
 
 *Level L5, a design call · asked in global capability centre interviews.* Use the month's 30 days.
 
@@ -92,5 +96,5 @@ is a rule that always suggests the most popular items.
 
 a) By its acceptance rate on live traffic, the share of its suggestions that shoppers take
 b) By the average confidence of the item pairs that sit behind each of its suggestions
-c) By the lift of its accepted suggestions over a popularity baseline on held-out carts
+c) By how often it recovers an item hidden from held-out carts, against a popularity list
 d) By how many distinct items it manages to suggest across a whole week of carts

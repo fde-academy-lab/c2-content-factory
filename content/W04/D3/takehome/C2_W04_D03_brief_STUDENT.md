@@ -35,7 +35,7 @@ Hand in one notebook that runs top to bottom, with these five things, each under
 question:
 
 1. The slice's number of carts, and its floor: 1 percent of the slice's carts, as a count.
-2. The pairs table on the slice, built the way notebook 02 builds it, with `Counter` over
+2. The pairs table on the slice, built the way notebooks 05 and 08 build it, with `Counter` over
    `combinations` of each cart's sorted items.
 3. The four pairs with the highest lift at or above the slice's floor, each with its lift and the
    number of carts holding both.
@@ -53,3 +53,11 @@ call the growth lead can repeat.
 
 The self-check (`takehome/C2_W04_D03_selfcheck_STUDENT.md`) lists the numbers each slice should give.
 Open it after your notebook runs, never before.
+
+## What else is due before Thursday?
+
+- **Read.** Practical Business Python's "Introduction to Market Basket Analysis in Python",
+  https://pbpython.com/market-basket-analysis.html (checked 13 October 2026): skip the library set-up
+  and read the section on lift, about 20 minutes.
+- **Recap.** Write one line, in your own words, on what a lift below one says about two items, with
+  one pair from today that reads below one. Bring it to Thursday's first minutes.

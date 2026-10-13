@@ -2,6 +2,9 @@
 
 Answers: 1b 2c
 
+**Applies:** Support, confidence and lift, derived by counting (chapters 1 to 3; item 2 is chapter 3's
+second route).
+
 The drill read coriander and green chillies from four counts: 6,000 carts with coriander, 3,200 with
 green chillies, 1,440 with both, 40,000 in all. Support is 3.6 percent. Confidence is 0.24 from
 coriander and 0.45 from green chillies. Chance alone puts the pair in 480 carts, so lift is 3.00.
