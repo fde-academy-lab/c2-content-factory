@@ -78,8 +78,9 @@ if [ -n "$CHROME_PATH" ]; then
   cat > "$HOME/.mmdc-puppeteer.json" << JSON
 { "executablePath": "$CHROME_PATH", "args": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"] }
 JSON
-  # wrapper so plain "mmdc" works without downloading a second browser
-  MMDC_REAL="$(command -v mmdc 2>/dev/null)"
+  # wrapper so plain "mmdc" works without downloading a second browser; the real binary is found
+  # past the wrapper, since a second run would otherwise write a wrapper that runs itself
+  MMDC_REAL="$(type -ap mmdc 2>/dev/null | grep -vx "$HOME/.local/bin/mmdc" | head -1)"
   if [ -n "$MMDC_REAL" ]; then
     cat > "$HOME/.local/bin/mmdc" << WRAP
 #!/usr/bin/env bash
