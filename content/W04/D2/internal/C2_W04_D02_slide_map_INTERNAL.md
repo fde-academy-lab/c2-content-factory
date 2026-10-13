@@ -35,7 +35,7 @@ Written by C2_W04_D02_renumber_INTERNAL.py on the concept-first rebuild of 13 Oc
 | S29 | S52 | half1 | Cut five elements to the two that carry the claim |
 | S30 | S53 | half1 | Chapter 5 adds the appendix drawer |
 | S31 | S55 | half2 | Studio round two: the seats swap |
-| S32 | S54 | half1 | Three topics applied: claim, drawer, four moves |
+| S32 | S54 | half1 | Chapter 5 adds the defence and the drawer |
 | S33 | S71 | half2 | Predict: which number would check this estimate? |
 | S34 | S72 | half2 | Answer: check in the same unit, period and definition |
 | S35 | S59 | moved | the canteen's tea, now chapter 6's hand count, with new invented numbers |
