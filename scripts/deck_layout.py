@@ -316,23 +316,75 @@ def title_band(slide, title, section=False, depth=False, subtitle=None):
         label(slide, MARGIN, SUB_TOP, WIDTH, sub, s_size, MUTED)
 
 
+# The room an ellipsis takes in the chapter strip, where it stands for the chapters it hides.
+MORE_W = 0.28
+# tracked_width is set wide on purpose, for sizing pills. Measured against the Week 3 Monday deck
+# rendered on 13 October 2026, a 7-point footer name prints at about 0.85 of it and the slide's
+# number, mostly digits, spaces and a middle dot, at about 0.7, so the strip tests what prints.
+STRIP_TEXT, NUMBER_TEXT = 0.85, 0.7
+
+
+def strip_fits(chapters, widths, lo, hi, current, limit):
+    """Whether chapters lo to hi, with an ellipsis for each end that hides some, end before limit."""
+    x = MARGIN + (MORE_W if lo > 0 else 0)
+    end = x
+    for i in range(lo, hi + 1):
+        end = x + 0.12 + STRIP_TEXT * tracked_width(chapters[i], 7, bold=i == current)
+        x += widths[i] + 0.22
+    if hi < len(chapters) - 1:
+        end = x + 0.15
+    return end <= limit
+
+
+def strip_window(chapters, widths, current, limit):
+    """The first and last chapter the strip shows: all of them when they fit before the slide's
+    number, otherwise the current chapter and as many neighbours, taken in turn after and before
+    it, as fit."""
+    n = len(chapters)
+    if strip_fits(chapters, widths, 0, n - 1, current, limit):
+        return 0, n - 1
+    lo = hi = min(current or 0, n - 1)
+    after = True
+    while True:
+        tries = [(lo, hi + 1), (lo - 1, hi)] if after else [(lo - 1, hi), (lo, hi + 1)]
+        for a, b in tries:
+            if a >= 0 and b < n and strip_fits(chapters, widths, a, b, current, limit):
+                lo, hi = a, b
+                break
+        else:
+            return lo, hi
+        after = not after
+
+
 def footer_band(slide, footer, number, total, section=False, chapters=None, current=None,
                 slide_id=None):
-    """The chapter breadcrumb, with the current chapter lit, and the slide's number."""
+    """The chapter breadcrumb, with the current chapter lit, and the slide's number.
+
+    A strip whose names run past the slide's number shows the current chapter and its neighbours,
+    with an ellipsis at each end that hides some, so a nine-chapter morning no longer prints its
+    last names under the number and off the slide; a strip that fits is drawn whole, as before.
+    """
     ink = LILAC if section else MUTED
+    right = f"{slide_id}  \u00b7  {number} / {total}" if slide_id else f"{number} / {total}"
     if chapters:
+        widths = [min(2.4, 0.2 + len(name) * 7 * CHAR_W / 96 + 0.1) for name in chapters]
+        limit = SLIDE_W - MARGIN - NUMBER_TEXT * tracked_width(right, 7.5, bold=False) - 0.15
+        lo, hi = strip_window(chapters, widths, current, limit)
         x = MARGIN
-        for i, name in enumerate(chapters):
+        if lo > 0:
+            label(slide, x, FOOTER_Y + 0.06, MORE_W, "\u2026", 7, ink)
+            x += MORE_W
+        for i in range(lo, hi + 1):
             here = i == current
             dot = LAV if (section and here) else (ACC if here else (SOFT if section else LILAC))
             rect(slide, x, FOOTER_Y + 0.12, 0.07, 0.07, dot, shape=MSO_SHAPE.OVAL)
             colour = (WHITE if section else ACC) if here else ink
-            w = min(2.4, 0.2 + len(name) * 7 * CHAR_W / 96 + 0.1)
-            label(slide, x + 0.12, FOOTER_Y + 0.06, w, name, 7, colour, bold=here)
-            x += w + 0.22
+            label(slide, x + 0.12, FOOTER_Y + 0.06, widths[i], chapters[i], 7, colour, bold=here)
+            x += widths[i] + 0.22
+        if hi < len(chapters) - 1:
+            label(slide, x, FOOTER_Y + 0.06, MORE_W, "\u2026", 7, ink)
     else:
         label(slide, MARGIN, FOOTER_Y + 0.06, WIDTH - 1.6, footer, 7.5, ink)
-    right = f"{slide_id}  \u00b7  {number} / {total}" if slide_id else f"{number} / {total}"
     label(slide, SLIDE_W - MARGIN - 1.6, FOOTER_Y + 0.06, 1.6, right, 7.5, ink,
           align=PP_ALIGN.RIGHT)
 
