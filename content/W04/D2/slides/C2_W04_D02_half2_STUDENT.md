@@ -432,7 +432,7 @@ Transition: the answer, and the rule behind it.
 ## S72. Answer: check in the same unit, period and definition
 *Why does only one of the four check the estimate directly, and what do you do when it does not exist?*
 
-**The answer is c, and nobody publishes it.** a counts rider requests over six weeks in twelve zones: another unit, a longer period and a slice of the city. b counts sign-ups, a different definition from drivers online at one moment. d is not wrong: it checks one link in the chain, a ratio the case's own data holds over a wider period than one evening, and when the direct check does not exist, that is the honest fallback the afternoon uses. Chapter 6's three tests decide each: same unit, same period, same definition.
+**The answer is c, and nobody publishes it.** a counts rider requests over six weeks in twelve zones: another unit, a longer period and a slice of the city. b counts sign-ups, a different definition from drivers online at one moment. d is not wrong: it checks one link in the chain, a ratio the case's own data holds over a wider period than one evening, and when the direct check does not exist, that is the honest fallback the afternoon uses.
 
 ```notes
 LIVE, 1 minute. Point at the three words on the board since chapter 6: unit, period, definition.

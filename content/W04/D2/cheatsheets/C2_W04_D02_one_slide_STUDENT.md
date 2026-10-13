@@ -80,7 +80,7 @@ flowchart LR
 | Last | The action, its cost in rupees and weeks, who signs |
 | Throughout | No method word: "divided by", never "denominator" |
 
-**Crux:** Five rules, one page, read alone in two minutes.
+**Crux:** The one page follows five rules and is read alone in two minutes.
 
 ## Panel 7: What does Uber's city head take to Thursday?
 

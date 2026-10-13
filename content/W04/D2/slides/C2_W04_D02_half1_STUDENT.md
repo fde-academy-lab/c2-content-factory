@@ -755,7 +755,7 @@ number with its denominator, the caveat, the action with its cost. The saving ra
 Rs 1.16 crore went to driver-weeks that accepted under half their offers, and the range assumes a
 half to a fifth of that is still paid because those drivers start accepting: half still paid saves
 Rs 58 lakh, a fifth saves Rs 92.7 lakh. The range runs to a tenth of a lakh only because it is
-arithmetic on Monday's total; the per-trip rate is the real unknown, since a rate set high pays back
+arithmetic on Monday's total; the per-trip rate is still unknown, since a rate set high pays back
 what the floor stops paying and a rate set low saves more than the range, so the sentence names it,
 and the test fixes it first at a rate that pays the drivers who already accept what the floor paid
 them. The saving is the scheme's, across the 1,200
@@ -833,7 +833,7 @@ Transition: slide A, exactly as it arrived.
 
 ![Slide A as the operations analyst sent it](../whiteboards/C2_W04_D02_cluttered_slide_STUDENT.png)
 
-**Nine numbers from Monday's dashboard, each given the same weight, under a title that names a topic.** The reader cannot tell which number matters, and the first number the eye meets is the one Monday showed to be the wrong one to celebrate.
+**All nine of Monday's dashboard numbers get the same weight, under a title that names a topic.** The reader cannot tell which number matters, and the first number the eye meets is the one Monday showed to be the wrong one to celebrate.
 
 ```notes
 LIVE, 2 minutes. Give the room 30 seconds of silence with the slide, then ask what it is asking the
@@ -1154,7 +1154,7 @@ label: Move 3 | title: Concede | body: Say the true part out loud, in plain word
 label: Move 4 | title: Change my mind | body: Name the fact that would move you, and how you would get it | tone: dark
 ```
 
-**Chapter 3's four moves, on one card.** The scorer ticks each move as it is heard and never scores the final number.
+The scorer ticks each of chapter 3's four moves as it is heard and never scores the final number.
 
 ```notes
 LIVE, 30 seconds. Hand out the scorer's cards: chapter 3's four moves, taught on the school this
@@ -1193,7 +1193,7 @@ Transition: round one of the studio.
 | Objector | Reads one role's objection from its card and pushes back once | One role card |
 | Scorer | Ticks each move heard: restate, answer, concede, change my mind | The four-moves card |
 
-**Three turns of seven minutes.** The studio is the morning's practice: build a slide, present it, take an objection, get scored, rebuild. After each turn the seats rotate inside the three, so every member presents once, objects once and scores once.
+**The round runs three turns of seven minutes.** The studio is the morning's practice: build a slide, present it, take an objection, get scored, rebuild. After each turn the seats rotate inside the three, so every member presents once, objects once and scores once.
 
 ```notes
 LIVE, 23 minutes. Two minutes to form threes and hand out cards, then 3 x 7. Thirty-five learners

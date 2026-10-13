@@ -693,7 +693,7 @@ plt.show()
 
         ## What does a full defence sound like?
 
-        Named last, the four moves, in order. **Restate** the objection until its owner agrees with
+        The four moves, named last, run in this order. **Restate** the objection until its owner agrees with
         your version. **Answer** from a named line of the evidence. **Concede** the true part out
         loud. Say **what would change your mind**, so the claim can be tested. Restating comes
         first because the objector has to accept your version before any answer lands; Rapoport's
@@ -1219,8 +1219,8 @@ plt.show()
 
         ## What does a full defence of the monsoon objection sound like?
 
-        Notebook 03's four moves, restated here so this notebook stands alone: restate, answer,
-        concede, what would change your mind. The answer names a line of evidence the cells
+        A full defence uses notebook 03's four moves: restate, answer, concede, what would change
+        your mind. The answer names a line of evidence the cells
         computed.
         """),
         code('''
@@ -1530,7 +1530,7 @@ plt.show()
         **Why it is wrong.** The answer is a. Households are people divided by about four, so the town
         has about 6,000; the chain multiplied the unit, and nothing after it could repair that. **The
         check:** households never exceed people. **The fix:** write the unit beside every factor
-        before multiplying. The other two tests fail the same quiet way: a 28-day pack of 1.5 GB a
+        before multiplying. Mistakes against the other two tests are just as easy to miss: a 28-day pack of 1.5 GB a
         day is 42 GB and a 30-day month at the same rate is 45 GB, so compare per day; Gulmohar's
         113 passes are 83.7 percent of the 135 who sat and 75.3 percent of the 150 enrolled, so use
         the denominator the question names.
@@ -1843,7 +1843,7 @@ def nb08():
 
         1. Which number would check the estimate?
         2. What does the chain give, and which assumption moves the answer most?
-        3. What does the trap of a day's trips divided by an hour's cost?
+        3. What does the trap of dividing a day's trips by an hour's rate cost?
         4. Is the estimate sane when checked like for like against the case's own data?
         """),
         code(SETUP + '''
@@ -1970,7 +1970,7 @@ check("trips per person moves the answer most", swing.index[-1] == "weekday Uber
         with everything else held, wider than any other assumption; the idle share moves it from
         about 5,100 to 6,400.
 
-        ## What does the trap of a day's trips divided by an hour's cost?
+        ## What does the trap of dividing a day's trips by an hour's rate cost?
 
         **The plausible wrong answer.** "1 crore people, 1 trip per 100 people, so 1 lakh trips; a
         driver does 2.4 trips an hour; so about 41,700 drivers." A city head who takes that to the
