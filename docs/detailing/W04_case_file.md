@@ -198,17 +198,22 @@ None on Monday. Tuesday's drivers-at-peak question uses Monday's `zone_weeks` as
 ### The Kalpa transfer
 
 The lab's case: the head of Retail-Plus's "reorders per member", inflatable by auto-reorders (the
-row). The Monday generator writes `app_reorders` (`reorder_id`, `customer_id`, `placed_ts`,
-`product_id`, `value_rs`, `auto`, `status`: cancelled, merged into a later order, pending) for
-Retail-Plus members over July to September 2026, with the auto-reorder window fixed at 10 to 30
-September 2026 and the comparison at 20 August to 9 September 2026. Plants (TRAINER until the lab):
-reorders placed per Retail-Plus member in the window over the comparison prints 1.22; booked revenue
-per member (orders of any status) prints 0.96; the auto-reorders are low-value consumables, most
-cancelled by members and the rest merged into the next manual order, so none is a separate delivered
-order and v4's orders stay frozen. The lab's twelve rows: seven members with their orders and
-placements in the two windows, values kept at least 0.05 from 1.22 and 0.96. If no window satisfies
-both ratios with v4 untouched, the generator may re-date Retail-Plus orders within July to September
-only, keeping every v4 contract line true, and says so in the facts file. The unguided exercise writes
+row). The lab reads Thursday's membership table, `kalpa_memberships` (120 Retail-Plus members, copied
+byte for byte into Monday's `kalpa_members`), and the Monday generator writes `kalpa_app_reorders`
+(`reorder_id`, `customer_id`, `placed_ts`, `value_rs`, `auto`, `status`: delivered, returned,
+cancelled, merged into a basket the member already had open, or pending; and `order_id`, the v4
+warehouse order a placement became, blank if none): 89 placements by the 120 members across two
+windows, the auto-reorder window fixed at 10 to 30 September 2026 and the comparison at 20 August to 9
+September 2026. Both windows are
+divided by the same 107 members, those in the tier by 19 August 2026, the monsoon sale's last day.
+Plants (TRAINER until the lab): reorders placed per member in the window over the comparison prints
+1.22 (44 placements against 36); booked value per member (placements of any status) prints 0.96; and
+every placement in the window is an auto-reorder that was cancelled (22), merged (16) or is pending
+(6), so none became an order and v4's orders stay frozen. The ten comparison-window placements that
+became orders are v4 orders with the same customer, date, amount and status, and the seven
+Retail-Plus app orders v4 holds for 10 to 30 September sit outside the log by design. The lab's twelve
+rows: seven of the 107 with placements in both windows, whose hand count (1.33 and 0.84) leans the way
+the full table does and sits at least 0.10 from each ratio. The unguided exercise writes
 Kalpa's growth-plan north star on the same template: delivered orders per active customer per month,
 with revenue per active customer, discount share of booked revenue and the return rate as guardrails,
 and add-to-cart events per active app member and new Retail-Plus sign-ups as leading inputs (the

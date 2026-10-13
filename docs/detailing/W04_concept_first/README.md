@@ -18,23 +18,36 @@ file, the cases' data and every number the cases print stand.
 
 ## The shape every day takes
 
-1. The ticket, as a short hook: the question the day answers, in two to ten minutes.
+1. The topic cover, carrying the row's Day focus, then the week map with today lit.
 2. The topics slide and the concept map. The topics slide lists the row's subtopics verbatim, each with
    its chapter, its minutes and its notebook. The concept map shows how today's ideas connect to each
-   other, to Weeks 1 to 3 and to the rest of the week.
-3. The concept chapters, in the separate deck `slides/C2_W04_D0{d}_concepts_STUDENT.md`. Each chapter is
-   headed `## SECTION n: <Topic>: <question>?` and taught from zero. It runs the misconception and a
-   prediction, one invented everyday example (labelled) carried through the chapter, the idea derived from
-   tiny numbers, a worked example and a check question, and it hands over to the case chapter that
-   applies it.
-4. The case chapters, in the half decks, each retitled `<Topic>: <question>?` with the concept it applies.
+   other, to Weeks 1 to 3 and to the rest of the week. Then the case ticket in one slide, as the
+   destination the topics will be used on.
+3. The concept chapters, at the front of `slides/C2_W04_D0{d}_half1_STUDENT.md`, right after the topics
+   slide, the map and the ticket slide. Each chapter's opener is headed `## SECTION n: <Name>`, where the
+   Name is the row's subtopic in the row's words (about 48 characters at most), and the italic promise
+   beneath it asks the chapter's question; where a plan titles a chapter as a question, the question
+   moves to the promise. The chapter is taught from zero and runs the misconception and a prediction, one
+   invented everyday example (labelled) carried through the chapter, the idea derived from tiny numbers,
+   a worked example and a check question, and it hands over to the case chapter that applies it. A
+   concept chapter that the four-ideas-per-two-hours rule moves to the afternoon opens `half2`, still
+   before the case chapter that applies it.
+4. The case chapters, after the concept block in the same decks, each opener titled by its case step
+   with the subtopics it applies, its question in the promise. The full ticket read opens them where the
+   plan moves it there.
 5. The Kalpa lab last.
 
 The day's notebooks follow the same order: the concept notebooks first, one per concept chapter and named
-by its topic (`C2_W04_D0{d}_01_<topic>_STUDENT.ipynb`), then the case notebooks renamed with the topic they
-apply, then the Kalpa lab. `internal/C2_W04_D0{d}_coverage_INTERNAL.yaml` maps each row subtopic to its
-chapter, deck, notebook, exercise items and Kahoot items, and `scripts/coverage_check.py`, which
-`scripts/verify.py` runs, fails the day when a subtopic has none.
+by its topic (`C2_W04_D0{d}_01_<topic>_STUDENT.ipynb`, the file name carrying at least two of the Name's
+idea-words, so Monday's `04_definition_lines` becomes `04_numerator_denominator_window_exclusions` and
+Tuesday's `04_guesstimate` becomes `04_guesstimate_clarify_map_calculate_validate`), then the case
+notebooks renamed with the topic they apply, then the Kalpa lab.
+`internal/C2_W04_D0{d}_coverage_INTERNAL.md`, in the shape
+`.claude/skills/day-pack-builder/references/coverage-matrix.md` sets, maps each row subtopic to its chapter, slides, notebook,
+exercise items, Kahoot items and minutes, and each case chapter to the subtopics it applies;
+`scripts/coverage_check.py`, which `scripts/verify.py` runs, fails the day when a subtopic has no chapter
+or no notebook carrying its name. Where a plan names a separate concepts deck, its concept slides go to
+the front of `half1` instead and the plan is otherwise unchanged.
 
 ## Settled where a plan left a choice
 
@@ -48,3 +61,14 @@ chapter, deck, notebook, exercise items and Kahoot items, and `scripts/coverage_
   example.
 - Each day's invented examples are self-contained; where two days use a similar everyday setting, the
   second names it differently.
+- Tuesday's two spoken and written chapters (defending under challenge, the written business case) each
+  get a notebook that holds the chapter's example as data, so every chapter has its notebook.
+- The concept block takes the sizes the plans give it. On a day with a faculty block, a case chapter's
+  deeper slides are marked `D` for self-study; the twelve-row count, the trap, the unguided round, the
+  interview room and the Kalpa lab are never cut.
+- Thursday's fifth concept chapter, the fix-first decision, opens the afternoon, as Wednesday's seventh
+  does, so the morning keeps to four new ideas per two hours.
+- The explorer's home map gains each day's subtopics on its day nodes once the five days merge.
+- Weeks 1 to 3: Week 2 Wednesday to Friday name their topics in their decks before each day runs; Week 1
+  and Week 2 Monday and Tuesday, already taught, get revision notes headed by their row subtopics before
+  ME1, the first major exam, in Week 5; Week 3 Monday gets a topics slide.

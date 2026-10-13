@@ -221,21 +221,18 @@ spine.
 | 10 | "A late shipment costs five times an idle shift"; the plan quantile and other Friday numbers equalled Kalpa's plants | Pull request 233: 4.6 times a spare shipment; the plant-margin rule applies to Kalpa planted values of the same quantity | F4 prints 4.6 times; the 0.82 stays beside Wednesday's Kalpa confidence 0.82, a different quantity |
 | 11 | Spine section 1's map counted five companies and named a trainer-only window | Pull request 233: four companies, and Kalpa's node names reorders per member | The map already said so |
 
-Still open, for the orchestrator or the next pass:
+How the orchestrator closed the four points left open (13 October 2026):
 
 - W5 prints the Wednesday case's thin pair, ice cream with chocolate sauce, at 0.25 percent of carts,
-  the same quantity and value as Kalpa's planted thin pair (`kalpa_thin_support`, 0.25 percent).
-  Wednesday's own pack prints the same number, so a change belongs to Wednesday first.
+  the same quantity and value as Kalpa's planted thin pair (`kalpa_thin_support`, 0.25 percent). The
+  requester read it on 13 October 2026 and kept it as it is.
 - Th3's 64 percent, checkout start to order per session, prints beside Kalpa's planted cart to
   checkout in the window, 63.6. The steps differ and Thursday's own S28 prints the 64, so it stays.
 - At a 390 px phone width every chart label prints at 5 to 6 px, and M3's table scrolls the page
-  sideways by 117 px. A phone layout means reshaping all 21 drawings, which belongs to a pass of its
-  own.
-- The case file, since pull request 239, says 8,027 of the August cohort's 13,000 "joined that
-  week", and the facts' `aug_sale_members` says the same; Thursday's self-check and fallback deck
-  say the sale week brought 9,108, the 8,027 who joined on the sale's discount and 1,081 who did not
-  (`sale_week_organic_members`). The page prints neither count, so the fix belongs to the case file's
-  one sentence and the facts' `how` line.
+  sideways by 117 px. The requester read it on 13 October 2026 and kept the page as it is.
+- The sale-week wording is fixed: the case file says 8,027 of the August cohort's 13,000 joined on the
+  discount and the sale week brought 9,108 in all, and the facts' `aug_sale_members` line says the
+  8,027 joined on the sale's discount, all in the sale week.
 
 ## The proofs
 
