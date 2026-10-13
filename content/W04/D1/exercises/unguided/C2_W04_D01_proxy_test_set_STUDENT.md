@@ -35,7 +35,7 @@ stayed the same. Once pay follows a count, the people paid find the cheapest way
 
 a) Tokens handed out at the counter, as the owner reads them each evening
 
-b) Plates collected at the washing station at the end of the day
+b) Plates collected at the washing station after each meal
 
 c) Kilograms of rice cooked from the evening's count of tokens
 

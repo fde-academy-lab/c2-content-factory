@@ -892,7 +892,7 @@ Transition: who needs the answer.
 label: The count | title: Who controls it? | body: The person paid, or the person served.
 label: The proof | title: Does it need a receipt? | body: A press, or a customer's OTP.
 label: The clock | title: Who starts it? | body: The person timed, or the system.
-label: The rules | title: Did they change quietly? | body: A new kind of count, undated. | tone: dark
+label: The rules | title: Did they change unannounced? | body: A new kind of count, undated. | tone: dark
 ```
 
 ```notes

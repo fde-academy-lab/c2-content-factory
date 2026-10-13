@@ -500,9 +500,9 @@ check("the second route gives the same 0.60 and 0.36 licences per learner",
 '''),
         md('''
         **What happened.** Every instructor booked fewer learners for the test in 2026, and every
-        instructor's rate rose, so the move was the school's, not one instructor's. The second route
-        lands on the same 0.36, because licences per learner is passes over everyone enrolled however
-        the passes are added up.
+        instructor's rate rose, so all four instructors made the move. The second route
+        lands on the same 0.36, because licences per learner is passes over everyone enrolled, whichever
+        way the passes are added up.
 
         ### Your turn: how does instructor D's 2026 read?
 

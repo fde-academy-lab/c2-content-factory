@@ -21,13 +21,13 @@ line, or by changing one line and dating the change.
 | Item | Key | The question in one line | Why the key holds | Why each other option fails |
 |---|---|---|---|---|
 | 1 | b | How many lines does "Licences, yearly, as high as possible" hold? | "Licences" is the numerator, with nothing said about whom it is counted over, and "yearly" is the window; the other five lines are blank. | a: it misses the window, "yearly". c: "as high as possible" is a wish, a target with no value, and a target is no line of a definition. d: with no denominator and no exclusions, the number is not computable. |
-| 2 | c | Which line answers the boy's quiet week? | The rate divides by orders billed that week, so a quiet week lowers the top and the bottom together; a boy who confirms every order he carries reads the same rate in a quiet week as in a busy one. | a: a calendar week does not even out anything inside it. b: leaving a quiet week's orders out would hide the week instead of reading it fairly. d: the gaming note pairs each guardrail with the gaming it catches and says nothing about demand. |
+| 2 | c | Which line answers the boy's quiet week? | The rate divides by orders billed that week, so a quiet week lowers the top and the bottom together; a boy who confirms every order he carries reads the same rate in a quiet week as in a busy one. | a: a calendar week does not even out anything inside it. b: leaving a quiet week's orders out hides the week, so the page reads nothing for it. d: the gaming note pairs each guardrail with the gaming it catches and says nothing about demand. |
 | 3 | d | What does the page offer the son? | The denominator line already prints the count of orders billed beside the rate, so the son sees growth every week on the same line, without a second number to chase. | a: a growth count as a guardrail catches no way of gaming the north star, the trap notebook 06 flags. b: two north stars read in turn let each week pick the one that looks better. c: the son's concern is real; the page shows it through the count beside the rate. |
 
 ## Which item is worth arguing about?
 
-Item 3, option a. Turning the losing team's number into a guardrail feels generous, and it is the
-answer most groups give. A guardrail earns its place by the harm it catches, and a second growth
+Item 3, option a. Turning the losing team's number into a guardrail feels generous, which makes it
+the tempting answer. A guardrail earns its place by the harm it catches, and a second growth
 count catches none, so the page would carry a line that can never fire. What the son needs is to see
 growth, and the count printed beside the rate already shows it.
 

@@ -193,11 +193,11 @@ flowchart LR
 | Chapter 2 | 10 | S14 to S21 | Notebook 02; north star set Q1 | The pass rate 0.60 to 0.90 against licences per learner 0.60 to 0.36 (invented); the seesaw named | S20 to its stats |
 | Chapter 3 | 10 | S22 to S29 | Notebook 03; leading and lagging set Q1 with two calls defended | 10.0 an over at over 10, the loss confirmed at over 20 | S28 to one sentence |
 | Chapter 4 | 10 | S30 to S37 | Notebook 04; four lines set Q1 | Five readings, 66.7 to 84.0, each moved by one line | S37's Delhi Metro line |
-| Chapter 5 | 10 | S38 to S45 | Notebook 05; gaming set Q1 | 50 marked against 40 confirmed; the four ways and the line that stops each | S42's public column read, not discussed |
+| Chapter 5 | 10 | S38 to S45 | Notebook 05; gaming set Q1 | 50 marked against 40 confirmed; the four ways and the line that stops each | S42's public column read aloud without discussion |
 | Chapter 6 | 10 | S46 to S53 | Notebook 06; artifact set Q1 | The seven lines; the weak page holds two | S53's Uber 10-K line |
 | Break | 10 | After S53 | | | |
 | Chapter 7 | 32 | S54 to S63 | Role cards; the twelve-row table on paper; notebook 07; `trainer/C2_W04_D01_war_game_TRAINER.md` | The full ticket read in order; each role's number attacked with the proxy test; 1.90 then 1.19, counted by hand | Round 1 to one attack per role |
-| Chapter 8 | 30 | S64 to S73 | Notebook 08 and its empty your-turn cell | Requests rose; 1.71 against 1.58; the 180 drivers found by the room | S68 shown, not run |
+| Chapter 8 | 30 | S64 to S73 | Notebook 08 and its empty your-turn cell | Requests rose; 1.71 against 1.58; the 180 drivers found by the room | S68 shown on screen without running it |
 | Chapter 9 | 38 | S74 to S84 | Notebook 09; `exercises/guided/C2_W04_D01_definition_STUDENT.md` | The seven lines written with the room; Rs 1.159 crore with its behaviour caveat; the fall survives every cut | S81 to its template; S83 to three caveats |
 
 ## How do the afternoon's first 60 minutes run?

@@ -12,7 +12,7 @@ gaming, and how a tuition app should write its pay rule.
 ## What does the set test about gaming?
 
 A paid number is gamed in four ways: the person paid controls the count, the count needs no receipt
-or use, the person timed sets the clock's start, or the definition changes quietly. Each has a line
+or use, the person timed sets the clock's start, or the definition changes without notice. Each has a line
 that stops it: a count the person served confirms, a receipt in the numerator, a clock the system
 starts, and dated changes printed beside the number. A denominator the person paid can choose is a
 fifth door, and it stays shut only when the people served set it.
