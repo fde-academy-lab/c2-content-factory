@@ -29,7 +29,8 @@ pipeline, palette and reference deck named further down this file:
   and paired one to one with a notebook of the same number and title. The
   concept chapters come first, one per row subtopic, each opener written
   `## SECTION n: <subtopic>: <short question>?` with the subtopic as the row
-  words it and a short question the pills print, each built on a simple
+  words it, which the opener prints on its own line in a size that steps
+  down to fit, and a short question the pills print, each built on a simple
   relatable educational example in the order teaching-styles.md gives for a
   concept chapter; then
   the case chapters, each naming the subtopics it applies, whose slides run
@@ -316,8 +317,10 @@ The three that have actually caused rejections here:
 Every slide title should be an **action title**: a full sentence stating the
 point, which the body then proves. "Ninety out of a hundred is worse than none"
 is a title. "Coverage analysis" is a label. In the C2 programme the italic subtitle under an action title asks
-the question the title answers, and a chapter opener's title is the chapter's short question, per the
-question ladder in `day-pack-builder/references/the-standard.md`.
+the question the title answers, and a chapter opener's title leads with its topic and ends on the
+chapter's short question (`## SECTION n: <topic>: <short question>?`), per the question ladder in
+`day-pack-builder/references/the-standard.md`; Weeks 1 to 3, until rebuilt, title an opener with the
+short question alone.
 
 ## CONVERT FORMULAS, DO NOT IMPORT THEM (added 21 Aug 2026)
 
