@@ -203,8 +203,10 @@ def ch5_bill_steps():
     accs = [(cells(y, p, t)[0] + cells(y, p, t)[3]) / 20 * 100 for t in grid]
     fig, ax1 = plt.subplots(figsize=(12, 5))
     ax1.step(grid, bills, where="post", color=VIOLET, lw=3); ax1.set_ylabel("bill, Rs", color=VIOLET)
-    ax1.axvline(1 / 31, color=INK, lw=1.5); ax1.text(0.04, 6200, "0.032: Rs 360", color=INK)
-    ax1.axvline(0.5, color=MUTED, lw=1.2, ls=":"); ax1.text(0.51, 6200, "0.5: Rs 3,640", color=MUTED)
+    ax1.axvline(1 / 31, color=INK, lw=1.5)
+    ax1.annotate("0.032: Rs 360", (1 / 31, 360), (0.12, 3300), color=INK, arrowprops={"arrowstyle": "->", "color": INK})
+    ax1.axvline(0.5, color=MUTED, lw=1.2, ls=":")
+    ax1.annotate("0.5: Rs 3,640", (0.5, 3640), (0.6, 1800), color=INK, arrowprops={"arrowstyle": "->", "color": INK})
     ax1.set_xlabel("the line: nudge everyone scoring at or above")
     ax2 = ax1.twinx(); ax2.step(grid, accs, where="post", color=ROSE, lw=2, ls="--"); ax2.set_ylabel("accuracy, % (dashed)", color=ROSE)
     ax2.spines["right"].set_visible(True)
@@ -215,8 +217,11 @@ def ch5_line_curve():
     ratio = np.logspace(-2, 2, 200)
     fig, ax = plt.subplots(figsize=(11, 4.6))
     ax.plot(ratio, ratio / (1 + ratio), color=VIOLET, lw=3); ax.set_xscale("log")
-    for r, name in ((40 / 1200, "SMS nudge: 0.032"), (400 / 1200, "Rs 400 hamper: 0.25"), (1.0, "equal costs: 0.5"), (20, "Rohan's loan: 0.952")):
-        ax.scatter(r, r / (1 + r), color=ROSE, zorder=5, s=70); ax.annotate(name, (r, r / (1 + r)), (r * 1.4, r / (1 + r) - 0.13), fontsize=13)
+    spots = ((40 / 1200, "SMS nudge: 0.032", (0.012, 0.22)), (400 / 1200, "Rs 400 hamper: 0.25", (0.6, 0.12)),
+             (1.0, "equal costs: 0.5", (2.2, 0.42)), (20, "Rohan's loan: 0.952", (2.0, 0.85)))
+    for r, name, at in spots:
+        ax.scatter(r, r / (1 + r), color=ROSE, zorder=5, s=70)
+        ax.annotate(name, (r, r / (1 + r)), at, fontsize=13, arrowprops={"arrowstyle": "->", "color": MUTED})
     ax.set_xlabel("cost of acting wrongly / cost of failing to act"); ax.set_ylabel("the line")
     save(fig, "ch5_line_curve.png")
 
@@ -297,7 +302,7 @@ def case3_prec_at_k(y, p):
     axes[0].set_xlabel("calls made, k"); axes[0].set_ylabel("share of calls that buy"); axes[0].legend(frameon=False); axes[0].set_title("Precision at k", color=INK)
     axes[1].plot(np.arange(1, len(y) + 1), np.cumsum(y[order]), color=VIOLET, lw=3, label="model's ranking")
     axes[1].plot([0, len(y)], [0, y.sum()], color=MUTED, ls="--", lw=2, label="random list")
-    axes[1].axvline(1000, color=ROSE, lw=2); axes[1].text(1100, 120, "404 against 113", color=ROSE)
+    axes[1].axvline(1000, color=ROSE, lw=2); axes[1].text(2300, 230, "1,000 calls: 404 against 112", color=ROSE)
     axes[1].set_xlabel("calls made"); axes[1].set_ylabel("buyers found"); axes[1].legend(frameon=False, loc="lower right"); axes[1].set_title("Buyers found", color=INK)
     save(fig, "case3_prec_at_k.png")
 

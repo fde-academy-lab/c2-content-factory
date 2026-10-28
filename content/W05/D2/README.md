@@ -17,7 +17,7 @@ Scoring the model the way the business will judge it, in two businesses.
 | Ch 6 Same model, opposite threshold | 15 | trainer, then learners | `notebooks/C2_W05_D02_ch06_transfer_lending_threshold_STUDENT.ipynb` | Retail's line at 0.032, Rohan's at 0.952 |
 | Case 1 The do-nothing matrix | 15 | trainer, then learners | `notebooks/C2_W05_D02_case01_do_nothing_matrix_STUDENT.ipynb` | the bank's empty column: 88.74 percent, 0 buyers |
 | Case 2 The cost threshold | 20 | trainer, then learners | `notebooks/C2_W05_D02_case02_cost_threshold_STUDENT.ipynb` | the bill curve, Rs 279,000 against Rs 292,400 |
-| Case 3 The budget | 18 | trainer, then learners | `notebooks/C2_W05_D02_case03_budget_precision_at_k_STUDENT.ipynb` | 404 buyers in the top 1,000 against 113 at random |
+| Case 3 The budget | 18 | trainer, then learners | `notebooks/C2_W05_D02_case03_budget_precision_at_k_STUDENT.ipynb` | 404 buyers in the top 1,000 against about 112 at random |
 | Guided memo and transfer note | 20 | learners | `notebooks/C2_W05_D02_guided_metric_memo_STUDENT.ipynb` | PASS lines as each step is filled |
 | Interview corner, quiz, close | 12 | trainer | slides 55 to 64, Kahoot | five interview anchors, five quiz questions |
 | IITGN faculty block W5-2 (tentative) | 120 | faculty | their material | ROC, precision-recall curves and expected cost |

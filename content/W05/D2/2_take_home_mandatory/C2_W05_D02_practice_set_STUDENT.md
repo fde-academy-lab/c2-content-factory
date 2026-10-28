@@ -226,11 +226,17 @@ Write the letter, or the letters where the question says choose all that apply.
 
 **B1.** Of 600 customers flagged, 120 bought; 400 buyers exist in all, among 10,000 customers. What is precision?
 
-- A. 0.30  B. 0.20  C. 0.012  D. 0.25
+- A. 0.30
+- B. 0.20
+- C. 0.012
+- D. 0.25
 
 **B2.** Same matrix. What is recall?
 
-- A. 0.20  B. 0.012  C. 0.30  D. 0.25
+- A. 0.20
+- B. 0.012
+- C. 0.30
+- D. 0.25
 
 **B3.** True or false, with the reason: "A churn model with 97 percent accuracy on a 3 percent churn outcome has learned something."
 
@@ -241,11 +247,17 @@ Write the letter, or the letters where the question says choose all that apply.
 
 **B4.** A miss costs Rs 900 and a false alarm Rs 100. Act when P(positive) is above:
 
-- A. 0.10  B. 0.11  C. 0.50  D. 0.90
+- A. 0.10
+- B. 0.11
+- C. 0.50
+- D. 0.90
 
 **B5.** A coupon costs Rs 50 and a buyer brings Rs 450 of margin. Send the coupon when at least 1 in how many would buy?
 
-- A. 9  B. 10  C. 50  D. 450
+- A. 9
+- B. 10
+- C. 50
+- D. 450
 
 **B6.** Which statements about F1 hold? Choose all that apply.
 
@@ -263,11 +275,17 @@ Write the letter, or the letters where the question says choose all that apply.
 
 **B8.** Match each seat to its question. Seats: 1 business owner, 2 senior ML engineer, 3 QA, 4 solution architect. Questions: p what does each mistake cost; q are the probabilities honest; r which test proves the line is in force; s where does the threshold live.
 
-- A. 1q, 2p, 3s, 4r  B. 1s, 2q, 3r, 4p  C. 1p, 2q, 3r, 4s  D. 1p, 2r, 3q, 4s
+- A. 1q, 2p, 3s, 4r
+- B. 1s, 2q, 3r, 4p
+- C. 1p, 2q, 3r, 4s
+- D. 1p, 2r, 3q, 4s
 
 **B9.** A false approval costs Rs 60,000 and a wrongful rejection Rs 3,000. Lend when P(repay) is above:
 
-- A. 0.048  B. 0.050  C. 0.500  D. 0.952
+- A. 0.048
+- B. 0.050
+- C. 0.500
+- D. 0.952
 
 **B10.** True or false, with the reason: "Retail's line at 0.032 and Rohan's at 0.952 show that lending needs a more accurate model."
 
@@ -278,7 +296,10 @@ Write the letter, or the letters where the question says choose all that apply.
 
 **B11.** Marketing can afford exactly 1,000 calls. Which number goes on the dashboard?
 
-- A. recall over all buyers  B. accuracy at 0.5  C. F1 at 0.5  D. precision at 1,000
+- A. recall over all buyers
+- B. accuracy at 0.5
+- C. F1 at 0.5
+- D. precision at 1,000
 
 **B12.** A colleague's new setting finds 544 buyers in 2,000 calls; ours found 404 in 1,000, from the same model. What can you conclude?
 
@@ -289,7 +310,10 @@ Write the letter, or the letters where the question says choose all that apply.
 
 **B13.** `confusion_matrix(y_true, y_pred)` prints `[[7216, 94], [754, 174]]`. The 754 is:
 
-- A. false positives  B. false negatives  C. true negatives  D. true positives
+- A. false positives
+- B. false negatives
+- C. true negatives
+- D. true positives
 
 **B14.** True or false, with the reason: "On a 50:50 outcome where both mistakes cost the same, accuracy is a fair summary."
 

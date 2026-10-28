@@ -24,7 +24,7 @@ Posts to <!-- sync:module:W05/D2 -->Module 2: Applied Machine Learning<!-- /sync
 | Ch 6 Same model, opposite threshold | 15 | 32 to 36 | ch06, explorable loan switch | 20 in 21, said on P(repay) | never cut |
 | Case 1 The do-nothing matrix | 15 | 37 to 41 | case01 | the empty column on real data | never cut the reveal |
 | Case 2 The cost threshold | 20 | 42 to 47 | case02, explorable ratio slider | 0.032 calls 9 in 10 and saves 4.6 percent | the Stripe slide 47 |
-| Case 3 The budget | 18 | 48 to 53 | case03 | 404 of the top 1,000 against 113 | the Flipkart slide 53 |
+| Case 3 The budget | 18 | 48 to 53 | case03 | 404 of the top 1,000 against about 112 at random | the Flipkart slide 53 |
 | Guided memo and transfer note | 20 | 54 | guided | memo to Kavya, note to Rohan | the memo finishes at home |
 | Interview corner, quiz, close | 12 | 55 to 64 | Kahoot | the five anchors as questions | the six seats slide 56 |
 

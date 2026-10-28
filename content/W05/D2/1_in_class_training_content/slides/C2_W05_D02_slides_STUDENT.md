@@ -204,10 +204,10 @@ recall and F1 from a confusion matrix.
 ## S10. The wrong denominator divides by everyone
 *The most common slip, shown exactly.*
 
-| Reported as precision | Arithmetic | What it really measures |
-|---|---|---|
-| 0.15 (wrong) | 3 of 20 customers | share of everyone who was flagged and came back |
-| 0.50 (right) | 3 of 6 flagged | share of nudges that landed |
+```stats
+value: 0.15 | label: wrong: 3 of 20 customers | note: the share of everyone flagged and right, which nobody asked for
+value: 0.50 | label: right: 3 of 6 flagged | note: the share of nudges that landed
+```
 
 ```notes
 LIVE, 4 minutes. Marketing reading 0.15 would cut a campaign whose nudges land half the time. The
@@ -273,10 +273,10 @@ true-positive cell first.
 ## S14. The more accurate rule has the bigger bill
 *Ranked by accuracy, the useless rule wins.*
 
-| Rule | Accuracy | Repeaters found | Bill |
-|---|---|---|---|
-| Say no to everyone | 89% | 0 of 11 | Rs 13,200 |
-| A model that flags 20 | 85% | 8 of 11 | Rs 4,080 |
+```stats
+value: 89% | label: say no to everyone | note: 0 of 11 repeaters found; bill Rs 13,200
+value: 85% | label: a model that flags 20 | note: 8 of 11 repeaters found; bill Rs 4,080
+```
 
 ```notes
 LIVE, 5 minutes. The trap: "ship the say-no rule, it is more accurate". Check: recall and the bill
@@ -342,11 +342,17 @@ thirty wasted nudges, so act above about 1 in 31.
 ## S18. The 1-in-N test, named last
 *Rights per wrong equals damage over saving.*
 
-`threshold = cost of acting wrongly / (cost of acting wrongly + cost of failing to act)`
-
-`nudge: 40 / (40 + 1,200) = 0.032, act when P(buy) is above 1 in 31`
-
-`loan: 60,000 / (60,000 + 3,000) = 0.952, lend when P(repay) is above 20 in 21`
+```mermaid
+flowchart LR
+    A["<b>Acting wrongly</b><br/>nudge: Rs 40<br/>loan: Rs 60,000"] --> L["<b>line =</b><br/>wrong action /<br/>(wrong action +<br/>missed action)"]
+    B["<b>Failing to act</b><br/>nudge: Rs 1,200<br/>loan: Rs 3,000"] --> L
+    L --> N["<b>Nudge</b> when<br/>P(buy) > 0.032<br/>1 in 31"]
+    L --> R["<b>Lend</b> when<br/>P(repay) > 0.952<br/>20 in 21"]
+    classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class L lit
+    class A,B,N,R known
+```
 
 ```notes
 LIVE, 5 minutes. Write both lines on the board, on the same quantity: the chance of the good
@@ -376,11 +382,11 @@ out 18.71 good sales and its break-even precision is 5.07 percent (Stripe, verif
 ## S20. Same accuracy, bills Rs 5,800 apart
 *Three invented models on chapter 1's twenty customers.*
 
-| Model | Accuracy | Bill |
-|---|---|---|
-| Flags nobody | 75% | Rs 6,000 |
-| Chapter 1's model | 75% | Rs 2,520 |
-| Flags ten | 75% | Rs 200 |
+```stats
+value: Rs 6,000 | label: flags nobody | note: 75 percent accurate
+value: Rs 2,520 | label: chapter 1's model | note: 75 percent accurate
+value: Rs 200 | label: flags ten | note: 75 percent accurate
+```
 
 ```notes
 LIVE, 5 minutes. The trap: choosing the metric by habit. Accuracy calls these three equal; Anand's
@@ -652,11 +658,11 @@ how much is the model saving us here, really?
 ## S36. The trap: Rs 6.3 lakh saved against the wrong rival
 *Price the free rules before crediting the model.*
 
-| Compared with | Saving | Share |
-|---|---|---|
-| The default 0.5 | Rs 629,560 | misleading: nobody ships 0.5 now |
-| Calling everyone | Rs 13,400 | 4.6% of its bill |
-| Margin at stake | Rs 13,400 | 1.2% of Rs 11.1 lakh |
+```stats
+value: Rs 629,560 | label: saved against the default 0.5 | note: misleading: nobody ships 0.5 once the prices are known
+value: Rs 13,400 | label: saved against calling everyone | note: 4.6 percent of that rule's bill
+value: 1.2% | label: of the buyer margin at stake | note: Rs 13,400 of Rs 11.1 lakh
+```
 
 ```notes
 LIVE, 4 minutes. The trap: the arithmetic is right, the comparison is wrong. If Kalpa funded a
@@ -719,13 +725,13 @@ LIVE, 3 minutes. The cost rule says act above 0.032 and asks for 7,438 calls; th
 
 ---
 
-## S40. The top 1,000 hold 404 buyers; a random 1,000, 113
+## S40. The top 1,000 hold 404 buyers; a random 1,000, 112
 *Precision at 1,000 is 0.404 against a 0.113 base rate.*
 
-| List | Buyers found | Precision at 1,000 | Bill |
-|---|---|---|---|
-| Random 1,000 | 112 | 0.112 | Rs 1,014,264 |
-| Top 1,000 by score | 404 | 0.404 | Rs 652,640 |
+```stats
+value: 404 | label: buyers in the top 1,000 by score | note: precision at 1,000 is 0.404; bill Rs 652,640
+value: 112 | label: buyers in a random 1,000 | note: the base rate; bill Rs 1,014,264
+```
 
 ```notes
 LIVE, 4 minutes. About 3.6 times a random list, and about Rs 3.6 lakh off the bill in this slice.
