@@ -25,13 +25,13 @@ Monday gave the bank's call list a split and a baseline to beat, Tuesday scored 
 
 *Overfitting; bias and variance through learning curves*
 
-![Three invented students' practice and exam scores](../1_in_class_training_content/slides/img/fig_students.png)
+![Three invented students' practice and exam scores](../1_in_class_training_content/slides/img/C2_W05_D04_fig_students_STUDENT.png)
 
 **The idea in three lines.** A model that learns its training rows too closely scores well on them and badly on new rows: that gap is variance, and a model with a large gap is overfitting. A model too simple to be right anywhere has two low scores close together: that is bias. Read the gap first, then the level, and always put the baseline beside both.
 
 **Worked example (invented).** Asha memorises five past papers and scores 100 on them and 61 on the new exam; Bilal learns the method and scores 84 and 81; Chitra skims and scores 58 and 56. Asha is variance, Chitra is bias, Bilal is about right. On the bank's real file, a tree with no depth limit scored 99.6 percent on its 24,712 training customers and 84.1 percent on 8,238 validation customers, below the 88.7 percent of calling nobody.
 
-![Learning curves for a stump, an unlimited tree and a braked tree on the bank's file](../1_in_class_training_content/slides/img/fig_learning_curves_bank.png)
+![Learning curves for a stump, an unlimited tree and a braked tree on the bank's file](../1_in_class_training_content/slides/img/C2_W05_D04_fig_learning_curves_bank_STUDENT.png)
 
 **Learning curves.** Two lines against the number of training rows: error on the rows learned from, and on held-out rows. The stump's two lines sit together at the baseline (bias). The unlimited tree's training error is near zero and its held-out error near 16.5 percent (variance). Depth 6 with at least 50 customers per leaf sits at 9.8 and 10.1 (about right).
 
@@ -45,7 +45,7 @@ Monday gave the bank's call list a split and a baseline to beat, Tuesday scored 
 
 *Regularisation*
 
-![The seven-bend curve with and without a brake](../1_in_class_training_content/slides/img/fig_brake_curve.png)
+![The seven-bend curve with and without a brake](../1_in_class_training_content/slides/img/C2_W05_D04_fig_brake_curve_STUDENT.png)
 
 **The idea in three lines.** Regularisation adds a price on large coefficients (or deep trees) to the error the model minimises. It trades a little fit on the training rows for a lot of stability on new rows. Its strength is chosen on held-out rows, because the training rows always prefer no brake.
 
@@ -74,7 +74,7 @@ scikit-learn LogisticRegression:  C = 1 / alpha, so small C = strong brake
 
 *Cross-validation*
 
-![Five folds over twenty invented customers](../1_in_class_training_content/slides/img/fig_folds_grid.png)
+![Five folds over twenty invented customers](../1_in_class_training_content/slides/img/C2_W05_D04_fig_folds_grid_STUDENT.png)
 
 **The idea in three lines.** One split's score carries the luck of which rows sat the exam. K-fold cross-validation gives every row one turn in the exam and reports the mean with its spread. Everything that learns from data (scalers, gap-fillers, encoders, column choosers) is fitted inside each turn, on the teaching folds only, which a scikit-learn `Pipeline` does for you.
 

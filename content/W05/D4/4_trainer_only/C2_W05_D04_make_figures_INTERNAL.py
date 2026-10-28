@@ -42,9 +42,9 @@ plt.rcParams.update({"figure.dpi": 150, "axes.spines.top": False, "axes.spines.r
 
 def save(fig, name):
     fig.tight_layout()
-    fig.savefig(OUT / name, facecolor="white")
+    fig.savefig(OUT / f"C2_W05_D04_{name[:-4]}_STUDENT.png", facecolor="white")
     plt.close(fig)
-    print("wrote", name)
+    print("wrote", f"C2_W05_D04_{name[:-4]}_STUDENT.png")
 
 
 # ------------------------------------------------------------------ the week's pipeline

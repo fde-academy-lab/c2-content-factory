@@ -2,7 +2,7 @@
 
 Week 5, Thursday. Redraw the picture from memory before you read the rest.
 
-<img src="../1_in_class_training_content/slides/img/fig_timeline_thursday.png" alt="Thursday's U of validation error against tree depth, on the week's timeline" width="46%" style="width:46%">
+<img src="../1_in_class_training_content/slides/img/C2_W05_D04_fig_timeline_thursday_STUDENT.png" alt="Thursday's U of validation error against tree depth, on the week's timeline" width="46%" style="width:46%">
 
 ## The ML process, today lit
 

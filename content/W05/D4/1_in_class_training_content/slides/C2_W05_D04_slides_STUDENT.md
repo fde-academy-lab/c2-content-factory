@@ -61,7 +61,7 @@ exact pipeline on Kalpa Financial's lending book. Transition: the week's one pic
 ## S3. The week's picture, Thursday state
 *Monday split it, Tuesday set the line, Wednesday removed the leak. Today: the U.*
 
-![The week's timeline with Thursday's U of validation error against tree depth](img/fig_timeline_thursday.png)
+![The week's timeline with Thursday's U of validation error against tree depth](img/C2_W05_D04_fig_timeline_thursday_STUDENT.png)
 
 ```notes
 LIVE, 2 minutes. The same timeline every morning. Left: past rows we train and validate on, the
@@ -176,7 +176,7 @@ Count them aloud. Most rooms vote Asha because she topped practice. Do not revea
 ## S8. Answer: the student who learned the method
 *Asha's 39-point drop is the whole lesson.*
 
-![Practice against new exam for three invented students](img/fig_students.png)
+![Practice against new exam for three invented students](img/C2_W05_D04_fig_students_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Asha: 100 on practice, 61 on the exam. Bilal: 84 and 81. Chitra: 58 and 56. Land
@@ -219,7 +219,7 @@ Interview line: overfitting is a gap you can measure, never a feeling.
 ## S10. A tree that never stops asking
 *Ten invented customers, three who break the pattern.*
 
-![An unlimited tree against a one-question tree on ten invented customers](img/fig_tiny_tree.png)
+![An unlimited tree against a one-question tree on ten invented customers](img/C2_W05_D04_fig_tiny_tree_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Notebook ch01, the tree cell. The pattern: opened three or more nudges, then
@@ -233,7 +233,7 @@ which tree learned Kalpa's customers, and which learned these ten people?
 ## S11. Learning curves from tiny numbers
 *Add one past paper at a time; score practice and a fresh exam.*
 
-![Three pairs of learning curves for the invented students](img/fig_student_curves.png)
+![Three pairs of learning curves for the invented students](img/C2_W05_D04_fig_student_curves_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. A learning curve is two lines against the amount of training. Asha's practice line
@@ -290,7 +290,7 @@ teaching error, and by how much? Write two guesses on the board. Click.
 ## S14. Answer: it threads the teaching weeks and misses
 *Error 0.95 on teaching weeks, 5.28 on held-out weeks, in hundreds of visitors.*
 
-![The seven-bend curve with and without a brake](img/fig_brake_curve.png)
+![The seven-bend curve with and without a brake](img/C2_W05_D04_fig_brake_curve_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. The red curve passes near every black dot and swings past the hollow ones. The
@@ -303,7 +303,7 @@ brake made the fit worse where we can see and better where we cannot.
 ## S15. Turn the brake slowly
 *Too soft: variance. Too hard: bias. The best brake sits in the middle.*
 
-![Teaching and held-out error against brake strength](img/fig_brake_sweep.png)
+![Teaching and held-out error against brake strength](img/C2_W05_D04_fig_brake_sweep_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Notebook ch02, the sweep cell. Teaching error only rises as alpha grows; held-out
@@ -328,8 +328,8 @@ small C  =  strong brake
 ```notes
 LIVE, 4 minutes. Name the formula only now, as the shorthand for what the picture showed. Stage the
 trap: C looks like a strength and behaves like its opposite; a learner who sets C = 100 to brake
-harder has switched the brake off. The geometry of why L1 lands on zero belongs to the tentative
-IITGN faculty session.
+harder has switched the brake off.
+The geometry of why L1 lands on zero belongs to the tentative IITGN faculty session.
 ```
 
 ---
@@ -400,7 +400,7 @@ Ask: which of these would you have put on a slide? Whichever you picked, you pic
 ## S20. Five folds: every customer sits the exam once
 *Average the five scores; quote the spread beside the mean.*
 
-![Five folds over twenty invented customers](img/fig_folds_grid.png)
+![Five folds over twenty invented customers](img/C2_W05_D04_fig_folds_grid_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Notebook ch03, the fold grid. Each row is one turn; pink cells sit the exam. Every
@@ -498,37 +498,45 @@ memorises.
 
 ---
 
-## S24. A forest votes; a booster corrects
-*Many trees averaged, or small trees in a chain.*
+## S24. A forest votes
+*Many trees on resampled rows; the majority answers. Five of them, on a newcomer.*
 
 ```mermaid
-flowchart TB
-    subgraph forest["Random forest: many trees vote"]
-        direction LR
-        F1["tree 1: no"] --> V
-        F2["tree 2: joins"] --> V
-        F3["tree 3: joins"] --> V
-        F4["tree 4: joins"] --> V
-        F5["tree 5: joins"] --> V
-        V["<b>vote: joins</b><br/>4 to 1"]
-    end
-    subgraph boost["Gradient boosting: small trees in a chain"]
-        direction LR
-        B1["small tree 1"] --> B2["tree 2 fixes<br/>tree 1's misses"] --> B3["tree 3 fixes<br/>what is left"]
-    end
-    forest ~~~ boost
+flowchart LR
+    F1["tree 1: no"] --> V
+    F2["tree 2: joins"] --> V
+    F3["tree 3: joins"] --> V
+    F4["tree 4: joins"] --> V
+    F5["tree 5: joins"] --> V
+    V["<b>forest: joins</b><br/>4 votes to 1"]
     classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
     classDef lit fill:#1A0F5C,stroke:#1A0F5C,color:#FFFFFF
-    class F1,F2,F3,F4,F5,B1,B2,B3 known
+    class F1,F2,F3,F4,F5 known
     class V lit
 ```
 
 ```notes
-LIVE, 4 minutes. Notebook ch04: five forest trees vote on a newcomer with 7 visits and a Rs 1,000
-basket, four say joins. The booster's mistakes on the twelve shoppers fall from 1 to 0 after round
-two. Say what each does to the tree's weakness: the forest averages away wobble (variance); the
-booster chips away at what is still wrong (bias). Neither is free to explain: 100 small trees mean
-200 to 280 leaves to read.
+LIVE, 2 minutes. Notebook ch04: five forest trees vote on a newcomer with 7 visits and a Rs 1,000
+basket; four say joins. Each tree saw a different resample of the twelve shoppers, so their wobbles
+differ and the vote averages them away: a forest lowers variance.
+```
+
+---
+
+## S24a. A booster corrects
+*Small trees in a chain, each aimed at what is still wrong.*
+
+```mermaid
+flowchart LR
+    B1["<b>small tree 1</b><br/>1 shopper wrong"] --> B2["<b>tree 2</b><br/>aims at that<br/>shopper: 0 wrong"] --> B3["<b>trees 3 and 4</b><br/>nothing left<br/>to fix: 0 wrong"]
+    classDef known fill:#EEEAFB,stroke:#5B3FD6,color:#1A0F5C,stroke-width:2px
+    class B1,B2,B3 known
+```
+
+```notes
+LIVE, 2 minutes. The booster's mistakes on the twelve shoppers fall from 1 to 0 after round two. It
+chips away at what is still wrong (bias). Neither ensemble is free to explain: 100 small trees mean
+200 to 280 leaves to read. Internals and boosting mathematics are for later.
 ```
 
 ---
@@ -536,7 +544,7 @@ booster chips away at what is still wrong (bias). Neither is free to explain: 10
 ## S25. Clustering: groups, no answers
 *k-means groups shoppers by distance. It predicts nothing.*
 
-![k-means with three groups on twelve invented shoppers](img/fig_kmeans.png)
+![k-means with three groups on twelve invented shoppers](img/C2_W05_D04_fig_kmeans_STUDENT.png)
 
 ```notes
 LIVE, 2 minutes. CUT FIRST if late: this slide and its one notebook cell. Clustering needs no
@@ -604,7 +612,7 @@ tests on the board; they stay up through case 3.
 ## S28. Test 1: join each fold's two scores
 *Invented: the complex model wins four folds and ties one.*
 
-![Paired fold scores for an invented simple and complex model](img/fig_paired_invented.png)
+![Paired fold scores for an invented simple and complex model](img/C2_W05_D04_fig_paired_invented_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Means 0.794 and 0.802. Comparing the two means alone hides how hard each fold was;
@@ -636,7 +644,7 @@ number? (The platform team, with Anand.) If it fell to Rs 30,000, the complex mo
 ## S30. Pneumonia: the readable model shipped
 *Five published models within 0.02 AUC; readability decided.*
 
-![Published AUCs of five models on pneumonia data, Caruana and others, KDD 2015](img/fig_caruana.png)
+![Published AUCs of five models on pneumonia data, Caruana and others, KDD 2015](img/C2_W05_D04_fig_caruana_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Caruana and others, KDD 2015, verified 28 October 2026. In the 1990s a neural net
@@ -711,7 +719,7 @@ theirs aloud.
 ## S34. Answer: 99.6 on practice, 84.1 on the exam
 *Below the 88.7 percent of calling nobody.*
 
-![Unlimited tree accuracy on training and validation against the baseline](img/fig_unlimited_scores.png)
+![Unlimited tree accuracy on training and validation against the baseline](img/C2_W05_D04_fig_unlimited_scores_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. The trap, shown exactly: 99.6 percent is the number a teammate posts, and a
@@ -740,7 +748,7 @@ will fire for next quarter's customer only by coincidence.
 ## S36. The depth curve: the U on real data
 *Lowest validation error at depth 3; no limit ends at 15.9 percent.*
 
-![Training and validation error against max_depth on the bank's file](img/fig_depth_u.png)
+![Training and validation error against max_depth on the bank's file](img/C2_W05_D04_fig_depth_u_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Notebook step 5. Training error falls all the way to 0.4 percent. Validation error
@@ -754,7 +762,7 @@ addition to the week's picture.
 ## S37. Three trees, three learning curves
 *Stump, no limit, depth 6 with leaf 50: five folds each.*
 
-![Learning curves for a stump, an unlimited tree and a braked tree](img/fig_learning_curves_bank.png)
+![Learning curves for a stump, an unlimited tree and a braked tree](img/C2_W05_D04_fig_learning_curves_bank_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Stump: both lines at 11.3, the baseline, close together: bias. No limit: training
@@ -786,7 +794,7 @@ signal it lacked.
 ## S39. Guided: three mystery models
 *Name each side and prescribe one fix. Then one cross-validation, together.*
 
-![Learning curves for three unnamed models A, B and C](img/fig_mystery_curves.png)
+![Learning curves for three unnamed models A, B and C](img/C2_W05_D04_fig_mystery_curves_STUDENT.png)
 
 ```notes
 LIVE, 15 minutes. Guided notebook. YOUR TURN 1: each learner writes bias, variance or about right
@@ -810,7 +818,7 @@ logistic model.
 ## S40. Five deals against five folds
 *Bigger exams, smaller luck: deals swing 0.004 AUC, folds 0.03.*
 
-![Validation AUC on five deals of 8,238 customers and on five folds of 4,942](img/fig_seed_swing.png)
+![Validation AUC on five deals of 8,238 customers and on five folds of 4,942](img/C2_W05_D04_fig_seed_swing_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Notebook steps 1 and 2. Five re-deals of 8,238 validation customers move AUC
@@ -873,7 +881,7 @@ everything that learns goes inside the Pipeline.
 ## S44. Sweep C: the logistic model barely needs a brake
 *Strong brake underfits; from C = 0.01 up, nothing changes.*
 
-![Training and cross-validated AUC against C](img/fig_c_sweep.png)
+![Training and cross-validated AUC against C](img/C2_W05_D04_fig_c_sweep_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. C = 0.0001: AUC 0.762, bias. From C = 0.01: about 0.786 cross-validated and 0.79
@@ -887,7 +895,7 @@ lab's 1,000 lending rows, where the brake matters.
 ## S45. L1: 20 of 63 columns, within 0.002 AUC
 *The brake that also chooses columns.*
 
-![Columns kept and validation AUC under L1 at six strengths](img/fig_l1_columns.png)
+![Columns kept and validation AUC under L1 at six strengths](img/C2_W05_D04_fig_l1_columns_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. At C = 0.03, 20 columns survive with validation AUC 0.794, against 0.795 with 45
@@ -910,7 +918,7 @@ also the row's unguided exercise: the room runs it and writes the provisional ca
 ## S46. Four candidates on the same five folds
 *Boosting 0.793, forest 0.791, logistic 0.786, tuned tree 0.782.*
 
-![Fold AUCs and means for four models](img/fig_race_folds.png)
+![Fold AUCs and means for four models](img/C2_W05_D04_fig_race_folds_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. The tree was tuned with a plain loop over depth and leaf size on the same folds:
@@ -923,7 +931,7 @@ overlap the others'. Validation AUC: logistic 0.796, tree 0.790, forest 0.803, b
 ## S47. Test 1: boosting wins every fold, by a little
 *Fold by fold: +0.007, +0.007, +0.003, +0.014, +0.003 AUC.*
 
-![Paired fold AUCs, logistic against boosting](img/fig_paired_gap.png)
+![Paired fold AUCs, logistic against boosting](img/C2_W05_D04_fig_paired_gap_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Test 1 passes: the lead is real, about 0.007 AUC. Now test 2, in rupees.
@@ -934,7 +942,7 @@ LIVE, 3 minutes. Test 1 passes: the lead is real, about 0.007 AUC. Now test 2, i
 ## S48. At the cost threshold, all four nudge nearly everyone
 *Bills at 40 / 1,240 = 0.032 sit within about 2 percent.*
 
-![Error bills at the cost threshold for four models and for nudging everyone](img/fig_bills.png)
+![Error bills at the cost threshold for four models and for nudging everyone](img/C2_W05_D04_fig_bills_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Tuesday's threshold: act when P(buy) beats 0.032. Logistic Rs 2.79 lakh, boosting
@@ -965,7 +973,7 @@ nudges between logistic and boosting on validation. Value = buyers x Rs 1,200 mi
 ## S50. Test 2: the low end against the extra cost
 *Extra buyers per 5,000 nudges, fold by fold: 0, 133, 100, 92, 125.*
 
-![Boosting's extra margin per campaign, fold by fold, against an invented extra cost](img/fig_budget_gap.png)
+![Boosting's extra margin per campaign, fold by fold, against an invented extra cost](img/C2_W05_D04_fig_budget_gap_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Mean 90 extra buyers, spread 48, low end 42 buyers, Rs 50,939 a campaign. The extra
@@ -1058,6 +1066,6 @@ icon: file-text | eyebrow: Friday | title: The committee memo | body: Train earl
 ```
 
 ```notes
-LIVE, 2 minutes. Close on the week's picture: redraw the U from memory tonight. The tentative IITGN
-faculty session follows with the bias-variance decomposition and the geometry of the two penalties.
+LIVE, 2 minutes. Close on the week's picture: redraw the U from memory tonight.
+The tentative IITGN faculty session follows with the bias-variance decomposition and the penalty shapes.
 ```

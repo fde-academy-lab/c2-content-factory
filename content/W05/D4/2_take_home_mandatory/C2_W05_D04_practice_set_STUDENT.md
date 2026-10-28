@@ -32,7 +32,7 @@ Every problem names the seat it is answered from: business owner, product manage
 
 ## Recap: the day on one page
 
-![Training and validation error against tree depth on the bank's file](../1_in_class_training_content/slides/img/fig_depth_u.png)
+![Training and validation error against tree depth on the bank's file](../1_in_class_training_content/slides/img/C2_W05_D04_fig_depth_u_STUDENT.png)
 
 | Idea | In one line | The rule | When it flips |
 |---|---|---|---|
@@ -203,7 +203,7 @@ Under the calling budget, boosting catches between 12 and 30 more returning pati
 
 Kalpa's Marketing team saw the unlimited tree's 99.6 percent last week. This week the tuned boosting model beats the braked logistic model by one point of AUC (0.81 against 0.80, invented), and the committee says boosting takes ten times longer to explain. Anand's budget covers one campaign of 5,000 nudges.
 
-![Paired fold AUCs for logistic and boosting from case 3](../1_in_class_training_content/slides/img/fig_paired_gap.png)
+![Paired fold AUCs for logistic and boosting from case 3](../1_in_class_training_content/slides/img/C2_W05_D04_fig_paired_gap_STUDENT.png)
 
 1. Before you recommend anything, what do you ask for? Name the facts the scenario leaves out.
 2. Using the exhibit from case 3 as your evidence, run test 1.
