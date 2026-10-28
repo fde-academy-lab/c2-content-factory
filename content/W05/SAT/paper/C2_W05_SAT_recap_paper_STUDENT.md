@@ -1,22 +1,22 @@
 # Week 5 recap paper
 
-Saturday 7 November 2026 · 60 minutes · 24 items in 5 parts · pen and paper, no assistant, no notes
+Saturday 7 November 2026 · 60 minutes · 22 items in 5 parts · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 24
+Name: ____________________    Marked by: ____________________    Items right: ____ of 22
 
 ## What this paper is for
 
-This week one real file carried every decision: 41,188 calls a Portuguese bank made to sell a term deposit, scored by the pipeline the room ran from Monday to Friday. The same questions ran on Kalpa in the lab, priced in Kalpa's rupees. This paper puts the week's calls back to you: whether a question needs a model and how the rows are split, which number tells the truth on a lopsided outcome and where the threshold goes, which columns the model was allowed to know, whether a model is learning or memorising, and what the committee needs before it signs and what moves to lending. The room's score in each part, set beside the rating you give that part in step one, tells the next session where to start.
+This week one real file carried every decision: 41,188 calls a Portuguese bank made to sell a term deposit, scored by the pipeline the room ran from Monday to Friday. The same questions ran on Kalpa in the lab, priced in Kalpa's rupees. This paper puts the week's calls back to you: whether a question needs a model and how the rows are split, which number tells the truth on a lopsided outcome and where the threshold goes, which columns the model was allowed to know, whether a model is learning or memorising, and what the committee needs before it signs and what moves to lending. Most items join two of the week's ideas on one exhibit, the way an interviewer pushes past the first answer. The room's score in each part, set beside the rating you give that part in step one, tells the next session where to start.
 
 ## How this paper works
 
 - 60 minutes in one sitting. Each part gives its minutes as a guide, not a limit.
-- Every item names its format beside its number, and a word bank or a match table names it once, above its items: circle one letter, circle every correct letter, write the letter from the word bank, or show the working and the answer.
+- Every item names its format beside its number: circle one letter, circle every correct letter, or show the working and the answer.
 - Every item also names its level, easy, medium or hard, so you can plan your time. A hard item is several steps on an exhibit, never an obscure fact.
 - A wrong answer costs nothing, so answer every item on the line under it.
 - Pen and this paper only: no laptop, no phone, no notes and no assistant.
 - Afterwards the papers are swapped and marked against the key, and the discussion takes the items the room missed most. The paper is ungraded and ranks nobody; the room's rates by part and by tag set Monday's revision.
-- Every part opens on the UCI Bank Marketing dataset (Moro, Rita and Cortez, CC BY 4.0), a real bank's real calls, and on the numbers the week's pipeline printed on it; the rupee costs are Kalpa's, from the labs. Kalpa Retail's people are Meera Raghavan, the CEO, and Anand Iyer, the finance controller, with the marketing lead named by role; Kalpa Financial Services is Rohan Desai's payments and lending business, where he is head of risk. Items that use a public case (Instacart, Booking.com) give the source beside the fact, and every number an item needs is on the page.
+- Every part opens on the UCI Bank Marketing dataset (Moro, Rita and Cortez, CC BY 4.0), a real bank's real calls, and on the numbers the week's pipeline printed on it; the rupee costs are Kalpa's, from the labs. Kalpa Retail's people are Meera Raghavan, the CEO, and Anand Iyer, the finance controller, with the marketing lead named by role; Kalpa Financial Services is Rohan Desai's payments and lending business, where he is head of risk. Items that use a public case (Zech and others on pneumonia X-rays, Instacart, Booking.com, Stripe and Flipkart) give the source beside the fact, and every number an item needs is on the page.
 
 ## Step one, before Part 1
 
@@ -33,18 +33,18 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
-| 1. Should the bank build a model, and what must it beat? | whether you can frame a prediction problem, split the rows honestly and read what a model's score says | Q1 to Q5 (5) | 10.5 | 1 | 3 | 1 |
-| 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q6 to Q11 (6) | 15.5 | 1 | 4 | 1 |
-| 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q12 to Q16 (5) | 11 | 1 | 3 | 1 |
-| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q17 to Q20 (4) | 10 | 0 | 2 | 2 |
-| 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q21 to Q24 (4) | 10 | 0 | 2 | 2 |
-| Total | | 24 | 57 | 3 | 14 | 7 |
+| 1. Should the bank build a model, and what must it beat? | whether you can frame a prediction problem, split the rows honestly and read what a model's score says | Q1 to Q4 (4) | 10 | 0 | 1 | 3 |
+| 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q5 to Q9 (5) | 15.5 | 0 | 3 | 2 |
+| 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q10 to Q13 (4) | 10.5 | 0 | 1 | 3 |
+| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q14 to Q17 (4) | 10 | 0 | 2 | 2 |
+| 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q18 to Q22 (5) | 12.5 | 0 | 1 | 4 |
+| Total | | 22 | 58.5 | 0 | 8 | 14 |
 
 ---
 
-## Part 1. Should the bank build a model, and what must it beat? (Q1 to Q5)
+## Part 1. Should the bank build a model, and what must it beat? (Q1 to Q4)
 
-*What it shows: whether you can frame a prediction problem, split the rows honestly and read what a model's score says. 5 items, about 10.5 minutes.*
+*What it shows: whether you can frame a prediction problem, split the rows honestly and read what a model's score says. 4 items, about 10 minutes.*
 
 From May 2008 to November 2010 a Portuguese retail bank phoned its clients to sell a term deposit. The UCI Machine Learning Repository publishes the 41,188 calls, in date order, as the Bank Marketing dataset (bank-additional-full.csv, CC BY 4.0), and 4,640 of them, 11.27 percent, ended in a yes. This week the room ran one pipeline on that file: on Monday 20 percent of the rows were sealed as the test slice, to be opened once on Friday, and the rest split three to one into training and validation. Exhibit 1A shows the week's picture, the slices and the first two scores on the 8,238 validation clients. The bank's marketing head asks whom to call in the next campaign. In the lab the same question ran at Kalpa Retail, where the marketing lead asked which members to nudge and Anand Iyer priced a wasted nudge at Rs 40 and a missed repeat buyer at about Rs 1,200.
 
@@ -65,34 +65,7 @@ flowchart LR
 | Call nobody, on validation | accuracy 0.887; finds 0 of the 928 buyers |
 | Logistic regression on the customer table, threshold 0.5 | accuracy 0.897; AUC 0.761; finds 174 of the 928 |
 
-#### Q1 · Medium · circle one letter · Catch the peek
-
-On Thursday an analyst opens the sealed test slice, sees 0.79, moves the threshold until the test score improves and reports the new test score to the committee. What is wrong, and what should the committee be told?
-
-a) Nothing is wrong: the test rows were never used to fit the weights, so any score read from them stays honest.
-b) The test helped choose the threshold, so its score flatters; say it was spent and score once on new calls.
-c) The threshold belongs on the training rows, so move it there and the test score can be reported as it stands.
-d) The slice is too small at 8,238 clients, so merge it with validation and report the pooled score as the test.
-
-#### Q2 · Hard · circle one letter · Judge the split
-
-The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a split by date estimates the model's score more honestly than a random split of all the rows. True or false, and why?
-
-a) True: a random split trains on later months than it validates on; train early and score late, like the ask.
-b) True: a split by date keeps more yes rows in validation, so its score is less noisy than a random split's.
-c) False: a stratified random split keeps 11.27 percent yes in every slice, so each is a fair sample of clients.
-d) False: the model never reads a date column, so the order in which the calls were made cannot move its score.
-
-#### Q3 · Medium · circle one letter · Read one score
-
-The logistic model gives one client a score of 0.71. What does the 0.71 say?
-
-a) The client will say yes, because any score above 0.5 is read by the model as a yes.
-b) The model is right about 71 percent of the clients it scores on the validation slice.
-c) The client is 71 percent more likely to say yes than the average client in the file is.
-d) Of clients scored like this one, about 71 in 100 say yes, if the scores are calibrated.
-
-#### Q4 · Medium · circle every correct letter · Sort the asks
+#### Q1 · Medium · circle every correct letter · Sort the asks
 
 The bank's marketing head brings four asks. Which need a model that predicts? Circle every correct letter.
 
@@ -101,27 +74,38 @@ b) the count of yes answers in each month of 2009, for the annual report
 c) the clients whose previous campaign ended in success, listed by branch
 d) each new client's own chance of a yes on a first call, before anyone calls
 
-**Word bank 1.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
+#### Q2 · Hard · circle one letter · Read one score
 
-| Letter | Word or phrase |
-|---|---|
-| a | training |
-| b | validation |
-| c | test |
-| d | baseline |
-| e | threshold |
+The logistic model on the customer table gives one client a score of 0.71, and its validation AUC is 0.761 (Exhibit 1A). What does the 0.71 say, and what would let the memo read it that way?
 
-#### Q5 · Easy · write the letter from Word bank 1 · Name the sealed slice
+a) A 71 percent chance of a yes, and the AUC of 0.761 already shows the scores can be read as chances.
+b) The model is right on about 71 percent of the clients it scores, which the validation slice confirms.
+c) The client will say yes, since a score above 0.5 is a yes once the model beats calling nobody.
+d) About 71 in 100 such clients say yes, if about 71 in 100 validation clients scored near 0.71 did.
 
-Of the three data splits, the ____ set is spent once, at the end.
+#### Q3 · Hard · circle one letter · Predict the fresh score
 
-Answer: ____________________
+On Monday a junior tried 60 versions of the model, each on a different list of columns, scored all 60 on the same 2,000 held-out clients and kept the best: accuracy 0.9055 there, where calling nobody scores 0.8875. On 6,238 fresh clients, where calling nobody scores 0.8873, what does the chosen version score, and what have the 2,000 clients become?
+
+a) About 0.906 again, since the version never trained on the 2,000; they remain a fair test of it.
+b) About 0.887, since the loop found only luck and its edge vanishes; the 2,000 have become training.
+c) About 0.897: part of the 1.8-point edge was luck the loop picked; the 2,000 are now validation.
+d) About 0.80, since 60 versions overfit the 2,000 and fall below calling nobody; they are now spent.
+
+#### Q4 · Hard · circle one letter · Judge the split
+
+The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a split by date estimates the model's score more honestly than a random split of all the rows. True or false, and why?
+
+a) True: a random split trains on later months than it validates on; train early and score late, like the ask.
+b) True: a split by date keeps more yes rows in validation, so its score is less noisy than a random split's.
+c) False: a stratified random split keeps 11.27 percent yes in every slice, so each is a fair sample of clients.
+d) False: the model never reads a date column, so the order in which the calls were made cannot move its score.
 
 ---
 
-## Part 2. Which number tells the truth, and where does the line go? (Q6 to Q11)
+## Part 2. Which number tells the truth, and where does the line go? (Q5 to Q9)
 
-*What it shows: whether you can read a confusion matrix, price each error and set the line the business can afford. 6 items, about 15.5 minutes.*
+*What it shows: whether you can read a confusion matrix, price each error and set the line the business can afford. 5 items, about 15.5 minutes.*
 
 On Tuesday the room scored the customer-table model the way the business will judge it. Exhibit 2A gives two matrices on the same 8,238 validation clients: calling nobody, and the model at the default threshold of 0.5. Each outcome is priced at Kalpa's costs, as Tuesday priced them: a call to a client who says no wastes Rs 40, and a buyer the list leaves out loses about Rs 1,200 of margin. The marketing head's question is the bank's version of the marketing lead's at Kalpa: whom to call, and how many.
 
@@ -139,7 +123,7 @@ flowchart LR
 | Call nobody | 0 | 0 | 928 | 7,310 |
 | Model at 0.5 | 174 | 94 | 754 | 7,216 |
 
-#### Q6 · Medium · circle one letter · Judge the accuracy claim
+#### Q5 · Medium · circle one letter · Judge the accuracy claim
 
 Statement: an accuracy of 0.897 against 0.887 for calling nobody shows that the model at 0.5 is good enough to run the campaign. True or false, and why?
 
@@ -148,7 +132,7 @@ b) True: it gets 848 clients wrong against the baseline's 928, so it makes 80 fe
 c) False: accuracy is fair only on the sealed test slice, so 0.897 means nothing until Friday's envelope is opened.
 d) False: calling nobody already scores 0.887, so accuracy says little; at 0.5 the model finds 174 of 928 buyers.
 
-#### Q7 · Medium · show the working, then the answer · Work the matrix
+#### Q6 · Medium · show the working, then the answer · Work the matrix
 
 From the model's row of Exhibit 2A, compute its precision, recall and F1 at the threshold of 0.5, each to two decimal places. Show the working.
 
@@ -156,7 +140,7 @@ Working:
 
 Answer: ____________________
 
-#### Q8 · Medium · show the working, then the answer · Draw the line
+#### Q7 · Medium · show the working, then the answer · Draw the line
 
 A call to a client who says no wastes Rs 40, and a buyer left off the list loses about Rs 1,200. Above what chance of a yes is a call worth making, and which way does that move the threshold from 0.5? Show the working.
 
@@ -173,44 +157,28 @@ Answer: ____________________
 | 0.10 | 2,754 | 616 | 2,138 | 312 |
 | The cost line | 7,438 | 913 | 6,525 | 15 |
 
-#### Q9 · Medium · circle one letter · Price two thresholds
+#### Q8 · Hard · show the working, then the answer · Choose by F1 or by the bill
 
-At Rs 40 a wasted call and Rs 1,200 a missed buyer, what is the error bill at the thresholds of 0.5 and 0.10 in Exhibit 2B, and which costs less?
+Two teammates choose between the thresholds of 0.20 and 0.10 in Exhibit 2B: one by F1, the other by the error bill at Rs 40 a wasted call and Rs 1,200 a missed buyer. Which threshold does each choose, with the figures that decide it, and why do the two choices differ? Show the working.
 
-a) Rs 142,960 at 0.5 and Rs 2,578,080 at 0.10, so 0.5 is cheaper by Rs 2,435,120.
-b) Rs 908,560 at 0.5 and Rs 459,920 at 0.10, so 0.10 is cheaper by Rs 448,640.
-c) Rs 3,760 at 0.5 and Rs 85,520 at 0.10, so 0.5 is cheaper by Rs 81,760 in all.
-d) Rs 904,800 at 0.5 and Rs 374,400 at 0.10, so 0.10 is cheaper by Rs 530,400.
-
-#### Q10 · Hard · circle one letter · Spend 1,000 calls
-
-The call centre can make 1,000 calls in the next campaign, and the cost line would call 7,438 of these 8,238 clients (Exhibit 2B). Which plan goes to the marketing head?
-
-a) Keep the cost line and call the first 1,000 clients above it in the order the file lists them.
-b) Raise the threshold to 0.5 and call its 268 clients, since precision is the highest at that line.
-c) Rank every client by score and call the top 1,000; 404 of them said yes, 3.6 times the base rate.
-d) Call 1,000 clients drawn at random, since a ranking on an outcome this rare is mostly noise.
-
-**Word bank 2.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
-
-| Letter | Word or phrase |
-|---|---|
-| a | positives |
-| b | negatives |
-| c | calls |
-| d | thresholds |
-
-#### Q11 · Easy · write the letter from Word bank 2 · Complete the formula
-
-Recall is true positives divided by true positives plus false ____.
+Working:
 
 Answer: ____________________
 
+#### Q9 · Hard · circle one letter · Spend 1,000 calls
+
+The call centre can make 1,000 calls in the next campaign, and the cost line would call 7,438 of these 8,238 clients (Exhibit 2B). Which plan goes to the marketing head?
+
+a) Call the 864 clients above 0.20, at a precision of 0.435, and hold the other 136 calls in reserve.
+b) Call the 268 clients above 0.5, where precision is at its highest, and save the rest of the budget.
+c) Rank every client by score and call the top 1,000, wherever that cut happens to fall on the scores.
+d) Draw 1,000 clients at random from the 7,438 above the cost line, since every one of them clears it.
+
 ---
 
-## Part 3. What was the model allowed to know? (Q12 to Q16)
+## Part 3. What was the model allowed to know? (Q10 to Q13)
 
-*What it shows: whether you can test each column against the moment of prediction and say what a coefficient does and does not prove. 5 items, about 11 minutes.*
+*What it shows: whether you can test each column against the moment of prediction and say what a coefficient does and does not prove. 4 items, about 10.5 minutes.*
 
 On Wednesday two more feeds were joined to the customer table: five economic indicators, each published for its month or quarter, and this campaign's call log. Exhibit 3A gives the validation scores as each feed joins. A junior analyst wants to ship the last line tonight, and the marketing head asks which line to trust for next month's call list.
 
@@ -229,7 +197,7 @@ flowchart LR
 | The customer table and the five economic indicators | 0.795 | 0.899 | 211 |
 | All of those and duration, the call's length in seconds | 0.932 | 0.907 | 390 |
 
-#### Q12 · Medium · circle one letter · Answer the junior
+#### Q10 · Medium · circle one letter · Answer the junior
 
 The junior's message reads: "Adding duration lifts AUC from 0.795 to 0.932. Shipping tonight." What is the reply?
 
@@ -238,7 +206,7 @@ b) Hold it: accuracy only rose from 0.899 to 0.907, so the AUC jump must be nois
 c) Drop it: a call's length exists only once the call ends, so no list can use it; report 0.795.
 d) Keep it but scale it first, since a column measured in raw seconds is what inflates the AUC.
 
-#### Q13 · Hard · circle every correct letter · Test each column
+#### Q11 · Hard · circle every correct letter · Test each column
 
 The list for next month's campaign is built on the morning before the first call. Which columns pass the prediction-time question? Circle every correct letter.
 
@@ -247,43 +215,46 @@ b) poutcome, the last campaign's result; 65 percent of its successes say yes
 c) age, job and housing, as they stand in the customer table that morning
 d) nr.employed for the current quarter, filled in once that quarter closes
 
-#### Q14 · Medium · circle one letter · Judge the chart
+**Exhibit 3B.** A pneumonia model trained on chest X-rays from two hospital systems, as Zech and others report it (PLOS Medicine, 2018).
 
-In the model with duration, duration tops the importance chart, and clients who said yes talked 553 seconds on average against 221 for those who said no. Statement: longer calls cause deposits, so agents should be coached to keep clients on the line. True or false, and why?
-
-a) False: a client who means to buy stays on to arrange it, so the yes drives the length as much as the reverse.
-b) False: an importance chart is valid for tree models only, so the logistic weights say nothing about duration.
-c) True: duration carries the largest weight in the model, and the largest weight points to the cause of the yes.
-d) True: a gap of 332 seconds is too large to be chance across 41,188 calls, so the effect has to be causal.
-
-#### Q15 · Medium · circle one letter · Explain the flip
-
-On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. The marketing head asks whether higher rates help the campaign. What is the likeliest cause of the flip, and what does the memo say?
-
-a) A solver bug once a model passes ten columns; refit with another solver and report the sign it gives.
-b) Since 2009 the rate's effect has reversed; report the +0.39 as the effect on this year's campaign.
-c) The 11 percent yes rate shrinks rare-outcome weights; report -0.92 from the model fitted on its own.
-d) The indicators move together and share one signal; read them as a group and quote no one sign.
-
-**Word bank 3.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
-
-| Letter | Word or phrase |
+| What the paper reports | Value |
 |---|---|
-| a | drift |
-| b | imbalance |
-| c | leakage |
-| d | collinearity |
-| e | overfitting |
+| The model's AUC on held-out X-rays from its own two hospital systems | 0.931 |
+| The same model's AUC at a third hospital system | 0.815 |
+| AUC from sorting X-rays from the two training systems by hospital alone | 0.861 |
+| Pneumonia rate in the two training systems | 34.2 percent and 1.2 percent |
+| X-rays from one system whose hospital a network identified | 22,050 of 22,062 |
 
-#### Q16 · Easy · write the letter from Word bank 3 · Name the trap
+#### Q12 · Hard · circle one letter · Diagnose the drop
 
-A feature that would not be known at prediction time is a case of data ____.
+Exhibit 3B reports a pneumonia model that scored well on held-out X-rays and worse at a new hospital. Which reading holds, and which check would have caught it before launch?
 
-Answer: ____________________
+a) It learned which hospital took each X-ray, a shortcut its held-out set shared; test it on a new site.
+b) It memorised its training X-rays, so a stronger penalty or a smaller network would have closed the gap.
+c) The new hospital's X-rays were poorer, so the drop says nothing about the model and needs no check.
+d) 0.815 is still a strong AUC, so the model carries over, and the drop is the noise of one test set.
+
+**Exhibit 3C.** Two readings of Wednesday's models on the week's run: the importance chart of the model with every column, and the logistic model's weight on euribor3m, the three-month interest rate, on the standardised scale.
+
+| What the week's run shows | Value |
+|---|---|
+| duration's place on the importance chart of the model with every column | first |
+| Mean call length: clients who said yes; clients who said no | 553 seconds; 221 seconds |
+| euribor3m's weight with no other column in the model | -0.92 |
+| euribor3m's weight beside the customer table and the other four indicators | +0.39 |
+
+#### Q13 · Hard · circle one letter · Check two conclusions
+
+The marketing head reads Exhibit 3C and draws two conclusions. One: longer calls make deposits, so agents should be coached to keep clients on the line. Two: higher rates bring deposits, since euribor3m's weight is +0.39 once the other columns are held fixed. Which reply holds?
+
+a) Both hold: the chart and the weight come from models that scored well on the validation slice.
+b) One fails, since a yes makes the call long; two holds, since the full model holds the other columns fixed.
+c) One holds, since 332 seconds is far beyond chance; two fails, since the weight flips as columns join.
+d) Both fail: a yes lengthens the call, and the rate moves with the other indicators; neither is an effect.
 
 ---
 
-## Part 4. Is the model learning, or memorising? (Q17 to Q20)
+## Part 4. Is the model learning, or memorising? (Q14 to Q17)
 
 *What it shows: whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships. 4 items, about 10 minutes.*
 
@@ -307,7 +278,7 @@ xychart-beta
 | 8 | 0.911 | 0.897 | 0.777 |
 | No limit | 0.996 | 0.837 | 0.619 |
 
-#### Q17 · Medium · circle one letter · Read the depth curve
+#### Q14 · Medium · circle one letter · Read the depth curve
 
 The unlimited tree scores 0.996 on training and 0.837 on validation, below calling nobody. Which reading and which next step are right?
 
@@ -316,7 +287,7 @@ b) It needs more columns to learn from; join the call log so validation catches 
 c) It has not trained long enough; grow it further until validation rises to meet training.
 d) Validation has drifted from training; refit the unlimited tree on validation and report it.
 
-#### Q18 · Medium · circle every correct letter · Pick the brakes
+#### Q15 · Medium · circle every correct letter · Pick the brakes
 
 Which of these put a brake on overfitting? Circle every correct letter.
 
@@ -339,7 +310,7 @@ d) a simpler depth or penalty, chosen by five-fold cross-validation
 | Random forest, on validation | 0.799 |
 | Gradient boosting, on validation | 0.806 |
 
-#### Q19 · Hard · circle one letter · Count the folds
+#### Q16 · Hard · circle one letter · Count the folds
 
 Five-fold cross-validation of the logistic model gave the five fold scores in Exhibit 4B. How many models were fitted, on about how many clients each, and what does the spread tell the committee?
 
@@ -348,7 +319,7 @@ b) Five models on about 19,770 clients each; one split could have read 0.77 or 0
 c) Five models on about 4,942 clients each; the spread says the model needs more rows.
 d) Five models on all 24,712 clients each; the spread is noise and says nothing of a split.
 
-#### Q20 · Hard · circle one letter · Judge the winner
+#### Q17 · Hard · circle one letter · Judge the winner
 
 Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
 
@@ -359,9 +330,9 @@ d) False: AUC cannot compare models of different families, so the committee need
 
 ---
 
-## Part 5. Would the committee sign, and what moves to lending? (Q21 to Q24)
+## Part 5. Would the committee sign, and what moves to lending? (Q18 to Q22)
 
-*What it shows: whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending. 4 items, about 10 minutes.*
+*What it shows: whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending. 5 items, about 12.5 minutes.*
 
 On Friday the room wrote the memo for Meera Raghavan's committee: Anand Iyer, the marketing lead and Rohan Desai of Kalpa Financial Services, who is watching for his own business. The bank's file showed what time does to a model. Trained on the earliest 70 percent of the calls and scored on the latest 30 percent, the logistic model on the honest columns met a world where far more clients said yes than it had learned (Exhibit 5A). Exhibit 5B, with the first item, sets two public cases beside it.
 
@@ -388,16 +359,16 @@ flowchart LR
 | Instacart, looking back | Models respond slowly to a shock because they need enough new observations; thresholds on top of the model were changed without training new models |
 | Booking.com, 23 comparisons of a new model against a proven one | Offline gain (ROC AUC or mean reciprocal rank) against the gain in a business metric when the two models were compared live: Pearson correlation -0.1, 90 percent interval -0.45 to 0.27 |
 
-#### Q21 · Hard · circle one letter · Set the alarm
+#### Q18 · Hard · circle one letter · Set the alarm
 
-On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what does it mean for the cost line drawn on these scores?
+On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
 
-a) Set each month's called yes rate against the mean score, with a stated gap; the cost line moves too, as the scores run low.
-b) Retrain every night on the newest calls; the scores then stay current, so the cost line drawn on them needs no second look.
-c) Compare training accuracy month by month; a fall there flags the drift, and the cost line stays where Tuesday drew it.
-d) Wait for the marketing head's report; a score that still ranks buyers first keeps the cost line drawn on it valid.
+a) Set each month's called yes rate against the mean score, with a stated gap; the cut moves down, as scores run low.
+b) Set each month's called yes rate against the mean score, with a stated gap; the cut moves up, as more clients now say yes.
+c) Retrain every night on the newest calls; the scores then stay current, so the cut on them needs no second look.
+d) Compare training accuracy month by month; a fall there flags the drift, and the cut stays where Tuesday drew it.
 
-#### Q22 · Medium · circle every correct letter · Fill the caveat
+#### Q19 · Medium · circle every correct letter · Fill the caveat
 
 Which lines belong in the memo's caveat? Circle every correct letter.
 
@@ -406,23 +377,40 @@ b) the segment where the model performs worst, with how many clients it holds
 c) the gap between predicted and actual yes rates that would trigger a retrain
 d) the number of calls the campaign budget pays for in the next month
 
-#### Q23 · Medium · circle one letter · Choose the evidence
+#### Q20 · Hard · circle one letter · Choose the evidence
 
-Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). What does the memo propose?
+Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). Which test does the memo propose for next month?
 
-a) a bigger validation slice, so that the AUC of 0.795 can be quoted to three decimal places
-b) a switch to gradient boosting, whose 0.806 gives the committee the strongest offline case
-c) a random trial: half the next calls by the model's list, half by today's rule, scored on deposits
-d) the sealed test score on its own, since a slice opened once is all the evidence a committee needs
+a) Call every client by the list next month, then compare its deposits per call with this month's, before the switch.
+b) Score the list once on the sealed test slice, and sign if its AUC holds near the 0.795 it scored on validation.
+c) Run the list beside today's rule for a month, each on the branches it suits best, and compare deposits sold.
+d) Assign next month's clients at random, half to the list and half to today's rule; compare deposits per call.
 
-#### Q24 · Hard · circle one letter · Move the line to lending
+#### Q21 · Hard · circle one letter · Move the line to lending
 
 Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
 
 a) Both: each is far below a 50 percent chance of default, the neutral line for a yes or no decision.
 b) P only: the line sits near a 5 percent chance of default, so Q at 8 percent costs more than it pays.
-c) Both: the nudge acts on a 3 percent chance, so the same method approves anyone above that line.
+c) Both: an 8 percent chance of default means 92 in 100 such borrowers repay, a strong book for any lender.
 d) Neither: a default costs twenty times a rejection, so any chance above 1 in 20 must mean a rejection.
+
+**Exhibit 5C.** Two public fraud cases. Stripe: its primer on machine learning for fraud protection. Flipkart with Carnegie Mellon: Hooi and others, BIRDNEST, arXiv 1511.06030.
+
+| Case | What the source reports |
+|---|---|
+| Stripe's worked example | A blocked genuine sale loses its margin, 2.08 dollars, and a missed fraud costs 38.92 dollars, so blocking pays above a break-even precision of 5.07 percent |
+| Stripe, on false declines | In a survey Stripe cites, 33 percent of consumers said they would not shop again at a business after a false decline |
+| Flipkart's ratings-fraud model | The trust team investigated the 250 accounts the model ranked most suspicious, and 211 of them were involved in fraud |
+
+#### Q22 · Hard · circle one letter · Answer Rohan's question
+
+Rohan Desai asks one question about a fraud model for Kalpa Financial Services' payments app: "Do we tune it for precision or for recall?" Exhibit 5C sets two public cases beside his question. What is the best first reply?
+
+a) Recall: Stripe's arithmetic blocks above a 5 percent break-even, so a missed fraud is the cost; catch all of it.
+b) Precision: a third of customers leave after a false decline, so flag only the payments the model is sure of.
+c) Ask first: does a flag block the payment or send it to a reviewer, and how many can the team review a day?
+d) F1: fraud is rare, so F1 weighs both errors at once, and the threshold goes where F1 peaks on validation.
 
 ---
 

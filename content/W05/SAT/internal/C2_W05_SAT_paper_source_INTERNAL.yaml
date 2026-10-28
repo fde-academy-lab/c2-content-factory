@@ -7,13 +7,14 @@
 # W05 length, so the builder takes the tracker's 60, which matches the Saturday row of
 # docs/curriculum/W5_ML_core_ME1.md. Five parts, one per teaching day, each opening on the UCI Bank
 # Marketing campaign as the week's pipeline ran it (docs/detailing/W05_research/W05_week_pipeline.md),
-# with every number re-run in this session on 28 October 2026 and matching that file. Three bank
-# items print, the blanks of banks 1 to 3, each from a word bank and each last in its part;
-# twenty-six fold into deeper items, each with its reason under `folded`, because the bank's twenty-nine items at the bank's pace fill the 60
-# minutes with no room for the reasoned formats the interview grade asks for, and nine of its
-# thirteen option sets fail the distractor audit as the tracker prints them. Twenty-one additions
-# carry the folded concepts on the week's real numbers, so no item is moved to the stretch page and
-# every concept in the bank is tested inside the timed 60 minutes.
+# with every number re-run in this session on 28 October 2026 and matching that file. All
+# twenty-nine bank items fold into deeper items, each with its reason under `folded`, because the
+# bank's items at the bank's pace fill the 60 minutes with no room for the reasoned formats the
+# interview grade asks for, nine of its thirteen option sets fail the distractor audit as the
+# tracker prints them, and the raise of 28 October 2026 folded the three easy word-bank blanks into
+# the items that already tested their words. Twenty-two additions carry the folded concepts on the
+# week's real numbers, fourteen of them hard by exercise-builder's bar, so no item is moved to the
+# stretch page and every concept in the bank is tested inside the timed 60 minutes.
 #
 # Every bank-campaign number is in the week pipeline file or in the provenance's re-run table
 # (internal/C2_W05_SAT_provenance_INTERNAL.md); every public fact is in
@@ -30,42 +31,17 @@ purpose: >-
   whether a question needs a model and how the rows are split, which number tells the truth on a
   lopsided outcome and where the threshold goes, which columns the model was allowed to know,
   whether a model is learning or memorising, and what the committee needs before it signs and
-  what moves to lending. The room's score in each part, set beside the rating you give that part
-  in step one, tells the next session where to start.
+  what moves to lending. Most items join two of the week's ideas on one exhibit, the way an
+  interviewer pushes past the first answer. The room's score in each part, set beside the rating
+  you give that part in step one, tells the next session where to start.
 company: >-
   Every part opens on the UCI Bank Marketing dataset (Moro, Rita and Cortez, CC BY 4.0), a real
   bank's real calls, and on the numbers the week's pipeline printed on it; the rupee costs are
   Kalpa's, from the labs. Kalpa Retail's people are Meera Raghavan, the CEO, and Anand Iyer, the
   finance controller, with the marketing lead named by role; Kalpa Financial Services is Rohan
   Desai's payments and lending business, where he is head of risk. Items that use a public case
-  (Instacart, Booking.com) give the source beside the fact, and every number an item needs is on
-  the page.
-
-# Shared lettered lists, printed once above the first item that answers from them.
-banks:
-  mon-words:
-    style: words
-    options:
-      - training
-      - validation
-      - test
-      - baseline
-      - threshold
-  tue-words:
-    style: words
-    options:
-      - positives
-      - negatives
-      - calls
-      - thresholds
-  wed-words:
-    style: words
-    options:
-      - drift
-      - imbalance
-      - leakage
-      - collinearity
-      - overfitting
+  (Zech and others on pneumonia X-rays, Instacart, Booking.com, Stripe and Flipkart) give the
+  source beside the fact, and every number an item needs is on the page.
 
 # The printed order. Bank items by number, the additions by id.
 parts:
@@ -102,7 +78,7 @@ parts:
             - ["Test slice, sealed on Monday", "8,238 clients, opened once on Friday"]
             - ["Call nobody, on validation", "accuracy 0.887; finds 0 of the 928 buyers"]
             - ["Logistic regression on the customer table, threshold 0.5", "accuracy 0.897; AUC 0.761; finds 174 of the 928"]
-    items: ["new:peek", "new:random-or-time", "new:logit-071", "new:is-it-ml", 1]
+    items: ["new:is-it-ml", "new:logit-071", "new:peek", "new:random-or-time"]
   - title: Which number tells the truth, and where does the line go?
     shows: whether you can read a confusion matrix, price each error and set the line the business can afford
     intro: >-
@@ -131,7 +107,7 @@ parts:
           rows:
             - [Call nobody, "0", "0", "928", "7,310"]
             - ["Model at 0.5", "174", "94", "754", "7,216"]
-    items: ["new:acc-trap", "new:prf", "new:cost-line", "new:bill", "new:budget-k", 2]
+    items: ["new:acc-trap", "new:prf", "new:cost-line", "new:bill", "new:budget-k"]
   - title: What was the model allowed to know?
     shows: whether you can test each column against the moment of prediction and say what a coefficient does and does not prove
     intro: >-
@@ -158,7 +134,7 @@ parts:
             - ["The customer table: profile and campaign history", "0.761", "0.897", "174"]
             - ["The customer table and the five economic indicators", "0.795", "0.899", "211"]
             - ["All of those and duration, the call's length in seconds", "0.932", "0.907", "390"]
-    items: ["new:duration-call", "new:which-pass", "new:importance", "new:sign-flip", 3]
+    items: ["new:duration-call", "new:which-pass", "new:shortcut", "new:two-readings"]
   - title: Is the model learning, or memorising?
     shows: whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships
     intro: >-
@@ -216,13 +192,22 @@ parts:
             - ["Earliest 70 percent of calls, 28,831 clients", "5.6 percent said yes"]
             - ["Latest 30 percent of calls, 12,357 clients", "24.6 percent said yes"]
             - ["Mean predicted chance of a yes on the latest 30 percent", "0.152"]
-    items: ["new:stale-rule", "new:caveat", "new:booking", "new:lend-flip"]
+    items: ["new:stale-rule", "new:caveat", "new:booking", "new:lend-flip", "new:fraud-ask"]
 
 # Bank items that move to the untimed stretch page: none, since every concept is tested in time.
 stretch_bank: []
 
 # Bank items that do not print because a deeper printed item tests their concept.
 folded:
+  1:
+    into: "new:peek"
+    why: The raise of 28 October 2026 folded the bank's three easy blanks, since each sat beside an item that printed its word (the peek item's own options said a slice was spent). The peek item's key says that a slice used to choose among 60 versions has become validation and that only a slice scored once, at the end, is a test, which is bank 1's word on the room's own loop.
+  2:
+    into: "new:prf"
+    why: The raise of 28 October 2026 folded the blank, which printed after the worked item that divides 174 by 174 plus 754. That working puts the false negatives in recall's denominator, which is bank 2's word on the week's real matrix.
+  3:
+    into: "new:duration-call"
+    why: The raise of 28 October 2026 folded the blank. The duration item's key drops a column that exists only once the call ends and its reason names it data leakage, which is bank 3's word on the week's real column.
   4:
     into: "new:tree-read"
     why: The blind sitting found the bank's 100 and 61 percent read beside Exhibit 4A's 0.996 and 0.619, two metrics, and found the blank cued by the part's title and by the options above it, so the item that reads training at 0.996 against validation at 0.837 as memorising tests bank 4's word on the room's own tree.
@@ -233,8 +218,8 @@ folded:
     into: "new:acc-trap"
     why: The printed statement is bank 6's trap on the week's own rows, where calling nobody already scores 0.887 on an 89 to 11 outcome, and option d keys the reason accuracy says little there.
   7:
-    into: "new:importance"
-    why: The statement reads the top of an importance chart as a cause, and the key refuses it because the yes drives the call's length as much as the reverse, which is bank 7's false statement judged with its reason.
+    into: "new:two-readings"
+    why: The marketing head's first conclusion reads the top of an importance chart as a cause, and the key refuses it because the yes drives the call's length as much as the reverse, which is bank 7's false statement judged with its reason.
   8:
     into: "new:brakes"
     why: Option b is a stronger penalty on the weights, which loosens the fit to the training rows, and option c, fitting the training rows until they score 1.0, is bank 8's false statement offered as a brake.
@@ -246,7 +231,7 @@ folded:
     why: The item sorts four of the bank's asks into the two that need a prediction and the two a query answers, which is bank 10's question with two keys where the bank has one.
   11:
     into: "new:logit-071"
-    why: The item asks what a logistic score of 0.71 says about one client, with bank 11's three misreadings as the distractors and the calibration condition added to the key.
+    why: The item asks what a logistic score of 0.71 says about one client, with bank 11's three misreadings as the distractors, and adds the check that lets the memo read it as a chance, since an AUC vouches for the ranking and never for the chances.
   12:
     into: "new:cost-line"
     why: The working puts the line at 1 in 31, about 0.032, far below 0.5, and the answer names the direction and that recall leads, which is bank 12's key derived where the bank only asks for it.
@@ -257,14 +242,14 @@ folded:
     into: "new:duration-call"
     why: The item is bank 14's leak on the week's real column, duration, which the dataset's own notes say is known only after the call, and its key removes it and reports the honest 0.795.
   15:
-    into: "new:sign-flip"
-    why: The item is bank 15's sign flip as the week measured it, euribor3m from -0.92 alone to +0.39 beside the other indicators, with the same four causes as options.
+    into: "new:two-readings"
+    why: The marketing head's second conclusion reads euribor3m's +0.39 as the effect of rates, and the key refuses it because the rate moves with the other indicators, the cause bank 15 asks for, so the sign flips from -0.92 alone and no single weight is the rate's effect.
   16:
     into: "new:tree-read"
     why: The exhibit is bank 16's curve on the room's own tree, training rising to 0.996 while validation falls to 0.837, and the key caps the depth at the validation peak, which is bank 16's prescription.
   17:
     into: "new:stale-rule"
-    why: The key is bank 17's monitoring rule made concrete on the bank's late rows, the called clients' yes rate against the mean score with a stated gap, and its distractors are bank 17's three.
+    why: The key is bank 17's monitoring rule made concrete on the bank's late rows, the called clients' yes rate against the mean score with a stated gap, and two of its distractors are bank 17's own; the raise adds the step of saying which way the cut on the scores moves.
   18:
     into: "new:acc-trap"
     why: The statement sets the model against the majority-class baseline on the same validation rows, bank 18's options a and c, and its key says why beating the baseline on accuracy alone does not earn a ship, bank 18's option b.
@@ -285,10 +270,10 @@ folded:
     why: The working computes recall on the same matrix, 174 of the 928 buyers, which is bank 23's arithmetic.
   24:
     into: "new:bill"
-    why: The item prices the week's real matrix at bank 24's costs, Rs 40 a wasted call and Rs 1,200 a missed buyer, which is bank 24's error bill.
+    why: The working prices two of the week's real thresholds at bank 24's costs, Rs 40 a wasted call and Rs 1,200 a missed buyer, which is bank 24's error bill.
   25:
     into: "new:bill"
-    why: The item compares the bill at two thresholds and asks which costs less, which is bank 25's question on the week's own thresholds, and its distractors are the three ways the bill is usually miscounted.
+    why: The working compares the bill at two thresholds and says which costs less, which is bank 25's question on the week's own thresholds, and sets it against the threshold F1 would choose.
   26:
     into: "new:acc-trap"
     why: The key reads 0.897 accuracy beside 174 of 928 buyers found, which is bank 26's point that an accuracy figure says little about how many buyers were found.
@@ -302,79 +287,47 @@ folded:
     into: "new:cv-why"
     why: The key states five models fitted on about four-fifths of the training rows each, which is bank 29's count on the week's 24,712 rows.
 
-notes:
-  1:
-    label: "Name the sealed slice"
-    bank: mon-words
-    why: >-
-      The test slice is scored once, at the end, so its number is an honest estimate of how the
-      chosen model does on clients it never influenced. Training fits the model and validation
-      chooses among models and thresholds, so both are read many times. The week sealed the test
-      slice on Monday in an envelope on the wall and opened it once on Friday.
-    answer: >-
-      Training fits, validation chooses, and the test is spent once, at the end; once I peek and
-      change anything, it is validation.
-  2:
-    label: "Complete the formula"
-    bank: tue-words
-    why: >-
-      Recall is true positives over every actual positive, and the actual positives the model
-      missed are the false negatives: on Tuesday's matrix, 174 over 174 plus 754. Precision is the
-      ratio that takes false positives below the line.
-    answer: >-
-      Recall asks, of the buyers out there, how many I found, so its denominator is every real
-      buyer, caught or missed.
-  3:
-    label: "Name the trap"
-    bank: wed-words
-    why: >-
-      A column the model could not have at the moment of prediction leaks the answer into
-      training, which is data leakage; duration is the week's example, known only once the call
-      ends. Drift is the world changing after training, and collinearity is columns moving
-      together, Wednesday's sign flip.
-    answer: >-
-      Leakage is a column from the future, so I ask of every column when it would exist on the
-      morning the list is built.
-
 additions:
   # ---------------------------------------------------------------- Part 1, Monday
   - id: peek
-    label: "Catch the peek"
+    label: "Predict the fresh score"
     type: One correct option
-    level: Medium
+    level: Hard
     min: 2.5
     tag: "[S]"
     roles: DS, FDE
     day: Mon
-    key: b
+    key: c
     anchor: >-
       Train, validation, test: which is spent once?
     text: |-
-      On Thursday an analyst opens the sealed test slice, sees 0.79, moves the threshold until the test score improves and reports the new test score to the committee. What is wrong, and what should the committee be told?
-      (a) Nothing is wrong: the test rows were never used to fit the weights, so any score read from them stays honest.
-      (b) The test helped choose the threshold, so its score flatters; say it was spent and score once on new calls.
-      (c) The threshold belongs on the training rows, so move it there and the test score can be reported as it stands.
-      (d) The slice is too small at 8,238 clients, so merge it with validation and report the pooled score as the test.
+      On Monday a junior tried 60 versions of the model, each on a different list of columns, scored all 60 on the same 2,000 held-out clients and kept the best: accuracy 0.9055 there, where calling nobody scores 0.8875. On 6,238 fresh clients, where calling nobody scores 0.8873, what does the chosen version score, and what have the 2,000 clients become?
+      (a) About 0.906 again, since the version never trained on the 2,000; they remain a fair test of it.
+      (b) About 0.887, since the loop found only luck and its edge vanishes; the 2,000 have become training.
+      (c) About 0.897: part of the 1.8-point edge was luck the loop picked; the 2,000 are now validation.
+      (d) About 0.80, since 60 versions overfit the 2,000 and fall below calling nobody; they are now spent.
     why: >-
-      The test slice is honest only while nothing about the model was chosen by looking at it.
-      Moving the threshold until the test score improves makes the test a second validation slice,
-      so the reported number now carries the analyst's selection and flatters the model. The
-      committee is told the test was spent, and the honest check is one score on calls the model has
-      not touched, such as the next month's.
-      Monday sealed the slice in the envelope; Friday opened it once.
+      Choosing the best of 60 on one slice picks the version whose score on that slice was
+      luckiest, so the chosen score flatters. On fresh rows the luck does not repeat and the score
+      falls back toward what an ordinary model of the week scores: the room's notebook measured
+      0.8971, the customer-table model's 0.897 on Exhibit 1A, an honest edge of 0.98 points against
+      the 1.80 reported. No version was fitted to the 2,000, so the score does not collapse; the
+      2,000 were spent on a choice, which makes them validation. A test slice is scored once, at the
+      end, on a model already chosen.
+      Monday's peek chapter ran this loop, and the sealed envelope stayed shut until Friday.
     wrong:
       a: >-
-        Fitting the weights is one way to use the rows; choosing a threshold on them is another, and
-        either one spends the slice.
-      c: >-
-        A threshold set on training rows sits on rows the model has memorised, so validation is the
-        place to set it, and the test score is still spent.
+        Never training on a slice is not enough: choosing among 60 versions by their score on it
+        carries the slice's luck into the choice.
+      b: >-
+        The versions are ordinary models of the week, each near Exhibit 1A's 0.897, so the edge
+        shrinks without vanishing; and a slice that chose a version is validation, never training.
       d: >-
-        8,238 clients is plenty for one honest score, and pooling the spent slice with validation
-        hides the peek inside a bigger number.
+        No version was fitted to the 2,000, so the luck is about the size of their noise, near a
+        point of accuracy, never a fall below calling nobody.
     answer: >-
-      The test is spent the moment it changes a decision, so I tell the committee it was spent and
-      get one clean score on data nobody has looked at.
+      A slice used to choose is validation, so I expect its best score to fall back on fresh rows
+      by the luck the choice picked, and I score the test once, at the end.
   - id: random-or-time
     label: "Judge the split"
     type: True or false
@@ -415,8 +368,8 @@ additions:
   - id: logit-071
     label: "Read one score"
     type: One correct option
-    level: Medium
-    min: 2
+    level: Hard
+    min: 2.5
     tag: "[F]"
     roles: DS, BA
     day: Mon
@@ -424,30 +377,33 @@ additions:
     anchor: >-
       What does a logistic output of 0.71 mean?
     text: |-
-      The logistic model gives one client a score of 0.71. What does the 0.71 say?
-      (a) The client will say yes, because any score above 0.5 is read by the model as a yes.
-      (b) The model is right about 71 percent of the clients it scores on the validation slice.
-      (c) The client is 71 percent more likely to say yes than the average client in the file is.
-      (d) Of clients scored like this one, about 71 in 100 say yes, if the scores are calibrated.
+      The logistic model on the customer table gives one client a score of 0.71, and its validation AUC is 0.761 (Exhibit 1A). What does the 0.71 say, and what would let the memo read it that way?
+      (a) A 71 percent chance of a yes, and the AUC of 0.761 already shows the scores can be read as chances.
+      (b) The model is right on about 71 percent of the clients it scores, which the validation slice confirms.
+      (c) The client will say yes, since a score above 0.5 is a yes once the model beats calling nobody.
+      (d) About 71 in 100 such clients say yes, if about 71 in 100 validation clients scored near 0.71 did.
     why: >-
-      A logistic model outputs an estimated probability for one client, so 0.71 says that clients
-      with this profile say yes about 71 times in 100, as long as the scores are calibrated against
-      what actually happens. The threshold that turns it into a call is a business choice made
-      afterwards: at Kalpa's costs it sits near 0.03, far below 0.5.
-      Monday bent the line into the S on the bank's data.
+      A logistic model outputs an estimated chance for one client, so 0.71 says that clients scored
+      like this one say yes about 71 times in 100. The memo may read it that way only once the
+      scores are checked against what happened: among validation clients scored near 0.71, about 71
+      in 100 should have said yes. That check is calibration. AUC measures the ranking alone, so it
+      is unchanged when every score is halved and cannot vouch for one chance; Friday's split by
+      date kept a usable ranking while its scores ran far below the yes rate. The threshold that
+      turns a chance into a call comes from the costs.
+      Monday bent the line into the S on the bank's data; Friday showed the scores drifting while the ranking held.
     wrong:
       a: >-
-        0.5 is a default, not part of the score; the threshold is set from the costs, and 0.71 is a
-        chance, never a verdict.
+        AUC is the chance that a buyer outranks a non-buyer, so it stays the same when every score
+        is halved; it vouches for the order, never for a chance.
       b: >-
         Accuracy across many clients is a property of the model on a slice, while 0.71 belongs to
         one client.
       c: >-
-        0.71 is a probability, not a ratio against the average; against a base rate of 11 percent it
-        is about six times the average chance.
+        0.5 is a default, never part of the score; the threshold is set from the costs, and beating
+        the baseline does not turn a chance into a verdict.
     answer: >-
-      0.71 is an estimated chance for this one client, trustworthy only if calibrated, and the
-      decision to call comes from the threshold, which the costs set.
+      0.71 is an estimated chance for this one client, and I read it as a chance only after checking
+      that clients scored near 0.71 said yes about 71 times in 100; the AUC checks the ranking.
   - id: is-it-ml
     label: "Sort the asks"
     type: More than one correct
@@ -565,14 +521,15 @@ additions:
       The line sits at the cost of a false alarm over the sum of both costs, so when a miss costs
       thirty times a false alarm I act on about a 1-in-31 chance.
   - id: bill
-    label: "Price two thresholds"
-    type: One correct option
-    level: Medium
-    min: 2.5
+    label: "Choose by F1 or by the bill"
+    type: Applied maths
+    level: Hard
+    min: 3.5
     tag: "[S]"
     roles: DS, FDE, BA
     day: Tue
-    key: b
+    key: >-
+      F1 chooses 0.20: 2 x 376 / (752 + 488 + 552) = 752 / 1,792 = 0.42, against 1,232 / (1,232 + 2,138 + 312) = 1,232 / 3,682 = 0.33 at 0.10. The bill chooses 0.10: 2,138 x 40 + 312 x 1,200 = Rs 459,920, against 488 x 40 + 552 x 1,200 = Rs 681,920 at 0.20, Rs 222,000 less. They differ because F1 counts a wasted call and a missed buyer alike, while a missed buyer costs 30 times a wasted call.
     anchor: >-
       How do you set a threshold when the two errors cost differently?
     exhibit:
@@ -591,27 +548,20 @@ additions:
           - ["0.10", "2,754", "616", "2,138", "312"]
           - ["The cost line", "7,438", "913", "6,525", "15"]
     text: |-
-      At Rs 40 a wasted call and Rs 1,200 a missed buyer, what is the error bill at the thresholds of 0.5 and 0.10 in Exhibit 2B, and which costs less?
-      (a) Rs 142,960 at 0.5 and Rs 2,578,080 at 0.10, so 0.5 is cheaper by Rs 2,435,120.
-      (b) Rs 908,560 at 0.5 and Rs 459,920 at 0.10, so 0.10 is cheaper by Rs 448,640.
-      (c) Rs 3,760 at 0.5 and Rs 85,520 at 0.10, so 0.5 is cheaper by Rs 81,760 in all.
-      (d) Rs 904,800 at 0.5 and Rs 374,400 at 0.10, so 0.10 is cheaper by Rs 530,400.
+      Two teammates choose between the thresholds of 0.20 and 0.10 in Exhibit 2B: one by F1, the other by the error bill at Rs 40 a wasted call and Rs 1,200 a missed buyer. Which threshold does each choose, with the figures that decide it, and why do the two choices differ? Show the working.
     why: >-
-      The bill adds each wasted call at Rs 40 and each missed buyer at Rs 1,200. At 0.5 that is 94
-      times 40 plus 754 times 1,200, Rs 3,760 plus Rs 904,800, Rs 908,560. At 0.10 it is 2,138
-      times 40 plus 312 times 1,200, Rs 85,520 plus Rs 374,400, Rs 459,920. Lowering the line
-      wastes 2,044 more calls and catches 442 more buyers, and the bill falls by Rs 448,640.
+      F1 on counts is 2TP over 2TP plus FP plus FN. At 0.20 that is 752 over 1,792, 0.42; at 0.10
+      it is 1,232 over 3,682, 0.33, so F1 prefers 0.20. The bill prices each box: at 0.20, 488
+      wasted calls cost Rs 19,520 and 552 missed buyers Rs 662,400, Rs 681,920 in all; at 0.10,
+      2,138 wasted calls cost Rs 85,520 and 312 missed buyers Rs 374,400, Rs 459,920. F1 weighs a
+      wasted call and a missed buyer the same, so it stops lowering the line once wasted calls pile
+      up, while the bill keeps lowering it, because each missed buyer costs as much as 30 wasted
+      calls. The business runs on the bill. The usual slips are swapping the two prices, pricing
+      one box only, and taking F1 as the plain average of precision and recall.
       Tuesday's slider drew this bill against the threshold.
-    wrong:
-      a: >-
-        This swaps the two prices, charging Rs 1,200 for each wasted call and Rs 40 for each miss.
-      c: >-
-        This counts only the wasted calls and forgets the missed buyers, the larger cost by far.
-      d: >-
-        This counts only the missed buyers and forgets the 94 and 2,138 wasted calls.
     answer: >-
-      I price both boxes of errors at each threshold and add them, because the threshold that
-      looks wasteful on calls can be the cheaper one once misses are priced.
+      F1 is a summary for when nobody has priced the errors; once they are priced I choose the
+      threshold on the bill, and I can say why the two disagree.
   - id: budget-k
     label: "Spend 1,000 calls"
     type: One correct option
@@ -625,30 +575,32 @@ additions:
       The cost rule says call nearly everyone, and the budget says 1,000 calls: which wins, and what do you report?
     text: |-
       The call centre can make 1,000 calls in the next campaign, and the cost line would call 7,438 of these 8,238 clients (Exhibit 2B). Which plan goes to the marketing head?
-      (a) Keep the cost line and call the first 1,000 clients above it in the order the file lists them.
-      (b) Raise the threshold to 0.5 and call its 268 clients, since precision is the highest at that line.
-      (c) Rank every client by score and call the top 1,000; 404 of them said yes, 3.6 times the base rate.
-      (d) Call 1,000 clients drawn at random, since a ranking on an outcome this rare is mostly noise.
+      (a) Call the 864 clients above 0.20, at a precision of 0.435, and hold the other 136 calls in reserve.
+      (b) Call the 268 clients above 0.5, where precision is at its highest, and save the rest of the budget.
+      (c) Rank every client by score and call the top 1,000, wherever that cut happens to fall on the scores.
+      (d) Draw 1,000 clients at random from the 7,438 above the cost line, since every one of them clears it.
     why: >-
-      When the budget binds before the cost line does, the ranking carries the decision: call the
-      1,000 highest scores. On validation they hold 404 buyers, a precision at 1,000 of 0.404,
-      against the base rate of 0.113, about 3.6 times. This is the flip condition of the cost rule:
-      at Rs 40 against Rs 1,200 the line says call nearly everyone, and the binding constraint is the
-      budget.
+      When the budget binds before the cost line does, the ranking carries the decision. The top
+      1,000 by score are the 864 clients above 0.20 and the next 136, so they hold every buyer of
+      plan (a), 376, and of plan (b), 174, and the 136 extra calls go to clients scored just under
+      0.20, far above the cost line, so each is worth more than its Rs 40. On validation the top
+      1,000 held 404 buyers, a precision at 1,000 of 0.404 against the base rate of 0.113, about
+      3.6 times. This is the flip condition of the cost rule: at Rs 40 against Rs 1,200 the line
+      calls nearly everyone, and the binding constraint is the budget.
       Tuesday's budget cut, precision at k, set Kalpa's 5,000 nudges the same way.
     wrong:
       a: >-
-        The file's order is not the score's order, so the first 1,000 above the line convert at
-        about the base rate and waste the ranking.
+        The top 1,000 contains these 864 and adds 136 clients still far above the cost line, so it
+        finds at least the same 376 buyers and more, and no call is left unused.
       b: >-
         268 calls leave 732 of the budget unused, and the next 732 by score still convert far above
         the base rate.
       d: >-
-        A random 1,000 converts at about the base rate, 0.113, while the top 1,000 convert at 0.404,
-        so the ranking is far from noise.
+        A random draw throws the ranking away and converts near 913 in 7,438, about 0.123, against
+        0.404 for the top 1,000.
     answer: >-
       When the budget binds, I rank and cut at the budget and report precision at that cut against
-      the base rate, which is what the money buys.
+      the base rate, since a smaller cut only leaves paid-for calls unused.
   # ---------------------------------------------------------------- Part 3, Wednesday
   - id: duration-call
     label: "Answer the junior"
@@ -669,7 +621,8 @@ additions:
       (d) Keep it but scale it first, since a column measured in raw seconds is what inflates the AUC.
     why: >-
       On the morning the list is built no call has happened, so its duration does not exist; a
-      model that uses it learns from the answer. The dataset's own notes say so and ask for it to be
+      model that uses it learns from the answer, which is data leakage. The dataset's own notes say so
+      and ask for it to be
       discarded for a realistic model. The honest score is the one without it, 0.795. A jump this
       large from one column is the alarm, and the prediction-time question is the check.
       Wednesday read the notes aloud; Kalpa's settlement_status was the same leak.
@@ -721,82 +674,115 @@ additions:
     answer: >-
       I test a column by when it exists: a strong column from the past is a feature, and a
       respectable column from a period that has not ended is a leak.
-  - id: importance
-    label: "Judge the chart"
-    type: True or false
-    level: Medium
+  - id: shortcut
+    label: "Diagnose the drop"
+    type: One correct option
+    level: Hard
     min: 2.5
-    tag: "[F]"
-    roles: DS, BA
+    tag: "[S]"
+    roles: DS, FDE
     day: Wed
     key: a
     anchor: >-
-      What does a feature importance chart prove, and what does it not?
+      What is data leakage, and how do you catch it before it ships?
+    exhibit:
+      caption: >-
+        A pneumonia model trained on chest X-rays from two hospital systems, as Zech and others
+        report it (PLOS Medicine, 2018).
+      table:
+        head:
+          - What the paper reports
+          - Value
+        rows:
+          - ["The model's AUC on held-out X-rays from its own two hospital systems", "0.931"]
+          - ["The same model's AUC at a third hospital system", "0.815"]
+          - ["AUC from sorting X-rays from the two training systems by hospital alone", "0.861"]
+          - ["Pneumonia rate in the two training systems", "34.2 percent and 1.2 percent"]
+          - ["X-rays from one system whose hospital a network identified", "22,050 of 22,062"]
     text: |-
-      In the model with duration, duration tops the importance chart, and clients who said yes talked 553 seconds on average against 221 for those who said no. Statement: longer calls cause deposits, so agents should be coached to keep clients on the line. True or false, and why?
-      (a) False: a client who means to buy stays on to arrange it, so the yes drives the length as much as the reverse.
-      (b) False: an importance chart is valid for tree models only, so the logistic weights say nothing about duration.
-      (c) True: duration carries the largest weight in the model, and the largest weight points to the cause of the yes.
-      (d) True: a gap of 332 seconds is too large to be chance across 41,188 calls, so the effect has to be causal.
+      Exhibit 3B reports a pneumonia model that scored well on held-out X-rays and worse at a new hospital. Which reading holds, and which check would have caught it before launch?
+      (a) It learned which hospital took each X-ray, a shortcut its held-out set shared; test it on a new site.
+      (b) It memorised its training X-rays, so a stronger penalty or a smaller network would have closed the gap.
+      (c) The new hospital's X-rays were poorer, so the drop says nothing about the model and needs no check.
+      (d) 0.815 is still a strong AUC, so the model carries over, and the drop is the noise of one test set.
     why: >-
-      Importance says how much the model leans on a column to predict, never what causes the
-      outcome. Here the arrow plausibly runs backwards: a client who has decided to buy stays on to
-      open the deposit, so a yes makes a call long. Coaching agents to keep people talking would
-      lengthen calls without creating buyers. Testing it would need an experiment, such as a random
-      half of agents coached.
-      Wednesday's last chapter was what the importance chart cannot tell you.
+      The held-out X-rays came from the same two hospital systems as the training X-rays, so
+      whatever marked the hospital marked them too. Sorting them by hospital alone scored 0.861,
+      because one system's pneumonia rate was 34.2 percent and the other's 1.2 percent, and a
+      network named the hospital of 22,050 of 22,062 X-rays from one system, so much of the 0.931
+      was the hospital. At a third hospital the shortcut no longer carried the label, and the AUC
+      fell to 0.815. That is leakage through a proxy, which a held-out slice from the same source
+      cannot catch; a score on data from a new site, or for the bank a later period, catches it.
+      Overfitting shows as training far above held-out, and this model's held-out score was high.
+      Wednesday told this case beside duration.
     wrong:
       b: >-
-        Importance charts are drawn for linear and tree models alike; the limit is causal, not the
-        model family.
+        Memorising shows as high training against low held-out scores; here the held-out score was
+        0.931, so the trouble is what the held-out X-rays shared with training.
       c: >-
-        A large weight says the model leans on the column to predict; a column can predict because
-        the outcome causes it.
+        Sorting by hospital alone scored 0.861, so the model leaned on where an X-ray came from,
+        which a new hospital cannot supply; the model needs the check.
       d: >-
-        A gap that is not chance can still run from the outcome to the column, so size proves the
-        link, never its direction.
+        The paper reports the fall as significant, P = 0.001, and a model sold at 0.931 that
+        delivers 0.815 has a problem to name, never noise to wave off.
     answer: >-
-      Importance is about prediction, so before I claim a cause I ask which way the arrow runs and
-      what experiment would test it.
-  - id: sign-flip
-    label: "Explain the flip"
+      A held-out slice from the same source shares the source's shortcuts, so before launch I score
+      the model on a new site or a later period and ask what else marks the label.
+  - id: two-readings
+    label: "Check two conclusions"
     type: One correct option
-    level: Medium
-    min: 2.5
+    level: Hard
+    min: 3
     tag: "[F]"
-    roles: DS
+    roles: DS, BA
     day: Wed
     key: d
     anchor: >-
       What does a feature importance chart prove, and what does it not?
+    exhibit:
+      caption: >-
+        Two readings of Wednesday's models on the week's run: the importance chart of the model
+        with every column, and the logistic model's weight on euribor3m, the three-month interest
+        rate, on the standardised scale.
+      table:
+        head:
+          - What the week's run shows
+          - Value
+        rows:
+          - ["duration's place on the importance chart of the model with every column", "first"]
+          - ["Mean call length: clients who said yes; clients who said no", "553 seconds; 221 seconds"]
+          - ["euribor3m's weight with no other column in the model", "-0.92"]
+          - ["euribor3m's weight beside the customer table and the other four indicators", "+0.39"]
     text: |-
-      On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. The marketing head asks whether higher rates help the campaign. What is the likeliest cause of the flip, and what does the memo say?
-      (a) A solver bug once a model passes ten columns; refit with another solver and report the sign it gives.
-      (b) Since 2009 the rate's effect has reversed; report the +0.39 as the effect on this year's campaign.
-      (c) The 11 percent yes rate shrinks rare-outcome weights; report -0.92 from the model fitted on its own.
-      (d) The indicators move together and share one signal; read them as a group and quote no one sign.
+      The marketing head reads Exhibit 3C and draws two conclusions. One: longer calls make deposits, so agents should be coached to keep clients on the line. Two: higher rates bring deposits, since euribor3m's weight is +0.39 once the other columns are held fixed. Which reply holds?
+      (a) Both hold: the chart and the weight come from models that scored well on the validation slice.
+      (b) One fails, since a yes makes the call long; two holds, since the full model holds the other columns fixed.
+      (c) One holds, since 332 seconds is far beyond chance; two fails, since the weight flips as columns join.
+      (d) Both fail: a yes lengthens the call, and the rate moves with the other indicators; neither is an effect.
     why: >-
-      euribor3m rises and falls with the employment variation rate (correlation 0.97 across the
-      file) and the number employed (0.95), so once they sit in one model, the weight on any one of
-      them is what it adds after the others, and its sign can reverse; consumer confidence, at 0.28,
-      is the one indicator that moves on its own. The prediction can be just as good while no single coefficient reads as an effect.
-      So the memo answers the marketing head with the group: alone, higher rates go with fewer
-      yeses, and the correlated indicators carry that one economic signal together, so no single
-      coefficient is quoted as the effect of rates. Reading the group, keeping one representative or
-      regularising are the fixes.
-      Wednesday's case showed euribor3m flip with the economic trio.
+      Importance says how much the model leans on a column to predict, never what causes the
+      outcome, and here the arrow plausibly runs backwards: a client who has decided to buy stays on
+      to open the deposit, so a yes makes a call long. A weight is the same kind of number. euribor3m
+      rises and falls with the employment variation rate (correlation 0.97 across the file) and the
+      number employed (0.95), so the model cannot hold it fixed while they move, and its weight swings
+      from -0.92 alone to +0.39 beside them. The memo answers the marketing head with the indicators
+      read as one economic signal, and proposes a test for the coaching idea, such as a random half
+      of agents coached.
+      Wednesday's last chapters were what the importance chart cannot tell you and the sign that flipped.
     wrong:
       a: >-
-        The flip appears with every solver, because it comes from the data; refitting moves nothing.
+        Scoring well on validation says the model predicts; it says nothing about which way a cause
+        runs or whether one weight can be read alone.
       b: >-
-        +0.39 is the rate's weight once the other four indicators are held fixed, which says nothing
-        about this year's campaign on its own.
+        Holding the other indicators fixed is a world the file never shows, since the rate moves with
+        them at 0.97 and 0.95; the +0.39 is what the rate adds after them, never its effect.
       c: >-
-        Imbalance moves the intercept and the calibration and never flips one column's sign as others
-        join; the -0.92 alone carries the other four indicators' signal inside it.
+        A gap that is not chance can still run from the outcome to the column, so its size proves a
+        link and never its direction.
     answer: >-
-      When a sign flips as a column joins, I check the correlations first and read correlated
-      columns as a group.
+      Importance and weights describe prediction, so before I claim a cause I ask which way the
+      arrow runs and whether the column moves with others, and I propose the experiment that would
+      test it.
   # ---------------------------------------------------------------- Part 4, Thursday
   - id: tree-read
     label: "Read the depth curve"
@@ -979,32 +965,35 @@ additions:
           - ["Instacart, looking back", "Models respond slowly to a shock because they need enough new observations; thresholds on top of the model were changed without training new models"]
           - ["Booking.com, 23 comparisons of a new model against a proven one", "Offline gain (ROC AUC or mean reciprocal rank) against the gain in a business metric when the two models were compared live: Pearson correlation -0.1, 90 percent interval -0.45 to 0.27"]
     text: |-
-      On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what does it mean for the cost line drawn on these scores?
-      (a) Set each month's called yes rate against the mean score, with a stated gap; the cost line moves too, as the scores run low.
-      (b) Retrain every night on the newest calls; the scores then stay current, so the cost line drawn on them needs no second look.
-      (c) Compare training accuracy month by month; a fall there flags the drift, and the cost line stays where Tuesday drew it.
-      (d) Wait for the marketing head's report; a score that still ranks buyers first keeps the cost line drawn on it valid.
+      On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
+      (a) Set each month's called yes rate against the mean score, with a stated gap; the cut moves down, as scores run low.
+      (b) Set each month's called yes rate against the mean score, with a stated gap; the cut moves up, as more clients now say yes.
+      (c) Retrain every night on the newest calls; the scores then stay current, so the cut on them needs no second look.
+      (d) Compare training accuracy month by month; a fall there flags the drift, and the cut stays where Tuesday drew it.
     why: >-
       Staleness shows on fresh outcomes, so the rule compares what the model predicted with what
       happened, every month, against a gap stated in advance. On the bank's late rows the mean score
-      was 0.152 while 24.6 percent said yes: the probabilities fell out of step even though the
-      ranking still held at an AUC of 0.657, and the cost line, which reads the scores as
-      probabilities, was drawn on numbers that understate every client's chance. Instacart's alarm was the same kind: a monitored metric falling from
+      was 0.152 while 24.6 percent said yes, so the scores run below the clients' true chances. The
+      cost line asks for a true chance above about 1 in 31, and on scores that understate the chance
+      the same true chance shows up as a lower score, so the cut on the scores moves down until they
+      are recalibrated on recent outcomes. More clients saying yes is the reason the cut falls, never
+      a reason to be choosier. The ranking still held at an AUC of 0.657, which is why the alarm
+      watches the probabilities. Instacart's alarm was the same kind: a monitored metric falling from
       93 to 61 percent, and its first fix was a threshold change while retraining caught up.
       Friday's chapter was when the model goes stale.
     wrong:
       b: >-
+        A higher yes rate raises the clients' true chances, so more of them clear the cost line;
+        raising the cut would drop clients the line says to call.
+      c: >-
         Retraining with no measurement can neither tell whether the old model failed nor whether the
         new one is better, and the outcomes it needs arrive weeks late.
-      c: >-
-        Training accuracy is measured on rows the model already saw, so it stays high while the world
-        moves, and a line drawn on scores that run low is wrong whatever training says.
       d: >-
-        A ranking can hold while the probabilities drift, as the late rows' AUC of 0.657 did, and the
-        cost line reads probabilities, so the ranking cannot vouch for it.
+        Training accuracy is measured on rows the model already saw, so it stays high while the world
+        moves, and a cut set on scores that run low is wrong whatever training says.
     answer: >-
-      I monitor the decision's metric on fresh outcomes, predicted against actual, with the floor
-      written into the memo before launch.
+      I monitor predicted against actual on fresh outcomes with the gap written into the memo, and
+      when the scores run low I recalibrate them before the cut means what it meant.
   - id: caveat
     label: "Fill the caveat"
     type: More than one correct
@@ -1039,38 +1028,44 @@ additions:
   - id: booking
     label: "Choose the evidence"
     type: One correct option
-    level: Medium
+    level: Hard
     min: 2.5
     tag: "[D]"
     roles: DS, FDE, BA
     day: Fri
-    key: c
+    key: d
     anchor: >-
       Your tuned model beats a simpler one by a hair: which ships, and why?
     text: |-
-      Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). What does the memo propose?
-      (a) a bigger validation slice, so that the AUC of 0.795 can be quoted to three decimal places
-      (b) a switch to gradient boosting, whose 0.806 gives the committee the strongest offline case
-      (c) a random trial: half the next calls by the model's list, half by today's rule, scored on deposits
-      (d) the sealed test score on its own, since a slice opened once is all the evidence a committee needs
+      Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). Which test does the memo propose for next month?
+      (a) Call every client by the list next month, then compare its deposits per call with this month's, before the switch.
+      (b) Score the list once on the sealed test slice, and sign if its AUC holds near the 0.795 it scored on validation.
+      (c) Run the list beside today's rule for a month, each on the branches it suits best, and compare deposits sold.
+      (d) Assign next month's clients at random, half to the list and half to today's rule; compare deposits per call.
     why: >-
-      An offline score says the model ranks well on past rows; it does not say the campaign will
-      sell more deposits. Booking.com's 23 comparisons put the correlation between the two near zero,
-      -0.1 with an interval from -0.45 to 0.27, and the paper calls offline performance a health
-      check. So the memo asks for a randomised trial that sets the model's list against the current
-      rule on the business number, deposits sold per call, with the size fixed before it starts.
+      An offline score says the model ranks past rows well; it does not say the campaign will sell
+      more deposits, and Booking.com's 23 comparisons put the correlation between the two near zero,
+      -0.1 with an interval from -0.45 to 0.27, which is why the paper calls offline performance a
+      health check. So the evidence is a randomised trial on the business number: next month's
+      clients assigned at random between the list and today's rule, run in the same weeks, scored on
+      deposits per call, with the size fixed before it starts. A before-and-after comparison mixes
+      the list with the month, and on this file the yes rate climbed from 5.6 to 24.6 percent across
+      the calls (Exhibit 5A), so a month can beat the last without the list. Letting each method
+      choose its branches mixes the list with the branches.
       Friday's memo turned the score into a decision the committee could test.
     wrong:
       a: >-
-        More decimals on the offline score sharpen the health check, and the gap to the business
-        number stays where it was.
+        The yes rate moved from 5.6 to 24.6 percent across the file (Exhibit 5A), so this month
+        against last month measures the calendar as much as the list.
       b: >-
-        A larger offline gain is the very thing Booking.com found did not predict business gain.
-      d: >-
-        The test score is the honest offline number, and it is still offline.
+        The test score is the honest offline number, and it is still offline: Booking.com found that
+        such gains did not predict business gains.
+      c: >-
+        Branches chosen to suit each method differ in their clients, so the gap in deposits mixes the
+        method with the branch; only a random assignment separates them.
     answer: >-
-      Offline metrics earn a model its trial; the trial on the business number earns it the
-      rollout.
+      Offline metrics earn a model its trial; a randomised trial on the business number, run in the
+      same weeks, earns it the rollout.
   - id: lend-flip
     label: "Move the line to lending"
     type: One correct option
@@ -1086,7 +1081,7 @@ additions:
       Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
       (a) Both: each is far below a 50 percent chance of default, the neutral line for a yes or no decision.
       (b) P only: the line sits near a 5 percent chance of default, so Q at 8 percent costs more than it pays.
-      (c) Both: the nudge acts on a 3 percent chance, so the same method approves anyone above that line.
+      (c) Both: an 8 percent chance of default means 92 in 100 such borrowers repay, a strong book for any lender.
       (d) Neither: a default costs twenty times a rejection, so any chance above 1 in 20 must mean a rejection.
     why: >-
       Approve when the expected cost of approving, p times Rs 60,000, is below the expected cost of
@@ -1099,14 +1094,68 @@ additions:
       a: >-
         0.5 treats the two errors as equal, while a default costs twenty times a wrongful rejection.
       c: >-
-        The method moves and the costs do not: the nudge's cheap error is a wasted call, while the
-        loan's expensive error is a default, so the line moves to the other end.
+        92 in 100 repaying sounds strong, but each default costs Rs 60,000 against Rs 3,000 lost on a
+        rejection, so the bar sits near 95 in 100 repaying, and Q falls below it.
       d: >-
         1 in 20 is the cost ratio, and the line is 3,000 over 63,000, about 1 in 21; P at 4 percent
         sits below it and is approved.
     answer: >-
       The line is the cheap error's cost over both costs, so the same model calls on a 3 percent
       chance and lends only below about a 5 percent chance of default.
+  - id: fraud-ask
+    label: "Answer Rohan's question"
+    type: One correct option
+    level: Hard
+    min: 2.5
+    tag: "[F]"
+    roles: DS, FDE, BA
+    day: Tue
+    key: c
+    anchor: >-
+      Precision or recall for fraud, and why?
+    exhibit:
+      caption: >-
+        Two public fraud cases. Stripe: its primer on machine learning for fraud protection.
+        Flipkart with Carnegie Mellon: Hooi and others, BIRDNEST, arXiv 1511.06030.
+      table:
+        head:
+          - Case
+          - What the source reports
+        rows:
+          - ["Stripe's worked example", "A sale earns a profit of 2.08 dollars and a fraudulent sale loses 38.92 dollars, so one fraud costs the profit of 18.71 good sales and the break-even precision of a block is 5.07 percent"]
+          - ["Stripe, on false declines", "In a survey Stripe cites, 33 percent of consumers said they would not shop again at a business after a false decline"]
+          - ["Flipkart's ratings-fraud model", "The trust team investigated the 250 accounts the model ranked most suspicious, and 211 of them were involved in fraud"]
+    text: |-
+      Rohan Desai asks one question about a fraud model for Kalpa Financial Services' payments app: "Do we tune it for precision or for recall?" Exhibit 5C sets two public cases beside his question. What is the best first reply?
+      (a) Recall: Stripe's arithmetic blocks above a 5 percent break-even, so a missed fraud is the cost; catch all of it.
+      (b) Precision: a third of customers leave after a false decline, so flag only the payments the model is sure of.
+      (c) Ask first: does a flag block the payment or send it to a reviewer, and how many can the team review a day?
+      (d) F1: fraud is rare, so F1 weighs both errors at once, and the threshold goes where F1 peaks on validation.
+    why: >-
+      Rohan's question leaves out the two facts that decide it: what a flag does, and how many flags
+      the team can work. If a flag blocks the payment, a false alarm stops a genuine customer, and the
+      survey Stripe cites says a third of them may not come back, so precision gains weight and the
+      line rises. If a flag sends the payment to a reviewer, a false alarm costs an analyst's minutes
+      while a missed fraud costs the payment, so recall leads, up to what the team can review; with a
+      fixed team the number to report is precision at its capacity, as Flipkart's trust team read the
+      top 250 and found 211 frauds. Each one-word answer is right in one of those worlds and wrong in
+      the other, and F1 prices the two errors the same in both. So the reply opens on the question,
+      then draws the line from the two costs.
+      Tuesday met Stripe and Flipkart; Friday carried the cost line to Rohan's business.
+    wrong:
+      a: >-
+        Stripe's break-even prices a block at a sale's margin; if a false block also loses the
+        customer the line rises, so recall cannot be chosen before knowing what a flag does.
+      b: >-
+        A false decline costs a customer only when a flag declines the payment; if it queues a review,
+        missed fraud is the larger cost, so precision cannot be chosen before knowing what a flag does.
+      d: >-
+        F1 weighs a false alarm and a missed fraud the same, which is right in neither world: their
+        costs differ, and which costs more turns on what a flag does.
+    answer: >-
+      Precision or recall is a question about costs, so I first ask what a flag does and how many the
+      team can review, then set the line from the two costs and report precision at the team's
+      capacity.
 stretch:
   - text: |-
       German Credit, the take-home's dataset (OpenML credit-g), documents its own cost matrix: classing a bad borrower as good costs 5, and classing a good borrower as bad costs 1. Above what chance of repaying should that lender approve, and how does it sit beside Rohan Desai's line?
