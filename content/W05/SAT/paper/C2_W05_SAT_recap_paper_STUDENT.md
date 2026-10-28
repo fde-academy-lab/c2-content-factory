@@ -221,7 +221,6 @@ d) a callback flag an agent sets when a client asks to be called again in this c
 |---|---|
 | The model's AUC on held-out X-rays from its own two hospital systems | 0.931 |
 | The same model's AUC at a third hospital system | 0.815 |
-| AUC from sorting X-rays from the two training systems by hospital alone | 0.861 |
 | Pneumonia rate in the two training systems | 34.2 percent and 1.2 percent |
 
 #### Q12 · Hard · circle one letter · Diagnose the drop
@@ -257,7 +256,7 @@ d) Both fail: a yes lengthens the call, and the rate moves with the other indica
 
 *What it shows: whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships. 4 items, about 10 minutes.*
 
-On Thursday the room grew a decision tree on the honest columns, the customer table and the economic indicators, first with no limit on its depth and then reined in. Exhibit 4A gives the tree's training and validation scores by depth; calling nobody scores 0.887 accuracy on the same validation clients. The committee's question for Friday is which model goes into the memo, and why that one.
+On Thursday the room grew a decision tree on the honest columns Wednesday's audit kept, first with no limit on its depth and then reined in. Exhibit 4A gives the tree's training and validation scores by depth; calling nobody scores 0.887 accuracy on the same validation clients. The committee's question for Friday is which model goes into the memo, and why that one.
 
 **Exhibit 4A.** A decision tree on the honest columns: accuracy on training and on validation by maximum depth, with validation AUC, the week's split.
 
@@ -323,7 +322,7 @@ d) Five models on all 24,712 clients each; the spread is noise and says nothing 
 Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
 
 a) True: a logistic model cannot overfit its rows, so its validation score is the safer one to quote.
-b) True: a gap of 0.011 can flip on another split, as the folds' spread shows; the plainer model ships.
+b) True: a lead must hold fold by fold and pay its upkeep in rupees; until then, the plainer model ships.
 c) False: 0.806 is above 0.799 and 0.795 on the same validation rows, and the memo reports the best found.
 d) False: AUC cannot compare models of different families, so the committee needs each accuracy at 0.5.
 
@@ -360,7 +359,7 @@ flowchart LR
 
 #### Q18 · Hard · circle one letter · Set the alarm
 
-On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
+On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A), and Exhibit 5B sets Instacart's case beside it. Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
 
 a) Set each month's called yes rate against the mean score, with a stated gap; the cut moves down, as scores run low.
 b) Set each month's called yes rate against the mean score, with a stated gap; the cut moves up, as more clients now say yes.
@@ -382,7 +381,7 @@ Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Bookin
 
 a) Call every client by the list next month, then compare its deposits per call with this month's, before the switch.
 b) Assign next month's clients at random, half to the list and half to today's rule; compare the list half's AUC with 0.795.
-c) Score the list once on the sealed test slice, and sign if its AUC holds near the 0.795 it scored on validation.
+c) Call every client by the list next month, then compare its AUC on those calls with the 0.795 it scored on validation.
 d) Assign next month's clients at random, half to the list and half to today's rule; compare deposits per call.
 
 #### Q21 · Hard · circle one letter · Move the line to lending
@@ -392,7 +391,7 @@ Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, a
 a) Both: each is far below a 50 percent chance of default, the neutral line for a yes or no decision.
 b) P only: the line sits near a 5 percent chance of default, so Q at 8 percent costs more than it pays.
 c) Both: an 8 percent chance of default means 92 in 100 such borrowers repay, a strong book for any lender.
-d) Q only: the line sits near a 5 percent chance of default, and Q at 8 percent clears it while P does not.
+d) Neither: the line sits near the nudge's 3 percent, so even P at 4 percent of default costs more than it pays.
 
 **Exhibit 5C.** Two public fraud cases. Stripe: its primer on machine learning for fraud protection. Flipkart with Carnegie Mellon: Hooi and others, BIRDNEST, arXiv 1511.06030.
 

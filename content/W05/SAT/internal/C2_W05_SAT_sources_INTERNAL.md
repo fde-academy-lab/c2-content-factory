@@ -152,3 +152,22 @@ and the audit passed after it.
 Rosset and Perlich's leakage paper and the KDD Cup 2008 leak; Flipkart's own address-model story;
 Razorpay's "8X" figure; Ola and Meesho, which have no Week 5 post; and Uber's Project RADAR, which
 publishes no numbers.
+
+## What did the blind sitting of the raised paper change?
+
+A fresh reader sat the raised paper on 28 October 2026 with no key, guide or trainer file open, and
+matched the key on all 22 items. These changes came from what it found.
+
+| Item | What changed | Why |
+|---|---|---|
+| Q17 | Option b and the key now carry Thursday's two tests: a lead must hold fold by fold and pay its upkeep in rupees | The old reason set a gap between two models against one model's fold spread, while Thursday's case03 showed boosting leading on all five paired folds; the paper now teaches what Thursday taught |
+| Q16 | The interview line compares two models fold by fold on the same folds | Same reason as Q17 |
+| Q12 | Exhibit 3B no longer prints the 0.861 from sorting by hospital alone; the key and guide still quote it from the paper | The row stated the key, so a hard item was answerable from one line; the pneumonia rates, 34.2 and 1.2 percent, now carry the inference |
+| Q20 | Option c is a before-and-after scored on AUC, so the four options cross before-and-after or random with deposits or AUC | The key was the one option sharing a feature with every other, which a test-wise reader finds without the content |
+| Q21 | Option d carries the nudge's 3 percent line over to lending, which rejects both applicants | The old d approved the riskier applicant only and named the same 5 percent line as the key, which a test-wise reader rules out unread |
+| Q18 | The stem cites Exhibit 5B beside 5A | Instacart's rows back the key, and no item cited them |
+| Part 4 intro | Names the honest columns as the ones Wednesday's audit kept, without listing them | The list answered Q11a two parts early |
+
+Kept as they are: Q15 option d, a brake chosen by cross-validation, which the key counts as a brake;
+Q7, whose direction Exhibit 2B hints at while the marked number still needs the working; Q19, which
+rests on Friday's memo lines as the class drew them. The level counts stay at 9 medium and 13 hard.
