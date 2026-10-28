@@ -1,6 +1,6 @@
 # Recalculation manifest: Week 5 item analysis
 
-INTERNAL. Written by `scripts/build_saturday_paper.py --docx` beside the workbook and read by `scripts/xlsx_recalc.py`. As shipped, no marks are entered. The flip marks six seats on the first five items so that seat 1 tops the room and seat 6 sits at the bottom, Q2 is right once in six, and on Q3 the bottom third beats the top third; both flags, the bands and the discussion order must follow. The same six seats rate Part 1 as 3, 4, 2, 3, 1 and 4, so two of them (seats 4 and 6) rated it 3 or 4 and got under half of it right.
+INTERNAL. Written by `scripts/build_saturday_paper.py --docx` beside the workbook and read by `scripts/xlsx_recalc.py`. As shipped, no marks are entered. The flip marks six seats on the first five items so that seat 1 tops the room and seat 6 sits at the bottom, Q2 is right once in six, and on Q3 the bottom third beats the top third; both flags, the bands and the discussion order must follow. The same six seats rate Part 1 as 3, 4, 2, 3, 1 and 4, so one of them (seat 6) rated it 3 or 4 and got under half of it right.
 
 ```yaml
 workbook: C2_W05_SAT_item_analysis_TRAINER.xlsx
@@ -136,15 +136,15 @@ flips:
     cell: M7
     contains: bottom third beat the top third
   - sheet: Marks
-    cell: AB5
+    cell: Z5
     expect: top
   - sheet: Marks
-    cell: AB10
+    cell: Z10
     expect: bottom
   - sheet: Marks
-    cell: AB7
+    cell: Z7
     expect: middle
   - sheet: Ratings
     cell: D47
-    expect: '2'
+    expect: '1'
 ```
