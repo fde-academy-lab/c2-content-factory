@@ -399,7 +399,7 @@ d) Neither: a default costs twenty times a rejection, so any chance above 1 in 2
 
 | Case | What the source reports |
 |---|---|
-| Stripe's worked example | A blocked genuine sale loses its margin, 2.08 dollars, and a missed fraud costs 38.92 dollars, so blocking pays above a break-even precision of 5.07 percent |
+| Stripe's worked example | A sale earns a profit of 2.08 dollars and a fraudulent sale loses 38.92 dollars, so one fraud costs the profit of 18.71 good sales and the break-even precision of a block is 5.07 percent |
 | Stripe, on false declines | In a survey Stripe cites, 33 percent of consumers said they would not shop again at a business after a false decline |
 | Flipkart's ratings-fraud model | The trust team investigated the 250 accounts the model ranked most suspicious, and 211 of them were involved in fraud |
 

@@ -1587,11 +1587,21 @@ def docx_spec(paper, data, date, printed, source, minutes, notes, moved=()):
 # Six seats marked on the first five items: seat 1 is the top of the room and seat 6 the bottom, Q2
 # is right once in six, and on Q3 the bottom third beats the top third. The manifest flips these in
 # and asserts both flags, the bands and the discussion order, which starts at Q2.
-# The same six seats rate Part 1 before the paper: seat 4 (3, and 2 of 5 right) and seat 6 (4, and
-# none right) rated it 3 or 4 and got under half of it right.
+# The same six seats rate Part 1 before the paper. Where Part 1 holds five items or more, seat 4 (3,
+# and 2 of 5 right) and seat 6 (4, and none right) rated it 3 or 4 and got under half of it right;
+# demo_overconfident() counts them from Part 1's own size, since a shorter Part 1 moves seat 4 to half.
 DEMO_RATINGS = [3, 4, 2, 3, 1, 4]
 DEMO_MARKS = [[1, 1, 0, 1, 1], [1, 0, 0, 1, 1], [1, 0, 0, 1, 0],
               [1, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
+
+
+def demo_overconfident(printed):
+    """The seats that rated Part 1 3 or 4 and got under half of its marked items right, as the
+    Ratings sheet counts them: the demo marks cover the first five printed items, so Part 1's marked
+    items are its first min(5, size)."""
+    marked = min(5, sum(1 for i in printed if i.get("part") == 1)) or 5
+    return [k + 1 for k, (rating, row) in enumerate(zip(DEMO_RATINGS, DEMO_MARKS))
+            if rating >= 3 and sum(row[:marked]) / marked < 0.5]
 
 
 def seats():
@@ -1816,6 +1826,14 @@ def write_item_analysis(week, printed, source):
     sets = [{"sheet": "Marks", "cell": f"{col(2 + j)}{first + k}", "value": v}
             for k, row in enumerate(DEMO_MARKS) for j, v in enumerate(row)]
     sets += [{"sheet": "Ratings", "cell": f"B{first + k}", "value": v} for k, v in enumerate(DEMO_RATINGS)]
+    over = demo_overconfident(printed)
+    words = {1: "one", 2: "two", 3: "three", 4: "four"}
+    who = (f"seat {over[0]}" if len(over) == 1 else
+           "seats " + ", ".join(map(str, over[:-1])) + f" and {over[-1]}") if over else ""
+    over_line = (f"so {words.get(len(over), len(over))} of them ({who}) rated it 3 or 4 and got under "
+                 "half of it right" if len(over) > 1 else
+                 f"so one of them ({who}) rated it 3 or 4 and got under half of it right" if over else
+                 "so none of them rated it 3 or 4 and got under half of it right")
     manifest = {
         "workbook": xlsx.name,
         "verdicts": [{"sheet": "Discussion", "cell": "B2", "expect": "No marks entered yet."},
@@ -1830,7 +1848,7 @@ def write_item_analysis(week, printed, source):
                        {"sheet": "Marks", "cell": f"{BAND}{first}", "expect": "top"},
                        {"sheet": "Marks", "cell": f"{BAND}{first + 5}", "expect": "bottom"},
                        {"sheet": "Marks", "cell": f"{BAND}{first + 2}", "expect": "middle"},
-                       {"sheet": "Ratings", "cell": rating_verdict, "expect": "2"}]}],
+                       {"sheet": "Ratings", "cell": rating_verdict, "expect": str(len(over))}]}],
     }
     body = yaml.safe_dump(manifest, sort_keys=False, width=110, allow_unicode=True)
     (base / f"C2_{week}_SAT_item_analysis_recalc_INTERNAL.md").write_text(
@@ -1839,8 +1857,8 @@ def write_item_analysis(week, printed, source):
         "`scripts/xlsx_recalc.py`. As shipped, no marks are entered. The flip marks six seats on the "
         "first five items so that seat 1 tops the room and seat 6 sits at the bottom, Q2 is right once "
         "in six, and on Q3 the bottom third beats the top third; both flags, the bands and the "
-        "discussion order must follow. The same six seats rate Part 1 as 3, 4, 2, 3, 1 and 4, so two of "
-        "them (seats 4 and 6) rated it 3 or 4 and got under half of it right.\n\n```yaml\n" + body + "```\n",
+        "discussion order must follow. The same six seats rate Part 1 as 3, 4, 2, 3, 1 and 4, "
+        + over_line + ".\n\n```yaml\n" + body + "```\n",
         encoding="utf-8")
     print(f"wrote {xlsx.relative_to(ROOT)}")
 

@@ -31,6 +31,8 @@ import build_saturday_paper as bsp  # noqa: E402
 
 PIPELINE = (ROOT / "docs/detailing/W05_research/W05_week_pipeline.md").read_text(encoding="utf-8")
 PAPER = (ROOT / "content/W05/SAT/paper/C2_W05_SAT_recap_paper_STUDENT.md").read_text(encoding="utf-8")
+SOURCES = (ROOT / "content/W05/SAT/internal/C2_W05_SAT_sources_INTERNAL.md").read_text(encoding="utf-8")
+PEEK_NB = ROOT / "content/W05/D1/1_in_class_training_content/notebooks/C2_W05_D01_case03_the_peek_STUDENT.ipynb"
 
 # What this session's re-run printed on 28 October 2026 (Python 3.13, pandas 3.0.5, scikit-learn
 # 1.9.1), for the numbers the pipeline file does not table. --rerun recomputes every one.
@@ -121,27 +123,35 @@ def pipeline_threshold(label):
 
 
 def shape():
-    assert len(PRINTED) == 24, len(PRINTED)
+    assert len(PRINTED) == 22, len(PRINTED)
     timed = sum(i["min"] for i in PRINTED)
-    assert timed == 57 and bsp.paper_minutes("W05", 60) == 60, timed
+    assert timed == 58.5 and bsp.paper_minutes("W05", 60) == 60, timed
     levels = [i["level"] for i in PRINTED]
-    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (3, 14, 7)
-    assert len(SOURCE["folded"]) == 26 and not SOURCE["stretch_bank"]
-    assert sorted(BY_NO) == [1, 2, 3]
-    print(f"PASS  shape: 24 items, {timed:g} of 60 minutes, 3 easy, 14 medium, 7 hard; "
-          f"3 bank items print and 26 fold")
+    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (0, 8, 14)
+    assert levels.count("Hard") >= 13 and levels.count("Hard") / len(PRINTED) >= 0.6
+    assert sorted(SOURCE["folded"]) == list(range(1, 30)) and not SOURCE["stretch_bank"]
+    assert not BY_NO and not SOURCE.get("banks")
+    print(f"PASS  shape: 22 items, {timed:g} of 60 minutes, 0 easy, 8 medium, 14 hard "
+          f"({levels.count('Hard') / len(PRINTED):.0%}); all 29 bank items fold")
 
 
 def no_giveaways():
     """Numbers a later exhibit or stem would hand to an earlier written item."""
     student = PAPER.split("## Stretch")[0]
     for leak in ("0.032", "1 / 31", "1 in 31", "348 / 1,196", "0.291", "0.657", "leaky",
-                 "discarded", "Known only once the call ends"):
-        assert leak not in student, f"the paper prints {leak}, which a written item asks for"
+                 "discarded", "Known only once the call ends", "752 / 1,792", "1,232 / 3,682",
+                 "681,920", "459,920", "222,000", "calibrat"):
+        assert leak.lower() not in student.lower().replace("calibrated on recent loans", ""), \
+            f"the paper prints {leak}, which an item asks for"
+    # Answers to the worked items and the budget item print nowhere a reader could flip to.
+    for leak in (r"\b0\.65\b", r"\b0\.19\b", r"\b0\.29\b", r"\b0\.42\b", r"\b0\.33\b", r"\b404\b",
+                 r"\b3 percent chance"):
+        assert not re.search(leak, student), f"the paper prints {leak}"
     # The row's planted Kalpa figures belonged to a dataset never generated (the plan's section 6),
     # so the paper prints none of them: no 0.99 for settlement_status and no 96 to 4 split.
     assert not re.search(r"0\.99\b|96 to 4", student), "the paper prints a planted Kalpa figure"
-    print("PASS  no giveaways: the cost line, F1, the discard note and the dated AUC appear only in the key")
+    print("PASS  no giveaways: the cost line, both F1 choices, both bills, the top 1,000's buyers, "
+          "the discard note and the dated AUC appear only in the key")
 
 
 def exhibits():
@@ -212,40 +222,67 @@ def exhibits():
     assert len(t5) == 3 and "0.657" not in PAPER.split("## Stretch")[0]
     print("PASS  Exhibit 5A: 28,831 + 12,357 = 41,188; 5.6 against 24.6 percent; mean score 0.152")
     # Exhibit 5B: the public figures as the sources file records them.
-    sources = (ROOT / "content/W05/SAT/internal/C2_W05_SAT_sources_INTERNAL.md").read_text(encoding="utf-8")
     for fact in ("61%", "93%", "about 85%", "-0.1 with 90%", "(-0.45, 0.27)", "23 comparisons"):
-        assert fact in sources, fact
+        assert fact in SOURCES, fact
     print("PASS  Exhibit 5B: Instacart's 93 to 61 and 85, Booking.com's 23 comparisons and -0.1, in the sources file")
+    # Exhibit 3B: Zech and others, as the sources file quotes the paper.
+    zech = dict(table(BY_ID["shortcut"]["exhibit"]))
+    assert list(zech.values()) == ["0.931", "0.815", "0.861", "34.2 percent and 1.2 percent", "22,050 of 22,062"]
+    for fact in ("AUC 0.931", "AUC 0.815", "AUC of 0.861", "(34.2%)", "1.2% and 1.0%", "99.95% NIH (22,050/22,062)"):
+        assert fact in SOURCES, fact
+    print("PASS  Exhibit 3B: 0.931 at home, 0.815 at a third site, 0.861 by hospital alone, as the sources file quotes")
+    # Exhibit 3C: the importance and weight readings, against RUN.
+    t3c = dict(table(BY_ID["two-readings"]["exhibit"]))
+    assert t3c["Mean call length: clients who said yes; clients who said no"] == \
+        f"{RUN['duration_mean_yes']} seconds; {RUN['duration_mean_no']} seconds"
+    assert t3c["euribor3m's weight with no other column in the model"] == f"{RUN['euribor_alone']:.2f}"
+    assert t3c["euribor3m's weight beside the customer table and the other four indicators"] == f"+{RUN['euribor_full']:.2f}"
+    print("PASS  Exhibit 3C: 553 and 221 seconds; euribor3m -0.92 alone and +0.39 beside the indicators, as RUN")
+    # Exhibit 5C: Stripe and Flipkart, as the sources file quotes them.
+    t5c = dict(table(BY_ID["fraud-ask"]["exhibit"]))
+    for fact in ("2.08", "38.92", "18.71", "5.07"):
+        assert fact in t5c["Stripe's worked example"] and f"{fact}" in SOURCES, fact
+    assert abs(38.92 / 2.08 - 18.71) < 0.005 and abs(1 / (1 + 18.71) - 0.0507) < 0.00005
+    assert "33 percent" in t5c["Stripe, on false declines"] and "33% of consumers" in SOURCES
+    assert "250" in t5c["Flipkart's ratings-fraud model"] and "211" in t5c["Flipkart's ratings-fraud model"]
+    assert "211 users of the top 250" in SOURCES
+    print("PASS  Exhibit 5C: Stripe's 2.08, 38.92, 18.71 and 5.07; 33 percent; Flipkart's 211 of 250, as quoted")
+    # Monday's peek loop, read back from the room's executed notebook.
+    import json
+    nb = json.loads(PEEK_NB.read_text(encoding="utf-8"))
+    out = "".join("".join(o.get("text", "")) for c in nb["cells"] if c["cell_type"] == "code"
+                  for o in c.get("outputs", []))
+    for line in ("doing nothing on the practice envelope: 0.8875", "best of 60 on the practice envelope:    0.9055",
+                 "doing nothing on the fresh slice:   0.8873", "the chosen version on the fresh slice: 0.8971",
+                 "practice envelope 2,000 rows, fresh slice 6,238 rows"):
+        assert line in out, line
+    print("PASS  the peek loop: 0.9055 peeked against 0.8875, 0.8971 fresh against 0.8873, in the D1 notebook")
 
 
 def items():
     ex2 = {r[0]: [int(n(c)) for c in r[1:]] for r in table(part_exhibit(2))}
     tp, fp, fn, tn = ex2["Model at 0.5"]
 
-    i = BY_NO[1]
-    assert i["key"] == "c" and i["bank_word"] == "test"
-    ok(i["q"], "bank 1", "c (test)", "the slice spent once")
+    i = BY_ID["is-it-ml"]
+    assert bsp.letters_of(i["key"]) == ["a", "d"]
+    ok(i["q"], "is-it-ml", "a, d", "the two asks about a future yes")
+
+    i = BY_ID["logit-071"]
+    keyed(i, "d", "71 in 100", "scored near 0.71")
+    assert "AUC of 0.761" in options(i)["a"] and "0.761" in table(part_exhibit(1))[-1][1]
+    ok(i["q"], "logit-071", "d", "a chance only once calibrated; the AUC vouches for the ranking")
 
     i = BY_ID["peek"]
-    keyed(i, "b", "spent", "new calls")
-    ok(i["q"], "peek", "b", "the peeked test is spent; score once on fresh calls")
+    keyed(i, "c", "0.897", "1.8-point edge", "validation")
+    assert "0.9055" in i["text"] and "0.8875" in i["text"] and "0.8873" in i["text"]
+    assert f"{(0.9055 - 0.8875) * 100:.1f}" == "1.8" and f"{(0.8971 - 0.8873) * 100:.2f}" == "0.98"
+    assert "0.906" in options(i)["a"] and "0.887" in options(i)["b"] and "0.80" in options(i)["d"]
+    ok(i["q"], "peek", "c", "0.9055 peeked falls to 0.8971 fresh; the 2,000 chose, so they are validation")
 
     i = BY_ID["random-or-time"]
     keyed(i, "a", "True", "train early and score late")
     assert "5.6 percent" in i["text"] and "24.6 percent" in i["text"]
     ok(i["q"], "random-or-time", "a", "yes rate 5.6 to 24.6 percent across the file, as RUN")
-
-    i = BY_ID["logit-071"]
-    keyed(i, "d", "71 in 100", "calibrated")
-    ok(i["q"], "logit-071", "d", "a calibrated chance for one client")
-
-    i = BY_ID["is-it-ml"]
-    assert bsp.letters_of(i["key"]) == ["a", "d"]
-    ok(i["q"], "is-it-ml", "a, d", "the two asks about a future yes")
-
-    i = BY_NO[2]
-    assert i["key"] == "b" and i["bank_word"] == "negatives"
-    ok(i["q"], "bank 2", "b", "recall's denominator holds the false negatives")
 
     i = BY_ID["acc-trap"]
     acc_model, acc_none = (tp + tn) / 8238, ex2["Call nobody"][3] / 8238
@@ -273,36 +310,40 @@ def items():
 
     i = BY_ID["bill"]
     rows = {r[0]: [int(n(c)) for c in r[1:]] for r in table(i["exhibit"])}
-    (_, _, fp5, fn5), (_, _, fp1, fn1) = rows["0.5"], rows["0.10"]
-    b5, b1 = fp5 * 40 + fn5 * 1200, fp1 * 40 + fn1 * 1200
-    assert (b5, b1, b5 - b1) == (908560, 459920, 448640)
-    keyed(i, "b", f"Rs {b5:,}", f"Rs {b1:,}", f"Rs {b5 - b1:,}")
-    sw5, sw1 = fp5 * 1200 + fn5 * 40, fp1 * 1200 + fn1 * 40
-    assert f"Rs {sw5:,}" in options(i)["a"] and f"Rs {sw1:,}" in options(i)["a"] and f"Rs {sw1 - sw5:,}" in options(i)["a"]
-    assert f"Rs {fp5 * 40:,}" in options(i)["c"] and f"Rs {fp1 * 40:,}" in options(i)["c"]
-    assert f"Rs {(fp1 - fp5) * 40:,}" in options(i)["c"]
-    assert f"Rs {fn5 * 1200:,}" in options(i)["d"] and f"Rs {fn1 * 1200:,}" in options(i)["d"]
-    assert f"Rs {(fn5 - fn1) * 1200:,}" in options(i)["d"]
-    ok(i["q"], "bill", "b", "Rs 908,560 against Rs 459,920; distractors swap the prices or drop a box")
+    f1s, bills = {}, {}
+    for th in ("0.20", "0.10"):
+        _, c, w, m = rows[th]
+        f1s[th] = 2 * c / (2 * c + w + m)
+        bills[th] = w * 40 + m * 1200
+    assert (r2(f1s["0.20"]), r2(f1s["0.10"])) == (0.42, 0.33) and max(f1s, key=f1s.get) == "0.20"
+    assert bills == {"0.20": 681920, "0.10": 459920} and min(bills, key=bills.get) == "0.10"
+    assert bills["0.20"] - bills["0.10"] == 222000
+    for s in ("F1 chooses 0.20", "752 / 1,792 = 0.42", "1,232 / 3,682 = 0.33", "The bill chooses 0.10",
+              "Rs 459,920", "Rs 681,920", "Rs 222,000", "30 times"):
+        assert s in i["key"], s
+    # The slips the guide names: prices swapped, and F1 read as the plain average.
+    swapped = {th: rows[th][2] * 1200 + rows[th][3] * 40 for th in rows}
+    assert min(swapped, key=swapped.get) == "0.5", "with the prices swapped the bill would pick 0.5"
+    ok(i["q"], "bill", "0.20 / 0.10",
+       f"F1 {f1s['0.20']:.4f} against {f1s['0.10']:.4f}; bill Rs {bills['0.20']:,} against Rs {bills['0.10']:,}")
 
     i = BY_ID["budget-k"]
     assert "Top 1,000 by score" not in rows, "the budget's answer is back on the exhibit"
     top = (1000, round(0.404 * 1000))
     lift = (top[1] / top[0]) / (928 / 8238)
     assert top[1] == 404 and f"{lift:.1f}" == "3.6" and rows["The cost line"][0] == 7438
-    assert rows["0.5"][0] == 268 and f"{r2(174 / 268):.2f}" == "0.65"
-    keyed(i, "c", "top 1,000", "404", "3.6 times")
-    ok(i["q"], "budget-k", "c", f"precision at 1,000 is 0.404 against 0.113, {lift:.2f} times")
-
-    i = BY_NO[3]
-    assert i["key"] == "c" and i["bank_word"] == "leakage"
-    ok(i["q"], "bank 3", "c (leakage)", "a column from the future")
+    assert rows["0.20"][:2] == [864, 376] and f"{376 / 864:.3f}" == "0.435" and 1000 - 864 == 136
+    assert rows["0.5"][0] == 268 and 404 >= 376 >= 174
+    keyed(i, "c", "top 1,000")
+    assert "0.435" in options(i)["a"] and "136" in options(i)["a"] and "7,438" in options(i)["d"]
+    ok(i["q"], "budget-k", "c", f"the top 1,000 hold the 864 above 0.20 and 136 more; 404 buyers, {lift:.2f} times")
 
     t3 = table(part_exhibit(3))
     i = BY_ID["duration-call"]
     assert "0.795 to 0.932" in i["text"] and t3[1][1] == "0.795" and t3[2][1] == "0.932"
     assert "0.899 to 0.907" in options(i)["b"] and t3[1][2] == "0.899" and t3[2][2] == "0.907"
     keyed(i, "c", "report 0.795")
+    assert "data leakage" in i["note"]["why"]
     ok(i["q"], "duration-call", "c", "AUC 0.795 to 0.932 while accuracy moves 0.899 to 0.907")
 
     i = BY_ID["which-pass"]
@@ -310,19 +351,23 @@ def items():
     assert f"{round(RUN['poutcome_success_yes'] * 100)} percent" in options(i)["b"]
     ok(i["q"], "which-pass", "b, c", "poutcome passes at 65 percent yes; duration and the open quarter fail")
 
-    i = BY_ID["importance"]
-    gap = RUN["duration_mean_yes"] - RUN["duration_mean_no"]
-    assert gap == 332 and "332 seconds" in options(i)["d"] and "553" in i["text"] and "221" in i["text"]
-    keyed(i, "a", "False", "the yes drives the length")
-    ok(i["q"], "importance", "a", "553 - 221 = 332 seconds; the arrow runs both ways")
+    i = BY_ID["shortcut"]
+    keyed(i, "a", "which hospital", "new site")
+    assert "memorised" in options(i)["b"] and "0.815" in options(i)["d"]
+    assert 0.861 < 0.931 and 0.815 < 0.931
+    ok(i["q"], "shortcut", "a", "0.861 from the hospital alone; held-out 0.931 shared the shortcut, 0.815 elsewhere")
 
-    i = BY_ID["sign-flip"]
-    assert f"{RUN['euribor_alone']:.2f}" in i["text"] and f"+{RUN['euribor_full']:.2f}" in i["text"]
-    keyed(i, "d", "move together", "as a group")
+    i = BY_ID["two-readings"]
+    gap = RUN["duration_mean_yes"] - RUN["duration_mean_no"]
+    assert gap == 332 and "332 seconds" in options(i)["c"]
+    keyed(i, "d", "Both fail", "moves with the other indicators")
+    # The four options are the four combinations of the two verdicts, so no part marks the key.
+    verdicts = {k: (v.split(",")[0].split(":")[0]) for k, v in options(i).items()}
+    assert sorted(verdicts.values()) == ["Both fail", "Both hold", "One fails", "One holds"], verdicts
     why = i["note"]["why"]
-    for k, v in RUN["corr_euribor"].items():
-        assert f"{v:.2f}" in why, (k, v)
-    ok(i["q"], "sign-flip", "d", "euribor3m -0.92 alone, +0.39 with the indicators, as RUN")
+    for k in ("emp.var.rate", "nr.employed"):
+        assert f"{RUN['corr_euribor'][k]:.2f}" in why, k
+    ok(i["q"], "two-readings", "d", "the yes lengthens the call; euribor3m moves with the indicators at 0.97 and 0.95")
 
     i = BY_ID["tree-read"]
     t4 = table(part_exhibit(4))
@@ -353,9 +398,10 @@ def items():
 
     i = BY_ID["stale-rule"]
     assert RUN["time_late_mean_pred"] < RUN["time_late_yes"]
-    keyed(i, "a", "yes rate", "mean score", "stated gap", "cost line")
+    keyed(i, "a", "yes rate", "mean score", "stated gap", "moves down")
+    assert "moves up" in options(i)["b"] and options(i)["a"].split(";")[0] == options(i)["b"].split(";")[0]
     assert "0.152" in i["text"] and "24.6 percent" in i["text"]
-    ok(i["q"], "stale-rule", "a", "mean score 0.152 against 24.6 percent yes on the late rows")
+    ok(i["q"], "stale-rule", "a", "mean score 0.152 under 24.6 percent yes, so the cut on the scores moves down")
 
     i = BY_ID["caveat"]
     assert bsp.letters_of(i["key"]) == ["b", "c"]
@@ -363,8 +409,9 @@ def items():
 
     i = BY_ID["booking"]
     assert "23 comparisons" in i["text"]
-    keyed(i, "c", "random trial")
-    ok(i["q"], "booking", "c", "offline gain and business gain near uncorrelated, so a trial")
+    keyed(i, "d", "at random", "deposits per call")
+    assert "this month's" in options(i)["a"] and "test slice" in options(i)["b"] and "branches" in options(i)["c"]
+    ok(i["q"], "booking", "d", "offline and business gains near uncorrelated, and the yes rate moves, so a randomised trial")
 
     i = BY_ID["lend-flip"]
     pd_line = 3000 / (3000 + 60000)
@@ -372,8 +419,15 @@ def items():
     assert f"{r2(60000 / 63000):.2f}" == "0.95" and 60000 / 3000 == 20
     assert 0.04 < pd_line < 0.08 and "4 percent" in i["text"] and "8 percent" in i["text"]
     keyed(i, "b", "P only", "5 percent")
-    assert "1 in 20" in options(i)["d"] and 3000 / 63000 < 1 / 20
+    assert "1 in 20" in options(i)["d"] and 3000 / 63000 < 1 / 20 and "92 in 100" in options(i)["c"]
     ok(i["q"], "lend-flip", "b", f"default line {pd_line:.4f}: P at 0.04 approved, Q at 0.08 refused")
+
+    i = BY_ID["fraud-ask"]
+    keyed(i, "c", "Ask first", "block the payment", "review")
+    assert options(i)["c"].startswith("Ask first:") and options(i)["c"].rstrip().endswith("?")
+    for letter in "abd":
+        assert not options(i)[letter].startswith("Ask"), letter
+    ok(i["q"], "fraud-ask", "c", "under-specified: what a flag does and the team's capacity decide it")
 
 
 def stretch():
@@ -489,7 +543,7 @@ def main():
     balance()
     if "--rerun" in sys.argv:
         rerun()
-    assert len(LINES) == 24, len(LINES)
+    assert len(LINES) == 22, len(LINES)
     print(f"\nRESULT: PASS ({len(LINES)} items proved)")
 
 
