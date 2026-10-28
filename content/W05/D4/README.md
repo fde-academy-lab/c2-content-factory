@@ -41,4 +41,4 @@ The notebooks sit in `1_in_class_training_content/notebooks/`. The explorable is
 
 ## For the trainer and the TAs
 
-`4_trainer_only/C2_W05_D04_trainer_guide_TRAINER.md` (the run table, how to teach each chapter, the quiz keys, the lab run sheet), `4_trainer_only/C2_W05_D04_practice_lab_solutions_TRAINER.ipynb`, and `4_trainer_only/C2_W05_D04_sources_INTERNAL.md`. The deck's charts are drawn by `4_trainer_only/C2_W05_D04_make_figures_INTERNAL.py`; after `scripts/build_deck.py`, run `4_trainer_only/C2_W05_D04_strip_branding_INTERNAL.py` on the new .pptx.
+`4_trainer_only/C2_W05_D04_trainer_guide_TRAINER.md` (the run table, how to teach each chapter, the quiz keys, the lab run sheet), `4_trainer_only/C2_W05_D04_practice_lab_solutions_TRAINER.ipynb`, and `4_trainer_only/C2_W05_D04_sources_INTERNAL.md`. The deck's charts are drawn by `4_trainer_only/C2_W05_D04_make_figures_INTERNAL.py`; `scripts/build_deck.py` builds the deck from its markdown, with no branding from Week 5 on.
