@@ -69,8 +69,9 @@ Every PNG in `1_in_class_training_content/slides/img/` is drawn by `4_trainer_on
 
 ## Build log
 
-- Notebooks executed with `jupyter nbconvert --to notebook --execute --inplace` from builder scripts kept in the session's scratchpad.
+- Notebooks: `python3 content/W05/D1/4_trainer_only/C2_W05_D01_build_notebooks_INTERNAL.py` writes all twelve and executes each with `jupyter nbconvert --to notebook --execute --inplace`.
 - Figures: `python3 content/W05/D1/4_trainer_only/C2_W05_D01_make_figures_INTERNAL.py`.
 - Deck: `PUPPETEER_EXECUTABLE_PATH=/opt/pw-browsers/chromium python3 scripts/build_deck.py <deck.md> --footer "Week 5 Monday: regression and classification"`, then the strip script; 63 slides rendered through LibreOffice and inspected on contact sheets.
 - PDFs: `python3 scripts/build_doc.py` per STUDENT markdown in folders 2 and 3.
 - Explorable: `python3 scripts/html_sweep.py`, 7 controls, 0 inert, 0 console errors.
+- MCQs: `scripts/distractor_audit.py` does not parse the Week 5 practice-set layout (its items are `**B1.**` with keys in Part C), so the key rules were checked by a script in this session: no key is the strictly longest option on any single-key item, and keys spread a 4, b 3, c 4, d 4 across the fifteen single-key items.
