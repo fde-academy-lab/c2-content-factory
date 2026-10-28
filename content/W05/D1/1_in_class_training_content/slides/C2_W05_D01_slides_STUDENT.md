@@ -662,7 +662,7 @@ in the residuals tell you? Transition: the case.
 *Case chapter. Applies: Prediction, rule or query; Input, target, prediction time; Train, validation, test; the seed; the baseline*
 
 ```notes
-LIVE, 41 minutes, including the guided notebook, 20 of them. Notebook case01, then guided.
+LIVE, 43 minutes, including the guided notebook, 20 of them. Notebook case01, then guided.
 Transition: the bank.
 ```
 
@@ -985,7 +985,7 @@ split, the peek). Transition: the quiz.
 | R | Week 4 Friday: the vendor curve fit two years perfectly; good forecast? |
 
 ```notes
-LIVE, 10 minutes. Keys in the trainer guide. The return question first, as a warm-up. Q4's 96 to
+LIVE, 8 minutes. Keys in the trainer guide. The return question first, as a warm-up. Q4's 96 to
 4 is the row's invented Kalpa flag: the answer is 96 percent. Transition: the close.
 ```
 
