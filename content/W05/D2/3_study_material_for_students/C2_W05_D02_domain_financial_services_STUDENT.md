@@ -100,7 +100,7 @@ Rohan's two costs land on different lines. Approving a borrower who defaults lan
 
 ## 4. Who decides what at Kalpa Financial, and what does each of them ask the data team?
 
-On a Monday at a lender, four people want a number before noon, and each loses something different when it is wrong.
+On a Monday morning at a lender, four people want a number, and each loses something different when it is wrong.
 
 **Who needs the answer.** Every trainee who sends Kalpa Financial a number, since a figure built for collections and read by treasury reaches a decision it was never built for.
 
