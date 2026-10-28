@@ -4,6 +4,26 @@ One folder per session. The folder path says which week and which day, the subfo
 kind of artifact it is, and the file name says which topic. `scripts/verify.py` enforces all
 three, so a pack that invents its own layout fails the gate rather than shipping.
 
+## A teaching day from Week 5 on
+
+From Week 5 on a teaching day ships the artifact set of `docs/11_Artifact_Set_W05.md`, the
+requester's direction of 28 October 2026. Weeks 0 to 4 keep the layouts described below.
+
+```
+content/W05/D1/
+  README.md                          the run table first, then every file in the order it is used
+  1_in_class_training_content/
+    slides/  (+ img/)                one visual deck, markdown and .pptx
+    notebooks/                       one per chapter, case notebooks, the guided notebook
+    demos/                           the day's explorable, one HTML file
+  2_take_home_mandatory/             the practice set (.md and .pdf) and the practice lab notebook
+  3_study_material_for_students/     study notes, cheat sheet, interview question bank (.md and .pdf)
+  4_trainer_only/                    the trainer guide, the lab solutions, the sources file
+```
+
+The README is the only file at the day root without the `C2_W{ww}_D{dd}_` stem. A Saturday,
+a build week and a capstone week keep their own shapes below.
+
 ## The week folder
 
 ```

@@ -132,7 +132,18 @@ def check_notebook(path):
 
 
 def main():
-    targets = [pathlib.Path(a) for a in sys.argv[1:] if not a.startswith("--")]
+    global MIN_DIAGRAMS, MIN_CHECKS
+    args = sys.argv[1:]
+    for flag in ("--min-diagrams", "--min-checks"):
+        if flag in args:
+            i = args.index(flag)
+            value = int(args[i + 1])
+            if flag == "--min-diagrams":
+                MIN_DIAGRAMS = value
+            else:
+                MIN_CHECKS = value
+            del args[i:i + 2]
+    targets = [pathlib.Path(a) for a in args if not a.startswith("--")]
     if not targets:
         print("FAIL  nb_check.py needs a notebook or a folder to look in")
         sys.exit(1)
