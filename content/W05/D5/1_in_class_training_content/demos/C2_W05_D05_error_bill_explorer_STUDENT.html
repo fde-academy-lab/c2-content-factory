@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Error Bill Explorer</title>
+<style>
+:root { --ink:#1A0F5C; --body:#1A1440; --violet:#5B3FD6; --rose:#D63A6A; --green:#1F8A5B; --muted:#6B6690;
+        --lilac:#CFC9EE; --line:#E4E1F1; --tint:#F4F2FA; --bg:#FFFFFF; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--body); font:16px/1.45 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
+main { max-width:1180px; margin:0 auto; padding:16px; }
+h1 { font:600 26px/1.2 Georgia, serif; color:var(--ink); margin:4px 0 2px; }
+.lede { color:var(--muted); margin:0 0 14px; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:860px) { .grid { grid-template-columns:1fr; } }
+section { border:1px solid var(--line); border-radius:10px; padding:14px; background:#fff; }
+h2 { font:600 19px/1.25 Georgia, serif; color:var(--ink); margin:0 0 6px; }
+.step { background:var(--tint); border-radius:8px; padding:8px 10px; margin:8px 0; font-size:15px; }
+label { font-weight:600; color:var(--ink); display:block; margin-top:8px; }
+input[type=range] { width:100%; accent-color:var(--violet); }
+input[type=number], input[type=text], select { font:inherit; padding:4px 6px; border:1px solid var(--lilac); border-radius:6px; }
+button { font:inherit; padding:6px 12px; border-radius:6px; border:1px solid var(--violet); background:var(--violet); color:#fff; cursor:pointer; }
+button.ghost { background:#fff; color:var(--violet); }
+.row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.nums { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin:10px 0; }
+.num { background:var(--tint); border-radius:8px; padding:6px 8px; }
+.num b { display:block; font-size:20px; color:var(--ink); }
+.num span { font-size:13px; color:var(--muted); }
+svg { width:100%; height:auto; display:block; }
+svg text { font-family: system-ui, Arial, sans-serif; }
+.rule { border-left:4px solid var(--violet); padding:6px 10px; margin-top:8px; background:#fff; }
+.alarm { color:var(--rose); font-weight:700; }
+.note { font-size:13px; color:var(--muted); margin-top:10px; }
+</style>
+</head>
+<body>
+<main>
+<h1>What will being wrong cost, and when do we stop trusting the model?</h1>
+<p class="lede">The bank's 8,238 validation customers (UCI Bank Marketing, the logistic model from case notebook 01), priced at Kalpa's Rs 40 a nudge. The page opens on two wrong defaults on purpose.</p>
+<div class="grid">
+
+<section aria-labelledby="h-bill">
+<h2 id="h-bill">1. The error bill at a threshold</h2>
+<div class="step"><b>Predict first.</b> At 0.50 the model calls very few people. Guess the bill for the campaign, in Rs lakh, then reveal.</div>
+<div class="row">
+  <input id="guess" type="text" inputmode="decimal" placeholder="your guess, Rs lakh" aria-label="Your guess of the bill in Rs lakh" size="18">
+  <button id="reveal">Reveal the bill</button>
+  <span id="guessEcho" class="note"></span>
+</div>
+<label for="t">Call when the score is at least <span id="tOut">0.50</span></label>
+<input id="t" type="range" min="0" max="0.99" step="0.01" value="0.50">
+<div class="row">
+  <label for="miss" style="margin:0">A missed buyer costs</label>
+  <select id="miss"><option value="1200">Rs 1,200 (Kalpa)</option><option value="400">Rs 400</option><option value="120">Rs 120</option></select>
+  <label for="size" style="margin:0">Campaign size</label>
+  <input id="size" type="number" min="1000" max="500000" step="1000" value="20000" style="width:110px">
+</div>
+<div class="nums">
+  <div class="num"><b id="called">?</b><span>called</span></div>
+  <div class="num"><b id="found">?</b><span>buyers found</span></div>
+  <div class="num"><b id="bill">?</b><span>error bill</span></div>
+</div>
+<svg id="bars" viewBox="0 0 520 170" role="img" aria-label="Stacked bars of the bill"></svg>
+<svg id="trace" viewBox="0 0 520 150" role="img" aria-label="The bill at every threshold you have visited"></svg>
+<p class="note" id="cutNote"></p>
+</section>
+
+<section aria-labelledby="h-mon">
+<h2 id="h-mon">2. The staleness monitor</h2>
+<div class="step">The model trained on May 2008 to April 2009 scores the later months; each month its top 12 percent is called. Lines: the share it promised and the share who bought.</div>
+<label for="ceil">Alarm when real sits more than <span id="cOut">45</span> points from the promise, two months running</label>
+<input id="ceil" type="range" min="0" max="45" step="1" value="45">
+<div class="nums">
+  <div class="num"><b id="over">0</b><span>months over</span></div>
+  <div class="num"><b id="fire">never</b><span>alarm month</span></div>
+  <div class="num"><b id="calls1">194</b><span>calls in the first month</span></div>
+</div>
+<svg id="mon" viewBox="0 0 520 260" role="img" aria-label="Promised against real share by month"></svg>
+<div class="rule" id="ruleText"></div>
+<div class="row" style="margin-top:10px">
+  <button id="reset" class="ghost">Back to the wrong defaults</button>
+</div>
+<p class="note">Luck alone moves a month's share by about 2 x sqrt(p x (1 - p) / n): about 9 points at 100 calls, 20 points at 22 calls. Data: UCI Bank Marketing (CC BY 4.0), our run of 28 October 2026; nothing here is invented.</p>
+</section>
+</div>
+</main>
+<script>
+// Validation counts of the logistic model at thresholds 0.00 to 0.99 (step 0.01): wasted calls and missed buyers.
+const W = [7310,7308,7278,6749,5504,4191,3159,2319,1813,1494,1324,1166,1055,981,924,891,860,820,776,731,692,657,618,584,552,525,506,486,470,463,446,426,405,378,364,346,328,301,282,258,233,220,199,185,171,161,154,147,138,129,117,108,102,98,98,92,88,83,79,76,71,67,63,58,53,50,44,44,43,38,35,32,31,26,22,20,20,17,15,15,13,12,9,7,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const M = [0,0,2,11,51,113,175,237,282,306,325,338,350,364,368,372,379,384,395,401,412,416,431,447,461,470,479,482,491,500,515,525,534,546,558,570,581,593,608,618,626,636,647,662,665,675,687,695,700,708,714,718,722,730,731,732,737,741,744,748,752,759,763,766,775,780,790,799,807,812,821,835,843,851,858,863,869,878,882,887,892,895,901,906,910,914,917,920,925,927,928,928,928,928,928,928,928,928,928,928];
+const N = 8238, BUY = 928, CALL = 40;
+// The late months: [month, calls, promised share, real share], top 12 percent of each month's list.
+const MON = [["2009-04",194,.226,.309],["2009-05",703,.136,.142],["2009-06",87,.451,.460],["2009-07",22,.324,.545],
+  ["2009-08",93,.316,.441],["2009-09",32,.446,.469],["2009-10",54,.704,.630],["2009-11",43,.198,.628],["2009-12",21,.394,.571],
+  ["2010-03",32,.327,.812],["2010-04",21,.179,.667],["2010-05",26,.189,.692],["2010-06",28,.329,.786],["2010-07",38,.436,.763],
+  ["2010-08",28,.488,.679],["2010-09",37,.331,.730],["2010-10",25,.844,.640],["2010-11",16,.310,.438]];
+const $ = id => document.getElementById(id);
+const fmtL = rs => "Rs " + (rs / 1e5).toFixed(2) + " lakh";
+const fmtN = n => Math.round(n).toLocaleString("en-IN");
+let revealed = false;
+const visited = new Set();
+
+function billAt(i, miss, scale) {
+  return { wasted: W[i] * scale, missed: M[i] * scale, bill: (W[i] * CALL + M[i] * miss) * scale,
+           called: (W[i] + BUY - M[i]) * scale, found: (BUY - M[i]) * scale };
+}
+function svgEl(tag, a, text) {
+  const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const k in a) e.setAttribute(k, a[k]);
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+function drawBill() {
+  const i = Math.round(Number($("t").value) * 100), miss = Number($("miss").value);
+  const size = Math.max(1000, Number($("size").value) || 20000), scale = size / N;
+  $("tOut").textContent = (i / 100).toFixed(2);
+  const b = billAt(i, miss, scale), all = billAt(0, miss, scale);
+  const none = { wasted: 0, missed: BUY * scale, bill: BUY * miss * scale };
+  visited.add(i);
+  if (revealed) {
+    $("called").textContent = fmtN(b.called) + " of " + fmtN(size);
+    $("found").textContent = fmtN(b.found) + " of " + fmtN(BUY * scale);
+    $("bill").textContent = fmtL(b.bill);
+  } else {
+    ["called", "found", "bill"].forEach(k => $(k).textContent = "?");
+  }
+  const svg = $("bars"); svg.innerHTML = "";
+  const rows = [["your threshold", b], ["call everyone", all], ["call nobody", none]];
+  const max = Math.max(...rows.map(r => r[1].bill)), x0 = 120, wmax = 300;
+  rows.forEach(([name, r], k) => {
+    const y = 12 + k * 52, w1 = r.wasted * CALL / max * wmax, w2 = r.missed * miss / max * wmax;
+    svg.appendChild(svgEl("text", { x: 0, y: y + 22, "font-size": 14, fill: "#1A0F5C" }, name));
+    svg.appendChild(svgEl("rect", { x: x0, y, width: Math.max(0, w1), height: 32, fill: "#CFC9EE" }));
+    svg.appendChild(svgEl("rect", { x: x0 + w1, y, width: Math.max(0, w2), height: 32, fill: "#D63A6A" }));
+    if (revealed || k > 0) svg.appendChild(svgEl("text", { x: x0 + w1 + w2 + 6, y: y + 22, "font-size": 13, fill: "#1A1440" }, fmtL(r.bill)));
+  });
+  svg.appendChild(svgEl("text", { x: x0, y: 166, "font-size": 12, fill: "#6B6690" }, "lilac: wasted calls x Rs 40     rose: missed buyers x Rs " + miss.toLocaleString("en-IN")));
+  // the trace: one dot per threshold visited
+  const tr = $("trace"); tr.innerHTML = "";
+  const bills = W.map((_, j) => billAt(j, miss, scale).bill), bmax = Math.max(...bills);
+  tr.appendChild(svgEl("line", { x1: 40, y1: 120, x2: 510, y2: 120, stroke: "#B8B2D6" }));
+  tr.appendChild(svgEl("text", { x: 40, y: 140, "font-size": 12, fill: "#6B6690" }, "0"));
+  tr.appendChild(svgEl("text", { x: 490, y: 140, "font-size": 12, fill: "#6B6690" }, "0.99"));
+  tr.appendChild(svgEl("text", { x: 40, y: 14, "font-size": 12, fill: "#6B6690" }, "the bill at each threshold you have visited (higher is dearer)"));
+  visited.forEach(j => {
+    tr.appendChild(svgEl("circle", { cx: 40 + j / 99 * 470, cy: 120 - bills[j] / bmax * 100, r: j === i ? 6 : 3.5,
+                                     fill: j === i ? "#5B3FD6" : "#CFC9EE" }));
+  });
+  const cut = CALL / (CALL + miss);
+  let best = 0; bills.forEach((v, j) => { if (v < bills[best]) best = j; });
+  $("cutNote").textContent = "Cost cut: 40 / (40 + " + miss.toLocaleString("en-IN") + ") = " + cut.toFixed(3) +
+    ". Cheapest threshold in this table: " + (best / 100).toFixed(2) + ", " + (revealed ? fmtL(bills[best]) : "bill hidden until you reveal") +
+    ". Calling everyone: " + fmtL(all.bill) + ".";
+}
+function drawMon() {
+  const c = Number($("ceil").value) / 100;
+  $("cOut").textContent = Math.round(c * 100);
+  const over = MON.map(r => Math.abs(r[3] - r[2]) > c);
+  let fire = -1;
+  for (let k = 1; k < over.length; k++) if (over[k] && over[k - 1]) { fire = k; break; }
+  $("over").textContent = over.filter(Boolean).length + " of " + MON.length;
+  $("fire").textContent = fire < 0 ? "never" : MON[fire][0];
+  $("fire").className = fire < 0 ? "" : "alarm";
+  const svg = $("mon"); svg.innerHTML = "";
+  const X = k => 40 + k * (470 / (MON.length - 1)), Y = v => 225 - v * 210;
+  [0, 0.25, 0.5, 0.75, 1].forEach(v => {
+    svg.appendChild(svgEl("line", { x1: 40, x2: 510, y1: Y(v), y2: Y(v), stroke: "#E4E1F1" }));
+    svg.appendChild(svgEl("text", { x: 0, y: Y(v) + 4, "font-size": 12, fill: "#6B6690" }, Math.round(v * 100) + "%"));
+  });
+  let band = "";
+  MON.forEach((r, k) => band += (k ? "L" : "M") + X(k) + "," + Y(Math.min(1, r[2] + c)));
+  for (let k = MON.length - 1; k >= 0; k--) band += "L" + X(k) + "," + Y(Math.max(0, MON[k][2] - c));
+  svg.appendChild(svgEl("path", { d: band + "Z", fill: "#CFC9EE", opacity: 0.45 }));
+  const line = idx => MON.map((r, k) => (k ? "L" : "M") + X(k) + "," + Y(r[idx])).join("");
+  svg.appendChild(svgEl("path", { d: line(2), fill: "none", stroke: "#5B3FD6", "stroke-width": 3 }));
+  svg.appendChild(svgEl("path", { d: line(3), fill: "none", stroke: "#1A0F5C", "stroke-width": 3 }));
+  MON.forEach((r, k) => svg.appendChild(svgEl("circle", { cx: X(k), cy: Y(r[3]), r: 5, fill: over[k] ? "#D63A6A" : "#1A0F5C" })));
+  [0, 4, 8, 12, 17].forEach(k => svg.appendChild(svgEl("text", { x: X(k) - (k === 17 ? 46 : 22), y: 248, "font-size": 12, fill: "#6B6690" }, MON[k][0])));
+  svg.appendChild(svgEl("text", { x: 300, y: 18, "font-size": 13, fill: "#1A0F5C" }, "dark: real   violet: promised"));
+  if (fire >= 0) {
+    svg.appendChild(svgEl("line", { x1: X(fire), x2: X(fire), y1: 20, y2: 225, stroke: "#D63A6A", "stroke-width": 2, "stroke-dasharray": "5 4" }));
+    svg.appendChild(svgEl("text", { x: X(fire) + 4, y: 34, "font-size": 13, fill: "#D63A6A" }, "alarm"));
+  }
+  $("ruleText").innerHTML = "<b>The rule.</b> Each month, compare the share of called customers who subscribe with the share the model promised. " +
+    "If they differ by more than <b>" + Math.round(c * 100) + " points</b> for <b>two months running</b>, Kavya pauses the list. " +
+    (fire < 0 ? "<span class='alarm'>At this ceiling it never fires, and the drift passes unnoticed.</span>"
+              : "On this file it fires in <span class='alarm'>" + MON[fire][0] + "</span>, month " + (fire + 1) + " after training ended.");
+}
+$("t").addEventListener("input", drawBill);
+$("miss").addEventListener("change", drawBill);
+$("size").addEventListener("input", drawBill);
+$("ceil").addEventListener("input", drawMon);
+$("guess").addEventListener("input", () => {
+  const g = $("guess").value.trim();
+  $("guessEcho").textContent = g ? "Your guess: Rs " + g + " lakh" : "";
+});
+$("reveal").addEventListener("click", () => { revealed = true; $("reveal").textContent = "Bill revealed"; drawBill(); });
+$("reset").addEventListener("click", () => {
+  $("t").value = "0.50"; $("ceil").value = "45"; $("miss").value = "1200"; $("size").value = "20000";
+  visited.clear(); drawBill(); drawMon();
+});
+drawBill(); drawMon();
+</script>
+</body>
+</html>
