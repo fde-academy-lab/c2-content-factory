@@ -7,9 +7,9 @@
 # W05 length, so the builder takes the tracker's 60, which matches the Saturday row of
 # docs/curriculum/W5_ML_core_ME1.md. Five parts, one per teaching day, each opening on the UCI Bank
 # Marketing campaign as the week's pipeline ran it (docs/detailing/W05_research/W05_week_pipeline.md),
-# with every number re-run in this session on 28 October 2026 and matching that file. Five bank
-# items print, the five blanks, each from a word bank; twenty-four fold into deeper items, each with
-# its reason under `folded`, because the bank's twenty-nine items at the bank's pace fill the 60
+# with every number re-run in this session on 28 October 2026 and matching that file. Three bank
+# items print, the blanks of banks 1 to 3, each from a word bank and each last in its part;
+# twenty-six fold into deeper items, each with its reason under `folded`, because the bank's twenty-nine items at the bank's pace fill the 60
 # minutes with no room for the reasoned formats the interview grade asks for, and nine of its
 # thirteen option sets fail the distractor audit as the tracker prints them. Twenty-one additions
 # carry the folded concepts on the week's real numbers, so no item is moved to the stretch page and
@@ -66,15 +66,6 @@ banks:
       - leakage
       - collinearity
       - overfitting
-  thu-words:
-    style: words
-    options:
-      - overfitting
-      - underfitting
-      - threshold
-      - split
-      - leakage
-      - seed
 
 # The printed order. Bank items by number, the additions by id.
 parts:
@@ -198,7 +189,7 @@ parts:
             - ["5", "0.901", "0.897", "0.783"]
             - ["8", "0.911", "0.897", "0.777"]
             - ["No limit", "0.996", "0.837", "0.619"]
-    items: ["new:tree-read", "new:brakes", "new:cv-why", "new:near-tie", 4, 5]
+    items: ["new:tree-read", "new:brakes", "new:cv-why", "new:near-tie"]
   - title: Would the committee sign, and what moves to lending?
     shows: whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending
     intro: >-
@@ -214,9 +205,9 @@ parts:
           random: the logistic model on the honest columns.
         mermaid: |-
           flowchart LR
-            C["Claim:<br/>the model and its job"] --> E["Evidence:<br/>its score against the baseline"]
-            E --> B["Error bill:<br/>the cost of its mistakes in Rs"]
-            B --> V["Caveat:<br/>where it is weak, when it goes stale"]
+            C["Claim"] --> E["Evidence"]
+            E --> B["Error bill"]
+            B --> V["Caveat"]
         table:
           head:
             - Line
@@ -232,6 +223,12 @@ stretch_bank: []
 
 # Bank items that do not print because a deeper printed item tests their concept.
 folded:
+  4:
+    into: "new:tree-read"
+    why: The blind sitting found the bank's 100 and 61 percent read beside Exhibit 4A's 0.996 and 0.619, two metrics, and found the blank cued by the part's title and by the options above it, so the item that reads training at 0.996 against validation at 0.837 as memorising tests bank 4's word on the room's own tree.
+  5:
+    into: "new:cv-why"
+    why: The blind sitting found the blank answered by the folds item's own options, which say what one split could have read, so the folds item, whose key is the luck of one split sized at 0.77 to 0.80, tests bank 5's word.
   6:
     into: "new:acc-trap"
     why: The printed statement is bank 6's trap on the week's own rows, where calling nobody already scores 0.887 on an 89 to 11 outcome, and option d keys the reason accuracy says little there.
@@ -338,25 +335,6 @@ notes:
     answer: >-
       Leakage is a column from the future, so I ask of every column when it would exist on the
       morning the list is built.
-  4:
-    label: "Name the failure"
-    bank: thu-words
-    why: >-
-      Perfect on training and far lower on validation is a model that memorised its training rows,
-      which is overfitting; the room's unlimited tree scored 0.996 against 0.837. Underfitting
-      scores low on both.
-    answer: >-
-      A big gap between training and validation is memorising, so I add a brake and choose its
-      strength on validation or by cross-validation.
-  5:
-    label: "Name what averages out"
-    bank: thu-words
-    why: >-
-      One split can be lucky or unlucky in which clients land in validation; cross-validation
-      gives every row a turn in validation and averages the scores, so the luck of one split
-      averages away. The week's five folds ran from 0.769 to 0.798.
-    answer: >-
-      One split is one draw; five folds are five draws, so I quote the mean and the spread.
 
 additions:
   # ---------------------------------------------------------------- Part 1, Monday
@@ -405,15 +383,15 @@ additions:
     tag: "[D]"
     roles: DS
     day: Mon
-    key: c
+    key: a
     anchor: >-
       Train, validation, test: how should the rows be split for the question being asked?
     text: |-
-      The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a random split of all the rows estimates the model's score as honestly as a split by date. True or false, and why?
-      (a) True: the split keeps 11.27 percent yes in every slice, so each slice is a fair sample of the bank's clients.
-      (b) True: the model never reads a date column, so the order in which the calls were made cannot move its score.
-      (c) False: a random split trains on later months than it validates on; train early and score late, like the ask.
-      (d) False: a random split leaves too few yes rows in validation, so its score is noisy; a split by date adds them.
+      The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a split by date estimates the model's score more honestly than a random split of all the rows. True or false, and why?
+      (a) True: a random split trains on later months than it validates on; train early and score late, like the ask.
+      (b) True: a split by date keeps more yes rows in validation, so its score is less noisy than a random split's.
+      (c) False: a stratified random split keeps 11.27 percent yes in every slice, so each is a fair sample of clients.
+      (d) False: the model never reads a date column, so the order in which the calls were made cannot move its score.
     why: >-
       The ask is about a campaign that has not happened yet, so the honest test trains on the
       earlier calls and scores the later ones. A random split puts calls from the same months in
@@ -422,15 +400,15 @@ additions:
       24.6 percent across the file, and Friday's split by date cut the AUC from 0.795 to 0.657.
       Monday raised the split by time; Friday ran it.
     wrong:
-      a: >-
+      b: >-
+        The split by date wins on timing, not on the count of yes rows; validation already holds 928
+        yes rows under the random split.
+      c: >-
         Stratifying keeps the yes share equal, and it says nothing about mixing months, which is
         what lets the random split flatter the model.
-      b: >-
+      d: >-
         The month and the five economic indicators each mark the period a call was made in, so the
         model reads time without a date column.
-      d: >-
-        Validation holds 928 yes rows under the random split; the problem is which months they come
-        from, never how many there are.
     answer: >-
       I split the way the model will be used: train on the past, score on the later period, and
       expect that score to be lower than the random split's.
@@ -486,7 +464,7 @@ additions:
       (a) the clients to call first next month, ranked by their chance of saying yes
       (b) the count of yes answers in each month of 2009, for the annual report
       (c) the clients whose previous campaign ended in success, listed by branch
-      (d) the chance that a client never called before says yes on the first call
+      (d) each new client's own chance of a yes on a first call, before anyone calls
     why: >-
       A prediction problem asks about an outcome that has not happened yet, from what is known now,
       and has past examples to learn from. Ranking next month's clients and scoring a client never
@@ -505,7 +483,7 @@ additions:
   - id: acc-trap
     label: "Judge the accuracy claim"
     type: True or false
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[F]"
     roles: DS, BA
@@ -542,7 +520,7 @@ additions:
   - id: prf
     label: "Work the matrix"
     type: Applied maths
-    level: Hard
+    level: Medium
     min: 4
     tag: "[S]"
     roles: DS
@@ -571,7 +549,7 @@ additions:
     roles: DS, FDE
     day: Tue
     key: >-
-      Call when p x 1,200 > (1 - p) x 40, so p > 40 / 1,240 = 1 / 31, about 0.032; the line moves down from 0.5 and recall leads.
+      Call when p x 1,200 > (1 - p) x 40, so p > 40 / 1,240 = 1 / 31, about 0.032 (1 in 30, 0.033, from one buyer paying for 30 calls, is accepted); the line moves down from 0.5 and recall leads.
     anchor: >-
       How do you set a threshold when the two errors cost differently?
     text: |-
@@ -589,7 +567,7 @@ additions:
   - id: bill
     label: "Price two thresholds"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[S]"
     roles: DS, FDE, BA
@@ -599,8 +577,7 @@ additions:
       How do you set a threshold when the two errors cost differently?
     exhibit:
       caption: >-
-        The customer-table model at four thresholds on the 8,238 validation clients, and the
-        week's budget cut: everyone ranked by score.
+        The customer-table model at four thresholds on the 8,238 validation clients.
       table:
         head:
           - Threshold or cut
@@ -613,7 +590,6 @@ additions:
           - ["0.20", "864", "376", "488", "552"]
           - ["0.10", "2,754", "616", "2,138", "312"]
           - ["The cost line", "7,438", "913", "6,525", "15"]
-          - ["Top 1,000 by score", "1,000", "404", "596", "524"]
     text: |-
       At Rs 40 a wasted call and Rs 1,200 a missed buyer, what is the error bill at the thresholds of 0.5 and 0.10 in Exhibit 2B, and which costs less?
       (a) Rs 142,960 at 0.5 and Rs 2,578,080 at 0.10, so 0.5 is cheaper by Rs 2,435,120.
@@ -650,7 +626,7 @@ additions:
     text: |-
       The call centre can make 1,000 calls in the next campaign, and the cost line would call 7,438 of these 8,238 clients (Exhibit 2B). Which plan goes to the marketing head?
       (a) Keep the cost line and call the first 1,000 clients above it in the order the file lists them.
-      (b) Raise the threshold to 0.5 and call its 268 clients, since precision is the highest there, at 0.65.
+      (b) Raise the threshold to 0.5 and call its 268 clients, since precision is the highest at that line.
       (c) Rank every client by score and call the top 1,000; 404 of them said yes, 3.6 times the base rate.
       (d) Call 1,000 clients drawn at random, since a ranking on an outcome this rare is mostly noise.
     why: >-
@@ -677,7 +653,7 @@ additions:
   - id: duration-call
     label: "Answer the junior"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[S]"
     roles: DS, FDE
@@ -717,7 +693,7 @@ additions:
     tag: "[S]"
     roles: DS, FDE
     day: Wed
-    key: b, c, d
+    key: b, c
     anchor: >-
       What is data leakage, and how do you catch it before it ships?
     text: |-
@@ -725,21 +701,26 @@ additions:
       (a) duration, the length in seconds of this campaign's last call to the client
       (b) poutcome, the last campaign's result; 65 percent of its successes say yes
       (c) age, job and housing, as they stand in the customer table that morning
-      (d) euribor3m, the three-month rate as published on the morning of the list
+      (d) nr.employed for the current quarter, filled in once that quarter closes
     why: >-
-      A column passes when its value exists at the prediction moment. Age, job and housing, the
-      previous campaign's result and the rate published that morning all exist before any call.
-      The previous result is strongly predictive, 65 percent yes among past successes, and still
-      legitimate, because it was recorded before this campaign began, so it passes the timing test
-      however strong it is. Duration exists only after this campaign's call.
+      A column passes when its value exists at the prediction moment. Age, job and housing and the
+      previous campaign's result exist before any call. The previous result is strongly predictive,
+      65 percent yes among past successes, and still legitimate, because it was recorded before this
+      campaign began, so it passes the timing test however strong it is. Duration exists only after
+      this campaign's call, and a quarterly indicator for the current quarter, filled in once the
+      quarter closes, does not exist on the morning the list is built: a published indicator can leak
+      when its period has not ended, which is the calendar leak Wednesday named beside duration.
       Wednesday's chapter interrogated every column with this one question.
     wrong:
       a: >-
         This campaign's last call has not happened on the morning the list is built, so its length
         is from the future.
+      d: >-
+        The current quarter has not closed on the morning of the list, so its count is from the
+        future; last quarter's published count would pass.
     answer: >-
-      I test a column by when it exists: a strong column from the past is a feature, and a weak one
-      from the future is a leak.
+      I test a column by when it exists: a strong column from the past is a feature, and a
+      respectable column from a period that has not ended is a leak.
   - id: importance
     label: "Judge the chart"
     type: True or false
@@ -780,7 +761,7 @@ additions:
   - id: sign-flip
     label: "Explain the flip"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[F]"
     roles: DS
@@ -820,7 +801,7 @@ additions:
   - id: tree-read
     label: "Read the depth curve"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[S]"
     roles: DS
@@ -830,7 +811,7 @@ additions:
       Overfitting: what it is, how you detect it, how you fix it.
     text: |-
       The unlimited tree scores 0.996 on training and 0.837 on validation, below calling nobody. Which reading and which next step are right?
-      (a) It memorised the training clients; cap the depth where validation AUC peaks, depth 5 here.
+      (a) It memorised the training clients; cap the depth near the validation peak, confirmed by CV.
       (b) It needs more columns to learn from; join the call log so validation catches up with training.
       (c) It has not trained long enough; grow it further until validation rises to meet training.
       (d) Validation has drifted from training; refit the unlimited tree on validation and report it.
@@ -868,7 +849,7 @@ additions:
       (a) capping the tree's depth, or asking for more clients in every leaf
       (b) a stronger penalty on the logistic weights, a smaller C in scikit-learn
       (c) refitting until the training rows score 1.0 at every new setting
-      (d) choosing the depth or the penalty by five-fold cross-validation
+      (d) a simpler depth or penalty, chosen by five-fold cross-validation
     why: >-
       A depth cap and a minimum leaf size limit how finely a tree can carve the rows; a stronger
       penalty, which in scikit-learn's logistic regression is a smaller C, shrinks the weights and
@@ -943,35 +924,36 @@ additions:
     tag: "[D]"
     roles: DS, FDE
     day: Thu
-    key: c
+    key: b
     anchor: >-
       Your tuned model beats a simpler one by a hair: which ships, and why?
     text: |-
-      Statement: gradient boosting should go into the memo, since it scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
-      (a) True: 0.806 is above 0.799 and 0.795 on the same validation rows, and the memo reports the best found.
-      (b) True: boosting fits each round to the errors of the rounds before, so it generalises best of the three.
-      (c) False: 0.011 is inside the 0.03 one split moves by, so it is a tie, and the explainable logistic ships.
-      (d) False: AUC cannot compare different model families, so the committee needs each accuracy at 0.5.
+      Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
+      (a) True: a logistic model cannot overfit its rows, so its validation score is the safer one to quote.
+      (b) True: a gap of 0.011 can flip on another split, as the folds' spread shows; the plainer model ships.
+      (c) False: 0.806 is above 0.799 and 0.795 on the same validation rows, and the memo reports the best found.
+      (d) False: AUC cannot compare models of different families, so the committee needs each accuracy at 0.5.
     why: >-
-      The three families sit within 0.011 AUC of each other, while the five folds of one model moved
-      by about 0.03, so the ranking is inside the noise. On a tie the simpler model is the better
-      recommendation: it is explained to a committee in one line per weight, monitored easily, and
-      moved to lending with less to re-check. The flip is a gap that clears the folds' spread and is
-      worth more in rupees, at the same budget of calls, than the cost of explaining and running the
-      complex model.
+      The three families sit within 0.011 AUC of each other on one validation slice, while the five
+      folds of one model moved by about 0.03, so another split could reorder them. The test that would
+      settle it scores both models on the same five folds; until boosting leads on every fold by a
+      margin worth its cost, the simpler model is the recommendation: it is explained to a committee
+      in one line per weight, monitored easily, and moved to lending with less to re-check. The flip
+      is a gap that holds across the folds and is worth more in rupees, at the same budget of calls,
+      than the cost of explaining and running the complex model.
       Thursday closed on why the boring model often ships.
     wrong:
       a: >-
+        A logistic model overfits too when it has many columns and no penalty; its case here is the
+        tie and its plainness.
+      c: >-
         The best number found on one validation slice carries that slice's luck, which Exhibit 4B
         sizes at about 0.03.
-      b: >-
-        Boosting can generalise well, and it can also overfit; how it fits says nothing about whether
-        it beats the others here.
       d: >-
         AUC compares the ranking of any two models scored on the same rows, whatever their family.
     answer: >-
-      Inside the noise the simpler model ships, and I name the gap, in AUC and in rupees, at which
-      the complex one would.
+      Inside the noise the simpler model ships, and I name the gap, in AUC and in rupees, held across
+      folds, at which the complex one would.
   # ---------------------------------------------------------------- Part 5, Friday
   - id: stale-rule
     label: "Set the alarm"
@@ -993,7 +975,7 @@ additions:
           - Case
           - What the source reports
         rows:
-          - ["Instacart's item-availability model, March 2020", "The accuracy of the metric used to judge how many items are found fell from 93 percent to 61 percent, which told the engineers to retrain; by June it read about 85 percent"]
+          - ["Instacart's item-availability model, March 2020", "A metric used to evaluate the model that predicts whether an item is in stock fell from 93 percent to 61 percent, which told the engineers to retrain; by June it read about 85 percent"]
           - ["Instacart, looking back", "Models respond slowly to a shock because they need enough new observations; thresholds on top of the model were changed without training new models"]
           - ["Booking.com, 23 comparisons of a new model against a proven one", "Offline gain (ROC AUC or mean reciprocal rank) against the gain in a business metric when the two models were compared live: Pearson correlation -0.1, 90 percent interval -0.45 to 0.27"]
     text: |-
@@ -1037,7 +1019,7 @@ additions:
     text: |-
       Which lines belong in the memo's caveat? Circle every correct letter.
       (a) the validation AUC of 0.795, against 0.761 for the customer table alone
-      (b) the segment of clients the model ranks worst, with how many clients it holds
+      (b) the segment where the model performs worst, with how many clients it holds
       (c) the gap between predicted and actual yes rates that would trigger a retrain
       (d) the number of calls the campaign budget pays for in the next month
     why: >-
@@ -1062,14 +1044,14 @@ additions:
     tag: "[D]"
     roles: DS, FDE, BA
     day: Fri
-    key: a
+    key: c
     anchor: >-
       Your tuned model beats a simpler one by a hair: which ships, and why?
     text: |-
       Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). What does the memo propose?
-      (a) a random trial: half the next calls by the model's list, half by today's rule, scored on deposits
-      (b) a bigger validation slice, so that the AUC of 0.795 can be quoted to three decimal places
-      (c) a switch to gradient boosting, whose 0.806 gives the committee the strongest offline case
+      (a) a bigger validation slice, so that the AUC of 0.795 can be quoted to three decimal places
+      (b) a switch to gradient boosting, whose 0.806 gives the committee the strongest offline case
+      (c) a random trial: half the next calls by the model's list, half by today's rule, scored on deposits
       (d) the sealed test score on its own, since a slice opened once is all the evidence a committee needs
     why: >-
       An offline score says the model ranks well on past rows; it does not say the campaign will
@@ -1079,10 +1061,10 @@ additions:
       rule on the business number, deposits sold per call, with the size fixed before it starts.
       Friday's memo turned the score into a decision the committee could test.
     wrong:
-      b: >-
+      a: >-
         More decimals on the offline score sharpen the health check, and the gap to the business
         number stays where it was.
-      c: >-
+      b: >-
         A larger offline gain is the very thing Booking.com found did not predict business gain.
       d: >-
         The test score is the honest offline number, and it is still offline.
@@ -1097,35 +1079,34 @@ additions:
     tag: "[D]"
     roles: DS, FDE, BA
     day: Fri
-    key: d
+    key: b
     anchor: >-
       The same model in retail and lending: why are the thresholds opposite?
     text: |-
-      Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. Where does Rohan's approval line go?
-      (a) Approve on the nudge's own cost line, read as a chance of repaying, since the method is the same.
-      (b) Approve at the neutral 0.5, since a loan is a yes or no decision with no budget in the way.
-      (c) Approve while the chance of default is under 60,000 in 63,000, about 0.95, since defaults cost more.
-      (d) Approve only while the chance of default is under 3,000 in 63,000, about 0.05: repay above 0.95.
+      Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
+      (a) Both: each is far below a 50 percent chance of default, the neutral line for a yes or no decision.
+      (b) P only: the line sits near a 5 percent chance of default, so Q at 8 percent costs more than it pays.
+      (c) Both: the nudge acts on a 3 percent chance, so the same method approves anyone above that line.
+      (d) Neither: a default costs twenty times a rejection, so any chance above 1 in 20 must mean a rejection.
     why: >-
-      The same cost rule runs in both businesses. Approve when the expected cost of approving, p
-      times Rs 60,000, is below the expected cost of rejecting, (1 minus p) times Rs 3,000, where p
-      is the chance of default: p below 3,000 over 63,000, about 0.048. So Rohan lends only above
-      about a 95 percent chance of repayment, while the nudge acts on a 3 percent chance of a yes.
-      The asymmetry flips, so the line flips. Both rules assume calibrated probabilities.
+      Approve when the expected cost of approving, p times Rs 60,000, is below the expected cost of
+      rejecting, (1 minus p) times Rs 3,000, where p is the chance of default: p below 3,000 over
+      63,000, about 0.048. P at 0.04 is approved and Q at 0.08 is rejected. So Rohan lends only above
+      about a 95 percent chance of repayment, while the nudge acts on a 3 percent chance of a yes: the
+      asymmetry flips, so the line flips. Both rules assume calibrated probabilities.
       Friday's transfer chapter and Tuesday's hand count on Rohan's costs drew this line.
     wrong:
       a: >-
-        The method moves and the costs do not: the nudge's cheap error is a wasted call, while the
-        loan's expensive error is a default.
-      b: >-
         0.5 treats the two errors as equal, while a default costs twenty times a wrongful rejection.
       c: >-
-        This puts the expensive error's cost on top, which would lend to a borrower with a 95 percent
-        chance of default.
+        The method moves and the costs do not: the nudge's cheap error is a wasted call, while the
+        loan's expensive error is a default, so the line moves to the other end.
+      d: >-
+        1 in 20 is the cost ratio, and the line is 3,000 over 63,000, about 1 in 21; P at 4 percent
+        sits below it and is approved.
     answer: >-
       The line is the cheap error's cost over both costs, so the same model calls on a 3 percent
-      chance and lends only at 95 percent sure.
-
+      chance and lends only below about a 5 percent chance of default.
 stretch:
   - text: |-
       German Credit, the take-home's dataset (OpenML credit-g), documents its own cost matrix: classing a bad borrower as good costs 5, and classing a good borrower as bad costs 1. Above what chance of repaying should that lender approve, and how does it sit beside Rohan Desai's line?
@@ -1134,9 +1115,9 @@ stretch:
       above 5 over 6, about 0.83. Rohan's costs run twenty to one, so his line sits higher, at about
       0.95; the ratio of the two error costs sets the line in every business.
   - text: |-
-      Gradient boosting beats the logistic model by 0.011 AUC on validation. Name the gap at which you would ship boosting instead, and say how you would size it in rupees at the budget of 1,000 calls.
+      Two models score within a hair of each other on validation, and one is far harder to explain. Name the evidence that would make you ship the harder one, and say how you would size the gap in rupees at the budget of 1,000 calls.
     answer: >-
-      First the gap must clear the spread of the folds, about 0.03 here. Then count the buyers each
+      First the gap must hold on every fold, since one validation slice moves by about 0.03 here. Then count the buyers each
       model puts in its top 1,000 on the same rows: each extra buyer is worth about Rs 1,200 a
       campaign, so the extra buyers times Rs 1,200 must beat the yearly cost of explaining,
       monitoring and re-validating the complex model. Below both bars the logistic model ships, and

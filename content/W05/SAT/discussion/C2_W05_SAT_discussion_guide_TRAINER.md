@@ -31,7 +31,7 @@ flowchart TB
 | Block | Duration | What happens |
 |---|---|---|
 | The ME1 window | up to 150 min | Held for ME1; the Programme Head decides whether and where it runs. Minutes ME1 does not use run as revision (below). |
-| The paper | 60 min | 26 items in five parts, pen and paper, no notes and no assistant, paced at 59 minutes; anyone who finishes early turns to the untimed stretch page. |
+| The paper | 60 min | 24 items in five parts, pen and paper, no notes and no assistant, paced at 57 minutes; anyone who finishes early turns to the untimed stretch page. |
 | Break | 15 min | Papers stay face down on the desks. |
 | Marking | 10 min | Papers swap and are marked against the key the Academic TA reads out. |
 | The solution discussion | 35 min | The three most-missed items (15 min), then the nine anchors aloud with random call-outs (18 min), then the step-one ratings against the work (2 min). |
@@ -55,7 +55,7 @@ keep the row's minutes: the paper 60, marking 10, the discussion 35 and the Buil
 | Revision block | Duration | What the room does |
 |---|---|---|
 | Redraw the week's picture | 20 min | Each learner draws the timeline from memory: past rows, the cut, the prediction moment and the outcome window; then adds Tuesday's two score humps and the threshold, Wednesday's duration in red to the right of the prediction moment, Thursday's U of validation error against depth, and Friday's score sagging across 2008 to 2010. Pairs compare. |
-| The five day questions | 40 min | One question per day, answered aloud in groups with the day's own numbers: should we build a model at all; why can 89 percent call nobody; why was 0.93 too good; why did 99.6 on training fall below doing nothing; and what goes in the committee memo. |
+| The five day questions | 40 min | One question per day, answered aloud in groups with the day's own numbers: should we build a model at all; why can 89 percent call nobody; why was 0.93 too good; why did a tree at 99.6 percent on training score below doing nothing on validation; and what goes in the committee memo. |
 | Open doubts | the rest | Doubts in the order the room raises them; anything about ME1's format goes to the Programme Head. |
 
 ---
@@ -86,18 +86,19 @@ readers take two ways goes to the tracker's owner after the day.
 
 1. Papers swap along the row, so nobody checks their own.
 2. Read the key part by part from the key file: letters in runs of five; the five word-bank letters
-   one at a time (Q5, Q11, Q16, Q21 and Q22); and the two worked items slowly (Q7 and Q8).
-3. The key's rule settles the edge cases. On the four more-than-one items (Q4, Q13, Q18 and Q24),
+   one at a time (Q5, Q11 and Q16); and the two worked items slowly (Q7 and Q8).
+3. The key's rule settles the edge cases. On the four more-than-one items (Q4, Q13, Q18 and Q22),
    every correct letter and no other. Q7 is right with all three figures to two places, 0.65, 0.19
-   and 0.29. Q8 is right with about 0.032, or 1 in 31, and the threshold moving down. There is no
+   and 0.29. Q8 is right with about 0.032, or 1 in 31 (1 in 30, 0.033, is accepted), and the threshold
+   moving down. There is no
    partial credit, because the programme has set no rule for it.
 4. The marker writes each part's ticks beside that part's rating and their total as Items right, out
-   of 26, and hands the paper back.
+   of 24, and hands the paper back.
 5. The Academic TA enters each paper by seat in `answer-key/C2_W05_SAT_item_analysis_TRAINER.xlsx`,
    never by name: 1 for a tick, 0 for a cross and a blank for an item left empty, and the five
    ratings. Its Discussion sheet gives the most-missed order.
 
-The key's guessing line: a blind guesser averages 5.0 of 26, and a score of 8 or below is within reach
+The key's guessing line: a blind guesser averages 4.7 of 24, and a score of 8 or below is within reach
 of guessing alone, so a paper there opens a conversation in the next session. The next
 session is Build 2's first day, Tuesday 10 November, since Monday 9 November is off after Diwali; where
 the key and the workbook say Monday, read Tuesday.
@@ -116,17 +117,17 @@ option.
 
 | Item | What most papers will get wrong | Ask the room | The repair, said aloud | Where the week taught it |
 |---|---|---|---|---|
-| Q2, the split | (a), because the split is stratified, or (b), because the model never sees a date | "Which columns tell the model what month a call was made in?" | The month and the five economic indicators mark the period, so a random split lets the model learn when; the yes rate ran from 5.6 to 24.6 percent across the file, and Friday's split by date cut the AUC from 0.795 to 0.657. Train early, score late, because the ask is about the next campaign. | Monday's split by time; Friday's staleness chapter |
+| Q2, the split | (c), because the split is stratified, or (d), because the model never sees a date | "Which columns tell the model what month a call was made in?" | The month and the five economic indicators mark the period, so a random split lets the model learn when; the yes rate ran from 5.6 to 24.6 percent across the file, and Friday's split by date cut the AUC from 0.795 to 0.657. Train early, score late, because the ask is about the next campaign. | Monday's split by time; Friday's staleness chapter |
 | Q6, the accuracy claim | (b), the true count of 848 errors against 928 | "Is a wasted call worth the same as a missed buyer?" | No: Rs 40 against Rs 1,200. Calling nobody already scores 0.887, so a point of accuracy says little; the model finds 174 of 928 buyers, a recall of 0.19. | Tuesday: why 89 percent can mean zero |
 | Q7, the matrix | Recall divided by the people called; F1 taken as the plain average of 0.65 and 0.19, 0.42 | "Of the 928 buyers out there, how many did the model call?" | 174 of 928 is recall, 0.19; precision is 174 of the 268 called, 0.65; F1 on counts is 2 times 174 over 2 times 174 plus 94 plus 754, 348 over 1,196, 0.29. The harmonic mean sits near the smaller figure. | Tuesday: four boxes that tell the truth |
 | Q9, the bill | (a), the prices swapped, or (d), the misses alone | "Which box costs Rs 1,200, and which costs Rs 40?" | The bill is 94 times 40 plus 754 times 1,200 at 0.5, Rs 908,560, and 2,138 times 40 plus 312 times 1,200 at 0.10, Rs 459,920: the threshold that wastes more calls costs Rs 448,640 less. | Tuesday: what each mistake costs |
 | Q10, the budget | (b), the highest precision at 268 calls | "How many of the 1,000 calls does (b) leave unused, and what do the next ones convert at?" | 732 calls unused. Ranked by score, the top 1,000 hold 404 buyers, 0.404 against the base rate of 0.113, about 3.6 times. At Kalpa's costs the cost line calls nearly everyone: its bill is Rs 279,000 against Rs 292,400 for calling all 8,238, so the budget binds first and the ranking decides. | Tuesday: the budget cut, precision at k |
 | Q12, the junior | (b), since accuracy barely moved | "What did recall do when duration joined?" | Buyers found went from 211 to 390 while accuracy moved 0.899 to 0.907: on an 89 percent no outcome accuracy hides a leak. The length of a call exists only once the call ends, so the list cannot use it; the dataset's own notes say to discard it. Report 0.795. | Wednesday: answers from the future |
-| Q13, the columns | (b) left out, because 65 percent yes looks too good | "When was poutcome written: before this campaign or after it?" | Before: it is the last campaign's result, so it passes however strong it is. Duration fails on timing alone. | Wednesday: interrogating every column |
+| Q13, the columns | (b) left out, because 65 percent yes looks too good, or (d) ticked, because a published indicator looks safe | "When was poutcome written, and on the morning of the list, has the current quarter closed?" | poutcome is the last campaign's result, so it passes however strong it is. The current quarter's count is filled in once the quarter closes, so it is from the future that morning; last quarter's count would pass. Duration fails on timing alone. | Wednesday: interrogating every column |
 | Q19, the folds | (c), reading 4,942 as each model's training rows | "Which part does each fold's model train on, and which does it score?" | Five models, each trained on four folds, about 19,770 clients, and scored on the fifth, about 4,942. The scores ran 0.769 to 0.798, so one split could have read anywhere in that band. | Thursday: five exams instead of one |
-| Q20, the winner | (a), the highest number | "How far apart did the five folds of one model land, and how far apart are the three families?" | The folds spread 0.03; the families sit within 0.011, inside the noise. On a tie the explainable logistic model ships, and the memo names the gap at which boosting would. | Thursday: why the boring model often ships |
-| Q23, the alarm | (b), retraining every night | "How would nightly retraining tell you the old model had failed?" | It cannot: nothing is measured. The rule sets the called clients' yes rate against the mean score, monthly, with the gap stated in advance; on the late rows the mean score was 0.152 against 24.6 percent yes. Instacart's alarm was a monitored metric, 93 to 61 percent, and its first fix was a threshold. | Friday: when the model goes stale |
-| Q26, the lending line | (c), the expensive error's cost on top | "Which error is cheap in lending, and which is cheap in the nudge?" | The line is the cheap error's cost over both: 3,000 over 63,000, about 0.05 chance of default, so Rohan lends only above about 95 percent sure of repayment, while the nudge acts on a 3 percent chance of a yes. | Friday: moving the model to lending; Tuesday's hand count |
+| Q20, the winner | (c), the highest number | "How far apart did the five folds of one model land, and how far apart are the three families?" | The folds spread 0.03; the families sit within 0.011 on one slice, so another split could reorder them, and the test that settles it scores both on the same five folds. On a tie the explainable logistic model ships, and the memo names the gap at which boosting would. The statement is true. | Thursday: why the boring model often ships |
+| Q21, the alarm | (b), retraining every night | "How would nightly retraining tell you the old model had failed?" | It cannot: nothing is measured. The rule sets the called clients' yes rate against the mean score, monthly, with the gap stated in advance; on the late rows the mean score was 0.152 against 24.6 percent yes. Instacart's alarm was a monitored metric, 93 to 61 percent, and its first fix was a threshold. | Friday: when the model goes stale |
+| Q24, the lending line | (c), the nudge's line carried over, or (d), the cost ratio of 1 in 20 read as the line | "Which error is cheap in lending, and which is cheap in the nudge? Then: what is 3,000 over 63,000?" | The line is the cheap error's cost over both: 3,000 over 63,000, about 0.048 chance of default, so Rohan approves P at 4 percent and refuses Q at 8 percent, lending only above about 95 percent sure of repayment, while the nudge acts on a 3 percent chance of a yes. 1 in 20 is the ratio of the costs, and the line is 1 in 21. | Friday: moving the model to lending; Tuesday's hand count |
 
 When a learner connects an item to Kalpa, keep to what the labs did with Kalpa's costs and people, and
 add no figure: the Kalpa numbers the row once planted belonged to a dataset that was never generated,
@@ -143,7 +144,7 @@ an interviewer pushes for, and two follow-ups with what a strong answer says.
 
 #### 1. [S] Overfitting: what it is, how you detect it, how you fix it.
 
-*Items Q17, Q18 and Q21. Thursday: memorising against learning; putting brakes on the model.*
+*Items Q17 and Q18. Thursday: memorising against learning; putting brakes on the model.*
 
 - **30 seconds.** Overfitting is a model that memorises its training rows instead of the pattern.
   You see it as a gap between training and validation: the room's unlimited tree scored 0.996 on
@@ -216,7 +217,7 @@ an interviewer pushes for, and two follow-ups with what a strong answer says.
 
 #### 6. [F] Why cross-validation instead of one split?
 
-*Items Q19 and Q22. Thursday: five exams instead of one.*
+*Item Q19. Thursday: five exams instead of one.*
 
 - **30 seconds.** One split is one draw of which rows land in validation. Five-fold cross-validation
   fits five models, each on four-fifths of the rows, so every row is validated once; the room's folds
@@ -245,7 +246,7 @@ an interviewer pushes for, and two follow-ups with what a strong answer says.
 
 #### 8. [D] Your tuned model beats a simpler one by a hair: which ships, and why?
 
-*Items Q20, Q24 and Q25. Thursday: why the boring model often ships; Friday's memo.*
+*Items Q20, Q22 and Q23. Thursday: why the boring model often ships; Friday's memo.*
 
 - **30 seconds.** Inside the noise, the simpler one. Boosting led logistic regression by 0.011 AUC
   while the five folds of one model moved by 0.03, so it is a tie, and the logistic model is explained
@@ -261,7 +262,7 @@ an interviewer pushes for, and two follow-ups with what a strong answer says.
 
 #### 9. [D] The same model in retail and lending: why are the thresholds opposite?
 
-*Items Q8 and Q26. Tuesday: same model, opposite threshold; Friday: moving the model to lending.*
+*Items Q8 and Q24. Tuesday: same model, opposite threshold; Friday: moving the model to lending.*
 
 - **30 seconds.** The line sits at the cheap error's cost over the sum of both. For the nudge that is
   40 over 1,240, about 0.032: act on a 3 percent chance, since a miss costs thirty times a wasted

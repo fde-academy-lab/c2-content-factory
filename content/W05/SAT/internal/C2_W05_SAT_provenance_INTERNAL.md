@@ -22,28 +22,31 @@ the session re-ran.
 
 ## The paper
 
-`scripts/build_saturday_paper.py W05 --docx` renders 26 timed items in five parts at 59 of 60 minutes
-by the blueprint's pace, 4 easy, 9 medium and 13 hard (50 percent hard), with an untimed stretch page
-of three. Five bank items print, the five blanks, each from a word bank; twenty-four fold into deeper
-items; none moves to the stretch page; twenty-one additions come from the week's source file. A blind
-guesser averages 5.0 of 26, and the key's guessing line sits at 9.
+`scripts/build_saturday_paper.py W05 --docx` renders 24 timed items in five parts at 57 of 60 minutes
+by the blueprint's pace, 3 easy, 14 medium and 7 hard (29 percent hard), with an untimed stretch page
+of three. Three bank items print, the blanks of banks 1 to 3, each from a word bank; twenty-six fold
+into deeper items; none moves to the stretch page; twenty-one additions come from the week's source
+file. A blind guesser averages 4.7 of 24, and the key's guessing line sits at 9. The levels are the
+ones the fix pass left after the blind sitting, by exercise-builder's bar; the sources file says why
+7 hard items is the honest count, short of the decision's about 60 percent.
 
 | Part | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|
 | 1. Should the bank build a model, and what must it beat? | Q1 to Q5 | 10.5 | 1 | 3 | 1 |
-| 2. Which number tells the truth, and where does the line go? | Q6 to Q11 | 15.5 | 1 | 1 | 4 |
-| 3. What was the model allowed to know? | Q12 to Q16 | 11 | 1 | 1 | 3 |
-| 4. Is the model learning, or memorising? | Q17 to Q22 | 12 | 1 | 2 | 3 |
-| 5. Would the committee sign, and what moves to lending? | Q23 to Q26 | 10 | 0 | 2 | 2 |
-| Total | 26 | 59 | 4 | 9 | 13 |
+| 2. Which number tells the truth, and where does the line go? | Q6 to Q11 | 15.5 | 1 | 4 | 1 |
+| 3. What was the model allowed to know? | Q12 to Q16 | 11 | 1 | 3 | 1 |
+| 4. Is the model learning, or memorising? | Q17 to Q20 | 10 | 0 | 2 | 2 |
+| 5. Would the committee sign, and what moves to lending? | Q21 to Q24 | 10 | 0 | 2 | 2 |
+| Total | 24 | 57 | 3 | 14 | 7 |
 
-The formats: five word-bank blanks, eleven one-correct items, four statements judged with their
-reasons, four more-than-one items and two worked items. Every part opens on the bank campaign with an
-exhibit that pairs a mermaid picture with a table; three items carry an exhibit of their own (2B, 4B
-and 5B). The distractor audit passes with key positions a 6, b 6, c 6 and d 7 across the 19 lettered
-items, counting the letters of the four more-than-one keys (Q4 a, d; Q13 b, c, d; Q18 a, b, d; Q24 b,
-c), which share no letter across all four. Among the 15 single keys, 5 tie for the longest option, 3
-are the shortest and 7 sit between.
+The formats: three word-bank blanks, each last in its part, eleven one-correct items, four
+statements judged with their reasons (Q2 and Q20 keyed True, Q6 and Q14 False), four more-than-one
+items and two worked items. Every part opens on the bank campaign with an exhibit that pairs a
+mermaid picture with a table; three items carry an exhibit of their own (2B, 4B and 5B). The
+distractor audit passes with key positions a 6, b 8, c 5 and d 5 across the 19 lettered items,
+counting the letters of the four more-than-one keys (Q4 a, d; Q13 b, c; Q18 a, b, d; Q22 b, c),
+which share no letter across all four. Among the 15 single keys, 4 tie for the longest option, 4 are
+the shortest and 7 sit between.
 
 ## The fate of every bank item
 
@@ -52,8 +55,8 @@ are the shortest and 7 sit between.
 | 1 | Fill in the blank, Easy | Printed | Q5 | Answered from a word bank, with the tracker's stem and key, last in its part |
 | 2 | Fill in the blank, Easy | Printed | Q11 | Answered from a word bank, with the tracker's stem and key, last in its part |
 | 3 | Fill in the blank, Easy | Printed | Q16 | Answered from a word bank, with the tracker's stem and key, last in its part |
-| 4 | Fill in the blank, Easy | Printed | Q21 | Answered from a word bank, with the tracker's stem and key, last in its part |
-| 5 | Fill in the blank, Medium | Printed | Q22 | Answered from a word bank, with the tracker's stem and key, last in its part |
+| 4 | Fill in the blank, Easy | Folded | Q17, tree-read | The blind sitting found the bank's 100 and 61 percent read beside Exhibit 4A's 0.996 and 0.619, two metrics, and found the blank cued by the part's title and by the options above it, so the item that reads training at 0.996 against validation at 0.837 as memorising tests bank 4's word on the room's own tree. |
+| 5 | Fill in the blank, Medium | Folded | Q19, cv-why | The blind sitting found the blank answered by the folds item's own options, which say what one split could have read, so the folds item, whose key is the luck of one split sized at 0.77 to 0.80, tests bank 5's word. |
 | 6 | True or false, Easy | Folded | Q6, acc-trap | The printed statement is bank 6's trap on the week's own rows, where calling nobody already scores 0.887 on an 89 to 11 outcome, and option d keys the reason accuracy says little there. |
 | 7 | True or false, Medium | Folded | Q14, importance | The statement reads the top of an importance chart as a cause, and the key refuses it because the yes drives the call's length as much as the reverse, which is bank 7's false statement judged with its reason. |
 | 8 | True or false, Easy | Folded | Q18, brakes | Option b is a stronger penalty on the weights, which loosens the fit to the training rows, and option c, fitting the training rows until they score 1.0, is bank 8's false statement offered as a brake. |
@@ -61,15 +64,15 @@ are the shortest and 7 sit between.
 | 10 | One correct option, Easy | Folded | Q4, is-it-ml | The item sorts four of the bank's asks into the two that need a prediction and the two a query answers, which is bank 10's question with two keys where the bank has one. |
 | 11 | One correct option, Medium | Folded | Q3, logit-071 | The item asks what a logistic score of 0.71 says about one client, with bank 11's three misreadings as the distractors and the calibration condition added to the key. |
 | 12 | One correct option, Medium | Folded | Q8, cost-line | The working puts the line at 1 in 31, about 0.032, far below 0.5, and the answer names the direction and that recall leads, which is bank 12's key derived where the bank only asks for it. |
-| 13 | One correct option, Hard | Folded | Q26, lend-flip | The item is bank 13 on Rohan Desai's own costs, set beside the nudge's cost line, and its key draws the approval line at about 0.05 chance of default, which is the bar moving up. |
+| 13 | One correct option, Hard | Folded | Q24, lend-flip | The item is bank 13 on Rohan Desai's own costs, set beside the nudge's cost line, and its key draws the approval line at about 0.05 chance of default, which is the bar moving up. |
 | 14 | One correct option, Medium | Folded | Q12, duration-call | The item is bank 14's leak on the week's real column, duration, which the dataset's own notes say is known only after the call, and its key removes it and reports the honest 0.795. |
 | 15 | One correct option, Hard | Folded | Q15, sign-flip | The item is bank 15's sign flip as the week measured it, euribor3m from -0.92 alone to +0.39 beside the other indicators, with the same four causes as options. |
 | 16 | One correct option, Medium | Folded | Q17, tree-read | The exhibit is bank 16's curve on the room's own tree, training rising to 0.996 while validation falls to 0.837, and the key caps the depth at the validation peak, which is bank 16's prescription. |
-| 17 | One correct option, Medium | Folded | Q23, stale-rule | The key is bank 17's monitoring rule made concrete on the bank's late rows, the called clients' yes rate against the mean score with a stated gap, and its distractors are bank 17's three. |
+| 17 | One correct option, Medium | Folded | Q21, stale-rule | The key is bank 17's monitoring rule made concrete on the bank's late rows, the called clients' yes rate against the mean score with a stated gap, and its distractors are bank 17's three. |
 | 18 | More than one correct, Medium | Folded | Q6, acc-trap | The statement sets the model against the majority-class baseline on the same validation rows, bank 18's options a and c, and its key says why beating the baseline on accuracy alone does not earn a ship, bank 18's option b. |
 | 19 | More than one correct, Medium | Folded | Q13, which-pass | The item is bank 19's prediction-time test on the bank's own columns, with the tempting legitimate column, the previous campaign's result, beside the call's duration. |
 | 20 | More than one correct, Medium | Folded | Q18, brakes | The item is bank 20 on the week's two families, a depth cap, a stronger penalty and cross-validation as the brakes, with fitting the training rows harder as the false one. |
-| 21 | More than one correct, Hard | Folded | Q24, caveat | The item is bank 21's four-part memo on the bank's numbers, with the weakest segment and the staleness trigger as the caveat and the validation score and the budget as the lines that belong elsewhere. |
+| 21 | More than one correct, Hard | Folded | Q22, caveat | The item is bank 21's four-part memo on the bank's numbers, with the weakest segment and the staleness trigger as the caveat and the validation score and the budget as the lines that belong elsewhere. |
 | 22 | Scenario set, Easy | Folded | Q7, prf | The working computes precision on the week's real matrix, 174 of the 268 called, which is bank 22's arithmetic on numbers the room ran. |
 | 23 | Scenario set, Easy | Folded | Q7, prf | The working computes recall on the same matrix, 174 of the 928 buyers, which is bank 23's arithmetic. |
 | 24 | Scenario set, Medium | Folded | Q9, bill | The item prices the week's real matrix at bank 24's costs, Rs 40 a wasted call and Rs 1,200 a missed buyer, which is bank 24's error bill. |
@@ -105,10 +108,11 @@ and seed 42; `C2_W05_SAT_key_proofs_INTERNAL.py --rerun` recomputes each one and
 
 | Check | Result on 28 October 2026 |
 |---|---|
-| `python3 content/W05/SAT/internal/C2_W05_SAT_key_proofs_INTERNAL.py --rerun` | 26 items proved, every exhibit number matched to the pipeline file or the re-run, and the re-run recomputed from the UCI file |
-| `python3 scripts/distractor_audit.py content/W05/SAT` | PASS, positions a 6, b 6, c 6, d 7 |
+| `python3 content/W05/SAT/internal/C2_W05_SAT_key_proofs_INTERNAL.py --rerun` | 24 items proved, every exhibit number matched to the pipeline file or the re-run, and the re-run recomputed from the UCI file |
+| `python3 scripts/distractor_audit.py content/W05/SAT` | PASS, positions a 6, b 8, c 5, d 5 |
 | `python3 scripts/build_saturday_paper.py W05 --check` | 2 files, 0 stale |
 | `python3 scripts/verify.py content/W05/SAT` | PASS; its output is in the session's report |
+| The blind sitting, one fresh agent on the student paper alone | All 26 keys of the draft matched; its findings and the fix pass are in the sources file |
 | The Word paper converted to PDF and read page by page | 14 pages; every exhibit renders, and Exhibit 4A's title names its two lines because mermaid's xychart draws no legend |
 
 Skills used: exercise-builder for the objective blueprint, distractor discipline and the key's

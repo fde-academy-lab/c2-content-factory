@@ -2,14 +2,14 @@
 
 TRAINER. Rendered from the tracker's item bank and the week's source file by `scripts/build_saturday_paper.py`. Change an item in the tracker, an option in `data/programme/paper_edits.yaml` or anything in `content/W05/SAT/internal/C2_W05_SAT_paper_source_INTERNAL.yaml`, and rebuild; never edit this file by hand. A stem, a situation or an option can be reworded in `data/programme/paper_edits.yaml`.
 
-Saturday 7 November 2026. A 60-minute paper holding 26 items at 59 minutes by the blueprint's pace: 4 easy, 9 medium and 13 hard. 21 of them are new and not yet in the tracker.
+Saturday 7 November 2026. A 60-minute paper holding 24 items at 57 minutes by the blueprint's pace: 3 easy, 14 medium and 7 hard. 21 of them are new and not yet in the tracker.
 
 ## Marking
 
 1. Papers are swapped, so nobody checks their own.
 2. The Academic TA reads the key out part by part, and the marker writes a tick or a cross beside each item.
 3. An item is right when its answer matches the key: every correct letter and no other on a more-than-one item, the letter on a word-bank or match item, the number on an applied maths item (the working belongs to the discussion), and the whole sequence on an ordering item. The programme has set no partial-credit rule, so this key uses none.
-4. The marker writes each part's ticks beside its rating on the answer sheet, and their total as Items right, out of 26, then hands the paper back.
+4. The marker writes each part's ticks beside its rating on the answer sheet, and their total as Items right, out of 24, then hands the paper back.
 5. The TA collects the papers and tallies the misses by tag, using the table below; that tally is Monday's remediation read. It is never a ranking and never read out by name.
 6. The TA enters every paper in `C2_W05_SAT_item_analysis_TRAINER.xlsx` beside this key, by seat and never by name: 1 for a tick, 0 for a cross and a blank for an item left empty. The workbook orders the discussion from the most-missed item, flags any item to check, and gives each tag's rate for the room and for each seat.
 
@@ -18,15 +18,15 @@ Saturday 7 November 2026. A 60-minute paper holding 26 items at 59 minutes by th
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
 | 1. Should the bank build a model, and what must it beat? | whether you can frame a prediction problem, split the rows honestly and read what a model's score says | Q1 to Q5 (5) | 10.5 | 1 | 3 | 1 |
-| 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q6 to Q11 (6) | 15.5 | 1 | 1 | 4 |
-| 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q12 to Q16 (5) | 11 | 1 | 1 | 3 |
-| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q17 to Q22 (6) | 12 | 1 | 2 | 3 |
-| 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q23 to Q26 (4) | 10 | 0 | 2 | 2 |
-| Total | | 26 | 59 | 4 | 9 | 13 |
+| 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q6 to Q11 (6) | 15.5 | 1 | 4 | 1 |
+| 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q12 to Q16 (5) | 11 | 1 | 3 | 1 |
+| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q17 to Q20 (4) | 10 | 0 | 2 | 2 |
+| 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q21 to Q24 (4) | 10 | 0 | 2 | 2 |
+| Total | | 24 | 57 | 3 | 14 | 7 |
 
 ## What guessing alone would score
 
-A learner who guessed every item blind would average 5.0 of 26, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 9. A score of 8 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
+A learner who guessed every item blind would average 4.7 of 24, since a written answer cannot be guessed from a list, and fewer than one guesser in twenty would reach 9. A score of 8 or below is therefore within reach of guessing alone, and the tally reads such a paper as a conversation to have on Monday, never as a result.
 
 ## Reading the items after marking
 
@@ -37,31 +37,29 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | Q | Key | Type | Part | Level | Tag | Roles | Day | Min | Source | Interview anchor |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | b | One correct option | 1 | Medium | [S] | DS, FDE | Mon | 2.5 | new | Train, validation, test: which is spent once? |
-| 2 | c | True or false | 1 | Hard | [D] | DS | Mon | 2.5 | new | Train, validation, test: how should the rows be split for the question being asked? |
+| 2 | a | True or false | 1 | Hard | [D] | DS | Mon | 2.5 | new | Train, validation, test: how should the rows be split for the question being asked? |
 | 3 | d | One correct option | 1 | Medium | [F] | DS, BA | Mon | 2 | new | What does a logistic output of 0.71 mean? |
 | 4 | a, d | More than one correct | 1 | Medium | [S] | DS, BA | Mon | 2.5 | new | When is a business problem a machine learning problem? |
 | 5 | c (test) | Fill in the blank | 1 | Easy | [S] | DS | Mon | 1 | bank 1 | Train, validation, test: what is each for, and which is spent once? |
-| 6 | d | True or false | 2 | Hard | [F] | DS, BA | Tue | 2.5 | new | Accuracy is 96 percent on a 96 to 4 split; good model? |
-| 7 | Precision 174 / 268 = 0.65; recall 174 / 928 = 0.19; F1 = 2 x 174 / (2 x 174 + 94 + 754) = 348 / 1,196 = 0.29. | Applied maths | 2 | Hard | [S] | DS | Tue | 4 | new | Precision, recall and F1 from a confusion matrix. |
-| 8 | Call when p x 1,200 > (1 - p) x 40, so p > 40 / 1,240 = 1 / 31, about 0.032; the line moves down from 0.5 and recall leads. | Applied maths | 2 | Medium | [S] | DS, FDE | Tue | 3 | new | How do you set a threshold when the two errors cost differently? |
-| 9 | b | One correct option | 2 | Hard | [S] | DS, FDE, BA | Tue | 2.5 | new | How do you set a threshold when the two errors cost differently? |
+| 6 | d | True or false | 2 | Medium | [F] | DS, BA | Tue | 2.5 | new | Accuracy is 96 percent on a 96 to 4 split; good model? |
+| 7 | Precision 174 / 268 = 0.65; recall 174 / 928 = 0.19; F1 = 2 x 174 / (2 x 174 + 94 + 754) = 348 / 1,196 = 0.29. | Applied maths | 2 | Medium | [S] | DS | Tue | 4 | new | Precision, recall and F1 from a confusion matrix. |
+| 8 | Call when p x 1,200 > (1 - p) x 40, so p > 40 / 1,240 = 1 / 31, about 0.032 (1 in 30, 0.033, from one buyer paying for 30 calls, is accepted); the line moves down from 0.5 and recall leads. | Applied maths | 2 | Medium | [S] | DS, FDE | Tue | 3 | new | How do you set a threshold when the two errors cost differently? |
+| 9 | b | One correct option | 2 | Medium | [S] | DS, FDE, BA | Tue | 2.5 | new | How do you set a threshold when the two errors cost differently? |
 | 10 | c | One correct option | 2 | Hard | [D] | DS, FDE, BA | Tue | 2.5 | new | The cost rule says call nearly everyone, and the budget says 1,000 calls: which wins, and what do you report? |
 | 11 | b (negatives) | Fill in the blank | 2 | Easy | [S] | DS | Tue | 1 | bank 2 | Precision, recall and F1 from a confusion matrix. |
-| 12 | c | One correct option | 3 | Hard | [S] | DS, FDE | Wed | 2.5 | new | What is data leakage, and how do you catch it before it ships? |
-| 13 | b, c, d | More than one correct | 3 | Hard | [S] | DS, FDE | Wed | 2.5 | new | What is data leakage, and how do you catch it before it ships? |
+| 12 | c | One correct option | 3 | Medium | [S] | DS, FDE | Wed | 2.5 | new | What is data leakage, and how do you catch it before it ships? |
+| 13 | b, c | More than one correct | 3 | Hard | [S] | DS, FDE | Wed | 2.5 | new | What is data leakage, and how do you catch it before it ships? |
 | 14 | a | True or false | 3 | Medium | [F] | DS, BA | Wed | 2.5 | new | What does a feature importance chart prove, and what does it not? |
-| 15 | d | One correct option | 3 | Hard | [F] | DS | Wed | 2.5 | new | What does a feature importance chart prove, and what does it not? |
+| 15 | d | One correct option | 3 | Medium | [F] | DS | Wed | 2.5 | new | What does a feature importance chart prove, and what does it not? |
 | 16 | c (leakage) | Fill in the blank | 3 | Easy | [S] | DS, FDE | Wed | 1 | bank 3 | What is data leakage, and how do you catch it before it ships? |
-| 17 | a | One correct option | 4 | Hard | [S] | DS | Thu | 2.5 | new | Overfitting: what it is, how you detect it, how you fix it. |
+| 17 | a | One correct option | 4 | Medium | [S] | DS | Thu | 2.5 | new | Overfitting: what it is, how you detect it, how you fix it. |
 | 18 | a, b, d | More than one correct | 4 | Medium | [F] | DS | Thu | 2.5 | new | Overfitting: what it is, how you detect it, how you fix it. |
 | 19 | b | One correct option | 4 | Hard | [F] | DS | Thu | 2.5 | new | Why cross-validation instead of one split? |
-| 20 | c | True or false | 4 | Hard | [D] | DS, FDE | Thu | 2.5 | new | Your tuned model beats a simpler one by a hair: which ships, and why? |
-| 21 | a (overfitting) | Fill in the blank | 4 | Easy | [S] | DS | Thu | 1 | bank 4 | Overfitting: what it is, how you detect it, how you fix it. |
-| 22 | d (split) | Fill in the blank | 4 | Medium | [F] | DS | Thu | 1 | bank 5 | Why cross-validation instead of one split? |
-| 23 | a | One correct option | 5 | Hard | [F] | DS, FDE | Fri | 2.5 | new | How would you know your model has gone stale? |
-| 24 | b, c | More than one correct | 5 | Medium | [D] | DS, FDE, BA | Fri | 2.5 | new | Your tuned model beats a simpler one by a point and costs ten times more to explain; which ships? |
-| 25 | a | One correct option | 5 | Medium | [D] | DS, FDE, BA | Fri | 2.5 | new | Your tuned model beats a simpler one by a hair: which ships, and why? |
-| 26 | d | One correct option | 5 | Hard | [D] | DS, FDE, BA | Fri | 2.5 | new | The same model in retail and lending: why are the thresholds opposite? |
+| 20 | b | True or false | 4 | Hard | [D] | DS, FDE | Thu | 2.5 | new | Your tuned model beats a simpler one by a hair: which ships, and why? |
+| 21 | a | One correct option | 5 | Hard | [F] | DS, FDE | Fri | 2.5 | new | How would you know your model has gone stale? |
+| 22 | b, c | More than one correct | 5 | Medium | [D] | DS, FDE, BA | Fri | 2.5 | new | Your tuned model beats a simpler one by a point and costs ten times more to explain; which ships? |
+| 23 | c | One correct option | 5 | Medium | [D] | DS, FDE, BA | Fri | 2.5 | new | Your tuned model beats a simpler one by a hair: which ships, and why? |
+| 24 | b | One correct option | 5 | Hard | [D] | DS, FDE, BA | Fri | 2.5 | new | The same model in retail and lending: why are the thresholds opposite? |
 
 ## Why each answer holds
 
@@ -75,13 +73,13 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** The test is spent the moment it changes a decision, so I tell the committee it was spent and get one clean score on data nobody has looked at.
 
-### Q2, key c
+### Q2, key a
 
 **Why it holds.** The ask is about a campaign that has not happened yet, so the honest test trains on the earlier calls and scores the later ones. A random split puts calls from the same months in training and validation, and the month and the economic indicators mark the period, so the model partly learns when a call happened. On the week's run the yes rate moved from 5.6 to 24.6 percent across the file, and Friday's split by date cut the AUC from 0.795 to 0.657. Monday raised the split by time; Friday ran it.
 
-- (a) Stratifying keeps the yes share equal, and it says nothing about mixing months, which is what lets the random split flatter the model.
-- (b) The month and the five economic indicators each mark the period a call was made in, so the model reads time without a date column.
-- (d) Validation holds 928 yes rows under the random split; the problem is which months they come from, never how many there are.
+- (b) The split by date wins on timing, not on the count of yes rows; validation already holds 928 yes rows under the random split.
+- (c) Stratifying keeps the yes share equal, and it says nothing about mixing months, which is what lets the random split flatter the model.
+- (d) The month and the five economic indicators each mark the period a call was made in, so the model reads time without a date column.
 
 **In the interview.** I split the way the model will be used: train on the past, score on the later period, and expect that score to be lower than the random split's.
 
@@ -126,7 +124,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** Precision is of those I called, recall is of those out there, and F1 is their harmonic mean, 2TP over 2TP plus FP plus FN.
 
-### Q8, key Call when p x 1,200 > (1 - p) x 40, so p > 40 / 1,240 = 1 / 31, about 0.032; the line moves down from 0.5 and recall leads.
+### Q8, key Call when p x 1,200 > (1 - p) x 40, so p > 40 / 1,240 = 1 / 31, about 0.032 (1 in 30, 0.033, from one buyer paying for 30 calls, is accepted); the line moves down from 0.5 and recall leads.
 
 **Why it holds.** Call when the expected loss of not calling, p times Rs 1,200, is above the expected loss of calling, (1 minus p) times Rs 40. That gives p above 40 over 1,240, 1 in 31, about 0.032. In plain words, one caught buyer pays for 30 wasted calls, so a call is worth it above about a 1-in-31 chance. The line moves far below 0.5, so recall leads, because a miss costs thirty times a wasted call. The rule assumes calibrated scores. Tuesday's chapter on what each mistake costs taught the 1-in-N test as coins.
 
@@ -168,13 +166,14 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** A score that jumps on one column is a question about that column's timing, so I ask when it exists and drop it if it is after the prediction moment.
 
-### Q13, key b, c, d
+### Q13, key b, c
 
-**Why it holds.** A column passes when its value exists at the prediction moment. Age, job and housing, the previous campaign's result and the rate published that morning all exist before any call. The previous result is strongly predictive, 65 percent yes among past successes, and still legitimate, because it was recorded before this campaign began, so it passes the timing test however strong it is. Duration exists only after this campaign's call. Wednesday's chapter interrogated every column with this one question.
+**Why it holds.** A column passes when its value exists at the prediction moment. Age, job and housing and the previous campaign's result exist before any call. The previous result is strongly predictive, 65 percent yes among past successes, and still legitimate, because it was recorded before this campaign began, so it passes the timing test however strong it is. Duration exists only after this campaign's call, and a quarterly indicator for the current quarter, filled in once the quarter closes, does not exist on the morning the list is built: a published indicator can leak when its period has not ended, which is the calendar leak Wednesday named beside duration. Wednesday's chapter interrogated every column with this one question.
 
 - (a) This campaign's last call has not happened on the morning the list is built, so its length is from the future.
+- (d) The current quarter has not closed on the morning of the list, so its count is from the future; last quarter's published count would pass.
 
-**In the interview.** I test a column by when it exists: a strong column from the past is a feature, and a weak one from the future is a leak.
+**In the interview.** I test a column by when it exists: a strong column from the past is a feature, and a respectable column from a period that has not ended is a leak.
 
 ### Q14, key a
 
@@ -230,29 +229,17 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** k folds fit k models on (k minus 1) over k of the rows; I report the mean and the spread, and a gap smaller than the spread is a tie.
 
-### Q20, key c
+### Q20, key b
 
-**Why it holds.** The three families sit within 0.011 AUC of each other, while the five folds of one model moved by about 0.03, so the ranking is inside the noise. On a tie the simpler model is the better recommendation: it is explained to a committee in one line per weight, monitored easily, and moved to lending with less to re-check. The flip is a gap that clears the folds' spread and is worth more in rupees, at the same budget of calls, than the cost of explaining and running the complex model. Thursday closed on why the boring model often ships.
+**Why it holds.** The three families sit within 0.011 AUC of each other on one validation slice, while the five folds of one model moved by about 0.03, so another split could reorder them. The test that would settle it scores both models on the same five folds; until boosting leads on every fold by a margin worth its cost, the simpler model is the recommendation: it is explained to a committee in one line per weight, monitored easily, and moved to lending with less to re-check. The flip is a gap that holds across the folds and is worth more in rupees, at the same budget of calls, than the cost of explaining and running the complex model. Thursday closed on why the boring model often ships.
 
-- (a) The best number found on one validation slice carries that slice's luck, which Exhibit 4B sizes at about 0.03.
-- (b) Boosting can generalise well, and it can also overfit; how it fits says nothing about whether it beats the others here.
+- (a) A logistic model overfits too when it has many columns and no penalty; its case here is the tie and its plainness.
+- (c) The best number found on one validation slice carries that slice's luck, which Exhibit 4B sizes at about 0.03.
 - (d) AUC compares the ranking of any two models scored on the same rows, whatever their family.
 
-**In the interview.** Inside the noise the simpler model ships, and I name the gap, in AUC and in rupees, at which the complex one would.
+**In the interview.** Inside the noise the simpler model ships, and I name the gap, in AUC and in rupees, held across folds, at which the complex one would.
 
-### Q21, key a (overfitting)
-
-**Why it holds.** Perfect on training and far lower on validation is a model that memorised its training rows, which is overfitting; the room's unlimited tree scored 0.996 against 0.837. Underfitting scores low on both.
-
-**In the interview.** A big gap between training and validation is memorising, so I add a brake and choose its strength on validation or by cross-validation.
-
-### Q22, key d (split)
-
-**Why it holds.** One split can be lucky or unlucky in which clients land in validation; cross-validation gives every row a turn in validation and averages the scores, so the luck of one split averages away. The week's five folds ran from 0.769 to 0.798.
-
-**In the interview.** One split is one draw; five folds are five draws, so I quote the mean and the spread.
-
-### Q23, key a
+### Q21, key a
 
 **Why it holds.** Staleness shows on fresh outcomes, so the rule compares what the model predicted with what happened, every month, against a gap stated in advance. On the bank's late rows the mean score was 0.152 while 24.6 percent said yes: the probabilities fell out of step even though the ranking still held at an AUC of 0.657, and the cost line, which reads the scores as probabilities, was drawn on numbers that understate every client's chance. Instacart's alarm was the same kind: a monitored metric falling from 93 to 61 percent, and its first fix was a threshold change while retraining caught up. Friday's chapter was when the model goes stale.
 
@@ -262,7 +249,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** I monitor the decision's metric on fresh outcomes, predicted against actual, with the floor written into the memo before launch.
 
-### Q24, key b, c
+### Q22, key b, c
 
 **Why it holds.** The caveat says where the model is weak and when to stop trusting it: its worst segment, sized, and the staleness trigger, which on this file would have fired as the yes rate climbed past the mean score. The validation AUC against the simpler model is evidence, and the budget of calls belongs to the error bill and the plan. Friday's memo ran claim, evidence, error bill and caveat.
 
@@ -271,77 +258,79 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **In the interview.** The caveat names the weakest segment and the trigger that retires the model, both in numbers.
 
-### Q25, key a
+### Q23, key c
 
 **Why it holds.** An offline score says the model ranks well on past rows; it does not say the campaign will sell more deposits. Booking.com's 23 comparisons put the correlation between the two near zero, -0.1 with an interval from -0.45 to 0.27, and the paper calls offline performance a health check. So the memo asks for a randomised trial that sets the model's list against the current rule on the business number, deposits sold per call, with the size fixed before it starts. Friday's memo turned the score into a decision the committee could test.
 
-- (b) More decimals on the offline score sharpen the health check, and the gap to the business number stays where it was.
-- (c) A larger offline gain is the very thing Booking.com found did not predict business gain.
+- (a) More decimals on the offline score sharpen the health check, and the gap to the business number stays where it was.
+- (b) A larger offline gain is the very thing Booking.com found did not predict business gain.
 - (d) The test score is the honest offline number, and it is still offline.
 
 **In the interview.** Offline metrics earn a model its trial; the trial on the business number earns it the rollout.
 
-### Q26, key d
+### Q24, key b
 
-**Why it holds.** The same cost rule runs in both businesses. Approve when the expected cost of approving, p times Rs 60,000, is below the expected cost of rejecting, (1 minus p) times Rs 3,000, where p is the chance of default: p below 3,000 over 63,000, about 0.048. So Rohan lends only above about a 95 percent chance of repayment, while the nudge acts on a 3 percent chance of a yes. The asymmetry flips, so the line flips. Both rules assume calibrated probabilities. Friday's transfer chapter and Tuesday's hand count on Rohan's costs drew this line.
+**Why it holds.** Approve when the expected cost of approving, p times Rs 60,000, is below the expected cost of rejecting, (1 minus p) times Rs 3,000, where p is the chance of default: p below 3,000 over 63,000, about 0.048. P at 0.04 is approved and Q at 0.08 is rejected. So Rohan lends only above about a 95 percent chance of repayment, while the nudge acts on a 3 percent chance of a yes: the asymmetry flips, so the line flips. Both rules assume calibrated probabilities. Friday's transfer chapter and Tuesday's hand count on Rohan's costs drew this line.
 
-- (a) The method moves and the costs do not: the nudge's cheap error is a wasted call, while the loan's expensive error is a default.
-- (b) 0.5 treats the two errors as equal, while a default costs twenty times a wrongful rejection.
-- (c) This puts the expensive error's cost on top, which would lend to a borrower with a 95 percent chance of default.
+- (a) 0.5 treats the two errors as equal, while a default costs twenty times a wrongful rejection.
+- (c) The method moves and the costs do not: the nudge's cheap error is a wasted call, while the loan's expensive error is a default, so the line moves to the other end.
+- (d) 1 in 20 is the cost ratio, and the line is 3,000 over 63,000, about 1 in 21; P at 4 percent sits below it and is approved.
 
-**In the interview.** The line is the cheap error's cost over both costs, so the same model calls on a 3 percent chance and lends only at 95 percent sure.
+**In the interview.** The line is the cheap error's cost over both costs, so the same model calls on a 3 percent chance and lends only below about a 5 percent chance of default.
 
 
 ## Items by tag, level, day and part, for the tally
 
-- [S] (12): Q1, Q4, Q5, Q7, Q8, Q9, Q11, Q12, Q13, Q16, Q17, Q21
-- [F] (8): Q3, Q6, Q14, Q15, Q18, Q19, Q22, Q23
+- [S] (11): Q1, Q4, Q5, Q7, Q8, Q9, Q11, Q12, Q13, Q16, Q17
+- [F] (7): Q3, Q6, Q14, Q15, Q18, Q19, Q21
 - [SV] (0): none
-- [D] (6): Q2, Q10, Q20, Q24, Q25, Q26
-- Easy (4): Q5, Q11, Q16, Q21
-- Medium (9): Q1, Q3, Q4, Q8, Q14, Q18, Q22, Q24, Q25
-- Hard (13): Q2, Q6, Q7, Q9, Q10, Q12, Q13, Q15, Q17, Q19, Q20, Q23, Q26
+- [D] (6): Q2, Q10, Q20, Q22, Q23, Q24
+- Easy (3): Q5, Q11, Q16
+- Medium (14): Q1, Q3, Q4, Q6, Q7, Q8, Q9, Q12, Q14, Q15, Q17, Q18, Q22, Q23
+- Hard (7): Q2, Q10, Q13, Q19, Q20, Q21, Q24
 - Mon (5): Q1, Q2, Q3, Q4, Q5
 - Tue (6): Q6, Q7, Q8, Q9, Q10, Q11
 - Wed (5): Q12, Q13, Q14, Q15, Q16
-- Thu (6): Q17, Q18, Q19, Q20, Q21, Q22
-- Fri (4): Q23, Q24, Q25, Q26
+- Thu (4): Q17, Q18, Q19, Q20
+- Fri (4): Q21, Q22, Q23, Q24
 - Part 1, Should the bank build a model, and what must it beat? (5): Q1, Q2, Q3, Q4, Q5
 - Part 2, Which number tells the truth, and where does the line go? (6): Q6, Q7, Q8, Q9, Q10, Q11
 - Part 3, What was the model allowed to know? (5): Q12, Q13, Q14, Q15, Q16
-- Part 4, Is the model learning, or memorising? (6): Q17, Q18, Q19, Q20, Q21, Q22
-- Part 5, Would the committee sign, and what moves to lending? (4): Q23, Q24, Q25, Q26
+- Part 4, Is the model learning, or memorising? (4): Q17, Q18, Q19, Q20
+- Part 5, Would the committee sign, and what moves to lending? (4): Q21, Q22, Q23, Q24
 
 ## New items waiting for the tracker
 
 These items come from the week's source file, not the tracker. Accept one by adding it to the tracker's Saturday papers tab and deleting it from the source file.
 
 - Q1 (One correct option, Medium, [S]): On Thursday an analyst opens the sealed test slice, sees 0.79, moves the threshold until the test score improves and reports the new test score to the committee. What is wrong, and what should the committee be told?
-- Q2 (True or false, Hard, [D]): The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a random split of all the rows estimates the model's score as honestly as a split by date. True or false, and why?
+- Q2 (True or false, Hard, [D]): The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a split by date estimates the model's score more honestly than a random split of all the rows. True or false, and why?
 - Q3 (One correct option, Medium, [F]): The logistic model gives one client a score of 0.71. What does the 0.71 say?
 - Q4 (More than one correct, Medium, [S]): The bank's marketing head brings four asks. Which need a model that predicts? Circle every correct letter.
-- Q6 (True or false, Hard, [F]): Statement: an accuracy of 0.897 against 0.887 for calling nobody shows that the model at 0.5 is good enough to run the campaign. True or false, and why?
-- Q7 (Applied maths, Hard, [S]): From the model's row of Exhibit 2A, compute its precision, recall and F1 at the threshold of 0.5, each to two decimal places. Show the working.
+- Q6 (True or false, Medium, [F]): Statement: an accuracy of 0.897 against 0.887 for calling nobody shows that the model at 0.5 is good enough to run the campaign. True or false, and why?
+- Q7 (Applied maths, Medium, [S]): From the model's row of Exhibit 2A, compute its precision, recall and F1 at the threshold of 0.5, each to two decimal places. Show the working.
 - Q8 (Applied maths, Medium, [S]): A call to a client who says no wastes Rs 40, and a buyer left off the list loses about Rs 1,200. Above what chance of a yes is a call worth making, and which way does that move the threshold from 0.5? Show the working.
-- Q9 (One correct option, Hard, [S]): At Rs 40 a wasted call and Rs 1,200 a missed buyer, what is the error bill at the thresholds of 0.5 and 0.10 in Exhibit 2B, and which costs less?
+- Q9 (One correct option, Medium, [S]): At Rs 40 a wasted call and Rs 1,200 a missed buyer, what is the error bill at the thresholds of 0.5 and 0.10 in Exhibit 2B, and which costs less?
 - Q10 (One correct option, Hard, [D]): The call centre can make 1,000 calls in the next campaign, and the cost line would call 7,438 of these 8,238 clients (Exhibit 2B). Which plan goes to the marketing head?
-- Q12 (One correct option, Hard, [S]): The junior's message reads: "Adding duration lifts AUC from 0.795 to 0.932. Shipping tonight." What is the reply?
+- Q12 (One correct option, Medium, [S]): The junior's message reads: "Adding duration lifts AUC from 0.795 to 0.932. Shipping tonight." What is the reply?
 - Q13 (More than one correct, Hard, [S]): The list for next month's campaign is built on the morning before the first call. Which columns pass the prediction-time question? Circle every correct letter.
 - Q14 (True or false, Medium, [F]): In the model with duration, duration tops the importance chart, and clients who said yes talked 553 seconds on average against 221 for those who said no. Statement: longer calls cause deposits, so agents should be coached to keep clients on the line. True or false, and why?
-- Q15 (One correct option, Hard, [F]): On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. The marketing head asks whether higher rates help the campaign. What is the likeliest cause of the flip, and what does the memo say?
-- Q17 (One correct option, Hard, [S]): The unlimited tree scores 0.996 on training and 0.837 on validation, below calling nobody. Which reading and which next step are right?
+- Q15 (One correct option, Medium, [F]): On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. The marketing head asks whether higher rates help the campaign. What is the likeliest cause of the flip, and what does the memo say?
+- Q17 (One correct option, Medium, [S]): The unlimited tree scores 0.996 on training and 0.837 on validation, below calling nobody. Which reading and which next step are right?
 - Q18 (More than one correct, Medium, [F]): Which of these put a brake on overfitting? Circle every correct letter.
 - Q19 (One correct option, Hard, [F]): Five-fold cross-validation of the logistic model gave the five fold scores in Exhibit 4B. How many models were fitted, on about how many clients each, and what does the spread tell the committee?
-- Q20 (True or false, Hard, [D]): Statement: gradient boosting should go into the memo, since it scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
-- Q23 (One correct option, Hard, [F]): On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what does it mean for the cost line drawn on these scores?
-- Q24 (More than one correct, Medium, [D]): Which lines belong in the memo's caveat? Circle every correct letter.
-- Q25 (One correct option, Medium, [D]): Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). What does the memo propose?
-- Q26 (One correct option, Hard, [D]): Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. Where does Rohan's approval line go?
+- Q20 (True or false, Hard, [D]): Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
+- Q21 (One correct option, Hard, [F]): On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what does it mean for the cost line drawn on these scores?
+- Q22 (More than one correct, Medium, [D]): Which lines belong in the memo's caveat? Circle every correct letter.
+- Q23 (One correct option, Medium, [D]): Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). What does the memo propose?
+- Q24 (One correct option, Hard, [D]): Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
 
 ## Bank items folded into deeper items
 
 Each of these tracker items is not printed, because a deeper item on the paper tests the same concept. Accept a fold by recording it in the tracker; reject it by deleting it from `folded` in the week's source file.
 
+- Bank 4 (Fill in the blank, Easy, Thu), folded into Q17: The blind sitting found the bank's 100 and 61 percent read beside Exhibit 4A's 0.996 and 0.619, two metrics, and found the blank cued by the part's title and by the options above it, so the item that reads training at 0.996 against validation at 0.837 as memorising tests bank 4's word on the room's own tree.
+- Bank 5 (Fill in the blank, Medium, Thu), folded into Q19: The blind sitting found the blank answered by the folds item's own options, which say what one split could have read, so the folds item, whose key is the luck of one split sized at 0.77 to 0.80, tests bank 5's word.
 - Bank 6 (True or false, Easy, Tue), folded into Q6: The printed statement is bank 6's trap on the week's own rows, where calling nobody already scores 0.887 on an 89 to 11 outcome, and option d keys the reason accuracy says little there.
 - Bank 7 (True or false, Medium, Wed), folded into Q14: The statement reads the top of an importance chart as a cause, and the key refuses it because the yes drives the call's length as much as the reverse, which is bank 7's false statement judged with its reason.
 - Bank 8 (True or false, Easy, Thu), folded into Q18: Option b is a stronger penalty on the weights, which loosens the fit to the training rows, and option c, fitting the training rows until they score 1.0, is bank 8's false statement offered as a brake.
@@ -349,15 +338,15 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 - Bank 10 (One correct option, Easy, Mon), folded into Q4: The item sorts four of the bank's asks into the two that need a prediction and the two a query answers, which is bank 10's question with two keys where the bank has one.
 - Bank 11 (One correct option, Medium, Mon), folded into Q3: The item asks what a logistic score of 0.71 says about one client, with bank 11's three misreadings as the distractors and the calibration condition added to the key.
 - Bank 12 (One correct option, Medium, Tue), folded into Q8: The working puts the line at 1 in 31, about 0.032, far below 0.5, and the answer names the direction and that recall leads, which is bank 12's key derived where the bank only asks for it.
-- Bank 13 (One correct option, Hard, Tue), folded into Q26: The item is bank 13 on Rohan Desai's own costs, set beside the nudge's cost line, and its key draws the approval line at about 0.05 chance of default, which is the bar moving up.
+- Bank 13 (One correct option, Hard, Tue), folded into Q24: The item is bank 13 on Rohan Desai's own costs, set beside the nudge's cost line, and its key draws the approval line at about 0.05 chance of default, which is the bar moving up.
 - Bank 14 (One correct option, Medium, Wed), folded into Q12: The item is bank 14's leak on the week's real column, duration, which the dataset's own notes say is known only after the call, and its key removes it and reports the honest 0.795.
 - Bank 15 (One correct option, Hard, Wed), folded into Q15: The item is bank 15's sign flip as the week measured it, euribor3m from -0.92 alone to +0.39 beside the other indicators, with the same four causes as options.
 - Bank 16 (One correct option, Medium, Thu), folded into Q17: The exhibit is bank 16's curve on the room's own tree, training rising to 0.996 while validation falls to 0.837, and the key caps the depth at the validation peak, which is bank 16's prescription.
-- Bank 17 (One correct option, Medium, Fri), folded into Q23: The key is bank 17's monitoring rule made concrete on the bank's late rows, the called clients' yes rate against the mean score with a stated gap, and its distractors are bank 17's three.
+- Bank 17 (One correct option, Medium, Fri), folded into Q21: The key is bank 17's monitoring rule made concrete on the bank's late rows, the called clients' yes rate against the mean score with a stated gap, and its distractors are bank 17's three.
 - Bank 18 (More than one correct, Medium, Mon), folded into Q6: The statement sets the model against the majority-class baseline on the same validation rows, bank 18's options a and c, and its key says why beating the baseline on accuracy alone does not earn a ship, bank 18's option b.
 - Bank 19 (More than one correct, Medium, Wed), folded into Q13: The item is bank 19's prediction-time test on the bank's own columns, with the tempting legitimate column, the previous campaign's result, beside the call's duration.
 - Bank 20 (More than one correct, Medium, Thu), folded into Q18: The item is bank 20 on the week's two families, a depth cap, a stronger penalty and cross-validation as the brakes, with fitting the training rows harder as the false one.
-- Bank 21 (More than one correct, Hard, Fri), folded into Q24: The item is bank 21's four-part memo on the bank's numbers, with the weakest segment and the staleness trigger as the caveat and the validation score and the budget as the lines that belong elsewhere.
+- Bank 21 (More than one correct, Hard, Fri), folded into Q22: The item is bank 21's four-part memo on the bank's numbers, with the weakest segment and the staleness trigger as the caveat and the validation score and the budget as the lines that belong elsewhere.
 - Bank 22 (Scenario set, Easy, Tue), folded into Q7: The working computes precision on the week's real matrix, 174 of the 268 called, which is bank 22's arithmetic on numbers the room ran.
 - Bank 23 (Scenario set, Easy, Tue), folded into Q7: The working computes recall on the same matrix, 174 of the 928 buyers, which is bank 23's arithmetic.
 - Bank 24 (Scenario set, Medium, Tue), folded into Q9: The item prices the week's real matrix at bank 24's costs, Rs 40 a wasted call and Rs 1,200 a missed buyer, which is bank 24's error bill.
@@ -370,5 +359,5 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 ## The stretch page
 
 - Stretch 1: Approve when (1 minus q) times 5 is below q times 1, where q is the chance of repaying, so q above 5 over 6, about 0.83. Rohan's costs run twenty to one, so his line sits higher, at about 0.95; the ratio of the two error costs sets the line in every business.
-- Stretch 2: First the gap must clear the spread of the folds, about 0.03 here. Then count the buyers each model puts in its top 1,000 on the same rows: each extra buyer is worth about Rs 1,200 a campaign, so the extra buyers times Rs 1,200 must beat the yearly cost of explaining, monitoring and re-validating the complex model. Below both bars the logistic model ships, and the memo states the gap that would change the call.
+- Stretch 2: First the gap must hold on every fold, since one validation slice moves by about 0.03 here. Then count the buyers each model puts in its top 1,000 on the same rows: each extra buyer is worth about Rs 1,200 a campaign, so the extra buyers times Rs 1,200 must beat the yearly cost of explaining, monitoring and re-validating the complex model. Below both bars the logistic model ships, and the memo states the gap that would change the call.
 - Stretch 3: For example: whom a bank should call for a term deposit, 41,188 calls with 11 percent yes; doing nothing scores 0.887 accuracy, so I judged the model on recall and the bill; I dropped duration, which leaked, for an honest AUC of 0.795; the top 1,000 by score converted at 0.404 against 0.113. Differently: I would split by date from the start, since the yes rate moved from 6 to 25 percent across the file.

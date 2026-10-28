@@ -121,15 +121,15 @@ def pipeline_threshold(label):
 
 
 def shape():
-    assert len(PRINTED) == 26, len(PRINTED)
+    assert len(PRINTED) == 24, len(PRINTED)
     timed = sum(i["min"] for i in PRINTED)
-    assert timed == 59 and bsp.paper_minutes("W05", 60) == 60, timed
+    assert timed == 57 and bsp.paper_minutes("W05", 60) == 60, timed
     levels = [i["level"] for i in PRINTED]
-    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (4, 9, 13)
-    assert len(SOURCE["folded"]) == 24 and not SOURCE["stretch_bank"]
-    assert sorted(BY_NO) == [1, 2, 3, 4, 5]
-    print(f"PASS  shape: 26 items, {timed:g} of 60 minutes, 4 easy, 9 medium, 13 hard; "
-          f"5 bank items print and 24 fold")
+    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (3, 14, 7)
+    assert len(SOURCE["folded"]) == 26 and not SOURCE["stretch_bank"]
+    assert sorted(BY_NO) == [1, 2, 3]
+    print(f"PASS  shape: 24 items, {timed:g} of 60 minutes, 3 easy, 14 medium, 7 hard; "
+          f"3 bank items print and 26 fold")
 
 
 def no_giveaways():
@@ -231,9 +231,9 @@ def items():
     ok(i["q"], "peek", "b", "the peeked test is spent; score once on fresh calls")
 
     i = BY_ID["random-or-time"]
-    keyed(i, "c", "False", "train early and score late")
+    keyed(i, "a", "True", "train early and score late")
     assert "5.6 percent" in i["text"] and "24.6 percent" in i["text"]
-    ok(i["q"], "random-or-time", "c", "yes rate 5.6 to 24.6 percent across the file, as RUN")
+    ok(i["q"], "random-or-time", "a", "yes rate 5.6 to 24.6 percent across the file, as RUN")
 
     i = BY_ID["logit-071"]
     keyed(i, "d", "71 in 100", "calibrated")
@@ -286,7 +286,8 @@ def items():
     ok(i["q"], "bill", "b", "Rs 908,560 against Rs 459,920; distractors swap the prices or drop a box")
 
     i = BY_ID["budget-k"]
-    top = rows["Top 1,000 by score"]
+    assert "Top 1,000 by score" not in rows, "the budget's answer is back on the exhibit"
+    top = (1000, round(0.404 * 1000))
     lift = (top[1] / top[0]) / (928 / 8238)
     assert top[1] == 404 and f"{lift:.1f}" == "3.6" and rows["The cost line"][0] == 7438
     assert rows["0.5"][0] == 268 and f"{r2(174 / 268):.2f}" == "0.65"
@@ -305,9 +306,9 @@ def items():
     ok(i["q"], "duration-call", "c", "AUC 0.795 to 0.932 while accuracy moves 0.899 to 0.907")
 
     i = BY_ID["which-pass"]
-    assert bsp.letters_of(i["key"]) == ["b", "c", "d"]
+    assert bsp.letters_of(i["key"]) == ["b", "c"] and "current quarter" in options(i)["d"]
     assert f"{round(RUN['poutcome_success_yes'] * 100)} percent" in options(i)["b"]
-    ok(i["q"], "which-pass", "b, c, d", "poutcome passes at 65 percent yes; duration fails")
+    ok(i["q"], "which-pass", "b, c", "poutcome passes at 65 percent yes; duration and the open quarter fail")
 
     i = BY_ID["importance"]
     gap = RUN["duration_mean_yes"] - RUN["duration_mean_no"]
@@ -323,19 +324,11 @@ def items():
         assert f"{v:.2f}" in why, (k, v)
     ok(i["q"], "sign-flip", "d", "euribor3m -0.92 alone, +0.39 with the indicators, as RUN")
 
-    i = BY_NO[4]
-    assert i["key"] == "a" and i["bank_word"] == "overfitting"
-    ok(i["q"], "bank 4", "a", "training far above validation")
-
-    i = BY_NO[5]
-    assert i["key"] == "d" and i["bank_word"] == "split"
-    ok(i["q"], "bank 5", "d", "the luck of one split")
-
     i = BY_ID["tree-read"]
     t4 = table(part_exhibit(4))
     best = max(t4, key=lambda r: float(r[3]))
     assert best[0] == "5" and float(t4[-1][2]) < 0.887 < float(t4[-1][1])
-    keyed(i, "a", "depth 5")
+    keyed(i, "a", "memorised", "validation peak", "CV")
     ok(i["q"], "tree-read", "a", "validation AUC peaks at depth 5, 0.783; unlimited 0.837 < 0.887")
 
     i = BY_ID["brakes"]
@@ -355,8 +348,8 @@ def items():
     fam = RUN["family_auc"]
     gap, spread = fam["boosting"] - fam["logistic"], max(folds) - min(folds)
     assert f"{gap:.3f}" == "0.011" and f"{spread:.2f}" == "0.03" and gap < spread
-    keyed(i, "c", "False", "0.011", "0.03")
-    ok(i["q"], "near-tie", "c", f"gap {gap:.3f} inside the folds' spread {spread:.3f}")
+    keyed(i, "b", "True", "0.011", "folds' spread")
+    ok(i["q"], "near-tie", "b", f"gap {gap:.3f} inside the folds' spread {spread:.3f}")
 
     i = BY_ID["stale-rule"]
     assert RUN["time_late_mean_pred"] < RUN["time_late_yes"]
@@ -370,16 +363,17 @@ def items():
 
     i = BY_ID["booking"]
     assert "23 comparisons" in i["text"]
-    keyed(i, "a", "random trial")
-    ok(i["q"], "booking", "a", "offline gain and business gain near uncorrelated, so a trial")
+    keyed(i, "c", "random trial")
+    ok(i["q"], "booking", "c", "offline gain and business gain near uncorrelated, so a trial")
 
     i = BY_ID["lend-flip"]
     pd_line = 3000 / (3000 + 60000)
     assert f"{r2(pd_line):.2f}" == "0.05" and f"{r2(1 - pd_line):.2f}" == "0.95"
     assert f"{r2(60000 / 63000):.2f}" == "0.95" and 60000 / 3000 == 20
-    keyed(i, "d", "3,000 in 63,000", "0.05", "0.95")
-    assert "60,000 in 63,000" in options(i)["c"]
-    ok(i["q"], "lend-flip", "d", f"default below {pd_line:.4f}, repay above {1 - pd_line:.4f}")
+    assert 0.04 < pd_line < 0.08 and "4 percent" in i["text"] and "8 percent" in i["text"]
+    keyed(i, "b", "P only", "5 percent")
+    assert "1 in 20" in options(i)["d"] and 3000 / 63000 < 1 / 20
+    ok(i["q"], "lend-flip", "b", f"default line {pd_line:.4f}: P at 0.04 approved, Q at 0.08 refused")
 
 
 def stretch():
@@ -387,7 +381,8 @@ def stretch():
     assert len(s) == 3
     q = 5 / 6
     assert f"{r2(q):.2f}" == "0.83" and "5 over 6, about 0.83" in s[0]["answer"]
-    assert "0.95" in s[0]["answer"] and "0.011" in s[1]["text"] and "0.404" in s[2]["answer"]
+    assert "0.95" in s[0]["answer"] and "within a hair" in s[1]["text"] and "0.404" in s[2]["answer"]
+    assert "0.011" not in s[1]["text"], "the stretch page would hand Q20 its gap"
     print("PASS  stretch answers: 5 over 6 = 0.83 beside Rohan's 0.95; the gap and the 30-second story")
 
 
@@ -494,7 +489,7 @@ def main():
     balance()
     if "--rerun" in sys.argv:
         rerun()
-    assert len(LINES) == 26, len(LINES)
+    assert len(LINES) == 24, len(LINES)
     print(f"\nRESULT: PASS ({len(LINES)} items proved)")
 
 
@@ -504,13 +499,13 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 content/W05/SAT/internal/C2_W05_SAT_key_proofs_INTERNAL.py
-#     Prints the shape line, the giveaway line, eight exhibit lines and 26 item lines, PASS Q1 to
-#     PASS Q26, each with the item's id or bank number, its key and what was checked, then the
-#     stretch and key-position lines and "RESULT: PASS (26 items proved)", exit 0.
+#     Prints the shape line, the giveaway line, eight exhibit lines and 24 item lines, PASS Q1 to
+#     PASS Q24, each with the item's id or bank number, its key and what was checked, then the
+#     stretch and key-position lines and "RESULT: PASS (24 items proved)", exit 0.
 # The same run with --rerun, the network open and scikit-learn 1.9.1 installed
 #     Adds "PASS  rerun: every RUN value ..." before the result line, exit 0.
 # The bill item's key changed to d in the source file
-#     keyed() fails at Q10, because the key is no longer b, and the run exits 1.
+#     keyed() fails at Q9, because the key is no longer b, and the run exits 1.
 # Exhibit 2B's 0.10 row retyped with 2,183 wasted calls instead of 2,138
 #     The Exhibit 2B check fails: called no longer equals caught plus wasted.
 # "0.032" put back into Exhibit 2B's cost-line row

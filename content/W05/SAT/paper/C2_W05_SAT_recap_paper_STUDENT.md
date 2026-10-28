@@ -1,8 +1,8 @@
 # Week 5 recap paper
 
-Saturday 7 November 2026 · 60 minutes · 26 items in 5 parts · pen and paper, no assistant, no notes
+Saturday 7 November 2026 · 60 minutes · 24 items in 5 parts · pen and paper, no assistant, no notes
 
-Name: ____________________    Marked by: ____________________    Items right: ____ of 26
+Name: ____________________    Marked by: ____________________    Items right: ____ of 24
 
 ## What this paper is for
 
@@ -34,11 +34,11 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 | Part | What it shows | Items | Minutes | Easy | Medium | Hard |
 |---|---|---|---|---|---|---|
 | 1. Should the bank build a model, and what must it beat? | whether you can frame a prediction problem, split the rows honestly and read what a model's score says | Q1 to Q5 (5) | 10.5 | 1 | 3 | 1 |
-| 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q6 to Q11 (6) | 15.5 | 1 | 1 | 4 |
-| 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q12 to Q16 (5) | 11 | 1 | 1 | 3 |
-| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q17 to Q22 (6) | 12 | 1 | 2 | 3 |
-| 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q23 to Q26 (4) | 10 | 0 | 2 | 2 |
-| Total | | 26 | 59 | 4 | 9 | 13 |
+| 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q6 to Q11 (6) | 15.5 | 1 | 4 | 1 |
+| 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q12 to Q16 (5) | 11 | 1 | 3 | 1 |
+| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q17 to Q20 (4) | 10 | 0 | 2 | 2 |
+| 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q21 to Q24 (4) | 10 | 0 | 2 | 2 |
+| Total | | 24 | 57 | 3 | 14 | 7 |
 
 ---
 
@@ -76,12 +76,12 @@ d) The slice is too small at 8,238 clients, so merge it with validation and repo
 
 #### Q2 · Hard · circle one letter · Judge the split
 
-The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a random split of all the rows estimates the model's score as honestly as a split by date. True or false, and why?
+The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a split by date estimates the model's score more honestly than a random split of all the rows. True or false, and why?
 
-a) True: the split keeps 11.27 percent yes in every slice, so each slice is a fair sample of the bank's clients.
-b) True: the model never reads a date column, so the order in which the calls were made cannot move its score.
-c) False: a random split trains on later months than it validates on; train early and score late, like the ask.
-d) False: a random split leaves too few yes rows in validation, so its score is noisy; a split by date adds them.
+a) True: a random split trains on later months than it validates on; train early and score late, like the ask.
+b) True: a split by date keeps more yes rows in validation, so its score is less noisy than a random split's.
+c) False: a stratified random split keeps 11.27 percent yes in every slice, so each is a fair sample of clients.
+d) False: the model never reads a date column, so the order in which the calls were made cannot move its score.
 
 #### Q3 · Medium · circle one letter · Read one score
 
@@ -99,7 +99,7 @@ The bank's marketing head brings four asks. Which need a model that predicts? Ci
 a) the clients to call first next month, ranked by their chance of saying yes
 b) the count of yes answers in each month of 2009, for the annual report
 c) the clients whose previous campaign ended in success, listed by branch
-d) the chance that a client never called before says yes on the first call
+d) each new client's own chance of a yes on a first call, before anyone calls
 
 **Word bank 1.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
 
@@ -139,7 +139,7 @@ flowchart LR
 | Call nobody | 0 | 0 | 928 | 7,310 |
 | Model at 0.5 | 174 | 94 | 754 | 7,216 |
 
-#### Q6 · Hard · circle one letter · Judge the accuracy claim
+#### Q6 · Medium · circle one letter · Judge the accuracy claim
 
 Statement: an accuracy of 0.897 against 0.887 for calling nobody shows that the model at 0.5 is good enough to run the campaign. True or false, and why?
 
@@ -148,7 +148,7 @@ b) True: it gets 848 clients wrong against the baseline's 928, so it makes 80 fe
 c) False: accuracy is fair only on the sealed test slice, so 0.897 means nothing until Friday's envelope is opened.
 d) False: calling nobody already scores 0.887, so accuracy says little; at 0.5 the model finds 174 of 928 buyers.
 
-#### Q7 · Hard · show the working, then the answer · Work the matrix
+#### Q7 · Medium · show the working, then the answer · Work the matrix
 
 From the model's row of Exhibit 2A, compute its precision, recall and F1 at the threshold of 0.5, each to two decimal places. Show the working.
 
@@ -164,7 +164,7 @@ Working:
 
 Answer: ____________________
 
-**Exhibit 2B.** The customer-table model at four thresholds on the 8,238 validation clients, and the week's budget cut: everyone ranked by score.
+**Exhibit 2B.** The customer-table model at four thresholds on the 8,238 validation clients.
 
 | Threshold or cut | Called | Caught buyers | Wasted calls | Missed buyers |
 |---|---|---|---|---|
@@ -172,9 +172,8 @@ Answer: ____________________
 | 0.20 | 864 | 376 | 488 | 552 |
 | 0.10 | 2,754 | 616 | 2,138 | 312 |
 | The cost line | 7,438 | 913 | 6,525 | 15 |
-| Top 1,000 by score | 1,000 | 404 | 596 | 524 |
 
-#### Q9 · Hard · circle one letter · Price two thresholds
+#### Q9 · Medium · circle one letter · Price two thresholds
 
 At Rs 40 a wasted call and Rs 1,200 a missed buyer, what is the error bill at the thresholds of 0.5 and 0.10 in Exhibit 2B, and which costs less?
 
@@ -188,7 +187,7 @@ d) Rs 904,800 at 0.5 and Rs 374,400 at 0.10, so 0.10 is cheaper by Rs 530,400.
 The call centre can make 1,000 calls in the next campaign, and the cost line would call 7,438 of these 8,238 clients (Exhibit 2B). Which plan goes to the marketing head?
 
 a) Keep the cost line and call the first 1,000 clients above it in the order the file lists them.
-b) Raise the threshold to 0.5 and call its 268 clients, since precision is the highest there, at 0.65.
+b) Raise the threshold to 0.5 and call its 268 clients, since precision is the highest at that line.
 c) Rank every client by score and call the top 1,000; 404 of them said yes, 3.6 times the base rate.
 d) Call 1,000 clients drawn at random, since a ranking on an outcome this rare is mostly noise.
 
@@ -230,7 +229,7 @@ flowchart LR
 | The customer table and the five economic indicators | 0.795 | 0.899 | 211 |
 | All of those and duration, the call's length in seconds | 0.932 | 0.907 | 390 |
 
-#### Q12 · Hard · circle one letter · Answer the junior
+#### Q12 · Medium · circle one letter · Answer the junior
 
 The junior's message reads: "Adding duration lifts AUC from 0.795 to 0.932. Shipping tonight." What is the reply?
 
@@ -246,7 +245,7 @@ The list for next month's campaign is built on the morning before the first call
 a) duration, the length in seconds of this campaign's last call to the client
 b) poutcome, the last campaign's result; 65 percent of its successes say yes
 c) age, job and housing, as they stand in the customer table that morning
-d) euribor3m, the three-month rate as published on the morning of the list
+d) nr.employed for the current quarter, filled in once that quarter closes
 
 #### Q14 · Medium · circle one letter · Judge the chart
 
@@ -257,7 +256,7 @@ b) False: an importance chart is valid for tree models only, so the logistic wei
 c) True: duration carries the largest weight in the model, and the largest weight points to the cause of the yes.
 d) True: a gap of 332 seconds is too large to be chance across 41,188 calls, so the effect has to be causal.
 
-#### Q15 · Hard · circle one letter · Explain the flip
+#### Q15 · Medium · circle one letter · Explain the flip
 
 On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. The marketing head asks whether higher rates help the campaign. What is the likeliest cause of the flip, and what does the memo say?
 
@@ -284,9 +283,9 @@ Answer: ____________________
 
 ---
 
-## Part 4. Is the model learning, or memorising? (Q17 to Q22)
+## Part 4. Is the model learning, or memorising? (Q17 to Q20)
 
-*What it shows: whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships. 6 items, about 12 minutes.*
+*What it shows: whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships. 4 items, about 10 minutes.*
 
 On Thursday the room grew a decision tree on the honest columns, the customer table and the economic indicators, first with no limit on its depth and then reined in. Exhibit 4A gives the tree's training and validation scores by depth; calling nobody scores 0.887 accuracy on the same validation clients. The committee's question for Friday is which model goes into the memo, and why that one.
 
@@ -308,11 +307,11 @@ xychart-beta
 | 8 | 0.911 | 0.897 | 0.777 |
 | No limit | 0.996 | 0.837 | 0.619 |
 
-#### Q17 · Hard · circle one letter · Read the depth curve
+#### Q17 · Medium · circle one letter · Read the depth curve
 
 The unlimited tree scores 0.996 on training and 0.837 on validation, below calling nobody. Which reading and which next step are right?
 
-a) It memorised the training clients; cap the depth where validation AUC peaks, depth 5 here.
+a) It memorised the training clients; cap the depth near the validation peak, confirmed by CV.
 b) It needs more columns to learn from; join the call log so validation catches up with training.
 c) It has not trained long enough; grow it further until validation rises to meet training.
 d) Validation has drifted from training; refit the unlimited tree on validation and report it.
@@ -324,7 +323,7 @@ Which of these put a brake on overfitting? Circle every correct letter.
 a) capping the tree's depth, or asking for more clients in every leaf
 b) a stronger penalty on the logistic weights, a smaller C in scikit-learn
 c) refitting until the training rows score 1.0 at every new setting
-d) choosing the depth or the penalty by five-fold cross-validation
+d) a simpler depth or penalty, chosen by five-fold cross-validation
 
 **Exhibit 4B.** Five-fold cross-validation of the logistic model on the 24,712 training clients, honest columns, and three model families scored on the 8,238 validation clients.
 
@@ -351,39 +350,16 @@ d) Five models on all 24,712 clients each; the spread is noise and says nothing 
 
 #### Q20 · Hard · circle one letter · Judge the winner
 
-Statement: gradient boosting should go into the memo, since it scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
+Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
 
-a) True: 0.806 is above 0.799 and 0.795 on the same validation rows, and the memo reports the best found.
-b) True: boosting fits each round to the errors of the rounds before, so it generalises best of the three.
-c) False: 0.011 is inside the 0.03 one split moves by, so it is a tie, and the explainable logistic ships.
-d) False: AUC cannot compare different model families, so the committee needs each accuracy at 0.5.
-
-**Word bank 4.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
-
-| Letter | Word or phrase |
-|---|---|
-| a | overfitting |
-| b | underfitting |
-| c | threshold |
-| d | split |
-| e | leakage |
-| f | seed |
-
-#### Q21 · Easy · write the letter from Word bank 4 · Name the failure
-
-A model that scores 100 percent on training and 61 percent on validation is ____.
-
-Answer: ____________________
-
-#### Q22 · Medium · write the letter from Word bank 4 · Name what averages out
-
-Cross-validation averages away the luck of one particular ____.
-
-Answer: ____________________
+a) True: a logistic model cannot overfit its rows, so its validation score is the safer one to quote.
+b) True: a gap of 0.011 can flip on another split, as the folds' spread shows; the plainer model ships.
+c) False: 0.806 is above 0.799 and 0.795 on the same validation rows, and the memo reports the best found.
+d) False: AUC cannot compare models of different families, so the committee needs each accuracy at 0.5.
 
 ---
 
-## Part 5. Would the committee sign, and what moves to lending? (Q23 to Q26)
+## Part 5. Would the committee sign, and what moves to lending? (Q21 to Q24)
 
 *What it shows: whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending. 4 items, about 10 minutes.*
 
@@ -393,9 +369,9 @@ On Friday the room wrote the memo for Meera Raghavan's committee: Anand Iyer, th
 
 ```mermaid
 flowchart LR
-  C["Claim:<br/>the model and its job"] --> E["Evidence:<br/>its score against the baseline"]
-  E --> B["Error bill:<br/>the cost of its mistakes in Rs"]
-  B --> V["Caveat:<br/>where it is weak, when it goes stale"]
+  C["Claim"] --> E["Evidence"]
+  E --> B["Error bill"]
+  B --> V["Caveat"]
 ```
 
 | Line | On the week's run |
@@ -408,11 +384,11 @@ flowchart LR
 
 | Case | What the source reports |
 |---|---|
-| Instacart's item-availability model, March 2020 | The accuracy of the metric used to judge how many items are found fell from 93 percent to 61 percent, which told the engineers to retrain; by June it read about 85 percent |
+| Instacart's item-availability model, March 2020 | A metric used to evaluate the model that predicts whether an item is in stock fell from 93 percent to 61 percent, which told the engineers to retrain; by June it read about 85 percent |
 | Instacart, looking back | Models respond slowly to a shock because they need enough new observations; thresholds on top of the model were changed without training new models |
 | Booking.com, 23 comparisons of a new model against a proven one | Offline gain (ROC AUC or mean reciprocal rank) against the gain in a business metric when the two models were compared live: Pearson correlation -0.1, 90 percent interval -0.45 to 0.27 |
 
-#### Q23 · Hard · circle one letter · Set the alarm
+#### Q21 · Hard · circle one letter · Set the alarm
 
 On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what does it mean for the cost line drawn on these scores?
 
@@ -421,32 +397,32 @@ b) Retrain every night on the newest calls; the scores then stay current, so the
 c) Compare training accuracy month by month; a fall there flags the drift, and the cost line stays where Tuesday drew it.
 d) Wait for the marketing head's report; a score that still ranks buyers first keeps the cost line drawn on it valid.
 
-#### Q24 · Medium · circle every correct letter · Fill the caveat
+#### Q22 · Medium · circle every correct letter · Fill the caveat
 
 Which lines belong in the memo's caveat? Circle every correct letter.
 
 a) the validation AUC of 0.795, against 0.761 for the customer table alone
-b) the segment of clients the model ranks worst, with how many clients it holds
+b) the segment where the model performs worst, with how many clients it holds
 c) the gap between predicted and actual yes rates that would trigger a retrain
 d) the number of calls the campaign budget pays for in the next month
 
-#### Q25 · Medium · circle one letter · Choose the evidence
+#### Q23 · Medium · circle one letter · Choose the evidence
 
 Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). What does the memo propose?
 
-a) a random trial: half the next calls by the model's list, half by today's rule, scored on deposits
-b) a bigger validation slice, so that the AUC of 0.795 can be quoted to three decimal places
-c) a switch to gradient boosting, whose 0.806 gives the committee the strongest offline case
+a) a bigger validation slice, so that the AUC of 0.795 can be quoted to three decimal places
+b) a switch to gradient boosting, whose 0.806 gives the committee the strongest offline case
+c) a random trial: half the next calls by the model's list, half by today's rule, scored on deposits
 d) the sealed test score on its own, since a slice opened once is all the evidence a committee needs
 
-#### Q26 · Hard · circle one letter · Move the line to lending
+#### Q24 · Hard · circle one letter · Move the line to lending
 
-Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. Where does Rohan's approval line go?
+Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
 
-a) Approve on the nudge's own cost line, read as a chance of repaying, since the method is the same.
-b) Approve at the neutral 0.5, since a loan is a yes or no decision with no budget in the way.
-c) Approve while the chance of default is under 60,000 in 63,000, about 0.95, since defaults cost more.
-d) Approve only while the chance of default is under 3,000 in 63,000, about 0.05: repay above 0.95.
+a) Both: each is far below a 50 percent chance of default, the neutral line for a yes or no decision.
+b) P only: the line sits near a 5 percent chance of default, so Q at 8 percent costs more than it pays.
+c) Both: the nudge acts on a 3 percent chance, so the same method approves anyone above that line.
+d) Neither: a default costs twenty times a rejection, so any chance above 1 in 20 must mean a rejection.
 
 ---
 
@@ -460,7 +436,7 @@ German Credit, the take-home's dataset (OpenML credit-g), documents its own cost
 
 ### Stretch 2
 
-Gradient boosting beats the logistic model by 0.011 AUC on validation. Name the gap at which you would ship boosting instead, and say how you would size it in rupees at the budget of 1,000 calls.
+Two models score within a hair of each other on validation, and one is far harder to explain. Name the evidence that would make you ship the harder one, and say how you would size the gap in rupees at the budget of 1,000 calls.
 
 ### Stretch 3
 
