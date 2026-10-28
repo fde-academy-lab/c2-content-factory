@@ -30,7 +30,7 @@ INTERNAL. Built 28 October 2026 on branch `w05-d5` with Python 3.13, pandas 3.0.
 
 ## Images
 
-All 13 PNGs in `1_in_class_training_content/slides/img/` and every chart in the notebooks are drawn by our own code from the datasets above or the invented tables. No image is taken from elsewhere. Mermaid diagrams are rendered by the repository's own build. No logo appears anywhere: `build_deck.py` places the institute's mark and two header lines on every slide, and `C2_W05_D05_strip_branding_INTERNAL.py` removes them (180 shapes) after each build.
+All 13 PNGs in `1_in_class_training_content/slides/img/` and every chart in the notebooks are drawn by our own code from the datasets above or the invented tables. No image is taken from elsewhere. Mermaid diagrams are rendered by the repository's own build. No logo appears anywhere: from Week 5 on `scripts/build_deck.py` draws no logo or institute name (pull request 266), so the stripping script this build first used was removed and the deck rebuilt.
 
 ## Headline numbers (from the executed notebooks)
 

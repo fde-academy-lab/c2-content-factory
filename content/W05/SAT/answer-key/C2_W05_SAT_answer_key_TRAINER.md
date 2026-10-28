@@ -159,10 +159,10 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q12, key a
 
-**Why it holds.** The held-out X-rays came from the same two hospital systems as the training X-rays, so whatever marked the hospital marked them too. Sorting them by hospital alone scored 0.861, because one system's pneumonia rate was 34.2 percent and the other's 1.2 percent, and a network named the hospital of 22,050 of 22,062 X-rays from one system, so much of the 0.931 was the hospital. At a third hospital the shortcut no longer carried the label, and the AUC fell to 0.815. That is leakage through a proxy, which a held-out slice from the same source cannot catch; a score on data from a new site, or for the bank a later period, catches it. Overfitting shows as training far above held-out, and this model's held-out score was high. Wednesday told this case beside duration.
+**Why it holds.** The held-out X-rays came from the same two hospital systems as the training X-rays, so whatever marked the hospital marked them too. One system's pneumonia rate was 34.2 percent and the other's 1.2 percent, so the hospital alone predicts the label: the paper reports that sorting X-rays by hospital alone scored 0.861, and a network named the hospital of 22,050 of 22,062 X-rays from one system, so much of the 0.931 was the hospital. At a third hospital the shortcut no longer carried the label, and the AUC fell to 0.815. That is leakage through a proxy, which a held-out slice from the same source cannot catch; a score on data from a new site, or for the bank a later period, catches it. Overfitting shows as training far above held-out, and this model's held-out score was high. Wednesday told this case beside duration.
 
 - (b) Memorising shows as high training against low held-out scores; here the held-out score was 0.931, so the trouble is what the held-out X-rays shared with training.
-- (c) Sorting by hospital alone scored 0.861, so the model leaned on where an X-ray came from, which a new hospital cannot supply; the model needs the check.
+- (c) Pneumonia ran at 34.2 percent in one training system and 1.2 percent in the other, so where an X-ray came from predicted the label, which a new hospital cannot supply; the model needs the check.
 - (d) The paper reports the fall as significant, P = 0.001, and a model sold at 0.931 that delivers 0.815 has a problem to name, never noise to wave off.
 
 **In the interview.** A held-out slice from the same source shares the source's shortcuts, so before launch I score the model on a new site or a later period and ask what else marks the label.
@@ -203,17 +203,17 @@ The workbook flags an item to check when fewer than one learner in five got it r
 - (c) 4,942 is each fold's validation share; each model trains on the other four-fifths.
 - (d) A model fitted on all the rows is scored on rows it saw, and the spread is exactly what one split's luck looks like.
 
-**In the interview.** k folds fit k models on (k minus 1) over k of the rows; I report the mean and the spread, and a gap smaller than the spread is a tie.
+**In the interview.** k folds fit k models on (k minus 1) over k of the rows; I report the mean and the spread, and I compare two models fold by fold on the same folds.
 
 ### Q17, key b
 
-**Why it holds.** The three families sit within 0.011 AUC of each other on one validation slice, while the five folds of one model moved by about 0.03, so another split could reorder them. The test that would settle it scores both models on the same five folds; until boosting leads on every fold by a margin worth its cost, the simpler model is the recommendation: it is explained to a committee in one line per weight, monitored easily, and moved to lending with less to re-check. The flip is a gap that holds across the folds and is worth more in rupees, at the same budget of calls, than the cost of explaining and running the complex model. Thursday closed on why the boring model often ships.
+**Why it holds.** The three families sit within 0.011 AUC of each other on one validation slice, while the five folds of one model moved by about 0.03, so one slice settles nothing. Thursday ran two tests on the same five folds. Boosting led logistic on every fold, by 0.003 to 0.014 AUC, so its lead is real; the second test asks whether so small a lead pays, and at the same budget of calls its extra buyers were worth less than the cost the room set for explaining and running it. So the simpler model is the recommendation: it is explained to a committee in one line per weight, monitored easily, and moved to lending with less to re-check. The flip is a lead that holds across the folds and is worth more in rupees, at the same budget of calls, than that cost. Thursday closed on why the boring model often ships.
 
-- (a) A logistic model overfits too when it has many columns and no penalty; its case here is the tie and its plainness.
-- (c) The best number found on one validation slice carries that slice's luck, which Exhibit 4B sizes at about 0.03.
+- (a) A logistic model overfits too when it has many columns and no penalty; its case here is the small lead it gives up and its plainness.
+- (c) The best of three on one slice is flattered by the choosing, and even a lead that holds on every fold has to pay for the complex model's upkeep before it ships.
 - (d) AUC compares the ranking of any two models scored on the same rows, whatever their family.
 
-**In the interview.** Inside the noise the simpler model ships, and I name the gap, in AUC and in rupees, held across folds, at which the complex one would.
+**In the interview.** A lead must hold fold by fold and pay for itself in rupees before the complex model ships, and I name the gap at which it would.
 
 ### Q18, key a
 
@@ -236,11 +236,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q20, key d
 
-**Why it holds.** An offline score says the model ranks past rows well; it does not say the campaign will sell more deposits, and Booking.com's 23 comparisons put the correlation between the two near zero, -0.1 with an interval from -0.45 to 0.27, which is why the paper calls offline performance a health check. So the evidence is a randomised trial on the business number: next month's clients assigned at random between the list and today's rule, run in the same weeks, scored on deposits per call, with the size fixed before it starts. A before-and-after comparison mixes the list with the month, and on this file the yes rate climbed from 5.6 to 24.6 percent across the calls (Exhibit 5A), so a month can beat the last without the list. A random trial scored on AUC randomises the right thing and measures the wrong one. Friday's memo turned the score into a decision the committee could test.
+**Why it holds.** An offline score says the model ranks past rows well; it does not say the campaign will sell more deposits, and Booking.com's 23 comparisons put the correlation between the two near zero, -0.1 with an interval from -0.45 to 0.27, which is why the paper calls offline performance a health check. So the evidence is a randomised trial on the business number: next month's clients assigned at random between the list and today's rule, run in the same weeks, scored on deposits per call, with the size fixed before it starts. A sealed test score is still offline. A before-and-after comparison mixes the list with the month, and on this file the yes rate climbed from 5.6 to 24.6 percent across the calls (Exhibit 5A), so a month can beat the last without the list. A random trial scored on AUC randomises the right thing and measures the wrong one. Friday's memo turned the score into a decision the committee could test.
 
 - (a) The yes rate moved from 5.6 to 24.6 percent across the file (Exhibit 5A), so this month against last month measures the calendar as much as the list.
 - (b) Randomising is right, and the AUC is still the offline health check Booking.com found did not predict business gains; the trial is scored on deposits.
-- (c) The test score is the honest offline number, and it is still offline: Booking.com found that such gains did not predict business gains.
+- (c) Two faults: the yes rate moved from 5.6 to 24.6 percent across the file, so next month against validation measures the calendar too, and AUC is the offline health check Booking.com found did not predict business gains.
 
 **In the interview.** Offline metrics earn a model its trial; a randomised trial on the business number, run in the same weeks, earns it the rollout.
 
@@ -250,7 +250,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) 0.5 treats the two errors as equal, while a default costs twenty times a wrongful rejection.
 - (c) 92 in 100 repaying sounds strong, but each default costs Rs 60,000 against Rs 3,000 lost on a rejection, so the bar sits near 95 in 100 repaying, and Q falls below it.
-- (d) Clearing the line is how the nudge acts, on a chance of a yes; here the chance is of a default, so an applicant must sit below the line, and Q at 8 percent sits above it.
+- (d) 3 percent is the nudge's line, from Rs 40 against Rs 1,200; Rohan's costs, Rs 3,000 against Rs 60,000, put his line at 3,000 over 63,000, about 4.8 percent, so P at 4 percent clears it.
 
 **In the interview.** The line is the cheap error's cost over both costs, so the same model calls on a 3 percent chance and lends only below about a 5 percent chance of default.
 
@@ -306,7 +306,7 @@ These items come from the week's source file, not the tracker. Accept one by add
 - Q15 (More than one correct, Medium, [F]): Which of these put a brake on overfitting? Circle every correct letter.
 - Q16 (One correct option, Medium, [F]): Five-fold cross-validation of the logistic model gave the five fold scores in Exhibit 4B. How many models were fitted, on about how many clients each, and what does the spread tell the committee?
 - Q17 (True or false, Hard, [D]): Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
-- Q18 (One correct option, Hard, [F]): On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
+- Q18 (One correct option, Hard, [F]): On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A), and Exhibit 5B sets Instacart's case beside it. Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
 - Q19 (More than one correct, Medium, [D]): Which lines belong in the memo's caveat? Circle every correct letter.
 - Q20 (One correct option, Hard, [D]): Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). Which test does the memo propose for next month?
 - Q21 (One correct option, Hard, [D]): Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
@@ -324,7 +324,7 @@ Each of these tracker items is not printed, because a deeper item on the paper t
 - Bank 6 (True or false, Easy, Tue), folded into Q5: The printed statement is bank 6's trap on the week's own rows, where calling nobody already scores 0.887 on an 89 to 11 outcome, and option d keys the reason accuracy says little there.
 - Bank 7 (True or false, Medium, Wed), folded into Q13: The marketing head's first conclusion reads the top of an importance chart as a cause, and the key refuses it because the yes drives the call's length as much as the reverse, which is bank 7's false statement judged with its reason.
 - Bank 8 (True or false, Easy, Thu), folded into Q15: Option b is a stronger penalty on the weights, which loosens the fit to the training rows, and option c, fitting the training rows until they score 1.0, is bank 8's false statement offered as a brake.
-- Bank 9 (True or false, Hard, Fri), folded into Q17: The key is bank 9's statement on the week's three families, a gap of 0.011 AUC inside the 0.03 one split moves by, so the simpler, explainable model is the recommendation.
+- Bank 9 (True or false, Hard, Fri), folded into Q17: The key is bank 9's statement on the week's three families, a lead of 0.011 AUC that has to hold fold by fold and pay for its upkeep before it ships, so the simpler, explainable model is the recommendation.
 - Bank 10 (One correct option, Easy, Mon), folded into Q1: The item sorts four of the bank's asks into the two that need a prediction and the two a query answers, which is bank 10's question with two keys where the bank has one.
 - Bank 11 (One correct option, Medium, Mon), folded into Q2: The item asks what a logistic score of 0.71 says about one client, with bank 11's three misreadings as the distractors, and adds the check that lets the memo read it as a chance, since an AUC vouches for the ranking and never for the chances.
 - Bank 12 (One correct option, Medium, Tue), folded into Q7: The working puts the line at 1 in 31, about 0.032, far below 0.5, and the answer names the direction and that recall leads, which is bank 12's key derived where the bank only asks for it.

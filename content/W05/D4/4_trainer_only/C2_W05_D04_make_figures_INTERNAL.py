@@ -388,10 +388,11 @@ save(fig, "fig_race_folds.png")
 
 lgf, gbf = cvs["Logistic, braked"], cvs["Gradient boosting"]
 fig, ax = plt.subplots(figsize=(7, 4.4))
+# the lines carry no numbers: the slide's subtitle quotes the per-fold gaps from case03's run,
+# and this script's own folds round two of them 0.001 lower
 for i in range(5):
     ax.plot([0, 1], [lgf[i], gbf[i]], "o-", color=VIOLET, lw=2.2)
-    ax.text(1.05, gbf[i], f"+{gbf[i] - lgf[i]:.3f}", va="center", fontsize=12)
-ax.set_xticks([0, 1]); ax.set_xticklabels(["logistic", "boosting"]); ax.set_xlim(-0.3, 1.45)
+ax.set_xticks([0, 1]); ax.set_xticklabels(["logistic", "boosting"]); ax.set_xlim(-0.3, 1.3)
 ax.set_ylabel("AUC on the same fold")
 save(fig, "fig_paired_gap.png")
 

@@ -227,10 +227,10 @@ def exhibits():
     print("PASS  Exhibit 5B: Instacart's 93 to 61 and 85, Booking.com's 23 comparisons and -0.1, in the sources file")
     # Exhibit 3B: Zech and others, as the sources file quotes the paper.
     zech = dict(table(BY_ID["shortcut"]["exhibit"]))
-    assert list(zech.values()) == ["0.931", "0.815", "0.861", "34.2 percent and 1.2 percent"]
+    assert list(zech.values()) == ["0.931", "0.815", "34.2 percent and 1.2 percent"]
     for fact in ("AUC 0.931", "AUC 0.815", "AUC of 0.861", "(34.2%)", "1.2% and 1.0%", "99.95% NIH (22,050/22,062)"):
         assert fact in SOURCES, fact
-    print("PASS  Exhibit 3B: 0.931 at home, 0.815 at a third site, 0.861 by hospital alone, as the sources file quotes")
+    print("PASS  Exhibit 3B: 0.931 at home, 0.815 at a third site, 34.2 and 1.2 percent pneumonia, as the sources file quotes")
     # Exhibit 3C: the importance and weight readings, against RUN.
     t3c = dict(table(BY_ID["two-readings"]["exhibit"]))
     assert t3c["Mean call length: clients who said yes; clients who said no"] == \
@@ -393,8 +393,8 @@ def items():
     fam = RUN["family_auc"]
     gap, spread = fam["boosting"] - fam["logistic"], max(folds) - min(folds)
     assert f"{gap:.3f}" == "0.011" and f"{spread:.2f}" == "0.03" and gap < spread
-    keyed(i, "b", "True", "0.011", "folds' spread")
-    ok(i["q"], "near-tie", "b", f"gap {gap:.3f} inside the folds' spread {spread:.3f}")
+    keyed(i, "b", "True", "fold by fold", "rupees")
+    ok(i["q"], "near-tie", "b", f"gap {gap:.3f} on one slice against a fold spread of {spread:.3f}; the lead must hold and pay")
 
     i = BY_ID["stale-rule"]
     assert RUN["time_late_mean_pred"] < RUN["time_late_yes"]
@@ -410,7 +410,7 @@ def items():
     i = BY_ID["booking"]
     assert "23 comparisons" in i["text"]
     keyed(i, "d", "at random", "deposits per call")
-    assert "this month's" in options(i)["a"] and "test slice" in options(i)["c"]
+    assert "this month's" in options(i)["a"] and "AUC" in options(i)["c"] and "next month" in options(i)["c"]
     # Random or not, crossed with deposits or AUC: no part of the key marks it.
     assert "at random" in options(i)["b"] and "AUC" in options(i)["b"] and "deposits" in options(i)["a"]
     ok(i["q"], "booking", "d", "offline and business gains near uncorrelated, and the yes rate moves, so a randomised trial")
@@ -421,7 +421,7 @@ def items():
     assert f"{r2(60000 / 63000):.2f}" == "0.95" and 60000 / 3000 == 20
     assert 0.04 < pd_line < 0.08 and "4 percent" in i["text"] and "8 percent" in i["text"]
     keyed(i, "b", "P only", "5 percent")
-    assert options(i)["d"].startswith("Q only") and "92 in 100" in options(i)["c"]
+    assert options(i)["d"].startswith("Neither") and "3 percent" in options(i)["d"] and "92 in 100" in options(i)["c"]
     ok(i["q"], "lend-flip", "b", f"default line {pd_line:.4f}: P at 0.04 approved, Q at 0.08 refused")
 
     i = BY_ID["fraud-ask"]
