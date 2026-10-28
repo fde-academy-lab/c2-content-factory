@@ -119,7 +119,7 @@ opens in chapters 1 to 3. Transition: how the five join.
 flowchart LR
     T1["<b>1 Diagnose</b><br/>overfitting, bias<br/>and variance"]
     T2["<b>2 The brake</b><br/>regularisation"]
-    T3["<b>3 Honest score</b><br/>cross-validation"]
+    T3["<b>3 Honest score</b><br/>cross-<br/>validation"]
     T4["<b>4 Candidates</b><br/>trees, ensembles,<br/>clustering"]
     T5["<b>5 The decision</b><br/>when the simpler<br/>model wins"]
     W["<b>Wed</b><br/>honest columns"]
