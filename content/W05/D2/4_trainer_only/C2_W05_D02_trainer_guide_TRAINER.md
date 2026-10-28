@@ -119,7 +119,7 @@ The lab is `2_take_home_mandatory/C2_W05_D02_practice_lab_STUDENT.ipynb`, soluti
 | 3 Cost in matrix units | 0.5: 266; 0.833: 160; approve all: 450; reject all: 210 | 5 x good-rejected + 1 x bad-approved (weights swapped); forgetting the reject-all rule; adding the true cells | yes |
 | 4 Rohan's 20:1 line and bill | 0.952; approves 43, 3 bad; Rs 690,000 against Rs 630,000 for rejecting everyone | expecting the model to win; using 0.833 again; quoting Rs without the reject-all comparison | the comparison, yes |
 | 5 Integration: approvals by checking account | groupby table: the "no checking" group is approved most | grouping on the wrong column; reading counts as rates | can cut |
-| 6 QA: a second seed | the 5:1 line still beats both free rules | changing the threshold along with the seed | can cut |
+| 6 QA: a second seed and calibration | seed 7: cost 196 against 210 for the best free rule; the top calibration bin over-predicts, 0.965 against 0.933 | changing the threshold along with the seed; reading the calibration table as counts | can cut |
 
 Cut order if the lab runs long: step 6, then step 5. The write-up's five lines are never cut.
 
