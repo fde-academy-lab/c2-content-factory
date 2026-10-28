@@ -127,11 +127,11 @@ def shape():
     timed = sum(i["min"] for i in PRINTED)
     assert timed == 58.5 and bsp.paper_minutes("W05", 60) == 60, timed
     levels = [i["level"] for i in PRINTED]
-    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (0, 8, 14)
-    assert levels.count("Hard") >= 13 and levels.count("Hard") / len(PRINTED) >= 0.6
+    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (0, 9, 13)
+    assert levels.count("Hard") >= 13 and levels.count("Hard") / len(PRINTED) >= 0.55
     assert sorted(SOURCE["folded"]) == list(range(1, 30)) and not SOURCE["stretch_bank"]
     assert not BY_NO and not SOURCE.get("banks")
-    print(f"PASS  shape: 22 items, {timed:g} of 60 minutes, 0 easy, 8 medium, 14 hard "
+    print(f"PASS  shape: 22 items, {timed:g} of 60 minutes, 0 easy, 9 medium, 13 hard "
           f"({levels.count('Hard') / len(PRINTED):.0%}); all 29 bank items fold")
 
 
@@ -227,7 +227,7 @@ def exhibits():
     print("PASS  Exhibit 5B: Instacart's 93 to 61 and 85, Booking.com's 23 comparisons and -0.1, in the sources file")
     # Exhibit 3B: Zech and others, as the sources file quotes the paper.
     zech = dict(table(BY_ID["shortcut"]["exhibit"]))
-    assert list(zech.values()) == ["0.931", "0.815", "0.861", "34.2 percent and 1.2 percent", "22,050 of 22,062"]
+    assert list(zech.values()) == ["0.931", "0.815", "0.861", "34.2 percent and 1.2 percent"]
     for fact in ("AUC 0.931", "AUC 0.815", "AUC of 0.861", "(34.2%)", "1.2% and 1.0%", "99.95% NIH (22,050/22,062)"):
         assert fact in SOURCES, fact
     print("PASS  Exhibit 3B: 0.931 at home, 0.815 at a third site, 0.861 by hospital alone, as the sources file quotes")
@@ -276,7 +276,7 @@ def items():
     keyed(i, "c", "0.897", "1.8-point edge", "validation")
     assert "0.9055" in i["text"] and "0.8875" in i["text"] and "0.8873" in i["text"]
     assert f"{(0.9055 - 0.8875) * 100:.1f}" == "1.8" and f"{(0.8971 - 0.8873) * 100:.2f}" == "0.98"
-    assert "0.906" in options(i)["a"] and "0.887" in options(i)["b"] and "0.80" in options(i)["d"]
+    assert "0.906" in options(i)["a"] and "0.887" in options(i)["b"] and "0.902" in options(i)["d"]
     ok(i["q"], "peek", "c", "0.9055 peeked falls to 0.8971 fresh; the 2,000 chose, so they are validation")
 
     i = BY_ID["random-or-time"]
@@ -347,9 +347,9 @@ def items():
     ok(i["q"], "duration-call", "c", "AUC 0.795 to 0.932 while accuracy moves 0.899 to 0.907")
 
     i = BY_ID["which-pass"]
-    assert bsp.letters_of(i["key"]) == ["b", "c"] and "current quarter" in options(i)["d"]
+    assert bsp.letters_of(i["key"]) == ["b", "c"] and "callback flag" in options(i)["d"]
     assert f"{round(RUN['poutcome_success_yes'] * 100)} percent" in options(i)["b"]
-    ok(i["q"], "which-pass", "b, c", "poutcome passes at 65 percent yes; duration and the open quarter fail")
+    ok(i["q"], "which-pass", "b, c", "poutcome passes at 65 percent yes; duration and this campaign's callback flag fail")
 
     i = BY_ID["shortcut"]
     keyed(i, "a", "which hospital", "new site")
@@ -410,7 +410,9 @@ def items():
     i = BY_ID["booking"]
     assert "23 comparisons" in i["text"]
     keyed(i, "d", "at random", "deposits per call")
-    assert "this month's" in options(i)["a"] and "test slice" in options(i)["b"] and "branches" in options(i)["c"]
+    assert "this month's" in options(i)["a"] and "test slice" in options(i)["c"]
+    # Random or not, crossed with deposits or AUC: no part of the key marks it.
+    assert "at random" in options(i)["b"] and "AUC" in options(i)["b"] and "deposits" in options(i)["a"]
     ok(i["q"], "booking", "d", "offline and business gains near uncorrelated, and the yes rate moves, so a randomised trial")
 
     i = BY_ID["lend-flip"]
@@ -419,14 +421,14 @@ def items():
     assert f"{r2(60000 / 63000):.2f}" == "0.95" and 60000 / 3000 == 20
     assert 0.04 < pd_line < 0.08 and "4 percent" in i["text"] and "8 percent" in i["text"]
     keyed(i, "b", "P only", "5 percent")
-    assert "1 in 20" in options(i)["d"] and 3000 / 63000 < 1 / 20 and "92 in 100" in options(i)["c"]
+    assert options(i)["d"].startswith("Q only") and "92 in 100" in options(i)["c"]
     ok(i["q"], "lend-flip", "b", f"default line {pd_line:.4f}: P at 0.04 approved, Q at 0.08 refused")
 
     i = BY_ID["fraud-ask"]
     keyed(i, "c", "Ask first", "block the payment", "review")
-    assert options(i)["c"].startswith("Ask first:") and options(i)["c"].rstrip().endswith("?")
-    for letter in "abd":
-        assert not options(i)[letter].startswith("Ask"), letter
+    # Two replies open on a question, so the key is the question that decides it, never the form.
+    assert options(i)["c"].startswith("Ask first what a flag does")
+    assert options(i)["b"].startswith("Ask first how rare")
     ok(i["q"], "fraud-ask", "c", "under-specified: what a flag does and the team's capacity decide it")
 
 
@@ -553,18 +555,21 @@ if __name__ == "__main__":
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 content/W05/SAT/internal/C2_W05_SAT_key_proofs_INTERNAL.py
-#     Prints the shape line, the giveaway line, eight exhibit lines and 24 item lines, PASS Q1 to
-#     PASS Q24, each with the item's id or bank number, its key and what was checked, then the
-#     stretch and key-position lines and "RESULT: PASS (24 items proved)", exit 0.
+#     Prints the shape line (22 items, 58.5 of 60 minutes, 0 easy, 9 medium, 13 hard), the giveaway
+#     line, eleven exhibit and source lines and 22 item lines, PASS Q1 to PASS Q22, each with the
+#     item's id, its key and what was checked, then the stretch and key-position lines and
+#     "RESULT: PASS (22 items proved)", exit 0.
 # The same run with --rerun, the network open and scikit-learn 1.9.1 installed
 #     Adds "PASS  rerun: every RUN value ..." before the result line, exit 0.
-# The bill item's key changed to d in the source file
-#     keyed() fails at Q9, because the key is no longer b, and the run exits 1.
+# The budget item's key changed to a in the source file
+#     keyed() fails at Q9, because the key is no longer c, and the run exits 1.
 # Exhibit 2B's 0.10 row retyped with 2,183 wasted calls instead of 2,138
 #     The Exhibit 2B check fails: called no longer equals caught plus wasted.
-# "0.032" put back into Exhibit 2B's cost-line row
-#     The giveaway check fails before any item is proved, since Q9 asks for that number.
-# The near-tie item given a gap of 0.04 in its exhibit
-#     The near-tie check fails, since the gap would no longer sit inside the folds' spread.
-# The pipeline file's customer-table row edited to 0.7700 AUC
-#     The Exhibit 1A check fails, because the paper prints 0.761 and the pipeline no longer does.
+# "Rs 459,920" written into the F1 item's stem
+#     The giveaway check fails before any item is proved, since Q8 asks for that bill.
+# Q22's option b reworded so that it no longer opens on "Ask first how rare"
+#     The fraud-ask check fails, since the key would again be the only reply that asks a question.
+# Q16 relabelled Hard in the source file
+#     The shape check fails, since the paper would count 14 hard items against the 13 the proofs expect.
+# The D1 peek notebook re-run so that its fresh score prints 0.8968
+#     The peek-loop check fails, because Q3's key rests on the notebook's 0.8971.

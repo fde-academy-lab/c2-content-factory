@@ -2,7 +2,7 @@
 
 TRAINER. Rendered from the tracker's item bank and the week's source file by `scripts/build_saturday_paper.py`. Change an item in the tracker, an option in `data/programme/paper_edits.yaml` or anything in `content/W05/SAT/internal/C2_W05_SAT_paper_source_INTERNAL.yaml`, and rebuild; never edit this file by hand. A stem, a situation or an option can be reworded in `data/programme/paper_edits.yaml`.
 
-Saturday 7 November 2026. A 60-minute paper holding 22 items at 58.5 minutes by the blueprint's pace: 0 easy, 8 medium and 14 hard. 22 of them are new and not yet in the tracker.
+Saturday 7 November 2026. A 60-minute paper holding 22 items at 58.5 minutes by the blueprint's pace: 0 easy, 9 medium and 13 hard. 22 of them are new and not yet in the tracker.
 
 ## Marking
 
@@ -20,9 +20,9 @@ Saturday 7 November 2026. A 60-minute paper holding 22 items at 58.5 minutes by 
 | 1. Should the bank build a model, and what must it beat? | whether you can frame a prediction problem, split the rows honestly and read what a model's score says | Q1 to Q4 (4) | 10 | 0 | 1 | 3 |
 | 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q5 to Q9 (5) | 15.5 | 0 | 3 | 2 |
 | 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q10 to Q13 (4) | 10.5 | 0 | 1 | 3 |
-| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q14 to Q17 (4) | 10 | 0 | 2 | 2 |
+| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q14 to Q17 (4) | 10 | 0 | 3 | 1 |
 | 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q18 to Q22 (5) | 12.5 | 0 | 1 | 4 |
-| Total | | 22 | 58.5 | 0 | 8 | 14 |
+| Total | | 22 | 58.5 | 0 | 9 | 13 |
 
 ## What guessing alone would score
 
@@ -51,7 +51,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 | 13 | d | One correct option | 3 | Hard | [F] | DS, BA | Wed | 3 | new | What does a feature importance chart prove, and what does it not? |
 | 14 | a | One correct option | 4 | Medium | [S] | DS | Thu | 2.5 | new | Overfitting: what it is, how you detect it, how you fix it. |
 | 15 | a, b, d | More than one correct | 4 | Medium | [F] | DS | Thu | 2.5 | new | Overfitting: what it is, how you detect it, how you fix it. |
-| 16 | b | One correct option | 4 | Hard | [F] | DS | Thu | 2.5 | new | Why cross-validation instead of one split? |
+| 16 | b | One correct option | 4 | Medium | [F] | DS | Thu | 2.5 | new | Why cross-validation instead of one split? |
 | 17 | b | True or false | 4 | Hard | [D] | DS, FDE | Thu | 2.5 | new | Your tuned model beats a simpler one by a hair: which ships, and why? |
 | 18 | a | One correct option | 5 | Hard | [F] | DS, FDE | Fri | 2.5 | new | How would you know your model has gone stale? |
 | 19 | b, c | More than one correct | 5 | Medium | [D] | DS, FDE, BA | Fri | 2.5 | new | Your tuned model beats a simpler one by a point and costs ten times more to explain; which ships? |
@@ -65,7 +65,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 **Why it holds.** A prediction problem asks about an outcome that has not happened yet, from what is known now, and has past examples to learn from. Ranking next month's clients and scoring a client never called before both ask about a future yes. Counting 2009's yes answers and listing past successes are queries on rows that already exist. Monday's first chapter sorted Kalpa's asks into prediction, rule and query.
 
-- (b) Every 2009 answer is already in the file, so a count answers it and no model is needed.
+- (b) A past month's chance of a yes is a rate already in the file, so a count answers it and no model is needed.
 - (c) poutcome already records each past result, so a filter lists them; nothing is predicted.
 
 **In the interview.** If the answer is already in a table, it is a query; if it is about a future outcome I have past examples of, it is a model.
@@ -86,7 +86,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) Never training on a slice is not enough: choosing among 60 versions by their score on it carries the slice's luck into the choice.
 - (b) The versions are ordinary models of the week, each near Exhibit 1A's 0.897, so the edge shrinks without vanishing; and a slice that chose a version is validation, never training.
-- (d) No version was fitted to the 2,000, so the luck is about the size of their noise, near a point of accuracy, never a fall below calling nobody.
+- (d) No rule halves an edge: the fall is the luck that 60 tries picked, and the chosen version is an ordinary customer-table model, which Exhibit 1A puts at 0.897.
 
 **In the interview.** A slice used to choose is validation, so I expect its best score to fall back on fresh rows by the luck the choice picked, and I score the test once, at the end.
 
@@ -150,10 +150,10 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q11, key b, c
 
-**Why it holds.** A column passes when its value exists at the prediction moment. Age, job and housing and the previous campaign's result exist before any call. The previous result is strongly predictive, 65 percent yes among past successes, and still legitimate, because it was recorded before this campaign began, so it passes the timing test however strong it is. Duration exists only after this campaign's call, and a quarterly indicator for the current quarter, filled in once the quarter closes, does not exist on the morning the list is built: a published indicator can leak when its period has not ended, which is the calendar leak Wednesday named beside duration. Wednesday's chapter interrogated every column with this one question.
+**Why it holds.** A column passes when its value exists at the prediction moment. Age, job and housing and the previous campaign's result exist before any call. The previous result is strongly predictive, 65 percent yes among past successes, and still legitimate, because it was recorded before this campaign began, so it passes the timing test however strong it is. Duration exists only after this campaign's call, and so does a callback flag an agent sets during it, however much it reads like a fact about the client: a column written by this campaign's own calls is from the future on the morning the list is built. Wednesday's chapter interrogated every column with this one question.
 
 - (a) This campaign's last call has not happened on the morning the list is built, so its length is from the future.
-- (d) The current quarter has not closed on the morning of the list, so its count is from the future; last quarter's published count would pass.
+- (d) An agent sets it on a call in this campaign, which has not happened on the morning the list is built, so it is from the future however much it reads like a profile column.
 
 **In the interview.** I test a column by when it exists: a strong column from the past is a feature, and a respectable column from a period that has not ended is a leak.
 
@@ -236,11 +236,11 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q20, key d
 
-**Why it holds.** An offline score says the model ranks past rows well; it does not say the campaign will sell more deposits, and Booking.com's 23 comparisons put the correlation between the two near zero, -0.1 with an interval from -0.45 to 0.27, which is why the paper calls offline performance a health check. So the evidence is a randomised trial on the business number: next month's clients assigned at random between the list and today's rule, run in the same weeks, scored on deposits per call, with the size fixed before it starts. A before-and-after comparison mixes the list with the month, and on this file the yes rate climbed from 5.6 to 24.6 percent across the calls (Exhibit 5A), so a month can beat the last without the list. Letting each method choose its branches mixes the list with the branches. Friday's memo turned the score into a decision the committee could test.
+**Why it holds.** An offline score says the model ranks past rows well; it does not say the campaign will sell more deposits, and Booking.com's 23 comparisons put the correlation between the two near zero, -0.1 with an interval from -0.45 to 0.27, which is why the paper calls offline performance a health check. So the evidence is a randomised trial on the business number: next month's clients assigned at random between the list and today's rule, run in the same weeks, scored on deposits per call, with the size fixed before it starts. A before-and-after comparison mixes the list with the month, and on this file the yes rate climbed from 5.6 to 24.6 percent across the calls (Exhibit 5A), so a month can beat the last without the list. A random trial scored on AUC randomises the right thing and measures the wrong one. Friday's memo turned the score into a decision the committee could test.
 
 - (a) The yes rate moved from 5.6 to 24.6 percent across the file (Exhibit 5A), so this month against last month measures the calendar as much as the list.
-- (b) The test score is the honest offline number, and it is still offline: Booking.com found that such gains did not predict business gains.
-- (c) Branches chosen to suit each method differ in their clients, so the gap in deposits mixes the method with the branch; only a random assignment separates them.
+- (b) Randomising is right, and the AUC is still the offline health check Booking.com found did not predict business gains; the trial is scored on deposits.
+- (c) The test score is the honest offline number, and it is still offline: Booking.com found that such gains did not predict business gains.
 
 **In the interview.** Offline metrics earn a model its trial; a randomised trial on the business number, run in the same weeks, earns it the rollout.
 
@@ -250,17 +250,17 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 - (a) 0.5 treats the two errors as equal, while a default costs twenty times a wrongful rejection.
 - (c) 92 in 100 repaying sounds strong, but each default costs Rs 60,000 against Rs 3,000 lost on a rejection, so the bar sits near 95 in 100 repaying, and Q falls below it.
-- (d) 1 in 20 is the cost ratio, and the line is 3,000 over 63,000, about 1 in 21; P at 4 percent sits below it and is approved.
+- (d) Clearing the line is how the nudge acts, on a chance of a yes; here the chance is of a default, so an applicant must sit below the line, and Q at 8 percent sits above it.
 
 **In the interview.** The line is the cheap error's cost over both costs, so the same model calls on a 3 percent chance and lends only below about a 5 percent chance of default.
 
 ### Q22, key c
 
-**Why it holds.** Rohan's question leaves out the two facts that decide it: what a flag does, and how many flags the team can work. If a flag blocks the payment, a false alarm stops a genuine customer, and the survey Stripe cites says a third of them may not come back, so precision gains weight and the line rises. If a flag sends the payment to a reviewer, a false alarm costs an analyst's minutes while a missed fraud costs the payment, so recall leads, up to what the team can review; with a fixed team the number to report is precision at its capacity, as Flipkart's trust team read the top 250 and found 211 frauds. Each one-word answer is right in one of those worlds and wrong in the other, and F1 prices the two errors the same in both. So the reply opens on the question, then draws the line from the two costs. Tuesday met Stripe and Flipkart; Friday carried the cost line to Rohan's business.
+**Why it holds.** Rohan's question leaves out the two facts that decide it: what a flag does, and how many flags the team can work. If a flag blocks the payment, a false alarm stops a genuine customer, and the survey Stripe cites says a third of them may not come back, so precision gains weight and the line rises. If a flag sends the payment to a reviewer, a false alarm costs an analyst's minutes while a missed fraud costs the payment, so recall leads, up to what the team can review; with a fixed team the number to report is precision at its capacity, as Flipkart's trust team read the top 250 and found 211 frauds. Each one-word answer is right in one of those worlds and wrong in the other, and how rare fraud is settles neither, since it says how many false alarms come with each catch and never which costs more. So the reply opens on the question that decides it, then draws the line from the two costs. Tuesday met Stripe and Flipkart; Friday carried the cost line to Rohan's business.
 
 - (a) Stripe's break-even prices a block at a sale's margin; if a false block also loses the customer the line rises, so recall cannot be chosen before knowing what a flag does.
-- (b) A false decline costs a customer only when a flag declines the payment; if it queues a review, missed fraud is the larger cost, so precision cannot be chosen before knowing what a flag does.
-- (d) F1 weighs a false alarm and a missed fraud the same, which is right in neither world: their costs differ, and which costs more turns on what a flag does.
+- (b) How rare fraud is sets how many false alarms come with each catch and leaves open which error costs more; that turns on what a flag does, so this question cannot settle the answer.
+- (d) A false decline costs a customer only when a flag declines the payment; if it queues a review, missed fraud is the larger cost, so precision cannot be chosen before knowing what a flag does.
 
 **In the interview.** Precision or recall is a question about costs, so I first ask what a flag does and how many the team can review, then set the line from the two costs and report precision at the team's capacity.
 
@@ -272,8 +272,8 @@ The workbook flags an item to check when fewer than one learner in five got it r
 - [SV] (0): none
 - [D] (6): Q4, Q9, Q17, Q19, Q20, Q21
 - Easy (0): 
-- Medium (8): Q1, Q5, Q6, Q7, Q10, Q14, Q15, Q19
-- Hard (14): Q2, Q3, Q4, Q8, Q9, Q11, Q12, Q13, Q16, Q17, Q18, Q20, Q21, Q22
+- Medium (9): Q1, Q5, Q6, Q7, Q10, Q14, Q15, Q16, Q19
+- Hard (13): Q2, Q3, Q4, Q8, Q9, Q11, Q12, Q13, Q17, Q18, Q20, Q21, Q22
 - Mon (4): Q1, Q2, Q3, Q4
 - Tue (6): Q5, Q6, Q7, Q8, Q9, Q22
 - Wed (4): Q10, Q11, Q12, Q13
@@ -291,7 +291,7 @@ These items come from the week's source file, not the tracker. Accept one by add
 
 - Q1 (More than one correct, Medium, [S]): The bank's marketing head brings four asks. Which need a model that predicts? Circle every correct letter.
 - Q2 (One correct option, Hard, [F]): The logistic model on the customer table gives one client a score of 0.71, and its validation AUC is 0.761 (Exhibit 1A). What does the 0.71 say, and what would let the memo read it that way?
-- Q3 (One correct option, Hard, [S]): On Monday a junior tried 60 versions of the model, each on a different list of columns, scored all 60 on the same 2,000 held-out clients and kept the best: accuracy 0.9055 there, where calling nobody scores 0.8875. On 6,238 fresh clients, where calling nobody scores 0.8873, what does the chosen version score, and what have the 2,000 clients become?
+- Q3 (One correct option, Hard, [S]): On Monday a junior tried 60 versions of the model, each on a different list of the customer table's columns, scored all 60 on the same 2,000 held-out clients and kept the best: accuracy 0.9055 there, where calling nobody scores 0.8875. On 6,238 fresh clients, where calling nobody scores 0.8873, what does the chosen version score, and what have the 2,000 clients become?
 - Q4 (True or false, Hard, [D]): The calls run in date order. On the week's run the earliest 70 percent of rows say yes 5.6 percent of the time and the latest 30 percent say yes 24.6 percent of the time. Statement: for the question "whom do we call in the next campaign", a split by date estimates the model's score more honestly than a random split of all the rows. True or false, and why?
 - Q5 (True or false, Medium, [F]): Statement: an accuracy of 0.897 against 0.887 for calling nobody shows that the model at 0.5 is good enough to run the campaign. True or false, and why?
 - Q6 (Applied maths, Medium, [S]): From the model's row of Exhibit 2A, compute its precision, recall and F1 at the threshold of 0.5, each to two decimal places. Show the working.
@@ -304,13 +304,13 @@ These items come from the week's source file, not the tracker. Accept one by add
 - Q13 (One correct option, Hard, [F]): The marketing head reads Exhibit 3C and draws two conclusions. One: longer calls make deposits, so agents should be coached to keep clients on the line. Two: higher rates bring deposits, since euribor3m's weight is +0.39 once the other columns are held fixed. Which reply holds?
 - Q14 (One correct option, Medium, [S]): The unlimited tree scores 0.996 on training and 0.837 on validation, below calling nobody. Which reading and which next step are right?
 - Q15 (More than one correct, Medium, [F]): Which of these put a brake on overfitting? Circle every correct letter.
-- Q16 (One correct option, Hard, [F]): Five-fold cross-validation of the logistic model gave the five fold scores in Exhibit 4B. How many models were fitted, on about how many clients each, and what does the spread tell the committee?
+- Q16 (One correct option, Medium, [F]): Five-fold cross-validation of the logistic model gave the five fold scores in Exhibit 4B. How many models were fitted, on about how many clients each, and what does the spread tell the committee?
 - Q17 (True or false, Hard, [D]): Statement: the logistic model should go into the memo, although gradient boosting scores the highest validation AUC of the three families in Exhibit 4B. True or false, and why?
 - Q18 (One correct option, Hard, [F]): On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
 - Q19 (More than one correct, Medium, [D]): Which lines belong in the memo's caveat? Circle every correct letter.
 - Q20 (One correct option, Hard, [D]): Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). Which test does the memo propose for next month?
 - Q21 (One correct option, Hard, [D]): Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, and rejecting a good borrower costs Rs 3,000 of lost interest. His model, calibrated on recent loans, gives applicant P a 4 percent chance of default and applicant Q an 8 percent chance. Whom does Rohan approve?
-- Q22 (One correct option, Hard, [F]): Rohan Desai asks one question about a fraud model for Kalpa Financial Services' payments app: "Do we tune it for precision or for recall?" Exhibit 5C sets two public cases beside his question. What is the best first reply?
+- Q22 (One correct option, Hard, [F]): Rohan Desai asks one question about a fraud model for Kalpa Financial Services' payments app: "Do we tune it for precision or for recall?" Exhibit 5C sets two public cases beside his question. Which reply holds?
 
 ## Bank items folded into deeper items
 

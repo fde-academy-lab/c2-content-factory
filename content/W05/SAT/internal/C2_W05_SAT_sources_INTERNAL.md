@@ -20,7 +20,7 @@ bank-campaign number on the paper is either in the week's pipeline file
 | What prints | No bank item prints as the tracker words it: all 29 fold into 22 additions, and none moves to the stretch page. The first build printed the blanks of banks 1 to 3 from word banks; the raise folded them, since each sat beside an item that tested its word | At the bank's own pace the 29 items fill 59.5 of the 60 minutes, which leaves no time for the reasoned formats decision `saturday-interview-grade` asks for, and nine of the bank's thirteen option sets fail `scripts/distractor_audit.py` as the tracker prints them: in items 10, 11, 13, 14, 15 and 17 the key is the longest option, and in items 19, 20 and 21 the shortest option is under 60 percent of the longest. Folding keeps every bank concept inside the timed paper, so the stretch page carries three new written follow-ups instead |
 | No edits to `data/programme/paper_edits.yaml` | The failing option sets are folded into additions written to pass, never reworded in the shared edits file | Every change stays inside `content/W05/SAT`, so the pack cannot collide with another session's edits to a file every Saturday reads |
 | The data on the paper | Every part opens on UCI Bank Marketing (41,188 calls, CC BY 4.0) as the week's pipeline split and scored it; the rupee costs are Kalpa's from the rows (Rs 40, Rs 1,200, Rs 60,000, Rs 3,000) | The orchestrator's brief and the plan's thread two: the paper must match what the room ran. The row's planted Kalpa figures (the 96 to 4 split, the thresholds 0.12 and 0.85, settlement_status at 0.99) belonged to a Kalpa dataset that was never generated (the plan's section 6), so none prints; the proofs fail if one does. settlement_status is named once, as the leak Wednesday told as Kalpa's, with no number |
-| Levels | After the raise, 0 easy, 8 medium, 14 hard: 64 percent hard. The first build's 3 easy, 14 medium and 7 hard (29 percent) is the history in this row's next cell | Decision `saturday-interview-grade` asks about 60 percent, and exercise-builder's bar says a hard item combines at least two ideas on an exhibit or takes several dependent steps, while a single judgement or arithmetic the stem sets up is medium whatever it is labelled. The first draft labelled 15 hard; the blind sitting graded 4 hard; the fix pass deepened Q13 (a published indicator whose quarter has not closed) and Q24 (two applicants against a line the learner must compute), took the budget's answer off Exhibit 2B for Q10, and the honest count by the bar is 7: Q2, Q10, Q13, Q19, Q20, Q21 and Q24. Reaching 60 percent would mean replacing medium items with new multi-step ones, which the 60 minutes do not hold at the bar's pace; it is flagged for the orchestrating session |
+| Levels | After the raise, 0 easy, 9 medium, 13 hard: 59 percent hard by exercise-builder's bar. The raise's blind sitting graded 4 hard and 2 borderline before its fix pass (below). The first build's 3 easy, 14 medium and 7 hard (29 percent) is the history in this row's next cell | Decision `saturday-interview-grade` asks about 60 percent, and exercise-builder's bar says a hard item combines at least two ideas on an exhibit or takes several dependent steps, while a single judgement or arithmetic the stem sets up is medium whatever it is labelled. The first draft labelled 15 hard; the blind sitting graded 4 hard; the fix pass deepened Q13 (a published indicator whose quarter has not closed) and Q24 (two applicants against a line the learner must compute), took the budget's answer off Exhibit 2B for Q10, and the honest count by the bar is 7: Q2, Q10, Q13, Q19, Q20, Q21 and Q24. Reaching 60 percent would mean replacing medium items with new multi-step ones, which the 60 minutes do not hold at the bar's pace; it is flagged for the orchestrating session |
 | Formats | After the raise: twelve one-correct items, three statements judged with their reasons (two keyed True, one False), four more-than-one items and three worked items; the word banks went with the blanks they served | Decision `saturday-interview-grade`; the row's format list. Each bank blank defines the term a later item asks the learner to apply, so it prints after them. The bank's scenario set (items 22 to 26) folds because its item 25 prints the answers to its items 22 and 24 in its options |
 | What the paper never prints | No student-facing line prints 0.032 (Exhibit 2B labels the row "The cost line"), the dataset's discard note, a timeline placing duration after the call, the word leaky, the split by date's AUC, either F1 or either bill that Q8 asks for, the top 1,000's 404 buyers, or the word calibration outside Q21's stem | Each would answer a later or earlier item: Q8 derives the cost line, Q12 and Q13 test duration's timing, and Q2 judges the random split. The note and the timeline were the week's teaching, so they sit in the key and the guide; the proofs fail if 0.032, 1 in 31, F1's working or 0.657 appears on the paper |
 | Real cases | Instacart (Fortune and Instacart's engineering blog) and Booking.com (KDD 2019), refetched by the first build; Zech and others (PLOS Medicine 2018), Stripe's fraud primer and Flipkart's BIRDNEST evaluation (arXiv 1511.06030), refetched by the raise. Each was taught in the week's own decks (Wednesday, Tuesday, Tuesday) | Decision `saturday-real-cases`: each figure on the paper is in a fetched source below. The week's other verified cases stay in the discussion guide or unused |
@@ -49,6 +49,56 @@ file, and the proofs and the audit passed after it.
 | Exhibit 5B's Instacart line read as garbled | It follows Fortune's words: a metric used to evaluate the model that predicts whether an item is in stock |
 | Q24's options print the cost-over-costs form that Q8 asks for | Kept: Q24 sits after Q8, and its options now print the line only as "near a 5 percent chance" |
 | Difficulty: 4 hard | Relabelled to 7 by the bar after the fix pass, as the Levels row says |
+
+## What did the raise change, and why?
+
+The orchestrator's brief of 28 October 2026: at least 13 hard timed items inside the same 60 minutes,
+made by turning single-judgement items into items that combine two of the week's ideas on an exhibit
+or take several dependent steps, on the week's real numbers and verified cases; every bank concept
+kept; easy items cut or folded rather than the paper lengthened; keys spread and never the longest;
+one under-specified item whose best answer opens with a clarifying question. Every decision of the
+first build stands unless a row below changes it.
+
+| Change | Item now | Reason |
+|---|---|---|
+| The three word-bank blanks (banks 1 to 3) fold, and the three word banks go | Banks 1, 2 and 3 fold into Q3, Q6 and Q10 | They were the paper's three easy items, and each printed beside an item that used its word: the peek item said the slice was spent, the worked matrix put the false negatives under recall, and the duration item's reason is leakage |
+| The peek item predicts the score of the best of 60 versions on fresh rows | Q3, hard | The old item named the misuse in its stem. The new one runs Monday's own loop (0.9055 peeked, 0.8971 fresh, from the D1 notebook): selection on a slice, the baseline as the anchor and the slice's new status, three ideas on Exhibit 1A |
+| The score item asks what lets the memo read 0.71 as a chance | Q2, hard | Monday's probability reading joined to Friday's finding that a ranking can hold while the scores drift: the tempting reply cites the AUC, which vouches for the order only |
+| The bill item becomes a worked item: F1 against the bill at 0.20 and 0.10 | Q8, hard | Two thresholds, two yardsticks, two disagreeing choices and the reason they disagree; worked, since a lettered version made the key the commonest part of every option. It leaves 0.5 to Q6, so no figure repeats |
+| The budget item's options become nested plans | Q9, hard | The old key was the only option carrying a result (404 buyers). Now the 864 above 0.20 and the 268 above 0.5 sit inside the top 1,000, which the learner has to see; 404 prints nowhere |
+| The importance and sign-flip items merge into one item on two conclusions | Q13, hard | Two of Wednesday's ideas on one exhibit, with the four options as the four combinations of the two verdicts, so no part marks the key; banks 7 and 15 fold into it |
+| A shortcut item on Zech and others' pneumonia model | Q12, hard | Wednesday's verified case: leakage through a proxy against overfitting, read from 0.931, 0.815, 0.861 and the two pneumonia rates |
+| The alarm item asks which way the cut on drifting scores moves | Q18, hard | Its two best options share the rule and differ in direction, so the learner has to reason from scores that run low to a cut that moves down |
+| The evidence item asks for the trial's design | Q20, hard | Booking.com joined to Exhibit 5A's drift: a before-and-after measures the calendar, and a random trial scored on AUC measures the wrong thing |
+| The lending item's options lose the nudge's 3 percent and a self-contradicting option | Q21, hard | The old option c printed Q7's answer as "a 3 percent chance"; option d now flips the direction, the slip a learner carrying the nudge's rule makes |
+| A new under-specified fraud item | Q22, hard | The row's fraud anchor had no item. Rohan's question leaves out what a flag does and how many the team can review; two replies open on a question, and only one asks the question that decides it. Stripe and Flipkart were taught on Tuesday |
+| Q16, the folds, relabelled medium | Q16 | One count of rows and one reading of the spread, so medium by the bar, whatever the first build labelled it |
+| The workbook's demo counts Part 1's own size | `scripts/build_saturday_paper.py`, `demo_overconfident()` | The demo marks cover five items and expected two overconfident seats, which holds only when Part 1 has five items; the raised Part 1 has four. Weeks 1, 2 and 4 still compute seats 4 and 6, so their manifests do not change |
+| Exhibit 5A's caption no longer says "instead of at random" | Exhibit 5A | The blind sitting read the caption as Q4's answer |
+
+The minutes: 10 in Part 1, 15.5 in Part 2, 10.5 in Part 3, 10 in Part 4 and 12.5 in Part 5, 58.5 of 60.
+The hard items carry 2.5 or 3 minutes, and the worked F1 item 3.5.
+
+## What did the raise's blind sitting find, and what changed?
+
+One fresh agent sat the raised student paper alone on 28 October 2026 and matched all 22 keys. It
+graded 4 items hard (Q8, Q13, Q17, Q18) and 2 borderline (Q3, Q20). One fix pass followed; the proofs
+and the audit passed after it.
+
+| Finding | What changed |
+|---|---|
+| Q11's option d, an economic indicator for an unclosed quarter, was keyed a leak while the paper's honest model, its 0.795 and Q10's key all use the five indicators | Option d is now a callback flag an agent sets during this campaign, which fails the timing test without contradicting the honest columns. The first build carried the same conflict |
+| Q2's key was the only option with an "if" | Option b now carries one too |
+| Q3's 0.897 could not be worked out, and option b was defensible if the columns were noise | The stem says the versions use the customer table's columns, whose model Exhibit 1A puts at 0.897; option d is now 0.902, a halved edge, beside the key |
+| Q12's exhibit stated the hospital shortcut outright | The row on a network naming the hospital is gone; the learner reads it from 0.861 and the two pneumonia rates |
+| Q19's option c restated Q18's monitoring rule | It now reads "the reading that would retire the model, stated as a number before launch" |
+| Q20's key sat where two options overlapped and was the only random design | The options now cross random or not with deposits or AUC |
+| Q21's option d contradicted itself (its own 1 in 20 approves P) | It now flips the direction: Q clears the line, P does not |
+| Q22's stem asked for the "best first reply", and its key was the only option that was not a metric | The stem asks which reply holds, and option b opens on a question that cannot decide it, how rare fraud is |
+| Q4's answer read off Part 5's opener and Exhibit 5A's caption; Q4's key sits beside random-split scores elsewhere | The caption is changed; the random split running Monday to Thursday with its caveat said aloud is the week's design, so the guide's Q4 row says so |
+| Q17: a paired gap of 0.011 on the same rows may be real, so option c is arguable | Kept: the key says another split could reorder the models and names the paired test on the same five folds, as the first build's fix pass settled |
+| Q7 should accept 0.033 | It already does |
+| Difficulty: most hard items solved by eliminating absurd options | The fixes above replace the giveaway options in Q3, Q11, Q20, Q21 and Q22; Q16 is relabelled medium. The count by the bar after the fix pass is 13; the sitting's own count, before the fixes, was 4 |
 
 ## Which data does the paper print, and where does each number come from?
 

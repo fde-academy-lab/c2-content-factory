@@ -36,9 +36,9 @@ Your ratings: Part 1 ___ · Part 2 ___ · Part 3 ___ · Part 4 ___ · Part 5 ___
 | 1. Should the bank build a model, and what must it beat? | whether you can frame a prediction problem, split the rows honestly and read what a model's score says | Q1 to Q4 (4) | 10 | 0 | 1 | 3 |
 | 2. Which number tells the truth, and where does the line go? | whether you can read a confusion matrix, price each error and set the line the business can afford | Q5 to Q9 (5) | 15.5 | 0 | 3 | 2 |
 | 3. What was the model allowed to know? | whether you can test each column against the moment of prediction and say what a coefficient does and does not prove | Q10 to Q13 (4) | 10.5 | 0 | 1 | 3 |
-| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q14 to Q17 (4) | 10 | 0 | 2 | 2 |
+| 4. Is the model learning, or memorising? | whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships | Q14 to Q17 (4) | 10 | 0 | 3 | 1 |
 | 5. Would the committee sign, and what moves to lending? | whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending | Q18 to Q22 (5) | 12.5 | 0 | 1 | 4 |
-| Total | | 22 | 58.5 | 0 | 8 | 14 |
+| Total | | 22 | 58.5 | 0 | 9 | 13 |
 
 ---
 
@@ -70,7 +70,7 @@ flowchart LR
 The bank's marketing head brings four asks. Which need a model that predicts? Circle every correct letter.
 
 a) the clients to call first next month, ranked by their chance of saying yes
-b) the count of yes answers in each month of 2009, for the annual report
+b) each month's chance of a yes in 2009, counted from the calls for the annual report
 c) the clients whose previous campaign ended in success, listed by branch
 d) each new client's own chance of a yes on a first call, before anyone calls
 
@@ -79,18 +79,18 @@ d) each new client's own chance of a yes on a first call, before anyone calls
 The logistic model on the customer table gives one client a score of 0.71, and its validation AUC is 0.761 (Exhibit 1A). What does the 0.71 say, and what would let the memo read it that way?
 
 a) A 71 percent chance of a yes, and the AUC of 0.761 already shows the scores can be read as chances.
-b) The model is right on about 71 percent of the clients it scores, which the validation slice confirms.
+b) The model is right on about 71 percent of the clients it scores, if the validation slice confirms it.
 c) The client will say yes, since a score above 0.5 is a yes once the model beats calling nobody.
 d) About 71 in 100 such clients say yes, if about 71 in 100 validation clients scored near 0.71 did.
 
 #### Q3 · Hard · circle one letter · Predict the fresh score
 
-On Monday a junior tried 60 versions of the model, each on a different list of columns, scored all 60 on the same 2,000 held-out clients and kept the best: accuracy 0.9055 there, where calling nobody scores 0.8875. On 6,238 fresh clients, where calling nobody scores 0.8873, what does the chosen version score, and what have the 2,000 clients become?
+On Monday a junior tried 60 versions of the model, each on a different list of the customer table's columns, scored all 60 on the same 2,000 held-out clients and kept the best: accuracy 0.9055 there, where calling nobody scores 0.8875. On 6,238 fresh clients, where calling nobody scores 0.8873, what does the chosen version score, and what have the 2,000 clients become?
 
 a) About 0.906 again, since the version never trained on the 2,000; they remain a fair test of it.
 b) About 0.887, since the loop found only luck and its edge vanishes; the 2,000 have become training.
 c) About 0.897: part of the 1.8-point edge was luck the loop picked; the 2,000 are now validation.
-d) About 0.80, since 60 versions overfit the 2,000 and fall below calling nobody; they are now spent.
+d) About 0.902: a peek doubles an edge, so half of the 1.8 points was luck; the 2,000 are now validation.
 
 #### Q4 · Hard · circle one letter · Judge the split
 
@@ -213,7 +213,7 @@ The list for next month's campaign is built on the morning before the first call
 a) duration, the length in seconds of this campaign's last call to the client
 b) poutcome, the last campaign's result; 65 percent of its successes say yes
 c) age, job and housing, as they stand in the customer table that morning
-d) nr.employed for the current quarter, filled in once that quarter closes
+d) a callback flag an agent sets when a client asks to be called again in this campaign
 
 **Exhibit 3B.** A pneumonia model trained on chest X-rays from two hospital systems, as Zech and others report it (PLOS Medicine, 2018).
 
@@ -223,7 +223,6 @@ d) nr.employed for the current quarter, filled in once that quarter closes
 | The same model's AUC at a third hospital system | 0.815 |
 | AUC from sorting X-rays from the two training systems by hospital alone | 0.861 |
 | Pneumonia rate in the two training systems | 34.2 percent and 1.2 percent |
-| X-rays from one system whose hospital a network identified | 22,050 of 22,062 |
 
 #### Q12 · Hard · circle one letter · Diagnose the drop
 
@@ -310,7 +309,7 @@ d) a simpler depth or penalty, chosen by five-fold cross-validation
 | Random forest, on validation | 0.799 |
 | Gradient boosting, on validation | 0.806 |
 
-#### Q16 · Hard · circle one letter · Count the folds
+#### Q16 · Medium · circle one letter · Count the folds
 
 Five-fold cross-validation of the logistic model gave the five fold scores in Exhibit 4B. How many models were fitted, on about how many clients each, and what does the spread tell the committee?
 
@@ -334,9 +333,9 @@ d) False: AUC cannot compare models of different families, so the committee need
 
 *What it shows: whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending. 5 items, about 12.5 minutes.*
 
-On Friday the room wrote the memo for Meera Raghavan's committee: Anand Iyer, the marketing lead and Rohan Desai of Kalpa Financial Services, who is watching for his own business. The bank's file showed what time does to a model. Trained on the earliest 70 percent of the calls and scored on the latest 30 percent, the logistic model on the honest columns met a world where far more clients said yes than it had learned (Exhibit 5A). Exhibit 5B, with the first item, sets two public cases beside it.
+On Friday the room wrote the memo for Meera Raghavan's committee: Anand Iyer, the marketing lead and Rohan Desai of Kalpa Financial Services, who is watching for his own business. The bank's file showed what time does to a model. Trained on the earliest 70 percent of the calls and scored on the latest 30 percent, the logistic model on the honest columns met a world where far more clients said yes than it had learned (Exhibit 5A). Exhibit 5B sets two public cases beside it.
 
-**Exhibit 5A.** The four lines of the committee memo, and the bank's file split by date instead of at random: the logistic model on the honest columns.
+**Exhibit 5A.** The four lines of the committee memo, and the bank's file split by date: the logistic model on the honest columns.
 
 ```mermaid
 flowchart LR
@@ -374,7 +373,7 @@ Which lines belong in the memo's caveat? Circle every correct letter.
 
 a) the validation AUC of 0.795, against 0.761 for the customer table alone
 b) the segment where the model performs worst, with how many clients it holds
-c) the gap between predicted and actual yes rates that would trigger a retrain
+c) the reading that would retire the model, stated as a number before launch
 d) the number of calls the campaign budget pays for in the next month
 
 #### Q20 · Hard · circle one letter · Choose the evidence
@@ -382,8 +381,8 @@ d) the number of calls the campaign budget pays for in the next month
 Anand Iyer asks what evidence would make him sign. Across 23 comparisons, Booking.com found offline gains and business gains almost uncorrelated (Exhibit 5B). Which test does the memo propose for next month?
 
 a) Call every client by the list next month, then compare its deposits per call with this month's, before the switch.
-b) Score the list once on the sealed test slice, and sign if its AUC holds near the 0.795 it scored on validation.
-c) Run the list beside today's rule for a month, each on the branches it suits best, and compare deposits sold.
+b) Assign next month's clients at random, half to the list and half to today's rule; compare the list half's AUC with 0.795.
+c) Score the list once on the sealed test slice, and sign if its AUC holds near the 0.795 it scored on validation.
 d) Assign next month's clients at random, half to the list and half to today's rule; compare deposits per call.
 
 #### Q21 · Hard · circle one letter · Move the line to lending
@@ -393,7 +392,7 @@ Rohan Desai's lending book: approving a borrower who defaults costs Rs 60,000, a
 a) Both: each is far below a 50 percent chance of default, the neutral line for a yes or no decision.
 b) P only: the line sits near a 5 percent chance of default, so Q at 8 percent costs more than it pays.
 c) Both: an 8 percent chance of default means 92 in 100 such borrowers repay, a strong book for any lender.
-d) Neither: a default costs twenty times a rejection, so any chance above 1 in 20 must mean a rejection.
+d) Q only: the line sits near a 5 percent chance of default, and Q at 8 percent clears it while P does not.
 
 **Exhibit 5C.** Two public fraud cases. Stripe: its primer on machine learning for fraud protection. Flipkart with Carnegie Mellon: Hooi and others, BIRDNEST, arXiv 1511.06030.
 
@@ -405,12 +404,12 @@ d) Neither: a default costs twenty times a rejection, so any chance above 1 in 2
 
 #### Q22 · Hard · circle one letter · Answer Rohan's question
 
-Rohan Desai asks one question about a fraud model for Kalpa Financial Services' payments app: "Do we tune it for precision or for recall?" Exhibit 5C sets two public cases beside his question. What is the best first reply?
+Rohan Desai asks one question about a fraud model for Kalpa Financial Services' payments app: "Do we tune it for precision or for recall?" Exhibit 5C sets two public cases beside his question. Which reply holds?
 
 a) Recall: Stripe's arithmetic blocks above a 5 percent break-even, so a missed fraud is the cost; catch all of it.
-b) Precision: a third of customers leave after a false decline, so flag only the payments the model is sure of.
-c) Ask first: does a flag block the payment or send it to a reviewer, and how many can the team review a day?
-d) F1: fraud is rare, so F1 weighs both errors at once, and the threshold goes where F1 peaks on validation.
+b) Ask first how rare fraud is: below 1 in 100 payments, false alarms swamp any team, so precision leads.
+c) Ask first what a flag does, block the payment or send it to review, and how many the team can review a day.
+d) Precision: a third of customers leave after a false decline, so flag only the payments the model is sure of.
 
 ---
 
