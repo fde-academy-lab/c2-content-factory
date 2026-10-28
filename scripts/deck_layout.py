@@ -283,15 +283,21 @@ def pill(slide, x, y, text, fill, ink, w=0.86, h=0.3, size=11, line=None, tracki
     return s
 
 
+# From Week 5 on no logo and no institutional branding appears in any artifact (decision
+# w5-artifact-set); scripts/build_deck.py turns this off for a deck of Week 5 or later.
+BRANDED = True
+
+
 def header(slide, dark=False, right=None):
     """The institute's mark and name at the top left, and the programme or the day at the right."""
-    slide.shapes.add_picture(str(brand.LOGO), Inches(MARGIN), Inches(HEADER_TOP), Inches(0.46),
-                             Inches(0.46))
     ink = WHITE if dark else INK
     sub = LILAC if dark else MUTED
-    label(slide, MARGIN + 0.56, HEADER_TOP + 0.03, 5.6, brand.INSTITUTE, 9, ink, bold=True)
-    label(slide, MARGIN + 0.56, HEADER_TOP + 0.24, 6.4, brand.ADMIN_LINE, 5.5, sub, bold=True,
-          tracking=300)
+    if BRANDED:
+        slide.shapes.add_picture(str(brand.LOGO), Inches(MARGIN), Inches(HEADER_TOP), Inches(0.46),
+                                 Inches(0.46))
+        label(slide, MARGIN + 0.56, HEADER_TOP + 0.03, 5.6, brand.INSTITUTE, 9, ink, bold=True)
+        label(slide, MARGIN + 0.56, HEADER_TOP + 0.24, 6.4, brand.ADMIN_LINE, 5.5, sub, bold=True,
+              tracking=300)
     label(slide, SLIDE_W - MARGIN - 6.2, HEADER_TOP + 0.12, 6.2, right or brand.PROGRAMME_LINE, 5.5,
           sub, bold=True, align=PP_ALIGN.RIGHT, tracking=300)
 
@@ -432,10 +438,11 @@ def section_slide(slide, prs, number, title, promise, chapters, current, footer,
 def title_slide(slide, prs, meta, chapters, total, numbers=None):
     """The deck's cover: the institute, the day, the headline, and the client's words."""
     background(slide, prs, "dark")
-    slide.shapes.add_picture(str(brand.LOGO), Inches(MARGIN + 0.1), Inches(0.62), Inches(1.15),
-                             Inches(1.15))
-    label(slide, MARGIN + 1.5, 0.88, 7.5, brand.INSTITUTE, 16, WHITE, bold=True)
-    label(slide, MARGIN + 1.5, 1.24, 8.5, brand.ADMIN_LINE, 7, LAV, bold=True, tracking=300)
+    if BRANDED:
+        slide.shapes.add_picture(str(brand.LOGO), Inches(MARGIN + 0.1), Inches(0.62), Inches(1.15),
+                                 Inches(1.15))
+        label(slide, MARGIN + 1.5, 0.88, 7.5, brand.INSTITUTE, 16, WHITE, bold=True)
+        label(slide, MARGIN + 1.5, 1.24, 8.5, brand.ADMIN_LINE, 7, LAV, bold=True, tracking=300)
     rect(slide, MARGIN + 0.1, 2.12, WIDTH - 0.2, 0.012, SOFT)
     y = 2.45
     if meta.get("kicker"):

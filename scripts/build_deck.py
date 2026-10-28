@@ -1042,6 +1042,11 @@ def main():
     a = ap.parse_args()
     src = pathlib.Path(a.source)
     out = pathlib.Path(a.out) if a.out else src.with_suffix(".pptx")
+    # From Week 5 on a deck carries no logo and no institutional branding (decision w5-artifact-set).
+    week = re.match(r"C2_W(\d{2})_", src.name)
+    if week and int(week.group(1)) >= 5:
+        import deck_layout
+        deck_layout.BRANDED = False
     n, shrunk, cramped = build(src, out, a.footer or footer_for(src.read_text(), src.stem))
     note = f", {shrunk} set smaller so their diagram stays readable" if shrunk else ""
     print(f"      {out.name}: {n} slides{note}")
