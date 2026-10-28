@@ -29,7 +29,7 @@ Monday gave the bank's call list a split and a baseline to beat, Tuesday scored 
 
 **The idea in three lines.** A model that learns its training rows too closely scores well on them and badly on new rows: that gap is variance, and a model with a large gap is overfitting. A model too simple to be right anywhere has two low scores close together: that is bias. Read the gap first, then the level, and always put the baseline beside both.
 
-**Worked example (invented).** Asha memorises five past papers and scores 100 on them and 61 on the new exam; Bilal learns the method and scores 84 and 81; Chitra skims and scores 58 and 56. Asha is variance, Chitra is bias, Bilal is about right. On the bank's real file, a tree with no depth limit scored 99.6 percent on its 24,712 training customers and 84.1 percent on 8,238 validation customers, below the 88.7 percent of calling nobody.
+**Worked example (invented).** One student memorises five past papers and scores 100 on them and 61 on the new exam; a second learns the method and scores 84 and 81; a third skims and scores 58 and 56. The memoriser is variance, the skimmer is bias, the learner is about right. On the bank's real file, a tree with no depth limit scored 99.6 percent on its 24,712 training customers and 84.1 percent on 8,238 validation customers, below the 88.7 percent of calling nobody.
 
 ![Learning curves for a stump, an unlimited tree and a braked tree on the bank's file](../1_in_class_training_content/slides/img/C2_W05_D04_fig_learning_curves_bank_STUDENT.png)
 

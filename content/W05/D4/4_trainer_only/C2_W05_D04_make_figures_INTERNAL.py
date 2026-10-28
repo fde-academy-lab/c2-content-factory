@@ -142,7 +142,7 @@ timeline(True, "fig_timeline_thursday.png")
 timeline(False, "fig_timeline_open.png")
 
 # ------------------------------------------------------------------ concept 1
-students = pd.DataFrame({"student": ["Asha\nmemorises", "Bilal\nlearns the method", "Chitra\nskims"],
+students = pd.DataFrame({"student": ["the memoriser", "the learner", "the skimmer"],
                          "past": [100, 84, 58], "exam": [61, 81, 56]})
 fig, ax = plt.subplots(figsize=(9, 4.2))
 x = np.arange(3)
@@ -171,9 +171,9 @@ axes[1].set_title("One question: practice 8 of 10, new 4 of 4")
 save(fig, "fig_tiny_tree.png")
 
 papers = [1, 2, 3, 4, 5]
-curves = {"Asha: variance": ([100] * 5, [48, 53, 56, 59, 61]),
-          "Chitra: bias": ([60, 59, 58, 58, 58], [52, 54, 55, 56, 56]),
-          "Bilal: about right": ([95, 90, 87, 85, 84], [62, 71, 76, 79, 81])}
+curves = {"Memoriser: variance": ([100] * 5, [48, 53, 56, 59, 61]),
+          "Skimmer: bias": ([60, 59, 58, 58, 58], [52, 54, 55, 56, 56]),
+          "Learner: about right": ([95, 90, 87, 85, 84], [62, 71, 76, 79, 81])}
 fig, axes = plt.subplots(1, 3, figsize=(13, 4.2), sharey=True)
 for ax, (name, (p, e)) in zip(axes, curves.items()):
     ax.plot(papers, p, "o-", color=VIOLET, lw=2.4, label="practice")

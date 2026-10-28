@@ -53,7 +53,7 @@ Block one is 180 trainer minutes. Block two gives the trainer 60 minutes, then t
 
 | Chapter | Draw first | Ask before showing | Stage this misconception | Wrong number, shown exactly, and its fix | Click | Interview line |
 |---|---|---|---|---|---|---|
-| 1 | two bars per student, practice and exam | who tops the new exam? | a perfect practice score means ready | Asha's 100 against 61 (invented); fix: read the exam score | explorable at degree 12: training 0, validation large | overfitting is a gap you measure |
+| 1 | two bars per student, practice and exam | who tops the new exam? | a perfect practice score means ready | the memoriser's 100 against 61 (invented); fix: read the exam score | explorable at degree 12: training 0, validation large | overfitting is a gap you measure |
 | 2 | the seven-bend curve through nine dots | will held-out error be bigger or smaller? | regularisation improves accuracy | no brake: 0.95 teaching, 5.28 held out; fix: alpha 10 gives 2.90 | brake slider at degree 12 | a brake trades a little bias for less variance |
 | 3 | a 5 by 20 grid of folds | how far apart will five deals land? | one validation score is the score | deals of five shoppers from 40 to 80 percent; fix: five folds, mean with spread | reshuffle five times | one split carries its luck |
 | 4 | a two-question tree | which question comes first? | a forest cannot overfit | 100 trees mean 280 leaves to read; fix: count what you must explain | none | a forest lowers variance and still must beat the simple model |

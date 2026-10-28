@@ -158,30 +158,30 @@ score means a ready model. The prediction to ask for: who tops the new exam.
 ---
 
 ## S7. Question: who tops the new exam?
-*Five past papers. Asha memorises, Bilal learns the method, Chitra skims. Invented.*
+*Five past papers. One student memorises, one learns the method, one skims. Invented.*
 
 ```cards
-icon: book-open | eyebrow: Asha | title: Memorises every answer | body: Past papers: perfect. | tone: light
-icon: lightbulb | eyebrow: Bilal | title: Works out each method | body: Past papers: good. | tone: light
-icon: eye | eyebrow: Chitra | title: Skims | body: Past papers: weak. | tone: light
+icon: book-open | eyebrow: Student 1 | title: The memoriser | body: Every answer by heart. Past papers: perfect. | tone: light
+icon: lightbulb | eyebrow: Student 2 | title: The learner | body: Works out each method. Past papers: good. | tone: light
+icon: eye | eyebrow: Student 3 | title: The skimmer | body: Reads quickly. Past papers: weak. | tone: light
 ```
 
 ```notes
-LIVE, 3 minutes. Ask for a prediction in the chat or by raised fingers: 1 Asha, 2 Bilal, 3 Chitra.
-Count them aloud. Most rooms vote Asha because she topped practice. Do not reveal; click.
+LIVE, 3 minutes. Ask for a prediction in the chat or by raised fingers: 1, 2 or 3.
+Count them aloud. Most rooms vote for the memoriser, who topped practice. Do not reveal; click.
 ```
 
 ---
 
 ## S8. Answer: the student who learned the method
-*Asha's 39-point drop is the whole lesson.*
+*The memoriser's 39-point drop is the whole lesson.*
 
 ![Practice against new exam for three invented students](img/C2_W05_D04_fig_students_STUDENT.png)
 
 ```notes
-LIVE, 3 minutes. Asha: 100 on practice, 61 on the exam. Bilal: 84 and 81. Chitra: 58 and 56. Land
+LIVE, 3 minutes. The memoriser: 100 on practice, 61 on the exam. The learner: 84 and 81. The skimmer: 58 and 56. Land
 the line: practice scores reward memory; only the exam measures learning. These are the row's own
-100 and 61, kept as an invented story. Ask: which student is a tree with no depth limit? (Asha.)
+100 and 61, kept as an invented story. Ask: which student is a tree with no depth limit? (The memoriser.)
 ```
 
 ---
@@ -192,10 +192,10 @@ the line: practice scores reward memory; only the exam measures learning. These 
 ```mermaid
 flowchart LR
     G{"<b>Gap between</b><br/><b>practice and exam?</b>"}
-    V["<b>Wide gap</b><br/>VARIANCE<br/>Asha: overfitting"]
+    V["<b>Wide gap</b><br/>VARIANCE<br/>the memoriser"]
     L{"<b>Both scores</b><br/><b>high?</b>"}
-    B["<b>Both low, close</b><br/>BIAS<br/>Chitra: underfitting"]
-    R["<b>Both high, close</b><br/>about right<br/>Bilal"]
+    B["<b>Both low, close</b><br/>BIAS<br/>the skimmer"]
+    R["<b>Both high, close</b><br/>about right<br/>the learner"]
     G -- wide --> V
     G -- narrow --> L
     L -- no --> B
@@ -236,9 +236,9 @@ which tree learned Kalpa's customers, and which learned these ten people?
 ![Three pairs of learning curves for the invented students](img/C2_W05_D04_fig_student_curves_STUDENT.png)
 
 ```notes
-LIVE, 5 minutes. A learning curve is two lines against the amount of training. Asha's practice line
-stays at 100 while her exam line crawls: a gap that more papers barely close. Chitra's two lines
-meet low. Bilal's meet high. Explorable click: open the depth and brake explorer, default degree 12,
+LIVE, 5 minutes. A learning curve is two lines against the amount of training. The memoriser's practice
+line stays at 100 while the exam line crawls: a gap that more papers barely close. The skimmer's two lines
+meet low; the learner's meet high. Explorable click: open the depth and brake explorer, default degree 12,
 read the two errors, and let the room name it: memorising.
 ```
 
@@ -724,7 +724,7 @@ theirs aloud.
 ```notes
 LIVE, 4 minutes. The trap, shown exactly: 99.6 percent is the number a teammate posts, and a
 Marketing lead who sees it books the campaign. The check that catches it is the validation number
-beside the baseline. The fix is the brake. Land the line: this tree is Asha.
+beside the baseline. The fix is the brake. Land the line: this tree is the memoriser.
 ```
 
 ---
