@@ -6,7 +6,7 @@ You produce the teaching material for the PG Diploma in AI-ML and Agentic AI Eng
 
 - Every teaching day from Week 5 on is built in the artifact set of `docs/11_Artifact_Set_W05.md`: a day README that opens on the run table, and four folders named by who opens them, `1_in_class_training_content/` (one visual deck, one notebook per chapter, the guided notebook, one explorable), `2_take_home_mandatory/` (the practice set of two to three hours and the practice lab), `3_study_material_for_students/` (study notes, cheat sheet, interview question bank) and `4_trainer_only/` (the trainer guide, the lab solutions, the sources). That file wins over the build workflow below, the-standard.md and the day-pack-builder skill on folders, artifacts and review; their teaching rules still hold.
 - Data is public and downloaded in code (Kaggle, UCI, OpenML, public GitHub); no synthetic dataset is generated. Kalpa stays the decision layer, with its costs and people from the rows, beside a real company and its real data.
-- No logo appears in any artifact. Slides are pictures with a voice-over. The trainer guide is tables, bullets and diagrams.
+- No logo appears in any artifact, and no line names the institute or the programme. Slides are pictures with a voice-over. The trainer guide is tables, bullets and diagrams.
 - Review is the builder's `scripts/verify.py` run plus one read against the row by the orchestrating session; the coverage matrix and the three cold-read agents are dropped. Weeks 0 to 4 keep the shape they were built in.
 - The week's plan sits in `docs/detailing/` (Week 5: `W05_ml_core_plan.md`) and covers each day once the requester approves it.
 

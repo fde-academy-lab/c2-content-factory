@@ -69,7 +69,7 @@ with `scripts/build_deck.py`. It is a picture book with a voice-over.
   example `*Train, validation, test; the seed; the baseline · also searched as: train test
   split, data leakage, baseline model*`.
 - Speaker notes give the minutes, the one line to land, the click, and the question to ask.
-- No logo of any institution or company appears on any slide or page.
+- No logo of any institution or company appears on any slide or page, and no line names the institute or the programme; a slide header carries only the week, the day and the day's topic (the requester, 28 October 2026).
 
 **Notebooks**: one short notebook per concept chapter (8 to 15 cells) and one per case chapter,
 each case notebook building on the one before, plus the guided in-session notebook (the row's
