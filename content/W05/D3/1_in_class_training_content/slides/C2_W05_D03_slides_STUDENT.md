@@ -289,8 +289,12 @@ decision, never a ritual.
 
 ![Raw against standardised, A's nearest neighbour changes](img/C2_W05_D03_ch2_scaling_STUDENT.png)
 
+Airbnb's first search network stalled until its features were standardised.
+
 ```notes
-LIVE, 4 minutes. Predict first: after standardising, is A's nearest neighbour still B? It becomes
+LIVE, 5 minutes. Airbnb's search team fed their first neural network the tree model's raw features
+and the loss stopped improving midway; normalising fixed it (Haldar and others, arXiv 1810.09591,
+facts in the sources file). Predict first: after standardising, is A's nearest neighbour still B? It becomes
 C, who also visits twice. The formula is named last: z = (value - mean) / standard deviation, with
 the mean and spread learned on training rows only.
 ```
@@ -444,8 +448,12 @@ the drag, land the day's line: the score fell and the model got better.
 | A strong column known in time stays | never; strength alone is no evidence of a leak |
 | Ship the honest score, which is lower | never ship a model that cannot run that morning |
 
+Kaggle, 2011: the winners rebuilt the test answers from a public crawl and scored AUC 0.981.
+
 ```notes
-LIVE, 2 minutes. Interview anchor [S]: what is data leakage, and how do you catch it before it
+LIVE, 3 minutes. Narayanan, Shi and Rubinstein de-anonymised the challenge's test set with their own
+Flickr crawl (arXiv 1102.4374): the question that would have caught it is where each input comes
+from at prediction time. Interview anchor [S]: what is data leakage, and how do you catch it before it
 ships? 10-minute break after this slide.
 ```
 
@@ -703,8 +711,11 @@ len(encoder.categories_[0])     # 12 job levels, unknown included
 StandardScaler().fit(bank[num]) # the trap: all 41,188 rows, test included
 ```
 
+Uber's Michelangelo applies the same feature expressions at training and at prediction time.
+
 ```notes
-LIVE, 4 minutes. The implementation engineer's seat. On this file the means differ only in the
+LIVE, 4 minutes. The implementation engineer's seat. Uber's feature store exists so a feature such as
+"average preparation time over the last hour" means one thing in training and in serving. On this file the means differ only in the
 third decimal, which is why the habit looks harmless; on a file where the future differs, it
 carries the future in. Then the guided notebook, 20 minutes.
 ```
@@ -818,8 +829,12 @@ partly on months it has seen. Next month's list is a month it has never seen.
 
 ![AUC from the calendar, the honest model, and inside one month](img/C2_W05_D03_case2_within_month_STUDENT.png)
 
+A pneumonia model learned the hospital the same way: AUC 0.931 at home, 0.815 at a new site.
+
 ```notes
-LIVE, 3 minutes. Known that morning, and still borrowing each month's yes-rate through the split.
+LIVE, 4 minutes. Zech and others (PLOS Medicine 2018): the network identified the hospital system of
+99.95 percent of NIH images, partly from a metal token, and hospital prevalence alone ranked at 0.861.
+The hospital, like the month, is known when the prediction is made. Known that morning, and still borrowing each month's yes-rate through the split.
 Verdict: keep, flag, and write the caveat beside the score. Friday's split by time prices it.
 ```
 

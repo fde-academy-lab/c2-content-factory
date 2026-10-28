@@ -137,8 +137,8 @@ def concept_figures():
                         textcoords="offset points", fontsize=16)
         ax.set_title(title); ax.set_xlabel("spend_90d"); ax.set_ylabel("visits_30d")
     axes[0].set_xlim(0, 10500); axes[0].set_ylim(0, 10500)
-    axes[0].text(500, 6000, "A's nearest: B\n(Rs 200 apart,\nvisits 2 vs 9)", fontsize=14, color=ROSE)
-    axes[1].text(-1.4, 0.4, "A's nearest: C\n(both visit twice)", fontsize=14, color=GREEN)
+    axes[0].text(500, 8200, "A's nearest: B\n(Rs 200 apart,\nvisits 2 vs 9)", fontsize=14, color=ROSE)
+    axes[1].text(-0.35, -0.55, "A's nearest: C\n(both visit twice)", fontsize=14, color=GREEN)
     save(fig, "C2_W05_D03_ch2_scaling_STUDENT.png")
 
     events = [("first order\n(day -400)", -400, GREEN), ("last order\n(day -9)", -9, GREEN),
@@ -181,7 +181,8 @@ def concept_figures():
         ax.text(x + (-0.1 if left else 0.1), i, f"{name}  ({v})", va="center", fontsize=14, color=colour[v],
                 ha="right" if left else "left")
     ax.set_yticks([]); ax.set_xlim(-3, 3.9); ax.set_ylim(-0.8, 9.3)
-    ax.set_xticks([-2.6, -0.3, 0.6, 1.1]); ax.set_xticklabels(["signup", "last night", "+3 days", "+12 days"])
+    ax.set_xticks([-2.6, -0.3, 0.6, 1.1]); ax.set_xticklabels(["signup", "last night", "+3", "+12"])
+    ax.set_xlabel("days from the nudge morning")
     ax.set_title("Nine candidate columns on the timeline: keep, fix, drop (invented)")
     save(fig, "C2_W05_D03_ch4_audit_timeline_STUDENT.png")
 

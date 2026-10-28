@@ -1335,7 +1335,8 @@ def ch04():
             ax.text(x + (0.08 if x < 2 else -0.08), i, f"{r['column']}  ({r['verdict'].split(':')[0]})",
                     va="center", fontsize=9, color=c, ha="left" if x < 2 else "right")
         ax.set_yticks([]); ax.set_xlim(-3, 3); ax.set_ylim(-0.8, 9.2)
-        ax.set_xticks([-2.6, -0.3, 0, 0.6, 1.1]); ax.set_xticklabels(["signup", "last night", "", "+3 days", "+12 days"])
+        ax.set_xticks([-2.6, -0.3, 0, 0.6, 1.1]); ax.set_xticklabels(["signup", "last night", "", "+3", "+12"])
+        ax.set_xlabel("days from the nudge morning")
         ax.set_title("The audit on a timeline: green keep, violet fix, red drop")
         plt.tight_layout(); plt.show()
         '''),
