@@ -264,7 +264,7 @@ On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; be
 a) A solver bug once a model passes ten columns; refit with another solver and report the sign it gives.
 b) Since 2009 the rate's effect has reversed; report the +0.39 as the effect on this year's campaign.
 c) The 11 percent yes rate shrinks rare-outcome weights; report -0.92 from the model fitted on its own.
-d) The five indicators move together and share one signal; read them as a group and quote no one sign.
+d) The indicators move together and share one signal; read them as a group and quote no one sign.
 
 **Word bank 3.** Write the letter of the word or phrase that completes each statement. Each is used once at most, and some are not used.
 

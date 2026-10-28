@@ -95,6 +95,7 @@ and seed 42; `C2_W05_SAT_key_proofs_INTERNAL.py --rerun` recomputes each one and
 | Five-fold cross-validation of the logistic model, AUC | the 24,712 training rows, stratified, shuffled with seed 42, scaling inside the pipeline | 0.771, 0.769, 0.797, 0.796, 0.798; mean 0.786 |
 | Three families on validation, AUC | logistic regression; random forest of 300 trees with at least 5 rows a leaf; histogram gradient boosting at its defaults | 0.795; 0.799; 0.806 |
 | euribor3m's standardised coefficient | alone; with the honest columns | -0.92; +0.39 |
+| euribor3m's correlation with three indicators | the whole file | employment variation rate 0.97; number employed 0.95; consumer confidence 0.28 |
 | poutcome success | the whole file | 1,373 rows, 65.1 percent yes |
 | Mean call duration | yes; no | 553 seconds; 221 seconds |
 | Split by date | earliest 70 percent of rows to train, latest 30 percent to score | 28,831 and 12,357 rows; yes rates 5.6 and 24.6 percent; mean predicted 0.152; AUC 0.657 |

@@ -41,6 +41,7 @@ RUN = {
     "cv_folds": [0.771, 0.769, 0.797, 0.796, 0.798],
     "family_auc": {"logistic": 0.795, "forest": 0.799, "boosting": 0.806},
     "euribor_alone": -0.92, "euribor_full": 0.39,
+    "corr_euribor": {"emp.var.rate": 0.97, "nr.employed": 0.95, "cons.conf.idx": 0.28},
     "poutcome_success_yes": 0.651, "duration_mean_yes": 553, "duration_mean_no": 221,
     "time_early_rows": 28831, "time_late_rows": 12357, "time_early_yes": 0.056,
     "time_late_yes": 0.246, "time_late_mean_pred": 0.152, "time_late_auc": 0.657,
@@ -317,6 +318,9 @@ def items():
     i = BY_ID["sign-flip"]
     assert f"{RUN['euribor_alone']:.2f}" in i["text"] and f"+{RUN['euribor_full']:.2f}" in i["text"]
     keyed(i, "d", "move together", "as a group")
+    why = i["note"]["why"]
+    for k, v in RUN["corr_euribor"].items():
+        assert f"{v:.2f}" in why, (k, v)
     ok(i["q"], "sign-flip", "d", "euribor3m -0.92 alone, +0.39 with the indicators, as RUN")
 
     i = BY_NO[4]
@@ -461,6 +465,8 @@ def rerun():
         m = model(cols, train, LogisticRegression(max_iter=2000)).fit(train[cols], yt)
         coef = dict(zip(m.named_steps["prep"].get_feature_names_out(), m.named_steps["model"].coef_[0]))
         assert r2(coef["num__euribor3m"]) == want, (cols, coef["num__euribor3m"])
+    corr = bank[economy].corr()["euribor3m"]
+    assert {k: r2(corr[k]) for k in RUN["corr_euribor"]} == RUN["corr_euribor"], corr
     assert r3((bank.loc[bank.poutcome == "success", "y"] == "yes").mean()) == RUN["poutcome_success_yes"]
     means = bank.groupby("y")["duration"].mean()
     assert (round(means["yes"]), round(means["no"])) == (RUN["duration_mean_yes"], RUN["duration_mean_no"])

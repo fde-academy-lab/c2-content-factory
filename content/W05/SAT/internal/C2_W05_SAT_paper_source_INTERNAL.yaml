@@ -793,13 +793,14 @@ additions:
       (a) A solver bug once a model passes ten columns; refit with another solver and report the sign it gives.
       (b) Since 2009 the rate's effect has reversed; report the +0.39 as the effect on this year's campaign.
       (c) The 11 percent yes rate shrinks rare-outcome weights; report -0.92 from the model fitted on its own.
-      (d) The five indicators move together and share one signal; read them as a group and quote no one sign.
+      (d) The indicators move together and share one signal; read them as a group and quote no one sign.
     why: >-
-      The five economic indicators rise and fall together across the period, so once they sit in
-      one model, the weight on any one of them is what it adds after the others, and its sign can
-      reverse. The prediction can be just as good while no single coefficient reads as an effect.
+      euribor3m rises and falls with the employment variation rate (correlation 0.97 across the
+      file) and the number employed (0.95), so once they sit in one model, the weight on any one of
+      them is what it adds after the others, and its sign can reverse; consumer confidence, at 0.28,
+      is the one indicator that moves on its own. The prediction can be just as good while no single coefficient reads as an effect.
       So the memo answers the marketing head with the group: alone, higher rates go with fewer
-      yeses, and the five indicators carry that one economic signal together, so no single
+      yeses, and the correlated indicators carry that one economic signal together, so no single
       coefficient is quoted as the effect of rates. Reading the group, keeping one representative or
       regularising are the fixes.
       Wednesday's case showed euribor3m flip with the economic trio.
