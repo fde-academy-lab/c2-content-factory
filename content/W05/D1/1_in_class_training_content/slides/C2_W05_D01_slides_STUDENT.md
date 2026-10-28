@@ -17,9 +17,9 @@ FRIDAY on a card, seal it, tape it to the wall. Say nothing about it yet. Transi
 *Six topics on tiny invented tables, then one real bank's 41,188 calls.*
 
 ```cards
-icon: ruler | eyebrow: The topics | title: Six chapters | body: Each taught on a table small enough to count by hand, invented for teaching. | tone: light
-icon: phone | eyebrow: The case | title: A Portuguese bank | body: Whom should the campaign call? UCI Bank Marketing, real public data. | tone: light
-icon: store | eyebrow: The decision | title: Kalpa's Rs 40 nudge | body: Marketing wants a 90-day repeat score; Kavya wants the baseline first. | tone: dark
+icon: ruler | eyebrow: The topics | title: Six chapters | body: Tiny invented tables, counted by hand. | tone: light
+icon: phone | eyebrow: The case | title: A Portuguese bank | body: 41,188 real calls: whom to call first? | tone: light
+icon: store | eyebrow: The decision | title: Kalpa's Rs 40 nudge | body: A 90-day repeat score, baseline first. | tone: dark
 ```
 
 ```notes
@@ -221,9 +221,9 @@ problem an ML problem? Transition: when a rule stops being enough.
 *Google's first rule, and Uber's ETA.*
 
 ```cards
-icon: book-open | eyebrow: Google, Rules of ML | title: Launch without ML first | body: A heuristic gets you about half the gain, Zinkevich estimates. | tone: light
-icon: car | eyebrow: Uber, DeepETA | title: Keep the rule, predict its error | body: The routing engine's ETA stays; the model predicts how wrong it will be. | tone: light
-icon: scale | eyebrow: The flip | title: Kalpa's numbers | body: A Rs 1,200 missed buyer against a Rs 40 nudge makes ranking pay. | tone: dark
+icon: book-open | eyebrow: Google, Rules of ML | title: Launch without ML first | body: A heuristic gets about half the gain. | tone: light
+icon: car | eyebrow: Uber, DeepETA | title: Keep the rule | body: The model predicts only the rule's error. | tone: light
+icon: scale | eyebrow: The flip | title: Rs 1,200 against Rs 40 | body: A costly miss makes ranking pay. | tone: dark
 ```
 
 ```notes
@@ -421,7 +421,8 @@ slope (910 minus 290) / 5 = Rs 124 per visit. Write 124 on the board. Transition
 
 ```notes
 LIVE, 2 minutes. Prediction first. Then explain "squared": each miss drawn as a square, so big
-misses count far more than small ones. Transition: the answer.
+misses count far more than small ones. Click: open the explorable (demos/), whose line starts flat
+at the mean; let one learner drag it, then press least squares. Transition: the answer.
 ```
 
 ---
@@ -519,7 +520,8 @@ LIVE, 1 minute. Hands per option. Transition: the S.
 ```notes
 LIVE, 5 minutes. The line says 1.28 at 8 visits and -0.01 at 0: impossible probabilities. Logistic
 regression keeps a line underneath, z = a + b x visits, and squeezes it: p = 1 / (1 + exp(-z)).
-Here z = -3.20 + 1.05 x visits. Click: ch05, the fit cell, model and formula agree at 0.73.
+Here z = -3.20 + 1.05 x visits. Click: ch05, the fit cell, model and formula agree at 0.73; then
+the explorable's right panel, slide the member past 130 days and switch to the S.
 Transition: what 0.73 means.
 ```
 
@@ -658,6 +660,20 @@ in the residuals tell you? Transition: the case.
 
 ---
 
+## S34a. Drill: match four residual plots to their causes
+*The same 392 cars. One cause is spare.*
+
+![Four residual plots P, Q, R and S beside five causes](img/C2_W05_D01_fig_drill_residuals_STUDENT.png)
+
+```notes
+LIVE, the mid-session drill from the row, 8 minutes if time allows, otherwise it stays in the
+practice set as problem A6. Pairs post P?, Q?, R?, S?. Key: P c (the bow), Q b (the fan against
+predicted mpg), R a (residuals climb with model year, newer cars beat the model), S e (flat once
+horsepower squared is in). d is spare: a peek never shows in a residual plot. Transition: the case.
+```
+
+---
+
 ## SECTION 7: Whom should the bank call: who is worth a call?
 *Case chapter. Applies: Prediction, rule or query; Input, target, prediction time; Train, validation, test; the seed; the baseline*
 
@@ -734,9 +750,9 @@ two teammates quote baselines on different rows. Transition: the envelope.
 *TEST SET. DO NOT OPEN UNTIL FRIDAY.*
 
 ```cards
-icon: mail | eyebrow: Monday | title: Sealed | body: 8,238 rows nobody scores a model on this week. | tone: dark
-icon: hand | eyebrow: Tuesday to Thursday | title: Every peek points here | body: Choices are made on validation, as often as needed. | tone: light
-icon: mail-open | eyebrow: Friday | title: Opened once | body: The chosen model is scored once; that number goes in the memo. | tone: light
+icon: mail | eyebrow: Monday | title: Sealed | body: 8,238 rows, untouched all week. | tone: dark
+icon: hand | eyebrow: Tuesday to Thursday | title: Every peek points here | body: Choose on validation instead. | tone: light
+icon: mail-open | eyebrow: Friday | title: Opened once | body: One score, into the memo. | tone: light
 ```
 
 ```notes
@@ -915,9 +931,9 @@ case03, the scatter. Transition: the rule.
 *Choose on validation as often as you like; score the test at the end.*
 
 ```cards
-icon: repeat | eyebrow: Validation | title: Choose here | body: Columns, settings, models: compare as often as needed. | tone: light
-icon: lock | eyebrow: Test | title: Score once | body: The chosen model, once, with its seed, then report. | tone: dark
-icon: triangle-alert | eyebrow: Peeked | title: Cut a fresh slice | body: A peeked test is validation now; hold out new rows. | tone: light
+icon: repeat | eyebrow: Validation | title: Choose here | body: As often as needed. | tone: light
+icon: lock | eyebrow: Test | title: Score once | body: The chosen model, with its seed. | tone: dark
+icon: triangle-alert | eyebrow: Peeked | title: Cut a fresh slice | body: A peeked test is validation now. | tone: light
 ```
 
 ```notes
@@ -995,9 +1011,9 @@ LIVE, 8 minutes. Keys in the trainer guide. The return question first, as a warm
 *Tonight: the practice set. Tomorrow: what accuracy hides.*
 
 ```cards
-icon: circle-check | eyebrow: Now | title: Frame, split, baseline | body: Sort a question, fix a cutoff, seal a test, beat a bar. | tone: light
-icon: book-open | eyebrow: Tonight | title: Practice set | body: Ten problems and eighteen checks, about two and a half hours. | tone: dark
-icon: calendar | eyebrow: Tomorrow | title: The metric trap | body: How many of the 928 yeses did the model find? | tone: light
+icon: circle-check | eyebrow: Now | title: Frame, split, beat a bar | body: Then read both models and their residuals. | tone: light
+icon: book-open | eyebrow: Tonight | title: Practice set | body: Ten problems, eighteen checks. | tone: dark
+icon: calendar | eyebrow: Tomorrow | title: The metric trap | body: How many of the 928 yeses did it find? | tone: light
 ```
 
 ```notes

@@ -332,12 +332,40 @@ def four_residuals():
     save(fig, "fig_practice_four_residuals.png")
 
 
+def drill_slide():
+    """The four residual plots and the five causes on one wide picture, sized for a slide."""
+    cars = load_cars().dropna(subset=["horsepower"]).reset_index(drop=True)
+    cars["hp2"] = cars["horsepower"] ** 2
+    line = LinearRegression().fit(cars[["horsepower"]], cars["mpg"])
+    curve = LinearRegression().fit(cars[["horsepower", "hp2"]], cars["mpg"])
+    cars["r_line"] = cars["mpg"] - line.predict(cars[["horsepower"]])
+    cars["fit_curve"] = curve.predict(cars[["horsepower", "hp2"]])
+    cars["r_curve"] = cars["mpg"] - cars["fit_curve"]
+    fig = plt.figure(figsize=(16, 6.4))
+    grid = fig.add_gridspec(2, 3, width_ratios=[1, 1, 1.15], wspace=0.3, hspace=0.55)
+    panels = [("P", "horsepower", "r_line", "horsepower"), ("Q", "fit_curve", "r_curve", "predicted mpg"),
+              ("R", "model_year", "r_curve", "model year"), ("S", "horsepower", "r_curve", "horsepower")]
+    for k, (tag, x, r, xlabel) in enumerate(panels):
+        ax = fig.add_subplot(grid[k // 2, k % 2])
+        ax.scatter(cars[x], cars[r], s=8, color=GREY)
+        ax.axhline(0, color=INK, lw=1.2); ax.set_ylim(-15, 18); ax.set_yticks([-10, 0, 10])
+        ax.set_xlabel(xlabel, fontsize=17); ax.tick_params(labelsize=15)
+        ax.set_title(f"Plot {tag}", loc="left", fontweight="bold", fontsize=19)
+    tx = fig.add_subplot(grid[:, 2]); tx.axis("off")
+    causes = ["a  an input left out\n    still carries signal", "b  the misses grow\n    with the prediction",
+              "c  a straight line\n    missed a curve", "d  the test set was\n    peeked at", "e  centred on zero:\n    no shape left"]
+    for i, c in enumerate(causes):
+        tx.text(0, 0.95 - i * 0.2, c, fontsize=19, va="top", family="DejaVu Sans")
+    tx.set_title("One cause is spare", loc="left", fontsize=19, fontweight="bold")
+    save(fig, "fig_drill_residuals.png")
+
+
 if __name__ == "__main__":
-    timeline(); sort_questions(); member_timeline(); split_squares(); residual_squares(); line_vs_s(); mpg_bow(); bank_figures(); four_residuals()
+    timeline(); sort_questions(); member_timeline(); split_squares(); residual_squares(); line_vs_s(); mpg_bow(); bank_figures(); four_residuals(); drill_slide()
 
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 content/W05/D1/4_trainer_only/C2_W05_D01_make_figures_INTERNAL.py
-#     Prints "wrote C2_W05_D01_fig_..." nineteen times and leaves nineteen PNGs in slides/img/.
+#     Prints "wrote C2_W05_D01_fig_..." twenty times and leaves twenty PNGs in slides/img/.
 # Run it twice in a row: the second run reads both datasets from ~/.cache/c2_datasets and draws the
 #     same pictures, because every split and every column draw is seeded.

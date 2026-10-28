@@ -1,6 +1,6 @@
 # W05 Monday trainer guide: regression and classification
 
-Posts to <!-- sync:module:W05/D1 -->Module 2: Applied Machine Learning<!-- /sync:module:W05/D1 -->. Deck: `1_in_class_training_content/slides/C2_W05_D01_slides_STUDENT.pptx` (62 slides; S-numbers below are the deck's own).
+Posts to <!-- sync:module:W05/D1 -->Module 2: Applied Machine Learning<!-- /sync:module:W05/D1 -->. Deck: `1_in_class_training_content/slides/C2_W05_D01_slides_STUDENT.pptx` (63 slides; S-numbers below are the deck's own).
 
 ## 1. The story in two lines
 
@@ -20,7 +20,7 @@ Posts to <!-- sync:module:W05/D1 -->Module 2: Applied Machine Learning<!-- /sync
 | One: ch 4 | 22 | SEC 4, S19 to S23 | ch04 | least squares beats the eye, 5,200 against 5,480; Rs 120 per visit as an association | S23 code slide |
 | One: break | 10 | | | kernels shut | |
 | One: ch 5 | 22 | SEC 5, S24 to S28 | ch05 | 1.28 is impossible; 0.73 means 73 of 100; exp(b) = 2.85 | the odds table's last row |
-| One: ch 6 | 18 | SEC 6, S29 to S34 | ch06 | the bow (+2.7, -2.2) and its fix; the fix fails past 190 hp | S33 extrapolation (say it, skip the slide) |
+| One: ch 6 | 18 | SEC 6, S29 to S34a | ch06 | the bow (+2.7, -2.2) and its fix; the fix fails past 190 hp | S33 extrapolation (say it, skip the slide) |
 | One: case 1 | 43 | SEC 7, S35 to S40 | case01, guided | 13 columns known that morning; split 24,712 / 8,238 / 8,238; guided baseline 0.8874 | S36 twin table (say it in one line) |
 | Two: case 2 | 25 | SEC 8, S41 to S46 | case02 | 80 more right answers in 8,238; campaign x 0.93 per call; the calendar caveat | S44 histogram |
 | Two: case 3 | 15 | SEC 9, S47 to S49 | case03 | 0.9055 peeked, 0.8971 fresh; the test is spent once | never cut |

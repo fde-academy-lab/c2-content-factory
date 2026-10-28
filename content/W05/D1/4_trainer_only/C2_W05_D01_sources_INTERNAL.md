@@ -60,7 +60,7 @@ Every PNG in `1_in_class_training_content/slides/img/` is drawn by `4_trainer_on
 6. **The lab's integration step runs the SQL on the Codespace's Postgres,** with a fallback that loads the same warehouse file into in-memory SQLite, so the notebook runs and shows identical numbers on a laptop with no server. Delivered orders only count as purchases; the practice set's A4 makes the learner ask that question.
 7. **Kalpa's warehouse is used only for the repeat flag and its baseline.** Its spend column holds a planted bulk order from Week 1, so no regression on Kalpa spend is fitted; the rupee coefficient lives in chapter 4's invented table.
 8. **The logo and the institute name are stripped after the build** by `C2_W05_D01_strip_logo_INTERNAL.py`, since `scripts/deck_layout.py` stamps both on every slide and five day sessions run in parallel; editing the shared layout would collide with them. The programme line and the day line stay.
-9. **The deck has no cover slide.** `build_deck.py` produced none from the title lines; the first slide carries the day's three layers.
+9. **The deck has no cover slide, and the row's residual-match drill is slide S34a.** `build_deck.py` produced none from the title lines; the first slide carries the day's three layers. The drill's four plots are real Auto MPG residuals drawn as one slide-sized picture, so its labels print at slide size; the practice set's A6 repeats it with a second, written part.
 10. **Mermaid rendering** needed `PUPPETEER_EXECUTABLE_PATH=/opt/pw-browsers/chromium`, because `scripts/build_cheatsheet.py` looks for `chrome-linux/chrome` and this container ships `chrome-linux64/chrome`. No shared script was edited.
 11. **Run table minutes:** block one 180 trainer minutes (opening 8, chapters 15, 22, 20, 22, a 10-minute break, 22, 18, case 1 with the guided notebook 43); block two 60 trainer minutes (case 2 25, case 3 15, interview and seat 7, quiz and close 13) before the tentative 120-minute faculty block. The concept block is 119 minutes, inside the 60 to 120 rule.
 12. **The guided notebook ships executed** with its TODO cells holding `None` and printing TODO, and an answer cell that prints PASS; its column check compares a fingerprint, so the source never prints the 13 names before the answer cell.
@@ -71,6 +71,6 @@ Every PNG in `1_in_class_training_content/slides/img/` is drawn by `4_trainer_on
 
 - Notebooks executed with `jupyter nbconvert --to notebook --execute --inplace` from builder scripts kept in the session's scratchpad.
 - Figures: `python3 content/W05/D1/4_trainer_only/C2_W05_D01_make_figures_INTERNAL.py`.
-- Deck: `PUPPETEER_EXECUTABLE_PATH=/opt/pw-browsers/chromium python3 scripts/build_deck.py <deck.md> --footer "Week 5 Monday: regression and classification"`, then the strip script; 62 slides rendered through LibreOffice and inspected on four contact sheets.
+- Deck: `PUPPETEER_EXECUTABLE_PATH=/opt/pw-browsers/chromium python3 scripts/build_deck.py <deck.md> --footer "Week 5 Monday: regression and classification"`, then the strip script; 63 slides rendered through LibreOffice and inspected on contact sheets.
 - PDFs: `python3 scripts/build_doc.py` per STUDENT markdown in folders 2 and 3.
 - Explorable: `python3 scripts/html_sweep.py`, 7 controls, 0 inert, 0 console errors.
