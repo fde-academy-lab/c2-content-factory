@@ -79,6 +79,14 @@ Block one is 180 trainer minutes. Block two gives the trainer 60 minutes, then t
 | 0.030 AUC | wins 5 of 5 | Rs 2,00,000 against Rs 75,000 | complex |
 | 0.004 AUC, a regulator must read it | wins 3 of 5 | not real | simpler |
 
+**The three real cases, each told in under two minutes.**
+
+| Case | Where | The line to land |
+|---|---|---|
+| Airbnb listing IDs (arXiv 1810.09591) | S38 | few labels per thing learned means memory; a store-ID column is Kalpa's twin |
+| Google Flu Trends (Science 2014) | S43 | choosing among many candidates overfits too; select inside folds |
+| Pneumonia, Caruana and others (KDD 2015) | S30 | within 0.02 AUC, the readable model shipped because it could be checked |
+
 ## 6. The spotlight seat: QA and tester
 
 - The question to ask after every case chapter: "QA, what breaks this, on which split, for which segment?"

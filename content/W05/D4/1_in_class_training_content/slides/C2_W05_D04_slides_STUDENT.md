@@ -782,11 +782,16 @@ near 0, held out near 16.5: a 16-point gap. Depth 6, leaf 50: 9.8 and 10.1, clos
 
 Depth 6, leaf 50, at 19,769 rows: gap 0.2 points.
 
+Airbnb saw the same with a vector per listing: at most 365 bookings a year each, so they memorised (arXiv 1810.09591).
+
 ```notes
 LIVE, 3 minutes. The flip of chapter 1's rule, on real data. Twenty times more customers moved the
 gap by half a point, because the tree memorises noise and more rows bring more noise. The brake
 closed it. Interview line: more data is the cure for variance only when the model is learning
-signal it lacked.
+signal it lacked. Airbnb, under two minutes: a learned vector per listing sent training quality toward
+perfect while test quality stayed flat, because a listing can be booked at most 365 times a year, so
+each vector had a few hundred labels to learn from. Kalpa's twin: a store-ID column for stores with few
+rows. Source: Haldar and others, arXiv 1810.09591, verified 28 October 2026.
 ```
 
 ---
@@ -871,10 +876,15 @@ jump. Click.
 | Choosing columns by their link to y | the answers | large |
 | Encoding a category by its yes rate | the answers | large |
 
+Google Flu Trends chose from 50 million search terms to fit 1,152 points and kept basketball terms (Science, 2014).
+
 ```notes
 LIVE, 3 minutes. Honest number: on this file, with 24,712 rows, the scaler leak is invisible. Say
 why the habit stays: the next step someone adds before the split may learn from the answers. Rule:
-everything that learns goes inside the Pipeline.
+everything that learns goes inside the Pipeline. Google Flu Trends, under two minutes: 50 million
+candidate terms ranked against 1,152 weekly flu counts let high school basketball terms in, because
+basketball season is flu season; a selection run inside folds cut by season would have caught it.
+Source: Lazer and others, Science 2014, Harvard open-access copy, verified 28 October 2026.
 ```
 
 ---
