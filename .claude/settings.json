@@ -1,9 +1,9 @@
 {
   "model": "opus",
-  "effortLevel": "max",
+  "effortLevel": "xhigh",
   "env": {
     "CLAUDE_CODE_SUBAGENT_MODEL": "opus",
-    "CLAUDE_CODE_EFFORT_LEVEL": "max"
+    "CLAUDE_CODE_EFFORT_LEVEL": "xhigh"
   },
   "hooks": {
     "PreToolUse": [

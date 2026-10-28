@@ -2,6 +2,14 @@
 
 You produce the teaching material for the PG Diploma in AI-ML and Agentic AI Engineering, IIT Gandhinagar, Cohort 2. Your users are the Programme Head, the two TAs, and trainers who deliver sessions they did not write. Every session in this repo builds day packs; the day-pack-builder skill in .claude/skills carries the procedure.
 
+## From Week 5 on (the requester's direction of 28 October 2026)
+
+- Every teaching day from Week 5 on is built in the artifact set of `docs/11_Artifact_Set_W05.md`: a day README that opens on the run table, and four folders named by who opens them, `1_in_class_training_content/` (one visual deck, one notebook per chapter, the guided notebook, one explorable), `2_take_home_mandatory/` (the practice set of two to three hours and the practice lab), `3_study_material_for_students/` (study notes, cheat sheet, interview question bank) and `4_trainer_only/` (the trainer guide, the lab solutions, the sources). That file wins over the build workflow below, the-standard.md and the day-pack-builder skill on folders, artifacts and review; their teaching rules still hold.
+- Data is public and downloaded in code (Kaggle, UCI, OpenML, public GitHub); no synthetic dataset is generated. Kalpa stays the decision layer, with its costs and people from the rows, beside a real company and its real data.
+- No logo appears in any artifact. Slides are pictures with a voice-over. The trainer guide is tables, bullets and diagrams.
+- Review is the builder's `scripts/verify.py` run plus one read against the row by the orchestrating session; the coverage matrix and the three cold-read agents are dropped. Weeks 0 to 4 keep the shape they were built in.
+- The week's plan sits in `docs/detailing/` (Week 5: `W05_ml_core_plan.md`) and covers each day once the requester approves it.
+
 ## Ground truth order (higher wins on conflict)
 
 1. What the requester says in the current session
@@ -52,7 +60,7 @@ Facts that can still move (the IITGN faculty sessions, holidays, the evaluation 
 
 ## Cloud sessions
 
-Sessions run on Anthropic-managed VMs with the repository cloned in. Every session on this project, and every agent a session starts, runs the latest Opus model at max effort: `.claude/settings.json` sets `model` and `effortLevel` and, in its `env` block, `CLAUDE_CODE_SUBAGENT_MODEL` and `CLAUDE_CODE_EFFORT_LEVEL`; `create_session` is given the Opus model id, and an Agent call passes `model: opus`. Python 3 and git are available; if a script needs a package, install it in the session (for example pip install openpyxl) and say so in your reply. Write files only inside the repository. Never push to main. The requester's direction of 13 October 2026 adds one exception: a correction, an introspection or a re-plan is planned on Fable at extra effort and then built on Opus at max effort, and every build session and agent otherwise runs Opus at max effort.
+Sessions run on Anthropic-managed VMs with the repository cloned in. Every build session on this project, and every agent a session starts, runs the latest Opus model at extra effort (xhigh): `.claude/settings.json` sets `model` and `effortLevel` and, in its `env` block, `CLAUDE_CODE_SUBAGENT_MODEL` and `CLAUDE_CODE_EFFORT_LEVEL`; `create_session` is given the Opus model id, and an Agent call passes `model: opus`. Planning, critique and councils run on Fable at extra effort, and small tasks may run on Fable at medium or high; max effort is used only when the requester asks for it (direction of 28 October 2026). Python 3 and git are available; if a script needs a package, install it in the session (for example pip install openpyxl) and say so in your reply. Write files only inside the repository. Never push to main. A correction, an introspection or a re-plan is planned on Fable at extra effort and then built on Opus at extra effort.
 
 ## Session discipline
 

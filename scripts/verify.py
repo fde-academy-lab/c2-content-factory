@@ -73,6 +73,14 @@ BUILD_DIRS = {
     "data", "slides", "study-notes", "cheatsheets",
 }
 SAT_RECAP_DIRS = {"paper", "answer-key", "discussion", "internal"}
+# From Week 5 on a teaching day ships the artifact set of docs/11_Artifact_Set_W05.md: four folders
+# named by who opens them and when, and a README at the day root that opens on the run table.
+W05_DIRS = {
+    "1_in_class_training_content/slides", "1_in_class_training_content/slides/img",
+    "1_in_class_training_content/notebooks", "1_in_class_training_content/demos",
+    "2_take_home_mandatory", "3_study_material_for_students", "4_trainer_only",
+}
+W05_SHAPE = "Week 5 teaching day"
 
 
 # Week 0 is the baseline week: teaching-day folders plus the diagnostic papers and their keys.
@@ -104,7 +112,18 @@ def folder_shape(week, day_label):
         return ("build day" if day_label != "SAT" else "build week Saturday"), BUILD_DIRS
     if day_label == "SAT":
         return "Saturday recap", SAT_RECAP_DIRS
+    if week >= 5:
+        return W05_SHAPE, W05_DIRS
     return "teaching day", TEACHING_DIRS
+
+
+def w05_day(target):
+    """Whether the folder is a teaching day built in the Week 5 artifact set."""
+    m = DAY_FOLDER.search(str(target).rstrip("/\\"))
+    if not m or m.group(2) == "SAT":
+        return False
+    week = int(m.group(1))
+    return folder_shape(week, f"D{int(m.group(3)):02d}")[0] == W05_SHAPE
 
 
 def check_layout(target, files):
@@ -119,6 +138,8 @@ def check_layout(target, files):
     shape_name, allowed = folder_shape(week, day_label)
     fails = 0
     for p in files:
+        if shape_name == W05_SHAPE and p.name == "README.md" and p.parent == target:
+            continue
         found = DAY_STEM.match(p.name)
         if not found:
             print(f"FAIL  {p.name}: no C2_W{{ww}}_D{{dd}}_ or C2_W{{ww}}_SAT_ stem; {target} expects {want}")
@@ -212,9 +233,23 @@ def run_proofs(target):
     files = [p for p in target.rglob("*") if p.is_file()]
     fails = 0
 
+    w05 = w05_day(target)
     if any(p.suffix == ".ipynb" for p in files):
-        fails += run_proof("nb_check.py", [str(target)],
+        fails += run_proof("nb_check.py", [str(target)] + (["--min-diagrams", "1", "--min-checks", "2"] if w05 else []),
                            "notebooks carry outputs, diagrams and passing checks")
+    if w05:
+        # The practice set and the study material are read as PDFs as often as on GitHub, so each
+        # STUDENT markdown file in those two folders needs its PDF, built after its last change.
+        printed = [p for p in files if p.suffix == ".md" and "_STUDENT" in p.name
+                   and p.parent.name in ("2_take_home_mandatory", "3_study_material_for_students")]
+        for md in printed:
+            pdf = md.with_suffix(".pdf")
+            if not pdf.exists():
+                print(f"\nFAIL  {md.name} has no PDF beside it. Build it with scripts/build_doc.py.")
+                fails += 1
+            elif pdf.stat().st_mtime + 1 < md.stat().st_mtime and not committed_together(md, pdf):
+                print(f"\nFAIL  {pdf.name} is older than its markdown. Rebuild it with scripts/build_doc.py.")
+                fails += 1
 
     if any(p.parent.name in ("unguided", "guided", "kahoot", "paper", "exercises") for p in files):
         fails += run_proof("distractor_audit.py", [str(target)],
@@ -233,7 +268,7 @@ def run_proofs(target):
         fails += run_proof("deck_md_check.py", [str(target)],
                            "the slide source numbers, pairs and draws what it should")
 
-    if re.search(r"W\d{2}[/\\]D\d$", str(target.resolve())):
+    if re.search(r"W\d{2}[/\\]D\d$", str(target.resolve())) and not w05:
         fails += run_proof("coverage_check.py", [str(target)],
                            "every row subtopic has a chapter and a notebook carrying its name")
 
@@ -337,7 +372,9 @@ def main():
     learner_rubrics = rubric_weeks()
     for p in files:
         name = p.name
-        if not re.search(r"_(STUDENT|TRAINER|INTERNAL)\.", name):
+        if name == "README.md" and w05_day(target) and p.parent == target:
+            pass
+        elif not re.search(r"_(STUDENT|TRAINER|INTERNAL)\.", name):
             print(f"FAIL  {name}: missing audience tag in filename"); fails += 1
         student = "_STUDENT." in name
         for txt in texts_from(p):
