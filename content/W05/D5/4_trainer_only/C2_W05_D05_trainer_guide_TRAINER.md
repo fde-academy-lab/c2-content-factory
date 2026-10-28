@@ -126,15 +126,15 @@ COMES LATER: Build 2 next week is Rohan's business, with his constraint written 
 - First 10 minutes: rerun case03 on the projector from a clean kernel; read the envelope cell's two numbers aloud.
 - Then the lab notebook `2_take_home_mandatory/C2_W05_D05_practice_lab_STUDENT.ipynb`: Rohan's memo on German Credit.
 
-| TODO | Expected | Three commonest wrong answers | Cut order |
+| Part | Expected | Three commonest wrong answers | Cut order |
 |---|---|---|---|
-| 1 Load and the base rate | 1,000 rows, 700 good (0.70) | 0.30 (bad taken as positive); 300; reading `class` as numbers | never cut |
+| 1 The base rate | 0.70 (700 good of 1,000) | 0.30 (bad taken as positive); 700; reading `class` as numbers | never cut |
 | 2 The lending cut at 5 : 1 | 5 / 6 = 0.833 | 0.167 (ratio on the wrong side); 0.5; 0.952 (Rohan's) | never cut |
-| 3 Cost at 0.5 and at the cut, validation | 266 and 160 | counting approved goods as a cost; 5 x wrongful rejections; using the training rows | never cut |
-| 4 Weakest segment by `purpose` with group sizes | the lowest-AUC purpose with 30 or more applicants, beside its count | the smallest group named weakest; accuracy instead of AUC; no count shown | cut third |
-| 5 Integration: approval rate by `checking_status` in pandas | four groups with counts and rates | mean of the 0/1 column without groupby; rates over all rows; sorted by count | cut second |
-| 6 QA: break it | cost at the cut under a 10:1 ratio and the threshold that moves | changing the threshold without the ratio; reporting accuracy; refitting the model | cut first |
-| Write-up | five lines: claim, evidence, caveat, action, transfer | no numbers; AUC as the claim; no owner in the action | never cut |
+| 3 Cost at 0.5 and at the cut, validation | 266 and 160 | counting approved good loans as a cost; 5 x wrongful rejections; using the training rows | never cut |
+| 4 Assignment: weakest purpose with 30 or more applicants | furniture/equipment, AUC 0.72 on 44 (13 bad) | repairs (5 applicants); accuracy instead of AUC; no counts shown | cut third |
+| 5 Integration: good rate by `checking_status` | no checking 0.883 of 394; <0 0.507 of 274; 0 to 200 0.610 of 269; 200 and over 0.778 of 63 | the mean without groupby; rates over all rows; sorted by count | cut second |
+| 6 QA: 10 : 1 | cut 0.909; cost 225 at the old cut, 197 at the new one | moving the cut without repricing; reporting accuracy; refitting the model | cut first |
+| Write-up | five lines, each with a number | no numbers; AUC as the claim; no owner in the action | never cut |
 
 Solutions: `4_trainer_only/C2_W05_D05_practice_lab_solutions_TRAINER.ipynb`.
 
