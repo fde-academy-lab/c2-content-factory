@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Threshold explorer</title>
+<style>
+:root{--ink:#1A0F5C;--violet:#5B3FD6;--rose:#D63A6A;--green:#1F8A5B;--muted:#6B6690;--tint:#EEEAFB;--line:#E4E1F1;--bg:#FFFFFF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Calibri,"Segoe UI",Arial,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h1{font:600 26px Georgia,serif;margin:4px 0}
+p.lead{margin:0 0 12px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0}
+.card{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(460px,100%),1fr));gap:12px}
+button{font:inherit;padding:8px 14px;border-radius:8px;border:2px solid var(--violet);background:#fff;color:var(--violet);cursor:pointer}
+button.on{background:var(--violet);color:#fff}
+label{font-weight:600}
+input[type=range]{width:min(420px,100%)}
+input[type=number]{width:90px;font:inherit;padding:4px}
+.big{font-size:22px;font-weight:700}
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.box{border-radius:8px;padding:10px;text-align:center}
+.box b{display:block;font-size:24px}
+.tp{background:#E8F5EE}.fp,.fn{background:#FCEBF0}.tn{background:#F1F0F6}
+table{border-collapse:collapse;width:100%}
+td{padding:4px 6px;border-bottom:1px solid var(--line)}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.note{color:var(--muted);font-size:14px}
+.verdict{margin-top:8px;padding:8px;border-left:4px solid var(--rose);background:#FCEBF0}
+svg text{font:17px Calibri,Arial,sans-serif;fill:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+<h1>Where does the line go?</h1>
+<p class="lead">The same model, two businesses. Slide the line, change the price ratio, and watch the four boxes and the rupee bill redraw. Real scores: the bank's 8,238 validation clients, and German Credit's 300 held-out applicants.</p>
+<ol class="note" style="margin:0 0 10px 18px;padding:0">
+<li>Lock a guess for the cheapest line, then read the opening state aloud: the line at 0.5, the four boxes, the bill.</li>
+<li>Drag the line left and watch the bill fall, then press reveal and compare it with your guess.</li>
+<li>Move the ratio from 30 to 1 towards 8 to 1, or tick the budget, and watch the model's edge over the no-model rule grow; then switch to lending.</li>
+</ol>
+
+<div class="card">
+  <div class="row">
+    <button id="mNudge" class="on">Retail nudge</button>
+    <button id="mLoan">Lending approval</button>
+    <span id="modeNote" class="note"></span>
+  </div>
+  <div class="row">
+    <label for="th">Line: act when the score is at or above <span id="thv" class="big"></span></label>
+    <input id="th" type="range" min="0" max="1" step="0.001" value="0.5">
+  </div>
+  <div class="row">
+    <label for="ratio"><span id="ratioLabel"></span> <span id="rv" class="big"></span></label>
+    <input id="ratio" type="range" min="1" max="40" step="1" value="30">
+  </div>
+  <div class="row" id="capRow">
+    <label><input id="cap" type="checkbox"> Cap the list at Marketing's budget of 1,000 calls</label>
+  </div>
+  <div class="row">
+    <label for="guess">Your guess for the cheapest line:</label>
+    <input id="guess" type="number" min="0" max="1" step="0.01" value="">
+    <button id="lock">Lock my guess</button>
+    <button id="reveal">Reveal the cheapest line</button>
+    <button id="reset">Back to 0.5</button>
+    <span id="guessNote" class="note">Lock a guess before the reveal.</span>
+  </div>
+</div>
+
+<div class="grid" style="margin-top:12px">
+  <div class="card"><b>Two humps and the line</b><svg id="humps" viewBox="0 0 520 250" width="100%"></svg>
+    <div class="note">Bar height is the square root of the count, so the small hump stays visible. Everything right of the line is acted on.</div></div>
+  <div class="card"><b>The four boxes at this line</b><div class="boxes" id="boxes"></div></div>
+  <div class="card"><b>The numbers, counts first</b><table id="nums"></table><div id="verdict" class="verdict"></div></div>
+  <div class="card"><b>The bill wherever the line has been</b><svg id="trace" viewBox="0 0 520 250" width="100%"></svg>
+    <div class="note" id="traceNote">Each dot is a line you tried. The full curve appears after the reveal.</div></div>
+</div>
+<p class="note">Scores come from the week's logistic model (customer-table columns for the bank; all twenty columns for German Credit). Data: UCI Bank Marketing (CC BY 4.0) and German Credit, OpenML credit-g. Prices: Kalpa's Rs 40 nudge and Rohan's Rs 3,000 wrongful rejection, each multiplied by the ratio.</p>
+</main>
+<script>
+const BANK="2,0,1,4,0,1,8,0,2,9,1,1,10,0,2,11,0,2,12,1,7,13,0,7,14,0,12,15,0,18,16,0,18,17,1,27,18,2,34,19,1,40,20,0,41,21,0,54,22,0,51,23,0,73,24,2,54,25,1,42,26,1,36,27,1,48,28,0,50,29,2,56,30,1,41,31,1,53,32,2,66,33,2,51,34,2,67,35,2,60,36,4,82,37,3,89,38,3,100,39,5,94,40,3,80,41,9,97,42,4,94,43,4,93,44,2,93,45,1,85,46,4,58,47,6,59,48,2,73,49,3,81,50,7,68,51,5,61,52,4,69,53,0,59,54,4,66,55,3,44,56,5,43,57,6,60,58,2,61,59,3,51,60,5,38,61,4,45,62,2,45,63,2,44,64,2,48,65,4,59,66,2,46,67,3,38,68,4,49,69,7,37,70,3,53,71,6,62,72,1,48,73,3,45,74,3,52,75,4,55,76,1,48,77,6,70,78,8,71,79,6,67,80,5,67,81,5,76,82,5,72,83,4,52,84,3,60,85,4,78,86,6,71,87,10,68,88,5,60,89,6,68,90,4,68,91,3,80,92,8,65,93,10,83,94,9,67,95,6,67,96,7,65,97,7,80,98,10,64,99,4,66,100,6,68,101,2,53,102,6,66,103,9,60,104,5,57,105,7,61,106,8,53,107,3,42,108,5,47,109,3,40,110,4,44,111,6,43,112,6,32,113,2,31,114,6,30,115,3,43,116,3,37,117,3,38,118,5,25,119,3,34,120,4,32,121,5,24,122,2,23,123,2,23,124,1,24,125,4,13,126,3,25,127,2,19,128,4,11,129,1,22,130,3,20,131,1,20,132,1,19,133,3,17,134,1,18,135,3,12,136,2,8,137,2,16,138,1,10,139,2,11,140,1,6,141,1,5,142,0,8,143,1,6,144,2,7,145,1,3,146,3,4,147,0,6,148,1,6,149,4,5,150,1,10,151,2,12,152,2,10,153,1,7,154,3,5,155,2,4,156,4,6,157,2,8,158,3,6,159,2,4,160,2,6,161,1,8,162,3,7,163,0,10,164,0,8,165,0,4,166,2,7,167,2,6,168,3,6,169,3,5,170,2,5,171,0,3,172,2,11,173,1,8,174,2,8,175,1,5,176,2,6,177,1,7,178,0,2,179,4,6,180,3,10,181,0,5,182,2,5,183,1,11,184,3,5,185,4,9,186,1,6,187,3,9,188,1,6,189,1,7,190,1,5,191,0,5,192,3,4,193,0,5,194,3,7,195,1,3,196,1,7,197,1,8,198,1,1,199,1,5,200,1,5,201,4,2,202,1,2,203,2,9,204,4,4,205,0,5,206,2,4,207,3,8,208,0,6,209,1,7,210,4,4,211,3,5,212,1,3,213,2,7,214,2,6,215,2,2,216,0,8,217,5,2,218,1,4,219,3,6,220,0,5,221,1,3,222,4,4,223,1,5,224,1,4,225,1,3,226,1,2,227,0,4,228,2,5,229,0,3,230,1,2,231,1,3,232,0,4,233,1,1,234,1,0,235,2,1,236,1,3,237,0,3,238,0,3,239,1,3,241,1,1,242,1,1,244,0,3,245,1,2,246,2,3,247,0,1,248,1,1,249,0,2,250,1,2,251,0,3,252,1,0,253,0,2,254,1,1,257,1,0,258,2,0,259,0,5,260,1,1,261,0,1,262,0,1,263,2,1,265,0,1,266,1,1,267,0,1,268,0,3,269,0,2,270,1,1,274,0,1,275,0,2,276,0,3,277,1,0,278,1,2,279,1,0,280,1,1,281,1,1,282,1,2,283,0,2,284,0,2,285,0,1,286,0,4,287,0,1,289,1,2,290,1,2,291,1,2,293,1,1,294,2,1,296,0,1,297,0,2,298,1,1,299,0,1,300,0,1,301,0,1,303,1,2,304,2,0,305,0,2,307,2,2,308,1,3,309,0,1,310,0,1,311,1,0,312,1,2,313,0,1,314,2,2,315,2,0,316,1,2,317,1,0,318,2,1,321,0,1,322,1,2,323,2,0,324,2,0,325,1,0,326,1,2,327,0,1,328,1,2,329,1,2,330,1,2,331,0,2,334,0,1,335,1,1,336,1,1,337,0,1,338,1,1,339,1,1,342,0,1,343,0,2,344,0,1,345,0,2,346,0,2,349,1,1,350,0,3,351,1,1,352,1,1,353,1,0,354,0,3,356,0,1,357,0,1,358,1,2,360,0,3,361,0,3,362,1,0,363,2,1,364,0,1,365,1,0,366,1,0,368,1,1,369,1,0,370,0,1,371,1,0,372,1,1,374,2,0,375,0,1,376,0,1,380,0,1,382,1,0,383,2,1,385,1,0,386,0,2,389,0,1,390,0,1,392,1,0,393,0,1,394,0,1,395,0,1,396,0,1,399,0,1,401,0,1,402,0,2,403,0,1,404,0,1,405,1,2,406,0,1,408,2,0,409,0,1,410,0,1,412,1,1,414,1,1,415,1,0,416,0,3,417,1,1,418,1,0,419,1,1,420,1,1,421,0,1,423,1,1,424,1,2,426,1,0,428,0,1,429,2,0,431,1,0,434,1,2,437,0,1,438,0,2,439,1,2,440,0,1,444,1,0,445,1,0,446,0,1,447,1,1,448,1,0,449,0,1,450,0,1,451,2,0,452,2,2,453,1,1,454,1,0,455,2,1,457,1,1,458,1,0,460,1,0,461,1,0,462,1,2,463,2,4,465,1,1,467,2,0,469,4,0,470,2,0,472,3,1,473,1,1,474,1,1,475,1,1,476,0,2,478,1,2,479,0,1,480,0,2,484,0,3,485,1,0,487,1,1,488,0,2,489,0,1,490,1,1,491,1,1,492,1,0,493,0,1,494,1,1,495,0,1,496,0,2,497,2,1,500,1,1,501,1,0,502,1,0,503,0,1,504,0,1,505,0,1,507,0,1,509,1,0,510,1,0,512,0,1,513,1,1,514,0,1,516,0,1,518,1,0,519,0,1,520,1,0,521,1,0,523,0,1,525,0,1,526,1,1,527,1,1,528,0,1,529,0,1,530,1,0,531,0,1,533,0,1,535,1,1,537,1,1,538,0,2,539,3,0,541,2,1,542,0,1,545,1,0,547,0,2,550,0,1,551,1,0,554,0,1,560,0,1,563,0,1,565,0,2,569,0,1,575,1,0,577,1,0,578,0,1,580,2,0,582,2,0,583,0,1,590,1,0,591,0,2,593,1,0,595,0,1,597,2,0,600,2,0,601,1,0,604,1,1,606,1,1,608,2,0,611,1,0,612,1,0,613,1,0,615,1,0,616,1,0,617,2,0,618,2,0,619,1,0,621,0,1,624,1,1,629,0,1,631,1,0,634,2,0,636,1,0,640,0,2,641,2,2,642,2,0,645,2,0,646,2,0,648,1,1,649,1,1,650,1,0,651,0,2,652,2,0,653,0,1,654,1,0,659,1,0,660,2,0,664,2,0,667,2,0,668,2,0,670,1,0,671,1,0,676,3,0,678,1,0,680,2,0,681,1,2,682,1,0,683,0,1,685,0,1,686,1,0,687,1,0,690,0,1,694,1,0,695,1,0,696,1,0,701,1,1,704,0,1,706,0,1,708,0,1,714,1,0,717,1,0,720,0,2,725,1,0,726,1,0,727,1,0,728,1,0,732,1,0,735,1,0,736,0,1,738,1,0,740,1,0,741,1,0,747,1,0,748,1,0,749,1,0,750,0,1,753,1,1,756,0,1,757,2,0,758,1,0,759,1,0,763,1,0,767,3,0,769,1,0,770,0,1,771,1,0,772,0,1,773,1,0,779,1,0,782,3,0,783,1,0,786,3,1,790,1,0,792,1,0,796,0,1,797,0,1,801,1,0,802,1,0,805,1,0,809,2,1,811,1,0,813,2,1,817,1,0,822,1,0,825,0,1,834,0,1,835,2,0,838,0,1,840,0,1,841,0,1,844,0,1,845,0,1,846,1,0,849,0,1,850,1,0,851,1,1,856,1,0,858,2,0,859,0,1,860,1,0,862,2,0,864,1,0,865,2,0,868,2,1,872,1,1,875,1,0,879,1,0,880,1,0,882,1,0,883,0,1,885,0,1,887,1,1,892,1,0,894,1,0,895,0,1,896,0,1,899,1,0,902,1,0,904,2,0,905,1,0,906,0,1,913,1,0,914,1,1,916,0,1,917,1,0,922,1,0,934,1,0,956,2,0";
+const CREDIT="59,0,1,61,0,1,62,0,1,80,1,0,107,0,1,124,0,1,130,0,1,144,1,0,159,1,0,163,1,1,170,0,1,182,1,0,209,0,1,210,0,1,211,0,1,215,0,1,220,0,1,223,1,1,224,0,1,229,0,1,231,0,1,235,0,1,236,0,1,243,1,0,248,0,1,250,1,0,260,0,1,272,0,1,273,0,1,281,1,0,283,1,0,286,0,1,296,0,1,297,1,0,301,0,1,314,0,1,320,1,0,323,1,0,326,0,1,330,0,1,338,1,0,341,0,1,344,0,1,345,1,0,351,0,1,363,0,1,364,0,1,366,0,1,374,1,0,377,1,0,382,1,0,383,0,1,388,1,0,403,0,1,406,2,0,410,0,1,426,1,0,436,1,0,440,1,0,441,1,0,458,0,1,460,1,0,462,0,1,482,1,0,486,1,0,489,0,1,490,0,1,491,1,0,494,2,0,496,0,1,501,1,0,508,1,0,513,0,1,514,1,0,521,0,1,523,1,0,527,0,1,534,0,1,535,0,1,540,0,1,543,1,0,545,0,1,550,0,1,573,1,0,581,0,1,587,1,0,591,0,1,598,1,0,600,0,1,610,2,0,616,1,0,620,0,1,624,0,1,626,1,0,627,1,0,628,0,1,636,1,0,643,0,2,645,1,0,646,2,0,653,1,0,654,1,0,668,1,0,672,1,0,673,1,0,676,1,0,679,0,1,683,1,0,684,2,0,686,0,1,699,2,0,700,0,1,704,1,0,719,1,0,720,0,1,721,0,2,724,0,1,726,0,1,727,1,0,731,1,0,732,0,1,734,0,1,735,2,0,736,1,0,738,1,0,739,1,0,745,1,1,748,1,0,750,1,0,752,1,0,754,1,0,758,1,0,774,1,0,775,2,0,784,2,0,786,0,1,789,0,1,794,1,1,799,0,1,800,1,0,801,1,0,803,0,1,805,1,1,810,1,0,811,1,0,816,1,0,818,1,0,819,0,1,821,1,0,823,1,0,826,2,0,828,1,0,829,2,0,831,1,0,835,2,0,836,1,0,840,1,0,841,1,0,842,1,0,846,0,1,849,3,0,852,1,2,857,1,0,859,1,0,861,1,0,862,1,0,864,1,0,867,1,0,868,1,0,869,1,0,873,0,1,875,1,0,878,0,1,879,1,0,882,1,0,884,1,0,887,2,0,890,0,1,892,1,0,893,1,0,894,1,0,898,1,0,900,1,0,902,2,0,907,1,0,910,1,0,911,1,0,912,2,0,913,1,0,916,2,0,917,1,0,920,1,0,921,0,1,922,1,0,923,1,0,925,2,0,926,1,0,927,2,0,929,1,1,930,1,0,931,1,0,932,5,0,933,2,1,934,1,0,935,3,0,936,1,0,937,1,0,939,1,0,940,1,0,941,2,0,944,1,0,945,1,0,948,2,0,949,2,0,950,0,1,951,1,0,952,2,0,953,1,0,954,1,0,955,2,1,956,2,0,957,1,0,958,1,0,962,1,0,963,0,1,964,2,0,968,1,0,970,1,0,971,2,0,972,1,1,973,1,0,975,2,0,976,1,0,977,1,0,979,2,0,981,2,0,983,1,0,985,3,0,987,1,0,988,2,0,989,1,0,990,1,0,991,1,0,993,2,0,996,1,0";
+function parse(s){const a=s.split(",").map(Number),r=[];for(let i=0;i<a.length;i+=3)r.push([a[i],a[i+1],a[i+2]]);return r}
+function cumulate(bins){const pos=new Array(1001).fill(0),neg=new Array(1001).fill(0);
+  for(const [k,p,n] of bins){pos[k]+=p;neg[k]+=n}
+  for(let k=999;k>=0;k--){pos[k]+=pos[k+1];neg[k]+=neg[k+1]}
+  return {pos,neg,P:pos[0],N:neg[0],bins}}
+const MODES={
+  nudge:Object.assign(cumulate(parse(BANK)),{name:"nudge",base:40,ratio:30,posName:"bought",negName:"did not buy",
+    labels:["called, bought","called, did not buy","not called, bought","not called, did not buy"],
+    ratioLabel:"A missed buyer costs this many Rs 40 calls:",
+    costs:r=>({fp:40,fn:40*r}),line:r=>1/(1+r),
+    note:"Kalpa Retail on the bank's calls: act means call. Positive means the client bought. The line moves in steps of 0.001, so 0.032 calls 7,452 here; exactly 1 in 31 (0.0323) calls 7,438, as in case 2."}),
+  loan:Object.assign(cumulate(parse(CREDIT)),{name:"loan",base:3000,ratio:20,posName:"repaid",negName:"defaulted",
+    labels:["lent, repaid","lent, defaulted","rejected, would repay","rejected, would default"],
+    ratioLabel:"A false approval costs this many Rs 3,000 rejections:",
+    costs:r=>({fp:3000*r,fn:3000}),line:r=>r/(1+r),
+    note:"Kalpa Financial's prices on German Credit: act means lend. Positive means the applicant repaid."})};
+let mode=MODES.nudge,visited=new Set(),locked=null,revealed=false;
+const $=id=>document.getElementById(id);
+const fmt=n=>Math.round(n).toLocaleString("en-US");
+const rs=n=>"Rs "+fmt(n);
+function budgetK(m){for(let k=0;k<=1000;k++){if(m.pos[k]+m.neg[k]<=1000)return k}return 1000}
+function effK(k){return (mode.name==="nudge"&&$("cap").checked)?Math.max(k,budgetK(mode)):k}
+function cellsAt(k){const m=mode,kk=effK(k),tp=m.pos[kk],fp=m.neg[kk];return {tp,fp,fn:m.P-tp,tn:m.N-fp,kk}}
+function billAt(k){const c=mode.costs(+$("ratio").value),x=cellsAt(k);return x.fp*c.fp+x.fn*c.fn}
+function freeRule(){const c=mode.costs(+$("ratio").value),m=mode;
+  if(mode.name==="nudge"&&$("cap").checked){const share=1000/(m.P+m.N);
+    return {name:"a random 1,000",bill:1000*(1-m.P/(m.P+m.N))*c.fp+(m.P-share*m.P)*c.fn}}
+  const nobody=m.P*c.fn,everyone=m.N*c.fp;
+  const none=m.name==="nudge"?"calling nobody":"rejecting everyone",all=m.name==="nudge"?"calling everyone":"approving everyone";
+  return nobody<everyone?{name:none,bill:nobody}:{name:all,bill:everyone}}
+function cheapest(){let best=0,b=Infinity;for(let k=0;k<=1000;k++){const v=billAt(k);if(v<b){b=v;best=k}}return {k:effK(best),bill:b}}
+function drawHumps(k){const m=mode,W=520,H=250,L=40,B=210,bw=(W-L-10)/50,agg=[];
+  for(let i=0;i<50;i++)agg.push([0,0]);
+  for(const [kk,p,n] of m.bins){const i=Math.min(49,Math.floor(kk/20));agg[i][0]+=p;agg[i][1]+=n}
+  const top=Math.sqrt(Math.max(...agg.map(a=>Math.max(a[0],a[1])))) || 1;
+  let s=`<line x1="${L}" y1="${B}" x2="${W-10}" y2="${B}" stroke="#6B6690"/>`;
+  agg.forEach((a,i)=>{const x=L+i*bw,hn=Math.sqrt(a[1])/top*180,hp=Math.sqrt(a[0])/top*180;
+    s+=`<rect x="${x}" y="${B-hn}" width="${bw-1}" height="${hn}" fill="#6B6690" opacity="0.35"/>`;
+    s+=`<rect x="${x+bw*0.25}" y="${B-hp}" width="${bw*0.5}" height="${hp}" fill="#1F8A5B"/>`});
+  for(let t=0;t<=10;t+=2){s+=`<text x="${L+t/10*(W-L-10)-(t===10?24:8)}" y="${B+18}">${(t/10).toFixed(1)}</text>`}
+  const x=L+k/1000*(W-L-10);s+=`<line x1="${x}" y1="20" x2="${x}" y2="${B}" stroke="#D63A6A" stroke-width="3"/>`;
+  s+=`<text x="${Math.min(x+4,W-120)}" y="16" style="fill:#D63A6A">line ${(k/1000).toFixed(3)}</text>`;
+  const kk=effK(k);if(kk!==k){const xb=L+kk/1000*(W-L-10);s+=`<line x1="${xb}" y1="30" x2="${xb}" y2="${B}" stroke="#1A0F5C" stroke-dasharray="5 4" stroke-width="2"/><text x="${Math.min(xb+4,W-150)}" y="44">budget cut ${(kk/1000).toFixed(3)}</text>`}
+  const lx=m.name==="nudge"?W-200:L+10;s+=`<rect x="${lx}" y="52" width="14" height="14" fill="#1F8A5B"/><text x="${lx+20}" y="65">${m.posName} (${fmt(m.P)})</text>`;
+  s+=`<rect x="${lx}" y="76" width="14" height="14" fill="#6B6690" opacity="0.35"/><text x="${lx+20}" y="89">${m.negName} (${fmt(m.N)})</text>`;
+  s+=`<text x="${L+150}" y="${H-4}">score: P(${m.name==="nudge"?"buy":"repay"})</text>`;
+  $("humps").innerHTML=s}
+function drawTrace(k){const W=520,H=250,L=60,B=210;const ks=[];for(let i=0;i<=1000;i+=5)ks.push(i);
+  const fr=freeRule(),vals=ks.map(billAt),max=Math.max(...vals,fr.bill)*1.05;
+  const X=kk=>L+kk/1000*(W-L-10),Y=v=>B-v/max*190;
+  let s=`<line x1="${L}" y1="${B}" x2="${W-10}" y2="${B}" stroke="#6B6690"/><line x1="${L}" y1="${B}" x2="${L}" y2="15" stroke="#6B6690"/>`;
+  s+=`<text x="${L+6}" y="16">top of the axis: ${rs(max)}</text><text x="${L+150}" y="${H-4}">the line</text>`;
+  s+=`<line x1="${L}" y1="${Y(fr.bill)}" x2="${W-10}" y2="${Y(fr.bill)}" stroke="#1F8A5B" stroke-dasharray="6 4"/><text x="${L+4}" y="${Y(fr.bill)-4}" style="fill:#1F8A5B">${fr.name}: ${rs(fr.bill)}</text>`;
+  if(revealed){s+=`<polyline fill="none" stroke="#5B3FD6" stroke-width="2.5" points="${ks.map((kk,i)=>X(kk)+","+Y(vals[i])).join(" ")}"/>`;
+    const c=cheapest();s+=`<circle cx="${X(c.k)}" cy="${Y(c.bill)}" r="7" fill="#D63A6A"/><text x="${Math.min(X(c.k)+8,W-170)}" y="${Y(c.bill)+20}" style="fill:#D63A6A">cheapest ${(c.k/1000).toFixed(3)}</text>`}
+  for(const v of visited){s+=`<circle cx="${X(v)}" cy="${Y(billAt(v))}" r="4" fill="#1A0F5C"/>`}
+  const xk=X(k);s+=`<line x1="${xk}" y1="15" x2="${xk}" y2="${B}" stroke="#D63A6A"/>`;
+  $("trace").innerHTML=s}
+function render(){const k=Math.round(+$("th").value*1000),r=+$("ratio").value,c=mode.costs(r),x=cellsAt(k),n=mode.P+mode.N;
+  visited.add(k);$("thv").textContent=(k/1000).toFixed(3);$("rv").textContent=r+" to 1";
+  $("ratioLabel").textContent=mode.ratioLabel;$("modeNote").textContent=mode.note;
+  $("capRow").style.display=mode.name==="nudge"?"flex":"none";
+  const L=mode.labels,cost=[0,c.fp,c.fn,0],vals=[x.tp,x.fp,x.fn,x.tn],cls=["tp","fp","fn","tn"],tag=["TP","FP","FN","TN"];
+  $("boxes").innerHTML=vals.map((v,i)=>`<div class="box ${cls[i]}">${tag[i]}: ${L[i]}<b>${fmt(v)}</b>${cost[i]?rs(cost[i])+" each = "+rs(cost[i]*v):"no cost"}</div>`).join("");
+  const acted=x.tp+x.fp,bill=x.fp*c.fp+x.fn*c.fn,fr=freeRule(),line=mode.line(r);
+  const pct=(a,b)=>b?(100*a/b).toFixed(1)+"%":"none acted on";
+  $("nums").innerHTML=`<tr><td>Acted on</td><td class="n">${fmt(acted)} of ${fmt(n)}</td></tr>
+   <tr><td>Accuracy</td><td class="n">${fmt(x.tp+x.tn)} of ${fmt(n)} = ${pct(x.tp+x.tn,n)}</td></tr>
+   <tr><td>Precision</td><td class="n">${fmt(x.tp)} of ${fmt(acted)} = ${pct(x.tp,acted)}</td></tr>
+   <tr><td>Recall</td><td class="n">${fmt(x.tp)} of ${fmt(mode.P)} = ${pct(x.tp,mode.P)}</td></tr>
+   <tr><td>Bill</td><td class="n">${fmt(x.fp)} x ${rs(c.fp)} + ${fmt(x.fn)} x ${rs(c.fn)} = <b>${rs(bill)}</b></td></tr>
+   <tr><td>Best rule with no model</td><td class="n">${fr.name}: ${rs(fr.bill)}</td></tr>
+   <tr><td>1-in-N line from the prices</td><td class="n">${line.toFixed(3)}</td></tr>`;
+  const cc=cheapest(),edge=(fr.bill-cc.bill)/fr.bill;
+  $("verdict").innerHTML=revealed?`At ${r} to 1 the cheapest line is <b>${(cc.k/1000).toFixed(3)}</b>, bill ${rs(cc.bill)}. The model beats ${fr.name} by <b>${(100*edge).toFixed(1)}%</b>${edge<0.05?": at this ratio the model barely matters.":"."}`
+    :`At this line the bill is ${rs(bill)}. ${x.tp===0?"Nobody positive was found: the empty column.":"Where is it cheapest? Lock a guess, then reveal."}`;
+  drawHumps(k);drawTrace(k)}
+function setMode(m){mode=MODES[m];$("mNudge").classList.toggle("on",m==="nudge");$("mLoan").classList.toggle("on",m==="loan");
+  $("ratio").value=mode.ratio;$("th").value=0.5;visited=new Set();revealed=false;render();
+  $("guessNote").textContent=(m==="nudge"?"Retail nudge":"Lending approval")+": back to the line 0.5 at "+mode.ratio+" to 1. Lock a guess, then reveal."}
+$("mNudge").addEventListener("click",()=>setMode("nudge"));
+$("mLoan").addEventListener("click",()=>setMode("loan"));
+$("th").addEventListener("input",render);
+$("ratio").addEventListener("input",()=>{visited=new Set();render()});
+$("cap").addEventListener("change",()=>{visited=new Set();render()});
+$("guess").addEventListener("input",()=>{$("guessNote").textContent=$("guess").value===""?"Lock a guess before the reveal.":"Your guess: "+(+$("guess").value).toFixed(2)+" (not locked yet)"});
+$("lock").addEventListener("click",()=>{const g=+$("guess").value||0;locked=g;$("guessNote").textContent="Locked: "+g.toFixed(2)+". Now reveal."});
+$("reveal").addEventListener("click",()=>{revealed=true;render();const c=cheapest().k/1000;
+  $("guessNote").textContent=locked===null?"Revealed with no guess locked: "+c.toFixed(3)+".":"You locked "+locked.toFixed(2)+"; the cheapest line is "+c.toFixed(3)+", "+Math.abs(locked-c).toFixed(3)+" away."});
+$("reset").addEventListener("click",()=>{$("th").value=0.5;revealed=false;visited=new Set();render();$("guessNote").textContent="Back at the default line of 0.5."});
+setMode("nudge");$("guessNote").textContent="Lock a guess before the reveal.";
+</script>
+</body>
+</html>
