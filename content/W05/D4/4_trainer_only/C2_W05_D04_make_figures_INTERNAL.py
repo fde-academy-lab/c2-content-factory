@@ -55,7 +55,7 @@ CACHE.mkdir(parents=True, exist_ok=True)
 def load_bank():
     f = CACHE / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -97,35 +97,49 @@ def logit(C=0.1):
 folds = StratifiedKFold(5, shuffle=True, random_state=42)
 
 # ------------------------------------------------------------------ the week's timeline, Thursday
-fig, axes = plt.subplots(1, 2, figsize=(12, 4.2), gridspec_kw={"width_ratios": [1.5, 1]})
-ax = axes[0]
-ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 4.6)
-ax.annotate("", xy=(9.8, 1.35), xytext=(0.2, 1.35), arrowprops=dict(arrowstyle="->", lw=2.2, color=INK))
-ax.add_patch(plt.Rectangle((0.3, 1.55), 4.6, 0.9, color=TINT))
-ax.text(2.6, 2.0, "past rows: train and validate", ha="center", va="center", fontsize=12.5, color=INK)
-ax.plot([5.1, 5.1], [1.2, 2.8], color=INK, lw=2)
-ax.text(5.1, 3.0, "prediction\nmoment", ha="center", fontsize=12.5, color=INK, fontweight="bold")
-ax.add_patch(plt.Rectangle((5.3, 1.55), 3.2, 0.9, color="#FCEBF0"))
-ax.text(6.9, 2.0, "outcome window", ha="center", va="center", fontsize=12.5, color=INK)
-ax.text(6.9, 0.85, "duration lives here (Wed)", ha="center", fontsize=12, color=ROSE)
-ax.text(2.6, 0.85, "Mon: split, baseline 88.7%", ha="center", fontsize=12, color=MUTED)
-ax.text(2.6, 0.35, "Tue: threshold, the four boxes", ha="center", fontsize=12, color=MUTED)
-ax.text(5.1, 4.1, "Thu: how much of the past to trust", ha="center", fontsize=13, color=VIOLET,
-        fontweight="bold")
-ax.text(9.2, 2.35, "Fri:\nlater\nmonths", ha="center", fontsize=11.5, color=MUTED)
 depth_x = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 25, 30, 37]
 err = []
 for d in depth_x[:-1] + [None]:
     m = tree(max_depth=d).fit(X_train, y_train)
     err.append((1 - accuracy_score(y_train, m.predict(X_train)), 1 - accuracy_score(y_val, m.predict(X_val))))
 err = np.array(err)
-ax = axes[1]
-ax.plot(depth_x, err[:, 1] * 100, "o-", color=ROSE, label="validation")
-ax.plot(depth_x, err[:, 0] * 100, "o-", color=VIOLET, label="training")
-ax.axhline(BASE_ERR * 100, color=MUTED, ls="--", label="call nobody")
-ax.set_xlabel("tree depth"); ax.set_ylabel("% customers wrong"); ax.set_title("Thursday adds the U")
-ax.legend(frameon=False, fontsize=11)
-save(fig, "fig_timeline_thursday.png")
+
+
+def timeline(reveal, name):
+    """The week's picture. The opening slide hides Thursday's U; the close and the notes show it."""
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.2), gridspec_kw={"width_ratios": [1.5, 1]})
+    ax = axes[0]
+    ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 4.6)
+    ax.annotate("", xy=(9.8, 1.35), xytext=(0.2, 1.35), arrowprops=dict(arrowstyle="->", lw=2.2, color=INK))
+    ax.add_patch(plt.Rectangle((0.3, 1.55), 4.6, 0.9, color=TINT))
+    ax.text(2.6, 2.0, "past rows: train and validate", ha="center", va="center", fontsize=12.5, color=INK)
+    ax.plot([5.1, 5.1], [1.2, 2.8], color=INK, lw=2)
+    ax.text(5.1, 3.0, "prediction\nmoment", ha="center", fontsize=12.5, color=INK, fontweight="bold")
+    ax.add_patch(plt.Rectangle((5.3, 1.55), 3.2, 0.9, color="#FCEBF0"))
+    ax.text(6.9, 2.0, "outcome window", ha="center", va="center", fontsize=12.5, color=INK)
+    ax.text(6.9, 0.85, "duration lives here (Wed)", ha="center", fontsize=12, color=ROSE)
+    ax.text(2.6, 0.85, "Mon: split, baseline 88.7%", ha="center", fontsize=12, color=MUTED)
+    ax.text(2.6, 0.35, "Tue: threshold, the four boxes", ha="center", fontsize=12, color=MUTED)
+    ax.text(5.1, 4.1, "Thu: how much of the past to trust", ha="center", fontsize=13, color=VIOLET,
+            fontweight="bold")
+    ax.text(9.2, 2.35, "Fri:\nlater\nmonths", ha="center", fontsize=11.5, color=MUTED)
+    ax = axes[1]
+    ax.axhline(BASE_ERR * 100, color=MUTED, ls="--", label="call nobody")
+    ax.set_xlim(0, 39); ax.set_ylim(0, 17)
+    ax.set_xlabel("tree depth"); ax.set_ylabel("% customers wrong")
+    if reveal:
+        ax.plot(depth_x, err[:, 1] * 100, "o-", color=ROSE, label="validation")
+        ax.plot(depth_x, err[:, 0] * 100, "o-", color=VIOLET, label="training")
+        ax.set_title("Thursday adds the U")
+    else:
+        ax.text(19.5, 8.5, "?", ha="center", va="center", fontsize=60, color=VIOLET, fontweight="bold")
+        ax.set_title("Thursday adds: case 1 draws it")
+    ax.legend(frameon=False, fontsize=11, loc="upper left")
+    save(fig, name)
+
+
+timeline(True, "fig_timeline_thursday.png")
+timeline(False, "fig_timeline_open.png")
 
 # ------------------------------------------------------------------ concept 1
 students = pd.DataFrame({"student": ["Asha\nmemorises", "Bilal\nlearns the method", "Chitra\nskims"],
@@ -301,8 +315,11 @@ def three_panels(labels, fname, titles):
 
 three_panels(list(lc), "fig_learning_curves_bank.png",
              ["Stump: bias", "No limit: variance", "Depth 6, leaf 50: about right"])
-three_panels(["No limit", "Stump (depth 1)", "Depth 6, leaf 50"], "fig_mystery_curves.png",
-             ["Model A", "Model B", "Model C"])
+for name, model in [("A", tree(max_depth=12)), ("B", logit(0.0001)), ("C", logit(0.1))]:
+    s_, trs, vas = learning_curve(model, X_train, y_train, cv=folds, scoring="accuracy",
+                                  train_sizes=[0.05, 0.1, 0.25, 0.5, 0.75, 1.0], n_jobs=-1)
+    lc[name] = (s_, (1 - trs.mean(1)) * 100, (1 - vas.mean(1)) * 100)
+three_panels(["A", "B", "C"], "fig_mystery_curves.png", ["Model A", "Model B", "Model C"])
 
 # ------------------------------------------------------------------ case 2
 outside = pd.concat([train, val]); y_out = yall.loc[outside.index]

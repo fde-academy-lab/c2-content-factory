@@ -6,7 +6,7 @@ Generalise or memorise, and the honest tuned model. Thursday 5 November 2026.
 
 | Block | Minutes | Who acts | Open | The screen shows |
 |---|---|---|---|---|
-| Opening | 10 | trainer | `1_in_class_training_content/slides/C2_W05_D04_slides_STUDENT.pptx`, S1 to S6 | the ticket: 99.6 on training, 84.1 on validation, 88.7 for calling nobody |
+| Opening | 10 | trainer | `1_in_class_training_content/slides/C2_W05_D04_slides_STUDENT.pptx`, S1 to S6 | the ticket: a tree at 99.6 percent on training, its validation score still hidden, 88.7 for calling nobody |
 | Chapter 1: Memorising against learning | 25 | trainer, learners follow | `notebooks/C2_W05_D04_ch01_memorising_against_learning_STUDENT.ipynb`, then the explorable | three students' practice and exam scores; the explorable at degree 12 |
 | Chapter 2: Putting brakes on the model | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch02_putting_brakes_on_the_model_STUDENT.ipynb`, explorable brake slider | the seven-bend curve with and without a brake |
 | Chapter 3: Five exams instead of one | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch03_five_exams_instead_of_one_STUDENT.ipynb`, explorable reshuffle | the 5 by 20 fold grid |

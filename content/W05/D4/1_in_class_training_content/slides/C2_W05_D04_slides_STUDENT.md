@@ -59,34 +59,34 @@ exact pipeline on Kalpa Financial's lending book. Transition: the week's one pic
 ---
 
 ## S3. The week's picture, Thursday state
-*Monday split it, Tuesday set the line, Wednesday removed the leak. Today: the U.*
+*Monday split it, Tuesday set the line, Wednesday removed the leak. Today fills the last panel.*
 
-![The week's timeline with Thursday's U of validation error against tree depth](img/C2_W05_D04_fig_timeline_thursday_STUDENT.png)
+![The week's timeline with Thursday's panel still empty](img/C2_W05_D04_fig_timeline_open_STUDENT.png)
 
 ```notes
 LIVE, 2 minutes. The same timeline every morning. Left: past rows we train and validate on, the
-prediction moment, the outcome window where duration lived. Right panel is new today: validation
-error against tree depth falls, bottoms out, then climbs above the dashed call-nobody line. Ask the
-room to say aloud which side of the U a model with no depth limit sits on. Do not explain yet.
+prediction moment, the outcome window where duration lived. The right panel is empty on purpose:
+case 1 draws validation error against tree depth on the bank's file. Ask the room to sketch the
+shape they expect, with the dashed call-nobody line, and keep the sketches for case 1.
 ```
 
 ---
 
-## S4. The ticket: 99.6 on practice, below doing nothing
+## S4. The ticket: a tree that scored 99.6 on practice
 *A teammate's tree, the room's own honest columns, one campaign of budget.*
 
 ```stats
 value: 99.6% | label: training accuracy | note: the number Marketing saw first
-value: 84.1% | label: validation accuracy | note: 8,238 customers the tree never saw
+value: ? | label: validation accuracy | note: 8,238 customers the tree never saw
 value: 88.7% | label: call nobody | note: the do-nothing baseline from Monday
 ```
 
 ```notes
 LIVE, 2 minutes. This is the destination; the topics come first. A teammate grew a decision tree
-with no depth limit on Wednesday's honest feature set. Ask: which number do you put on Marketing's
-slide? Take two answers, park them. By the end of the day you will say why 84.1 is the honest one,
-why it loses to doing nothing, and which model Anand's single campaign should run instead.
-The row's story said 100 and 61; our run on public data says 99.6 and 84.1, and we quote our run.
+with no depth limit on Wednesday's honest feature set and posted 99.6 percent. Ask: would you book
+Anand's one campaign on it? Take two answers, park them. Case 1 reveals the validation number (84.1,
+below the 88.7 baseline); do not say it now. The row's story said 100 and 61; our run on public data
+says 99.6 and 84.1, and we quote our run.
 ```
 
 ---
@@ -799,8 +799,9 @@ signal it lacked.
 ```notes
 LIVE, 15 minutes. Guided notebook. YOUR TURN 1: each learner writes bias, variance or about right
 for A, B, C, plus one fix. YOUR TURN 2: run five-fold cross-validation, then k = 3 and k = 10. The
-answer cell is last: A variance (unlimited tree), B bias (stump), C about right (braked logistic).
-End of block one.
+answer cell is last: A variance whose gap is still closing (a tree capped at depth 12, so more rows
+help it, unlike the unlimited tree), B bias from a brake set far too hard (logistic at C = 0.0001), C
+about right (logistic at C = 0.1). End of block one.
 ```
 
 ---
@@ -1052,6 +1053,18 @@ answers and the two follow-ups.
 ```notes
 LIVE, 8 minutes. Keys and options are in the trainer guide. Question 4 is the trap: 0.4 points is
 inside the fold spread and is worth no extra cost.
+```
+
+---
+
+## S54a. The week's picture, Thursday filled in
+*Redraw it from memory tonight: the U, the baseline line, the depth you chose.*
+
+![The week's timeline with Thursday's U of validation error against tree depth](img/C2_W05_D04_fig_timeline_thursday_STUDENT.png)
+
+```notes
+LIVE, 1 minute. Hold the room's sketches from the opening against the real U. Friday adds the last
+panel: what happens to the score in the later months.
 ```
 
 ---
