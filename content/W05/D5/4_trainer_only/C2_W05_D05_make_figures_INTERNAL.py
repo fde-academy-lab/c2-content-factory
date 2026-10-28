@@ -154,7 +154,7 @@ def memo_seconds():
 def load_bank():
     f = CACHE / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))

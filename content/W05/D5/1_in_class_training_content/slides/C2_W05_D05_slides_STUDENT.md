@@ -816,9 +816,9 @@ value: 3 to 6 | label: months ahead | note: how far the home price forecast had 
 ```notes
 LIVE, 3 minutes. Zillow's letter: "We have been unable to accurately forecast future home prices at
 different times in both directions." The forecast had to be right three to six months out, and the
-world moved. Sources: the 8-K at https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/z-20211102.htm
-and Exhibit 99.3 at https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/exhibit993.htm
-(verified 28 October 2026). Bridge to Kalpa: the same rule, the promise against reality, catches it.
+world moved. Bridge to Kalpa: the same rule, the promise against reality, catches it. Sources:
+the 8-K, https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/z-20211102.htm (verified 28 October 2026)
+Exhibit 99.3, https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/exhibit993.htm (verified 28 October 2026)
 Transition: Rohan.
 ```
 
