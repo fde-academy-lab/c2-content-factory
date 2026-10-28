@@ -124,22 +124,23 @@ def shape():
     timed = sum(i["min"] for i in PRINTED)
     assert timed == 59 and bsp.paper_minutes("W05", 60) == 60, timed
     levels = [i["level"] for i in PRINTED]
-    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (4, 7, 15)
+    assert (levels.count("Easy"), levels.count("Medium"), levels.count("Hard")) == (4, 9, 13)
     assert len(SOURCE["folded"]) == 24 and not SOURCE["stretch_bank"]
     assert sorted(BY_NO) == [1, 2, 3, 4, 5]
-    print(f"PASS  shape: 26 items, {timed:g} of 60 minutes, 4 easy, 7 medium, 15 hard; "
+    print(f"PASS  shape: 26 items, {timed:g} of 60 minutes, 4 easy, 9 medium, 13 hard; "
           f"5 bank items print and 24 fold")
 
 
 def no_giveaways():
     """Numbers a later exhibit or stem would hand to an earlier written item."""
     student = PAPER.split("## Stretch")[0]
-    for leak in ("0.032", "1 / 31", "1 in 31", "348 / 1,196", "0.291"):
+    for leak in ("0.032", "1 / 31", "1 in 31", "348 / 1,196", "0.291", "0.657", "leaky",
+                 "discarded", "Known only once the call ends"):
         assert leak not in student, f"the paper prints {leak}, which a written item asks for"
     # The row's planted Kalpa figures belonged to a dataset never generated (the plan's section 6),
     # so the paper prints none of them: no 0.99 for settlement_status and no 96 to 4 split.
     assert not re.search(r"0\.99\b|96 to 4", student), "the paper prints a planted Kalpa figure"
-    print("PASS  no giveaways: the cost line and F1 appear only in the key")
+    print("PASS  no giveaways: the cost line, F1, the discard note and the dated AUC appear only in the key")
 
 
 def exhibits():
@@ -206,7 +207,8 @@ def exhibits():
     assert t5[f"Earliest 70 percent of calls, {RUN['time_early_rows']:,} clients"] == "5.6 percent said yes"
     assert t5[f"Latest 30 percent of calls, {RUN['time_late_rows']:,} clients"] == "24.6 percent said yes"
     assert t5["Mean predicted chance of a yes on the latest 30 percent"] == "0.152"
-    assert t5["AUC on the latest 30 percent"] == "0.657, against 0.795 on the random split"
+    # The split by date's AUC stays off the paper: it would tell Part 1's split item its answer.
+    assert len(t5) == 3 and "0.657" not in PAPER.split("## Stretch")[0]
     print("PASS  Exhibit 5A: 28,831 + 12,357 = 41,188; 5.6 against 24.6 percent; mean score 0.152")
     # Exhibit 5B: the public figures as the sources file records them.
     sources = (ROOT / "content/W05/SAT/internal/C2_W05_SAT_sources_INTERNAL.md").read_text(encoding="utf-8")
@@ -314,7 +316,7 @@ def items():
 
     i = BY_ID["sign-flip"]
     assert f"{RUN['euribor_alone']:.2f}" in i["text"] and f"+{RUN['euribor_full']:.2f}" in i["text"]
-    keyed(i, "d", "move together")
+    keyed(i, "d", "move together", "as a group")
     ok(i["q"], "sign-flip", "d", "euribor3m -0.92 alone, +0.39 with the indicators, as RUN")
 
     i = BY_NO[4]
@@ -354,7 +356,8 @@ def items():
 
     i = BY_ID["stale-rule"]
     assert RUN["time_late_mean_pred"] < RUN["time_late_yes"]
-    keyed(i, "a", "yes rate", "mean score", "stated gap")
+    keyed(i, "a", "yes rate", "mean score", "stated gap", "cost line")
+    assert "0.152" in i["text"] and "24.6 percent" in i["text"]
     ok(i["q"], "stale-rule", "a", "mean score 0.152 against 24.6 percent yes on the late rows")
 
     i = BY_ID["caveat"]
@@ -415,7 +418,7 @@ def rerun():
     cache.mkdir(parents=True, exist_ok=True)
     f = cache / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # checked 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))

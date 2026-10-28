@@ -111,7 +111,7 @@ parts:
             - ["Test slice, sealed on Monday", "8,238 clients, opened once on Friday"]
             - ["Call nobody, on validation", "accuracy 0.887; finds 0 of the 928 buyers"]
             - ["Logistic regression on the customer table, threshold 0.5", "accuracy 0.897; AUC 0.761; finds 174 of the 928"]
-    items: [1, "new:peek", "new:random-or-time", "new:logit-071", "new:is-it-ml"]
+    items: ["new:peek", "new:random-or-time", "new:logit-071", "new:is-it-ml", 1]
   - title: Which number tells the truth, and where does the line go?
     shows: whether you can read a confusion matrix, price each error and set the line the business can afford
     intro: >-
@@ -140,25 +140,23 @@ parts:
           rows:
             - [Call nobody, "0", "0", "928", "7,310"]
             - ["Model at 0.5", "174", "94", "754", "7,216"]
-    items: [2, "new:acc-trap", "new:prf", "new:cost-line", "new:bill", "new:budget-k"]
+    items: ["new:acc-trap", "new:prf", "new:cost-line", "new:bill", "new:budget-k", 2]
   - title: What was the model allowed to know?
     shows: whether you can test each column against the moment of prediction and say what a coefficient does and does not prove
     intro: >-
       On Wednesday two more feeds were joined to the customer table: five economic indicators,
-      each published for its month or quarter, and the call log. Exhibit 3A gives the validation
-      scores as each feed joins. A junior analyst wants to ship the last line tonight. The
-      dataset's own notes, read aloud in class, say that the call's duration "is not known before
-      a call is performed" and "should be discarded if the intention is to have a realistic
-      predictive model" (bank-additional-names.txt in the UCI download). In the lab Kalpa's feed
-      held the same trap in settlement_status, a field written after delivery.
+      each published for its month or quarter, and this campaign's call log. Exhibit 3A gives the validation
+      scores as each feed joins. A junior analyst wants to ship the last line tonight, and the
+      marketing head asks which line to trust for next month's call list.
     exhibits:
       - caption: >-
-          What is known when, and the logistic model's validation scores as each feed joins,
-          threshold 0.5, the 928 validation buyers.
+          The three feeds joined on Wednesday, and the logistic model's validation scores as each
+          feed joins, threshold 0.5, the 928 validation buyers.
         mermaid: |-
           flowchart LR
-            K["Known the morning the list is built:<br/>age, job, housing, last campaign's result,<br/>this month's economic indicators"] --> M["Prediction moment"]
-            M --> L["Known only once the call ends:<br/>its duration, and the yes or no"]
+            A["Customer table:<br/>profile and campaign history"] --> J["The model's<br/>training table"]
+            B["Economic indicators:<br/>monthly and quarterly"] --> J
+            C["This campaign's call log:<br/>one row per call"] --> J
         table:
           head:
             - Columns in the model
@@ -169,7 +167,7 @@ parts:
             - ["The customer table: profile and campaign history", "0.761", "0.897", "174"]
             - ["The customer table and the five economic indicators", "0.795", "0.899", "211"]
             - ["All of those and duration, the call's length in seconds", "0.932", "0.907", "390"]
-    items: [3, "new:duration-call", "new:which-pass", "new:importance", "new:sign-flip"]
+    items: ["new:duration-call", "new:which-pass", "new:importance", "new:sign-flip", 3]
   - title: Is the model learning, or memorising?
     shows: whether you can read training against validation, choose complexity by cross-validation and say when the simpler model ships
     intro: >-
@@ -200,7 +198,7 @@ parts:
             - ["5", "0.901", "0.897", "0.783"]
             - ["8", "0.911", "0.897", "0.777"]
             - ["No limit", "0.996", "0.837", "0.619"]
-    items: [4, 5, "new:tree-read", "new:brakes", "new:cv-why", "new:near-tie"]
+    items: ["new:tree-read", "new:brakes", "new:cv-why", "new:near-tie", 4, 5]
   - title: Would the committee sign, and what moves to lending?
     shows: whether you can say what a memo must prove, how a model is caught going stale and why the same model draws an opposite line in lending
     intro: >-
@@ -227,7 +225,6 @@ parts:
             - ["Earliest 70 percent of calls, 28,831 clients", "5.6 percent said yes"]
             - ["Latest 30 percent of calls, 12,357 clients", "24.6 percent said yes"]
             - ["Mean predicted chance of a yes on the latest 30 percent", "0.152"]
-            - ["AUC on the latest 30 percent", "0.657, against 0.795 on the random split"]
     items: ["new:stale-rule", "new:caveat", "new:booking", "new:lend-flip"]
 
 # Bank items that move to the untimed stretch page: none, since every concept is tested in time.
@@ -366,7 +363,7 @@ additions:
   - id: peek
     label: "Catch the peek"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[S]"
     roles: DS, FDE
@@ -508,7 +505,7 @@ additions:
   - id: acc-trap
     label: "Judge the accuracy claim"
     type: True or false
-    level: Medium
+    level: Hard
     min: 2.5
     tag: "[F]"
     roles: DS, BA
@@ -526,8 +523,8 @@ additions:
       On an outcome where 89 clients in 100 say no, saying no to everyone scores 0.887, so a point
       of accuracy above it says almost nothing about the campaign. The model at 0.5 calls 268 people
       and finds 174 of the 928 buyers, a recall of 0.19, and leaves 754 buyers uncalled. Beating the
-      majority baseline is the floor, never the case for shipping; the case is made on recall,
-      precision and the bill.
+      majority baseline is the floor, and the case for shipping is made on recall, precision and
+      the bill.
       Tuesday's case opened on this matrix: the 89 percent model that called nobody.
     wrong:
       a: >-
@@ -733,20 +730,20 @@ additions:
       A column passes when its value exists at the prediction moment. Age, job and housing, the
       previous campaign's result and the rate published that morning all exist before any call.
       The previous result is strongly predictive, 65 percent yes among past successes, and still
-      legitimate, because it was recorded before this campaign began; predictive power is not the
-      test, timing is. Duration exists only after this campaign's call.
+      legitimate, because it was recorded before this campaign began, so it passes the timing test
+      however strong it is. Duration exists only after this campaign's call.
       Wednesday's chapter interrogated every column with this one question.
     wrong:
       a: >-
         This campaign's last call has not happened on the morning the list is built, so its length
         is from the future.
     answer: >-
-      I test a column by when it exists, never by how well it predicts; a strong column from the
-      past is a feature, a weak one from the future is a leak.
+      I test a column by when it exists: a strong column from the past is a feature, and a weak one
+      from the future is a leak.
   - id: importance
     label: "Judge the chart"
     type: True or false
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[F]"
     roles: DS, BA
@@ -755,10 +752,10 @@ additions:
     anchor: >-
       What does a feature importance chart prove, and what does it not?
     text: |-
-      In the leaky model duration tops the importance chart, and clients who said yes talked 553 seconds on average against 221 for those who said no. Statement: longer calls cause deposits, so agents should be coached to keep clients on the line. True or false, and why?
+      In the model with duration, duration tops the importance chart, and clients who said yes talked 553 seconds on average against 221 for those who said no. Statement: longer calls cause deposits, so agents should be coached to keep clients on the line. True or false, and why?
       (a) False: a client who means to buy stays on to arrange it, so the yes drives the length as much as the reverse.
       (b) False: an importance chart is valid for tree models only, so the logistic weights say nothing about duration.
-      (c) True: duration carries the largest weight in the model, and the largest weight marks the cause of the yes.
+      (c) True: duration carries the largest weight in the model, and the largest weight points to the cause of the yes.
       (d) True: a gap of 332 seconds is too large to be chance across 41,188 calls, so the effect has to be causal.
     why: >-
       Importance says how much the model leans on a column to predict, never what causes the
@@ -792,28 +789,29 @@ additions:
     anchor: >-
       What does a feature importance chart prove, and what does it not?
     text: |-
-      On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. What is the likeliest cause?
-      (a) a bug in the library's solver, which flips signs once a model has more than ten columns
-      (b) too few rows: 24,712 training clients cannot pin down five coefficients at once
-      (c) the 11 percent yes rate, which pushes the coefficients of a rare outcome toward zero
-      (d) the five indicators move together, so the model splits one shared signal among them
+      On its own, euribor3m takes a coefficient of -0.92 on the standardised scale; beside the four other economic indicators it takes +0.39. The marketing head asks whether higher rates help the campaign. What is the likeliest cause of the flip, and what does the memo say?
+      (a) A solver bug once a model passes ten columns; refit with another solver and report the sign it gives.
+      (b) Since 2009 the rate's effect has reversed; report the +0.39 as the effect on this year's campaign.
+      (c) The 11 percent yes rate shrinks rare-outcome weights; report -0.92 from the model fitted on its own.
+      (d) The five indicators move together and share one signal; read them as a group and quote no one sign.
     why: >-
       The five economic indicators rise and fall together across the period, so once they sit in
       one model, the weight on any one of them is what it adds after the others, and its sign can
       reverse. The prediction can be just as good while no single coefficient reads as an effect.
-      The fix is to read the group together, keep one representative, or regularise, and never to
-      narrate one coefficient as a cause.
+      So the memo answers the marketing head with the group: alone, higher rates go with fewer
+      yeses, and the five indicators carry that one economic signal together, so no single
+      coefficient is quoted as the effect of rates. Reading the group, keeping one representative or
+      regularising are the fixes.
       Wednesday's case showed euribor3m flip with the economic trio.
     wrong:
       a: >-
-        The flip appears in every solver and every library, because it comes from the data, not
-        the code.
+        The flip appears with every solver, because it comes from the data; refitting moves nothing.
       b: >-
-        24,712 rows is plenty for five coefficients; the trouble is that the columns carry the same
-        information.
+        +0.39 is the rate's weight once the other four indicators are held fixed, which says nothing
+        about this year's campaign on its own.
       c: >-
-        Imbalance shifts the intercept and the calibration, and it does not flip one column's sign
-        when another column joins.
+        Imbalance moves the intercept and the calibration and never flips one column's sign as others
+        join; the -0.92 alone carries the other four indicators' signal inside it.
     answer: >-
       When a sign flips as a column joins, I check the correlations first and read correlated
       columns as a group.
@@ -996,31 +994,31 @@ additions:
         rows:
           - ["Instacart's item-availability model, March 2020", "The accuracy of the metric used to judge how many items are found fell from 93 percent to 61 percent, which told the engineers to retrain; by June it read about 85 percent"]
           - ["Instacart, looking back", "Models respond slowly to a shock because they need enough new observations; thresholds on top of the model were changed without training new models"]
-          - ["Booking.com, 23 comparisons of a new model against a proven one", "Offline gain (ROC AUC or mean reciprocal rank) against business gain in a randomised trial: Pearson correlation -0.1, 90 percent interval -0.45 to 0.27"]
+          - ["Booking.com, 23 comparisons of a new model against a proven one", "Offline gain (ROC AUC or mean reciprocal rank) against the gain in a business metric when the two models were compared live: Pearson correlation -0.1, 90 percent interval -0.45 to 0.27"]
     text: |-
-      Which monitoring rule would have caught the bank's model going stale earliest?
-      (a) Each month, set the called clients' yes rate against their mean score, and alert past a stated gap.
-      (b) Retrain the model every night on the newest calls, so that the question of staleness never comes up at all.
-      (c) Compare the model's training accuracy month by month, and read a fall there as the sign of drift.
-      (d) Wait for the marketing head to say the campaign feels weaker than it did when the model launched.
+      On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A). Which monitoring rule catches this first, and what does it mean for the cost line drawn on these scores?
+      (a) Set each month's called yes rate against the mean score, with a stated gap; the cost line moves too, as the scores run low.
+      (b) Retrain every night on the newest calls; the scores then stay current, so the cost line drawn on them needs no second look.
+      (c) Compare training accuracy month by month; a fall there flags the drift, and the cost line stays where Tuesday drew it.
+      (d) Wait for the marketing head's report; a score that still ranks buyers first keeps the cost line drawn on it valid.
     why: >-
       Staleness shows on fresh outcomes, so the rule compares what the model predicted with what
       happened, every month, against a gap stated in advance. On the bank's late rows the mean score
       was 0.152 while 24.6 percent said yes: the probabilities fell out of step even though the
-      ranking held at an AUC of 0.657, and the cost line, which assumes calibrated scores, was
-      drawn in the wrong place. Instacart's alarm was the same kind: a monitored metric falling from
+      ranking still held at an AUC of 0.657, and the cost line, which reads the scores as
+      probabilities, was drawn on numbers that understate every client's chance. Instacart's alarm was the same kind: a monitored metric falling from
       93 to 61 percent, and its first fix was a threshold change while retraining caught up.
       Friday's chapter was when the model goes stale.
     wrong:
       b: >-
         Retraining with no measurement can neither tell whether the old model failed nor whether the
-        new one is better, and it needs outcomes that arrive weeks late.
+        new one is better, and the outcomes it needs arrive weeks late.
       c: >-
         Training accuracy is measured on rows the model already saw, so it stays high while the world
-        moves.
+        moves, and a line drawn on scores that run low is wrong whatever training says.
       d: >-
-        A feeling arrives after the money is spent; a stated floor on a measured metric arrives
-        first.
+        A ranking can hold while the probabilities drift, as the late rows' AUC of 0.657 did, and the
+        cost line reads probabilities, so the ranking cannot vouch for it.
     answer: >-
       I monitor the decision's metric on fresh outcomes, predicted against actual, with the floor
       written into the memo before launch.
@@ -1058,7 +1056,7 @@ additions:
   - id: booking
     label: "Choose the evidence"
     type: One correct option
-    level: Hard
+    level: Medium
     min: 2.5
     tag: "[D]"
     roles: DS, FDE, BA
