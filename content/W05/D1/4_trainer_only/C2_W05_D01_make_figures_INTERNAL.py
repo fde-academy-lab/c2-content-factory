@@ -36,6 +36,7 @@ plt.rcParams.update({"font.size": 15, "axes.titlesize": 17, "axes.labelsize": 15
 
 
 def save(fig, name):
+    name = f"C2_W05_D01_{name[:-4]}_STUDENT.png"
     fig.savefig(OUT / name, dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("wrote", name)
@@ -44,7 +45,7 @@ def save(fig, name):
 def load_bank():
     f = CACHE / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -55,7 +56,7 @@ def load_cars():
     f = CACHE / "auto-mpg.data"
     if not f.exists():
         z = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(
-            "https://archive.ics.uci.edu/static/public/9/auto+mpg.zip", timeout=60).read()))
+            "https://archive.ics.uci.edu/static/public/9/auto+mpg.zip", timeout=60).read()))  # verified 28 October 2026
         f.write_bytes(z.read("auto-mpg.data"))
     names = ["mpg", "cylinders", "displacement", "horsepower", "weight", "acceleration", "model_year", "origin", "car_name"]
     return pd.read_csv(f, sep=r"\s+", names=names, na_values="?")
@@ -310,12 +311,33 @@ def bank_figures():
     save(fig, "fig_case3_peek.png")
 
 
+def four_residuals():
+    """Four residual plots from the same 392 cars, for the practice set's matching problem."""
+    cars = load_cars().dropna(subset=["horsepower"]).reset_index(drop=True)
+    cars["hp2"] = cars["horsepower"] ** 2
+    line = LinearRegression().fit(cars[["horsepower"]], cars["mpg"])
+    curve = LinearRegression().fit(cars[["horsepower", "hp2"]], cars["mpg"])
+    cars["r_line"] = cars["mpg"] - line.predict(cars[["horsepower"]])
+    cars["fit_curve"] = curve.predict(cars[["horsepower", "hp2"]])
+    cars["r_curve"] = cars["mpg"] - cars["fit_curve"]
+    panels = [("P", "horsepower", "r_line", "horsepower"), ("Q", "fit_curve", "r_curve", "predicted mpg"),
+              ("R", "model_year", "r_curve", "model year (19xx)"), ("S", "horsepower", "r_curve", "horsepower")]
+    fig, axes = plt.subplots(2, 2, figsize=(12, 7.6))
+    for ax, (tag, x, r, xlabel) in zip(axes.ravel(), panels):
+        ax.scatter(cars[x], cars[r], s=10, color=GREY)
+        ax.axhline(0, color=INK, lw=1.2)
+        ax.set_ylim(-15, 18); ax.set_xlabel(xlabel); ax.set_ylabel("residual, mpg")
+        ax.set_title(f"Plot {tag}", loc="left", fontweight="bold")
+    plt.tight_layout()
+    save(fig, "fig_practice_four_residuals.png")
+
+
 if __name__ == "__main__":
-    timeline(); sort_questions(); member_timeline(); split_squares(); residual_squares(); line_vs_s(); mpg_bow(); bank_figures()
+    timeline(); sort_questions(); member_timeline(); split_squares(); residual_squares(); line_vs_s(); mpg_bow(); bank_figures(); four_residuals()
 
 # Test inputs and expected outcomes
 # --------------------------------
 # python3 content/W05/D1/4_trainer_only/C2_W05_D01_make_figures_INTERNAL.py
-#     Prints "wrote fig_..." eighteen times and leaves eighteen PNGs in slides/img/.
+#     Prints "wrote C2_W05_D01_fig_..." nineteen times and leaves nineteen PNGs in slides/img/.
 # Run it twice in a row: the second run reads both datasets from ~/.cache/c2_datasets and draws the
 #     same pictures, because every split and every column draw is seeded.

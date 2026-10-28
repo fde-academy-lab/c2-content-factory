@@ -63,7 +63,7 @@ one picture the week grows.
 ## S3. One picture grows all week
 *Monday's state: what is known, the cut, the outcome.*
 
-![The week's timeline: past rows, the prediction moment, the outcome window](img/fig_timeline_monday.png)
+![The week's timeline: past rows, the prediction moment, the outcome window](img/C2_W05_D01_fig_timeline_monday_STUDENT.png)
 
 ```notes
 LIVE, 2 minutes. Draw this on the board and leave it up all week. Left of the purple line: what is
@@ -204,7 +204,7 @@ LIVE, 1 minute. Hands up per option. Most rooms pick 4 or 6. Transition: the thr
 ## S9. Answer: two of six, after three tests
 *Ask them in order; only the last needs learning.*
 
-![Three tests in order: query, rule, prediction](img/fig_ch1_three_tests.png)
+![Three tests in order: query, rule, prediction](img/C2_W05_D01_fig_ch1_three_tests_STUDENT.png)
 
 **The rule.** Input known now, target known later, a decision that moves with the score: then a model.
 
@@ -250,7 +250,7 @@ freshest". Transition: four members.
 ## S11. Eight orders, four members, one cutoff
 *Invented. Purple is history; amber decides the target; grey is too late.*
 
-![Four members' orders against a 30 June cutoff and a 90-day window](img/fig_ch2_four_members.png)
+![Four members' orders against a 30 June cutoff and a 90-day window](img/C2_W05_D01_fig_ch2_four_members_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Draw the line at 30 June on the board first, then place the eight dots. The
@@ -343,10 +343,10 @@ Transition: what the seed does.
 ## S16. The seed is the shuffle
 *Twenty invented members, two seeds, two different exam papers.*
 
-![Twenty members split by seed 42 and by seed 7](img/fig_ch3_two_seeds.png)
+![Twenty members split by seed 42 and by seed 7](img/C2_W05_D01_fig_ch3_two_seeds_STUDENT.png)
 
 ```notes
-LIVE, 4 minutes. Purple train, lilac validation, amber test; Y marks a member who came back. Same
+LIVE, 4 minutes. Purple train, lilac validation, amber test; Y is a member who came back. Same
 rule, different seed, different members in each slice. Writing random_state=42 is what lets a
 teammate get your slices and your baseline. Stratify keeps one Y in every test of four. Click:
 notebook ch03, the two-seed cell. Transition: the dumbest model.
@@ -401,7 +401,7 @@ last points". Transition: six members.
 ## S19. Six members of one Kalpa store
 *Invented. Visits last month against spend this month.*
 
-![Six invented members: visits and spend](img/fig_ch4_six_points.png)
+![Six invented members: visits and spend](img/C2_W05_D01_fig_ch4_six_points_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Everyone draws a line by eye on paper. Most join the first and last points:
@@ -429,7 +429,7 @@ misses count far more than small ones. Transition: the answer.
 ## S21. Answer: least squares, 5,200 against 5,480
 *The red squares are the misses, drawn as area.*
 
-![Residual squares under the mean line and the least-squares line](img/fig_ch4_squares.png)
+![Residual squares under the mean line and the least-squares line](img/C2_W05_D01_fig_ch4_squares_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Least squares: spend = Rs 180 + Rs 120 x visits. Squares: 257,200 for the mean,
@@ -487,7 +487,7 @@ probability". Transition: twelve members.
 ## S24. A straight line through yes and no
 *Twelve invented members: visits, and whether they came back.*
 
-![A straight line fitted to 0 and 1 outcomes](img/fig_ch5_line_only.png)
+![A straight line fitted to 0 and 1 outcomes](img/C2_W05_D01_fig_ch5_line_only_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Dots sit at 0 or 1 only. The dashed line is ordinary least squares on them.
@@ -514,7 +514,7 @@ LIVE, 1 minute. Hands per option. Transition: the S.
 ## S26. Answer: 1.28, so bend the line into an S
 *The S stays between 0 and 1 wherever you ask it.*
 
-![The straight line runs past 1; the logistic S stays inside](img/fig_ch5_line_vs_s.png)
+![The straight line runs past 1; the logistic S stays inside](img/C2_W05_D01_fig_ch5_line_vs_s_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. The line says 1.28 at 8 visits and -0.01 at 0: impossible probabilities. Logistic
@@ -576,7 +576,7 @@ Transition: 392 cars.
 ## S29. 392 cars, one straight line
 *Real data: UCI Auto MPG, 1970s and early 1980s cars.*
 
-![Miles per gallon against horsepower with a straight line](img/fig_ch6_scatter_line.png)
+![Miles per gallon against horsepower with a straight line](img/C2_W05_D01_fig_ch6_scatter_line_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. 398 cars; six have "?" for horsepower and are dropped, a decision recorded in the
@@ -604,7 +604,7 @@ LIVE, 1 minute. Hands per option. Transition: the answer.
 ## S31. Answer: a bow, +2.7 at one end, -2.2 in the middle
 *Mean residual in five horsepower bands.*
 
-![Residuals of the straight line bow across horsepower](img/fig_ch6_resid_line.png)
+![Residuals of the straight line bow across horsepower](img/C2_W05_D01_fig_ch6_resid_line_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Low-power cars beat the line by 2.7 mpg on average, the middle band sits 2.2 below
@@ -617,7 +617,7 @@ scatter is what a good fit leaves. Click: ch06, the bow cell. Transition: the fi
 ## S32. Add horsepower squared, and the bow flattens
 *Every band within 1 mpg; typical miss 4.89 to 4.36.*
 
-![Residuals after adding horsepower squared](img/fig_ch6_resid_curve.png)
+![Residuals after adding horsepower squared](img/C2_W05_D01_fig_ch6_resid_curve_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. One extra column, horsepower squared, lets the line bend. Band means now 0.44,
@@ -630,7 +630,7 @@ cure the residuals asked for. Transition: where the cure fails.
 ## S33. The cure fails outside the data
 *Past about 190 horsepower the curve predicts mileage rising.*
 
-![The squared-term curve turns upward beyond the data](img/fig_ch6_extrapolate.png)
+![The squared-term curve turns upward beyond the data](img/C2_W05_D01_fig_ch6_extrapolate_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. At 300 hp the curve says 27.8 mpg, the line says minus 7.4. Both are nonsense,
@@ -671,7 +671,7 @@ Transition: the bank.
 ## S35. 41,188 calls; one in nine said yes
 *A Portuguese bank's term-deposit campaigns, 2008 to 2010.*
 
-![41,188 calls: 36,548 no and 4,640 yes](img/fig_case1_yes_no.png)
+![41,188 calls: 36,548 no and 4,640 yes](img/C2_W05_D01_fig_case1_yes_no_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Prediction first: what share said yes? Options half, a quarter, one in nine, one
@@ -720,7 +720,7 @@ PASS lines. Transition: the split.
 ## S38. The week's split, test sealed first
 *Seed 42, stratified: 11.3 percent yes in every slice.*
 
-![Train 24,712, validation 8,238, test 8,238 sealed](img/fig_case1_split.png)
+![Train 24,712, validation 8,238, test 8,238 sealed](img/C2_W05_D01_fig_case1_split_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Test is cut first, 20 percent, and sealed. The rest splits 75 to 25. Show the
@@ -811,7 +811,7 @@ case02, cells 5 and 7. Transition: the picture.
 ## S43. 80 more right answers, drawn honestly
 *Side by side they look the same; the gap is what the model adds.*
 
-![Baseline and model right answers, and the 80-answer gap](img/fig_case2_edge.png)
+![Baseline and model right answers, and the 80-answer gap](img/C2_W05_D01_fig_case2_edge_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Left: full height, identical-looking bars. Right: only the gap. Tuesday asks how
@@ -824,7 +824,7 @@ Kahoot Q4 and the return question set it up. Transition: what the model outputs.
 ## S44. Probabilities centred on the base rate
 *Mean 0.114 against a share of yes of 0.113.*
 
-![Histogram of predicted probabilities of yes](img/fig_case2_probs.png)
+![Histogram of predicted probabilities of yes](img/C2_W05_D01_fig_case2_probs_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Most clients score low, a few high. The 0.5 line is where today's accuracy reads
@@ -856,7 +856,7 @@ explain one coefficient in the business's words. Transition: the caveat.
 ## S46. The caveat: three very different years
 *A random split mixes them, so part of the score is the calendar.*
 
-![Share of yes by year: 5, 19 and 52 percent](img/fig_case2_years.png)
+![Share of yes by year: 5, 19 and 52 percent](img/C2_W05_D01_fig_case2_years_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. 2008: 4.8 percent yes of 27,690 calls; 2009: 19.5 percent of 11,440; 2010: 52.1
@@ -900,7 +900,7 @@ again, about 0.897, about 0.887, or 0.80? Transition: the answer.
 ## S48. Answer: 0.897 on fresh rows, the honest edge
 *The extra 0.8 points were luck the loop picked.*
 
-![60 versions: peeked scores against fresh-row scores](img/fig_case3_peek.png)
+![60 versions: peeked scores against fresh-row scores](img/C2_W05_D01_fig_case3_peek_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. The chosen version: 0.9055 on the peeked slice (doing nothing there 0.8875), 0.8971
