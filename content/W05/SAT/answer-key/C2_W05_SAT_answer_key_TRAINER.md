@@ -216,7 +216,7 @@ The workbook flags an item to check when fewer than one learner in five got it r
 
 ### Q19, key a
 
-**Why it holds.** Training near 1.0 with validation below the do-nothing baseline is memorising: grown without a limit, the tree carves leaves so small they fit individual clients. The fix is a brake chosen on data the tree did not fit: validation accuracy is flat around 0.90 from depth 3 to 8, and validation AUC peaks at depth 5, 0.783, so depth 5 is the cap to confirm by cross-validation. Thursday drew the unlimited tree as one leaf per customer.
+**Why it holds.** Training near 1.0 with validation below the do-nothing baseline is memorising: grown without a limit, the tree carves leaves so small they fit individual clients. The fix is a brake chosen on data the tree did not fit: validation accuracy is flat near 0.90 from depth 3 to 8, and validation AUC peaks at depth 5, 0.783, so depth 5 is the cap to confirm by cross-validation. Thursday drew the unlimited tree as one leaf per customer.
 
 - (b) The call log is duration, Wednesday's leak, and more columns give a tree more to memorise.
 - (c) An unlimited tree is fully grown already; growing it further is impossible, and it is the growth that overfits.

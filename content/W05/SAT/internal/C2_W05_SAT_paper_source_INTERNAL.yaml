@@ -10,8 +10,8 @@
 # with every number re-run in this session on 28 October 2026 and matching that file. Five bank
 # items print, the five blanks, each from a word bank; twenty-four fold into deeper items, each with
 # its reason under `folded`, because the bank's twenty-nine items at the bank's pace fill the 60
-# minutes with no room for the reasoned formats the interview grade asks for, and seven of its
-# twelve option sets fail the distractor audit as the tracker prints them. Twenty-one additions
+# minutes with no room for the reasoned formats the interview grade asks for, and nine of its
+# thirteen option sets fail the distractor audit as the tracker prints them. Twenty-one additions
 # carry the folded concepts on the week's real numbers, so no item is moved to the stretch page and
 # every concept in the bank is tested inside the timed 60 minutes.
 #
@@ -188,7 +188,7 @@ parts:
             x-axis ["depth 3", "depth 5", "depth 8", "no limit"]
             y-axis "Accuracy" 0.80 --> 1.00
             line [0.899, 0.901, 0.911, 0.996]
-            line [0.900, 0.897, 0.897, 0.837]
+            line [0.899, 0.897, 0.897, 0.837]
         table:
           head:
             - Maximum depth
@@ -196,7 +196,7 @@ parts:
             - Validation accuracy
             - Validation AUC
           rows:
-            - ["3", "0.899", "0.900", "0.751"]
+            - ["3", "0.899", "0.899", "0.751"]
             - ["5", "0.901", "0.897", "0.783"]
             - ["8", "0.911", "0.897", "0.777"]
             - ["No limit", "0.996", "0.837", "0.619"]
@@ -838,7 +838,7 @@ additions:
     why: >-
       Training near 1.0 with validation below the do-nothing baseline is memorising: grown without
       a limit, the tree carves leaves so small they fit individual clients. The fix is a brake chosen
-      on data the tree did not fit: validation accuracy is flat around 0.90 from depth 3 to 8, and
+      on data the tree did not fit: validation accuracy is flat near 0.90 from depth 3 to 8, and
       validation AUC peaks at depth 5, 0.783, so depth 5 is the cap to confirm by cross-validation.
       Thursday drew the unlimited tree as one leaf per customer.
     wrong:

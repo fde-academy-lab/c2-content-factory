@@ -297,12 +297,12 @@ xychart-beta
   x-axis ["depth 3", "depth 5", "depth 8", "no limit"]
   y-axis "Accuracy" 0.80 --> 1.00
   line [0.899, 0.901, 0.911, 0.996]
-  line [0.900, 0.897, 0.897, 0.837]
+  line [0.899, 0.897, 0.897, 0.837]
 ```
 
 | Maximum depth | Training accuracy | Validation accuracy | Validation AUC |
 |---|---|---|---|
-| 3 | 0.899 | 0.900 | 0.751 |
+| 3 | 0.899 | 0.899 | 0.751 |
 | 5 | 0.901 | 0.897 | 0.783 |
 | 8 | 0.911 | 0.897 | 0.777 |
 | No limit | 0.996 | 0.837 | 0.619 |
