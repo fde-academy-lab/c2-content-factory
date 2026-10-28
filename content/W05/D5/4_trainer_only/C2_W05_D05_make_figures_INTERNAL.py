@@ -100,8 +100,9 @@ def gym_monitor():
     ax.fill_between(x, promised - 0.05, promised + 0.05, color=LILAC, alpha=0.6, label="promise plus or minus 5 points")
     ax.plot(x, promised, "-o", color=VIOLET, lw=3, ms=9, label="promised")
     ax.plot(x, real, "-o", color=INK, lw=3, ms=9, label="real")
-    ax.annotate("alarm: second month\nover the line", (4, real[4]), (1.3, 0.24), color=ROSE, fontsize=14,
+    ax.annotate("alarm: second month\nover the line", (4, real[4]), (2.15, 0.228), color=ROSE, fontsize=14,
                 arrowprops=dict(color=ROSE, lw=2))
+    ax.set_ylim(0.06, 0.275)
     ax.set_xticks(x); ax.set_xticklabels(months); ax.set_ylabel("share who came back")
     ax.legend(frameon=False, loc="upper left", fontsize=12)
     ax.set_title("200 calls a month (invented): luck moves the share about 4.6 points")

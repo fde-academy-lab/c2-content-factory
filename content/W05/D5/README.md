@@ -48,4 +48,4 @@
 | `1_in_class_training_content/demos/` | `C2_W05_D05_error_bill_explorer_STUDENT.html` |
 | `2_take_home_mandatory/` | `C2_W05_D05_practice_set_STUDENT.md` and `.pdf`; `C2_W05_D05_practice_lab_STUDENT.ipynb` |
 | `3_study_material_for_students/` | `C2_W05_D05_study_notes_STUDENT`, `C2_W05_D05_cheat_sheet_STUDENT`, `C2_W05_D05_interview_bank_STUDENT`, each `.md` and `.pdf` |
-| `4_trainer_only/` | `C2_W05_D05_trainer_guide_TRAINER.md`, `C2_W05_D05_practice_lab_solutions_TRAINER.ipynb`, `C2_W05_D05_sources_INTERNAL.md`, and two build helpers: `C2_W05_D05_make_figures_INTERNAL.py` (draws the deck's charts) and `C2_W05_D05_strip_branding_INTERNAL.py` (run after every deck build) |
+| `4_trainer_only/` | `C2_W05_D05_trainer_guide_TRAINER.md`, `C2_W05_D05_practice_lab_solutions_TRAINER.ipynb`, `C2_W05_D05_sources_INTERNAL.md`, and the build helper `C2_W05_D05_make_figures_INTERNAL.py`, which draws the deck's charts |
