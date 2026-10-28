@@ -68,7 +68,10 @@ Every image in the deck, the practice set, the study notes and the cheat sheet i
 10. **The practice lab** is a TODO twin (unexecuted, measured on its source) and its solutions are executed. German Credit's `duration` (loan length in months) is flagged in the lab as the same name with a different meaning from the bank's leaked `duration`.
 11. **Nothing found today is shown before it is found.** The ticket slide shows the 99.6 and hides the validation score until case 1; the opening timeline slide shows Thursday's panel empty (`fig_timeline_open`) and the filled U returns at the close (S54a).
 12. **The guided exercise uses three models the room has not seen as curves**: a tree capped at depth 12 (variance whose gap closes with rows, 12.4 points at 1,236 rows to 4.2 at 19,769), logistic at C = 0.0001 (bias from a brake set far too hard) and logistic at C = 0.1 (about right). Case 1 has already shown the stump and the unlimited tree with their names, so reusing them would test memory.
-13. **Cheat sheet length.** The cumulative "everything so far" lines run one per week for Weeks 1 to 4, from the day lines in `docs/programme/calendar.md`, and one per day for Week 5, to keep the printed sheet at two pages.
+13. **Role labels for invented people.** The three invented students are "the memoriser", "the learner" and "the skimmer", so no STUDENT file names a person outside Kalpa's cast (Anand, Rohan).
+14. **Real cases on the deck.** Airbnb sits on S38 (more rows against the brake) and Google Flu Trends on S43 (selection learns from the answers), each as one line with its source; Caruana carries chapter 5 (S30).
+15. **Shared tooling.** Both `build_cheatsheet._chromium()` and `html_sweep.ensure_browser()` look for `chrome-linux/` and this container's browser sits in `chrome-linux64/`; mermaid rendering worked with `PUPPETEER_EXECUTABLE_PATH` set, and html_sweep fell back to asking playwright for a browser and then passed.
+16. **Cheat sheet length.** The cumulative "everything so far" lines run one per week for Weeks 1 to 4, from the day lines in `docs/programme/calendar.md`, and one per day for Week 5, to keep the printed sheet at two pages.
 
 ## Skills read and what was taken
 
