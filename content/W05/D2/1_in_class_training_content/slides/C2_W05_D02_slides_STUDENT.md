@@ -17,7 +17,7 @@ find at its default setting? Write three guesses on the board; chapter 7 reveals
 ## S1. Week 5 of 20: the machine learning core
 *Today turns Monday's score into a decision someone pays for.*
 
-![The programme's twenty weeks, Week 5 lit](img/roadmap.png)
+![The programme's twenty weeks, Week 5 lit](img/C2_W05_D02_roadmap_STUDENT.png)
 
 ```notes
 LIVE, 1 minute. Monday framed the problem and scored a baseline. Today asks what the score is
@@ -30,7 +30,7 @@ today's constraint written in. Point at W6 and say: what you learn today is grad
 ## S2. The week's picture gains two humps and a line
 *Draw this from memory tonight: past rows, the cut, the call, the outcome, then the humps.*
 
-![The Week 5 timeline in its Tuesday state](img/timeline_tuesday.png)
+![The Week 5 timeline in its Tuesday state](img/C2_W05_D02_timeline_tuesday_STUDENT.png)
 
 ```notes
 LIVE, 2 minutes. Monday drew the top strip: past rows, the cut, the prediction moment, the outcome
@@ -128,7 +128,7 @@ customers. Prediction before anything: how many sit in "nudged and came back"? T
 ## S6. Two labels per customer make four boxes
 *What the model said, against what happened: twenty invented customers.*
 
-![Twenty invented customers sorted into four boxes](img/ch1_four_boxes.png)
+![Twenty invented customers sorted into four boxes](img/C2_W05_D02_ch1_four_boxes_STUDENT.png)
 
 ```notes
 LIVE, 6 minutes. Count three boxes aloud with the room before showing the picture: C02, C05 and C14
@@ -190,7 +190,7 @@ flags that landed or the share of repeaters found?
 ## S9. Same numerator, two denominators
 *Precision divides by the column of flags; recall by the row of real repeaters.*
 
-![Precision lights the nudge column, recall lights the came-back row](img/ch2_denominators.png)
+![Precision lights the nudge column, recall lights the came-back row](img/C2_W05_D02_ch2_denominators_STUDENT.png)
 
 ```notes
 LIVE, 7 minutes. Draw the 2 by 2 on the board, shade the column, then the row. Say each as a
@@ -220,7 +220,7 @@ writing any fraction.
 ## S11. F1 punishes the weaker of the two
 *A model that flags one customer and is right: plain mean 0.60, F1 0.33.*
 
-![F1 against the plain mean as recall falls](img/ch2_f1.png)
+![F1 against the plain mean as recall falls](img/C2_W05_D02_ch2_f1_STUDENT.png)
 
 ```notes
 LIVE, 6 minutes; CUT FIRST if the room is late (keep one sentence: F1 stays low when either ratio
@@ -259,7 +259,7 @@ on how many of these hundred customers?
 ## S13. Saying no to everyone is right 89 times in 100
 *Eleven green repeaters, all missed; 89 grey customers, all "correct".*
 
-![One hundred invented customers, eleven repeaters](img/ch3_dots.png)
+![One hundred invented customers, eleven repeaters](img/C2_W05_D02_ch3_dots_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Point at the grey dots: accuracy counts every one of them as a win. The model
@@ -288,7 +288,7 @@ beside accuracy. Ask the business owner's question: which rule would you pay for
 ## S15. The accuracy you get for doing nothing
 *Accuracy stops lying as the outcome nears 50:50.*
 
-![Free accuracy against the base rate](img/ch3_free_accuracy.png)
+![Free accuracy against the base rate](img/C2_W05_D02_ch3_free_accuracy_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. The rule with its flip: accuracy misleads when one class dominates; near 50:50,
@@ -329,7 +329,7 @@ chapter asks the owner's question: what does each mistake cost, in rupees? Noteb
 ## S17. Thirty Rs 40 nudges equal one Rs 1,200 buyer
 *Nudge 31 lookalikes; if one comes back, Kalpa breaks even.*
 
-![Thirty Rs 40 coins balance one Rs 1,200 margin](img/ch4_coins.png)
+![Thirty Rs 40 coins balance one Rs 1,200 margin](img/C2_W05_D02_ch4_coins_STUDENT.png)
 
 ```notes
 LIVE, 6 minutes. Prediction before the picture: above what chance of coming back does a nudge pay,
@@ -401,7 +401,7 @@ LIVE, 20 minutes for the chapter. Notebook ch05, then the explorable.
 ## S21. Slide the line, watch the bill
 *Twenty invented scores: the bill is lowest at 0.032, Rs 360.*
 
-![Bill and accuracy as the line slides](img/ch5_bill_steps.png)
+![Bill and accuracy as the line slides](img/C2_W05_D02_ch5_bill_steps_STUDENT.png)
 
 ```notes
 LIVE, 6 minutes. Prediction first: 0.5, 0.2, 0.032 or nudge everyone? The default 0.5 costs Rs
@@ -429,7 +429,7 @@ chosen line. Fix: choose from the prices; report accuracy only as a by-product.
 ## S23. The line climbs as acting gets dearer
 *One curve turns a price ratio into a threshold.*
 
-![Threshold against the price ratio](img/ch5_line_curve.png)
+![Threshold against the price ratio](img/C2_W05_D02_ch5_line_curve_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Rs 40 SMS gives 0.032; a Rs 400 hamper 0.25; equal costs 0.5; Rohan's loan 0.952.
@@ -441,18 +441,16 @@ differently?
 ---
 
 ## S24. The explorable: drag the line on the bank's scores
-*Open demos/C2_W05_D02_threshold_explorer_STUDENT.html.*
+*It opens on the wrong default: 0.5, and 754 buyers left alone.*
 
-```cards
-icon: sliders-horizontal | eyebrow: Click 1 | title: Start at 0.5 | body: Read the four boxes and the bill aloud. | tone: light
-icon: arrow-left | eyebrow: Click 2 | title: Drag the line left | body: Watch the bill fall until about 0.03. | tone: light
-icon: scale | eyebrow: Click 3 | title: Tighten the ratio | body: From 30:1 to 8:1, the model starts to matter. | tone: dark
-```
+![The threshold explorer in its opening state](img/C2_W05_D02_explorer_STUDENT.png)
 
 ```notes
-LIVE, 6 minutes. Before click 1, ask each learner to type their guess of the cheapest threshold
-into the box and lock it. Then reveal. Keep the loan switch for chapter 6. If the projector fails,
-show the case02 notebook's bill chart instead.
+LIVE, 6 minutes. Open demos/C2_W05_D02_threshold_explorer_STUDENT.html. Before any click, each
+learner types a guess of the cheapest line and locks it. Click 1: read the default aloud, 174 found
+and Rs 904,800 of missed margin. Click 2: drag the line left and watch the bill fall until about
+0.03. Click 3 waits for case 2: tighten the ratio from 30:1 to 8:1. Keep the loan switch for
+chapter 6. If the projector fails, show the case02 notebook's bill chart instead.
 ```
 
 ---
@@ -488,7 +486,7 @@ P(repay) is above 0.05, 0.50, 0.83 or 0.95?
 ## S26. One default wipes out twenty good loans
 *Rs 60,000 lost on one default; Rs 3,000 of interest earned on each good loan.*
 
-![Twenty Rs 3,000 coins balance one Rs 60,000 default](img/ch6_loan_coins.png)
+![Twenty Rs 3,000 coins balance one Rs 60,000 default](img/C2_W05_D02_ch6_loan_coins_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Hand count on the board: 20 x 3,000 = 60,000. So Rohan needs at least 20 repayers
@@ -501,7 +499,7 @@ approval.
 ## S27. Two lines at opposite ends of one axis
 *Said on the same quantity: the chance of the good outcome.*
 
-![Retail's line near 0 and Rohan's line near 1](img/ch6_two_lines.png)
+![Retail's line near 0 and Rohan's line near 1](img/C2_W05_D02_ch6_two_lines_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Say it exactly: nudge when P(buy) is above 0.03; lend when P(repay) is above
@@ -572,7 +570,7 @@ on validation. Kalpa's prices are applied to the bank's calls; the bank's own pr
 ## S31. Call nobody: 88.74 percent right, 0 buyers found
 *Monday's model at 0.5: 89.71 percent right, 174 of 928 found.*
 
-![Two confusion matrices on the bank's validation clients](img/case1_matrices.png)
+![Two confusion matrices on the bank's validation clients](img/C2_W05_D02_case1_matrices_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Prediction first: how accurate is calling nobody? Then the reveal: 88.74. The
@@ -585,7 +583,7 @@ empty column is the day's picture. Monday's model: precision 0.649 (its calls ar
 ## S32. Most buyers score below 0.5
 *754 of 928 buyers sit left of the default line.*
 
-![Score humps for buyers and non-buyers with the 0.5 line](img/case1_humps.png)
+![Score humps for buyers and non-buyers with the 0.5 line](img/C2_W05_D02_case1_humps_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. The two humps overlap heavily; the 0.5 line cuts off almost all of the green.
@@ -642,7 +640,7 @@ is the fact that would change it.
 ## S35. The bill bottoms out at 0.032
 *Rs 279,000 at the cost line; Rs 292,400 for calling everyone.*
 
-![The bill of mistakes against the threshold](img/case2_bill_curve.png)
+![The bill of mistakes against the threshold](img/C2_W05_D02_case2_bill_curve_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Point at how close the violet minimum sits to the green call-everyone line. Ask:
@@ -671,7 +669,7 @@ the saving against the cheaper of call-nobody and call-everyone.
 ## S37. At 30 to 1 the model barely matters
 *Tighten the ratio and the model's saving climbs to 38 percent.*
 
-![Saving over the best free rule as the cost ratio tightens](img/case2_ratio.png)
+![Saving over the best free rule as the cost ratio tightens](img/C2_W05_D02_case2_ratio_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Explorable: drag the ratio slider from 30:1 to 8:1 and watch the gap open. The
@@ -712,7 +710,7 @@ Prediction: how many buyers sit in the top 1,000 by score?
 ## S39. A budget is a line in disguise
 *1,000 calls means calling everyone above the 1,000th score, 0.182.*
 
-![Three lines on the score humps: cost, budget and 0.5](img/case_humps_lines.png)
+![Three lines on the score humps: cost, budget and 0.5](img/C2_W05_D02_case_humps_lines_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. The cost rule says act above 0.032 and asks for 7,438 calls; the budget allows
@@ -740,7 +738,7 @@ earns its keep.
 ## S41. Precision at k is where the model earns its keep
 *The curve falls as the list grows; the gap to random is the model's value.*
 
-![Precision at k and buyers found against calls made](img/case3_prec_at_k.png)
+![Precision at k and buyers found against calls made](img/C2_W05_D02_case3_prec_at_k_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Read the left chart at 500 calls (0.540) and 1,000 (0.404). On the right, the

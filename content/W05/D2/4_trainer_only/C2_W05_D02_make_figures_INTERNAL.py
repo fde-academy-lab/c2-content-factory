@@ -29,6 +29,7 @@ plt.rcParams.update({"font.size": 15, "axes.titlesize": 16, "axes.spines.top": F
 
 
 def save(fig, name):
+    name = f"C2_W05_D02_{name[:-4]}_STUDENT.png"    # the day stem and the audience tag, as every pack file carries
     fig.savefig(OUT / name, facecolor="white")
     plt.close(fig)
     print("wrote", name)
@@ -38,7 +39,7 @@ def save(fig, name):
 def load_bank():
     f = CACHE / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -276,11 +277,13 @@ def case2_ratio(y, p):
         cfn = 40 * r; t = 40 / (40 + cfn); tp, fp, fn, tn = cells(y, p, t)
         free = min(y.sum() * cfn, (len(y) - y.sum()) * 40); saving.append((free - (fp * 40 + fn * cfn)) / free * 100)
     fig, ax = plt.subplots(figsize=(12, 4.8))
-    ax.plot(ratios, saving, "o-", color=VIOLET, lw=3, ms=9)
-    for r, s in zip(ratios, saving):
-        ax.text(r, s + 2, f"{s:.0f}%", ha="center", fontsize=13, color=INK)
-    ax.invert_xaxis(); ax.set_xlabel("a missed buyer costs this many wasted nudges"); ax.set_ylabel("saving over the best free rule, %")
-    ax.set_ylim(0, 48); ax.text(29.5, 9, "Anand's 30:1", color=ROSE)
+    xs = list(range(len(ratios)))
+    ax.plot(xs, saving, "o-", color=VIOLET, lw=3, ms=9)
+    for x, s_ in zip(xs, saving):
+        ax.text(x, s_ + 2, f"{s_:.1f}%", ha="center", fontsize=13, color=INK)
+    ax.set_xticks(xs); ax.set_xticklabels([f"{r}:1" for r in ratios])
+    ax.set_xlabel("a missed buyer costs this many wasted nudges"); ax.set_ylabel("saving over the best free rule, %")
+    ax.set_ylim(0, 48); ax.annotate("Anand's 30:1", (0, saving[0]), (0.2, 14), color=ROSE, arrowprops={"arrowstyle": "->", "color": ROSE})
     save(fig, "case2_ratio.png")
 
 

@@ -2,7 +2,7 @@
 
 Week 5, Tuesday. Two humps, one line, four boxes, two prices.
 
-<img src="../1_in_class_training_content/slides/img/timeline_tuesday.png" alt="Two humps, the line and the four boxes" width="48%" style="width:48%">
+<img src="../1_in_class_training_content/slides/img/C2_W05_D02_timeline_tuesday_STUDENT.png" alt="Two humps, the line and the four boxes" width="48%" style="width:48%">
 
 ## Which terms carry the day?
 

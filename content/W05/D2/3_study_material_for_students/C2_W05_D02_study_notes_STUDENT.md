@@ -15,7 +15,7 @@ Week 5, Tuesday 3 November 2026. Scoring the model the way the business will jud
 
 Tuesday worked six ideas on tiny invented tables in the morning and ran them on a Portuguese bank's 41,188 phone calls in the afternoon (UCI Bank Marketing, CC BY 4.0). ROC curves and AUC were named and left for the IITGN faculty session (tentative); cost-sensitive training was left out entirely.
 
-![The programme's twenty weeks, Week 5 lit](../1_in_class_training_content/slides/img/roadmap.png)
+![The programme's twenty weeks, Week 5 lit](../1_in_class_training_content/slides/img/C2_W05_D02_roadmap_STUDENT.png)
 
 | Before | Today | After |
 |---|---|---|
@@ -27,7 +27,7 @@ The outcome tie: in Build 2 next week, the first question on Rohan Desai's lendi
 
 **The two humps and the line.** Every client has a score. Buyers and non-buyers form two overlapping humps. The threshold is a vertical line, everything right of it is acted on, and the four boxes are what the line produces. Redraw it tonight from memory under Monday's timeline.
 
-![The Week 5 timeline in its Tuesday state](../1_in_class_training_content/slides/img/timeline_tuesday.png)
+![The Week 5 timeline in its Tuesday state](../1_in_class_training_content/slides/img/C2_W05_D02_timeline_tuesday_STUDENT.png)
 
 The running thread through these notes is Monday's model on the bank's validation slice: 8,238 clients, 928 buyers.
 
@@ -35,7 +35,7 @@ The running thread through these notes is Monday's model on the bank's validatio
 
 ## Chapter 1: what do the four boxes say?
 
-![Twenty invented customers in four boxes](../1_in_class_training_content/slides/img/ch1_four_boxes.png)
+![Twenty invented customers in four boxes](../1_in_class_training_content/slides/img/C2_W05_D02_ch1_four_boxes_STUDENT.png)
 
 **The idea in three lines.** Each customer carries two labels: what the model said and what happened. Two labels with two values make four boxes, true positive, false positive, false negative and true negative. Every metric of the day is a ratio of those four counts.
 
@@ -51,7 +51,7 @@ The running thread through these notes is Monday's model on the bank's validatio
 
 ## Chapter 2: which question does each ratio answer?
 
-![Precision lights the nudge column, recall lights the came-back row](../1_in_class_training_content/slides/img/ch2_denominators.png)
+![Precision lights the nudge column, recall lights the came-back row](../1_in_class_training_content/slides/img/C2_W05_D02_ch2_denominators_STUDENT.png)
 
 **The idea in three lines.** Precision asks, of those we flagged, how many were right: `TP / (TP + FP)`. Recall asks, of those who were real, how many we flagged: `TP / (TP + FN)`. F1, `2PR / (P + R)`, stays low when either is low and weighs both mistakes equally.
 
@@ -67,7 +67,7 @@ The running thread through these notes is Monday's model on the bank's validatio
 
 ## Chapter 3: why can 89 percent mean zero?
 
-![The accuracy you get for doing nothing, against the base rate](../1_in_class_training_content/slides/img/ch3_free_accuracy.png)
+![The accuracy you get for doing nothing, against the base rate](../1_in_class_training_content/slides/img/C2_W05_D02_ch3_free_accuracy_STUDENT.png)
 
 **The idea in three lines.** On an imbalanced outcome the rule that never acts is right on the whole majority, so its accuracy equals `1 - base rate`. A useful model can score lower accuracy than a useless one. Accuracy stops misleading near 50:50 when both mistakes cost the same.
 
@@ -85,7 +85,7 @@ The running thread through these notes is Monday's model on the bank's validatio
 
 ## Chapter 4: what does each mistake cost?
 
-![Thirty Rs 40 nudges balance one Rs 1,200 buyer](../1_in_class_training_content/slides/img/ch4_coins.png)
+![Thirty Rs 40 nudges balance one Rs 1,200 buyer](../1_in_class_training_content/slides/img/C2_W05_D02_ch4_coins_STUDENT.png)
 
 **The idea in three lines.** Price the two mistakes. One Rs 1,200 buyer pays for thirty Rs 40 nudges, so a nudge pays whenever at least 1 in 31 lookalikes would buy. The course's 1-in-N test, written as a formula and named last: `threshold = cost of acting wrongly / (cost of acting wrongly + cost of failing to act)`.
 
@@ -101,7 +101,7 @@ The running thread through these notes is Monday's model on the bank's validatio
 
 ## Chapter 5: where do you draw the line?
 
-![The line climbs as acting gets dearer](../1_in_class_training_content/slides/img/ch5_line_curve.png)
+![The line climbs as acting gets dearer](../1_in_class_training_content/slides/img/C2_W05_D02_ch5_line_curve_STUDENT.png)
 
 **The idea in three lines.** The model ranks; the business draws the line. On twenty invented scores the bill is Rs 3,640 at 0.5, Rs 560 for nudging everyone and Rs 360 at 0.032. Accuracy peaks somewhere else, so a line chosen by accuracy is a line chosen by the wrong rule.
 
@@ -115,7 +115,7 @@ The running thread through these notes is Monday's model on the bank's validatio
 
 ## Chapter 6: why does the same model sit at the other end in lending?
 
-![Retail's line near 0, Rohan's line near 1](../1_in_class_training_content/slides/img/ch6_two_lines.png)
+![Retail's line near 0, Rohan's line near 1](../1_in_class_training_content/slides/img/C2_W05_D02_ch6_two_lines_STUDENT.png)
 
 **The idea in three lines.** In lending the dear mistake is the approval: one Rs 60,000 default wipes out twenty Rs 3,000 good loans. So Rohan lends only when at least 20 in 21 applicants like this one repay, P(repay) above 0.952. Same formula, same quantity, opposite end.
 
@@ -137,11 +137,11 @@ The running thread through these notes is Monday's model on the bank's validatio
 | 2 | What does 1 in 31 call? | 7,438 clients, 913 of 928 buyers, bill Rs 279,000 against Rs 292,400 for calling everyone: 4.6 percent saved |
 | 3 | Which 1,000 to call? | the top 1,000 by score hold 404 buyers against about 112 at random; the bill falls by about Rs 3.6 lakh |
 
-![Saving over the best free rule as the cost ratio tightens](../1_in_class_training_content/slides/img/case2_ratio.png)
+![Saving over the best free rule as the cost ratio tightens](../1_in_class_training_content/slides/img/C2_W05_D02_case2_ratio_STUDENT.png)
 
 The rule with its flip: at 30 to 1 a call is so cheap that calling nearly everyone is close to optimal, and the model barely matters. It earns its keep when the ratio tightens (38 percent saving at 8 to 1) or a budget binds.
 
-![Precision at k and buyers found against calls made](../1_in_class_training_content/slides/img/case3_prec_at_k.png)
+![Precision at k and buyers found against calls made](../1_in_class_training_content/slides/img/C2_W05_D02_case3_prec_at_k_STUDENT.png)
 
 **IN THE FIELD.** Flipkart's trust team hand-labelled the 250 accounts a CMU model ranked most suspicious: 211 were fraud, over 84 percent, and all of the first 50 were (Hooi and others, arXiv 1511.06030, verified 28 October 2026). A review budget is a precision at k.
 

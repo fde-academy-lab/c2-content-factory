@@ -25,7 +25,7 @@ Every problem names the seat it is answered from: business owner, product manage
 
 ## What does the day come down to, on one page?
 
-![The four boxes on twenty invented customers](../1_in_class_training_content/slides/img/ch1_four_boxes.png)
+![The four boxes on twenty invented customers](../1_in_class_training_content/slides/img/C2_W05_D02_ch1_four_boxes_STUDENT.png)
 
 | Idea | The rule | The condition that flips it |
 |---|---|---|
@@ -38,7 +38,7 @@ Every problem names the seat it is answered from: business owner, product manage
 | The 1-in-N test | rights per wrong equals damage over saving: one Rs 1,200 buyer pays for 30 Rs 40 nudges, so act above 1 in 31 | Changes the moment either price changes |
 | The transfer | nudge when P(buy) is above 0.032; lend when P(repay) is above 0.952 | The dearer mistake changed sides |
 
-![Retail's line near 0, Rohan's line near 1](../1_in_class_training_content/slides/img/ch6_two_lines.png)
+![Retail's line near 0, Rohan's line near 1](../1_in_class_training_content/slides/img/C2_W05_D02_ch6_two_lines_STUDENT.png)
 
 <div class="page-break"></div>
 
@@ -117,7 +117,7 @@ Finance revises a missed repeater's margin from Rs 1,200 to Rs 600; a nudge stil
 
 *Seat: senior ML engineer. The chart is the bank's validation slice at Anand's prices (measured).*
 
-![The bill of mistakes against the threshold on the bank's validation slice](../1_in_class_training_content/slides/img/case2_bill_curve.png)
+![The bill of mistakes against the threshold on the bank's validation slice](../1_in_class_training_content/slides/img/C2_W05_D02_case2_bill_curve_STUDENT.png)
 
 Marketing says: "Use 0.5. Above 0.5 the model is confident, and we only want confident calls."
 
@@ -187,7 +187,7 @@ The dataset's documentation says it is five times worse to class a bad customer 
 
 *Seats: solution architect, implementation engineer, QA. Measured on the bank's validation slice.*
 
-![Precision at k and buyers found against calls made](../1_in_class_training_content/slides/img/case3_prec_at_k.png)
+![Precision at k and buyers found against calls made](../1_in_class_training_content/slides/img/C2_W05_D02_case3_prec_at_k_STUDENT.png)
 
 Kalpa Marketing will make 1,000 calls a day from the scored customer table. Three proposals arrive: (i) call everyone above the cost line of 0.032, (ii) call the top 1,000 by score each day, (iii) call a random 1,000 so the results are "unbiased".
 
