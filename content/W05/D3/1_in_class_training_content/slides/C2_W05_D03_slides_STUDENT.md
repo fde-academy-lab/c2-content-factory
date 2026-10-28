@@ -48,7 +48,7 @@ Thursday tunes on today's feature set; Build 2 moves the method to Rohan's lendi
 ## S2. The week's picture, as Tuesday left it
 *Past rows, the cut, the prediction moment, the outcome window*
 
-![The week's timeline in Tuesday's state](img/C2_W05_D03_week_timeline_tuesday.png)
+![The week's timeline in Tuesday's state](img/C2_W05_D03_week_timeline_tuesday_STUDENT.png)
 
 ```notes
 LIVE, 1 minute. This is the picture the room redraws every night. Point at the thick line: the
@@ -169,7 +169,7 @@ Gauri) are in the notebook.
 ## S7. Answer: b, Hari, the coldest member on the table
 *Total spend grows with time, so it ranks the oldest first*
 
-![Recency against orders per month, bubble size is spend](img/C2_W05_D03_ch1_members.png)
+![Recency against orders per month, bubble size is spend](img/C2_W05_D03_ch1_members_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Hari's bubble is the biggest and sits far right: ten months since the last
@@ -202,7 +202,7 @@ cell 4: one line of pandas per signal, measured from NUDGE, never from today.
 ## S9. The bank's file already holds counts and a recency
 *campaign, previous, pdays and poutcome are the same five ideas*
 
-![Yes-rate by calls this campaign and by earlier calls](img/C2_W05_D03_ch1_bank_counts.png)
+![Yes-rate by calls this campaign and by earlier calls](img/C2_W05_D03_ch1_bank_counts_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Predict first: does ringing a client more often this campaign raise the yes-rate?
@@ -287,7 +287,7 @@ decision, never a ritual.
 ## S13. Rupees drown visits in a distance
 *A to B by hand: square root of 200 squared plus 7 squared, about 200*
 
-![Raw against standardised, A's nearest neighbour changes](img/C2_W05_D03_ch2_scaling.png)
+![Raw against standardised, A's nearest neighbour changes](img/C2_W05_D03_ch2_scaling_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. Predict first: after standardising, is A's nearest neighbour still B? It becomes
@@ -376,7 +376,7 @@ morning, has anyone paid yet for an order in the next ninety days?
 ## S18. Answer: c, 6 of 12, the score of predicting nobody
 *No payment from the coming 90 days exists that morning*
 
-![The perfect rule collapses when it meets the morning](img/C2_W05_D03_ch3_rule_counts.png)
+![The perfect rule collapses when it meets the morning](img/C2_W05_D03_ch3_rule_counts_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. The column reads none for everyone on the nudge morning, so the rule says nobody
@@ -389,7 +389,7 @@ built before it.
 ## S19. One member's timeline: green known, red written after
 *The nudge morning is the prediction moment*
 
-![One invented member's timeline with settlement in red](img/C2_W05_D03_ch3_member_timeline.png)
+![One invented member's timeline with settlement in red](img/C2_W05_D03_ch3_member_timeline_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Draw this on the board first, then show it. Each column is pinned at the moment
@@ -501,7 +501,7 @@ LIVE, 2 minutes. Take letters with one reason each.
 ## S25. Answer: b, three dropped and one fixed
 *Two written after the nudge, one with no reason*
 
-![Nine candidate columns on the timeline](img/C2_W05_D03_ch4_audit_timeline.png)
+![Nine candidate columns on the timeline](img/C2_W05_D03_ch4_audit_timeline_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. coupon_redeemed is the outcome itself. member_id is a key; if ids are issued in
@@ -595,7 +595,7 @@ fall means the model leans on that column, nothing more. Take letters, then run 
 ## S30. Answer: b, 7; the twins together cost 8
 *Each twin alone costs little, because the other carries the signal*
 
-![Answers lost when each twin is shuffled](img/C2_W05_D03_ch5_twins.png)
+![Answers lost when each twin is shuffled](img/C2_W05_D03_ch5_twins_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Visits alone costs 2, searches alone 4, both together 8, more than 2 + 4. Land:
@@ -672,7 +672,7 @@ promises the room: the jump is shown only after it.
 ## S34. Answer: b, AUC 0.761, 0.795, then 0.932
 *Accuracy moves one point: 0.897 to 0.907*
 
-![Validation AUC jumps while accuracy barely moves](img/C2_W05_D03_case1_auc_accuracy.png)
+![Validation AUC jumps while accuracy barely moves](img/C2_W05_D03_case1_auc_accuracy_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Calling nobody scores 0.887, so accuracy has no room to show the jump. Ask: a
@@ -684,7 +684,7 @@ jump of 0.14 from one column; what is your first suspicion? Hold the answer for 
 ## S35. Read the jump in recall and rupees
 *Rs 40 a call, Rs 1,200 a missed buyer, threshold 0.032*
 
-![Recall at 0.5 and the bill on 8,238 calls](img/C2_W05_D03_case1_recall_bill.png)
+![Recall at 0.5 and the bill on 8,238 calls](img/C2_W05_D03_case1_recall_bill_STUDENT.png)
 
 ```notes
 LIVE, 5 minutes. Recall at 0.5 goes 0.23 to 0.42 and the bill falls from Rs 2.80 lakh to Rs 1.19
@@ -754,7 +754,7 @@ LIVE, 2 minutes. Letters first.
 ## S39. Answer: b, 0.5 percent; the longest fifth, 33
 *The dataset's own note: the length is unknown before the call*
 
-![Yes-rate by call length](img/C2_W05_D03_case2_duration_fifths.png)
+![Yes-rate by call length](img/C2_W05_D03_case2_duration_fifths_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. All four calls of 0 seconds ended in no. Open the UCI page and read the duration
@@ -803,7 +803,7 @@ LIVE, 2 minutes. Letters first. Most of the room says a.
 ## S42. Answer: c, 0.79: the yes-rate moves with the month
 *From 5 percent of calls in 2008 to 52 percent in 2010*
 
-![Yes-rate by month with euribor3m](img/C2_W05_D03_case2_calendar.png)
+![Yes-rate by month with euribor3m](img/C2_W05_D03_case2_calendar_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. emp.var.rate and nr.employed take 10 and 11 distinct values: a stamp for the
@@ -816,7 +816,7 @@ partly on months it has seen. Next month's list is a month it has never seen.
 ## S43. Inside one month the honest model ranks at 0.57
 *The calendar is a second leak that looks legal*
 
-![AUC from the calendar, the honest model, and inside one month](img/C2_W05_D03_case2_within_month.png)
+![AUC from the calendar, the honest model, and inside one month](img/C2_W05_D03_case2_within_month_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. Known that morning, and still borrowing each month's yes-rate through the split.
@@ -843,7 +843,7 @@ the split; the model now reads a sentence a person can say.
 ## S45. The leak promised Rs 1.19 lakh; honest is Rs 2.82 lakh
 *AUC 0.932 against 0.796 on the same 8,238 calls*
 
-![The bill promised, delivered, and calling everyone](img/C2_W05_D03_case2_bill.png)
+![The bill promised, delivered, and calling everyone](img/C2_W05_D03_case2_bill_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. The leaked model can never deliver its promise: on the morning of the call its
@@ -872,7 +872,7 @@ member who already bought. The column is the target in another team's words.
 ## S47. The week's picture, Wednesday state
 *duration sits right of the prediction moment, in red*
 
-![The week's timeline with duration in red](img/C2_W05_D03_week_timeline_wednesday.png)
+![The week's timeline with duration in red](img/C2_W05_D03_week_timeline_wednesday_STUDENT.png)
 
 ```notes
 LIVE, 1 minute. Tonight's self-check is to redraw this from memory. Lunch after this slide.
@@ -892,7 +892,7 @@ LIVE, 30 seconds. Case 3, 20 minutes. Afternoon block.
 ## S48. Alone, euribor3m is negative; with its partners?
 *The three rate columns correlate above 0.9 on training rows*
 
-![Correlation of the three rate columns](img/C2_W05_D03_case3_corr.png)
+![Correlation of the three rate columns](img/C2_W05_D03_case3_corr_STUDENT.png)
 
 (a) stays negative and shrinks (b) turns positive (c) goes to exactly zero
 
@@ -906,7 +906,7 @@ almost no row where one is high and another low. Letters first. This is the row'
 ## S49. Answer: b, from -0.92 to +0.77 beside both partners
 *Nothing about interest rates changed between the fits*
 
-![euribor3m's coefficient in four neighbourhoods](img/C2_W05_D03_case3_flip.png)
+![euribor3m's coefficient in four neighbourhoods](img/C2_W05_D03_case3_flip_STUDENT.png)
 
 ```notes
 LIVE, 4 minutes. A coefficient answers "holding the others fixed", and these partners are never
@@ -919,7 +919,7 @@ The faculty block, tentative, takes multicollinearity further.
 ## S50. emp.var.rate tops the importance chart at 0.34
 *Shuffle a column on validation rows; measure the AUC lost*
 
-![Permutation importance of the honest model](img/C2_W05_D03_case3_permutation.png)
+![Permutation importance of the honest model](img/C2_W05_D03_case3_permutation_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. The model's whole lift above a coin is 0.30. One column costing 0.34 is costing
@@ -931,7 +931,7 @@ more than the model ever earned. Ask why before the next slide.
 ## S51. One twin shuffled costs more than the model earned
 *Shuffled alone, it builds clients who never existed*
 
-![Single shuffle against group shuffle against the model's lift](img/C2_W05_D03_case3_group.png)
+![Single shuffle against group shuffle against the model's lift](img/C2_W05_D03_case3_group_STUDENT.png)
 
 ```notes
 LIVE, 3 minutes. A 2010 employment rate beside a 2008 interbank rate: an impossible client. Shuffle
@@ -940,7 +940,7 @@ the five economy columns together and the cost falls to 0.14. Land: permute part
 
 ---
 
-## S52. nr.employed ranks high and only marks the quarter
+## S52. nr.employed ranks high and only stamps the quarter
 *The chart ranks reliance and never proves cause*
 
 ```mermaid

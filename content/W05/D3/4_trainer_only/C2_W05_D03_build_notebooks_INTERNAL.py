@@ -56,7 +56,7 @@ def load_bank():
     """UCI Bank Marketing, bank-additional-full.csv (CC BY 4.0), cached after the first download."""
     f = CACHE / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -438,7 +438,7 @@ def case02():
         ax2 = ax.twinx(); ax2.plot(range(len(eur)), eur.values, color=ROSE, lw=2, label="euribor3m (right axis)")
         ax.set_xticks(range(0, len(rate), 3)); ax.set_xticklabels(rate.index[::3], rotation=45, fontsize=8)
         ax.set_ylabel("yes-rate"); ax2.set_ylabel("euribor3m")
-        ax.set_title("The yes-rate moves with the month, and the rate column marks the month")
+        ax.set_title("The yes-rate moves with the month, and the rate column stamps the month")
         ax.set_ylim(0, 0.85); ax2.set_ylim(0, 6.5)
         fig.legend(loc="upper center", bbox_to_anchor=(0.5, 0.86), ncol=2, fontsize=9)
         plt.tight_layout(); plt.show()
@@ -765,7 +765,7 @@ def case03():
         ## Does a top rank prove a cause?
         No. The chart ranks how much this fitted model leans on a column when it predicts. It does
         not say that moving the column moves the outcome. `nr.employed` ranks high, and hiring more
-        people in Portugal would not make a client open a deposit: the column marks the quarter.
+        people in Portugal would not make a client open a deposit: the column stamps the quarter.
         `contact` (mobile against landline) ranks in the top ten, and switching every client to a
         mobile would not move the yes-rate by the gap the chart suggests, because the clients who
         were rung on mobiles differ in other ways. The claim "this lever moves the outcome" needs
@@ -916,7 +916,7 @@ def ch01():
         CACHE.mkdir(parents=True, exist_ok=True)
         f_bank = CACHE / "bank-additional-full.csv"
         if not f_bank.exists():   # the week's cached loader: UCI Bank Marketing, CC BY 4.0
-            url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+            url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
             outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
             inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
             f_bank.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -1071,7 +1071,7 @@ def ch02():
         CACHE.mkdir(parents=True, exist_ok=True)
         f_bank = CACHE / "bank-additional-full.csv"
         if not f_bank.exists():   # the week's cached loader: UCI Bank Marketing, CC BY 4.0
-            url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+            url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
             outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
             inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
             f_bank.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -1483,7 +1483,7 @@ def guided():
         solution architect, who will ask "is that column there when we score?".
 
         **The questions on the way.** Which line turns the 999 sentinel into a never-contacted flag?
-        Which line marks a previous success? Which of three columns pass the prediction-time
+        Which line stamps a previous success? Which of three columns pass the prediction-time
         question? What do the two features add?
 
         **Search terms:** feature engineering pandas, data leakage checklist.
@@ -1505,7 +1505,7 @@ def guided():
         print("TODO 1 is open" if never_contacted is None else f"never_contacted is 1 in {never_contacted.mean():.1%} of rows")
         '''),
         md("""
-        ## Which line marks a previous success?
+        ## Which line stamps a previous success?
         `poutcome` says how the client's previous campaign ended: `success`, `failure` or
         `nonexistent`. Build a 0 or 1 flag for a previous success and give its reason.
         """),
@@ -1547,11 +1547,11 @@ def guided():
         ---
         ## What is the worked answer?
         **TODO 1 is B.** Reason: "most clients have never heard from us, and the ones who have
-        convert far more often." Option A marks clients contacted zero days ago; option C turns a
+        convert far more often." Option A flags clients contacted zero days ago; option C turns a
         sentinel into a fake number of days.
 
         **TODO 2 is A.** Reason: "a client who said yes last time is the warmest call we have."
-        Option B also marks the 35,563 clients with no previous campaign; option C copies the
+        Option B also stamps the 35,563 clients with no previous campaign; option C copies the
         target into a feature, which is the leak in its purest form.
 
         **TODO 3.** `duration` is not known (the call log writes it when the call ends);

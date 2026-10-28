@@ -24,7 +24,7 @@ does, the first line of a good answer is the question you would ask.
 
 ## What does the day come down to on one page?
 
-![The week's picture, Wednesday state](../1_in_class_training_content/slides/img/C2_W05_D03_week_timeline_wednesday.png)
+![The week's picture, Wednesday state](../1_in_class_training_content/slides/img/C2_W05_D03_week_timeline_wednesday_STUDENT.png)
 
 | Idea | The rule | The condition that flips it |
 |---|---|---|
@@ -121,8 +121,8 @@ features as their tree model, and the loss stopped improving midway through trai
 it to unnormalised features and fixed it with `(value - mean) / standard deviation` for
 bell-shaped features and `log((1 + value) / (1 + median))` for power-law ones. Plotting each
 feature's distribution then exposed logging bugs: for stays longer than 28 days the logged price
-was the monthly price instead of the daily one (Haldar and others, arXiv 1810.09591, verified 28
-October 2026: https://arxiv.org/abs/1810.09591).
+was the monthly price instead of the daily one (Haldar and others, arXiv 1810.09591,
+https://arxiv.org/abs/1810.09591, verified 28 October 2026).
 
 | Listing | Logged price per night, Rs (invented) |
 |---|---|
@@ -144,8 +144,8 @@ three hospital systems. The joint model scored internal AUC 0.931 and AUC 0.815 
 had never seen. The same network identified the hospital system of an image for 99.95 percent of
 NIH images, partly from a metal token technicians place on patients. Portable inpatient films
 carried 41.1 percent pneumonia against 32.8 percent in the emergency department, and ranking
-images only by each hospital's prevalence reached AUC 0.861 (PLOS Medicine 2018, verified 28
-October 2026: https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683).
+images only by each hospital's prevalence reached AUC 0.861 (PLOS Medicine 2018,
+https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683, verified 28 October 2026).
 
 1. Does "which hospital took this image" pass the prediction-time question? Answer carefully.
 2. Which of Wednesday's bank columns behaves the same way, and what number showed it?
@@ -191,7 +191,7 @@ payments feed writes it.
 
 **Seats: product manager and senior ML engineer.** The bank's honest model, validation AUC 0.796:
 
-![Permutation importance of the honest model](../1_in_class_training_content/slides/img/C2_W05_D03_case3_permutation.png)
+![Permutation importance of the honest model](../1_in_class_training_content/slides/img/C2_W05_D03_case3_permutation_STUDENT.png)
 
 | Fact | Value |
 |---|---|
@@ -212,8 +212,8 @@ payments feed writes it.
 **Seat: solution architect.** Kalpa wants recency, orders in 90 days, cohort age and average
 basket for 500,000 members (invented) scored every night. Uber's Michelangelo platform keeps
 features in a store where "the same expressions are applied at training time and at prediction
-time" (Uber Engineering blog, verified 28 October 2026:
-https://www.uber.com/blog/michelangelo-machine-learning-platform/).
+time" (Uber Engineering blog,
+https://www.uber.com/blog/michelangelo-machine-learning-platform/, verified 28 October 2026).
 
 | Option | How it works |
 |---|---|

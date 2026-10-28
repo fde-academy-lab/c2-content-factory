@@ -47,7 +47,7 @@ CALL_RS, MISSED_RS = 40, 1200
 def load_bank():
     f = CACHE / "bank-additional-full.csv"
     if not f.exists():
-        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"
+        url = "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip"  # verified 28 October 2026
         outer = zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(url, timeout=60).read()))
         inner = zipfile.ZipFile(io.BytesIO(outer.read("bank-additional.zip")))
         f.write_bytes(inner.read("bank-additional/bank-additional-full.csv"))
@@ -103,7 +103,7 @@ def week_timeline(state):
         card(ax, 0.6, 0.35, 2.9, 0.75, "customer table", "#E8F5EE", GREEN, GREEN, size=14, weight="bold")
         card(ax, 3.7, 0.35, 2.9, 0.75, "economy (flag)", "#E8F5EE", GREEN, GREEN, size=14, weight="bold")
         card(ax, 8.0, 0.35, 3.6, 0.75, "duration: call ends", "#FCEBF0", ROSE, ROSE, size=15, weight="bold")
-    save(fig, f"C2_W05_D03_week_timeline_{state}.png")
+    save(fig, f"C2_W05_D03_week_timeline_{state}_STUDENT.png")
 
 
 def concept_figures():
@@ -124,7 +124,7 @@ def concept_figures():
         ax.annotate(name, (x, y), xytext=(10, 6), textcoords="offset points", fontsize=15)
     ax.set_xlabel("recency: days since last order"); ax.set_ylabel("orders per month")
     ax.set_title("Hari spent the most and is the coldest (invented members)")
-    save(fig, "C2_W05_D03_ch1_members.png")
+    save(fig, "C2_W05_D03_ch1_members_STUDENT.png")
 
     X = pd.DataFrame({"spend_90d": [9000, 9200, 7000, 2500, 4500, 3000], "visits_30d": [2, 9, 2, 8, 6, 3]},
                      dtype=float)
@@ -139,7 +139,7 @@ def concept_figures():
     axes[0].set_xlim(0, 10500); axes[0].set_ylim(0, 10500)
     axes[0].text(500, 6000, "A's nearest: B\n(Rs 200 apart,\nvisits 2 vs 9)", fontsize=14, color=ROSE)
     axes[1].text(-1.4, 0.4, "A's nearest: C\n(both visit twice)", fontsize=14, color=GREEN)
-    save(fig, "C2_W05_D03_ch2_scaling.png")
+    save(fig, "C2_W05_D03_ch2_scaling_STUDENT.png")
 
     events = [("first order\n(day -400)", -400, GREEN), ("last order\n(day -9)", -9, GREEN),
               ("orders_90d\nwritten (day -1)", -1, GREEN), ("order placed\n(day +5)", 5, GREY),
@@ -156,7 +156,7 @@ def concept_figures():
     ax.text(0.04, 0.78, "nudge morning", color=INK, fontsize=16, weight="bold")
     ax.set_xlim(-2.9, 2.45); ax.set_ylim(-1.1, 1.0); ax.axis("off")
     ax.set_title("Green is known on the nudge morning; red is written after it (invented member)")
-    save(fig, "C2_W05_D03_ch3_member_timeline.png")
+    save(fig, "C2_W05_D03_ch3_member_timeline_STUDENT.png")
 
     fig, ax = plt.subplots(figsize=(11, 4.2))
     labels = ["settlement rule,\ntraining table", "settlement rule,\nnudge morning", "orders_90d >= 2,\nhonest", "predict\nnobody buys"]
@@ -166,7 +166,7 @@ def concept_figures():
         ax.text(i, v + 0.2, f"{v} of 12", ha="center", fontsize=16)
     ax.set_ylim(0, 13.5); ax.set_ylabel("members right")
     ax.set_title("The perfect rule collapses when it meets the morning (invented)")
-    save(fig, "C2_W05_D03_ch3_rule_counts.png")
+    save(fig, "C2_W05_D03_ch3_rule_counts_STUDENT.png")
 
     cols = [("days_since_last_order", -1, "keep"), ("orders_90d", -1, "keep"), ("avg_basket_rs", -1, "keep"),
             ("city", -400, "keep"), ("app_visits_7d", -1, "keep"), ("loyalty_tier", -1, "fix"),
@@ -183,7 +183,7 @@ def concept_figures():
     ax.set_yticks([]); ax.set_xlim(-3, 3.9); ax.set_ylim(-0.8, 9.3)
     ax.set_xticks([-2.6, -0.3, 0.6, 1.1]); ax.set_xticklabels(["signup", "last night", "+3 days", "+12 days"])
     ax.set_title("Nine candidate columns on the timeline: keep, fix, drop (invented)")
-    save(fig, "C2_W05_D03_ch4_audit_timeline.png")
+    save(fig, "C2_W05_D03_ch4_audit_timeline_STUDENT.png")
 
     fig, ax = plt.subplots(figsize=(11, 4))
     names = ["visits shuffled", "searches shuffled", "both shuffled"]
@@ -193,7 +193,7 @@ def concept_figures():
         ax.text(x + 0.15, i, f"{x} answers lost of 11", va="center", fontsize=15)
     ax.set_xlim(0, 11); ax.invert_yaxis()
     ax.set_title("Twins alone cost 2 and 4; together they cost 8 (invented)")
-    save(fig, "C2_W05_D03_ch5_twins.png")
+    save(fig, "C2_W05_D03_ch5_twins_STUDENT.png")
 
 
 def case_figures():
@@ -208,7 +208,7 @@ def case_figures():
         for i, v in enumerate(r.values):
             ax.text(i, v + 0.01, f"{v:.0%}", ha="center", fontsize=15)
         ax.set_ylim(0, 0.6); ax.set_title(f"yes-rate by {title}")
-    save(fig, "C2_W05_D03_ch1_bank_counts.png")
+    save(fig, "C2_W05_D03_ch1_bank_counts_STUDENT.png")
 
     bank["never_contacted"] = (bank["pdays"] == 999).astype(int)
     bank["days_since_contact"] = bank["pdays"].where(bank["pdays"] != 999, 0)
@@ -239,7 +239,7 @@ def case_figures():
         ax.set_ylim(0.5, 1.02); ax.set_title(title)
     axes[1].axhline(0.8874, color=INK, ls="--", lw=1.5)
     axes[1].text(-0.45, 0.855, "call nobody: 0.887", fontsize=14)
-    save(fig, "C2_W05_D03_case1_auc_accuracy.png")
+    save(fig, "C2_W05_D03_case1_auc_accuracy_STUDENT.png")
 
     fig, axes = plt.subplots(1, 2, figsize=(13, 4.6))
     rec = [res[k]["recall"] for k in sets]
@@ -252,7 +252,7 @@ def case_figures():
     axes[1].set_title("Bill on 8,238 calls, Rs lakh")
     for i, v in enumerate(bills):
         axes[1].text(i, v + 0.06, f"Rs {v:.2f} lakh", ha="center", fontsize=15)
-    save(fig, "C2_W05_D03_case1_recall_bill.png")
+    save(fig, "C2_W05_D03_case1_recall_bill_STUDENT.png")
 
     fifths = pd.qcut(bank["duration"], 5)
     r = yes.groupby(fifths, observed=True).mean()
@@ -262,7 +262,7 @@ def case_figures():
     for i, v in enumerate(r.values):
         ax.text(i, v + 0.008, f"{v:.1%}", ha="center", fontsize=16)
     ax.set_ylim(0, 0.4); ax.set_title("Yes-rate by call length, in five equal groups of calls")
-    save(fig, "C2_W05_D03_case2_duration_fifths.png")
+    save(fig, "C2_W05_D03_case2_duration_fifths_STUDENT.png")
 
     rate = bank.groupby("year_month")["y"].apply(lambda s: s.eq("yes").mean())
     eur = bank.groupby("year_month")["euribor3m"].mean()
@@ -272,9 +272,9 @@ def case_figures():
     ax2.spines["right"].set_visible(True)
     ax.set_xticks(range(0, len(rate), 4)); ax.set_xticklabels(rate.index[::4], fontsize=13)
     ax.set_ylim(0, 0.85); ax2.set_ylim(0, 6.5)
-    ax.set_title("The yes-rate moves with the month; the rate column marks the month")
+    ax.set_title("The yes-rate moves with the month; the rate column stamps the month")
     fig.legend(loc="upper center", bbox_to_anchor=(0.5, 0.86), ncol=2, fontsize=14, frameon=False)
-    save(fig, "C2_W05_D03_case2_calendar.png")
+    save(fig, "C2_W05_D03_case2_calendar_STUDENT.png")
 
     honest_cols = PROFILE + HISTORY + ["never_contacted", "days_since_contact"] + ECONOMY
     honest, hmodel, hp = fit(honest_cols)
@@ -293,7 +293,7 @@ def case_figures():
     ax.axhline(0.5, color=ROSE, ls="--", lw=1.5); ax.text(2.25, 0.51, "a coin", color=ROSE, fontsize=14)
     ax.set_ylim(0.4, 0.9); ax.set_ylabel("validation AUC")
     ax.set_title("Most of 0.80 is knowing the month")
-    save(fig, "C2_W05_D03_case2_within_month.png")
+    save(fig, "C2_W05_D03_case2_within_month_STUDENT.png")
 
     everyone = int((yva == 0).sum()) * CALL_RS
     fig, ax = plt.subplots(figsize=(11, 3.8))
@@ -304,7 +304,7 @@ def case_figures():
         ax.text(x + 0.04, i, f"Rs {x:.2f} lakh", va="center", fontsize=16)
     ax.invert_yaxis(); ax.set_xlim(0, 3.8)
     ax.set_title("Call bill on 8,238 validation calls (Rs 40 a call, Rs 1,200 a missed buyer)")
-    save(fig, "C2_W05_D03_case2_bill.png")
+    save(fig, "C2_W05_D03_case2_bill_STUDENT.png")
 
     trio = ["emp.var.rate", "euribor3m", "nr.employed"]
     corr = train[trio].corr()
@@ -317,7 +317,7 @@ def case_figures():
             ax.text(j, i, f"{corr.values[i, j]:.2f}", ha="center", va="center", fontsize=18,
                     color="white" if corr.values[i, j] > 0.6 else INK)
     ax.set_title("Three desks, one signal"); ax.spines[:].set_visible(False)
-    save(fig, "C2_W05_D03_case3_corr.png")
+    save(fig, "C2_W05_D03_case3_corr_STUDENT.png")
 
     Z = pd.DataFrame(StandardScaler().fit_transform(train[trio]), columns=trio, index=train.index)
 
@@ -334,7 +334,7 @@ def case_figures():
         ax.text(i, x + (0.06 if x >= 0 else -0.16), f"{x:+.2f}", ha="center", fontsize=17)
     ax.set_ylim(-1.15, 1.0); ax.set_ylabel("euribor3m coefficient")
     ax.set_title("One column, four neighbourhoods, two signs")
-    save(fig, "C2_W05_D03_case3_flip.png")
+    save(fig, "C2_W05_D03_case3_flip_STUDENT.png")
 
     perm = permutation_importance(hmodel, val[honest_cols], yva, scoring="roc_auc", n_repeats=5, random_state=42)
     imp = pd.Series(perm.importances_mean, index=honest_cols).sort_values(ascending=False)
@@ -345,7 +345,7 @@ def case_figures():
         ax.text(x + 0.004, i, f"{x:.3f}", va="center", fontsize=14)
     ax.set_xlim(0, 0.42); ax.set_xlabel("fall in validation AUC when shuffled")
     ax.set_title("Permutation importance, honest model (economy in violet)")
-    save(fig, "C2_W05_D03_case3_permutation.png")
+    save(fig, "C2_W05_D03_case3_permutation_STUDENT.png")
 
     rng = np.random.default_rng(42)
     base = roc_auc_score(yva, hmodel.predict_proba(val[honest_cols])[:, 1])
@@ -362,7 +362,7 @@ def case_figures():
         ax.text(i, x + 0.008, f"{x:.2f}", ha="center", fontsize=17)
     ax.set_ylim(0, 0.42); ax.set_ylabel("AUC")
     ax.set_title("One twin shuffled costs more than the model ever earned")
-    save(fig, "C2_W05_D03_case3_group.png")
+    save(fig, "C2_W05_D03_case3_group_STUDENT.png")
     print(f"honest {honest['auc']:.4f} leaked {leaked['auc']:.4f} calendar {calendar['auc']:.4f} within {within:.3f}")
 
 
