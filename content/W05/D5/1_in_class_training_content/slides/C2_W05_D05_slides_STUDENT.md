@@ -246,8 +246,8 @@ Transition: chapter 2 prices every mistake.
 *The error bill in rupees under the chosen threshold · also searched as: cost-benefit analysis of a model, expected cost*
 
 ```notes
-LIVE, 15 minutes for the chapter. Notebook ch02 and the explorable's bill panel. Who needs the
-answer: Finance, who signs the calling budget.
+LIVE, 15 minutes for the chapter. Notebook ch02. Who needs the answer: Finance, who signs the
+calling budget.
 ```
 
 ---
@@ -332,9 +332,8 @@ call = p * 900 > (1 - p) * 30      # same as p > 30 / 930 = 0.032
 
 ```notes
 LIVE, 3 minutes. Krish Naik style: three lines, each read aloud. The formula and the sweep call the
-same 17 members (notebook ch02 checks it). Open the explorable now: it opens at 0.5 on the bank's
-real counts. Ask for a prediction of the bill, then drag to 0.03. Transition: what happens to the
-bill when the months change.
+same 17 members (notebook ch02 checks it). Run notebook ch02 now, 3 minutes. Transition: what
+happens to the bill when the months change.
 ```
 
 ---
@@ -614,7 +613,8 @@ LIVE, 5 minutes. The trap, exactly: "boosting has the best AUC, so it saves the 
 bill is the largest of the three (Rs 2.832 lakh against logistic's Rs 2.817 lakh). The decision it
 misleads: paying for a forty-step model for nothing. The check: price both mistakes for each model.
 Land: at this cost ratio the model barely matters; the budget is where it earns its keep.
-Transition: the budget.
+Explorable, bill panel: it opens at 0.5; ask for a guess of the bill, reveal, then drag to 0.03 and
+switch the missed-buyer cost to Rs 120 to watch the model start to matter. Transition: the budget.
 ```
 
 ---
@@ -745,8 +745,8 @@ trap. Transition: the picture.
 ```notes
 LIVE, 4 minutes. In the shaded months the lines sit on top of each other because the model learned
 them. Right of the shade the rose line stays low while the real line climbs. This is the panel the
-week's picture was waiting for. Explorable: the monitor panel replays these months. Transition: what
-it cost.
+week's picture was waiting for. Open the explorable's monitor panel now: it opens with a ceiling so high the
+alarm never fires; lower it until it does and read the month aloud. Transition: what it cost.
 ```
 
 ---

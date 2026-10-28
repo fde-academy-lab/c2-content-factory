@@ -6,13 +6,13 @@
 |---|---|---|---|---|
 | Meera's brief; the room lists each seat's push | 12 | trainer, then learners | `slides/C2_W05_D05_slides_STUDENT.pptx`, cover to S6 | The brief, the week map, the four seats |
 | Ch 1 Selling a model to people who don't care about AUC | 15 | trainer, learners run | S7 to S10, `notebooks/C2_W05_D05_ch01_model_justification_STUDENT.ipynb` | 20 gym members ranked; AUC as 60 of 75 pairs |
-| Ch 2 What will mistakes cost us | 15 | trainer, learners run | S11 to S14, `ch02_error_bill`, the explorable's bill panel | The bill at every cut |
-| Ch 3 When the model goes stale | 15 | trainer, learners run | S15 to S18, `ch03_staleness_rule`, the explorable's monitor | Promise against real, the alarm month |
+| Ch 2 What will mistakes cost us | 15 | trainer, learners run | S11 to S14, `ch02_error_bill` | The bill at every cut |
+| Ch 3 When the model goes stale | 15 | trainer, learners run | S15 to S18, `ch03_staleness_rule` | Promise against real, the alarm month |
 | Ch 4 Moving the model to lending | 11 | trainer, learners run | S19 to S22, `ch04_transfer_paragraph` | One axis, three cuts |
 | Ch 5 Defending it in the room | 10 | trainer, learners run | S23 to S26, `ch05_memo_under_challenge` | The memo as seconds; the seats' pushes |
 | Break | 10 | | | |
-| Case 1 The bill for the near-tie | 25 | trainer drives, learners follow | S27 to S31, `case01_bill_for_the_near_tie` | Three bills level with calling everyone; buyers in the top 1,000 |
-| Case 2 Train early, score late | 30 | trainer drives, learners follow | S32 to S39, `case02_staleness_reveal`, the explorable | The promise sagging below reality, month by month |
+| Case 1 The bill for the near-tie | 25 | trainer drives, learners follow | S27 to S31, `case01_bill_for_the_near_tie`, the explorable's bill panel | Three bills level with calling everyone; buyers in the top 1,000 |
+| Case 2 Train early, score late | 30 | trainer drives, learners follow | S32 to S39, `case02_staleness_reveal`, the explorable's monitor | The promise sagging below reality, month by month |
 | Case 3 Lending, and the envelope | 22 | trainer drives, learners follow | S40 to S44, `case03_transfer_and_envelope` | German Credit's cost curve; the sealed test opened once |
 | Guided: claim, evidence and the bill | 25 | learners in pairs | `notebooks/C2_W05_D05_guided_committee_memo_STUDENT.ipynb` | TODO cells turning into PASS lines |
 | Unguided: caveat, action, rule, transfer | 20 | learners | the memo on paper, S44 | Each pair's memo under 300 words |
