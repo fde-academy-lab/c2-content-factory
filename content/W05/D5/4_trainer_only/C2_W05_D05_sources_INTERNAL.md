@@ -66,4 +66,6 @@ All 13 PNGs in `1_in_class_training_content/slides/img/` and every chart in the 
 
 ## Review log
 
-- `python3 scripts/verify.py content/W05/D5` run at the end of the build; its last lines are in the session report.
+- `python3 scripts/verify.py content/W05/D5` passes: 41 files in the Week 5 layout, 11 notebooks executed with passing checks, the explorable swept (7 controls, 0 inert, 0 console errors), the deck markdown and the built deck checked (60 slides, 0 overflowing boxes).
+- `tic_scan.py` (llm-tic-scrubber) ran clean on the README, the deck, the practice set, the three study files and the trainer guide.
+- One sequencing fix after the first push: the explorable shows the bank's real bill and months, so it opens in case chapters 6 and 7, after the room has predicted, never in chapters 2 and 3.
