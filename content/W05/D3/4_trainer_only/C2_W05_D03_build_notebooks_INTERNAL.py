@@ -1181,14 +1181,17 @@ def ch03():
         moment it is used.
         """),
         code('''
-        events = [("first order", -400, GREEN), ("last order", -9, GREEN), ("orders_90d written", -1, GREEN),
-                  ("nudge morning", 0, INK), ("order placed", 5, GREY), ("delivered", 8, GREY),
-                  ("payment clears:\\nsettlement_status", 12, ROSE), ("outcome window closes", 90, GREY)]
-        pos = lambda t: np.sign(t) * np.log10(abs(t) + 1)
+        # days from the nudge morning, drawn at even spacing so the labels never collide
+        events = [("first order\\n(day -400)", -400, GREEN), ("last order\\n(day -9)", -9, GREEN),
+                  ("orders_90d written\\n(day -1)", -1, GREEN), ("nudge morning", 0, INK),
+                  ("order placed\\n(day +5)", 5, GREY), ("delivered\\n(day +8)", 8, GREY),
+                  ("payment clears:\\nsettlement_status (day +12)", 12, ROSE), ("outcome window\\ncloses (day +90)", 90, GREY)]
+        spot = {-400: -2.5, -9: -1.5, -1: -0.6, 0: 0, 5: 0.45, 8: 0.95, 12: 1.45, 90: 1.95}
+        pos = lambda t: spot[t]
         fig, ax = plt.subplots(figsize=(10, 2.8))
         ax.axhline(0, color=GREY, lw=1)
         ax.axvline(0, color=INK, lw=2.5)
-        ax.axvspan(0, 2.1, color=ROSE, alpha=0.06)
+        ax.axvspan(0, 2.45, color=ROSE, alpha=0.06)
         for i, (name, t, c) in enumerate(events):
             if t == 0:
                 continue
@@ -1197,7 +1200,7 @@ def ch03():
             ax.text(pos(t), y, name, ha="center", fontsize=9, color=c if c != GREY else INK)
         ax.text(0.03, 0.75, "prediction moment: the nudge morning", color=INK, fontsize=10)
         ax.text(1.05, -0.9, "written after the moment: the model may not read it", color=ROSE, ha="center", fontsize=9)
-        ax.set_xlim(-2.8, 2.1); ax.set_ylim(-1.05, 1.0); ax.set_yticks([]); ax.set_xticks([])
+        ax.set_xlim(-2.9, 2.45); ax.set_ylim(-1.05, 1.0); ax.set_yticks([]); ax.set_xticks([])
         ax.spines[:].set_visible(False)
         ax.set_title("One member's timeline: green is known on the nudge morning, red is written after it")
         plt.tight_layout(); plt.show()
@@ -1362,7 +1365,7 @@ def ch04():
 def ch05():
     cells = [
         md("""
-        # Chapter 5: What the importance chart can't tell you: rank or cause?
+        # Chapter 5: What the importance chart can't tell you: is it rank or cause?
         *Feature importance and its limits · also searched as: feature importance, permutation
         importance, correlation is not causation*
 
@@ -1465,7 +1468,141 @@ def ch05():
     build(NB / "C2_W05_D03_ch05_feature_importance_STUDENT.ipynb", cells, timeout=600)
 
 
-BUILDERS = {"case01": case01, "case02": case02, "case03": case03,
+def guided():
+    cells = [
+        md("""
+        # Guided: two features and three columns: engineer and audit them together
+        *Feature engineering from the customer table · Leakage and the prediction-time question ·
+        The column audit*
+
+        The trainer leads; the room fills the three TODO cells together, says each reason aloud,
+        and runs the check cell. The worked answer sits in the last section, below a clear line, so
+        the room tries first. Nothing here needs more than one line of pandas per answer.
+
+        **Who needs the answer.** The campaign head, who will ask "why that feature?", and the
+        solution architect, who will ask "is that column there when we score?".
+
+        **The questions on the way.** Which line turns the 999 sentinel into a never-contacted flag?
+        Which line marks a previous success? Which of three columns pass the prediction-time
+        question? What do the two features add?
+
+        **Search terms:** feature engineering pandas, data leakage checklist.
+        """),
+        code(PIPELINE + LOAD),
+        md("""
+        ## Which line turns the 999 sentinel into a never-contacted flag?
+        `pdays` is days since the client was last contacted in an earlier campaign, and 999 means
+        never. Pick the line, type it in place of `None`, and write the reason a marketing lead
+        would repeat.
+        """),
+        code('''
+        # TODO 1: replace None with the line that is 1 when the client was never contacted before.
+        #   (A) (bank["pdays"] == 0).astype(int)
+        #   (B) (bank["pdays"] == 999).astype(int)
+        #   (C) bank["pdays"] / 999
+        never_contacted = None
+        reason_1 = "TODO: one sentence a marketing lead would repeat"
+        print("TODO 1 is open" if never_contacted is None else f"never_contacted is 1 in {never_contacted.mean():.1%} of rows")
+        '''),
+        md("""
+        ## Which line marks a previous success?
+        `poutcome` says how the client's previous campaign ended: `success`, `failure` or
+        `nonexistent`. Build a 0 or 1 flag for a previous success and give its reason.
+        """),
+        code('''
+        # TODO 2: replace None with the line that is 1 when the previous campaign ended in success.
+        #   (A) (bank["poutcome"] == "success").astype(int)
+        #   (B) (bank["poutcome"] != "failure").astype(int)
+        #   (C) (bank["y"] == "yes").astype(int)
+        prior_success = None
+        reason_2 = "TODO: one sentence a marketing lead would repeat"
+        print("TODO 2 is open" if prior_success is None else f"prior_success is 1 in {prior_success.mean():.1%} of rows")
+        '''),
+        md("""
+        ## Which of three columns pass the prediction-time question?
+        On the morning the call list is made, do we know this value for this client? Write
+        `"known"` or `"not known"` for each column, and the system that writes it.
+        """),
+        code('''
+        # TODO 3: fill each pair as ("known" or "not known", "the system that writes it and when").
+        audit = {"duration": None, "euribor3m": None, "poutcome": None}
+        open_items = [c for c, v in audit.items() if v is None]
+        print("TODO 3 is open for:", open_items if open_items else "nothing; run the check cell")
+        '''),
+        md("""
+        ## Did the room's answers hold?
+        Run this once the three TODO cells are filled. It reports each answer and, when all three
+        are in, scores the honest feature set with the two new flags.
+        """),
+        code('''
+        if never_contacted is None or prior_success is None or None in audit.values():
+            print("Waiting: fill TODO 1, 2 and 3 above, then run this cell again.")
+        else:
+            check("never_contacted is 1 for about 96 percent of rows", 0.95 < never_contacted.mean() < 0.97)
+            check("prior_success is 1 for about 3 percent of rows", 0.03 < prior_success.mean() < 0.04)
+            check("duration is the column that is not known", audit["duration"][0] == "not known"
+                  and audit["poutcome"][0] == "known")
+        '''),
+        md("""
+        ---
+        ## What is the worked answer?
+        **TODO 1 is B.** Reason: "most clients have never heard from us, and the ones who have
+        convert far more often." Option A marks clients contacted zero days ago; option C turns a
+        sentinel into a fake number of days.
+
+        **TODO 2 is A.** Reason: "a client who said yes last time is the warmest call we have."
+        Option B also marks the 35,563 clients with no previous campaign; option C copies the
+        target into a feature, which is the leak in its purest form.
+
+        **TODO 3.** `duration` is not known (the call log writes it when the call ends);
+        `euribor3m` is known (the research desk publishes it daily, before the call), with the
+        calendar caveat of case 2; `poutcome` is known (the previous campaign closed months before).
+        """),
+        code('''
+        never_contacted = (bank["pdays"] == 999).astype(int)
+        prior_success = (bank["poutcome"] == "success").astype(int)
+        audit = {"duration": ("not known", "call log, when the call ends"),
+                 "euribor3m": ("known", "research desk, published daily"),
+                 "poutcome": ("known", "campaign history, when the last campaign closed")}
+        bank = bank.assign(never_contacted=never_contacted, prior_success=prior_success)
+        train, val, test = week_split(bank)
+        y_train, y_val = (train["y"] == "yes").astype(int), (val["y"] == "yes").astype(int)
+        def auc(cols):
+            model = logistic(cols, train).fit(train[cols], y_train)
+            return round(roc_auc_score(y_val, model.predict_proba(val[cols])[:, 1]), 4)
+        before = auc(PROFILE + HISTORY + ECONOMY)
+        after = auc(PROFILE + HISTORY + ECONOMY + ["never_contacted", "prior_success"])
+        print(f"customer table + economy: {before}; with the two flags: {after}")
+        check("never_contacted is 1 for about 96 percent of rows", 0.95 < never_contacted.mean() < 0.97)
+        check("prior_success is 1 for about 3 percent of rows", 0.03 < prior_success.mean() < 0.04)
+        check("duration is the column that is not known", audit["duration"][0] == "not known" and audit["poutcome"][0] == "known")
+        '''),
+        code('''
+        rates = pd.DataFrame({
+            "never contacted": [bank.loc[never_contacted == 1, "y"].eq("yes").mean(), bank.loc[never_contacted == 0, "y"].eq("yes").mean()],
+            "previous success": [bank.loc[prior_success == 0, "y"].eq("yes").mean(), bank.loc[prior_success == 1, "y"].eq("yes").mean()],
+        }, index=["flag = 1 / 0", "flag = 0 / 1"])
+        fig, axes = plt.subplots(1, 2, figsize=(9, 3.2))
+        for ax, (name, a, b, la, lb) in zip(axes, [
+                ("never_contacted", rates.iloc[0, 0], rates.iloc[1, 0], "never (1)", "contacted (0)"),
+                ("prior_success", rates.iloc[0, 1], rates.iloc[1, 1], "no success (0)", "success (1)")]):
+            ax.bar([la, lb], [a, b], color=[GREY, VIOLET])
+            for i, v in enumerate([a, b]):
+                ax.text(i, v + 0.01, f"{v:.0%}", ha="center", fontsize=11)
+            ax.set_ylim(0, 0.8); ax.set_title(f"yes-rate by {name}")
+        plt.tight_layout(); plt.show()
+        '''),
+        md("""
+        **What the room should say aloud.** Both flags pass the prediction-time question and carry
+        a reason; the AUC barely moves because `poutcome` and `pdays` already held the signal, and
+        the flags make it readable. The flip: if a flag's reason cannot be said in one sentence to
+        the campaign head, it does not ship, whatever it adds.
+        """),
+    ]
+    build(NB / "C2_W05_D03_guided_two_features_three_columns_STUDENT.ipynb", cells, timeout=600)
+
+
+BUILDERS = {"guided": guided, "case01": case01, "case02": case02, "case03": case03,
             "ch01": ch01, "ch02": ch02, "ch03": ch03, "ch04": ch04, "ch05": ch05}
 
 if __name__ == "__main__":
