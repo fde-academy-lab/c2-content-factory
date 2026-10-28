@@ -218,6 +218,10 @@ The head of fraud operations says: "Block anything above 0.5."
 
 **Interview question.** "Precision or recall for fraud, and why?"
 
+### Recap: what does accuracy hide, in one line? (about 2 minutes)
+
+Write one sentence, with a number from this week's file, that you could say to a stakeholder who quotes an accuracy figure.
+
 <div class="page-break"></div>
 
 ## Part B: eighteen self-check questions
@@ -471,6 +475,10 @@ Write the letter, or the letters where the question says choose all that apply.
 - At Rs 1,000 per false block: 0.3 costs Rs 1,400,000; 0.5 Rs 759,000; 0.7 Rs 678,000; 0.9 Rs 858,000. The line at 0.7 wins. When a false block loses a customer, precision leads, which is why PhonePe designs for very high precision.
 - Paragraph: "The right line depends on what a wrong block costs us. If it costs a support call, block from 0.3 and catch 80 percent of fraud; if it costs the customer, block from 0.7 and accept catching 41 percent. Give me the two prices and I will set the line and show the bill."
 - Common wrong answer: "Recall, always, because fraud is bad."
+
+### Recap, model line
+
+"On an outcome where most people say no, accuracy mostly counts the easy no's: calling nobody on the bank's file is 88.74 percent accurate and finds none of the 928 buyers." The common weak line names accuracy as "misleading" without the base rate or a number.
 
 ## What should you revisit, by score?
 

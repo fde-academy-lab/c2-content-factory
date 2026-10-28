@@ -72,6 +72,13 @@ Every PNG in `1_in_class_training_content/slides/img/` is our own render from `C
 10. **Time.** Drill 1 runs 12 minutes against the row's 15; drill 2 (three cost stories) is folded into chapter 4's slide 24 and runs in full only in the faculty-block fallback; the Kahoot and close run 12 minutes against the row's 20, since the afternoon also holds the 15-minute domain story. F1's arithmetic is the first cut, as the row says.
 11. **The F1 threshold is shown as a rival option** in case 2 (0.154), so the room sees why a "balanced" metric lands far from the cost line.
 
+12. **Picture names.** The verify gate wants every file, PNGs included, to carry the day stem and an audience tag, so the deck's pictures are named `C2_W05_D02_<name>_STUDENT.png` and the figure script writes those names.
+13. **The explorable on the deck.** Slide S24 shows our own screenshot of the explorable's opening state (0.5, 174 of 928 found), saved at 144 dpi so the deck builder measures its labels truthfully.
+14. **The random 1,000.** Every file quotes about 112 buyers for a random 1,000 (the mean of 500 seeded draws; the base rate implies 112.6).
+15. **The explorable's step.** Its line moves in steps of 0.001, so 0.032 calls 7,452 there against 7,438 at exactly 1 in 31; the page says so beside the slider.
+16. **The row's RECAP task** sits in the practice set as a one-line item after A10, with a model line in Part C; the BUILD task is problem A3; the READ task is the pre-read on the practice set's last page.
+
 ## Review log
 
-- `python3 scripts/verify.py content/W05/D2` run once at the end; its output is in the session report.
+- `python3 scripts/verify.py content/W05/D2`: first run failed on 18 picture names without the day stem and audience tag; fixed by renaming. Second run: `RESULT: PASS (0 failures)`, with 12 notebooks and 59 checks passing, the explorable swept with 0 inert controls and 0 console errors, the deck markdown and the built pptx both passing.
+- `llm-tic-scrubber/scripts/tic_scan.py` on the README, the deck, the practice set, the notes, the cheat sheet, the interview bank and the trainer guide: one hit (options run together in one line), fixed; then clean.
