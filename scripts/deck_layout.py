@@ -283,7 +283,7 @@ def pill(slide, x, y, text, fill, ink, w=0.86, h=0.3, size=11, line=None, tracki
     return s
 
 
-# From Week 5 on no logo and no institutional branding appears in any artifact (decision
+# From Week 5 on no logo, institute name or programme line appears in any artifact (decision
 # w5-artifact-set); scripts/build_deck.py turns this off for a deck of Week 5 or later.
 BRANDED = True
 
@@ -298,8 +298,9 @@ def header(slide, dark=False, right=None):
         label(slide, MARGIN + 0.56, HEADER_TOP + 0.03, 5.6, brand.INSTITUTE, 9, ink, bold=True)
         label(slide, MARGIN + 0.56, HEADER_TOP + 0.24, 6.4, brand.ADMIN_LINE, 5.5, sub, bold=True,
               tracking=300)
-    label(slide, SLIDE_W - MARGIN - 6.2, HEADER_TOP + 0.12, 6.2, right or brand.PROGRAMME_LINE, 5.5,
-          sub, bold=True, align=PP_ALIGN.RIGHT, tracking=300)
+    if right or BRANDED:
+        label(slide, SLIDE_W - MARGIN - 6.2, HEADER_TOP + 0.12, 6.2, right or brand.PROGRAMME_LINE,
+              5.5, sub, bold=True, align=PP_ALIGN.RIGHT, tracking=300)
 
 
 def title_band(slide, title, section=False, depth=False, subtitle=None):
