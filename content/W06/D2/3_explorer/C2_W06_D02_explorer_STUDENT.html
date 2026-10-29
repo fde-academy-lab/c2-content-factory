@@ -3064,9 +3064,9 @@ html{scroll-behavior:auto}
           var stages = [["POC", "Taiwan's public book", "Proves the pipeline. Never Kalpa's score.", true],
                         ["MVP", "Kalpa's own customers", "A split by time, and rupee prices for the units.", false],
                         ["Production", "Every month, for real", "Owned, watched and stoppable.", false]];
-          var vertical = phone, n3 = 3, gap = vertical ? 22 : 36, bw = vertical ? w - 8 : (w - gap * 2 - 8) / 3, bh = vertical ? 82 : 150;
+          var vertical = phone, n3 = 3, gap = vertical ? 22 : 36, bw = vertical ? w - 8 : (w - gap * 2 - 8) / 3, bh = vertical ? 82 : 140;
           stages.forEach(function (sg, k) {
-            var bx = vertical ? 4 : 4 + k * (bw + gap), byy = vertical ? 8 + k * (bh + gap) : 60;
+            var bx = vertical ? 4 : 4 + k * (bw + gap), byy = vertical ? 8 + k * (bh + gap) : 50;
             var a = Math.max(0, Math.min(1, p * 3 - k));
             box(svg, bx, byy, bw, bh, { rx: 12, fill: sg[3] ? INK : "#FFFFFF", stroke: sg[3] ? INK : "#6B6690", dash: sg[3] ? null : "6 4", opacity: 0.25 + 0.75 * a });
             var ink = sg[3] ? "#FFFFFF" : INK;
@@ -3078,7 +3078,12 @@ html{scroll-behavior:auto}
               else arrow(svg, bx + bw + 4, byy + bh / 2, bx + bw + gap - 4, byy + bh / 2, { color: "#A9A3D2" });
             }
           });
-          if (!vertical) T(svg, 4, 30, "Week 6 builds the POC and plans the MVP", { weight: 700, size: fs * 1.05 });
+          if (!vertical) {
+            T(svg, 4, 30, "Week 6 builds the POC and plans the MVP", { weight: 700, size: fs * 1.05 });
+            T(svg, 4, 248, "Every passport carries two honesty lines:", { weight: 700, opacity: Math.min(1, p * 1.5) });
+            T(svg, 4, 248 + fs * 1.45, "\u201cThe Taiwan score proves the pipeline and is never Kalpa's score.\u201d", { fill: NIGHT, opacity: Math.min(1, p * 1.5) });
+            T(svg, 4, 248 + fs * 2.9, "\u201cThis data allows no out-of-time split, so the MVP must add one.\u201d", { fill: NIGHT, opacity: Math.min(1, p * 1.5) });
+          }
         }
       }
       api.write = function (i) {
@@ -3112,18 +3117,18 @@ html{scroll-behavior:auto}
   var MAP_NODES = [
     { id: "b1", label: "Scoping a sub-problem", sub: "Week 3, Build 1", kind: "earlier", story: "Build 1 scoped one sub-problem in a new domain; Build 2 climbs one problem all the way to a defended answer." },
     { id: "mon", label: "Framing and the baseline", sub: "Week 5, Monday", kind: "earlier", story: "Input, target and prediction time, the seeded split, and the dumb model every model has to beat." },
-    { id: "tue", label: "The cost threshold and the budget", sub: "Week 5, Tuesday", kind: "earlier", story: "Two prices set the line, and a call budget turns the line into a list." },
+    { id: "tue", label: "Cost threshold and budget", sub: "Week 5, Tuesday", kind: "earlier", story: "Two prices set the line, and a call budget turns the line into a list." },
     { id: "wed", label: "Leakage and prediction time", sub: "Week 5, Wednesday", kind: "earlier", story: "A column is judged by the day it is written, never by its name." },
     { id: "thu", label: "Overfitting and the simpler model", sub: "Week 5, Thursday", kind: "earlier", story: "When two models tie on fresh data, the one the team can explain ships." },
-    { id: "fri", label: "The committee memo", sub: "Week 5, Friday", kind: "earlier", story: "Claim, evidence, caveat and action, each with a number in the reader's units." },
-    { id: "s0", label: "0 The business, black box", kind: "today", route: "p1", story: "Who pays, who decides, and what a wrong call costs." },
-    { id: "s1", label: "1 The frame", kind: "today", route: "p1", story: "What is decided, from what is known when, about what outcome." },
-    { id: "s2", label: "2 Requirements", kind: "today", route: "p2", story: "What the system must do, how well, within which limits and under which rules." },
-    { id: "s3", label: "3 Options A and B", kind: "today", route: "p3", story: "Two ways to decide, their costs, the choice and the fact that flips it." },
-    { id: "s4", label: "4 The POC and its error bill", kind: "today", route: "p4", story: "Does the chosen way beat doing nothing, honestly measured?" },
-    { id: "s5", label: "5 The architecture, HLD to LLD", kind: "today", route: "p5", story: "Black box to white box, then one box zoomed in." },
-    { id: "s6", label: "6 The MVP slice", kind: "today", route: "p6", story: "The smallest thing the client could use tomorrow, and what production adds." },
-    { id: "s7", label: "7 Present and defend", kind: "today", route: "p7", story: "One sentence the client would act on, and numbers every member can defend." },
+    { id: "fri", label: "Committee memo", sub: "Week 5, Friday", kind: "earlier", story: "Claim, evidence, caveat and action, each with a number in the reader's units." },
+    { id: "s0", label: "The business, black box", sub: "Stage 0", kind: "today", route: "p1", story: "Who pays, who decides, and what a wrong call costs." },
+    { id: "s1", label: "The frame", sub: "Stage 1", kind: "today", route: "p1", story: "What is decided, from what is known when, about what outcome." },
+    { id: "s2", label: "Requirements", sub: "Stage 2", kind: "today", route: "p2", story: "What the system must do, how well, within which limits and under which rules." },
+    { id: "s3", label: "Options A and B", sub: "Stage 3", kind: "today", route: "p3", story: "Two ways to decide, their costs, the choice and the fact that flips it." },
+    { id: "s4", label: "The POC and its error bill", sub: "Stage 4", kind: "today", route: "p4", story: "Does the chosen way beat doing nothing, honestly measured?" },
+    { id: "s5", label: "The architecture, HLD to LLD", sub: "Stage 5", kind: "today", route: "p5", story: "Black box to white box, then one box zoomed in." },
+    { id: "s6", label: "The MVP slice", sub: "Stage 6", kind: "today", route: "p6", story: "The smallest thing the client could use tomorrow, and what production adds." },
+    { id: "s7", label: "Present and defend", sub: "Stage 7", kind: "today", route: "p7", story: "One sentence the client would act on, and numbers every member can defend." },
     { id: "w9", label: "The no-LLM option beside the LLM", sub: "Week 9, Build 3", kind: "later", story: "Build 3 puts option A, a plain method, beside an LLM option, the same sheet one level up." },
     { id: "w14", label: "Deployment and observability", sub: "Week 14, Friday", kind: "later", story: "A service beyond localhost, with a dashboard and an alert that fires when quality falls." },
     { id: "w16", label: "Architecture, release, rollback", sub: "Week 16", kind: "later", story: "The solution architecture, then the pipeline, the release and the rollback." }
@@ -3131,7 +3136,7 @@ html{scroll-behavior:auto}
   var MAP_EDGES = [
     { from: "b1", to: "s0", label: "is deepened in" },
     { from: "mon", to: "s1", label: "is the frame of" },
-    { from: "wed", to: "s1", label: "decides what is known in" },
+    { from: "wed", to: "s1", label: "sets what is known in" },
     { from: "thu", to: "s3", label: "settles the tie in" },
     { from: "tue", to: "s4", label: "prices the list in" },
     { from: "fri", to: "s7", label: "is spoken in" },
@@ -3176,7 +3181,7 @@ html{scroll-behavior:auto}
     { name: "Last month's data use", day: 3, kind: "col" },
     { name: "This month's bill amount", day: 5, kind: "col" },
     { name: "This month's bill paid", day: 20, kind: "col" },
-    { name: "Offer made on the retention call", day: 99, kind: "call" },
+    { name: "Offer on the call", day: 99, kind: "call" },
     { name: "Left by the 30th", day: 30, kind: "outcome" }
   ];
   W5.howItWorks("p1", {
@@ -3186,7 +3191,7 @@ html{scroll-behavior:auto}
     data: "invented", stageTitle: "An invented postpaid phone operator: the money behind one call, and what is known on the day the list is built",
     predict: { q: "The desk builds its call list on **day 1** of the month, and this month's bill goes out on day 5. **Which column may the model read?**",
       options: ["Whether the customer paid this month's bill", "Complaints raised in the last three months", "Whether the customer left by the 30th", "The offer the desk made on the call"], answer: 1,
-      why: "Only the complaints are written before day 1. This month's bill is paid around day 20, leaving by the 30th is the outcome itself, and the offer is made on the call the list triggers. A column is judged by the day it is written, never by its name: Week 5's call duration scored brilliantly for the same reason." },
+      onReveal: hook("p1"), why: "Only the complaints are written before day 1. This month's bill is paid around day 20, leaving by the 30th is the outcome itself, and the offer is made on the call the list triggers. A column is judged by the day it is written, never by its name: Week 5's call duration scored brilliantly for the same reason." },
     stage: function (api) {
       var frame = 0, prog = 1, day = 1;
       var FR = [
@@ -3255,10 +3260,10 @@ html{scroll-behavior:auto}
       var tl = api.svg({ height: function (w) { return w < 520 ? 34 + P1_COLS.length * 44 + 30 : 34 + P1_COLS.length * 27 + 30; }, label: "A month's timeline with each column on the day it is written, and the day the list is built", draw: function (g) { drawTL(g); } });
       function known(c) { return c.kind === "col" && c.day < day; }
       function drawTL(g) {
-        var svg = g.svg, w = g.w, H = g.h, fs = rem() * 0.8, phone = w < 520;
-        var labW = phone ? 0 : Math.min(250, w * 0.4), x0 = phone ? 8 : labW + 14, x1 = w - 12;
+        var svg = g.svg, w = g.w, H = g.h, fs = rem() * 0.8, phone = w < 520, rv = seen(api.predict && api.predict.state);
+        var labW = phone ? 0 : Math.min(270, w * 0.42), x0 = phone ? 8 : labW + 14, x1 = w - 12;
         var sx = function (d) { return x0 + (x1 - x0) * (Math.max(-3, Math.min(31, d)) + 3) / 34; }, ay = 22, rowH = phone ? 44 : 27, top = ay + 16;
-        [1, 10, 20, 30].concat(phone ? [] : [5, 15, 25]).forEach(function (d) {
+        [1, 10, 20, 30].forEach(function (d) {
           svg.appendChild(s("line", { x1: sx(d), x2: sx(d), y1: ay + 2, y2: ay + 8, stroke: "#A9A3D2", "stroke-width": 1.5 }));
           T(svg, sx(d), ay - 4, "day " + d, { anchor: "middle", fill: NIGHT });
         });
@@ -3267,31 +3272,35 @@ html{scroll-behavior:auto}
         svg.appendChild(s("rect", { x: x0, y: ay + 8, width: Math.max(0, lx - x0), height: bottom - ay - 8, fill: "#E8F5EE" }));
         var due = sx(20);
         svg.appendChild(s("line", { x1: due, x2: due, y1: ay + 8, y2: bottom, stroke: ROSE, "stroke-width": 1.6, "stroke-dasharray": "5 4" }));
+        svg.appendChild(s("line", { x1: lx, x2: lx, y1: ay, y2: bottom + 4, stroke: INK, "stroke-width": 2.5 }));
         P1_COLS.forEach(function (c, k) {
           var isK = known(c), yy = top + k * rowH + (phone ? fs * 1.9 : rowH / 2);
           var x = c.kind === "call" ? Math.min(x1 - 8, sx(day + 3)) : sx(c.day);
           var ink = isK ? "#15663F" : c.kind === "outcome" ? VIO : "#A3214B";
           var label = c.name + (c.kind === "outcome" ? " (the outcome)" : c.kind === "call" ? " (after the list)" : "");
-          if (phone) T(svg, x0, top + k * rowH + fs * 0.95, label, { fill: ink, weight: 600 });
+          if (!rv) { ink = INK; x = x1 - 10; }
+          if (phone) T(svg, x0, top + k * rowH + fs * 0.95, label, { fill: ink, weight: 600, halo: true });
           else T(svg, labW, yy + fs * 0.35, label, { anchor: "end", fill: ink, weight: 600 });
           svg.appendChild(s("line", { x1: x0, x2: x1, y1: yy, y2: yy, stroke: "#E4E1F1", "stroke-width": 1.5 }));
+          if (!rv) { svg.appendChild(s("circle", { cx: x, cy: yy, r: 7, fill: "#FFFFFF", stroke: VIO, "stroke-width": 1.6 })); return; }
           svg.appendChild(s("circle", { cx: x, cy: yy, r: 7, fill: isK ? GREEN : c.kind === "outcome" ? VIO : ROSE }));
           if (isK) tickMark(svg, x - 1, yy, 3.6); else crossMark(svg, x, yy, 3.2);
         });
-        svg.appendChild(s("line", { x1: lx, x2: lx, y1: ay, y2: bottom + 4, stroke: INK, "stroke-width": 2.5 }));
         T(svg, Math.min(Math.max(lx, x0 + 2), x1), bottom + fs * 1.5, "list built, day " + day, { anchor: lx > w * 0.6 ? "end" : "start", weight: 700, halo: true });
         if (Math.abs(due - lx) > fs * 9) T(svg, due + 6, bottom + fs * 1.5, "bill due", { anchor: "start", fill: "#A3214B", weight: 700, halo: true });
+        if (!rv) T(svg, x1, top - 4, phone ? "days hidden: commit first" : "Each column's day stays hidden until you commit", { anchor: "end", fill: VIO, weight: 700, halo: true });
       }
       function write() {
-        var k = P1_COLS.filter(known).length, left = 20 - day;
+        var k = P1_COLS.filter(known).length, left = 20 - day, rv = seen(api.predict && api.predict.state);
         api.readout.set([
           { value: "Day " + day, label: "**The list is built**, so calls start the next day" },
-          { value: k + " of 6", label: "**Columns the model may read**: written before the list" },
+          { value: rv ? k + " of 6" : "?", label: "**Columns the model may read**: written before the list", sub: rv ? "" : "Commit your prediction to see them." },
           { value: left > 0 ? left + " days" : "none", label: "**Left to call** before the bill is due on day 20", tone: left <= 4 ? "bad" : "" },
           { value: "4 : 1", label: "**A missed leaver against a wasted call**, in cost units", tone: "hero" }
         ], left <= 4 ? "Building later reads more columns and leaves almost no time to call: the frame is a trade, and the business sets the day." : day <= 1 ? "On day 1 the list reads the plan, the bills and the complaints, and the desk has nineteen days to call." : "Each day the list waits it reads a little more and leaves a day less to call.");
       }
       api.slider({ label: "List built on day", min: 1, max: 22, step: 1, value: 1, fmt: function (v) { return "day " + v; }, onInput: function (v) { day = v; write(); tl.redraw(); } });
+      ON.p1 = function () { write(); tl.redraw(); };
       write();
     },
     rule: { text: "Draw the money before the model: name who pays for each mistake and who decides, then write the frame as one sentence: on the decision day, from what is known by then, predict which outcome, so that which action changes.",
@@ -3302,17 +3311,17 @@ html{scroll-behavior:auto}
   /* ================================================================ #p2 stage 2 */
   var BOXES = ["Data", "Features", "Train", "Evaluate", "Score", "Serve", "Monitor"];
   var REQ = {
-    fr: { label: "Functional", ex: "Every customer on the list comes with the main reason a caller can say.", boxes: [4, 5],
+    fr: { label: "Functional", short: "FR", ex: "Every customer on the list comes with the main reason a caller can say.", boxes: [4, 5],
       changes: "The score box must hand back a reason beside each probability, so the model has to be one whose pull on each customer can be read.", test: "Open ten listed customers: each shows one reason in plain words." },
-    nfr: { label: "Non-functional", ex: "The full list is ready within one hour of the month's data landing.", boxes: [4, 5],
+    nfr: { label: "Non-functional", short: "NFR", ex: "The full list is ready within one hour of the month's data landing.", boxes: [4, 5],
       changes: "Scoring becomes a monthly batch job with a time budget, so a model that takes six hours to score fails before anyone reads its AUC.", test: "Time the whole batch on one month of data." },
-    con: { label: "Constraint", ex: "The desk can make 300 calls a month.", boxes: [3, 4],
+    con: { label: "Constraint", short: "Constraint", ex: "The desk can make 300 calls a month.", boxes: [3, 4],
       changes: "The list is evaluated at 300 calls, so the threshold becomes a list size and the number that matters is leavers found in the top 300.", test: "The list never holds more than 300 names." },
-    sec: { label: "Security", ex: "Only retention desk accounts can open the list.", boxes: [0, 5],
+    sec: { label: "Security", short: "Security", ex: "Only retention desk accounts can open the list.", boxes: [0, 5],
       changes: "Serving needs access control and the stored list needs encryption, which the notebook never had.", test: "An account outside the desk is refused, and the refusal is logged." },
-    pri: { label: "Privacy", ex: "Call recordings and contact lists are never read for scoring.", boxes: [0, 1],
+    pri: { label: "Privacy", short: "Privacy", ex: "Call recordings and contact lists are never read for scoring.", boxes: [0, 1],
       changes: "Those sources are stopped at the door of the data box, and the features box checks its columns against an allowed list on every run.", test: "The feature list matches the allowed list, run after run." },
-    gov: { label: "Governance", ex: "A named owner signs the model off before launch and can pause the list.", boxes: [3, 6],
+    gov: { label: "Governance", short: "Governance", ex: "A named owner signs the model off before launch and can pause the list.", boxes: [3, 6],
       changes: "Evaluation ends in a signed record, and the monitor carries a switch the owner can press without an engineer.", test: "The model card names the owner, and the pause has been pressed once in a test." }
   };
   var REQ_KEYS = ["fr", "nfr", "con", "sec", "pri", "gov"];
@@ -3325,7 +3334,7 @@ html{scroll-behavior:auto}
       options: ["Functional: every listed customer comes with a reason the caller can say", "Non-functional: the list is ready within an hour", "Constraint: the desk can make 300 calls a month", "Privacy: call recordings are never read"], answer: 0,
       why: "A reason on every listed customer is something the system must **do**, so it is functional, and it decides the model as much as accuracy does. Apple Card's launch in 2019 is the real version: New York's regulator found no fair lending violation, and still the bank failed its customers because nobody had designed how a decision would be explained." },
     stage: function (api) {
-      var kind = "fr";
+      var kind = "nfr";
       var st = api.svg({ height: function (w) { return w < 520 ? 250 : 150; }, label: "Seven pipeline boxes, with the boxes a requirement changes lit", draw: function (g) {
         var svg = g.svg, w = g.w, fs = rem() * 0.8, phone = w < 520, r = REQ[kind];
         var cols = phone ? 4 : 7, gap = phone ? 8 : 10, bw = (w - gap * (cols - 1) - 4) / cols, bh = phone ? 58 : 62;
@@ -3346,7 +3355,7 @@ html{scroll-behavior:auto}
           { value: "Test", label: "**How you would prove it**", sub: r.test, tone: "hero" }
         ], r.changes);
       }
-      api.toggle({ label: "Kind", options: REQ_KEYS.map(function (k) { return { value: k, label: REQ[k].label }; }), value: "fr", onChange: function (v) { kind = v; write(); st.redraw(); } });
+      api.toggle({ label: "Kind", options: REQ_KEYS.map(function (k) { return { value: k, label: REQ[k].short }; }), value: "nfr", onChange: function (v) { kind = v; write(); st.redraw(); } });
       var x = extra(api, "Sort the operator's twelve requirements: which kind is each?");
       var b = W5.bins(x.el, { bins: ["Functional", "Non-functional", "Constraint", "Security", "Privacy", "Governance"], cards: [
         { text: "Each listed customer comes with the main reason a caller can say.", bin: 0 },
@@ -3475,7 +3484,7 @@ html{scroll-behavior:auto}
       var t = 0.5, set = "unseen", cap = 0, tried = {};
       function rows() { return set === "unseen" ? UNSEEN : SEEN; }
       function revealed() { return seen(api.predict && api.predict.state); }
-      var strip = api.svg({ height: function (w) { return w < 520 ? 230 : 220; }, label: "Customers placed by score, with the threshold line", draw: function (g) {
+      var strip = api.svg({ height: function (w) { return w < 520 ? 180 : 205; }, label: "Customers placed by score, with the threshold line", draw: function (g) {
         var svg = g.svg, w = g.w, H = g.h, fs = rem() * 0.8, x0 = 10, x1 = w - 12, sx = function (v) { return x0 + (x1 - x0) * v; }, r = w < 520 ? 5.5 : 7;
         var called = billAt(rows(), t, cap).list.map(function (c) { return c.id; });
         var mid = w < 520 ? 84 : 76;
@@ -3496,7 +3505,6 @@ html{scroll-behavior:auto}
         svg.appendChild(s("line", { x1: sx(t), x2: sx(t), y1: 4, y2: H - 28, stroke: INK, "stroke-width": 2.5 }));
         T(svg, sx(t) + (t > 0.7 ? -6 : 6), 18, "call above " + t.toFixed(2), { anchor: t > 0.7 ? "end" : "start", weight: 700, halo: true });
         [0, 0.2, 0.4, 0.6, 0.8, 1].forEach(function (v) { T(svg, sx(v), H - 8, v.toFixed(1), { anchor: v === 0 ? "start" : v === 1 ? "end" : "middle", fill: NIGHT }); });
-        T(svg, (x0 + x1) / 2, H - 8 - fs * 1.3, "the model's score", { anchor: "middle", fill: NIGHT, size: fs * 0.95 });
       } });
       var mx = api.matrix({ rows: ["Left by the 30th", "Stayed"], cols: ["Called", "Not called"], rowTitle: "", colTitle: "",
         names: { tp: "Reached", fn: "Missed leaver", fp: "Wasted call", tn: "Left alone" },
@@ -3617,8 +3625,8 @@ html{scroll-behavior:auto}
           T(svg, 4, 18, "Training path", { weight: 700, fill: "#8A4500" });
           T(svg, 4, 50 + G.bh + G.gy + G.bh + fs * 1.6, "Serving path", { weight: 700, fill: "#007A7A" });
         } else if (frame >= 3) {
-          T(svg, P.train.x + G.bw / 2, P.train.y - 8, "training", { anchor: "middle", weight: 700, fill: "#8A4500" });
-          if (frame >= 5) T(svg, P.score.x + G.bw / 2, P.score.y - 8, "serving", { anchor: "middle", weight: 700, fill: "#007A7A" });
+          T(svg, P.train.x + 4, P.train.y - 8, "training", { weight: 700, fill: "#8A4500" });
+          if (frame >= 5) T(svg, P.score.x + 4, P.score.y - 8, "serving", { weight: 700, fill: "#007A7A" });
         }
         ARCH_LINKS.forEach(function (l) {
           if (!shown[l[0]] || !shown[l[1]]) return;
@@ -3690,7 +3698,7 @@ html{scroll-behavior:auto}
   var BERG = [
     { name: "The model", stage: 0, top: true },
     { name: "An honest test on unseen customers", stage: 0 },
-    { name: "A scoring function: one customer in, a score and a reason out", stage: 1 },
+    { name: "A score function, with its reason", stage: 1 },
     { name: "A live demo one caller can use", stage: 1 },
     { name: "A README and a model card", stage: 1 },
     { name: "A data pipeline that runs every month", stage: 2 },
@@ -3872,7 +3880,7 @@ html{scroll-behavior:auto}
   }
   var caseApi = W5.casePage("case", {
     heading: "How does the ladder run on a model you already built?",
-    lede: "The \\u201cI do\\u201d walk: the same eight stages on Week 5's bank campaign, with its real numbers, priced as Week 5 priced them at Rs 40 a wasted call and Rs 1,200 a missed buyer. Then the leak exhibit on public US mortgage data. Each chapter stages a trap and asks whether you would ship it.",
+    lede: "The \u201cI do\u201d walk: the same eight stages on Week 5's bank campaign, with its real numbers, priced as Week 5 priced them at Rs 40 a wasted call and Rs 1,200 a missed buyer. Then the leak exhibit on public US mortgage data. Each chapter stages a trap and asks whether you would ship it.",
     data: "real", source: BANK_SRC,
     steps: [
       { chapter: "Stages 0 to 2", title: "Who pays, what is known at the call, and what must the list do?",
@@ -3899,8 +3907,8 @@ html{scroll-behavior:auto}
           api.toggle({ label: "Columns", options: [{ value: "honest", label: "Known before the call" }, { value: "leak", label: "Plus the call's duration" }], value: "honest", onChange: function (v) { set = v; write(); st.redraw(); } });
           write();
         },
-        trap: { wrong: "AUC 0.933, and 574 buyers in the top 1,000", context: " with the call's duration among the columns, on the bank's 8,238 validation clients",
-          misled: "the campaign plan would promise 574 buyers per 1,000 calls from a list that cannot be built, because the column is blank until each call has ended.",
+        trap: { wrong: "AUC 0.933, and 574 buyers in the top 1,000", context: "With the call's duration among the columns, on the bank's 8,238 validation clients.",
+          misled: "the campaign plan would promise 574 buyers per 1,000 calls, from a list nobody could build on the morning of the campaign.",
           check: "Ask of every column the day it is written. Duration is written when the call ends, after the decision the model is meant to make.",
           fix: "Drop duration and anything else written after the call, and keep Wednesday's twenty honest columns.",
           honest: "AUC 0.795 and 462 buyers in the top 1,000.",
@@ -3909,7 +3917,7 @@ html{scroll-behavior:auto}
         applies: ["Stage 3, options A and B"],
         text: "Option A is Monday's lab rule: call the clients whose previous campaign ended in success. Option B is the logistic model on Wednesday's honest columns. Slide the list size and compare them where the business would run them.",
         stageTitle: "Buyers found as the model's list grows, against the rule's one list of 284 clients",
-        predict: { q: "On the rule's own list of **284 calls**, how many buyers does the model's top 284 find, against the rule's **189**?", options: ["About 100 more", "A handful more: 193", "Fewer than the rule"], answer: 1,
+        predict: { q: "On the rule's own list of **284 calls**, how many buyers does the model's top 284 find, against the rule's **189**?", options: ["About 100 more", "A handful more: 193", "Fewer than the rule"], answer: 1, onReveal: hook("case2"),
           why: "**193 against 189**, a tie on the rule's own list, which needs no model at all. The model earns its place where the rule cannot follow: the rule has only 284 names, and at 1,000 calls the model finds 462 buyers. Stage 3 writes that down as the fact that flips the choice." },
         stage: function (api) {
           var N = 1000;
@@ -3920,17 +3928,18 @@ html{scroll-behavior:auto}
           ch.scatter("rule", [[BK.rule.called, BK.rule.found]], { color: "amber", r: 6, name: function () { return "Rule A"; } });
           ch.vline("n", N, { color: "ink", label: function (v) { return F.int(v) + " calls"; } });
           function write() {
-            var f = gainsAt(N);
+            var f = gainsAt(N), rv = seen(api.predict.state);
             api.readout.set([
-              { value: F.int(BK.rule.found) + " vs " + F.int(BK.modelAtRule.found), label: "**Rule A against model B** on the rule's 284 calls", sub: "Bills: " + RS(BK.rule.bill) + " against " + RS(BK.modelAtRule.bill) + "." },
+              { value: F.int(BK.rule.found) + " vs " + (rv ? F.int(BK.modelAtRule.found) : "?"), label: "**Rule A against model B** on the rule's 284 calls", sub: rv ? "Bills: " + RS(BK.rule.bill) + " against " + RS(BK.modelAtRule.bill) + "." : "Commit your prediction to see the model's count." },
               { value: F.int(f), label: "**Model B's buyers** in its first " + F.int(N) + " calls", sub: N > BK.rule.called ? "The rule has no more names after 284." : "Inside the rule's reach." },
               { value: N > BK.rule.called ? "Model" : "Tie", label: "**The call at this list size**", tone: "hero" }
             ], N > BK.rule.called ? "Past 284 calls only the model can keep ranking, so the list size is the fact that flips the choice." : "Inside 284 calls the rule matches the model, and it took one line to build.");
           }
           api.slider({ label: "List size", min: 100, max: 3000, step: 50, value: 1000, fmt: function (v) { return F.int(v) + " calls"; }, onInput: function (v) { N = v; write(); ch.set("n", N, 0); } });
+          ON.case2 = write;
           write();
         },
-        trap: { wrong: "Accuracy 0.8991 against 0.8988", context: ": the model at the default 0.5 against the rule, on 8,238 validation clients",
+        trap: { wrong: "Accuracy 0.8991 against 0.8988", context: "The model at the default 0.5 against the rule, on 8,238 validation clients.",
           misled: "a committee would call the model the winner by three ten-thousandths, or call the two equal on accuracy and stop comparing.",
           check: "Compare the two on the same list size and the same bill. On 284 calls the model finds 193 buyers and the rule 189.",
           fix: "Judge A against B where the business runs them: at the rule's 284 calls they tie, and only the model can make a list of 1,000.",
@@ -3955,7 +3964,7 @@ html{scroll-behavior:auto}
             api.readout.set([
               { value: RS(b[2]), label: "**The model's bill** at " + b[0].toFixed(3) + ", calling " + F.int(b[1]), tone: b[2] < BK.everyone ? "good" : "bad" },
               { value: Math.abs(b[0] - BK.costT) < 0.001 && !rv ? "?" : (saved >= 0 ? RS(saved) : "none"), label: "**Below calling everyone**, " + RS(BK.everyone), sub: Math.abs(b[0] - BK.costT) < 0.001 && !rv ? "Commit your prediction to see it at the cost line." : (saved >= 0 ? (saved / BK.everyone * 100).toFixed(1) + " percent." : "This threshold costs more than calling everyone.") },
-              { value: RS(BK.nobody), label: "**Calling nobody**, 928 missed \\u00d7 Rs 1,200", tone: "hero" }
+              { value: RS(BK.nobody), label: "**Calling nobody**, 928 missed \u00d7 Rs 1,200", tone: "hero" }
             ], b[0] > 0.3 ? "High thresholds call few clients and miss buyers at Rs 1,200 each, so the bill climbs toward calling nobody." : "Near the cost line the model calls most of the book, because a buyer is worth thirty wasted calls.");
           }
           /* The slider's 0.030 stop stands for the cost line, 40 / 1,240 = 0.0323, so the page lands on Week 5's bill. */
@@ -3964,7 +3973,7 @@ html{scroll-behavior:auto}
           ON.case3 = write;
           write();
         },
-        trap: { wrong: "Rs 5,79,800 saved", context: ": the model at the cost line against shipping the library's default 0.5",
+        trap: { wrong: "Rs 5,79,800 saved", context: "The model at the cost line, measured against shipping the library's default 0.5.",
           misled: "Meera would sign off the model as saving almost six lakh a campaign.",
           check: "Price the cheaper free list first. Calling everyone costs Rs 2,92,400, below the default 0.5's Rs 8,61,480.",
           fix: "Report the saving against the best list that needs no model.",
@@ -3978,7 +3987,7 @@ html{scroll-behavior:auto}
           why: "**Fewer**: it promised 15.9 buyers in 100 while 24.6 in 100 bought, because the bank's later months looked nothing like the early ones. So the memo carries a caveat, and production carries a rule that compares promise with reality every month and pauses the list when they part." },
         stage: function (api) {
           var view = "sealed";
-          var st = api.svg({ height: function (w) { return w < 520 ? 260 : 190; }, label: "Bars of buyers per 1,000 calls, or promise against reality", draw: function (g) {
+          var st = api.svg({ height: function (w) { return w < 520 ? 230 : 136; }, label: "Bars of buyers per 1,000 calls, or promise against reality", draw: function (g) {
             var rv = seen(api.predict.state), E = BK.envelope, Tm = BK.time;
             if (view === "sealed") bars(g.svg, g.w, [["Validation, top 1,000", E.valTop, VIO, F.int(E.valTop) + " buyers"], ["Sealed test, top 1,000", E.testTop, VIO, F.int(E.testTop) + " buyers"], ["At random, 1,000", E.random, REST, F.int(E.random) + " buyers"]], { max: 600, labelW: rem() * 12 });
             else bars(g.svg, g.w, [["Early months, real", Tm.earlyRate * 100, REST, (Tm.earlyRate * 100).toFixed(1) + " in 100"], ["Later months, promised", Tm.promise * 100, AMB, (Tm.promise * 100).toFixed(1) + " in 100"], ["Later months, real", rv ? Tm.lateRate * 100 : null, VIO, (Tm.lateRate * 100).toFixed(1) + " in 100"]], { max: 30, labelW: rem() * 12 });
@@ -3997,15 +4006,15 @@ html{scroll-behavior:auto}
             ], "Production's job: compare promise with reality every month and pause the list when they part two months running.");
           }
           api.toggle({ label: "Show", options: [{ value: "sealed", label: "The sealed test" }, { value: "later", label: "The later months" }], value: "sealed", onChange: function (v) { view = v; write(); st.redraw(); } });
-          ON.case4 = function () { write(); st.redraw(); };
-          var memo = h("p", { "class": "ex-honest", text: "Week 5's memo sentence: call the 1,000 clients the model ranks highest in each list; on the sealed test that list found 482 buyers against 113 at random; trained to April 2009 it promised 16 in 100 when 25 bought, so a monthly rule pauses the list when promise and reality part." });
+          ON.case4 = function () { write(); st.redraw(); memo.hidden = false; };
+          var memo = h("p", { "class": "ex-honest", hidden: true, text: "Week 5's memo sentence: call the 1,000 clients the model ranks highest in each list; on the sealed test that list found 482 buyers against 113 at random; trained to April 2009 it promised 16 in 100 when 25 bought, so a monthly rule pauses the list when promise and reality part." });
           api.el.appendChild(memo);
           write();
         } },
       { chapter: "The leak exhibit", title: "A field written after the decision: why does it score AUC 0.98?",
         applies: ["Stage 1, the frame", "Stage 4, the POC and its error bill"],
         data: "real", source: HMDA_SRC,
-        text: "US lenders file every mortgage application under HMDA, and the CFPB publishes them. In Delaware's 2023 file, 29,929 applications ended either approved and originated or denied. One field, the interest rate, is set only when a loan is made.",
+        text: "US lenders file every mortgage application under HMDA, and the CFPB publishes them. In Delaware's 2023 file, 29,929 applications ended either approved and originated or denied. One of the file's fields is the loan's interest rate.",
         stageTitle: "Delaware 2023 mortgage applications: how many carry an interest rate, by outcome, and what a model scores with it",
         predict: { q: "Of the **8,040 denied** applications, how many have an interest rate recorded?", options: ["About a quarter", "About two thirds", "None of them"], answer: 2, onReveal: hook("case5"),
           why: "**None**: all 8,040 denials are blank or marked Exempt, against 805 of the 21,889 originated loans (3.7 percent). A rate is set when a loan is made, so its absence spells the decision, and the flag alone scores AUC 0.982." },
@@ -4043,8 +4052,8 @@ html{scroll-behavior:auto}
           api.el.appendChild(sourceLine({ name: "CFPB, HMDA data browser API, Delaware 2023, originated or denied (public domain)", url: "https://ffiec.cfpb.gov/v2/data-browser-api/view/csv?states=DE&years=2023&actions_taken=1,3", checked: "29 October 2026" /* link checked 29 October 2026 */ }));
           write();
         },
-        trap: { wrong: "AUC 0.9998", context: ": a boosted model on application fields plus the interest rate and origination charges, cross-validated on 29,929 applications",
-          misled: "a lender would ship a model that has learned the approval's own paperwork, and on the first live application, where the rate is still blank, it would mark everyone as denied.",
+        trap: { wrong: "AUC 0.9998", context: "A boosted model on application fields plus the interest rate and origination charges, cross-validated on 29,929 applications.",
+          misled: "a lender would ship a model that has learned the decision's own paperwork, and that has nothing to read on the first live application.",
           check: "Ask when each field is written. A rate and its charges are set only once a loan is originated, after the decision.",
           fix: "Drop every field written after the decision, and keep the fields the lender holds at the application.",
           honest: "AUC 0.892 on application fields only.",
@@ -4055,19 +4064,19 @@ html{scroll-behavior:auto}
   /* ================================================================ #field */
   function timeline(svg, w, events, o) {
     /* A vertical list of dated events with a rail; events are [date, text, tone, visible]. */
-    var fs = rem() * 0.8, phone = w < 520, dw = phone ? 0 : fs * 8.6, x = dw + 14, y = o && o.top || 14, gap = 10;
+    var fs = rem() * 0.8, phone = w < 520, dw = phone ? 0 : fs * 8.6, x = dw + 28, y = o && o.top || 14, gap = 10;
     events.forEach(function (e) {
       var tone = e[2] === "bad" ? ROSE : e[2] === "good" ? GREEN : VIO, lines;
       if (phone) { T(svg, x + 2, y + fs * 0.4, e[0], { weight: 700, fill: tone }); y += fs * 1.3; }
       else T(svg, dw, y + fs * 0.4, e[0], { anchor: "end", weight: 700, fill: tone });
-      svg.appendChild(s("circle", { cx: x - 8, cy: y, r: 5, fill: e[3] === false ? "#FFFFFF" : tone, stroke: tone, "stroke-width": 1.6 }));
+      svg.appendChild(s("circle", { cx: x - 13, cy: y, r: 5, fill: e[3] === false ? "#FFFFFF" : tone, stroke: tone, "stroke-width": 1.6 }));
       var endY = TW(svg, x + 2, y + fs * 0.4, e[3] === false ? "?" : e[1], w - x - 6, { fill: INK, weight: e[3] === false ? 700 : 500 });
       y = endY + gap;
     });
     return y;
   }
   function tlHeight(w, events) {
-    var fs = rem() * 0.8, phone = w < 520, dw = phone ? 0 : fs * 8.6, x = dw + 14, y = 14;
+    var fs = rem() * 0.8, phone = w < 520, dw = phone ? 0 : fs * 8.6, x = dw + 28, y = 14;
     events.forEach(function (e) { if (phone) y += fs * 1.3; y += wrapCount(e[3] === false ? "?" : e[1], w - x - 6, fs) * fs * 1.25 + 10; });
     return Math.ceil(y + 6);
   }
@@ -4121,7 +4130,7 @@ html{scroll-behavior:auto}
           why: "**27 percent more** applicants approved, with average APRs 16 percent lower. Near-prime applicants (FICO 620 to 660) were approved about twice as often. Fair lending tests showed no disparities needing further analysis. The point for stage 3: the comparison was designed before anyone looked at results.", onReveal: hook("f2") },
         stage: function (api) {
           var view = "all";
-          var st = api.svg({ height: function (w) { return w < 520 ? 290 : 190; }, label: "Bars of extra approvals by group", draw: function (g) {
+          var st = api.svg({ height: function (w) { return view === "all" ? (w < 520 ? 140 : 96) : (w < 520 ? 290 : 180); }, label: "Bars of extra approvals by group", draw: function (g) {
             var rv = seen(api.predict.state);
             if (view === "all") bars(g.svg, g.w, [["All applicants", rv ? 27 : null, VIO, "+27% approved"], ["Average APR", 16, TEAL, "16% lower"]], { max: 110, labelW: rem() * 11 });
             else bars(g.svg, g.w, [["Near-prime, FICO 620 to 660", 100, VIO, "about twice as often"], ["Applicants under 25", 32, VIO, "+32%"], ["Incomes under USD 50,000", 13, VIO, "+13%"], ["Race, ethnicity, sex segments", 29, VIO, "+23% to +29%"]], { max: 110, labelW: rem() * 13 });
@@ -4130,11 +4139,11 @@ html{scroll-behavior:auto}
             var rv = seen(api.predict.state);
             api.readout.set([
               { value: rv ? "+27%" : "?", label: "**Applicants approved**, against the traditional model" },
-              { value: "\\u221216%", label: "**Average APR**" },
+              { value: "\u221216%", label: "**Average APR**" },
               { value: "22 months", label: "**Of testing**, under a plan agreed before the results", tone: "hero" }
             ], "Reported by Upstart and not replicated by the CFPB. A against B, written down in advance, is what made the comparison worth reading.");
           }
-          api.toggle({ label: "Show", options: [{ value: "all", label: "Overall" }, { value: "groups", label: "By group" }], value: "all", onChange: function (v) { view = v; write(); st.redraw(); } });
+          api.toggle({ label: "Show", options: [{ value: "all", label: "Overall" }, { value: "groups", label: "By group" }], value: "all", onChange: function (v) { view = v; write(); W5.relayout(api.el, true); } });
           ON.f2 = function () { write(); st.redraw(); };
           write();
         } },
@@ -4301,7 +4310,7 @@ html{scroll-behavior:auto}
         board: [
           { title: "Goal", note: "The call; costs 1 and about 5.", icon: "target", say: "Clarify: the score feeds a call before the due date, and the two mistakes cost differently." },
           { title: "Baseline", note: "Today's rule, same list.", icon: "users", say: "Baseline: today's rule, measured on the same list size." },
-          { title: "Requirements", note: "Reason, capacity, privacy.", icon: "pm", say: "Requirements: a reason per call, the capacity, privacy and the deadline." },
+          { title: "Requirements", note: "Reason, capacity, privacy.", say: "Requirements: a reason per call, the capacity, privacy and the deadline." },
           { title: "Label", note: "Default next cycle; arrives late.", icon: "calendar", say: "Label: default in the next cycle, which arrives after the list." },
           { title: "Features", note: "Known before the list.", icon: "table", say: "Features: only columns written before the list is built." },
           { title: "A against B", note: "Interpretable, then stronger.", icon: "scale", say: "Models: an interpretable one, then a stronger one, on the same split." },
@@ -4379,7 +4388,7 @@ html{scroll-behavior:auto}
         options: ["The strongest signal of risk in the file", "A field written after the decision", "A data entry error to fill with the column's mean"], answer: 1,
         why: "It is HMDA's interest rate, set only once a loan is made. A near-perfect score on a hard human decision means the clock is wrong: check when each field is written.",
         figure: function (el) {
-          W5.svgStage(el, { height: 96, label: "Two bars: denials all blank, approvals mostly with a value", draw: function (g) {
+          W5.svgStage(el, { height: 74, label: "Two bars: denials all blank, approvals mostly with a value", draw: function (g) {
             bars(g.svg, g.w, [["Denied", 100, ROSE, "100% blank"], ["Approved", 3.7, ROSE, "3.7% blank"]], { max: 120, labelW: rem() * 6, bh: 22, gap: 10 });
           } });
         } },
@@ -4400,7 +4409,7 @@ html{scroll-behavior:auto}
     card.appendChild(h("p", { "class": "w5-lede", text: "Tuesday is on paper with no AI, Wednesday builds the proof, Thursday's gate tests it and twists the card, Friday freezes the build, and Saturday is the talk." }));
     var DAYS = [["Tuesday", [0, 1, 2], "discovery call, stages on paper"], ["Wednesday", [3, 4, 5], "the POC, the pre-mortem, the leak exhibit"], ["Thursday", [5], "the gate, the viva, the card's twist"], ["Friday", [6, 7], "build freeze, the cold run"], ["Saturday", [7], "the twelve-minute talk"]];
     var STAGE_NAMES = ["0 Business", "1 Frame", "2 Requirements", "3 Options", "4 POC", "5 Architecture", "6 MVP", "7 Defend"];
-    W5.svgStage(card, { height: function (w) { return w < 520 ? 8 * 30 + 44 : 8 * 26 + 30 + Math.round(rem() * 0.8 * 1.25 * 4) + 16; }, label: "A grid of the eight stages against the five days of the week", draw: function (g) {
+    W5.svgStage(card, { height: function (w) { return w < 520 ? 8 * 30 + 44 : 8 * 26 + 30 + Math.round(rem() * 0.8 * 1.25 * 2.4) + 18; }, label: "A grid of the eight stages against the five days of the week", draw: function (g) {
       var svg = g.svg, w = g.w, fs = rem() * 0.8, phone = w < 520, lw = phone ? fs * 7.6 : fs * 9, rh = phone ? 30 : 26, cw = (w - lw - 4) / 5, y0 = 30;
       DAYS.forEach(function (d, c) { T(svg, lw + c * cw + cw / 2, 18, phone ? d[0].slice(0, 3) : d[0], { anchor: "middle", weight: 700 }); });
       STAGE_NAMES.forEach(function (nm, r) {
