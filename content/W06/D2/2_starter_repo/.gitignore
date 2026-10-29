@@ -1,0 +1,8 @@
+# Made by running the code, so never committed: the downloaded book and the saved model.
+/data/
+/models/
+
+# Made by Python, Jupyter and pytest on every run.
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/

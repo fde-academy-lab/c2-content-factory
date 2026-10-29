@@ -1,0 +1,14 @@
+{
+  // The Codespace this repository opens in: Python 3.12 with the Python and Jupyter extensions,
+  // and every package in requirements.txt installed once, when the Codespace is created.
+  "name": "Kalpa card book",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "postCreateCommand": "pip install -r requirements.txt",
+  // Port 8501 is where `streamlit run app/app.py` serves the demo.
+  "forwardPorts": [8501],
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-toolsai.jupyter"]
+    }
+  }
+}
