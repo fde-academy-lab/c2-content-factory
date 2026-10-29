@@ -3,6 +3,7 @@
 Usage:
     python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py
     python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py --fetch
+    python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py --from DIR
     python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py --check
 
 Decision `w6-open-images` lets a Week 6 pack print an image from Wikimedia Commons when its
@@ -15,6 +16,9 @@ block. Commons answers HTTP 429 when a shared address asks too often, so every r
 and retries, and both the API answer and the files are cached in ~/.cache/c2_open_images.
 
 --fetch fills the cache and leaves the page alone, for a run that has to wait out Commons.
+--from DIR takes the files from a folder a person downloaded them into, for an address Commons
+refuses under its robot policy; the licence still comes from the Commons API (or its cache), and
+each file must match the byte count Commons records for it, wherever it came from.
 --check rebuilds nothing: it reads the page's block and fails when a picture is missing, carries
 a licence outside ALLOWED, or has no author, file page or checked date.
 """
@@ -91,7 +95,7 @@ def metadata():
         info = page["imageinfo"][0]
         records[names.get(page["title"], page["title"])] = {
             "title": page["title"], "url": info["url"], "page": info["descriptionurl"],
-            "width": info["width"], "height": info["height"], "mime": info["mime"],
+            "width": info["width"], "height": info["height"], "mime": info["mime"], "size": info["size"],
             "licence": text_of(info["extmetadata"], "LicenseShortName"),
             "licence_url": text_of(info["extmetadata"], "LicenseUrl"),
             "author": text_of(info["extmetadata"], "Artist"),
@@ -101,16 +105,24 @@ def metadata():
     return records
 
 
-def original(record):
-    """The file itself, unchanged, from the cache or from Commons."""
-    path = CACHE / pathlib.Path(urllib.parse.unquote(record["url"])).name
+def original(record, folder=None):
+    """The file itself, unchanged, from a given folder, the cache or Commons, checked by size."""
+    name = pathlib.Path(urllib.parse.unquote(urllib.parse.urlsplit(record["url"]).path)).name
+    path = CACHE / name
     if not path.exists():
-        time.sleep(5)
-        path.write_bytes(get(record["url"]))
+        if folder:
+            data = (pathlib.Path(folder) / name).read_bytes()
+        else:
+            time.sleep(5)
+            data = get(record["url"])
+        if record.get("size") and len(data) != record["size"]:
+            sys.exit(f"{name} is {len(data):,} bytes, and Commons records {record['size']:,}; it is not the original")
+        CACHE.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(data)
     return path.read_bytes()
 
 
-def build():
+def build(folder=None):
     records = metadata()
     checked = datetime.date.today().strftime("%-d %B %Y")
     block = {}
@@ -120,7 +132,7 @@ def build():
             sys.exit(f"{title} is licensed {rec['licence']!r}, which is not in ALLOWED; redraw it instead")
         if not rec["author"]:
             sys.exit(f"{title} names no author, so no attribution line can be printed")
-        data = original(rec)
+        data = original(rec, folder)
         if rec["mime"] == "image/svg+xml" and re.search(rb"<script|href=\"https?:", data):
             sys.exit(f"{title} is an SVG that runs a script or loads from the network")
         name = rec["title"].removeprefix("File:").rsplit(".", 1)[0].replace("_", " ")
@@ -172,7 +184,12 @@ def check():
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    check() if "--check" in args else fetch() if "--fetch" in args else build()
+    if "--check" in args:
+        check()
+    elif "--fetch" in args:
+        fetch()
+    else:
+        build(args[args.index("--from") + 1] if "--from" in args else None)
 
 # Test inputs and expected outcomes:
 # 1. No argument, Commons reachable, cache empty: prints one line per picture with its author,
@@ -184,5 +201,8 @@ if __name__ == "__main__":
 # 4. --check after 1: prints "PASS" and exits 0.
 # 5. --check on a page whose block is empty ({}): prints "FAIL workflow is missing" and the other
 #    two, then "3 failures", and exits 1.
-# 6. A PICTURES entry whose Commons licence is, say, "Fair use": stops with "... is not in
+# 6. --from ~/Downloads holding the three files as Commons names them: prints the three lines of
+#    1 without touching Commons' file host. A file of the wrong size (a thumbnail, say) stops with
+#    "... is 12,345 bytes, and Commons records 34,819; it is not the original".
+# 7. A PICTURES entry whose Commons licence is, say, "Fair use": stops with "... is not in
 #    ALLOWED; redraw it instead" and leaves the page unchanged.
