@@ -80,7 +80,7 @@ in ninety seconds.
 | Thursday | `4_trainer_only/C2_W06_D02_gate_and_viva_TRAINER.md`; `4_trainer_only/C2_W06_D02_mock_r2_written_sheet_STUDENT.pdf` and its key, `4_trainer_only/C2_W06_D02_mock_r2_written_sheet_key_TRAINER.md` | the three gate staff; the Academic TA marks the written sheet |
 | Friday | `4_trainer_only/C2_W06_D02_gd_prompts_TRAINER.md`; `4_trainer_only/C2_W06_D02_expert_showcase_brief_TRAINER.md` | the GD chairs; the industry expert |
 | Thursday to Saturday | `4_trainer_only/C2_W06_D02_scoring_TRAINER.xlsx`, against `4_trainer_only/C2_W06_D02_rubrics_proposed_TRAINER.md` | every assessor; Programme Head at grade closure |
-| For rebuilding | `4_trainer_only/C2_W06_D02_build_scoring_INTERNAL.py` and `4_trainer_only/C2_W06_D02_scoring_recalc_INTERNAL.md`; `4_trainer_only/C2_W06_D02_presentation_figures_INTERNAL.py`; `4_trainer_only/C2_W06_D02_explorer_data_INTERNAL.py` and `.json` | the content team |
+| For rebuilding | `4_trainer_only/C2_W06_D02_build_scoring_INTERNAL.py` and `4_trainer_only/C2_W06_D02_scoring_recalc_INTERNAL.md`; `4_trainer_only/C2_W06_D02_presentation_figures_INTERNAL.py`; `4_trainer_only/C2_W06_D02_explorer_data_INTERNAL.py` and `.json`; `4_trainer_only/C2_W06_D02_open_images_INTERNAL.py` | the content team |
 | Sources | `4_trainer_only/C2_W06_D02_sources_project_INTERNAL.md`, `4_trainer_only/C2_W06_D02_sources_starter_INTERNAL.md`, `4_trainer_only/C2_W06_D02_sources_explorer_INTERNAL.md`, `4_trainer_only/C2_W06_D02_sources_run_INTERNAL.md` | the content team |
 
 Trainers and TAs: start with `4_trainer_only/C2_W06_D02_run_sheets_TRAINER.md`.
