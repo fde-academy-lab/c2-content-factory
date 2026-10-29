@@ -62,10 +62,16 @@ def main():
     only_route, only_width, end = arg("--route"), arg("--width"), "--end" in sys.argv
     presenter = "--presenter" in sys.argv
     from playwright.sync_api import sync_playwright
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from html_sweep import find_chromium  # the same chromium the sweep uses in this container
 
     errors, written = [], []
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(args=["--no-sandbox"])
+        launch = {"args": ["--no-sandbox"]}
+        exe = find_chromium()
+        if exe:
+            launch["executable_path"] = exe
+        browser = pw.chromium.launch(**launch)
         for name, w, h, scale in WIDTHS:
             if only_width and str(w) != only_width:
                 continue

@@ -71,6 +71,8 @@ under one name.
   runs, so `scripts/html_sweep.py` sees it act.
 - No control is disabled until a prediction is made. A reveal used without a prediction says so
   and still reveals.
+- Nothing on the page states a prediction's answer before the learner commits or reveals: a
+  readout or a numbers card that would give it away shows a question mark until then.
 - With reduced motion set, every animation shows its end state.
 - Scrolling stays instant.
 - Arrow keys step the active animation or page, and a presenter mode enlarges the type.
