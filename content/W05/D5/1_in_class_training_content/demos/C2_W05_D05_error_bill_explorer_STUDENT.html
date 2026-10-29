@@ -3809,7 +3809,7 @@ html{scroll-behavior:auto}
   });
 
   /* ================================================================ #p5 the memo under challenge */
-  var BOOKING = { name: "Bernardi, Mavridis and Estevez, 150 successful machine learning models: 6 lessons learned at Booking.com, KDD 2019, section 3 and figure 4; full text", url: "https://blog.kevinhu.me/2021/04/25/25-Paper-Reading-Booking.com-Experiences/bernardi2019.pdf", checked: "29 October 2026" };
+  var BOOKING = { name: "Bernardi, Mavridis and Estevez, 150 successful machine learning models: 6 lessons learned at Booking.com, KDD 2019, section 3 and figure 4; full text", url: "https://blog.kevinhu.me/2021/04/25/25-Paper-Reading-Booking.com-Experiences/bernardi2019.pdf", checked: "29 October 2026" /* link checked 29 October 2026 */ };
   var MEMO5 = [
     { part: "Claim", text: "Call model A's top 6 lapsed members this week.", words: 9 },
     { part: "Evidence", text: "Last month 4 of the 5 who came back were in A's top 6, for Rs 180 of calls; calling nobody lost Rs 4,500. B's top 6 found the same 4.", words: 31 },
@@ -4436,7 +4436,7 @@ html{scroll-behavior:auto}
             "A threshold on top of the model trades its metrics off the same week; a retrain waits for enough new observations.");
           }
           var st = api.svg({ height: function (w) { return w < 520 ? 230 : 210; }, label: "Three bars of Instacart's item-availability accuracy", draw: function (g) { draw(g); } });
-          api.el.appendChild(sourceLine({ name: "Instacart, How Instacart's item availability evolved over the pandemic, 10 July 2023", url: "https://company.instacart.com/tech-innovation/how-instacarts-item-availability-evolved-over-the-pandemic", checked: "29 October 2026" }));
+          api.el.appendChild(sourceLine({ name: "Instacart, How Instacart's item availability evolved over the pandemic, 10 July 2023", url: "https://company.instacart.com/tech-innovation/how-instacarts-item-availability-evolved-over-the-pandemic", checked: "29 October 2026" /* link checked 29 October 2026 */ }));
           api.toggle({ label: "Show", options: [{ value: "drop", label: "The drop" }, { value: "june", label: "The drop and June" }], onChange: function (v) { show = v; write(); st.redraw(); } });
           ON.f2 = function () { write(); st.redraw(); };
           write();
