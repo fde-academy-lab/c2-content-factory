@@ -3089,7 +3089,7 @@ html{scroll-behavior:auto}
         { caption: "A **basket signal**, items per order, tells a weekly shop from a top-up: Bilal and Dev buy five items an order. Now move Hari's last order below." }
       ], render: function (i, p) {
         var was = frame;
-        frame = i; prog = p;
+        frame = i; prog = Math.max(0, p);
         if (was !== i) { sig = i === 0 ? SIG[0] : SIG[i - 1]; ranked = i > 0; write(); resort(!W5.reduced()); }
         else st.redraw();
       } });
@@ -3276,10 +3276,10 @@ html{scroll-behavior:auto}
         { caption: "**Standardising** divides each column by its spread, which values one visit at Rs 2,697 / 2.83 = Rs 953. Watch A's nearest neighbour change." },
         { caption: "**Which models care**: a line and a distance need both steps; a tree, forest or boosting model shrugs at the units." }
       ], render: function (i, p) {
-        frame = i; prog = p;
+        frame = i; prog = Math.max(0, p);
         if (!fromSlider) {
           if (i === 3) k = 1;
-          if (i === 4) k = Math.round(Math.exp(Math.log(K_STD) * p));
+          if (i === 4) k = Math.max(1, Math.round(Math.exp(Math.log(K_STD) * Math.max(0, p))));
           if (i === 4 && p >= 1) k = K_STD;
           if (sl && (i === 3 || i === 4)) sl.set(posOf(k), true);
         }
@@ -3380,8 +3380,8 @@ html{scroll-behavior:auto}
         T(svg, Math.max(lw / 2 + 2, Math.min(w - lw / 2 - 2, mx)), mBot + fs * 1.3, lab, { anchor: "middle", size: fs * 0.95, weight: 700, fill: VIO, halo: true });
         /* the twelve members */
         var gy0 = mBot + fs * (phone ? 4.4 : 3.2), cols = phone ? ["orders", "coupon", "settled"] : ["orders", "days", "coupon", "settled"];
-        var headers = { orders: phone ? "orders" : "orders_90d", days: "days since last order", coupon: "coupon", settled: phone ? "settled" : "settlement" };
-        var mw = phone ? 36 : 54, rest = w - mw, tail = phone ? 3 : 3, cwid = rest / (cols.length + tail);
+        var mw = phone ? 36 : 54, rest = w - mw, cwid = rest / (cols.length + 3), roomy = cwid > fs * 6.6;
+        var headers = { orders: roomy ? "orders_90d" : "orders", days: "days since last order", coupon: "coupon", settled: roomy ? "settlement" : "settled" };
         var heads = cols.map(function (c) { return headers[c]; }).concat([phone ? "bought" : "bought in 90 days", phone ? "table" : "rule on the training table", phone ? "morning" : "rule on the nudge morning"]);
         if (phone) T(svg, 0, gy0 - fs * 1.4, "Right on the table, and on the morning:", { size: fs * 0.95, fill: "#3F3A66" });
         heads.forEach(function (hd, j) {
@@ -3435,10 +3435,10 @@ html{scroll-behavior:auto}
         { caption: "Slide the moment back to the nudge morning: every column written after it turns red and leaves the model." },
         { caption: "The best honest rule, orders_90d of 2 or more, gets **10 of 12** on both tables. The score fell and the model got better: it can run." }
       ], render: function (i, p) {
-        frame = i; prog = p;
+        frame = i; prog = Math.max(0, p);
         if (!fromSlider) {
           if (i <= 3) m = 13;
-          if (i === 4) m = Math.round(13 - 13 * p);
+          if (i === 4) m = Math.round(13 - 13 * Math.max(0, p));
           if (i === 5) m = 0;
           if (sl) sl.set(m, true);
         }
@@ -3615,8 +3615,8 @@ html{scroll-behavior:auto}
       ], render: function (i, p) {
         frame = i;
         board.ask(i);
-        board.dots(i === 2 ? p : 1);
-        grow = i === 3 ? p : 1; asof.redraw();
+        board.dots(i === 2 ? Math.max(0, p) : 1);
+        grow = i === 3 ? Math.max(0, p) : 1; asof.redraw();
         board.key(i === 5 || seen(api.predict.state));
       } });
       W5.button(api.controls, { label: "Stamp it the audit's way", icon: "check", quiet: true, onClick: function () {
@@ -4139,7 +4139,7 @@ html{scroll-behavior:auto}
           why: "0.815. Part of the 0.931 was the hospital itself: a model ranking images only by each hospital's average pneumonia rate reached 0.861 on the joint test set. At a new site the hospital stops predicting the label, and the score falls. The question that catches it is today's: is this signal there, and does it mean the same thing, where the model will be used?", onReveal: hook("f1") },
         stage: function (api) {
           var site = "home";
-          var st = api.svg({ height: function (w) { return w < 560 ? 380 : 320; }, label: "Three hospital systems and three AUC scores on one line", draw: function (g) { draw(g); } });
+          var st = api.svg({ height: function (w) { var fs = fz(), ph = w < 560; return fs * 2 + (ph ? 70 : 84) + fs * 5.6 + 3 * (ph ? fs * 3.1 : fs * 2.3) + (ph ? fs * 2.4 : fs * 1.6); }, label: "Three hospital systems and three AUC scores on one line", draw: function (g) { draw(g); } });
           function draw(g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, show = seen(api.predict.state);
             var hosp = [["NIH", 112120], ["Mount Sinai", 42396], ["Indiana", 3807]], maxA = 112120, side = phone ? 70 : 84;
@@ -4192,18 +4192,20 @@ html{scroll-behavior:auto}
           why: "Their own Flickr crawl let them de-anonymise much of the test set, so for those edges the inputs were the answers. The question that would have caught it is today's: at prediction time, where does this input come from, and could it contain the label?" },
         stage: function (api) {
           var crawl = false;
-          var st = api.svg({ height: function (w) { return w < 560 ? 270 : 250; }, label: "Two squares: the challenge graph and the team's crawl", draw: function (g) {
+          var st = api.svg({ height: function (w) { return w < 560 ? Math.min(200, w * 0.5) + fz() * 2.2 : 250; }, label: "Two squares: the challenge graph and the team's crawl", draw: function (g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, big = Math.min(phone ? 200 : 200, w * 0.5), small = big * Math.sqrt(7237983 / 163579517), y0 = fs * 1.2;
             svg.appendChild(s("rect", { x: 0, y: y0, width: big, height: big, rx: 6, fill: crawl ? "#FFF3E2" : "#FFFFFF", stroke: crawl ? AMB : "#CFC9EE", "stroke-width": 2, "stroke-dasharray": crawl ? null : "6 5" }));
             T(svg, 8, y0 + big - fs * 1.6, crawl ? "their Flickr crawl" : "outside data", { size: fs * 0.95, weight: 700, fill: crawl ? "#8A4A00" : MUTED });
             T(svg, 8, y0 + big - fs * 0.5, crawl ? "163.6 million edges" : "not read", { size: fs * 0.95, fill: crawl ? INK : MUTED });
             svg.appendChild(s("rect", { x: 10, y: y0 + 10, width: small, height: small, rx: 3, fill: VIO }));
-            var tx = big + 16, ty = y0 + fs;
-            [["The challenge graph", "7.2 million edges, anonymised", VIO], ["The test set", "8,960 edges, half true, half fake", INK]].forEach(function (r, i) {
-              T(svg, tx, ty + i * fs * 3, r[0], { weight: 700, fill: r[2], size: fs * (phone ? 0.95 : 1) });
-              wrapLines(r[1], Math.floor((w - tx) / (fs * 0.53))).forEach(function (ln, j) { T(svg, tx, ty + i * fs * 3 + fs * 1.2 + j * fs * 1.15, ln, { size: fs * 0.95, fill: "#3F3A66" }); });
+            var tx = big + 16, ty = y0 + fs, per = Math.max(10, Math.floor((w - tx) / (fs * 0.55)));
+            [["The challenge graph", "7.2 million edges, anonymised", VIO], ["The test set", "8,960 edges, half true, half fake", INK]].forEach(function (r) {
+              T(svg, tx, ty, r[0], { weight: 700, fill: r[2], size: fs * 0.95 });
+              ty += fs * 1.2;
+              wrapLines(r[1], per).forEach(function (ln) { T(svg, tx, ty, ln, { size: fs * 0.95, fill: "#3F3A66" }); ty += fs * 1.15; });
+              ty += fs * 0.6;
             });
-            wrapLines(crawl ? "Matched to the crawl, many test edges were looked up rather than predicted." : "Inside the challenge: the anonymised graph is the only input the rules intended.", Math.floor((w - tx) / (fs * 0.53))).forEach(function (ln, j) { T(svg, tx, ty + fs * 6.2 + j * fs * 1.2, ln, { size: fs * 0.95, weight: 700, fill: crawl ? "#8A4A00" : INK }); });
+            wrapLines(crawl ? "Matched to the crawl, many test edges were looked up rather than predicted." : "Inside the challenge: the anonymised graph is the only input the rules intended.", per).forEach(function (ln) { T(svg, tx, ty, ln, { size: fs * 0.95, weight: 700, fill: crawl ? "#8A4A00" : INK }); ty += fs * 1.2; });
           } });
           function write() {
             var show = seen(api.predict.state);
@@ -4272,17 +4274,17 @@ html{scroll-behavior:auto}
           function done(o) { return o[0] + o[1] <= 0; }
           function avg(list) { return list.reduce(function (a, o) { return a + o[1]; }, 0) / list.length; }
           var svc = ORD.filter(done), nb2 = ORD;
-          var st = api.svg({ height: function (w) { return w < 560 ? 300 : 270; }, label: "Orders over the last hour as bars from placed to ready", draw: function (g) {
+          var st = api.svg({ height: function () { return fz() * 2.2 + 9 * fz() * 1.55 + fz() * 2.6; }, label: "Orders over the last hour as bars from placed to ready", draw: function (g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, x0 = 4, x1 = w * (phone ? 0.6 : 0.66);
             function sx(m) { return x0 + (m + 60) / 85 * (x1 - x0); }
-            T(svg, 0, fs * 1.1, fit("Each bar runs from when an order was placed to when it was ready", "Each bar: order placed to order ready", w), { weight: 700 });
+            T(svg, 0, fs * 1.1, fit("Each bar runs from when an order was placed to when it was ready, in minutes", "Each bar: placed to ready, in minutes", w), { weight: 700 });
             var nx = sx(0), top = fs * 2.2, rh = fs * 1.55;
             svg.appendChild(s("rect", { x: nx, y: top - 4, width: x1 - nx, height: ORD.length * rh + 8, fill: "#FCEBF0" }));
             ORD.forEach(function (o, i) {
               var y = top + i * rh, inc = how === "service" ? done(o) : true, fin = done(o);
               svg.appendChild(s("rect", { x: sx(o[0]), y: y, width: sx(o[0] + o[1]) - sx(o[0]), height: fs * 1.05, rx: 4, fill: inc ? (fin ? VIO : ROSE) : "#E7E4F3", stroke: inc ? "none" : "#CFC9EE" }));
-              if (fin) T(svg, sx(o[0]) + 5, y + fs * 0.85, o[1] + " min", { size: fs * 0.95, weight: 700, fill: "#FFFFFF" });
-              else T(svg, sx(o[0] + o[1]) + 5, y + fs * 0.85, o[1] + " min" + (phone ? ", later" : ", known only later"), { size: fs * 0.95, weight: inc ? 700 : 400, fill: inc ? "#A3214B" : MUTED });
+              if (fin) T(svg, sx(o[0]) + 4, y + fs * 0.85, phone ? String(o[1]) : o[1] + " min", { size: fs * 0.95, weight: 700, fill: "#FFFFFF" });
+              else T(svg, sx(o[0] + o[1]) + 5, y + fs * 0.85, o[1] + (phone ? ", later" : " min, known only later"), { size: fs * 0.95, weight: inc ? 700 : 400, fill: inc ? "#A3214B" : MUTED });
             });
             svg.appendChild(s("line", { x1: nx, x2: nx, y1: top - 10, y2: top + ORD.length * rh + 6, stroke: INK, "stroke-width": 3 }));
             var by = top + ORD.length * rh + fs * 1.6;

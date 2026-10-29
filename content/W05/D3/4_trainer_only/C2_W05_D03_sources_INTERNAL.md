@@ -133,6 +133,7 @@ Rebuilt in place as the day companion of decision `w5-explorer-companion`, on br
 - The readout spans only a lone last card, so an odd count before a full-width hero leaves a hole; every readout here orders its cards to avoid it.
 - The concept map's panel joins node labels into sentences ("Feeds The feature store"), so the later nodes are named without a leading "The".
 - A chart or drawing built inside a hidden tab is built when the tab first gives it a width (the page's `lazy` helper), so the case tabs log no errors at load.
+- `W5.tween` can pass a slightly negative progress on its first frame, when the animation frame's timestamp precedes its start time; a bar drawn from it took a negative height and logged a console error in one sweep of three, so every player render here clamps its progress at zero.
 - `explorer_shots.py` shoots only a route's first tab; the case, field and interview tabs were shot with a short Playwright script, before and after every reveal.
 - `find_chromium()` in `html_sweep.py` searches `chrome-linux/`, and this container keeps Chromium at `/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`; `deck_check.py` names `chromium-1194`. Both were linked into the expected paths outside the repository for this session.
 
