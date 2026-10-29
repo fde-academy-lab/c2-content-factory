@@ -613,8 +613,9 @@ LIVE, 5 minutes. The trap, exactly: "boosting has the best AUC, so it saves the 
 bill is the largest of the three (Rs 2.832 lakh against logistic's Rs 2.817 lakh). The decision it
 misleads: paying for a forty-step model for nothing. The check: price both mistakes for each model.
 Land: at this cost ratio the model barely matters; the budget is where it earns its keep.
-Explorable, bill panel: it opens at 0.5; ask for a guess of the bill, reveal, then drag to 0.03 and
-switch the missed-buyer cost to Rs 120 to watch the model start to matter. Transition: the budget.
+Explorer, #case chapter 6, Three bills: commit the room's letter, then switch a missed buyer to
+Rs 120. The cut moves to 0.250, boosting's bill drops lowest (Rs 0.74 lakh against logistic's
+Rs 0.77 lakh) and calling nobody becomes the best rule with no model. Transition: the budget.
 ```
 
 ---
@@ -745,8 +746,9 @@ trap. Transition: the picture.
 ```notes
 LIVE, 4 minutes. In the shaded months the lines sit on top of each other because the model learned
 them. Right of the shade the rose line stays low while the real line climbs. This is the panel the
-week's picture was waiting for. Open the explorable's monitor panel now: it opens with a ceiling so high the
-alarm never fires; lower it until it does and read the month aloud. Transition: what it cost.
+week's picture was waiting for. Open the explorer's #case chapter 7, The monitor: it opens at a
+50-point ceiling and never fires. Drag the ceiling to 10 and it fires in August 2009; set the window
+to one month and it fires in July on 22 calls, which luck alone can do. Transition: what it cost.
 ```
 
 ---
