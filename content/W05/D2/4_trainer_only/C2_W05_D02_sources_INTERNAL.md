@@ -82,3 +82,40 @@ Every PNG in `1_in_class_training_content/slides/img/` is our own render from `C
 
 - `python3 scripts/verify.py content/W05/D2`: first run failed on 18 picture names without the day stem and audience tag; fixed by renaming. Second run: `RESULT: PASS (0 failures)`, with 12 notebooks and 59 checks passing, the explorable swept with 0 inert controls and 0 console errors, the deck markdown and the built pptx both passing.
 - `llm-tic-scrubber/scripts/tic_scan.py` on the README, the deck, the practice set, the notes, the cheat sheet, the interview bank and the trainer guide: one hit (options run together in one line), fixed; then clean.
+
+## The explorer, rebuilt on 29 October 2026
+
+Rebuilt in place as the day companion of decision `w5-explorer-companion`, on branch `w05-d2-explorer`, with the Week 5 kit (`scripts/companion/w5kit.js` and `w5kit.css`, inlined by `scripts/build_companion.py`) and the briefs `docs/detailing/W05_briefs/explorers/common.md` and `D2.md`. Twelve routes: `#story`, `#map`, `#p1` to `#p6`, `#case`, `#field`, `#interview`, `#check`.
+
+### Data
+
+| Number on the page | Where it comes from |
+|---|---|
+| The 8,238 validation scores and outcomes | `C2_W05_D02_explorer_data_INTERNAL.py`, which reruns the week's pipeline (the thirteen customer-table columns, seed 42, the logistic model) and writes `C2_W05_D02_explorer_data_INTERNAL.json`, 60 KB |
+| 174, 94, 754, 7,216 at 0.5; 0.8971 and 0.8874; 7,438 calls and Rs 279,000 at 1 in 31; Rs 292,400 and Rs 1,113,600; F1's 0.154, 1,226 calls and Rs 599,680; the eight savings by ratio; 270, 404 and 544 in the top 500, 1,000 and 2,000; 112 at random; 123 in the first 1,000 rows; the 1,000th score 0.182; Rs 652,640 | the same script, which stops with an error unless each equals what case01, case02 and case03 print; all 23 checks passed on this machine |
+| The cheapest grid line 0.033 at Rs 279,320, and accuracy's peak at 0.57 (89.85 percent, a bill of Rs 9.32 lakh) | the same script; 0.033 and Rs 279,320 also print in case02 |
+| The twenty customers of `#p1` and `#p2`, the hundred of `#p3`, the twenty scores of `#p5` and the twenty applicants of `#p6` | typed in the page exactly as notebooks ch01, ch02, ch03, ch05 and ch06 type them |
+| Rohan's Rs 100 (16, 8, 1, 4, 2, 3) | the dossier's illustrative table, section 3 |
+| Stripe, Flipkart with CMU, PhonePe, Razorpay | `docs/detailing/W05_research/W05_cases.md`, each verified 28 October 2026, with the link and date on the page |
+
+### Decisions
+
+1. **Scores travel as integers out of a million.** At thousandths, 0.032 calls 7,452 against 7,438 at exactly 1 in 31, which the old page had to explain beside its slider; at millionths every notebook count reproduces and the price button sets the line to exactly 40 / 1,240.
+2. **German Credit leaves the explorer.** Decision 9 above gave the old page a lending switch on German Credit's 300 held-out scores. The brief draws `#p6` on one axis with twenty applicants, so `#p6` uses chapter 6's invented applicants, as the notebook does, and German Credit stays in the lab and the practice set.
+3. **`#p1` and `#p5` carry both kinds of numbers.** The brief asks for real scores on both pages, and the page rule asks for a mechanism on tiny invented numbers, so each stage has a toggle between the notebook's invented table and the bank's 8,238; the stage's badge and title switch with it.
+4. **The line scene is one function, `lineScene(api, cfg)`, for Friday.** It takes any kit stage, a list of score sets (a strip of dots up to 60, two humps above that), two prices and an optional budget, and draws the draggable line, the bill traced at every line tried, the full curve after the reveal, the free rules and the readout. Its interface is documented at the top of the function in the page.
+5. **The story reveals 174.** The brief puts the reveal in the story; 174 is already on slide 20's drill and in the deck's notes for the explorable, so the case page still has the do-nothing accuracy to reveal.
+6. **The map adds Week 4's expected value.** The brief names Monday's baseline and probability as earlier ideas; the trainer guide's "taught before" also lists Week 4's expected value in rupees, which `#p4` rests on.
+7. **Rohan's business sits on `#p6` and in the six seats.** The dossier's illustrative Rs 100 opens `#p6`, lighting the two lines his two prices land on, and the seats on `#field` are framed on his line at 0.952. The dossier's company facts (Tata Capital, Bajaj Finance) stay off the page, since `W05_cases.md` does not carry them.
+8. **Invented arithmetic in two real scenes is labelled.** PhonePe publishes no block volume or precision, so the hundred blocks and the 10,000 a day are invented and the stage says so; Razorpay publishes the rule and no curves, so its two models are invented. Stripe's 8 percent case is Stripe's; other margins follow its arithmetic, and the page says which is which.
+9. **Answers stay hidden until the reveal.** Every readout, legend or chart that states a prediction's answer shows a question mark, hollow marks or no curve until the learner commits or reveals; the bill curve on `#p5` and `#case` chapter 8 is drawn only as the trace of lines tried until then.
+10. **Option lengths are balanced** so no key is the longest option, as the distractor audit asks of exercises, though it does not run on pages.
+11. **Cut from the old page:** the typed guess box (the kit's prediction card replaces it), the lending switch on German Credit (decision 2), and the square-root bar heights, replaced by honest shares of each group.
+12. **The deck pictured the old page.** Slide 30 (S24) showed a screenshot of the earlier page; the orchestrating session replaced it with page 5 of this explorer and rewrote its notes for the new clicks.
+
+### Proof
+
+- `python3 scripts/build_companion.py` inlines the kit and the data; `--check` passes.
+- `python3 scripts/html_sweep.py` walks all twelve routes: 328 controls clicked, none inert, no console errors.
+- `python3 scripts/explorer_shots.py` at 1366 and 390 wide, with `--end`, plus a session script that opened every tab and every alternate mode; every picture was looked at, and the overlaps, clipped labels and small type it found were fixed.
+- This container's Chromium sits at `/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`, which `find_chromium()` in `scripts/html_sweep.py` does not search, so the sweep and the screenshots ran with `PLAYWRIGHT_BROWSERS_PATH` pointing at a scratch folder that links the binary under `chrome-linux/`. Without that, the sweep falls back to a static scan and still prints PASS.
