@@ -2899,11 +2899,11 @@ html{scroll-behavior:auto}
         }
         var st = SETS[STORY_SET[i]];
         var items = [
-          { value: d3(st.auc), label: "**Validation AUC**: the chance a random buyer is ranked above a random non-buyer", tone: "hero" },
           { value: d3(st.acc), label: "**Accuracy at 0.5**", sub: "Calling nobody scores 0.887." },
           { value: F.int(st.top) + " of 1,000", label: "**Buyers in the first 1,000 calls** down the ranked list" },
           { value: d3(st.recall), label: "**Recall at 0.5**: buyers the model would call" },
-          i === 4 ? { value: "0.99", label: "**Kalpa's validation score** with settlement_status", sub: "Kalpa's story: its rows are not drawn." } : { value: String(st.columns), label: "**Columns** the model reads" }
+          i === 4 ? { value: "0.99", label: "**Kalpa's validation score** with settlement_status", sub: "Kalpa's story: its rows are not drawn." } : { value: String(st.columns), label: "**Columns** the model reads" },
+          { value: d3(st.auc), label: "**Validation AUC**: the chance a random buyer is ranked above a random non-buyer", tone: "hero" }
         ];
         api.readout.set(items);
       };
@@ -3260,10 +3260,11 @@ html{scroll-behavior:auto}
         var near = nearestTo(k), isStd = Math.abs(k - K_STD) < 1, hide = isStd && !show && frame !== 4;
         var dB = dist(M6[0], M6[1], k), dC = dist(M6[0], M6[2], k);
         api.readout.set([
-          { value: hide ? "?" : M6[near].name, label: "**A's nearest neighbour** when one visit counts as Rs " + F.int(k), tone: "hero" },
+          { value: "Rs " + F.int(Math.round(k)), label: "**One visit counts as**, on the slider now" },
           { value: F.dp(dB, 1), label: "**A to B**: Rs 200 of spend and 7 visits", sub: "In spreads: " + F.dp(dB / SD_SPEND, 2) + "." },
           { value: F.dp(dC, 1), label: "**A to C**: Rs 2,000 of spend and 0 visits", sub: "In spreads: " + F.dp(dC / SD_SPEND, 2) + "." },
-          { value: "Rs " + F.int(Math.round(K_STD)), label: "**What standardising sets** one visit to be worth", sub: "The spread of spend over the spread of visits: Rs " + F.int(Math.round(SD_SPEND)) + " / " + F.dp(SD_VISITS, 2) + "." }
+          { value: "Rs " + F.int(Math.round(K_STD)), label: "**What standardising sets** one visit to be worth", sub: "The spread of spend over the spread of visits: Rs " + F.int(Math.round(SD_SPEND)) + " / " + F.dp(SD_VISITS, 2) + "." },
+          { value: hide ? "?" : M6[near].name, label: "**A's nearest neighbour** when one visit counts as Rs " + F.int(Math.round(k)), tone: "hero" }
         ], "The neighbour flips from B to C once one visit is worth more than about Rs 284, where 7 visits outweigh Rs 2,000 less a Rs 200 gap.");
       }
       var sl;
@@ -3722,10 +3723,11 @@ html{scroll-behavior:auto}
         var pv = perm.visits, ps = perm.searches, r = twRight(pv, ps), show = seen(api.predict.state) || frame >= 2 || mode !== "searches" || tried.searches;
         var dr = draws[mode] || [], avg = dr.length ? dr.reduce(function (a, b) { return a + b; }, 0) / dr.length : null;
         api.readout.set([
-          { value: show ? r + " of 12" : "?", label: "**Right after the shuffle**" + (mode === "none" ? ", with nothing shuffled" : " of " + mode), tone: "hero" },
+          { value: "11 of 12", label: "**Right before any shuffle**" },
           { value: show ? String(11 - r) : "?", label: "**Answers lost**: the permutation importance" + (mode === "none" ? "" : " of " + mode) },
           { value: avg === null ? "none yet" : F.dp(avg, 1), label: "**Average lost over your random shuffles**" + (mode === "none" ? "" : " of " + mode), sub: dr.length ? dr.length + " shuffle" + (dr.length > 1 ? "s" : "") + " so far; scikit-learn repeats shuffles and averages them the same way." : "Press Shuffle again for a random order." },
-          { value: "0.94", label: "**Correlation** of visits and searches: near twins" }
+          { value: "0.94", label: "**Correlation** of visits and searches: near twins" },
+          { value: show ? r + " of 12" : "?", label: "**Right after the shuffle**" + (mode === "none" ? ", with nothing shuffled" : " of " + mode), tone: "hero" }
         ]);
       }
       function apply(next, animate, random) {
@@ -3778,8 +3780,8 @@ html{scroll-behavior:auto}
   function comboOf(stamps) {
     var bits = 0, pd = 1;
     CARDS.forEach(function (name, k) { if ((stamps[CARD_ROW[name]] || "keep") !== "drop") bits |= 1 << k; });
-    var ps = stamps[CARD_ROW.pdays] || "keep";
-    pd = ps === "drop" ? 0 : ps === "fix" ? 2 : 1;
+    var ps = stamps[CARD_ROW.pdays];
+    pd = !ps || ps === "drop" ? 0 : ps === "fix" ? 2 : 1;
     return COMBO[pd * 128 + bits];
   }
   var BANK_ROWS = [
@@ -3849,11 +3851,11 @@ html{scroll-behavior:auto}
           function write() {
             var k = KEYS[upto], st = SETS[k], show = seen(api.predict.state), hide = upto > 0 && !show;
             api.readout.set([
-              { value: hide ? "?" : d3(st.auc), label: "**Validation AUC**, " + SET_NAME[k], tone: "hero", sub: hide ? "Commit your prediction to see it." : "" },
               { value: d3(st.acc), label: "**Accuracy at 0.5**", sub: "Calling nobody scores 0.887." },
               { value: d3(st.recall), label: "**Recall at 0.5**: buyers the model would call" },
               { value: F.int(st.top) + " of 1,000", label: "**Buyers in the first 1,000 calls**" },
-              { value: lakh(st.bill), label: "**The bill** at 40 / 1,240 = 0.032 on 8,238 calls", sub: "Rs 40 a call and Rs 1,200 a missed buyer, as on Tuesday." }
+              { value: lakh(st.bill), label: "**The bill** at 40 / 1,240 = 0.032 on 8,238 calls", sub: "Rs 40 a call and Rs 1,200 a missed buyer, as on Tuesday." },
+              { value: hide ? "?" : d3(st.auc), label: "**Validation AUC**, " + SET_NAME[k], tone: "hero", sub: hide ? "Commit your prediction to see it." : "" }
             ]);
           }
           api.toggle({ label: "Feature set", options: [{ value: 0, label: "Customer table" }, { value: 1, label: "+ economy" }, { value: 2, label: "+ call log" }], onChange: function (v) {
@@ -3903,11 +3905,11 @@ html{scroll-behavior:auto}
             var st = board.stamps(), c = comboOf(st), dur = (st[CARD_ROW.duration] || "keep") !== "drop", done = st.filter(function (x) { return x; }).length;
             var wrong = st.filter(function (x, i) { return x && x !== BANK_ROWS[i].right; }).length;
             api.readout.set([
-              { value: d3(c[0]), label: "**Validation AUC** of the columns you keep", tone: "hero" },
               { value: lakh(c[1]), label: "**The bill** at 0.032 on 8,238 calls", sub: "Calling everyone costs Rs 2.92 lakh." },
               { value: F.int(c[2]) + " of 1,000", label: "**Buyers in the first 1,000 calls**", sub: "A random 1,000 holds about 113." },
               { value: dur ? "No" : "Yes", label: "**Can it run when the list is made?**", tone: dur ? "bad" : "good", sub: dur ? "duration is written when the call ends." : "Every column you keep is written before the call." },
-              { value: done + " of 8", label: "**Cards stamped**", sub: done < 8 ? "Unstamped cards count as kept, as the junior kept them; raw pdays included." : wrong ? wrong + " stamps differ from the audit." : "Every stamp matches the audit." }
+              { value: done + " of 8", label: "**Cards stamped**", sub: done < 8 ? "Unstamped cards count as the junior's join: kept, with pdays left out." : wrong ? wrong + " stamps differ from the audit." : "Every stamp matches the audit." },
+              { value: d3(c[0]), label: "**Validation AUC** of the columns you keep", tone: "hero" }
             ]);
           }
           W5.button(api.controls, { label: "Stamp it the audit's way", icon: "check", quiet: true, onClick: function () {
@@ -3975,9 +3977,9 @@ html{scroll-behavior:auto}
               : mode === 1 ? { value: d3(D.honest.auc), label: "**The honest model**, across all months on a random split" }
               : { value: d3(C.insideAuc), label: "**The honest model inside one month**, weighted by calls" };
             hero.tone = "hero";
-            api.readout.set([hero,
+            api.readout.set([
               { value: "10 and 11", label: "**Distinct values** of emp.var.rate and nr.employed in 41,188 calls" },
-              { value: (C.byYear["2008"] * 100).toFixed(1) + "% to " + (C.byYear["2010"] * 100).toFixed(1) + "%", label: "**Yes-rate**, 2008 against 2010" }
+              { value: (C.byYear["2008"] * 100).toFixed(1) + "% to " + (C.byYear["2010"] * 100).toFixed(1) + "%", label: "**Yes-rate**, 2008 against 2010" }, hero
             ]);
             if (st) st.redraw();
           }
@@ -4041,9 +4043,9 @@ html{scroll-behavior:auto}
             var fit = FLIP.fits[frame];
             var partners = Object.keys(fit).filter(function (k) { return k !== "euribor3m"; }).map(function (k) { return k + " " + F.signed(fit[k], 2); }).join(", ");
             api.readout.set([
-              { value: F.signed(fit.euribor3m, 2), label: "**euribor3m's coefficient**, " + NAMES[frame], tone: "hero" },
               { value: partners ? String(Object.keys(fit).length - 1) : "0", label: "**Partners beside it**" + (partners ? ": " + partners : "") },
-              { value: "0.97", label: "**Correlation** of euribor3m and emp.var.rate on training rows" }
+              { value: "0.97", label: "**Correlation** of euribor3m and emp.var.rate on training rows" },
+              { value: F.signed(fit.euribor3m, 2), label: "**euribor3m's coefficient**, " + NAMES[frame], tone: "hero" }
             ]);
             if (st) st.redraw();
           }
@@ -4097,9 +4099,9 @@ html{scroll-behavior:auto}
           function write() {
             var show = seen(api.predict.state);
             api.readout.set([
-              { value: show ? d3(IMP.fall[0]) : "?", label: "**AUC lost** by the top column, shuffled alone", tone: "hero", sub: show ? "emp.var.rate: more than the model ever earned." : "Commit your prediction to name it." },
               { value: d3(IMP.lift), label: "**The model's whole lift** above a coin: " + d3(IMP.base) + " minus 0.5" },
-              { value: group ? d3(IMP.group) : "?", label: "**The five economy columns, shuffled together**", sub: group ? "Each shuffled row is still a real quarter." : "Switch to the group shuffle to see it." }
+              { value: group ? d3(IMP.group) : "?", label: "**The five economy columns, shuffled together**", sub: group ? "Each shuffled row is still a real quarter." : "Switch to the group shuffle to see it." },
+              { value: show ? d3(IMP.fall[0]) : "?", label: "**AUC lost** by the top column, shuffled alone", tone: "hero", sub: show ? "emp.var.rate: more than the model ever earned." : "Commit your prediction to name it." }
             ]);
             if (st) st.redraw();
           }
@@ -4167,10 +4169,11 @@ html{scroll-behavior:auto}
           function write() {
             var show = seen(api.predict.state);
             api.readout.set([
-              { value: site === "home" ? "0.931" : show ? "0.815" : "?", label: "**AUC** on " + (site === "home" ? "test images from its two training systems" : "Indiana, a hospital it never saw"), tone: "hero" },
+              { value: "41.1% and 32.8%", label: "**Pneumonia** on portable ward films and on emergency films" },
               { value: "99.95%", label: "**NIH images** whose hospital system a network identified: 22,050 of 22,062" },
               { value: "158,323", label: "**Chest X-rays** from three hospital systems" },
-              { value: "0.861", label: "**A ranking by each hospital's pneumonia rate alone**, on the joint test set" }
+              { value: "0.861", label: "**A ranking by each hospital's pneumonia rate alone**, on the joint test set" },
+              { value: site === "home" ? "0.931" : show ? "0.815" : "?", label: "**AUC** on " + (site === "home" ? "test images from its two training systems" : "Indiana, a hospital it never saw"), tone: "hero" }
             ]);
             st.redraw();
           }
@@ -4202,10 +4205,11 @@ html{scroll-behavior:auto}
           function write() {
             var show = seen(api.predict.state);
             api.readout.set([
-              { value: crawl ? (show ? "0.981" : "?") : "inside", label: crawl ? "**Combined test AUC** of the winning entry" : "**The intended input**: the anonymised challenge graph only", tone: "hero", sub: crawl && !show ? "Commit your prediction to see it." : "" },
+              { value: "2,038,803", label: "**Nodes** in their own crawl" },
               { value: "22.6 ×", label: "**More edges** in their crawl than in the challenge graph" },
               { value: "119", label: "**Teams** in the challenge" },
-              { value: "8,960", label: "**Test edges**, half true and half fake" }
+              { value: "8,960", label: "**Test edges**, half true and half fake" },
+              { value: crawl ? (show ? "0.981" : "?") : "inside", label: crawl ? "**Combined test AUC** of the winning entry" : "**The intended input**: the anonymised challenge graph only", tone: "hero", sub: crawl && !show ? "Commit your prediction to see it." : "" }
             ]);
             st.redraw();
           }
@@ -4242,10 +4246,11 @@ html{scroll-behavior:auto}
           function write() {
             var vals = PR.map(tf), lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), main = sorted.slice(20, 380).map(tf);
             api.readout.set([
-              { value: form === "raw" ? F.int(hi - lo) : F.dp(hi - lo, 1), label: "**Range** of the column in this form", tone: "hero" },
+              { value: "400", label: "**Invented listings** in the column" },
               { value: form === "raw" ? F.int(main[main.length - 1] - main[0]) : F.dp(main[main.length - 1] - main[0], 2), label: "**Range of the middle 90 percent**, where most listings sit" },
               { value: form === "raw" ? F.int(med) + " dollars" : F.dp(tf(med), 2), label: "**The median listing** in this form" },
-              { value: "20 of 400", label: "**Listings logged at the monthly price**, the spike on the right" }
+              { value: "20 of 400", label: "**Listings logged at the monthly price**, the spike on the right" },
+              { value: form === "raw" ? F.int(hi - lo) : F.dp(hi - lo, 1), label: "**Range** of the column in this form", tone: "hero" }
             ], form === "raw" ? "As logged, one column spans thousands while others span single digits, and the monthly-price bug is a spike far to the right." : form === "z" ? "Standardised, the middle sits near zero, but the spike still stretches the scale: a power-law column needs the log form." : "The log ratio to the median pulls the column onto one readable scale, and the bug still shows as its own lump.");
             st.redraw();
           }
@@ -4284,10 +4289,11 @@ html{scroll-behavior:auto}
           function write() {
             var a = how === "service" ? avg(svc) : avg(nb2);
             api.readout.set([
-              { value: F.dp(a, 1) + " min", label: "**Average prep time over the last hour**, " + (how === "service" ? "as the live service sees it" : "as a notebook built from tonight's table computes it"), tone: "hero" },
+              { value: "about 10,000", label: "**Features** in Uber's feature store, one definition each" },
               { value: (how === "service" ? svc.length : nb2.length) + " of 9", label: "**Orders in the average**" },
               { value: "3", label: "**Orders still cooking** when the new order arrived" },
-              { value: F.dp(avg(nb2) - avg(svc), 1) + " min", label: "**The skew** between the two definitions", sub: "The extra orders were still cooking when the new order arrived." }
+              { value: F.dp(avg(nb2) - avg(svc), 1) + " min", label: "**The skew** between the two definitions", sub: "The extra orders were still cooking when the new order arrived." },
+              { value: F.dp(a, 1) + " min", label: "**Average prep time over the last hour**, " + (how === "service" ? "as the live service sees it" : "as a notebook built from tonight's table computes it"), tone: "hero" }
             ], how === "service" ? "The service averages only the six orders already ready when the new order arrives." : "The notebook averages every order placed in the hour, including three whose times were known only after the new order arrived.");
             st.redraw();
           }
