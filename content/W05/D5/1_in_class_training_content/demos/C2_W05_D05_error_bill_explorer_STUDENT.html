@@ -2782,9 +2782,15 @@ html{scroll-behavior:auto}
   function p3(x) { return Number(x).toFixed(3); }
   function pctOf(k, n, d) { return n ? (k / n * 100).toFixed(d === undefined ? 1 : d) + "%" : "none"; }
   function cap(w) { return w.charAt(0).toUpperCase() + w.slice(1); }
+  /* Rupees in Indian grouping, as Friday's deck and trainer guide print them: Rs 2,81,680. */
+  function RS(n) {
+    var neg = n < 0, d = String(Math.round(Math.abs(n))), last = d.slice(-3), rest = d.slice(0, -3);
+    if (rest) last = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + last;
+    return "Rs " + (neg ? "−" : "") + last;
+  }
   function T(svg, x, y, text, o) {
     o = o || {};
-    var a = { x: x, y: y, text: text, "font-size": o.size || rem() * 0.8, fill: o.fill || INK, "text-anchor": o.anchor || "start", "font-weight": o.weight || null };
+    var a = { x: x, y: y, text: text, "font-size": Math.max(o.size || rem() * 0.8, rem() * 0.72), fill: o.fill || INK, "text-anchor": o.anchor || "start", "font-weight": o.weight || null };
     if (o.halo) { a.stroke = "#FFFFFF"; a["stroke-width"] = 4; a["paint-order"] = "stroke"; a["stroke-linejoin"] = "round"; }
     if (o.transform) a.transform = o.transform;
     var t = s("text", a);
@@ -2844,6 +2850,16 @@ html{scroll-behavior:auto}
     } });
     show(0);
     return { show: show, current: function () { return cur; } };
+  }
+
+  /* A page's second activity sits under the stage's own controls, so each control stays beside
+   * the picture it moves. */
+  function extra(api, title) {
+    var card = api.el.closest(".w5-stagecard"), box = h("div", { "class": "fr-extra" });
+    if (title) box.appendChild(h("h4", { "class": "fr-sub", text: title }));
+    var body = h("div", {}), ctl = h("div", { "class": "fr-ctl fr-xctl" });
+    box.appendChild(body); box.appendChild(ctl); card.appendChild(box);
+    return { el: body, controls: ctl };
   }
 
   /* ================================================================ scored sets
@@ -2928,24 +2944,35 @@ html{scroll-behavior:auto}
     setup: function (api) {
       var frame = -1;
       api.revealed = false;
-      var row = h("div", { "class": "fr-seats" });
-      api.el.appendChild(row);
-      var seatEls = SEAT4.map(function (st) {
+      var row = h("div", { "class": "fr-seats" }), line = h("p", { "class": "fr-pushline", "aria-live": "polite" });
+      api.el.appendChild(row); api.el.appendChild(line);
+      var seatEls = SEAT4.map(function (st, k) {
+        var push = h("span", { "class": "fr-push", text: "Speaks in scene " + (k + 2) + "." });
         var el = h("div", { "class": "fr-seat" }, [h("span", { "class": "fr-seatico" }, [W5.icon(st.icon)]),
-          h("span", { "class": "fr-seatwho" }, [h("b", { text: st.who }), h("span", { text: st.role })]), h("span", { "class": "fr-push", text: st.push })]);
+          h("span", { "class": "fr-seatwho" }, [h("b", { text: st.who }), h("span", { text: st.role })]), push]);
+        el._push = push;
         row.appendChild(el);
         return el;
       });
-      function seats(i) { seatEls.forEach(function (el, k) { el.classList.toggle("on", i >= k + 1); el.classList.toggle("now", i === k + 1); }); }
+      function seats(i) {
+        seatEls.forEach(function (el, k) {
+          el.classList.toggle("on", i >= k + 1); el.classList.toggle("now", i === k + 1);
+          el._push.textContent = i >= k + 1 ? SEAT4[k].push : "Speaks in scene " + (k + 2) + ".";
+        });
+        var now = SEAT4[i - 1];
+        line.textContent = "";
+        line.appendChild(now ? h("span", {}, [h("b", { text: now.who + ": " }), now.push]) : h("span", { text: i === 0 ? "Four seats, four pushes, one memo." : "Four pushes, one memo, and Meera reads its first line." }));
+      }
       api.cloud = api.cloud({ n: N, height: 320, phoneHeight: 320, label: "8,238 bank clients, one dot each",
         palette: { no: "#BDB7DD", yes: FOUND, faded: "#E7E4F3", call: INK, found: FOUND, wasted: WASTED },
-        sizes: { call: 2.4, found: 2.4, wasted: 2.4 }, color: function () { return "no"; },
+        sizes: { call: 1, found: 1, wasted: 1, yes: 1 }, color: function () { return "no"; },
         place: function (w, hh, out) { return W5.pack.grid(range(N), { x: 0, y: 30, w: w, h: hh - 30 }, out) * 0.4; } });
       var cl = api.cloud;
       api.layout = function (i, ms) {
         var w = cl.w, hh = cl.h;
         if (!w) return;
         cl.over.textContent = ""; cl.labels = {}; cl.under.textContent = ""; cl.boxes = {};
+        if (i <= 2) cl.o.sizes = { call: 1, found: 1, wasted: 1, yes: 1 };
         if (i <= 1) {
           cl.go(function (w2, h2, out) { return W5.pack.grid(range(N), { x: 0, y: 30, w: w2, h: h2 - 30 }, out) * 0.4; },
             { ms: ms, color: function (j) { return i === 0 ? "no" : (Y[j] ? "yes" : "no"); } });
@@ -2965,7 +2992,7 @@ html{scroll-behavior:auto}
             var box = { x: left + 18, y: 36, w: w2 - left - 26, h: h2 - 70 }, p2 = W5.pack.pitch(box, called.length);
             W5.pack.grid(called, box, out, { pitch: p2 });
             var k = Math.max(1, p2 * 0.4 / rr);
-            cl.o.sizes = { call: k, found: k, wasted: k };
+            cl.o.sizes = { call: k, found: k, wasted: k, yes: Math.max(1.8, Math.min(k, 2.6)) };
             return rr;
           }, { ms: ms, stagger: 0.25, color: function (j) {
             var c = SC[j] >= 0.5;
@@ -2982,12 +3009,11 @@ html{scroll-behavior:auto}
       cl.o.onLayout = function () { api.layout(frame < 0 ? 0 : frame, 0); };
       api.write = function (i) {
         var items = [{ value: "8,238", label: "**Clients** in the validation slice" },
-          { value: "0.787 to 0.803", label: "**AUC** of Thursday's three models" }];
+          { value: "3", label: "**Models**, AUC from 0.787 to 0.803" }];
         if (i >= 1) items.push({ value: "928", label: "**Bought**: 11.3% of the slice" });
         if (i >= 3) {
           items.push({ value: "331", label: "**Calls** at the default line of 0.5" });
-          items.push({ value: "Rs 40, Rs 1,200", label: "**The two prices**: a wasted call, a missed buyer" });
-          items.push({ value: api.revealed ? "Rs 8.61 lakh" : "?", label: "**Bill of mistakes** at 0.5", tone: api.revealed ? "bad" : "",
+          items.push({ value: api.revealed ? "Rs 8.61 lakh" : "?", label: "**Bill of mistakes** at 0.5, at Rs 40 a wasted call and Rs 1,200 a missed buyer", tone: api.revealed ? "bad" : "",
             sub: api.revealed ? "117 wasted × Rs 40 + 714 missed × Rs 1,200. Calling everyone costs Rs 2.92 lakh." : "Commit your answer to see it." });
         }
         api.readout.set(items);
@@ -3105,12 +3131,12 @@ html{scroll-behavior:auto}
       T(svg, cx + 10, y + fs * 2, "duration: leaks", { size: fs, fill: "#A3214B", weight: 700 });
     }
     function drawThu(st) {
-      var svg = st.svg, w = st.w, hh = st.h, fs = fsz(), base = hh - fs * 1.6, top = fs * 0.8;
-      var pts = range(41).map(function (k) { var x = k / 40, y = 0.35 + 1.6 * (x - 0.42) * (x - 0.42); return [x * (w - 10) + 5, base - (1 - y) * (base - top)]; });
+      var svg = st.svg, w = st.w, hh = st.h, fs = fsz(), base = hh - fs * 3.0, top = fs * 0.5;
+      var pts = range(41).map(function (k) { var x = k / 40, y = 0.3 + 1.7 * (x - 0.42) * (x - 0.42); return [x * (w - 10) + 5, base - (y - 0.2) / 0.75 * (base - top)]; });
       svg.appendChild(s("path", { d: pts.map(function (p, k) { return (k ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(""), fill: "none", stroke: FOUND, "stroke-width": 2.5 }));
       var m = pts[17];
       svg.appendChild(s("circle", { cx: m[0], cy: m[1], r: 5, fill: INK }));
-      T(svg, m[0], m[1] + fs * 1.4, "the depth to keep", { size: fs, anchor: "middle", weight: 700, halo: true });
+      T(svg, m[0], m[1] + fs * 1.5, "the depth to keep", { size: fs, anchor: "middle", weight: 700, halo: true });
       T(svg, 0, hh - fs * 0.3, "simple", { size: fs, fill: "#3F3A66" });
       T(svg, w, hh - fs * 0.3, "deep", { size: fs, fill: "#3F3A66", anchor: "end" });
     }
@@ -3275,8 +3301,8 @@ html{scroll-behavior:auto}
         api.say(v === "b" ? "Model B ranks " + total() + " of 75 pairs right, AUC " + (total() / 75).toFixed(3) + ", and its top 6 still hold the same 4 returners." : "Model A ranks 60 of 75 pairs right, AUC 0.800.");
       } });
       /* The memo, assembled from lines: four parts and three lines to cut. */
-      api.el.appendChild(h("h4", { "class": "fr-sub", text: "Now build the memo the owner reads: where does each line belong?" }));
-      var memo = W5.bins(api.el, { bins: ["Claim", "Evidence", "Caveat", "Action", "Cut it"], cards: [
+      var mx = extra(api, "Now build the memo the owner reads: where does each line belong?");
+      var memo = W5.bins(mx.el, { bins: ["Claim", "Evidence", "Caveat", "Action", "Cut it"], cards: [
         { text: "Call model A's top 6 lapsed members this week.", bin: 0 },
         { text: "Last month 4 of the 5 who came back were in A's top 6, for Rs 180 of calls; calling nobody lost Rs 4,500.", bin: 1 },
         { text: "Twenty members is a small sample: one member moves the hit rate by 17 points.", bin: 2 },
@@ -3285,8 +3311,8 @@ html{scroll-behavior:auto}
         { text: "Model A is a logistic regression on two columns.", bin: 4 },
         { text: "The model performs well on the data.", bin: 4 }
       ] });
-      var memoBtns = h("div", { "class": "fr-ctl" }), memoSay = h("p", { "class": "w5-pstate", "aria-live": "polite" });
-      api.el.appendChild(memoBtns); api.el.appendChild(memoSay);
+      var memoBtns = mx.controls, memoSay = h("p", { "class": "w5-pstate", "aria-live": "polite" });
+      mx.controls.parentNode.appendChild(memoSay);
       W5.button(memoBtns, { label: "Check my memo", icon: "tick", onClick: function () {
         var k = memo.mark();
         memoSay.textContent = k + " of 7 lines are in the right place. " + (k === 7 ? "Each kept part carries a number in the owner's units, and the three cut lines are the metric, the method and a sentence with no number." : "A kept line carries a number the owner can act on; a line that leads with AUC, names the method or carries no number is cut.");
@@ -3315,7 +3341,7 @@ html{scroll-behavior:auto}
     var humps, bill, bars, unit, best, slider, priceTog = null, budgetTog = null;
     function cfp() { return cur.costs.fp; }
     function cfn() { return cur.price; }
-    function money(v) { return unit === 1e5 ? lakh(v) : F.rs(v); }
+    function money(v) { return unit === 1e5 ? lakh(v) : RS(v); }
     function effLine() { if (budgetOn && cur.budget) return Math.max(t, cur.sc.kth(cur.budget.k)); return t; }
     function curve() {
       var pts = [], st = cur.step, lo = Infinity, at = [0, 0];
@@ -3368,10 +3394,10 @@ html{scroll-behavior:auto}
       });
       var ly = y + fs * 0.5;
       svg.appendChild(s("rect", { x: 0, y: ly - fs * 0.75, width: fs * 0.8, height: fs * 0.8, rx: 2, fill: WASTED }));
-      T(svg, fs * 1.1, ly, "Wasted calls × " + F.rs(cfp()), { size: fs * 0.92 });
+      T(svg, fs * 1.1, ly, "Wasted calls × " + RS(cfp()), { size: fs * 0.92 });
       var lx2 = phone ? 0 : fs * 13, ly2 = phone ? ly + fs * 1.4 : ly;
       svg.appendChild(s("rect", { x: lx2, y: ly2 - fs * 0.75, width: fs * 0.8, height: fs * 0.8, rx: 2, fill: FOUND }));
-      T(svg, lx2 + fs * 1.1, ly2, "Missed " + cur.words.pos + " × " + F.rs(cfn()), { size: fs * 0.92 });
+      T(svg, lx2 + fs * 1.1, ly2, "Missed " + cur.words.pos + " × " + RS(cfn()), { size: fs * 0.92 });
     }
     function build() {
       hostA.textContent = ""; hostB.textContent = ""; hostBars.textContent = ""; trace = {};
@@ -3442,11 +3468,11 @@ html{scroll-behavior:auto}
       var items = [
         { value: F.int(acted) + " of " + F.int(cur.sc.n), label: "**Calls** at this cut, " + w.people },
         { value: F.int(c.tp) + " of " + F.int(cur.sc.P), label: "**" + cap(w.pos) + " found** on the list" },
-        { value: F.rs(c.fp * cfp()), label: "**Wasted calls**: " + F.int(c.fp) + " × " + F.rs(cfp()) },
-        { value: F.rs(c.fn * cfn()), label: "**Missed " + w.pos + "**: " + F.int(c.fn) + " × " + F.rs(cfn()) },
-        { value: revealed ? (best.from === best.to ? p3(best.from) : p3(best.from) + " to " + p3(best.to)) : "?", label: "**Cheapest cut** on this " + (cur.sc.n > 100 ? "slice" : "table"), sub: revealed ? "Bill there: " + F.rs(best.bill) + "." : "Commit your prediction to see it." },
-        { value: revealed ? F.rs(every) : "?", label: "**Call everyone**, the rule with no model", sub: revealed ? (b < every ? "This cut beats it by " + F.rs(every - b) + "." : "This cut costs " + F.rs(b - every) + " more.") : "Commit your prediction to see it." },
-        { value: F.rs(b), label: "**Bill of mistakes** at " + p3(e), tone: "hero" }
+        { value: RS(c.fp * cfp()), label: "**Wasted calls**: " + F.int(c.fp) + " × " + RS(cfp()) },
+        { value: RS(c.fn * cfn()), label: "**Missed " + w.pos + "**: " + F.int(c.fn) + " × " + RS(cfn()) },
+        { value: revealed ? (best.from === best.to ? p3(best.from) : p3(best.from) + " to " + p3(best.to)) : "?", label: "**Cheapest cut** on this " + (cur.sc.n > 100 ? "slice" : "table"), sub: revealed ? "Bill there: " + RS(best.bill) + "." : "Commit your prediction to see it." },
+        { value: revealed ? RS(every) : "?", label: "**Call everyone**, the rule with no model", sub: revealed ? (b < every ? "This cut beats it by " + RS(every - b) + "." : "This cut costs " + RS(b - every) + " more.") : "Commit your prediction to see it." },
+        { value: RS(b), label: "**Bill of mistakes** at " + p3(e), tone: "hero" }
       ];
       var say = bound ? "The budget binds: only " + F.int(cur.budget.k) + " calls are allowed, so the cut sits at the " + F.int(cur.budget.k) + "th score, " + p3(e) + ", whatever the prices say."
         : "At " + p3(e) + " the " + (cur.key === "gym" ? "gym" : "bank") + " calls " + F.int(acted) + " and finds " + F.int(c.tp) + " of the " + F.int(cur.sc.P) + " " + w.pos + ".";
@@ -3481,8 +3507,8 @@ html{scroll-behavior:auto}
     } });
     W5.button(jumps, { label: "Cut from the prices", icon: "scale", quiet: true, onClick: function () {
       var lp = cfp() / (cfp() + cfn());
-      if (Math.abs(t - lp) < 1e-9) { api.say("The cut already sits at " + F.rs(cfp()) + " / (" + F.rs(cfp()) + " + " + F.rs(cfn()) + ") = " + p3(lp) + "."); return; }
-      setLine(lp, true); api.say("The prices put the cut at " + F.rs(cfp()) + " / (" + F.rs(cfp()) + " + " + F.rs(cfn()) + ") = " + p3(lp) + ": call when the chance of a " + cur.words.posOne + " beats 1 in " + Math.round((cfp() + cfn()) / cfp()) + ".");
+      if (Math.abs(t - lp) < 1e-9) { api.say("The cut already sits at " + RS(cfp()) + " / (" + RS(cfp()) + " + " + RS(cfn()) + ") = " + p3(lp) + "."); return; }
+      setLine(lp, true); api.say("The prices put the cut at " + RS(cfp()) + " / (" + RS(cfp()) + " + " + RS(cfn()) + ") = " + p3(lp) + ": call when the chance of a " + cur.words.posOne + " beats 1 in " + Math.round((cfp() + cfn()) / cfp()) + ".");
     } });
     W5.toggle(api.controls, { label: "Scores", options: sets.map(function (st) { return { value: st.key, label: st.label }; }), onChange: function (v) {
       cur = sets.filter(function (st) { return st.key === v; })[0];
@@ -3493,9 +3519,9 @@ html{scroll-behavior:auto}
     } });
     var withPrices = sets.filter(function (st) { return st.prices; })[0];
     if (withPrices) {
-      priceTog = W5.toggle(api.controls, { label: "A missed buyer costs", options: withPrices.prices.map(function (p) { return { value: p, label: F.rs(p) }; }), onChange: function (v) {
+      priceTog = W5.toggle(api.controls, { label: "A missed buyer costs", options: withPrices.prices.map(function (p) { return { value: p, label: RS(p) }; }), onChange: function (v) {
         withPrices.price = v; build(); move(t, false);
-        api.say("At " + F.rs(v) + " a missed buyer, the prices put the cut at 40 / (40 + " + F.int(v) + ") = " + p3(40 / (40 + v)) + ". Press Cut from the prices to go there.");
+        api.say("At " + RS(v) + " a missed buyer, the prices put the cut at 40 / (40 + " + F.int(v) + ") = " + p3(40 / (40 + v)) + ". Press Cut from the prices to go there.");
       } });
       priceTog.el.hidden = !cur.prices;
     }
@@ -3530,7 +3556,7 @@ html{scroll-behavior:auto}
           words: { pos: "returners", posOne: "returner", posVerb: "came back", neg: "stayed away", act: "call", acted: "called", people: "members" } },
         { key: "bank", label: "The bank's 8,238", data: "real", source: SRC, score: SC, y: Y, step: 0.001, costs: { fp: 40, fn: 1200 }, prices: [1200, 400, 120], budget: { k: 1000 },
           title: "The bank's two humps with the cut on them, the bill as two bars, and the bill at every cut you try",
-          note: "Same 8,238 clients and prices as Tuesday's page 5. The scores are Thursday's logistic model on Wednesday's honest columns, so the bill at 0.032 is Rs 281,680 here and Rs 279,000 for Monday's model there.",
+          note: "Same 8,238 clients and prices as Tuesday's page 5. The scores are Thursday's logistic model on Wednesday's honest columns, so the bill at 0.032 is Rs 2,81,680 here and Rs 2,79,000 for Monday's model there.",
           words: { pos: "buyers", posOne: "buyer", posVerb: "bought", neg: "did not buy", act: "call", acted: "called", people: "clients" } }
       ] });
     },
@@ -3630,8 +3656,8 @@ html{scroll-behavior:auto}
       var frames = [{ caption: "Six months of comeback calls, 200 a month, scored by a model built on January to March (invented). The amber band is the promise plus or minus the ceiling. A rival gym closes in July." }].concat(GM.month.map(function (m, k) { return { caption: caption(k) }; }));
       var pl = api.player({ frames: frames, word: "Month", countFrom: 0, stepMs: 700, holdMs: 900, render: function (i) { frame = i; mon.redraw(); write(); } });
       function recaption() { GM.month.forEach(function (m, k) { pl.frames[k + 1].caption = caption(k); }); pl.label(); }
-      api.el.appendChild(h("h4", { "class": "fr-sub", text: "September by plan type: which gap can be read?" }));
-      var segSt = api.svg({ height: function (w) { var fs = rem() * 0.8; return w < 520 ? Math.round(fs * 12.4) : Math.round(fs * 8.6); }, label: "September's gap between real and promised share, by plan type, with each group's luck band", draw: function (g) { drawSeg(g); } });
+      var sx2 = extra(api, "September by plan type: which gap can be read?");
+      var segSt = W5.svgStage(sx2.el, { height: function (w) { var fs = rem() * 0.8; return w < 520 ? Math.round(fs * 12.4) : Math.round(fs * 8.6); }, label: "September's gap between real and promised share, by plan type, with each group's luck band", draw: function (g) { drawSeg(g); } });
       api.slider({ label: "Ceiling, points", min: 1, max: 15, step: 1, value: 5, fmt: function (v) { return v + " points"; }, onInput: function (v) {
         ceil = v / 100; recaption(); write(); mon.redraw();
         api.say(v < 5 ? "Below about 4.6 points, luck alone at 200 calls crosses the line: expect alarms in months where nothing changed." : v > 10 ? "At " + v + " points the drift has to be large before anyone looks; " + (alarmAt() < 0 ? "this one never fires." : "it fires late.") : "Between luck and a real change: the ceiling the notebook uses is 5 points.");
@@ -3640,8 +3666,8 @@ html{scroll-behavior:auto}
         win = v; recaption(); write(); mon.redraw();
         api.say(v === 1 ? "With a one-month window, one lucky month fires the alarm." : "Two months running: one month over is a warning, the second is the rule.");
       } });
-      api.toggle({ label: "Luck bands", options: [{ value: "off", label: "Gaps alone" }, { value: "on", label: "Gaps with their band" }], onChange: function (v) { bandsOn = v === "on"; write(); segSt.redraw(); } });
-      api.slider({ label: "Student group, calls", min: 20, max: 200, step: 10, value: 20, fmt: function (v) { return v + " calls"; }, onInput: function (v) { nStudent = v; write(); segSt.redraw(); } });
+      W5.toggle(sx2.controls, { label: "Luck bands", options: [{ value: "off", label: "Gaps alone" }, { value: "on", label: "Gaps with their band" }], onChange: function (v) { bandsOn = v === "on"; write(); segSt.redraw(); } });
+      W5.slider(sx2.controls, { label: "Student group, calls", min: 20, max: 200, step: 10, value: 20, fmt: function (v) { return v + " calls"; }, onInput: function (v) { nStudent = v; write(); segSt.redraw(); } });
       ON.p3 = function () { recaption(); write(); mon.redraw(); };
       write();
     },
@@ -3674,7 +3700,7 @@ html{scroll-behavior:auto}
       function revealed() { return seen(api.predict && api.predict.state); }
       function draw(g) {
         var svg = g.svg, w = g.w, hh = g.h, fs = rem() * 0.8, x0 = 12, x1 = w - 12, ay = hh - fs * 3.2, sx = function (v) { return x0 + v * (x1 - x0); }, c = cut();
-        svg.appendChild(s("rect", { x: sx(c), y: ay - 64, width: x1 - sx(c), height: 64, fill: FOUND, opacity: 0.08 }));
+        svg.appendChild(s("rect", { x: sx(c), y: ay - 58, width: x1 - sx(c), height: 58, fill: FOUND, opacity: 0.08 }));
         svg.appendChild(s("line", { x1: x0, x2: x1, y1: ay, y2: ay, stroke: "#CFC9EE", "stroke-width": 3 }));
         [0, 0.25, 0.5, 0.75, 1].forEach(function (v) { svg.appendChild(s("line", { x1: sx(v), x2: sx(v), y1: ay - 4, y2: ay + 4, stroke: "#A9A3D2" })); T(svg, sx(v), ay + fs * 1.3, v.toFixed(2), { anchor: "middle", size: fs * 0.9, fill: "#3F3A66" }); });
         T(svg, x1, ay + fs * 2.6, w < 520 ? "P(buy) for a nudge, P(repay) for a loan" : "Chance of the good outcome: P(buy) for a nudge, P(repay) for a loan", { anchor: "end", size: fs * 0.88, fill: "#3F3A66" });
@@ -3686,7 +3712,7 @@ html{scroll-behavior:auto}
           lanes.push({ x: x, lane: lane });
           var y = ay - 16 - lane * (2 * rr + 3), ok = LOAN.p[i] >= c, bad = (ok && !LOAN.repaid[i]) || (!ok && LOAN.repaid[i]);
           svg.appendChild(s("circle", { cx: x, cy: y, r: rr, fill: LOAN.repaid[i] ? FOUND : "#FFFFFF", stroke: LOAN.repaid[i] ? "#FFFFFF" : INK, "stroke-width": 2 }));
-          if (bad) { svg.appendChild(s("circle", { cx: x + rr + 3, cy: y - rr - 1, r: 5, fill: COL.rose })); crossMark(svg, x + rr + 3, y - rr - 1, 2.4); }
+          if (bad) { svg.appendChild(s("circle", { cx: x + rr + 2, cy: y - rr - 2, r: 6.5, fill: COL.rose, stroke: "#FFFFFF", "stroke-width": 1.5 })); crossMark(svg, x + rr + 2, y - rr - 2, 3); }
         });
         /* pins above, stacked so their labels never collide */
         var pins = [{ v: 40 / 1240, text: "Kalpa's nudge, 0.032", color: FOUND }];
@@ -3707,27 +3733,28 @@ html{scroll-behavior:auto}
         api.readout.set([
           { value: p3(c), label: "**The cut**: act when P(good) beats " + r[0] + " / (" + r[0] + " + " + r[1] + ")" },
           { value: z.approved + " of 10", label: "**Approved** by the invented lender at this cut" },
-          { value: F.rs(z.bad * 40000), label: "**Defaults approved**: " + z.bad + " × Rs 40,000" },
-          { value: F.rs(z.goodAway * 2000), label: "**Good applicants turned away**: " + z.goodAway + " × Rs 2,000" },
+          { value: RS(z.bad * 40000), label: "**Defaults approved**: " + z.bad + " × Rs 40,000" },
+          { value: RS(z.goodAway * 2000), label: "**Good applicants turned away**: " + z.goodAway + " × Rs 2,000" },
           { value: rv ? "0.952" : "?", label: "**The lender's own cut**", sub: rv ? "40,000 / 42,000; Rohan's Rs 60,000 against Rs 3,000 gives the same 0.952." : "Commit your prediction to see it." },
-          { value: F.rs(z.bill), label: "**The lender's bill** for these ten at this cut", tone: "hero", sub: "At 0.5 it is Rs 80,000." }
+          { value: RS(z.bill), label: "**The lender's bill** for these ten at this cut", tone: "hero", sub: "At 0.5 it is Rs 80,000." }
         ]);
       }
-      var ax = api.svg({ height: function (w) { return w < 520 ? 250 : 220; }, label: "One axis from 0 to 1 with the nudge cut, the lending cuts and ten loan applicants", draw: function (g) { draw(g); } });
+      var ax = api.svg({ height: function (w) { return w < 520 ? 230 : 190; }, label: "One axis from 0 to 1 with the nudge cut, the lending cuts and ten loan applicants", draw: function (g) { draw(g); } });
       var lg = h("div", { "class": "w5-legend" }); api.el.appendChild(lg);
       legendLine(lg, [{ fill: FOUND, label: "Repaid" }, { fill: "#FFFFFF", stroke: INK, label: "Defaulted" }, { fill: COL.rose, label: "A costly mistake at this cut (a cross)" }]);
-      var sl = api.slider({ label: "A wrong yes costs", min: 0, max: RATIOS.length - 1, step: 1, value: ri, fmt: function (v) { var r = RATIOS[v]; return r[0] + " : " + r[1] + " of a wrong no"; }, onInput: function (v) {
+      var sl = api.slider({ label: "Wrong yes : wrong no", min: 0, max: RATIOS.length - 1, step: 1, value: ri, fmt: function (v) { var r = RATIOS[v]; return r[0] + " : " + r[1]; }, onInput: function (v) {
         ri = v; write(); ax.redraw();
         var r = RATIOS[v];
         api.say(r[0] < r[1] ? "A wrong yes is the cheap mistake, as with Kalpa's Rs 40 nudge against a Rs 1,200 buyer: the cut falls towards 0." : r[0] > r[1] ? "A wrong yes is the expensive mistake, as with a bad loan: the cut climbs towards 1." : "Equal prices: the cut sits at 0.5, the only case the library's default fits.");
       } });
       W5.button(api.controls, { label: "The lender's prices", icon: "bank", quiet: true, onClick: function () {
+        if (!seen(api.predict.state)) { api.say("This button answers the question above, so commit a line or press Show me without predicting first. The slider is yours to try before then."); return; }
         if (ri === 9) { api.say("Already at the lender's 20 : 1: Rs 40,000 for a default against Rs 2,000 for a good applicant turned away."); return; }
         ri = 9; sl.set(9, true); write(); ax.redraw(); api.say("Rs 40,000 against Rs 2,000 is 20 : 1, so the cut is 20 / 21 = 0.952.");
       } });
       ON.p4 = function () { write(); ax.redraw(); };
-      api.el.appendChild(h("h4", { "class": "fr-sub", text: "The transfer paragraph: what changes, what stays, what would leak?" }));
-      var tb = W5.bins(api.el, { bins: ["Changes", "Stays", "Would leak"], cards: [
+      var tx = extra(api, "The transfer paragraph: what changes, what stays, what would leak?");
+      var tb = W5.bins(tx.el, { bins: ["Changes", "Stays", "Would leak"], cards: [
         { text: "The target: came back becomes repaid", bin: 0 },
         { text: "The costs, so the cut: 0.03 becomes 0.95", bin: 0 },
         { text: "The moment: the call becomes the approval", bin: 0 },
@@ -3738,8 +3765,8 @@ html{scroll-behavior:auto}
         { text: "A collections flag", bin: 2 },
         { text: "Days past due", bin: 2 }
       ] });
-      var tBtn = h("div", { "class": "fr-ctl" }), tSay = h("p", { "class": "w5-pstate", "aria-live": "polite" });
-      api.el.appendChild(tBtn); api.el.appendChild(tSay);
+      var tBtn = tx.controls, tSay = h("p", { "class": "w5-pstate", "aria-live": "polite" });
+      tx.controls.parentNode.appendChild(tSay);
       W5.button(tBtn, { label: "Check my sort", icon: "tick", onClick: function () {
         var k = tb.mark();
         tSay.textContent = k + " of 9 in the right bin. " + (k === 9 ? "Each leak is written after the approval: a column is judged by its time stamp, never by its name." : "A leak is anything written after the decision, whatever its name.");
@@ -3781,7 +3808,7 @@ html{scroll-behavior:auto}
       var r = 0.6, drawn = false, plot = null, plotG = null;
       function drawPlot(g) {
         var svg = g.svg, w = g.w, hh = g.h, fs = rem() * 0.8, size = Math.min(w, hh), pad = fs * 2.4;
-        var left = (w - size) / 2 + pad, right = (w - size) / 2 + size - 8, top = 8, bottom = hh - pad;
+        var left = (w - size) / 2 + pad, right = (w - size) / 2 + size - 8, top = fs * 1.7, bottom = hh - pad;
         var u = Math.min(right - left, bottom - top) / 4, cx = (left + right) / 2, cy = (top + bottom) / 2;
         plotG = { cx: cx, cy: cy, u: u };
         function px(x) { return cx + x * u; } function py(y) { return cy - y * u; }
@@ -3790,16 +3817,17 @@ html{scroll-behavior:auto}
           svg.appendChild(s("line", { x1: px(-2), x2: px(2), y1: py(v), y2: py(v), stroke: v ? "#ECEAF6" : "#A9A3D2", "stroke-width": v ? 1 : 1.6 }));
         });
         T(svg, px(2), py(-2) + fs * 1.4, "Offline gain, standard units", { anchor: "end", size: fs * 0.9, fill: "#3F3A66" });
-        T(svg, px(-2) + 4, py(2) + fs * 1.1, "Business gain in the trial", { size: fs * 0.9, fill: "#3F3A66", halo: true });
+        T(svg, px(-2), fs * 1.1, "Business gain in the trial, standard units", { size: fs * 0.9, fill: "#3F3A66" });
+        var cornerX = r >= 0 ? px(-2) + 8 : px(2) - 8, anchor = r >= 0 ? "start" : "end";
         if (drawn) {
           var lo = -0.45, hi = 0.27;
           svg.appendChild(s("path", { d: "M" + px(0) + " " + py(0) + "L" + px(2) + " " + py(2 * hi) + "L" + px(2) + " " + py(2 * lo) + "ZM" + px(0) + " " + py(0) + "L" + px(-2) + " " + py(-2 * lo) + "L" + px(-2) + " " + py(-2 * hi) + "Z", fill: INK, opacity: 0.1 }));
           svg.appendChild(s("line", { x1: px(-2), y1: py(0.2), x2: px(2), y2: py(-0.2), stroke: INK, "stroke-width": 3 }));
-          T(svg, px(2) - 4, py(-0.2) + fs * 1.3, "Booking.com: −0.1", { anchor: "end", weight: 700, halo: true });
+          T(svg, cornerX, py(2) + fs * 2.6, "Booking.com, −0.1", { anchor: anchor, weight: 700, halo: true });
         }
         var ex = Math.min(2, 2 / Math.max(Math.abs(r), 1e-9));
         svg.appendChild(s("line", { x1: px(-ex), y1: py(-ex * r), x2: px(ex), y2: py(ex * r), stroke: WASTED, "stroke-width": 3.2, "stroke-linecap": "round" }));
-        T(svg, px(-ex * 0.6), py(-ex * r * 0.6) - 10, "Your line, " + F.signed(r, 2), { anchor: "middle", weight: 700, fill: "#8A4500", halo: true });
+        T(svg, cornerX, py(2) + fs * 1.3, "Your line, " + F.signed(r, 2), { anchor: anchor, weight: 700, fill: "#8A4500", halo: true });
       }
       function drawWrite() {
         api.readout.set([
@@ -3862,7 +3890,7 @@ html{scroll-behavior:auto}
         pushCard = h("div", { "class": "fr-pushcard", "aria-live": "polite" });
         room.appendChild(memoBox); room.appendChild(pushCard); el.appendChild(room);
         W5.player(el, { frames: [{ caption: "The gym's memo, five parts. Six seats will push on it, one at a time; each answer carries a number." }].concat(PUSHES.map(function (p) { return { caption: "**" + p.who + "**: " + p.push }; })),
-          word: "Push", countFrom: 0, stepMs: 600, holdMs: 1700, render: function (i) { pushFrame = i; pushDraw(); pushWrite(); } });
+          word: "Push", countFrom: 0, stepMs: 600, holdMs: 1700, render: function (i) { pushFrame = i; pushDraw(); if (!vs5 || vs5.current() === 1) pushWrite(); } });
       }
       /* view 3: the memo as seconds on a 90-second clock */
       var wpm = 140, clockFrame = 0, clockP = 1, dial = null;
@@ -3893,17 +3921,17 @@ html{scroll-behavior:auto}
         var sc2 = secs(), tot = sc2.reduce(function (a2, b2) { return a2 + b2; }, 0);
         api.readout.set([
           { value: tot + " s", label: "**The memo aloud** at " + wpm + " words a minute, 103 words" },
-          { value: sc2.join(", ") + " s", label: "**Claim, evidence, caveat, action, my choice**" },
+          { value: Math.max.apply(null, sc2) + " s", label: "**The evidence**, the longest part", sub: "Claim " + sc2[0] + " s, evidence " + sc2[1] + ", caveat " + sc2[2] + ", action " + sc2[3] + ", my choice " + sc2[4] + "." },
           { value: Math.max(0, 90 - tot) + " s", label: "**Left for the questions** in a 90-second slot", tone: "hero", sub: tot > 90 ? "Over the slot: cut the evidence to its one number." : "Room for one push and its answer." }
         ], "140 words a minute is an assumed pace; time yourself once and move the slider to your own.");
       }
       function buildClock(el, ctl) {
         dial = W5.svgStage(el, { height: function (w) { return w < 520 ? 300 : 280; }, label: "A 90-second dial with the memo's five parts as arcs", draw: function (g) { drawDial(g); } });
         W5.player(el, { frames: [{ caption: "The memo read aloud at your pace. The dial holds 90 seconds, the length of a committee answer and of an interview's model story." }].concat(MEMO5.map(function (m) { return { caption: "**" + m.part + "**: " + m.text }; })),
-          word: "Part", countFrom: 0, stepMs: 900, holdMs: 900, render: function (i, p) { clockFrame = i; clockP = p; dial.redraw(); clockWrite(); } });
+          word: "Part", countFrom: 0, stepMs: 900, holdMs: 900, render: function (i, p) { clockFrame = i; clockP = p; dial.redraw(); if (!vs5 || vs5.current() === 2) clockWrite(); } });
         W5.slider(ctl, { label: "Speaking pace", min: 100, max: 180, step: 10, value: 140, fmt: function (v) { return v + " words a minute"; }, onInput: function (v) { wpm = v; clockWrite(); dial.redraw(); } });
       }
-      viewSwitch(api, [
+      var vs5 = viewSwitch(api, [
         { key: "draw", label: "Offline against business", build: buildDraw, show: function () { relabel(api, "real", "Booking.com, KDD 2019", "Your line against Booking.com's 23 model comparisons, in standard units"); drawWrite(); } },
         { key: "push", label: "Six pushes", build: buildPush, show: function () { relabel(api, "invented", "", "The gym's invented memo in five parts, and six seats pushing on it one at a time"); pushWrite(); } },
         { key: "clock", label: "The 90-second clock", build: buildClock, show: function () { relabel(api, "invented", "", "The gym's invented memo read aloud, as seconds on a 90-second clock"); clockWrite(); } }
@@ -3939,9 +3967,14 @@ html{scroll-behavior:auto}
           }
           function drawBills(g) {
             var svg = g.svg, w = g.w, fs = rem() * 0.8, phone = w < 560, rows = bills(), max = Math.max.apply(null, rows.map(function (r) { return r.bill; }));
-            var lw = phone ? 0 : fs * 8.4, valW = fs * 8, x0 = lw, x1 = w - valW, bh = fs * 1.35, y = fs * 0.3;
+            var lw = phone ? 0 : fs * 8.4, valW = fs * 8, x0 = lw, x1 = w - valW, bh = fs * 1.7, y = fs * 1.6;
+            var ex = x0 + (x1 - x0) * rows[3].bill / max;
+            if (!phone) svg.appendChild(s("line", { x1: ex, x2: ex, y1: fs * 0.4, y2: g.h - fs * 0.2, stroke: INK, "stroke-width": 1.4, "stroke-dasharray": "4 3" }));
+            else svg.appendChild(s("line", { x1: ex, x2: ex, y1: fs * 0.4, y2: fs * 1.3, stroke: INK, "stroke-width": 1.4, "stroke-dasharray": "4 3" }));
+            T(svg, ex + 5, fs * 1.0, "calling everyone", { size: fs * 0.86, weight: 700, halo: true });
             rows.forEach(function (r) {
-              if (phone) { T(svg, 0, y + fs * 0.95, r.name, { weight: 700, size: fs * 0.92 }); y += fs * 1.25; }
+              /* on a phone each name sits above its bar, so the dashed mark is drawn bar by bar and never crosses a name */
+              if (phone) { T(svg, 0, y + fs * 0.95, r.name, { weight: 700, size: fs * 0.92 }); y += fs * 1.25; svg.appendChild(s("line", { x1: ex, x2: ex, y1: y, y2: y + bh, stroke: INK, "stroke-width": 1.4, "stroke-dasharray": "4 3" })); }
               else T(svg, 0, y + bh * 0.72, r.name, { weight: 700, size: fs * 0.95 });
               if (r.model && !revealedC1) {
                 svg.appendChild(s("rect", { x: x0, y: y, width: (x1 - x0) * 0.3, height: bh, rx: 4, fill: "#FFFFFF", stroke: r.color, "stroke-dasharray": "4 3", "stroke-width": 1.6 }));
@@ -3951,7 +3984,7 @@ html{scroll-behavior:auto}
                 svg.appendChild(s("rect", { x: x0, y: y, width: ww, height: bh, rx: 4, fill: r.color, opacity: r.model ? 1 : 0.55 }));
                 T(svg, x0 + ww + 8, y + bh * 0.74, lakh(r.bill), { weight: 700, size: fs * 0.95 });
               }
-              y += bh + fs * 0.62;
+              y += bh + fs * 0.7;
             });
           }
           function billsWrite() {
@@ -3959,15 +3992,15 @@ html{scroll-behavior:auto}
             var items = rows.slice(0, 3).map(function (r) { return { value: revealedC1 ? lakh(r.bill) : "?", label: "**" + r.name + "**: " + F.int(r.calls) + " calls" }; });
             items.push({ value: lakh(free), label: "**Best rule with no model**: " + (rows[3].bill <= rows[4].bill ? "call everyone" : "call nobody") });
             items.push({ value: revealedC1 ? pctOf(Math.max.apply(null, mb) - Math.min.apply(null, mb), Math.min.apply(null, mb), 2) : "?", label: "**Spread** between the three bills", tone: "hero", sub: revealedC1 ? "Largest minus smallest, over the smallest." : "Commit your prediction to see it." });
-            api.readout.set(items, "At the cut " + p3(cut) + " and " + F.rs(miss) + " a missed buyer.");
+            api.readout.set(items, "At the cut " + p3(cut) + " and " + RS(miss) + " a missed buyer.");
           }
           function buildBills(el, ctl) {
-            billsSt = W5.svgStage(el, { height: function (w) { var fs = rem() * 0.8; return w < 560 ? Math.round(fs * 17.5) : Math.round(fs * 12.4); }, label: "Five horizontal bars: the three models' bills and the two rules with no model", draw: function (g) { drawBills(g); } });
+            billsSt = W5.svgStage(el, { height: function (w) { var fs = rem() * 0.8; return w < 560 ? Math.round(fs * 21.5) : Math.round(fs * 15.6); }, label: "Five horizontal bars: the three models' bills and the two rules with no model", draw: function (g) { drawBills(g); } });
             var sl = W5.slider(ctl, { label: "The cut", min: 0.005, max: 0.6, step: 0.001, value: cut, fmt: p3, onInput: function (v) { cut = v; billsWrite(); billsSt.redraw(); } });
             sl.el.querySelector("output").textContent = p3(cut);
             W5.toggle(ctl, { label: "A missed buyer costs", options: [{ value: 1200, label: "Rs 1,200" }, { value: 400, label: "Rs 400" }, { value: 120, label: "Rs 120" }], onChange: function (v) {
               miss = v; cut = 40 / (40 + v); sl.set(cut, true); sl.el.querySelector("output").textContent = p3(cut); billsWrite(); billsSt.redraw();
-              api.say("At " + F.rs(v) + " a missed buyer the cost cut moves to 40 / (40 + " + F.int(v) + ") = " + p3(cut) + ", and the three bills " + (v === 1200 ? "sit on top of each other." : "start to spread: the model begins to matter."));
+              api.say("At " + RS(v) + " a missed buyer the cost cut moves to 40 / (40 + " + F.int(v) + ") = " + p3(cut) + ", and the three bills " + (v === 1200 ? "sit on top of each other." : "start to spread: the model begins to matter."));
             } });
           }
           /* under 1,000 calls */
@@ -3979,11 +4012,11 @@ html{scroll-behavior:auto}
               { value: F.int(f[1]), label: "**Tuned tree** finds" },
               { value: F.int(f[2]), label: "**Boosting** finds" },
               { value: F.int(rnd), label: "**A random list** of the same size finds about" },
-              { value: F.signed(gapB, 0) + " buyers", label: "**Boosting minus logistic**, worth " + F.rs(gapB * 1240), tone: "hero", sub: "Each extra buyer turns a wasted call into a sale: Rs 40 + Rs 1,200 = Rs 1,240." }
+              { value: F.signed(gapB, 0) + " buyers", label: "**Boosting minus logistic**, worth " + RS(gapB * 1240), tone: "hero", sub: "Each extra buyer turns a wasted call into a sale: Rs 40 + Rs 1,200 = Rs 1,240." }
             ], k === 1000 ? "At 1,000 calls: 462, 469 and 475 buyers against about 113 at random; the logistic list ends at a score of 0.245." : "");
           }
           function buildBudget(el, ctl) {
-            gc = W5.chart(el, { height: 260, x: { min: 0, max: N, ticks: [0, 1000, 2000, 4000, 6000, 8238], label: "Calls made, in score order", fmt: F.int },
+            gc = W5.chart(el, { height: 260, x: { min: 0, max: N, ticks: [0, 2000, 4000, 6000, 8238], label: "Calls made, in score order", fmt: F.int },
               y: { min: 0, max: 1000, ticks: 4, label: "Buyers found", fmt: F.int }, numbers: false,
               legend: MODELS.map(function (m) { return { label: m.name, color: m.color, kind: "line" }; }).concat([{ label: "A random list", color: "muted", kind: "line" }]) });
             MODELS.forEach(function (m) {
@@ -4023,12 +4056,12 @@ html{scroll-behavior:auto}
           vs = viewSwitch(api, [
             { key: "bills", label: "Three bills", build: buildBills, show: function () { billsWrite(); } },
             { key: "budget", label: "Under 1,000 calls", build: buildBudget, show: function () { budgetWrite(); } },
-            { key: "gap", label: "Is 13 real?", build: buildGap, show: function () { gapWrite(); } }
+            { key: "gap", label: "The luck band", build: buildGap, show: function () { gapWrite(); } }
           ]);
-          ON.c1 = function () { revealedC1 = true; if (billsSt) billsSt.redraw(); if (vs.current() === 0) billsWrite(); };
+          ON.c1 = function () { revealedC1 = true; openTrap(0); if (billsSt) billsSt.redraw(); if (vs.current() === 0) billsWrite(); };
         },
         trap: { wrong: "0.803", context: "validation AUC, the highest of the three, so boosting saves the most",
-          misled: "the committee pays for a forty-step model it must rerun, explain and check every month, for a bill that is the largest of the three at the cost cut.",
+          misled: "the committee pays for a forty-step model it must rerun, explain and check every month, on the strength of a 0.008 lead in AUC that nobody has priced.",
           check: "Price both mistakes for each model at the operating point: at 0.032 boosting's bill is Rs 2,83,200 against logistic's Rs 2,81,680.",
           fix: "Compare the models where the business will run them: the bill at the cut, then the buyers under the 1,000-call budget, with the gap's band beside it.",
           honest: "Under 1,000 calls boosting finds 13 more buyers than logistic, Rs 16,120, with a band from about −1 to 28 that reaches zero: a tie.",
@@ -4060,7 +4093,7 @@ html{scroll-behavior:auto}
               { value: rv ? (TM.lateRate * 100).toFixed(1) + "%" : "?", label: "**Real share who bought**, late months" },
               { value: rv ? (TM.promise * 100).toFixed(1) + "%" : "?", label: "**The model's promise**, late months" },
               { value: rv ? TM.lateAuc.toFixed(3) : "?", label: "**AUC** on the late months", sub: rv ? "Against 0.795 on the random validation slice." : "Commit your prediction to see it." },
-              { value: rv ? F.rs(TM.actual.bill) : "?", label: "**The stale bill** at 0.032 on the 12,357 late clients", tone: rv ? "bad" : "hero", sub: rv ? "Calling everyone: " + F.rs(TM.everyone) + ". Planned from validation: " + F.rs(TM.planned) + "." : "" }
+              { value: rv ? RS(TM.actual.bill) : "?", label: "**The stale bill** at 0.032 on the 12,357 late clients", tone: rv ? "bad" : "hero", sub: rv ? "Calling everyone: " + RS(TM.everyone) + ". Planned from validation: " + RS(TM.planned) + "." : "" }
             ], rv ? TM.below + " clients scored below 0.032, promised less than 1 in 31, and " + TM.belowBought + " of them bought." : "");
           }
           function buildSag(el) {
@@ -4072,12 +4105,12 @@ html{scroll-behavior:auto}
             sagChart.line("real", series(3), { color: "violet", width: 2.4, name: "Real share", dots: true });
             sagChart.line("promise", series(4), { color: "amber", width: 2.4, name: "The model's promise", dash: "6 4" });
             if (!revealedC2) sagChart.text("q", [LAST + 2, 0.55], { text: "Commit your prediction to see these months" });
-            W5.player(el, { frames: [{ caption: "The months the model learned: May 2008 to April 2009, 28,831 rows. In the shaded months promise and reality sit on top of each other, about 6 in 100." },
+            W5.player(el, { frames: [{ caption: "The months the model learned: May 2008 to April 2009, 28,831 rows. In the shaded months promise and reality sit on top of each other; across all its rows about 6 in 100 bought." },
               { caption: "Summer 2009: the first months it never saw." }, { caption: "Late 2009 into 2010." }, { caption: "Through November 2010, the file's last month." }],
-              word: "Step", countFrom: 0, stepMs: 900, holdMs: 1100, render: function (i) { upTo = [LAST, LAST + 4, LAST + 9, MONS.length - 1][i]; sagChart.set("real", series(3), 0); sagChart.set("promise", series(4), 0); sagWrite(); } });
+              word: "Step", stepMs: 900, holdMs: 1100, render: function (i) { upTo = [LAST, LAST + 4, LAST + 9, MONS.length - 1][i]; sagChart.set("real", series(3), 0); sagChart.set("promise", series(4), 0); if (!vs || vs.current() === 0) sagWrite(); } });
           }
           /* the monitor */
-          var ceil = 0.45, winM = 2, monSt = null, MON = TM.monitor;
+          var ceil = 0.5, winM = 2, monSt = null, MON = TM.monitor;
           function overM(k) { return Math.abs(MON[k][3] - MON[k][2]) > ceil + 1e-9; }
           function fireM() { for (var k = 0; k < MON.length; k++) if (overM(k) && (winM === 1 || (k > 0 && overM(k - 1)))) return k; return -1; }
           function drawMonitor(g) {
@@ -4115,11 +4148,11 @@ html{scroll-behavior:auto}
             monSt = W5.svgStage(el, { height: function (w) { return w < 520 ? 270 : 260; }, label: "The promise with its ceiling band and the real share among the called, for 18 late months", draw: function (g) { drawMonitor(g); } });
             var lg = h("div", { "class": "w5-legend" }); el.appendChild(lg);
             legendLine(lg, [{ fill: "#FFF1DE", stroke: WASTED, label: "Promise, plus or minus the ceiling", square: true }, { fill: FOUND, label: "Real share, inside" }, { fill: COL.rose, label: "Real share, over the ceiling (a cross)" }]);
-            W5.slider(ctl, { label: "Ceiling", min: 0, max: 45, step: 1, value: 45, fmt: function (v) { return v + " points"; }, onInput: function (v) { ceil = v / 100; monWrite(); monSt.redraw(); } });
+            W5.slider(ctl, { label: "Ceiling", min: 0, max: 50, step: 1, value: 50, fmt: function (v) { return v + " points"; }, onInput: function (v) { ceil = v / 100; monWrite(); monSt.redraw(); } });
             W5.toggle(ctl, { label: "Window", options: [{ value: 2, label: "Two months running" }, { value: 1, label: "One month" }], onChange: function (v) { winM = v; monWrite(); monSt.redraw(); } });
           }
           /* the weakest segment */
-          var minB = 20, byJob = true, segSt2 = null;
+          var minB = 100, byJob = true, segSt2 = null;
           function rowsSeg() {
             if (byJob) return SEG.jobs.map(function (r) { return { name: r[0], n: r[1], buyers: r[2], auc: r[3], lo: r[4], hi: r[5] }; });
             return [["cellular", "mobile"], ["telephone", "telephone"]].map(function (c) { var r = SEG.contact[c[0]]; return { name: c[1], n: r[0], buyers: r[1], auc: r[2], lo: null, hi: null }; }).sort(function (a, b) { return a.auc - b.auc; });
@@ -4145,11 +4178,11 @@ html{scroll-behavior:auto}
               { value: wk ? wk.name : "none", label: "**Weakest group you trust**, with at least " + minB + " buyers", tone: "hero" },
               { value: wk ? wk.auc.toFixed(3) : "?", label: "**Its AUC**" + (wk && wk.lo !== null ? ", band " + wk.lo.toFixed(2) + " to " + wk.hi.toFixed(2) : "") },
               { value: wk ? F.int(wk.buyers) : "?", label: "**Buyers** in that group, of " + (wk ? F.int(wk.n) : "?") + " clients" }
-            ], byJob ? "Entrepreneur reads lowest, 0.655 on 26 buyers with a band from 0.54 to 0.81: a small group talking. Blue-collar, 0.707 on 122 buyers, is the weakest reading the memo can trust." : "Telephone contacts rank worse than mobile ones, 0.721 against 0.779. The notebook computed no band for this split.");
+            ], byJob ? "The notebook trusts a group from 100 buyers, so blue-collar, 0.707 on 122 buyers, is the weakest reading the memo can stand on. Entrepreneur reads lowest, 0.655, on 26 buyers with a band from 0.54 to 0.81: a small group talking." : "Telephone contacts rank worse than mobile ones, 0.721 against 0.779. The notebook computed no band for this split.");
           }
           function buildSeg(el, ctl) {
             segSt2 = W5.svgStage(el, { height: function (w) { var fs = rem() * 0.8; return Math.round((byJob ? SEG.jobs.length : 2) * fs * (w < 520 ? 2.0 : 1.75) + fs * 3.6); }, label: "AUC inside each group with its 95 percent band, sorted from the weakest", draw: function (g) { drawSeg2(g); } });
-            W5.slider(ctl, { label: "Trust a group from", min: 5, max: 150, step: 5, value: minB, fmt: function (v) { return v + " buyers"; }, onInput: function (v) { minB = v; segWrite(); segSt2.redraw(); } });
+            W5.slider(ctl, { label: "Trust from", min: 5, max: 150, step: 5, value: minB, fmt: function (v) { return v + " buyers"; }, onInput: function (v) { minB = v; segWrite(); segSt2.redraw(); } });
             W5.toggle(ctl, { label: "Group by", options: [{ value: "job", label: "Job" }, { value: "contact", label: "Contact" }], onChange: function (v) { byJob = v === "job"; segWrite(); W5.relayout(el, true); } });
           }
           vs = viewSwitch(api, [
@@ -4158,7 +4191,7 @@ html{scroll-behavior:auto}
             { key: "segment", label: "Weakest segment", build: buildSeg, show: function () { segWrite(); } }
           ]);
           ON.c2 = function () {
-            revealedC2 = true; weekPic.fill();
+            revealedC2 = true; weekPic.fill(); openTrap(1);
             if (sagChart) { sagChart.remove("q"); sagChart.set("real", series(3), 0); sagChart.set("promise", series(4), 0); }
             if (vs && vs.current() === 0) sagWrite();
           };
@@ -4202,7 +4235,7 @@ html{scroll-behavior:auto}
           }
           function makeChart(host) {
             var pts = curvePts(), ymax = Math.max.apply(null, pts.map(function (p) { return p[1]; })) * 1.15;
-            gChart = W5.chart(host, { height: 250, x: { min: 0.3, max: 0.99, ticks: [0.3, 0.5, 0.7, 0.83, 0.95], label: "Approve when P(repay) is above", fmt: function (v) { return v.toFixed(2); } },
+            gChart = W5.chart(host, { height: 250, x: { min: 0.3, max: 0.99, ticks: [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], label: "Approve when P(repay) is above", fmt: function (v) { return v.toFixed(2); } },
               y: { min: 0, max: prices === "gc" ? Math.ceil(ymax / 50) * 50 : Math.ceil(ymax * 10) / 10, ticks: 4, label: prices === "gc" ? "Cost on 300 applicants, units" : "Cost on 300 applicants, Rs lakh", fmt: function (v) { return prices === "gc" ? String(v) : v.toFixed(1); } },
               legend: [{ label: "Cost at a line you tried", color: "ink", kind: "dot" }, { label: "Every line, once revealed", color: "violet", kind: "line" }], numbers: false });
             gChart.scatter("tried", [], { color: "ink", r: 3.5 });
@@ -4218,9 +4251,10 @@ html{scroll-behavior:auto}
           }
           function buildLine(el, ctl) {
             var host = h("div", {}); el.appendChild(host);
-            makeChart(host);
+            makeChart(host); moveLine(tl);
             lineSl = W5.slider(ctl, { label: "Lend above", min: 0.3, max: 0.99, step: 0.01, value: tl, fmt: function (v) { return v.toFixed(2); }, onInput: function (v) { moveLine(v); } });
             W5.button(ctl, { label: "Line from the prices", icon: "scale", quiet: true, onClick: function () {
+              if (!seen(api.predict.state)) { api.say("This button answers the chapter's question, so commit a line or press Show me without predicting first. Drag the line to try your own before then."); return; }
               var c = costs(), lp = c.bad / (c.bad + c.good);
               moveLine(Math.round(lp * 100) / 100); lineSl.set(tl, true);
               api.say("The prices put the line at " + F.int(c.bad) + " / (" + F.int(c.bad) + " + " + F.int(c.good) + ") = " + p3(lp) + ": lend when P(repay) beats it. The slider moves in hundredths, so it sits at " + tl.toFixed(2) + ".");
@@ -4255,7 +4289,7 @@ html{scroll-behavior:auto}
               { value: "462", label: "**Validation buyers** in the top 1,000" },
               { value: opened ? "0.801" : "?", label: "**Test AUC**, opened once" },
               { value: opened ? "482" : "?", label: "**Test buyers** in the top 1,000", tone: opened ? "good" : "hero", sub: opened ? "Against about 113 at random: more than four times." : "Predict it, then open the envelope." }
-            ]);
+            ], "One look, and the number goes in the memo's evidence line whatever it says.");
           }
           function buildEnv(el, ctl) {
             el.appendChild(h("p", { "class": "fr-note", rich: "The test slice was sealed on Monday, before any model existed. The model is chosen, logistic from chapter 6, so the slice is opened **once** and its number goes in the memo whatever it says." }));
@@ -4274,7 +4308,7 @@ html{scroll-behavior:auto}
             { key: "env", label: "The envelope", build: buildEnv, show: function () { relabel(api, "real", SRC, "The bank's sealed test slice of 8,238 clients, opened once"); envWrite(); } }
           ]);
           ON.c3 = function () {
-            revealedC3 = true;
+            revealedC3 = true; openTrap(2);
             if (gChart) gChart.line("curve", curvePts(), { color: "violet", width: 2.4, name: "Cost" });
             if (vs && vs.current() === 0) lineWrite();
           };
@@ -4289,6 +4323,16 @@ html{scroll-behavior:auto}
     rule: { text: "A model is justified in the reader's units at the operating point the business will run, its sealed number is opened once, and its promise is watched against reality month by month.",
       flips: "the price ratio tightens or a fresh month shows boosting's lead clear of zero; move the missed-buyer price in chapter 6 to watch the three bills spread." }
   });
+
+  /* Each trap names a number its chapter's prediction asks for, so it waits for that reveal. */
+  caseApi.steps.forEach(function (stp, i) {
+    if (!stp.trap) return;
+    var note = h("p", { "class": "fr-trapwait", text: "The trap for this chapter opens once you commit or reveal the chapter's prediction." });
+    stp.trap.el.parentNode.insertBefore(note, stp.trap.el);
+    stp.trap.el.hidden = true;
+    stp.holdTrap = function () { stp.trap.el.hidden = false; note.hidden = true; };
+  });
+  function openTrap(i) { if (caseApi && caseApi.steps[i] && caseApi.steps[i].holdTrap) caseApi.steps[i].holdTrap(); }
 
   /* ================================================================ #field */
   W5.fieldPage("field", {
@@ -4322,13 +4366,13 @@ html{scroll-behavior:auto}
             var rv = seen(api.predict.state);
             api.readout.set([
               { value: rv ? "$304.4M" : "?", label: "**Q3 2021 write-down** of Zillow Offers inventory" },
-              { value: show === "both" ? (rv ? "$544.4M to $569.4M" : "? + $240M to $265M") : "Q3 only", label: "**Recorded plus expected**", tone: "hero" },
+              show === "both" ? { value: rv ? "$544.4M to $569.4M" : "? + $240M to $265M", label: "**Recorded plus expected**", tone: "hero" } : { value: "$240M to $265M", label: "**More expected in Q4**, from the same letter", tone: "hero", sub: "Show Q3 and Q4 expected to stack it on the bar." },
               { value: "25%", label: "**Of the workforce**, the expected reduction from the wind-down" },
               { value: "3 to 6 months", label: "**How far ahead** the price forecast had to reach" }
             ]);
           }
-          var st = api.svg({ height: function (w) { return w < 520 ? 150 : 118; }, label: "Bars of Zillow Offers' recorded and expected inventory charges", draw: function (g) { draw(g); } });
-          api.toggle({ label: "Show", options: [{ value: "q3", label: "Q3 recorded" }, { value: "both", label: "Q3 and Q4 expected" }], onChange: function (v) { show = v; write(); st.redraw(); } });
+          var st = api.svg({ height: function (w) { var fs = rem() * 0.8, rows = show === "both" ? 2 : 1; return Math.round(rows * (fs * 2.5 + (w < 520 ? fs * 1.3 : 0)) + fs * 0.4); }, label: "Bars of Zillow Offers' recorded and expected inventory charges", draw: function (g) { draw(g); } });
+          api.toggle({ label: "Show", options: [{ value: "q3", label: "Q3 recorded" }, { value: "both", label: "Q3 and Q4 expected" }], onChange: function (v) { show = v; write(); W5.relayout(api.el, true); } });
           ON.f1 = function () { write(); st.redraw(); };
           write();
         } },
@@ -4357,11 +4401,12 @@ html{scroll-behavior:auto}
             api.readout.set([
               { value: "93%", label: "**Before the shock**" },
               { value: rv ? "61%" : "?", label: "**March 2020**, as Fortune reported it" },
-              { value: rv ? "32 points" : "?", label: "**The fall** that told the engineers to retrain", tone: "hero" },
-              { value: show === "june" ? "about 85%" : "not shown", label: "**By June 2020**, after the retrain" }
-            ], "Instacart's 2023 post: by changing thresholds the team could trade off between metrics without having to train new ML models (https://company.instacart.com/tech-innovation/how-instacarts-item-availability-evolved-over-the-pandemic, checked 29 October 2026).");
+              { value: rv ? "32 points" : "?", label: "**The fall** that told the engineers to retrain", tone: "hero" }
+            ].concat(show === "june" ? [{ value: "about 85%", label: "**By June 2020**, after the retrain" }] : []),
+            "A threshold on top of the model trades its metrics off the same week; a retrain waits for enough new observations.");
           }
           var st = api.svg({ height: function (w) { return w < 520 ? 230 : 210; }, label: "Three bars of Instacart's item-availability accuracy", draw: function (g) { draw(g); } });
+          api.el.appendChild(sourceLine({ name: "Instacart, How Instacart's item availability evolved over the pandemic, 10 July 2023", url: "https://company.instacart.com/tech-innovation/how-instacarts-item-availability-evolved-over-the-pandemic", checked: "29 October 2026" }));
           api.toggle({ label: "Show", options: [{ value: "drop", label: "The drop" }, { value: "june", label: "The drop and June" }], onChange: function (v) { show = v; write(); st.redraw(); } });
           ON.f2 = function () { write(); st.redraw(); };
           write();
@@ -4392,7 +4437,7 @@ html{scroll-behavior:auto}
         } }
     ],
     seatsHeading: "Six seats at Kalpa Retail: what does each person do with the staleness rule?",
-    seats: { hub: "Kalpa's rule: over 10 points from the promise two months running, Kavya pauses the list", intro: "The rule from chapter 7 lands on six desks. Pick a seat to read what that person does with it and the question they bring to Monday's meeting.", seats: {
+    seats: { hub: "Kalpa's staleness rule", intro: "The rule from chapter 7 lands on six desks. Pick a seat to read what that person does with it and the question they bring to Monday's meeting.", seats: {
       owner: { does: "Meera signs the rule with its owner named, and asks for the bill it protects: Rs 4,61,640 ran up on the late months while calling everyone would have cost Rs 3,72,920.", asks: "If the rule fires, what happens to next month's calling budget?" },
       pm: { does: "Owns the monthly list and the alarm: runs the top 1,000 each month, checks the share who bought against the promise, and tells Kavya when two months run over.", asks: "What does a customer hear when the list is paused?" },
       architect: { does: "Keeps the promise, the outcome and the month together in one table, so the comparison can be rerun at any time, and keeps the ceiling and the window as settings with their dates.", asks: "Where do the outcomes land, and how late do they arrive?" },
@@ -4549,9 +4594,16 @@ html{scroll-behavior:auto}
 .w5 .fr-seatwho{display:flex;flex-direction:column;line-height:1.2}
 .w5 .fr-seatwho b{color:var(--ink);font-size:.92rem}
 .w5 .fr-seatwho span{color:var(--night);font-size:.78rem}
-.w5 .fr-push{font:600 .86rem/1.3 var(--sans);color:var(--ink);visibility:hidden}
-.w5 .fr-seat.on .fr-push{visibility:visible}
-@media (max-width:760px){.w5 .fr-seats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.w5 .fr-push{font:600 .86rem/1.3 var(--sans);color:var(--muted)}
+.w5 .fr-seat.on .fr-push{color:var(--ink)}
+.w5 .fr-pushline{display:none;margin:0 0 .7rem;font-size:.95rem;color:var(--night);min-height:2.6em}
+@media (max-width:760px){.w5 .fr-seats{grid-template-columns:repeat(4,minmax(0,1fr));gap:.35rem}
+  .w5 .fr-seat{padding:.4rem .3rem;align-items:center;text-align:center}
+  .w5 .fr-seatwho span,.w5 .fr-push{display:none}
+  .w5 .fr-seatwho b{font-size:.8rem}
+  .w5 .fr-pushline{display:block}}
+.w5 .fr-extra{margin-top:1rem;padding-top:.4rem;border-top:1px solid var(--line)}
+.w5 .fr-xctl{margin-top:.8rem}
 .w5 .fr-weekcard{margin-top:1.2rem}
 .w5 .fr-week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.7rem}
 @media (max-width:1100px){.w5 .fr-week{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -4572,6 +4624,7 @@ html{scroll-behavior:auto}
 .w5 .fr-pushq{font:600 1.05rem/1.35 var(--serif);color:var(--ink);margin:.5rem 0}
 .w5 .fr-pusha{margin:0;font-size:.94rem;color:var(--night)}
 .w5 .fr-mini{margin-top:.8rem}
+.w5 .fr-trapwait{margin:1rem 0 0;padding:.6rem .8rem;border:1.5px dashed var(--line);border-radius:12px;color:var(--night);font-size:.92rem}
 .w5 .ck-pre{font:600 .9rem/1.45 var(--mono);background:var(--tint);color:var(--ink);border-radius:10px;padding:.6rem .8rem;margin:0;overflow-x:auto}
 </style>
 </body>
