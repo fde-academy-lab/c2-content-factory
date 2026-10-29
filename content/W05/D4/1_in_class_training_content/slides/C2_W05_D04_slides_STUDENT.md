@@ -84,9 +84,10 @@ value: 88.7% | label: call nobody | note: the do-nothing baseline from Monday
 ```notes
 LIVE, 2 minutes. This is the destination; the topics come first. A teammate grew a decision tree
 with no depth limit on Wednesday's honest feature set and posted 99.6 percent. Ask: would you book
-Anand's one campaign on it? Take two answers, park them. Case 1 reveals the validation number (84.1,
-below the 88.7 baseline); do not say it now. The row's story said 100 and 61; our run on public data
-says 99.6 and 84.1, and we quote our run.
+Anand's one campaign on it? Take two answers, park them. Explorable click: open #story and play
+scenes 1 to 3; take the room's guesses for the exam score aloud and do not press commit or show.
+Case 1 reveals the validation number (84.1, below the 88.7 baseline); do not say it now. The row's
+story said 100 and 61; our run on public data says 99.6 and 84.1, and we quote our run.
 ```
 
 ---
@@ -106,8 +107,8 @@ Cases 1 to 3 then run every topic on the bank's file: notebooks case01, case02, 
 
 ```notes
 LIVE, 1 minute. Read the five topics down the second column once; these are the words to search
-by. Each chapter has one short notebook with the same name. The explorable (depth and brake sliders)
-opens in chapters 1 to 3. Transition: how the five join.
+by. Each chapter has one short notebook with the same name, and one explorable page: #p1 to #p5
+carry the five topics in this order. Transition: how the five join, which is the explorable's #map.
 ```
 
 ---
@@ -238,8 +239,9 @@ which tree learned Kalpa's customers, and which learned these ten people?
 ```notes
 LIVE, 5 minutes. A learning curve is two lines against the amount of training. The memoriser's practice
 line stays at 100 while the exam line crawls: a gap that more papers barely close. The skimmer's two lines
-meet low; the learner's meet high. Explorable click: open the depth and brake explorer, default degree 12,
-read the two errors, and let the room name it: memorising.
+meet low; the learner's meet high. Explorable clicks on #p1: picture 2 opens at 12 bends, training error
+0.50 and held-out 30.17, so let the room name it: memorising. Slide down to 4 bends (2.73 and 1.52) and the
+strip traces the U. Picture 3 builds each student's two curves one past paper at a time.
 ```
 
 ---
@@ -307,9 +309,11 @@ brake made the fit worse where we can see and better where we cannot.
 
 ```notes
 LIVE, 4 minutes. Notebook ch02, the sweep cell. Teaching error only rises as alpha grows; held-out
-error falls to 2.90 at alpha 10 and climbs to 5.70 at 100. Explorable click: back at degree 12, drag
-the brake up and watch validation settle near the degree-3 value. Choose alpha on held-out rows,
-never on the teaching rows, because the teaching error always votes for no brake.
+error falls to 2.90 at alpha 10 and climbs to 5.70 at 100. Explorable clicks on #p2: the same stores at
+12 bends; take the room's prediction, then turn the brake to alpha 0.01 (training 2.42, held-out 1.52,
+as good as 4 bends) and on past alpha 0.3, where both climb. Switch the penalty to L1 and watch weights
+land on exactly zero. Choose alpha on held-out rows, never on the teaching rows, because the teaching
+error always votes for no brake.
 ```
 
 ---
@@ -405,8 +409,9 @@ Ask: which of these would you have put on a slide? Whichever you picked, you pic
 ```notes
 LIVE, 5 minutes. Notebook ch03, the fold grid. Each row is one turn; pink cells sit the exam. Every
 customer is examined exactly once and teaches four times. The mean is the score; the spread is the
-size of the luck. Explorable click: press reshuffle five times and watch the validation number jump
-while the mean of five holds.
+size of the luck. Explorable clicks on #p3: play the five deals first (some shoppers are examined twice,
+three never), then picture 2, the five folds, where every shopper sits the exam once. Flip the scaler
+to all twenty and watch its mean move from 3.81 to 4.10 visits.
 ```
 
 ---
@@ -452,8 +457,8 @@ flowchart LR
 ```notes
 LIVE, 3 minutes. The bank's file is sorted from May 2008 to November 2010. Today's folds shuffle, so
 every number carries the caveat "random folds, mixed periods". Search term for later: time series
-split. Do not run the time split today; Friday owns it. Then mid-session drill 1, 15 minutes: four
-curve pairs on the explorable's strip, the room names each in under a minute.
+split. Do not run the time split today; Friday owns it. Then mid-session drill 1, 15 minutes: the four
+curve pairs in the trainer guide, the room names each in under a minute.
 ```
 
 ---
@@ -652,7 +657,7 @@ scored 0.86 against logistic regression's 0.77, and a rule learner on the same d
 lowers risk", because asthmatics were sent straight to intensive care. The team went forward only
 with models it could read, even at lower AUC. On the 2015 data the readable GA2M sat within 0.02 of
 the black boxes, and the asthma term could be fixed by hand. Ask: what would the neural net have
-done to asthmatic patients?
+done to asthmatic patients? Explorable: #field, the pneumonia tab, flips between the two studies.
 ```
 
 ---
@@ -711,7 +716,7 @@ value: 88.7% | label: call nobody | note: the line to beat
 
 ```notes
 LIVE, 2 minutes. Everyone writes two numbers before running the cell. Ask three learners to read
-theirs aloud.
+theirs aloud, beside the guesses parked at the opening.
 ```
 
 ---
@@ -724,7 +729,9 @@ theirs aloud.
 ```notes
 LIVE, 4 minutes. The trap, shown exactly: 99.6 percent is the number a teammate posts, and a
 Marketing lead who sees it books the campaign. The check that catches it is the validation number
-beside the baseline. The fix is the brake. Land the line: this tree is the memoriser.
+beside the baseline. The fix is the brake. Land the line: this tree is the memoriser. Explorable click:
+back on #story, commit the room's guess and play scene 4, where the 1,313 wrong answers pile up beside
+the 928 that calling nobody gets wrong; #case chapter 6 carries the leaves and the depth U.
 ```
 
 ---
@@ -791,7 +798,8 @@ closed it. Interview line: more data is the cure for variance only when the mode
 signal it lacked. Airbnb, under two minutes: a learned vector per listing sent training quality toward
 perfect while test quality stayed flat, because a listing can be booked at most 365 times a year, so
 each vector had a few hundred labels to learn from. Kalpa's twin: a store-ID column for stores with few
-rows. Source: Haldar and others, arXiv 1810.09591, verified 28 October 2026.
+rows. Source: Haldar and others, arXiv 1810.09591, verified 28 October 2026. Explorable: #field,
+the Airbnb tab, with and without listing IDs.
 ```
 
 ---
@@ -885,6 +893,7 @@ everything that learns goes inside the Pipeline. Google Flu Trends, under two mi
 candidate terms ranked against 1,152 weekly flu counts let high school basketball terms in, because
 basketball season is flu season; a selection run inside folds cut by season would have caught it.
 Source: Lazer and others, Science 2014, Harvard open-access copy, verified 28 October 2026.
+Explorable: #field, the Google Flu Trends tab, with an outbreak out of season.
 ```
 
 ---

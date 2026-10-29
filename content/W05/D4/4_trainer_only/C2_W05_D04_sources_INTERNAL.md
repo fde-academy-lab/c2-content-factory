@@ -8,7 +8,7 @@ INTERNAL. Built on 28 October 2026 for Thursday 5 November 2026. Python 3.13.17,
 |---|---|---|---|---|
 | UCI Bank Marketing, `bank-additional-full.csv` (41,188 rows, 11.27 percent yes) | case01 to case03, guided notebook, deck, practice set, notes | https://archive.ics.uci.edu/dataset/222/bank+marketing (download https://archive.ics.uci.edu/static/public/222/bank+marketing.zip) | CC BY 4.0, read on the page, verified 28 October 2026 | verified 28 October 2026 |
 | German Credit, OpenML credit-g (1,000 rows, 30 percent bad), the documented 5:1 cost matrix | practice lab and its solutions, practice set problem 10, interview bank Q22 | https://www.openml.org/api/v1/json/data/31 (record: credit-g, version 1, licence "Public", uploaded 2014-04-06) | "Public" on OpenML; the UCI copy is CC BY 4.0 (W05_datasets.md) | verified 28 October 2026 |
-| Invented teaching tables (three students, ten Kalpa customers, twelve footfall weeks, twenty shoppers, twelve loyalty shoppers, two invented models' folds, thirty invented stores in the explorable) | ch01 to ch05, the explorable, practice set problems 1, 2, 3, 5, 7 | typed in the cells and the page, labelled invented | ours | not applicable |
+| Invented teaching tables (three students, ten Kalpa customers, twelve footfall weeks, twenty shoppers, twelve loyalty shoppers, two invented models' folds, twenty-two invented stores in the explorable, which replaced the earlier page's thirty) | ch01 to ch05, the explorable, practice set problems 1, 2, 3, 5, 7 | typed in the cells and the page, labelled invented | ours | not applicable |
 
 Every notebook downloads its file in code with the contract's cached loader into `~/.cache/c2_datasets`, never into the repository.
 
@@ -84,3 +84,46 @@ Every image in the deck, the practice set, the study notes and the cheat sheet i
 | companion-builder, design-taste-frontend | one question, two sliders and one button, a wrong default, a prediction before the reveal, linked picture and numbers |
 | concept-packaging | the memorising student as the sticky handle for variance |
 | humanizer, llm-tic-scrubber | the read of every prose file for staged openers, triads and stock phrasing |
+
+## The explorer, rebuilt on 29 October 2026
+
+Rebuilt in place as the day companion of decision `w5-explorer-companion`, on branch `w05-d4-explorer`, with the Week 5 kit (`scripts/companion/w5kit.js` and `w5kit.css`, inlined by `scripts/build_companion.py`) and the briefs `docs/detailing/W05_briefs/explorers/common.md` and `D4.md`. Eleven routes: `#story`, `#map`, `#p1` to `#p5`, `#case`, `#field`, `#interview`, `#check`. It replaces decision 4 above.
+
+### Data
+
+| Number on the page | Where it comes from |
+|---|---|
+| The story's 16,476 dots: 8,238 validation customers right or wrong under the unlimited tree, and 8,238 of the 24,712 training customers drawn with seed 5 (34 wrong) | `C2_W05_D04_explorer_data_INTERNAL.py`, which reruns case01's pipeline and writes `C2_W05_D04_explorer_data_INTERNAL.json`, 30 KB |
+| 99.6 and 84.1 percent (24,623 of 24,712 and 6,925 of 8,238), 88.7 (7,310), depth 37, 3,662 leaves, 1,709 and 2,323; the fifteen-depth curve; the three trees' learning curves at 988 to 19,769 rows | the same script, against case01 |
+| Five deals 0.786 to 0.790; folds 0.7709 to 0.7983, mean 0.786, spread 0.014; 0.78648 against 0.78645; the C sweep; L1's 2 to 45 columns | the same script, against case02 |
+| The race's folds and means, the paired leads +0.007, +0.007, +0.003, +0.014, +0.003, the bills Rs 2,78,560 to Rs 2,92,400, 465 to 476 buyers in the top 1,000, the extra buyers 0, 133, 100, 92, 125, the low end 42.45 buyers and Rs 50,939 | the same script, against case03; the extra cost of Rs 75,000 is case03's invented figure |
+| The twenty shoppers' deals and folds (60, 60, 80, 40, 60; 100, 0, 75, 25, 100), the teaching means (3.81 in turn 1) and 4.10 | the script's invented block reruns notebook ch03's calls |
+| The twelve shoppers' tree, the five forest trees with their bootstrap draws, the booster's four stumps and scores, k-means from shoppers C, G and I, and the 3, 280 and 200 leaves | the script's invented block reruns notebook ch04's calls; each forest tree's draw is scikit-learn's own (`_generate_sample_indices`), checked against the tree's root count |
+| The three students and their learning curves | typed in the page exactly as notebook ch01 types them |
+| The twenty-two stores of `#p1` and `#p2`, the ridge and lasso fits, and the two-weight picture | typed and computed in the page; the page's 0.50 and 30.17 at twelve bends, 2.73 and 1.52 at four, and 2.42 and 1.52 at alpha 0.01 were checked against numpy on this machine, and the lasso path against a Python coordinate descent |
+| Airbnb, Caruana and others, Google Flu Trends | `docs/detailing/W05_research/W05_cases.md`; each PDF answered on 29 October 2026 and the quoted lines were re-read in it, so the page's source lines carry that date |
+
+The script stops with an error before writing any JSON unless all 38 numbers it checks equal what the notebooks print; all 38 passed on this machine.
+
+### Decisions
+
+1. **New invented stores for `#p1` and `#p2`.** The earlier page's thirty stores gave a shallow U at its default split (held-out error 9.0 at twelve bends against 7.0 at four). Twenty-two stores, seven held out, give a U a room can read: twelve bends thread the teaching stores at 0.50 and dive to 30.17 where three held-out stores sit, four bends reach 1.52, and a brake of alpha 0.01 at twelve bends returns to 1.52. The depth and brake sliders of the earlier page are kept as the cores of `#p1` and `#p2`.
+2. **The brake is labelled twice.** The curve is a ridge regression whose knob is alpha, and the readout prints the C that LogisticRegression would write for it (C = 1 / alpha), so the C trap of slide S16 is on the page.
+3. **The L1 diamond and the L2 circle are drawn as a picture.** D4.md asks for them; the trainer guide's "do not teach today" keeps the derivation for the faculty block, so the page shows where the ring touches each shape and names the zero, and derives nothing. The trainer guide's row now says so. The two-weight bowl is invented and its brake is labelled lambda, apart from the curve's alpha.
+4. **Training is violet, held out is amber.** The notebooks draw held-out error in rose; the kit keeps rose for wrong answers beside a cross, so the page uses its second series colour for every held-out, validation or exam score.
+5. **The story reveals 84.1.** D4.md puts the reveal on `#story`; the deck holds 84.1 until case 1. The run table opens `#story` at the opening for scenes 1 to 3 with the guesses taken aloud and nothing committed, and commits and plays scene 4 at S34. The deck's notes for S4, S33 and S34 say so.
+6. **Equal piles in the story.** The training pile is a seeded third of the 24,712, so both piles hold 8,238 dots and the 34 wrong answers on practice sit beside the 1,313 on the exam at the same density. Wrong dots are drawn larger in the grids to be seen, and true to size once they are piled, so the two piles and the outline of calling nobody's 928 compare by height.
+7. **`#p4` names the shoppers A to L** so the captions can say which shopper the booster's second round fixes (B) and which one k-means moves (F).
+8. **`#p5` plays Thursday's real race, and the case page's chapter 8 judges four models three ways** (AUC on folds, the bill at the cost line, buyers in the top 1,000), so the two tests are not repeated: the case adds the forest, the tuned tree and the finding that the highest AUC does not buy the smallest bill at the cost line.
+9. **The Airbnb and Google Flu Trends charts are drawn with invented numbers in the shape the sources describe**, labelled invented on the stage; neither paper's plotted values are copied.
+10. **Answers stay hidden until the reveal**: the exam pile and the exam bars, the students' exam scores, the errors at alpha 0.01, the deal scores, the forest's 280 leaves, the decision at Rs 75,000, the single-customer leaf bar, the lowest validation error, the folds' AUCs, the four bills and the Airbnb test curve show a question mark, a dashed outline or nothing until the learner commits or reveals.
+11. **Cut**: the earlier page's reshuffle button and five-split table (the five folds of `#p3` and case 2's deals and folds carry that idea on the notebook's own numbers), its blurred numbers card (the kit's prediction card replaces it), and the time-ordered folds, which stay Friday's reveal.
+12. **Slides.** No slide pictured the earlier page; the notes of S4, S5, S11, S15, S20, S22, S30, S33, S34, S38 and S43 were rewritten for the new clicks and the deck was rebuilt with `scripts/build_deck.py` (`PUPPETEER_EXECUTABLE_PATH=/opt/pw-browsers/chromium`, as decision 9 records); only those eleven notes changed.
+
+### Proof
+
+- `python3 scripts/build_companion.py` inlines the kit and the data; `--check` passes.
+- `python3 scripts/html_sweep.py` walks all eleven routes with no inert control and no console error.
+- `python3 scripts/explorer_shots.py` at 1366 and 390 wide, with `--end`, plus a session script that opened every tab and every picture toggle and set the states that matter (the shapes with the brake on, the deals played out, the booster and k-means at their last frames, a learning curve fully built); every picture was looked at, and the overlaps, clipped labels, an undefined colour and small type it found were fixed.
+- This container's Chromium sits at `/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`, which `find_chromium()` in `scripts/html_sweep.py` does not search, so the sweep and the screenshots ran with `PLAYWRIGHT_BROWSERS_PATH` pointing at a scratch folder that links the binary under `chrome-linux/`.
+- Skills used: companion-builder's Rules (every control visible, no storage or network, instant scrolling, the checked date on each link's line), design-taste-frontend (one accent locked, no three equal cards, a grid with no empty cell, so the forest's sixth cell is its tally), dataviz (one axis per chart, text in ink, a legend for two or more series, a numbers table behind the charts that carry one).
