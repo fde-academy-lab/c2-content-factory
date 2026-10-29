@@ -14,26 +14,26 @@ Block one is 180 trainer minutes. Block two gives the trainer 60 minutes, then t
 
 | Block | Min | Slides | Open | What must land | Cut if late |
 |---|---|---|---|---|---|
-| Opening | 10 | S1 to S6 | deck | the ticket: 99.6, 84.1, 88.7 | S2 to 30 seconds |
-| Ch 1 Memorising against learning | 25 | SEC 1, S7 to S12 | ch01, explorable at degree 12 | gap first = variance; both low = bias | S11 to one sentence |
-| Ch 2 Putting brakes on the model | 20 | SEC 2, S13 to S17 | ch02, explorable brake slider | a brake trades teaching fit for held-out stability; small C = strong brake | S17 table |
-| Ch 3 Five exams instead of one | 20 | SEC 3, S18 to S22 | ch03, explorable reshuffle | mean with spread; every learning step inside the folds | S22 to one sentence |
+| Opening | 10 | S1 to S6 | deck; explorable `#story` scenes 1 to 3 (guesses taken, no reveal), `#map` at S6 | the ticket: 99.6, 84.1, 88.7 | S2 to 30 seconds |
+| Ch 1 Memorising against learning | 25 | SEC 1, S7 to S12 | ch01; explorable `#p1` | gap first = variance; both low = bias | S11 to one sentence |
+| Ch 2 Putting brakes on the model | 20 | SEC 2, S13 to S17 | ch02; explorable `#p2` | a brake trades teaching fit for held-out stability; small C = strong brake | S17 table |
+| Ch 3 Five exams instead of one | 20 | SEC 3, S18 to S22 | ch03; explorable `#p3` | mean with spread; every learning step inside the folds | S22 to one sentence |
 | Drill 1 | 15 | after S22 | the four pairs in section 5 | four diagnoses in under a minute each | to 10 minutes |
 | Break | 10 | | kernels shut | | |
-| Ch 4 Trees, forests and groups | 15 | SEC 4, S23 to S26 | ch04 | forest averages, booster corrects, both cost leaves to explain | S25 clustering, cut first |
-| Ch 5 Why the boring model often ships | 20 | SEC 5, S27 to S31 | ch05 | two tests: real gap, worth its cost | Caruana to 2 minutes |
-| Case 1 The tree that aced practice | 30 | SEC 6, S32 to S38 | case01 | below the baseline; the U; more rows did not help, the brake did | S35 leaves |
+| Ch 4 Trees, forests and groups | 15 | SEC 4, S23 to S26 | ch04; explorable `#p4` | forest averages, booster corrects, both cost leaves to explain | S25 clustering, cut first |
+| Ch 5 Why the boring model often ships | 20 | SEC 5, S27 to S31 | ch05; explorable `#p5`, then `#field` pneumonia at S30 | two tests: real gap, worth its cost | Caruana to 2 minutes |
+| Case 1 The tree that aced practice | 30 | SEC 6, S32 to S38 | case01; explorable `#story` reveal at S34, `#case` chapter 6, `#field` Airbnb at S38 | below the baseline; the U; more rows did not help, the brake did | S35 leaves |
 | Guided | 15 | S39 | guided notebook | A variance, B bias, C about right; one CV run | the k = 3 and 10 reruns |
-| Case 2 Five exams on the bank's file | 20 | SEC 7, S40 to S45 | case02 | spread; Pipeline; the brake barely matters on 24,712 rows | S45 L1 |
-| Case 3 The three-way race, with drill 2 | 25 | SEC 8, S46 to S52 | case03 | test 1 passes, test 2 fails; the provisional call | S49 table; drill 2 to two gaps |
-| Close | 15 | S53 to S55 | Kahoot | the four anchors; the quiz | interview corner to two anchors |
+| Case 2 Five exams on the bank's file | 20 | SEC 7, S40 to S45 | case02; explorable `#case` chapter 7, `#field` Google Flu Trends at S43 | spread; Pipeline; the brake barely matters on 24,712 rows | S45 L1 |
+| Case 3 The three-way race, with drill 2 | 25 | SEC 8, S46 to S52 | case03; explorable `#case` chapter 8, the six seats on `#field` at S52 | test 1 passes, test 2 fails; the provisional call | S49 table; drill 2 to two gaps |
+| Close | 15 | S53 to S55 | explorable `#interview`, then Kahoot | the four anchors; the quiz | interview corner to two anchors |
 
 ## 3. Taught before, teach today, do not teach today
 
 | Taught before | Teach today | Do not teach today |
 |---|---|---|
 | Mon: split, baseline 88.7, logistic | overfitting, bias and variance read from two curves | the bias-variance decomposition (faculty W5-4, tentative) |
-| Tue: matrix, threshold 0.032, budget top k | the brake: L1, L2, C, max_depth, min_samples_leaf | why L1 lands on zero, as geometry (faculty, tentative) |
+| Tue: matrix, threshold 0.032, budget top k | the brake: L1, L2, C, max_depth, min_samples_leaf; `#p2` shows the L1 diamond and the L2 circle as a picture | why L1 lands on zero, derived as geometry (faculty, tentative) |
 | Wed: duration out, honest feature set, Pipeline | cross-validation with the spread, fitted inside the folds | ensemble internals, boosting mathematics |
 | W1 Thu: chance and spread | trees, forests, boosting, k-means used and compared | search frameworks (GridSearchCV, Optuna) |
 | W2: groupby (the lab) | the two tests and the rupee break-even | the time split and the weakest segment (Friday) |
@@ -53,14 +53,14 @@ Block one is 180 trainer minutes. Block two gives the trainer 60 minutes, then t
 
 | Chapter | Draw first | Ask before showing | Stage this misconception | Wrong number, shown exactly, and its fix | Click | Interview line |
 |---|---|---|---|---|---|---|
-| 1 | two bars per student, practice and exam | who tops the new exam? | a perfect practice score means ready | the memoriser's 100 against 61 (invented); fix: read the exam score | explorable at degree 12: training 0, validation large | overfitting is a gap you measure |
-| 2 | the seven-bend curve through nine dots | will held-out error be bigger or smaller? | regularisation improves accuracy | no brake: 0.95 teaching, 5.28 held out; fix: alpha 10 gives 2.90 | brake slider at degree 12 | a brake trades a little bias for less variance |
-| 3 | a 5 by 20 grid of folds | how far apart will five deals land? | one validation score is the score | deals of five shoppers from 40 to 80 percent; fix: five folds, mean with spread | reshuffle five times | one split carries its luck |
-| 4 | a two-question tree | which question comes first? | a forest cannot overfit | 100 trees mean 280 leaves to read; fix: count what you must explain | none | a forest lowers variance and still must beat the simple model |
-| 5 | two tests as a flow | does the higher mean ship? | the highest score ships | a real 0.008 lead worth less than its cost; fix: the low end against the cost | none | I name the gap in rupees at which I would switch |
-| Case 1 | the U of validation error | the unlimited tree's two scores | 99.6 means ready | 99.6 against 84.1, below 88.7; fix: depth 3 to 6 | case01 step 5 | the training score is a memory test |
-| Case 2 | five deals against five folds | what did scaling first cost? | scaling before the split always inflates a lot | 0.00003 here; fix: the habit, because target-aware steps leak more | case02 step 3 | everything that learns sits inside the folds |
-| Case 3 | the paired fold lines | which model ships? | a win on every fold settles it | 0.007 AUC is real and worth Rs 51,000 at the low end; fix: test 2 | case03 step 6, change EXTRA_COST | a real lead and a worthwhile lead are two tests |
+| 1 | two bars per student, practice and exam | who tops the new exam? | a perfect practice score means ready | the memoriser's 100 against 61 (invented); fix: read the exam score | `#p1`: commit the prediction on the students, then picture 2 at 12 bends (training 0.50, held-out 30.17) and slide to 4 bends (2.73 and 1.52) | overfitting is a gap you measure |
+| 2 | the seven-bend curve through nine dots | will held-out error be bigger or smaller? | regularisation improves accuracy | no brake: 0.95 teaching, 5.28 held out; fix: alpha 10 gives 2.90 | `#p2`: at 12 bends turn the brake to alpha 0.01 (training 2.42, held-out 1.52), switch to L1 to watch weights hit zero, then picture 2 for the corner | a brake trades a little bias for less variance |
+| 3 | a 5 by 20 grid of folds | how far apart will five deals land? | one validation score is the score | deals of five shoppers from 40 to 80 percent; fix: five folds, mean with spread | `#p3`: play the five deals, then the five folds, and flip the scaler to all twenty (mean 3.81 becomes 4.10) | one split carries its luck |
+| 4 | a two-question tree | which question comes first? | a forest cannot overfit | 100 trees mean 280 leaves to read; fix: count what you must explain | `#p4`: the tree, the forest's five votes, the booster's rounds, k-means (cut k-means first) | a forest lowers variance and still must beat the simple model |
+| 5 | two tests as a flow | does the higher mean ship? | the highest score ships | a real 0.008 lead worth less than its cost; fix: the low end against the cost | `#p5`: step the four pictures, then drag the extra cost below Rs 50,939 and watch the call flip | I name the gap in rupees at which I would switch |
+| Case 1 | the U of validation error | the unlimited tree's two scores | 99.6 means ready | 99.6 against 84.1, below 88.7; fix: depth 3 to 6 | case01 step 5; `#story` reveal, `#case` chapter 6 | the training score is a memory test |
+| Case 2 | five deals against five folds | what did scaling first cost? | scaling before the split always inflates a lot | 0.00003 here; fix: the habit, because target-aware steps leak more | case02 step 3; `#case` chapter 7 | everything that learns sits inside the folds |
+| Case 3 | the paired fold lines | which model ships? | a win on every fold settles it | 0.007 AUC is real and worth Rs 51,000 at the low end; fix: test 2 | case03 step 6, change EXTRA_COST; `#case` chapter 8 | a real lead and a worthwhile lead are two tests |
 
 **Drill 1, four curve pairs (from today's runs; the room names each in under a minute).**
 
@@ -130,7 +130,7 @@ The solutions are in `C2_W05_D04_practice_lab_solutions_TRAINER.ipynb`, executed
 
 - **Downloads or kernels fail for part of the room**: pair learners, project the executed notebooks from GitHub (every cell carries its output), and open the explorable as a local file; it needs no network.
 - **The bank download is blocked**: the UCI zip is about 1 MB; one TA laptop downloads it and shares `~/.cache/c2_datasets/bank-additional-full.csv` on a pen drive.
-- **The faculty block does not run** (it is tentative): fill the 120 minutes with (1) the row's unguided exercise in full, each learner re-running case03 with one column removed and noting how the race moves (40 minutes, the after-class BUILD task done in class); (2) the explorable's sandbox in pairs: find the degree and brake that minimise validation error over five reshuffles (20 minutes); (3) practice set problems 8 to 10 in groups of three, each group presenting one (40 minutes); (4) interview rehearsal on the [D] anchor in pairs, two rounds (20 minutes).
+- **The faculty block does not run** (it is tentative): fill the 120 minutes with (1) the row's unguided exercise in full, each learner re-running case03 with one column removed and noting how the race moves (40 minutes, the after-class BUILD task done in class); (2) the explorable in pairs: on `#p1` and `#p2`, find the number of bends and the brake that minimise held-out error, then explain the U and the L1 corner to the next pair (20 minutes); (3) practice set problems 8 to 10 in groups of three, each group presenting one (40 minutes); (4) interview rehearsal on the [D] anchor in pairs, two rounds (20 minutes).
 
 ## 10. Notes the room does not see
 
