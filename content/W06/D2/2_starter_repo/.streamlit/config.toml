@@ -1,0 +1,4 @@
+# Streamlit's settings for this repository's demo.
+[browser]
+# The demo shows customer data, so it sends no usage statistics anywhere.
+gatherUsageStats = false
