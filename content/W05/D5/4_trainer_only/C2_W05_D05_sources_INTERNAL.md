@@ -68,4 +68,38 @@ All 13 PNGs in `1_in_class_training_content/slides/img/` and every chart in the 
 
 - `python3 scripts/verify.py content/W05/D5` passes: 41 files in the Week 5 layout, 11 notebooks executed with passing checks, the explorable swept (7 controls, 0 inert, 0 console errors), the deck markdown and the built deck checked (60 slides, 0 overflowing boxes).
 - `tic_scan.py` (llm-tic-scrubber) ran clean on the README, the deck, the practice set, the three study files and the trainer guide.
-- One sequencing fix after the first push: the explorable shows the bank's real bill and months, so it opens in case chapters 6 and 7, after the room has predicted, never in chapters 2 and 3.
+- One sequencing fix after the first push: the first explorable showed the bank's real bill and months, so it opened in case chapters 6 and 7, after the room had predicted, never in chapters 2 and 3. The rebuilt explorer below keeps that order: its chapter pages run on invented numbers, and the bank's months and three bills stay on its case page.
+
+## The explorer, rebuilt on the Week 5 kit (29 October 2026)
+
+Built on branch `w05-d5-explorer` to `docs/detailing/W05_briefs/explorers/common.md` and `D5.md`, with `scripts/companion/w5kit.*` from main inlined by `scripts/build_companion.py`. The page is `1_in_class_training_content/demos/C2_W05_D05_error_bill_explorer_STUDENT.html`; its numbers come from `C2_W05_D05_explorer_data_INTERNAL.py`, which reruns case01 to case03 with the week's cached loader and stops on any number that differs from the notebooks, and writes `C2_W05_D05_explorer_data_INTERNAL.json`.
+
+### Company facts on the page
+
+| Scene | Fact as printed | Source | Checked |
+|---|---|---|---|
+| Zillow Offers | $304.4 million Q3 2021 write-down; $240 million to $265 million more expected in Q4; about 25 percent of the workforce; prices forecast three to six months ahead; unable to forecast "in both directions" | https://www.sec.gov/Archives/edgar/data/1617640/000161764021000085/z-20211102.htm (checked 29 October 2026, HTTP 200); the letter's wording as recorded in `W05_cases.md` | 29 Oct 2026 |
+| Instacart | 93 percent before, 61 percent in March 2020, about 85 percent by June | https://fortune.com/2020/06/09/instacart-coronavirus-artificial-intelligence (checked 29 October 2026, HTTP 200) | 29 Oct 2026 |
+| Instacart | thresholds adjusted without training new models; models respond sluggishly | https://company.instacart.com/tech-innovation/how-instacarts-item-availability-evolved-over-the-pandemic (checked 29 October 2026, HTTP 200) | 29 Oct 2026 |
+| Google Flu Trends | the revised model missed high 100 of 108 weeks from August 2011; more than double the CDC's share at its worst | https://dash.harvard.edu/server/api/core/bitstreams/7312037d-0e0d-6bd4-e053-0100007fdf3b/content (checked 29 October 2026, HTTP 200, PDF) | 29 Oct 2026 |
+| Booking.com | 23 comparisons of 46 models; Pearson -0.1 with 90 percent interval -0.45 to 0.27; Spearman -0.18 with -0.5 to 0.19 | https://blog.kevinhu.me/2021/04/25/25-Paper-Reading-Booking.com-Experiences/bernardi2019.pdf (checked 29 October 2026, HTTP 200, PDF), the mirror `W05_cases.md` read; the DOI page refuses this container | 29 Oct 2026 |
+
+### Decisions
+
+1. **Every route D5.md lists is built**: `#story`, `#map`, `#p1` to `#p5`, `#case` with chapters 6 to 8, `#field`, `#interview` and `#check`.
+2. **The data script exports the tree's and boosting's scores** beside logistic's, so chapter 6 draws all three bills, the gains to 1,000 calls and the paired bootstrap from the notebooks' own numbers.
+3. **Rupees print in Indian grouping** (Rs 2,81,680) through one page helper, because the kit's formatter groups in thousands and the deck, the guide and the notes write lakh.
+4. **Page 2's bank view carries only Thursday's logistic list on Tuesday's prices**, which the room met on Tuesday; a note reconciles its Rs 2,81,680 with Tuesday's Rs 2,79,000, which came from Monday's columns. The three models and their tie wait for case chapter 6.
+5. **Page 3 runs on the invented gym only**; the bank's months wait for case chapter 7, so the sag is never shown before its prediction.
+6. **The monitor opens at a 50-point ceiling.** The first page's claim that 45 points never fires was false on this data (it fires in April 2010), so the trainer guide and S35's notes were rewritten for the new clicks.
+7. **The weakest segment opens at the notebook's rule of 100 buyers** (blue-collar, 0.707); the slider shows entrepreneur's 0.655 on 26 buyers when the bar is lowered.
+8. **Booking.com's 23 points are not drawn**: the paper prints the correlations, not the points, so the page draws the learner's line against the measured slope and its interval.
+9. **Each case trap and the two answer buttons on page 4 and chapter 8 stay shut until the chapter's prediction** is committed or revealed; the kit's held rule card does the same for the chapter pages.
+10. **The map carries the whole week's picture**, five panels, with Friday's filled when chapter 7's prediction is revealed.
+11. **Cut**: the campaign-size control of the first page (20,000 customers), since no notebook prints those numbers; the bank months on page 3; the Instacart scene's second metric, since the post gives no number for it.
+12. **Deck**: no slide pictured the old page, so only the notes of S28 and S35 were rewritten and the deck rebuilt with `scripts/build_deck.py`.
+
+### Review
+
+- `python3 scripts/html_sweep.py` on the page: 11 routes walked, 366 controls clicked, 0 inert, 0 console errors.
+- `python3 scripts/explorer_shots.py --end --tabs`: 76 pictures at 1366 and 390 wide, 0 console errors; every picture was read before and after its reveal, and the overlaps, clipped labels and early answers they showed were fixed before the push.
