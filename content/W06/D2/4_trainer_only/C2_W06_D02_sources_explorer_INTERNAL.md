@@ -72,6 +72,8 @@ three data links were fetched again by this session's data script the same day.
   list on a phone needs scrolling while dragging, so the arrow buttons are the easier route there.
 - A field scene's stage title is one string for both views of a toggle, so the Stripe scene's title
   names both views.
+- With thirteen routes, the phone's progress rail wraps its last dot onto a second line under the
+  Previous and Next buttons; it stays readable, and a smaller dot or gap in `w5kit.css` would fit it.
 
 ## Skills used
 

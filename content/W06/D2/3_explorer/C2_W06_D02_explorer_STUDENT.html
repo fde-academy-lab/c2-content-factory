@@ -3288,7 +3288,7 @@ html{scroll-behavior:auto}
         });
         T(svg, Math.min(Math.max(lx, x0 + 2), x1), bottom + fs * 1.5, "list built, day " + day, { anchor: lx > w * 0.6 ? "end" : "start", weight: 700, halo: true });
         if (Math.abs(due - lx) > fs * 9) T(svg, due + 6, bottom + fs * 1.5, "bill due", { anchor: "start", fill: "#A3214B", weight: 700, halo: true });
-        if (!rv) T(svg, x1, top - 4, phone ? "days hidden: commit first" : "Each column's day stays hidden until you commit", { anchor: "end", fill: VIO, weight: 700, halo: true });
+        if (!rv && !phone) T(svg, labW, ay + 5, "Days hidden until you commit", { anchor: "end", fill: VIO, weight: 700 });
       }
       function write() {
         var k = P1_COLS.filter(known).length, left = 20 - day, rv = seen(api.predict && api.predict.state);
@@ -3312,7 +3312,7 @@ html{scroll-behavior:auto}
   var BOXES = ["Data", "Features", "Train", "Evaluate", "Score", "Serve", "Monitor"];
   var REQ = {
     fr: { label: "Functional", short: "FR", ex: "Every customer on the list comes with the main reason a caller can say.", boxes: [4, 5],
-      changes: "The score box must hand back a reason beside each probability, so the model has to be one whose pull on each customer can be read.", test: "Open ten listed customers: each shows one reason in plain words." },
+      changes: "The score box must hand back a reason beside each probability, so the model has to be one whose pull on each customer can be read.", test: "Open ten listed customers: each shows one reason a caller can read out." },
     nfr: { label: "Non-functional", short: "NFR", ex: "The full list is ready within one hour of the month's data landing.", boxes: [4, 5],
       changes: "Scoring becomes a monthly batch job with a time budget, so a model that takes six hours to score fails before anyone reads its AUC.", test: "Time the whole batch on one month of data." },
     con: { label: "Constraint", short: "Constraint", ex: "The desk can make 300 calls a month.", boxes: [3, 4],
@@ -4334,10 +4334,10 @@ html{scroll-behavior:auto}
       { kind: "client-facing", company: "a regulator", question: "The regulator asks why applicant 4,812 was declined. What does your system print?",
         clarify: { options: ["Which decision is being explained, and to whom: the applicant, the regulator or both?", "Can we share the model's code instead?", "How accurate does the explanation need to be?"], best: 0,
           why: "An applicant needs plain reasons and a route to appeal; a regulator also needs the record of how they were produced." },
-        steps: ["Store the reasons with every score when it is made", "Tie each reason to a factor the model actually used", "Print the main reasons in plain words, four at most", "Give the route to appeal and its time limit"],
+        steps: ["Store the reasons with every score when it is made", "Tie each reason to a factor the model actually used", "Print the main reasons as a customer would read them, four at most", "Give the route to appeal and its time limit"],
         answer: { options: ["Print the score and explain that the model is too complex", "Print the main reasons, tied to factors the model used, with the route to appeal", "Send the model's full list of feature importances"], best: 1,
           why: "The question is about one applicant, so the answer is that applicant's reasons, stored at decision time." },
-        model: "The system prints what it stored when the decision was made: the score, the model version and the main reasons in plain words, each tied to a factor the model actually scored. US Regulation B asks for specific principal reasons, says that failing an internal score is not a reason, and that more than four is not likely to help. In India, RBI has asked since 2007 that the main reasons for rejecting any loan application, credit cards included, be given in writing. So reasons are a stage 2 requirement, and a model that cannot produce them does not ship.",
+        model: "The system prints what it stored when the decision was made: the score, the model version and the main reasons, written for the applicant, each tied to a factor the model actually scored. US Regulation B asks for specific principal reasons, says that failing an internal score is not a reason, and that more than four is not likely to help. In India, RBI has asked since 2007 that the main reasons for rejecting any loan application, credit cards included, be given in writing. So reasons are a stage 2 requirement, and a model that cannot produce them does not ship.",
         followups: ["Your boosted model is more accurate but its reasons are less stable. Which do you ship?", "Two applicants get the same reason and different decisions. What do you check?"],
         wrong: [{ text: "The model is a black box, so we cannot say.", why: "In credit a reason is a requirement: Regulation B and RBI's 2007 circular both ask for one, so this model fails stage 2." },
           { text: "Here are the model's feature importances.", why: "Global importances describe the model, never one applicant; the regulator asked about applicant 4,812." }] },
@@ -4370,7 +4370,7 @@ html{scroll-behavior:auto}
     lede: "Eight checks in four kinds: a number, a pick, an order and a sort. The score at the top counts as you go. Below them, the ladder lit and the week's rhythm.",
     items: [
       { type: "number", q: "A call costs **1 unit** and a missed leaver **4 units**. Above what score should the desk call? Two decimals.", answer: 0.2, tolerance: 0.005, unit: "",
-        why: "Call when p × 4 > (1 − p) × 1, so p > 1 / (1 + 4) = 0.20. At a ratio of 5 the line drops to 1 / 6, about 0.17: the more a miss costs, the more people you call." },
+        why: "Call when p × 4 > (1 − p) × 1, so p > 1 / (1 + 4) = 0.20. At a ratio of 9 the line drops to 1 / 10 = 0.10: the more a miss costs, the more people you call." },
       { type: "order", q: "Put the eight stages of the build ladder in order.", items: ["The business, black box", "The frame", "Requirements", "Options A and B", "The POC and its error bill", "The architecture, HLD to LLD", "The MVP slice", "Present and defend"],
         why: "Money and the decision first, then the limits, then two ways tested honestly, then the boxes, the usable slice and the defence. Each stage narrows the next." },
       { type: "bins", q: "The list is built on **day 1**. Which columns may the model read, and which leak?", bins: ["May read", "Leaks"], cards: [
