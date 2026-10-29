@@ -2815,9 +2815,14 @@ html{scroll-behavior:auto}
     if (line) out.push(line);
     return out;
   }
+  /* A cloud label lays out each piece of rich text as its own flex item, so a sentence goes in as one span. */
+  function one(text) { return [h("span", { rich: text })]; }
   function clickOption(toggle, k) { var b = toggle.el.querySelectorAll(".w5-seg button")[k]; if (b && b.getAttribute("aria-pressed") !== "true") b.click(); }
   function lerp(a, b, t) { return a + (b - a) * t; }
   var LILAC = "#9C88F0";
+  /* Each stage registers here what to redraw when its prediction is revealed, by a click or by the kit. */
+  var HOOK = {};
+  function onRev(id) { return function () { if (HOOK[id]) HOOK[id](); }; }
 
   var WEEK = { today: 0, days: [
     { name: "Monday", q: "Should we even build a model, and what must it beat?" },
@@ -2846,7 +2851,7 @@ html{scroll-behavior:auto}
     week: WEEK,
     readout: true, readoutTitle: "What this scene counts",
     scenes: [
-      { caption: "The week's picture, empty. Left of the violet cut is **what is known**; right of it is **the answer**, which only exists after the call." },
+      { caption: "The week's picture. Left of the violet cut is **what is known**; right of it is **the answer**, which only exists once the call ends. The call records wait to be placed in time." },
       { caption: "**41,188 calls**, May 2008 to November 2010, land left of the cut in time order. Each column is one month; the gaps are months with no calls." },
       { caption: "**4,640 of them ended in a yes**, lit in violet at the foot of each month: 11.27 percent, about one call in nine." },
       { caption: "The bank's ask for the next campaign: **whom should the agents call first?** Each new client's yes or no sits right of the cut, unknown until the call ends." },
@@ -2857,7 +2862,7 @@ html{scroll-behavior:auto}
     setup: function (api) {
       var frame = -1;
       api.cloud = api.cloud({ n: SN, height: 330, phoneHeight: 330, label: "41,188 bank calls, one dot for every ten, in month columns",
-        palette: { no: "#BDB7DD", yes: "#5B3FD6", faded: "#E4E1F1", right: "#1F8A5B", miss: "#D63A6A" },
+        palette: { no: "#BDB7DD", yes: "#5B3FD6", faded: "#E4E1F1", right: "#7CC39E", miss: "#D63A6A" },
         color: function () { return "no"; }, place: function (w, hh, out) { return pile(w, hh, out); } });
       function geo(w, hh) {
         var phone = w < 520, top = phone ? 50 : 36, bottom = 26, kw = Math.round(w * (phone ? 0.62 : 0.66)), gap = phone ? 14 : 22;
@@ -2881,9 +2886,9 @@ html{scroll-behavior:auto}
         cl.box("za", g.ax, g.top - 6, g.aw, g.ph + 10, "d1-zone ans");
         cl.box("cut", g.cut - 2, g.top - 10, 4, g.ph + 16, "d1-cut");
         var kal = i === 4;
-        cl.label("tk", 0, 0, kal ? (g.phone ? "**Known**: past orders" : "**What is known**: Kalpa members' past orders") : (g.phone ? "**Known**: past calls" : "**What is known**: past calls"), "", g.kw);
-        cl.label("ta", g.ax, 0, kal ? (g.phone ? "**Answer**: buys again?" : "**The answer**: buys again in 90 days?") : (g.phone ? "**Answer**: yes or no" : "**The answer**: yes or no"), "", g.aw);
-        cl.label("tc", g.ax + 6, hh - g.bottom - 30, kal ? "**The cut**: the nudge morning" : "**The cut**: the morning of the next call", "", g.aw - 10);
+        cl.label("tk", 0, 0, one(kal ? (g.phone ? "**Known**: past orders" : "**What is known**: Kalpa members' past orders") : (g.phone ? "**Known**: past calls" : "**What is known**: past calls")), "", g.kw);
+        cl.label("ta", g.ax, 0, one(kal ? (g.phone ? "**Answer**: buys again?" : "**The answer**: buys again in 90 days?") : (g.phone ? "**Answer**: yes or no" : "**The answer**: yes or no")), "", g.aw);
+        var cutLab = cl.label("tc", g.ax + 4, g.top, one(kal ? "**The cut**: the nudge morning" : (g.phone ? "**The cut**: the next call's morning" : "**The cut**: the morning of the next call")), "", g.aw - 8);
         if (i >= 1) {
           cl.label("m0", Math.max(0, xOfMonth(0, g) - 6), hh - 20, g.phone ? "2008" : "May 2008");
           cl.label("m1", xOfMonth(8, g) - 6, hh - 20, "2009");
@@ -2898,16 +2903,17 @@ html{scroll-behavior:auto}
           return DY[j] ? "yes" : "no";
         };
         cl.go(place, { ms: ms, stagger: i === 1 ? 0.55 : 0.2, color: color });
-        var lx = g.ax + 8, lw = g.aw - 16, ly = g.top + 6;
-        if (i === 0) cl.label("pile", 8, g.top + 4, "Call records, not yet placed in time", "", g.kw * 0.9);
-        if (i === 1) cl.label("say", lx, ly, [h("b", { "class": "d1-count", text: F.int(B.rows) }), " calls, May 2008 to November 2010"], "", lw);
-        if (i === 2) cl.label("say", lx, ly, [h("b", { "class": "d1-count", text: F.int(B.yes) }), " said yes: 11.27 percent, about one call in nine"], "", lw);
-        if (i === 3) cl.label("say", lx, ly, "**Next campaign**: whom do the agents call first? Each client's answer is a question mark until the call ends.", "", lw);
-        if (i === 4) cl.label("say", lx, ly, "**Rs 40** for a wasted nudge, about **Rs 1,200** for a missed buyer. The bank's calls are faded: Kalpa's members fill this picture in the lab.", "", lw);
+        var lx = g.ax + 4, lw = g.aw - 8, ly = g.top + cutLab.offsetHeight + 10;
+        if (i === 0) cl.label("pile", 8, g.top + 4, one("Call records, not yet placed in time"), "", g.kw * 0.9);
+        if (i === 1) cl.label("say", lx, ly, [h("span", {}, [h("b", { "class": "d1-count", text: F.int(B.rows) }), " calls, May 2008 to November 2010"])], "", lw);
+        if (i === 2) cl.label("say", lx, ly, [h("span", {}, [h("b", { "class": "d1-count", text: F.int(B.yes) }), " said yes: 11.27 percent, about one call in nine"])], "", lw);
+        if (i === 3) cl.label("say", lx, ly, one("**Next campaign**: whom do the agents call first? Each client's answer is unknown until the call ends."), "", lw);
+        if (i === 4) cl.label("say", lx, ly, one("**Rs 40** for a wasted nudge, about **Rs 1,200** for a missed buyer. The bank's calls are faded; Kalpa's members fill this picture in the lab."), "", lw);
         if (i === 5) {
-          cl.label("say", lx, ly, "A list that **calls nobody** says no to all " + F.int(B.rows) + " clients.", "", lw);
-          cl.label("r", lx, ly + (g.phone ? 92 : 70), [W5.icon("tick"), " Right: ", h("b", { text: story.revealed ? F.int(RIGHT_NOBODY) + " (" + F.pct(ACC_NOBODY) + ")" : "?" })], "right", lw);
-          cl.label("w", lx, ly + (g.phone ? 128 : 104), [W5.icon("cross"), " Missed buyers: ", h("b", { text: F.int(B.yes) })], "wrong", lw);
+          var l1 = cl.label("say", lx, ly, one("A list that **calls nobody** says no to all " + F.int(B.rows) + " clients."), "", lw);
+          var y2 = ly + l1.offsetHeight + 10;
+          var l2 = cl.label("r", lx, y2, [h("span", {}, [W5.icon("tick"), " Right: ", h("b", { text: story.revealed ? F.int(RIGHT_NOBODY) + " (" + F.pct(ACC_NOBODY) + ")" : "?" })])], "right", lw);
+          cl.label("w", lx, y2 + l2.offsetHeight + 8, [h("span", {}, [W5.icon("cross"), " Missed buyers: ", h("b", { text: F.int(B.yes) })])], "wrong", lw);
         }
         readout(i);
       };
@@ -2968,9 +2974,9 @@ html{scroll-behavior:auto}
       { id: "b2", label: "Lending at Kalpa Financial", sub: "Build 2, Week 6", kind: "later", story: "The same machinery on Rohan's loan book." }
     ]),
     edges: [
-      { from: "rfm", to: "s2", label: "becomes the input of" },
-      { from: "craft", to: "s3", label: "gets its name in" },
-      { from: "corr", to: "s4", label: "limits what the slope says" }
+      { from: "rfm", to: "s2", label: "becomes inputs of" },
+      { from: "craft", to: "s3", label: "is named in" },
+      { from: "corr", to: "s4", label: "is how you read" }
     ].concat(MAP_EDGES_TODAY, [
       { from: "s2", to: "wed", label: "is audited by" },
       { from: "s3", to: "tue", label: "is judged further by" },
@@ -2988,7 +2994,7 @@ html{scroll-behavior:auto}
       "**Step 6.** The residuals show the shape a model missed, and no fit can be trusted outside its data."
     ],
     predict: { q: "Both model families, the line and the S, rest on one idea from earlier in the day. Which one?",
-      options: ["Prediction, rule or query", "Train, validation, test; the seed; the baseline", "Where each model fails"], answer: 1,
+      options: ["Prediction, rule or query: when a business question is a modelling problem", "Train, validation, test; the seed; the baseline", "Where each model fails; the residual tells"], answer: 1,
       why: "A fit means nothing until it is scored on rows it did not learn from and set against the bar of doing nothing. The split and the baseline come first, and both models are judged by them." }
   });
 
@@ -3029,80 +3035,83 @@ html{scroll-behavior:auto}
         tw = W5.tween(1300, function (q) { p = q; pic.redraw(); });
       }
       function draw(st) {
-        var svg = st.svg, w = st.w, H = st.h, fs = px() * 0.82, phone = w < 520;
+        var svg = st.svg, w = st.w, H = st.h, fs = px() * 0.86, phone = w < 520;
         svg.textContent = "";
-        var titles = ["A query counts rows that already exist", "A rule runs a condition someone wrote", "A model learns from past rows and scores a new one"];
+        var titles = phone ? ["A query counts rows that exist", "A rule runs a written condition", "A model learns, then scores"] :
+          ["A query counts rows that already exist", "A rule runs a condition someone wrote", "A model learns from past rows and scores a new one"];
         tx(svg, 0, fs * 1.1, titles[kind], { weight: 700, size: fs * 1.05 });
-        tx(svg, 0, fs * 2.5, "For example: " + (lastText.length > (phone ? 40 : 90) ? lastText.slice(0, phone ? 38 : 88) + "..." : lastText), { size: fs * 0.88, fill: "#4E38AB" });
-        var top = fs * 3.6;
+        var ex = wrapWords("For example: " + lastText, phone ? 40 : 86);
+        ex.slice(0, 2).forEach(function (ln, k) { tx(svg, 0, fs * (2.5 + k * 1.2), ln, { size: fs * 0.92, fill: "#4E38AB" }); });
+        var top = fs * (ex.length > 1 ? 4.6 : 3.6);
         if (kind === 0) drawQuery(svg, w, H, top, fs, phone);
         else if (kind === 1) drawRule(svg, w, H, top, fs, phone);
         else drawModel(svg, w, H, top, fs, phone);
       }
       function drawQuery(svg, w, H, top, fs, phone) {
         var rows = [["M1", "Aug"], ["M2", "Sep"], ["M3", "Jul"], ["M4", "Sep"], ["M5", "Oct"], ["M6", "Sep"], ["M7", "Aug"], ["M8", "Sep"]];
-        var tw0 = Math.min(200, w * 0.4), rh = Math.min(fs * 1.55, (H - top - 8) / rows.length);
+        var tw0 = Math.min(200, w * 0.42), rh = Math.min(fs * 1.6, (H - top - fs * 1.6) / rows.length);
         rows.forEach(function (r, k) {
           var y = top + k * rh, sep = r[1] === "Sep", on = sep && p > 0.15 + k * 0.08;
           box(svg, 0, y, tw0, rh - 3, { rx: 5, fill: on ? "#EEEAFB" : "#FFFFFF", stroke: on ? COL.violet : COL.lilac, sw: on ? 2 : 1.2 });
-          tx(svg, 10, y + rh * 0.66, r[0], { weight: 600, size: fs * 0.9 });
-          tx(svg, tw0 * 0.5, y + rh * 0.66, r[1], { weight: on ? 700 : 400, size: fs * 0.9, fill: on ? COL.violet : COL.ink });
+          tx(svg, 10, y + rh * 0.66, r[0], { weight: 600, size: fs * 0.92 });
+          tx(svg, tw0 * 0.55, y + rh * 0.66, r[1], { weight: on ? 700 : 400, size: fs * 0.92, fill: on ? COL.violet : COL.ink });
         });
-        tx(svg, 0, H - 2, "order rows that already exist (invented)", { size: fs * 0.82, fill: "#4E38AB" });
-        var ax = tw0 + 14, bx = phone ? w * 0.6 : w * 0.56;
-        arrow(svg, ax, top + 4 * rh, bx - 10, top + 4 * rh, "#A9A3D2", 2);
-        tx(svg, (ax + bx) / 2, top + 4 * rh - 10, phone ? "COUNT" : "COUNT where month is Sep", { anchor: "middle", size: fs * 0.82, weight: 700, fill: "#4E38AB" });
+        tx(svg, 0, H - 2, "order rows that already exist", { size: fs * 0.92, fill: "#4E38AB" });
+        var bx = tw0 + (phone ? 22 : 48), bw = w - bx, by = top + 1.6 * rh, bh = rh * 4.6;
+        arrow(svg, tw0 + 6, by + bh / 2, bx - 6, by + bh / 2, "#A9A3D2", 2);
         var shown = p > 0.85;
-        box(svg, bx, top + 2.4 * rh, w - bx, rh * 3.2, { fill: shown ? "#EEEAFB" : "#FFFFFF", stroke: COL.violet, sw: 2, rx: 12 });
-        tx(svg, bx + (w - bx) / 2, top + 4.1 * rh, shown ? "4 members" : "...", { anchor: "middle", size: fs * 1.6, weight: 700, fill: COL.ink });
-        tx(svg, bx + (w - bx) / 2, top + 5.0 * rh, "no learning needed", { anchor: "middle", size: fs * 0.86, fill: COL.ink });
+        box(svg, bx, by, bw, bh, { fill: shown ? "#EEEAFB" : "#FFFFFF", stroke: COL.violet, sw: 2, rx: 12 });
+        tx(svg, bx + bw / 2, by + fs * 1.5, "COUNT rows", { anchor: "middle", size: fs * 0.92, weight: 700, fill: "#4E38AB" });
+        tx(svg, bx + bw / 2, by + fs * 2.7, "where month = Sep", { anchor: "middle", size: fs * 0.92, weight: 700, fill: "#4E38AB" });
+        tx(svg, bx + bw / 2, by + bh * 0.68, shown ? "4 members" : "...", { anchor: "middle", size: fs * 1.5, weight: 700, fill: COL.ink });
+        tx(svg, bx + bw / 2, by + bh * 0.68 + fs * 1.4, "no learning needed", { anchor: "middle", size: fs * 0.92, fill: COL.ink });
       }
       function drawRule(svg, w, H, top, fs, phone) {
         var chips = [["M1", 1], ["M2", 0], ["M3", 1], ["M4", 0], ["M5", 0], ["M6", 1]];
-        var cw = Math.min(110, w * (phone ? 0.24 : 0.2)), rh = Math.min(fs * 1.8, (H - top - 10) / 6);
-        var gx = phone ? w * 0.33 : w * 0.34, gw = phone ? w * 0.3 : w * 0.28, gy = top + rh * 0.8, gh = rh * 4.4;
+        var cw = phone ? Math.min(84, w * 0.27) : Math.min(124, w * 0.22), rh = Math.min(fs * 1.75, (H - top - 6) / 6);
+        var gx = cw + (phone ? 14 : 30), gw = w - 2 * cw - (phone ? 28 : 60), gy = top + rh * 0.9, gh = rh * 4.2;
         box(svg, gx, gy, gw, gh, { fill: "#FFF3E2", stroke: COL.amber, sw: 2, rx: 12 });
-        var gl = phone ? ["IF cart left", "yesterday", "THEN remind"] : ["IF the cart was", "left yesterday", "THEN send a reminder"];
-        gl.forEach(function (ln, k) { tx(svg, gx + gw / 2, gy + gh / 2 + (k - 1) * fs * 1.25 + fs * 0.35, ln, { anchor: "middle", weight: 700, size: fs * 0.9, fill: "#8A4500" }); });
-        var ox = w - cw, upY = top + rh * 0.2, dnY = top + rh * 3.6;
-        box(svg, ox - 6, upY - 4, cw + 6, rh * 2.6, { fill: "#F1F9F4", stroke: "#BFE3CF", rx: 10 });
-        box(svg, ox - 6, dnY - 4, cw + 6, rh * 2.6, { fill: "#F4F2FA", stroke: COL.lilac, rx: 10 });
-        tx(svg, ox, H - 2, "Reminder sent: 3", { size: fs * 0.8, weight: 700, fill: "#15663F", anchor: "start" });
-        var up = 0, dn = 0;
+        var gl = phone ? ["IF cart left", "yesterday", "THEN remind"] : ["IF the cart was left", "yesterday", "THEN send a reminder"];
+        gl.forEach(function (ln, k) { tx(svg, gx + gw / 2, gy + gh / 2 + (k - 1) * fs * 1.3 + fs * 0.35, ln, { anchor: "middle", weight: 700, size: fs * 0.92, fill: "#8A4500" }); });
+        var ox = w - cw, upY = top, dnY = top + rh * 3.2;
+        box(svg, ox - 4, upY - 4, cw + 4, rh * 2.9, { fill: "#EEEAFB", stroke: COL.violet, rx: 10 });
+        box(svg, ox - 4, dnY - 4, cw + 4, rh * 2.9, { fill: "#F4F2FA", stroke: COL.lilac, rx: 10 });
+        var up = 0, dn = 0, q0 = Math.max(0, Math.min(1, (p - 0.5) / 0.4));
         chips.forEach(function (c, k) {
           var q = Math.max(0, Math.min(1, (p - k * 0.07) / 0.6));
-          var x0 = 0, y0 = top + k * rh, x1 = ox, y1 = c[1] ? upY + (up++) * rh * 0.8 : dnY + (dn++) * rh * 0.8;
-          var x = lerp(x0, x1, q), y = lerp(y0, y1, q);
-          box(svg, x, y, cw * 0.92, rh * 0.72, { rx: 6, fill: c[1] ? "#EEEAFB" : "#FFFFFF", stroke: c[1] ? COL.violet : COL.lilac });
-          tx(svg, x + 8, y + rh * 0.5, c[0] + (c[1] ? " cart left" : " no cart"), { size: fs * 0.78, weight: 600 });
+          var y1 = c[1] ? upY + (up++) * rh * 0.85 : dnY + (dn++) * rh * 0.85;
+          var x = lerp(0, ox, q), y = lerp(top + k * rh, y1, q);
+          box(svg, x, y, cw * 0.94, rh * 0.74, { rx: 6, fill: c[1] ? "#FFFFFF" : "#FFFFFF", stroke: c[1] ? COL.violet : COL.lilac, sw: c[1] ? 2 : 1.2 });
+          tx(svg, x + 7, y + rh * 0.52, c[0] + (c[1] ? (phone ? " cart" : " cart left") : (phone ? " none" : " no cart")), { size: fs * 0.88, weight: 600 });
         });
-        tx(svg, gx + gw / 2, gy + gh + fs * 1.3, "written by a person, run as is", { anchor: "middle", size: fs * 0.8, fill: COL.ink });
+        tx(svg, gx + gw / 2, gy + gh + fs * 1.4, phone ? "no learning" : "written by a person, run as is", { anchor: "middle", size: fs * 0.92, fill: COL.ink });
+        if (q0 > 0.5) tx(svg, gx + gw / 2, gy - fs * 0.6, phone ? "3 reminded, 3 not" : "3 reminders sent, 3 members left alone", { anchor: "middle", size: fs * 0.92, weight: 700 });
       }
       function drawModel(svg, w, H, top, fs, phone) {
         var past = [["2 visits", "Y"], ["0 visits", "N"], ["5 visits", "Y"], ["1 visit", "N"], ["4 visits", "Y"], ["1 visit", "N"]];
-        var rw = Math.min(140, w * (phone ? 0.3 : 0.24)), rh = Math.min(fs * 1.7, (H - top - 22) / 6);
+        var rw = phone ? Math.min(96, w * 0.3) : Math.min(150, w * 0.25), rh = Math.min(fs * 1.7, (H - top - fs * 1.8) / 6);
         past.forEach(function (r, k) {
           var y = top + k * rh, on = p > 0.1 + k * 0.06;
           box(svg, 0, y, rw, rh - 4, { rx: 5, fill: on ? "#EEEAFB" : "#FFFFFF", stroke: on ? COL.violet : COL.lilac });
-          tx(svg, 8, y + rh * 0.6, r[0], { size: fs * 0.8 });
-          tx(svg, rw - 10, y + rh * 0.6, r[1], { size: fs * 0.86, weight: 700, anchor: "end", fill: r[1] === "Y" ? COL.violet : COL.ink });
+          tx(svg, 8, y + rh * 0.6, r[0], { size: fs * 0.9 });
+          tx(svg, rw - 10, y + rh * 0.6, r[1], { size: fs * 0.92, weight: 700, anchor: "end", fill: r[1] === "Y" ? COL.violet : COL.ink });
         });
-        tx(svg, 0, H - 2, "past rows, outcome known", { size: fs * 0.8, fill: "#4E38AB" });
-        var lx = rw + (phone ? 12 : 30), lw = phone ? w * 0.27 : w * 0.24, ly = top + rh * 1.4, lh = rh * 3;
+        tx(svg, 0, H - 2, phone ? "past rows" : "past rows, outcome known", { size: fs * 0.92, fill: "#4E38AB" });
+        var lx = rw + (phone ? 12 : 30), lw = phone ? w * 0.24 : w * 0.22, ly = top + rh * 1.4, lh = rh * 3;
         arrow(svg, rw + 4, top + rh * 2.9, lx - 4, top + rh * 2.9, "#A9A3D2", 2);
         box(svg, lx, ly, lw, lh, { fill: p > 0.45 ? "#1A0F5C" : "#FFFFFF", stroke: COL.ink, sw: 2, rx: 12 });
-        tx(svg, lx + lw / 2, ly + lh / 2 - fs * 0.2, "learn", { anchor: "middle", weight: 700, size: fs * 0.95, fill: p > 0.45 ? "#FFFFFF" : COL.ink });
-        tx(svg, lx + lw / 2, ly + lh / 2 + fs * 1.0, "weights", { anchor: "middle", size: fs * 0.85, fill: p > 0.45 ? "#D9A7FF" : COL.ink });
+        tx(svg, lx + lw / 2, ly + lh / 2 - fs * 0.2, "learn", { anchor: "middle", weight: 700, size: fs, fill: p > 0.45 ? "#FFFFFF" : COL.ink });
+        tx(svg, lx + lw / 2, ly + lh / 2 + fs * 1.0, "weights", { anchor: "middle", size: fs * 0.92, fill: p > 0.45 ? "#D9A7FF" : COL.ink });
         var nx = lx + lw + (phone ? 12 : 30), nw = w - nx;
         arrow(svg, lx + lw + 4, top + rh * 2.9, nx - 4, top + rh * 2.9, "#A9A3D2", 2);
         box(svg, nx, top + rh * 0.6, nw, rh * 1.3, { fill: "#FFFFFF", stroke: COL.violet, sw: 1.6, rx: 8 });
-        tx(svg, nx + 8, top + rh * 1.4, phone ? "New: 3 visits" : "New member: 3 visits", { size: fs * 0.82, weight: 600 });
+        tx(svg, nx + 8, top + rh * 1.4, phone ? "New: 3 visits" : "New member: 3 visits", { size: fs * 0.9, weight: 600 });
         tx(svg, nx + nw - 8, top + rh * 1.4, "?", { size: fs, weight: 700, anchor: "end", fill: COL.amber });
-        var q = Math.max(0, Math.min(1, (p - 0.55) / 0.45)), bw = nw, by = top + rh * 2.6;
-        box(svg, nx, by, bw, rh * 0.7, { rx: 6, fill: "#F4F2FA", stroke: COL.lilac });
-        box(svg, nx, by, bw * 0.62 * q, rh * 0.7, { rx: 6, fill: COL.violet, stroke: COL.violet });
-        tx(svg, nx, by + rh * 1.6, q > 0.99 ? "score 0.62 (invented)" : "scoring...", { size: fs * 0.85, weight: 700 });
-        tx(svg, nx, by + rh * 2.5, "known only later", { size: fs * 0.8, fill: COL.ink });
+        var q = Math.max(0, Math.min(1, (p - 0.55) / 0.45)), by = top + rh * 2.6;
+        box(svg, nx, by, nw, rh * 0.7, { rx: 6, fill: "#F4F2FA", stroke: COL.lilac });
+        box(svg, nx, by, nw * 0.62 * q, rh * 0.7, { rx: 6, fill: COL.violet, stroke: COL.violet });
+        tx(svg, nx, by + rh * 1.6, q > 0.99 ? "score 0.62" : "scoring...", { size: fs * 0.95, weight: 700 });
+        tx(svg, nx, by + rh * 2.5, phone ? "answer: later" : "the answer arrives later", { size: fs * 0.92, fill: COL.ink });
       }
       var tog = api.toggle({ label: "Show what answers it", options: [{ value: 0, label: "Query" }, { value: 1, label: "Rule" }, { value: 2, label: "Model" }],
         onChange: function (v) {
@@ -3152,6 +3161,7 @@ html{scroll-behavior:auto}
     data: "invented",
     stageTitle: "Four members' orders against the cut and the outcome window",
     predict: { q: "With the cut at 30 June and a 90-day window, how many of the four members count as buying again?", options: ["None", "One", "Two", "All four"], answer: 1,
+      onReveal: onRev("p2"),
       why: "**One: M1**, whose 20 July order falls inside the window. M4 did buy again, on 15 October, but the window closed on 28 September, so M4's target is 0. The target is a definition, and the window is part of it." },
     stage: function (api) {
       var cut = CUT0, win = 90;
@@ -3161,37 +3171,46 @@ html{scroll-behavior:auto}
       function revealed() { return api.predict && api.predict.state.revealed; }
       function side(o) { return o.t <= cut ? "past" : o.t <= cut + win ? "window" : "late"; }
       function draw(st) {
-        var svg = st.svg, w = st.w, H = st.h, fs = px() * 0.8, phone = w < 520;
+        var svg = st.svg, w = st.w, H = st.h, fs = px() * 0.84, phone = w < 520, shown = revealed();
         svg.textContent = "";
         var x0 = phone ? 34 : 44, x1 = w - 8, d0 = doy([4, 1]), d1 = doy([12, 31]);
         var sx = function (d) { return x0 + (d - d0) / (d1 - d0) * (x1 - x0); };
-        var top = fs * 2.6, rowH = (H - top - fs * 2.4) / 4;
-        svg.appendChild(s("rect", { x: sx(d0), y: top - 8, width: sx(cut) - sx(d0), height: rowH * 4 + 4, fill: "#F4F2FA" }));
-        svg.appendChild(s("rect", { x: sx(cut), y: top - 8, width: sx(Math.min(d1, cut + win)) - sx(cut), height: rowH * 4 + 4, fill: "#FFF3E2" }));
-        tx(svg, sx(d0) + 4, fs * 1.1, phone ? "History: inputs" : "History: the inputs may read this", { weight: 700, size: fs * 0.95, fill: "#4E38AB" });
-        var wl = sx(cut) + 6;
-        tx(svg, Math.min(wl, w - (phone ? 96 : 190)), fs * 2.1, (phone ? "Window: target" : "Window: decides the target") + " (" + win + " days)", { weight: 700, size: fs * 0.95, fill: "#8A4500" });
+        var top = fs * 2.4, rowH = (H - top - fs * 2.6) / 4, cx = sx(cut), wx = sx(Math.min(d1, cut + win));
+        svg.appendChild(s("rect", { x: sx(d0), y: top - 8, width: cx - sx(d0), height: rowH * 4 + 4, fill: "#F4F2FA" }));
+        svg.appendChild(s("rect", { x: cx, y: top - 8, width: wx - cx, height: rowH * 4 + 4, fill: "#FFF3E2" }));
+        var hText = phone ? "History" : "History: inputs read this", wText = (phone ? "Window" : "Window: decides the target") + ", " + win + " days";
+        if (cx - sx(d0) > hText.length * fs * 0.56 + 12) tx(svg, cx - 8, fs * 1.2, hText, { anchor: "end", weight: 700, size: fs * 0.95, fill: "#4E38AB" });
+        var wLen = wText.length * fs * 0.56;
+        tx(svg, cx + wLen + 8 < w ? cx + 8 : w - 2, fs * 1.2, wText, { anchor: cx + wLen + 8 < w ? "start" : "end", weight: 700, size: fs * 0.95, fill: "#8A4500" });
         for (var m = 3; m < 12; m++) {
-          var d = doy([m + 1, 1]), x = sx(d);
+          var x = sx(doy([m + 1, 1]));
           svg.appendChild(s("line", { x1: x, x2: x, y1: top - 8, y2: top + rowH * 4 - 4, stroke: "#E4E1F1" }));
-          if (!phone || m % 2 === 1) tx(svg, x + 2, top + rowH * 4 + fs * 1.1, MNAME[m].slice(0, 3), { size: fs * 0.85, fill: COL.ink });
+          if (!phone || m % 2 === 1) tx(svg, x + 2, top + rowH * 4 + fs * 1.15, MNAME[m].slice(0, 3), { size: fs * 0.9, fill: COL.ink });
         }
         ["M1", "M2", "M3", "M4"].forEach(function (lab, k) {
-          var y = top + k * rowH + rowH / 2 - 4;
+          var y = top + k * rowH + rowH / 2;
           tx(svg, 2, y + fs * 0.35, lab, { weight: 700, size: fs });
           svg.appendChild(s("line", { x1: x0, x2: x1, y1: y, y2: y, stroke: "#CFC9EE", "stroke-dasharray": "2 4" }));
         });
         ORDERS.forEach(function (o) {
-          var y = top + o.m * rowH + rowH / 2 - 4, sd = side(o), x = sx(o.t);
-          var fill = sd === "past" ? COL.violet : sd === "window" ? COL.amber : "#FFFFFF", stroke = sd === "late" ? "#6B6690" : fill;
+          var y = top + o.m * rowH + rowH / 2, sd = side(o), x = sx(o.t);
+          var fill = sd === "past" ? COL.violet : !shown ? "#BDB7DD" : sd === "window" ? COL.amber : "#FFFFFF";
+          var stroke = sd === "past" ? COL.violet : !shown ? "#8F88BF" : sd === "window" ? COL.amber : "#6B6690";
           svg.appendChild(s("circle", { cx: x, cy: y, r: phone ? 7 : 8, fill: fill, stroke: stroke, "stroke-width": 2 }));
-          if (!phone) tx(svg, x, y - 13, dayName(o.t), { anchor: "middle", size: fs * 0.78, fill: COL.ink, halo: true });
+          if (!phone) {
+            var next = ORDERS.filter(function (q) { return q.m === o.m && q.t > o.t; }).sort(function (a, b) { return a.t - b.t; })[0];
+            var close = next && sx(next.t) - x < 70;
+            tx(svg, close ? x - 12 : x, close ? y + fs * 0.35 : y - 12, dayName(o.t), { anchor: close ? "end" : "middle", size: fs * 0.88, fill: COL.ink, halo: true });
+          }
         });
-        svg.appendChild(s("rect", { x: sx(cut) - 2, y: top - 14, width: 4, height: rowH * 4 + 14, rx: 2, fill: COL.violet }));
-        tx(svg, sx(cut) + (sx(cut) > w * 0.7 ? -6 : 6), H - 2, "cut: " + dayName(cut), { anchor: sx(cut) > w * 0.7 ? "end" : "start", weight: 700, size: fs * 0.9, fill: COL.violet });
-        var lx = phone ? 2 : x0, ly = H - 2;
-        if (!phone) tx(svg, lx, ly, "violet: input   amber: target   hollow: too late", { size: fs * 0.82, fill: COL.ink });
+        svg.appendChild(s("rect", { x: cx - 2, y: top - 14, width: 4, height: rowH * 4 + 14, rx: 2, fill: COL.violet }));
+        tx(svg, cx + (cx > w * 0.7 ? -6 : 6), H - 2, "cut: " + dayName(cut), { anchor: cx > w * 0.7 ? "end" : "start", weight: 700, size: fs * 0.95, fill: COL.violet });
+        if (legend) legend.textContent = (shown ? "Violet: on or before the cut, so an input. Amber: inside the window, so it decides the target. Hollow: after the window, so it counts for neither." :
+          "Violet: on or before the cut, so an input. Grey: after the cut; commit your prediction to colour the window's orders.") +
+          " In the table, before, days since and spend read only orders on or before the cut; the whole log counts every order, so it leaks.";
       }
+      var legend = h("p", { "class": "d1-note" });
+      api.el.insertBefore(legend, tableHost);
       function table() {
         var rows = [0, 1, 2, 3].map(function (m) {
           var mine = ORDERS.filter(function (o) { return o.m === m; });
@@ -3204,15 +3223,15 @@ html{scroll-behavior:auto}
         tableHost.textContent = "";
         var t = h("table", { "class": "w5-table d1-table" });
         var hd = h("tr");
-        ["Member", "Orders before the cut", "Days since last", "Spend before, Rs", "Orders on the whole log", "Buys again in the window"].forEach(function (c, i) { hd.appendChild(h("th", { "class": i ? "n" : "", text: c })); });
+        ["Member", "Before", "Days since", "Spend, Rs", "Whole log", "Target"].forEach(function (c, i) { hd.appendChild(h("th", { "class": i ? "n" : "", text: c })); });
         t.appendChild(hd);
         rows.forEach(function (r) {
-          var tr = h("tr");
+          var tr = h("tr"), leak = r.all > r.before;
           tr.appendChild(h("td", { text: "M" + (r.m + 1) }));
-          tr.appendChild(h("td", { "class": "n ok", text: String(r.before) }));
-          tr.appendChild(h("td", { "class": "n ok", text: r.days }));
-          tr.appendChild(h("td", { "class": "n ok", text: F.int(r.spend) }));
-          tr.appendChild(h("td", { "class": "n" + (r.all > r.before ? " leak" : ""), text: String(r.all) + (r.all > r.before ? " (leaks)" : "") }));
+          tr.appendChild(h("td", { "class": "n", text: String(r.before) }));
+          tr.appendChild(h("td", { "class": "n", text: r.days }));
+          tr.appendChild(h("td", { "class": "n", text: F.int(r.spend) }));
+          tr.appendChild(h("td", { "class": "n" + (leak ? " leak" : "") }, leak ? [W5.icon("cross"), " " + r.all + " leaks"] : [String(r.all)]));
           tr.appendChild(h("td", { "class": "n", text: revealed() ? String(r.target) : "?" }));
           t.appendChild(tr);
         });
@@ -3239,7 +3258,7 @@ html{scroll-behavior:auto}
         api.say(v === 120 && cut === CUT0 ? "At 120 days the window runs to 28 October, so **M4's 15 October order now counts**: the same data, a different target." : "The window is part of the target's definition: **" + v + " days** after the cut.");
       } });
       update();
-      api.predict.el.addEventListener("click", function () { setTimeout(update, 0); });
+      HOOK.p2 = update;
     },
     rule: { text: "Freeze the prediction moment first. Every input is built only from orders on or before it, and the target only from the window after it; an order after the window counts for neither.",
       flips: "the window changes: stretch it to 120 days and M4's 15 October order makes M4 a repeat buyer, so the same orders give a different target. The window is a business decision, written down before any model." },
@@ -3276,11 +3295,13 @@ html{scroll-behavior:auto}
     data: "invented",
     stageTitle: "Twenty members split by a seed, then sixty versions scored on one slice",
     predict: { q: "The junior keeps whichever of 60 versions scores best on the same 50 validation members, and reports that score. On 1,000 fresh members, the chosen version scores:",
-      options: ["About the same as its best score", "Lower, back near a typical version", "Higher, because it was the best"], answer: 1,
+      onReveal: onRev("p3"),
+      options: ["About the same as its best score, since the version is fixed", "Lower, back near a typical version", "Higher, because the best version keeps improving on new rows"], answer: 1,
       why: "Its **" + F.pct(PB.peek, 0) + "** on 50 members was its real skill plus the luckiest draw of sixty. On 1,000 fresh members the luck is gone and it scores **" + F.pct(PB.fresh, 1) + "**, about what every version scores. The case page shows the same fall on the bank's rows: 0.9055 peeked, 0.8971 fresh." },
     stage: function (api) {
       var seed = 42, strat = true, pos = null, tw = null;
-      var pic = api.svg({ height: function (w) { return w < 520 ? 232 : 196; }, label: "Twenty members in three slices: train, validation and the sealed test envelope", draw: function (st) { draw(st); } });
+      var pic = api.svg({ height: function (w) { return w < 520 ? 200 : 172; }, label: "Twenty members in three slices: train, validation and the sealed test envelope", draw: function (st) { draw(st); } });
+      api.el.appendChild(h("p", { "class": "d1-note", text: "Y marks a member who came back within 90 days. The test envelope keeps its four outcomes hidden until the end." }));
       function assign() { return (strat ? SPLITS.strat : SPLITS.plain)[seed - 1]; }
       function layout(st) {
         var w = st.w, phone = w < 520, fs = px() * 0.8, top = fs * 2.4;
@@ -3317,7 +3338,6 @@ html{scroll-behavior:auto}
           var label = c === "s" ? "?" : REP20[i] ? "Y" : "";
           if (label) tx(svg, x + g.size / 2, y + g.size / 2 + fs * 0.38, label, { anchor: "middle", weight: 700, size: fs * 1.0, fill: c === "v" ? COL.ink : "#FFFFFF" });
         }
-        tx(svg, 0, st.h - 4, "Y: came back within 90 days. The test slice keeps its outcomes hidden until the end.", { size: fs * 0.86, fill: COL.ink });
       }
       function update(animate) {
         var a = assign(), vNo = 0, vY = 0, tY = 0;
@@ -3339,38 +3359,39 @@ html{scroll-behavior:auto}
       update(false);
 
       /* the junior's loop */
-      api.el.appendChild(h("p", { "class": "d1-sub" }, [W5.icon("alert"), "The junior's loop: sixty versions, one validation slice, keep the best"]));
+      var peekEl = h("div", {});
+      api.el.parentNode.appendChild(peekEl);
+      peekEl.appendChild(h("p", { "class": "d1-sub" }, [W5.icon("alert"), "The junior's loop: sixty versions, one validation slice, keep the best"]));
       var ys = PEEK.runs.map(function (r) { return r.peek; });
-      var ch = api.chart({ height: 260, x: { min: 0, max: 61, label: "Version, in the order tried", ticks: [1, 10, 20, 30, 40, 50, 60] },
+      var ch = W5.chart(peekEl, { height: 260, x: { min: 0, max: 61, label: "Version, in the order tried", ticks: [1, 10, 20, 30, 40, 50, 60] },
         y: { min: 0.64, max: 1.0, label: "Share right", ticks: [0.7, 0.8, 0.9, 1.0], fmt: function (v) { return Math.round(v * 100) + "%"; } },
         legend: [{ label: "Score on the same 50 members", color: LILAC, kind: "dot" }, { label: "The chosen version", color: "violet", kind: "dot" }, { label: "On 1,000 fresh members", color: "ink", kind: "hollow" }] });
       var frame = 0;
       function revealed() { return api.predict && api.predict.state.revealed; }
       function paint() {
         ch.remove("peek"); ch.remove("best"); ch.remove("fresh"); ch.remove("drop"); ch.remove("lblB"); ch.remove("lblF"); ch.remove("typ");
-        if (frame >= 1) ch.scatter("peek", PEEK.runs.map(function (r, i) { return [i + 1, r.peek]; }), { color: LILAC, r: 4.5, name: function (i) { return "Version " + (i + 1); } });
-        if (frame >= 1) ch.hline("typ", PEEK.mean, { color: "#6B6690", dash: "5 4", width: 1.4, label: "typical version " + F.pct(PEEK.mean, 0) });
-        if (frame >= 2) {
+        ch.scatter("peek", PEEK.runs.map(function (r, i) { return [i + 1, r.peek]; }), { color: LILAC, r: 4.5, name: function (i) { return "Version " + (i + 1); } });
+        ch.hline("typ", PEEK.mean, { color: "#6B6690", dash: "5 4", width: 1.4, label: "typical version " + F.pct(PEEK.mean, 0) });
+        if (frame >= 1) {
           ch.scatter("best", [[PEEK.best + 1, PB.peek]], { color: "violet", r: 7.5, name: function () { return "Chosen version"; } });
-          ch.text("lblB", [PEEK.best + 1 + (PEEK.best > 40 ? -2 : 2), PB.peek + 0.012], { text: "kept: " + F.pct(PB.peek, 0), anchor: PEEK.best > 40 ? "end" : "start" });
+          ch.text("lblB", [PEEK.best - 0.6, PB.peek + 0.004], { text: "kept: " + F.pct(PB.peek, 0), anchor: "end" });
         }
-        if (frame >= 3) {
+        if (frame >= 2) {
           if (revealed()) {
             ch.segments("drop", [[PEEK.best + 1, PB.peek - 0.012, PEEK.best + 1, PB.fresh + 0.008]], { color: "rose", width: 3 });
             ch.scatter("fresh", [[PEEK.best + 1, PB.fresh]], { color: "ink", hollow: true, r: 7, name: function () { return "Chosen version on fresh members"; } });
-            ch.text("lblF", [PEEK.best + 1 + (PEEK.best > 40 ? -2 : 2), PB.fresh - 0.03], { text: "fresh: " + F.pct(PB.fresh, 1), anchor: PEEK.best > 40 ? "end" : "start" });
-          } else ch.text("lblF", [PEEK.best + 1 + (PEEK.best > 40 ? -2 : 2), PB.peek - 0.07], { text: "fresh: ? (commit your prediction)", anchor: PEEK.best > 40 ? "end" : "start" });
+            ch.text("lblF", [PEEK.best - 0.6, PB.fresh - 0.026], { text: "fresh: " + F.pct(PB.fresh, 1), anchor: "end" });
+          } else ch.text("lblF", [PEEK.best - 0.6, PB.peek - 0.06], { text: "fresh: ? (commit your prediction)", anchor: "end" });
         }
       }
       var lo = Math.min.apply(null, ys), hi = Math.max.apply(null, ys);
-      var player = api.player({ word: "Step", stepMs: 700, holdMs: 1400, frames: [
-        { caption: "Sixty versions of a model wait to be scored. On new members every one of them is right about 78 to 82 times in 100 (invented)." },
-        { caption: "Each version is scored on the **same 50 validation members**. Luck alone spreads the scores from " + F.pct(lo, 0) + " to " + F.pct(hi, 0) + "." },
+      var player = W5.player(peekEl, { word: "Step", stepMs: 700, holdMs: 1400, frames: [
+        { caption: "Sixty versions, each truly right on about 78 to 82 new members in 100 (invented), are scored on the **same 50 validation members**. Luck alone spreads them from " + F.pct(lo, 0) + " to " + F.pct(hi, 0) + "." },
         { caption: "The junior keeps the best, **" + F.pct(PB.peek, 0) + "**, and reports it as the model's score." },
         { caption: "The chosen version meets **1,000 fresh members** that played no part in the choice. Where does it land?" }
       ], render: function (i) { if (i !== frame) { frame = i; paint(); } } });
       paint();
-      api.predict.el.addEventListener("click", function () { setTimeout(function () { if (frame >= 3) paint(); }, 0); });
+      HOOK.p3 = paint;
     },
     rule: { text: "Choose on validation as often as you like, score the test slice once at the end, and state the seed, so a teammate gets the same rows and the same baseline. Saying no to everyone is the bar: 75 percent here.",
       flips: "a slice is used to choose: the moment a score picks a version, that slice is spent, its number is optimistic by the luck the choosing bought, and only a fresh slice can say how good the choice is." },
@@ -3399,7 +3420,7 @@ html{scroll-behavior:auto}
     data: "invented",
     stageTitle: "Spend next quarter against days since the last order, with each training miss as a square",
     predict: { q: "Which line leaves the smallest total area of squares on the 16 filled customers?",
-      options: ["The flat line at the mean spend", "The line joining the first and the last customer", "A third line, the one least squares finds"], answer: 2,
+      options: ["The flat line at the mean spend, which ignores the days", "The line joining the first and the last customer", "A third line, the one least squares finds"], answer: 2,
       why: "Joining the first and last customer leaves **" + F.pct(sse(TRN, FL.a, FL.b) / SSE_MEAN, 1) + "** of the mean line's square area; least squares leaves **" + F.pct(sse(TRN, LS.a, LS.b) / SSE_MEAN, 1) + "**, about half. Two points ignore the other fourteen, and least squares weighs every one. Its slope has a formula, the sum of dx times dy over the sum of dx squared, so nothing has to be searched." },
     stage: function (api) {
       var a = LS.my, b = 0;
@@ -3418,7 +3439,8 @@ html{scroll-behavior:auto}
           { value: "Rs " + F.dp(b, 1), label: "**Slope**: spend change for each extra day since the last order" },
           { value: F.rs(a), label: "**Intercept**: the line's spend at 0 days" },
           { value: F.pct(left, 1), label: "**Squares left** on the 16 filled customers, as a share of the mean line's area", tone: atLS ? "good" : "" },
-          { value: F.rs(rmse(TRN, a, b)) + " · " + F.rs(rmse(HELD, a, b)), label: "**Typical miss** on the 16 filled and the 8 held-out customers", sub: "The mean line misses by " + F.rs(rmse(TRN, LS.my, 0)) + " on training: the bar." }
+          { value: F.rs(rmse(TRN, a, b)), label: "**Typical miss** on the 16 filled customers", sub: "The mean line misses them by " + F.rs(rmse(TRN, LS.my, 0)) + ": the bar." },
+          { value: F.rs(rmse(HELD, a, b)), label: "**Typical miss** on the 8 held-out customers", sub: "Scored only, never fitted." }
         ], atLS ? "In words: each extra day since the last order goes with about **Rs " + F.int(-LS.b) + " less** spend next quarter, across these invented customers. That is an association; only an experiment says a nudge that brings a customer back sooner adds Rs " + F.int(-LS.b) + " a day." :
           "Each rose square is one training customer's miss, squared. Least squares makes their **total area** as small as a straight line can.");
       }
@@ -3451,12 +3473,13 @@ html{scroll-behavior:auto}
     data: "invented",
     stageTitle: "Bought again (0 or 1) against visits, with the line or the S",
     predict: { q: "The straight line was fitted to these twelve members. What does it say for a member with 8 visits?",
-      options: ["About 0.9: nearly certain", "Exactly 1.0: certain", "More than 1: more than certain"], answer: 2,
+      onReveal: onRev("p5"),
+      options: ["About 0.9: nearly certain, as the line flattens near 1", "Exactly 1.0: certain, the most a probability can be", "More than 1: more than certain"], answer: 2,
       why: "**1.28.** A straight line keeps rising, so past about 6.3 visits it says more than 1, and at 0 visits it says −0.01. Neither is a probability. Logistic regression keeps a line underneath, z = −3.20 + 1.05 × visits, and squeezes it through 1 / (1 + e^(−z)), so every answer stays between 0 and 1: 0.73 at 4 visits." },
     stage: function (api) {
       var mode = "line", wgt = LOGIT.b, ask = 4;
       var jit = [0, -0.09, 0.09, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      var ch = api.chart({ height: 330, x: { min: 0, max: 9, label: "Visits last quarter", ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] },
+      var ch = api.chart({ height: 330, x: { min: -0.4, max: 9.2, label: "Visits last quarter", ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] },
         y: { min: -0.3, max: 1.6, label: "Bought again, or the model's answer", ticks: [0, 0.5, 1, 1.5], fmt: function (v) { return v.toFixed(1); } },
         legend: [{ label: "A member: 1 bought again, 0 did not", color: "ink", kind: "dot" }, { label: "Straight line", color: "#6B6690", kind: "line" }, { label: "Logistic S, a separate model", color: "violet", kind: "line" }] });
       ch.band("over", [1, 1.6], { axis: "y", color: "rose", opacity: 0.07, label: "Above 1: not a probability" });
@@ -3484,15 +3507,20 @@ html{scroll-behavior:auto}
         var odds = function (x) { var p = pAt(x); return p / (1 - p); };
         api.readout.set([
           { value: gated ? "?" : F.dp(lv, 2), label: "**The line says** at " + ask + " visits", tone: !gated && (lv > 1 || lv < 0) ? "bad" : "", sub: gated ? "Commit your prediction to read the line past 6 visits." : (lv > 1 || lv < 0) ? "Outside 0 to 1: impossible as a probability." : "" },
-          { value: mode === "s" ? F.dp(pv, 2) : "switch to the S", label: "**The S says**: probability of buying again at " + ask + " visits" },
+          { value: mode === "s" ? F.dp(pv, 2) : "not drawn", label: "**The S says**: probability of buying again at " + ask + " visits", sub: mode === "s" ? "" : "Switch the model to the logistic S." },
           { value: "× " + F.dp(Math.exp(wgt), 2), label: "**Strength**: the odds multiply by exp(b) for each extra visit", sub: "Odds at " + ask + " visits " + F.dp(odds(ask), 2) + ", at " + (ask + 1) + " visits " + F.dp(odds(ask + 1), 2) + "." },
           { value: (wgt > 0 ? "+" : wgt < 0 ? "−" : "") + F.dp(Math.abs(wgt), 2), label: "**Direction**: b is " + (wgt > 0 ? "positive, so more visits, more likely" : wgt < 0 ? "negative, so more visits, less likely" : "zero, so visits change nothing") },
           { value: F.dp(fitScore(), 3), label: "**Fit to the twelve**: the S's average chance for what really happened", sub: "The fitted b, 1.05, makes this as high as it goes: that is fitting by likelihood." }
         ]);
         if (dg) {
           var k = Math.round(pv * 100);
-          dg.set(function (j) { return j < k ? "yes" : "no"; }, { stagger: ms ? 0.4 : 0 });
-          calLine.textContent = "If the S is calibrated, of 100 members with " + ask + " visits about " + k + " buy again and " + (100 - k) + " do not. It describes the group, never a promise about one member.";
+          if (mode === "s") {
+            dg.set(function (j) { return j < k ? "yes" : "no"; }, { stagger: ms ? 0.4 : 0 });
+            calLine.textContent = "If the S is calibrated, of 100 members with " + ask + " visits about " + k + " buy again and " + (100 - k) + " do not. It describes the group, never a promise about one member.";
+          } else {
+            dg.set(function () { return "empty"; });
+            calLine.textContent = "A straight line's number is not a share you can count out of 100. Switch the model to the S to fill these 100 members.";
+          }
         }
       }
       var tog = api.toggle({ label: "Model", options: [{ value: "line", label: "Straight line" }, { value: "s", label: "Logistic S" }], onChange: function (v) {
@@ -3506,10 +3534,10 @@ html{scroll-behavior:auto}
       } });
       api.slider({ label: "Ask about a member with", min: 0, max: 9, step: 1, value: 4, fmt: function (v) { return v + " visits"; }, onInput: function (v) { ask = v; draw(0); } });
       api.el.appendChild(h("p", { "class": "d1-sub", text: "What the S's probability means, as 100 members" }));
-      dg = api.dotgrid({ n: 100, cols: 20, maxSize: 20, gap: 4, states: function () { return "no"; }, legend: { yes: "Buy again", no: "Do not" }, label: "One hundred members like the one asked about" });
+      dg = api.dotgrid({ n: 100, cols: 20, maxSize: 20, gap: 4, states: function () { return "empty"; }, legend: { yes: "Buy again", no: "Do not", empty: "Not drawn yet" }, label: "One hundred members like the one asked about" });
       var calLine = h("p", { "class": "d1-note" }); api.el.appendChild(calLine);
       draw(0);
-      api.predict.el.addEventListener("click", function () { setTimeout(function () { draw(0); }, 0); });
+      HOOK.p5 = function () { draw(0); };
     },
     rule: { text: "Logistic regression keeps a line underneath, z = a + b × visits, and squeezes it into a probability between 0 and 1. The sign of b is the direction, and exp(b) is how many times the odds multiply for each extra visit: 2.85 here.",
       flips: "the chance rises at both ends of an input: one S can only climb or fall once, so a pattern that is high at both ends needs a squared term or another model, as page 6 shows." },
@@ -3531,17 +3559,18 @@ html{scroll-behavior:auto}
     data: "real", source: "UCI Auto MPG, 392 of 398 cars (six have no horsepower), CC BY 4.0",
     stageTitle: "Miles per gallon against horsepower, the fit, and what each car missed by",
     predict: { q: "The straight line fits 392 cars. What shape will its residuals take against horsepower?",
-      options: ["Even scatter around zero", "A bow: above zero at both ends, below in the middle", "Below zero everywhere"], answer: 1,
+      onReveal: onRev("p6"),
+      options: ["Even scatter around zero, as a good line leaves", "A bow: above zero at both ends, below in the middle", "Below zero everywhere, because the line overshoots every car"], answer: 1,
       why: "**A bow.** The lowest-power cars beat the line by " + F.dp(CARS.band_line[0], 1) + " mpg on average, the middle band sits " + F.dp(-CARS.band_line[2], 1) + " below it, and the top band climbs back to " + F.signed(CARS.band_line[4], 1) + ". A pattern in residuals is a shape the model missed; the truth bends and a line cannot." },
     stage: function (api) {
       var model = "line", hpAsk = 150;
       var mids = CARS.edges.slice(0, 5).map(function (e, k) { return (e + CARS.edges[k + 1]) / 2; });
       var ch = api.chart({ height: 300, x: { min: 40, max: 300, label: "Horsepower", ticks: [50, 100, 150, 200, 250, 300] }, y: { min: -10, max: 50, label: "Miles per gallon", ticks: [0, 10, 20, 30, 40, 50] },
-        legend: [{ label: "A car", color: "rest", kind: "dot" }, { label: "The fit", color: "violet", kind: "line" }] });
+        legend: [{ label: "A car", color: "#8F86CC", kind: "dot" }, { label: "The fit", color: "violet", kind: "line" }] });
       ch.band("nodata", [CARS.hp_max, 300], { color: "rose", opacity: 0.07, label: "no car here" });
-      ch.scatter("cars", HP.map(function (x, i) { return [x, MPG[i]]; }), { color: "rest", r: 2.6, name: function (i) { return "Car " + (i + 1); } });
+      ch.scatter("cars", HP.map(function (x, i) { return [x, MPG[i]]; }), { color: "#8F86CC", r: 2.8, name: function (i) { return "Car " + (i + 1); } });
       var rc = api.chart({ height: 250, x: { min: 40, max: 240, label: "Horsepower", ticks: [50, 100, 150, 200] }, y: { min: -15, max: 18, label: "Residual: what each car missed by, mpg", ticks: [-10, 0, 10], fmt: function (v) { return (v > 0 ? "+" : "") + v; } },
-        legend: [{ label: "A car's residual", color: "rest", kind: "dot" }, { label: "Mean residual in five horsepower bands", color: "violet", kind: "line" }] });
+        legend: [{ label: "A car's residual", color: "#8F86CC", kind: "dot" }, { label: "Mean residual in five horsepower bands", color: "violet", kind: "line" }] });
       rc.hline("zero", 0, { color: "ink", width: 1.4 });
       function revealed() { return api.predict && api.predict.state.revealed; }
       function fitPts() { var pts = []; for (var x = 40; x <= 300; x += 5) pts.push([x, model === "line" ? mLine(x) : mCurve(x)]); return pts; }
@@ -3554,7 +3583,7 @@ html{scroll-behavior:auto}
         var bands = model === "line" ? CARS.band_line : CARS.band_curve;
         rc.remove("res"); rc.remove("bm"); rc.remove("cur");
         if (revealed()) {
-          rc.scatter("res", HP.map(function (x, i) { return [x, MPG[i] - (model === "line" ? mLine(x) : mCurve(x))]; }), { color: "rest", r: 2.4, name: function (i) { return "Car " + (i + 1); } });
+          rc.scatter("res", HP.map(function (x, i) { return [x, MPG[i] - (model === "line" ? mLine(x) : mCurve(x))]; }), { color: "#8F86CC", r: 2.6, name: function (i) { return "Car " + (i + 1); } });
           rc.line("bm", mids.map(function (m, k) { return [m, bands[k]]; }), { color: "violet", width: 3, dots: true, name: "Band mean" });
         } else rc.text("cur", [140, 6], { text: "Commit your prediction to draw the residuals.", anchor: "middle" });
         api.readout.set([
@@ -3573,25 +3602,26 @@ html{scroll-behavior:auto}
         if (v > CARS.hp_max) api.say("Past " + CARS.hp_max + " hp there is no car. At 300 hp the curve says " + F.dp(mCurve(300), 1) + " mpg and the line says " + F.dp(mLine(300), 1) + ": both are nonsense, because neither was ever checked out there.");
       } });
       draw(0);
-      api.predict.el.addEventListener("click", function () { setTimeout(function () { draw(0); }, 0); });
+      HOOK.p6 = function () { draw(0); };
 
       /* logistic regression's own failure, on invented members */
-      var head = h("p", { "class": "d1-sub" }, ["Where the S fails: a chance high at both ends ", h("span", { "class": "w5-badge" }, [W5.icon("sliders"), "Invented numbers, for teaching"])]);
-      api.el.appendChild(head);
-      var lc = api.chart({ height: 230, x: { min: 15, max: 75, label: "Age of the member", ticks: [20, 30, 40, 50, 60, 70] }, y: { min: -0.1, max: 1.15, label: "Orders home delivery (1) or not (0)", ticks: [0, 0.5, 1], fmt: function (v) { return v.toFixed(1); } },
+      var sEl = h("div", {});
+      api.el.parentNode.appendChild(sEl);
+      sEl.appendChild(h("p", { "class": "d1-sub" }, ["Where the S fails: a chance high at both ends ", h("span", { "class": "w5-badge" }, [W5.icon("sliders"), "Invented numbers, for teaching"])]));
+      var lc = W5.chart(sEl, { height: 230, x: { min: 15, max: 75, label: "Age of the member", ticks: [20, 30, 40, 50, 60, 70] }, y: { min: -0.1, max: 1.15, label: "Orders home delivery (1) or not (0)", ticks: [0, 0.5, 1], fmt: function (v) { return v.toFixed(1); } },
         legend: [{ label: "A member", color: "ink", kind: "dot" }, { label: "The model's probability", color: "amber", kind: "line" }] });
       lc.scatter("mem", AGE.map(function (a, i) { return [a, HOME[i]]; }), { color: "ink", r: 5, top: true, name: function (i) { return "Member aged " + AGE[i]; } });
       var shape = "one";
       function lp(a) { if (shape === "one") return sig(S1.a + S1.b * a); var c = (a - 45) / 10; return sig(S2.a + S2.b * c + S2.c * c * c); }
       function lpts() { var pts = []; for (var a = 15; a <= 75; a += 1) pts.push([a, lp(a)]); return pts; }
-      var note = h("p", { "class": "d1-note" }); api.el.appendChild(note);
+      var note = h("p", { "class": "d1-note" }); sEl.appendChild(note);
       function ldraw(ms) {
         lc.line("p", lpts(), { color: "amber", width: 3, name: "Probability" }); lc.set("p", lpts(), ms);
         var right = AGE.reduce(function (t, a, i) { return t + ((lp(a) >= 0.5 ? 1 : 0) === HOME[i] ? 1 : 0); }, 0);
         note.textContent = shape === "one" ? "One S on age lies almost flat, between " + F.dp(lp(70), 2) + " and " + F.dp(lp(15), 2) + ", because the young and the old both order, and a single S can only climb or fall once. It gets " + right + " of 24 right, no better than saying no to everyone (13 of 24)." :
           "With age squared the S bends into a U: about " + F.dp(lp(20), 2) + " at 20, " + F.dp(lp(45), 2) + " at 45 and " + F.dp(lp(70), 2) + " at 70. It gets " + right + " of 24 right.";
       }
-      W5.toggle(api.el, { label: "Logistic model", options: [{ value: "one", label: "One S on age" }, { value: "u", label: "S with age squared" }], onChange: function (v) { shape = v; ldraw(600); } });
+      W5.toggle(sEl, { label: "Logistic model", options: [{ value: "one", label: "One S on age" }, { value: "u", label: "S with age squared" }], onChange: function (v) { shape = v; ldraw(600); } });
       ldraw(0);
     },
     rule: { text: "Read the residuals before you trust a fit. A pattern in them, a bow, a fan or bands, is a shape the model missed; random scatter around zero is what a good fit leaves. Every fit, the line, the curve and the S, answers only inside the range it was fitted on.",
@@ -3612,7 +3642,7 @@ html{scroll-behavior:auto}
         text: "Whom to call is a prediction: the client table is known on the morning of the call, the yes arrives when the call ends, and the call list moves with the score. The test slice is cut first and sealed; the rest splits 75 to 25.",
         stageTitle: "The week's split, and the held-out share of yes split after split",
         predict: { q: "Teammates split the 41,188 rows with no seed and no stratify, one run each. What happens to the held-out share of yes?",
-          options: ["It matches to four decimal places", "It moves in the third decimal place, so each teammate gets a different baseline", "It moves by ten points or more"], answer: 1,
+          options: ["It matches to four decimal places, because the rows are the same", "It moves a little, so each teammate gets a different bar", "It moves by ten points or more, enough to flip any model comparison"], answer: 1,
           why: "Across 60 unseeded runs the held-out share of yes runs from **" + F.dp(UNS_LO, 4) + " to " + F.dp(UNS_HI, 4) + "**, so the baseline to beat runs from " + F.pct(1 - UNS_HI, 2) + " to " + F.pct(1 - UNS_LO, 2) + ". Two teammates then argue about a gap that is only the shuffle." },
         stage: function (api) {
           var seeded = true, runs = [], k = 0;
@@ -3654,7 +3684,7 @@ html{scroll-behavior:auto}
         text: "Calling nobody is right whenever the client would have said no anyway. The logistic model reads the 13 columns and calls a client when its probability of yes reaches 0.5. Both are scored on the same " + F.int(SPL.val) + " validation clients; the test slice stays sealed.",
         stageTitle: "Right answers out of " + F.int(SPL.val) + " validation clients",
         predict: { q: "On the same " + F.int(SPL.val) + " validation clients, how many more right answers does the logistic model get than calling nobody?",
-          options: ["About 80", "About 800", "About 2,000"], answer: 0,
+          options: ["About 80", "About 800", "About 2,000"], answer: 0, onReveal: onRev("c8"),
           why: "**" + F.int(MOD.right) + " against " + F.int(BASE.right) + ": " + (MOD.right - BASE.right) + " more**, under one point of accuracy (" + F.dp(MOD.acc, 4) + " against " + F.dp(BASE.acc, 4) + "). The model carries signal, and it is small." },
         stage: function (api) {
           var view = "full", calls = 1;
@@ -3689,7 +3719,7 @@ html{scroll-behavior:auto}
           yc.bars("y", B.years.yes.map(function (y, i) { return y / B.years.calls[i]; }), { colors: [LILAC, "violet", "ink"], maxWidth: 70, fmt: function (v) { return F.pct(v, 1); } });
           api.el.appendChild(h("p", { "class": "d1-note", text: "Calls per year: " + B.years.year.map(function (y, i) { return y + ", " + F.int(B.years.calls[i]); }).join("; ") + ". The month is one of the 13 columns, so part of the score is the calendar; Friday splits by time." }));
           draw();
-          api.predict.el.addEventListener("click", function () { setTimeout(draw, 0); });
+          HOOK.c8 = draw;
         },
         trap: { wrong: F.pct(MOD.acc, 1), context: "the status update: our model is 89.7 percent accurate",
           misled: "Marketing reads nine right answers in ten and funds a rollout, when calling nobody already scores " + F.pct(BASE.acc, 1) + ".",
@@ -3702,7 +3732,7 @@ html{scroll-behavior:auto}
         text: "A junior short of time tries 60 versions, each a random list of 3 to 13 of the 13 columns, scores each on the same 2,000-row practice envelope carved from validation, and keeps the best. The real envelope stays sealed; the other 6,238 validation rows play the fresh slice.",
         stageTitle: "Sixty versions: the score that chose each one, and the chosen one on fresh rows",
         predict: { q: "The chosen version scored " + F.dp(PK.peek[PK.best], 4) + " on the 2,000-row practice envelope. On the 6,238 fresh rows it scores about:",
-          options: ["0.906 again", "About 0.897", "About 0.887, the same as doing nothing", "0.80"], answer: 1,
+          options: ["0.906 again", "About 0.897", "About 0.887, the same as doing nothing", "0.80"], answer: 1, onReveal: onRev("c9"),
           why: "**" + F.dp(PK.fresh[PK.best], 4) + " on fresh rows**, " + F.dp((PK.fresh[PK.best] - PK.base_fresh) * 100, 2) + " points above doing nothing, the same edge chapter 8 measured honestly. The extra points were luck: among 60 versions scored on the same 2,000 rows, one was bound to be lucky there, and the loop picked the luckiest." },
         stage: function (api) {
           var frame = 0, order = range(60).sort(function (a, b) { return PK.peek[a] - PK.peek[b]; }), rank = {};
@@ -3737,7 +3767,7 @@ html{scroll-behavior:auto}
             { caption: "All sixty on the fresh rows: the spread shrinks, and the best of the envelope is an ordinary version." }
           ], render: function (i) { if (i !== frame) { frame = i; paint(); } } });
           paint();
-          api.predict.el.addEventListener("click", function () { setTimeout(paint, 0); });
+          HOOK.c9 = paint;
         },
         trap: { wrong: F.dp(PK.peek[PK.best], 4), context: "the best of 60 versions on the 2,000-row practice envelope, reported as 1.8 points above doing nothing",
           misled: "A status update that claims nearly double the honest edge, and a version chosen for its luck rather than its columns.",
@@ -3759,11 +3789,11 @@ html{scroll-behavior:auto}
     lede: "Three verified scenes from the week's case file, each with one control: an engineering choice of target, a product rule about launching without a model, and a business test for choosing a problem set-up. Then the six seats.",
     scenes: [
       { company: "Uber", icon: "truck", angle: "Engineering: choose the target before the model", title: "What does Uber's arrival-time model actually predict?",
-        situation: "Uber's routing engine already gives every trip an arrival time. DeepETA does not predict the minutes from scratch: in Uber's words, \"we then use machine learning to predict the residual between the routing engine ETA and real-world observed outcomes\". The new model had to improve mean absolute error significantly over the incumbent XGBoost model and answer within a few milliseconds. Uber publishes no accuracy figures, so the trips drawn here are invented.",
+        situation: "Uber's routing engine already gives every trip an arrival time from the map. Uber built DeepETA, a deep learning model, on top of it. To ship, the new model had to improve mean absolute error significantly over the incumbent XGBoost model and return an answer within a few milliseconds. Uber publishes no accuracy figures, so the trips drawn here are invented.",
         source: "Uber Engineering, DeepETA: How Uber Predicts Arrival Times Using Deep Learning, 10 February 2022, https://www.uber.com/blog/deepeta-how-uber-predicts-arrival-times/, checked 29 October 2026",
         data: "invented", stageTitle: "Sixteen invented trips: what the model is asked to learn",
-        predict: { q: "Uber's DeepETA is trained to predict which of these?", options: ["The trip's minutes, from scratch", "How wrong the routing engine's arrival time is", "The driver's average speed"], answer: 1,
-          why: "**The residual**: how far the routing engine's estimate is from what happened. The engine stays as the baseline, and the model only has to learn the correction on top of it." },
+        predict: { q: "Uber's DeepETA is trained to predict which of these?", options: ["The trip's minutes, from scratch, with the map as one input", "How wrong the routing engine's estimate is", "The driver's average speed on each road of the trip"], answer: 1,
+          why: "**The engine's miss.** In Uber's words, \"we then use machine learning to predict the residual between the routing engine ETA and real-world observed outcomes\". The engine stays as the baseline, and the model learns only the correction on top of it." },
         stage: function (api) {
           var m = 0, tw = null;
           var actual = TRIP_ETA.map(function (e, i) { return e + TRIP_RES[i]; });
@@ -3790,11 +3820,11 @@ html{scroll-behavior:auto}
           write();
         } },
       { company: "Google", icon: "magnifier", angle: "Product: launch the rule before the model", title: "How far does a rule get you before machine learning?",
-        situation: "Google's Rules of Machine Learning, written by Martin Zinkevich, open with rule 1: \"Don't be afraid to launch a product without machine learning.\" The guide estimates that if machine learning would give a 100 percent boost, \"a heuristic will get you 50% of the way there\". Rule 4 says keep the first model simple and get the infrastructure right, and rule 14 says starting with an interpretable model, such as logistic regression, makes debugging easier.",
+        situation: "Google's Rules of Machine Learning, written by Martin Zinkevich, open with rule 1: \"Don't be afraid to launch a product without machine learning.\" The guide puts a number on how much of a model's gain a simple heuristic already captures. Rule 4 says keep the first model simple and get the infrastructure right, and rule 14 says starting with an interpretable model, such as logistic regression, makes debugging easier.",
         source: "Google for Developers, Rules of Machine Learning, last updated 25 August 2025, https://developers.google.com/machine-learning/guides/rules-of-ml, checked 29 October 2026",
         stageTitle: "The gain a heuristic captures, in Google's estimate",
-        predict: { q: "If a model would give a 100 percent boost, how far does Google's guide say a heuristic gets you? Answer in percent.", type: "number", answer: 50, tolerance: 5, unit: "percent",
-          why: "**50 percent**, in the guide's own estimate. A rule that captures half the gain ships first, sets the bar, and builds the pipeline the model will need." },
+        predict: { q: "If a model would give a 100 percent boost, how far does Google's guide say a heuristic gets you? Answer in percent.", type: "number", answer: 50, tolerance: 5, unit: "percent", onReveal: onRev("google"),
+          why: "**50 percent.** In the guide's words, \"if you think that machine learning will give you a 100% boost, then a heuristic will get you 50% of the way there\". A rule that captures half the gain ships first, sets the bar, and builds the pipeline the model will need." },
         stage: function (api) {
           var rule = 1;
           var pic = api.svg({ height: function (w) { return w < 520 ? 230 : 190; }, label: "Google's rules 1, 4 and 14 drawn", draw: function (st) { draw(st); } });
@@ -3833,14 +3863,14 @@ html{scroll-behavior:auto}
           }
           api.toggle({ label: "Rule", options: [{ value: 1, label: "Rule 1" }, { value: 4, label: "Rule 4" }, { value: 14, label: "Rule 14" }], onChange: function (v) { rule = v; write(); pic.redraw(); } });
           write();
-          api.predict.el.addEventListener("click", function () { setTimeout(function () { write(); pic.redraw(); }, 0); });
+          HOOK.google = function () { write(); pic.redraw(); };
         } },
       { company: "Booking.com", icon: "home", angle: "Business: choose the problem set-up, then the model", title: "How did Booking.com choose between two framings of one question?",
-        situation: "Bernardi, Mavridis and Estevez reviewed about 150 successful customer-facing models at Booking.com. One lesson: the set-up is a choice. \"A simple example is a regression predicting the length of a stay, turned in to a multiclass classification problem.\" One way they compare set-ups is to set simple models against trivial baselines such as random and popularity: \"Setups where simple models can do significantly better than trivial models are preferred.\" The stays drawn here are invented.",
+        situation: "Bernardi, Mavridis and Estevez reviewed about 150 successful customer-facing models at Booking.com. One lesson: the problem set-up is itself a choice. \"A simple example is a regression predicting the length of a stay, turned in to a multiclass classification problem.\" The team then needs a test for which set-up to keep. The stays drawn here are invented.",
         source: "Bernardi, Mavridis and Estevez, 150 Successful Machine Learning Models: 6 Lessons Learned at Booking.com, KDD 2019, https://www.kdd.org/kdd2019/accepted-papers/view/150-successful-machine-learning-models-6-lessons-learned-at-booking.com, checked 29 October 2026",
         data: "invented", stageTitle: "Twelve invented stays, framed two ways",
-        predict: { q: "One way Booking.com compares two set-ups of the same question is by:", options: ["Which set-up allows the most complex model", "Whether a simple model beats a trivial baseline on it by a clear margin", "Which set-up has more rows"], answer: 1,
-          why: "**A simple model against a trivial baseline.** A set-up where a simple model clearly beats random or popularity is one where the target can be learned; the same test today: does the model beat calling nobody?" },
+        predict: { q: "One way Booking.com compares two set-ups of the same question is by:", options: ["Which set-up lets the most complex and accurate model be trained", "Whether a simple model clearly beats a trivial baseline", "Which set-up has the most rows of labelled training data"], answer: 1,
+          why: "**A simple model against a trivial baseline.** The paper compares \"the performance of simple models against trivial baselines like random and popularity. Setups where simple models can do significantly better than trivial models are preferred.\" It is today's test: does the model beat calling nobody?" },
         stage: function (api) {
           var NIGHTS = [1, 1, 2, 2, 2, 3, 3, 4, 5, 7, 7, 12], cls = false;
           var CLS = [[1, 1, "1 night"], [2, 3, "2 to 3"], [4, 7, "4 to 7"], [8, 30, "8 or more"]];
@@ -3891,10 +3921,10 @@ html{scroll-behavior:auto}
     lede: "Five situations from today, in the four kinds. Pick the clarifying question, put the whiteboard steps in order, commit your answer, then compare with the 30-second version as the board builds.",
     items: [
       { kind: "techno-functional", question: "Kalpa's marketing head asks you to use AI for two things: count how many members bought in September, and find which members will buy again in the next 90 days. Which needs a model, and how do you decide?",
-        clarify: { options: ["Which cloud will the model run on?", "What will Marketing do differently with each answer, and when?", "How many rows does the warehouse hold?"], best: 1,
+        clarify: { options: ["Which cloud will the model run on, and at what cost?", "What will Marketing do differently with each answer, and when?", "How many rows and columns does the warehouse hold for each member today?"], best: 1,
           why: "A model earns its place only when a decision moves with a score made before the outcome is known; asking what changes, and when, settles both asks." },
         steps: ["Ask whether the answer already sits in the rows", "Ask whether someone can write the decision as a condition", "Check the three signs: input known now, target known later, a decision that moves", "Name the cheap baseline the model must beat"],
-        answer: { options: ["Both need a model, because both use member data", "The September count is a query; the 90-day repeat is a prediction, so only it needs a model", "Neither, because a rule is always enough"], best: 1,
+        answer: { options: ["Both need a model, because both questions are about members and both use member data", "September's count is a query; only the 90-day repeat needs a model", "Neither, because a rule written by Marketing is always enough for both"], best: 1,
           why: "Counting September needs no learning. The repeat question has the input today, the answer in ninety days and a decision, whom to nudge, that waits on the score." },
         model: "The September count is already in the rows, so it is a query: one SQL count. The 90-day repeat question has the input today, the answer in ninety days, and a decision, whom to nudge, that moves with the score, so it is a prediction. Before building it I would name the bar: calling nobody, or a simple rule such as two or more past orders.",
         board: [{ title: "In the rows already?", note: "September's count: yes, a query", icon: "table" }, { title: "A condition someone writes?", note: "not for the repeat question", icon: "rule" },
@@ -3902,40 +3932,40 @@ html{scroll-behavior:auto}
         followups: ["A rule, two or more past orders, already exists. What would make you replace it?", "Which of the two asks would you ship first, and why?"],
         wrong: [{ text: "Use a model for both, since we have the data.", why: "Data makes a dataset; a decision that waits on a future outcome makes a model." }, { text: "Train a classifier on September's buyers.", why: "Counting September needs no learning: the answer is already in the rows." }] },
       { kind: "technical", question: "A logistic model scores a client 0.71. Tell me what that number means.",
-        clarify: { options: ["Is the model calibrated on clients like this one?", "Which library produced it?", "Is 0.71 above the threshold?"], best: 0,
+        clarify: { options: ["Is the model calibrated on clients like this one?", "Which library and which version produced the score?", "Is 0.71 above the threshold the campaign team uses?"], best: 0,
           why: "0.71 reads as a frequency only if the model's scores match what happens to similar clients, so that is the first thing to ask." },
         steps: ["Picture 100 clients who all score about 0.71", "If the model is calibrated, about 71 of them say yes", "So it describes a group, never a promise about one client", "Check it by counting the yeses among clients scored near 0.71"],
-        answer: { options: ["This client will say yes", "Among clients like this one, about 71 in 100 say yes, if the model is calibrated", "The model is right 71 percent of the time"], best: 1,
+        answer: { options: ["This client will say yes, because 0.71 is well above one half", "About 71 in 100 clients like this one say yes, if calibrated", "The model is right on 71 percent of the clients it scores"], best: 1,
           why: "A probability is a statement about many similar cases; one client still says yes or no." },
         model: "If the model is calibrated, 0.71 means that among clients who look like this one, about 71 in 100 say yes. It is a statement about a group, never a promise about this client, and I would check it by grouping validation clients scored near 0.71 and counting how many said yes.",
         board: [{ title: "100 clients scored near 0.71", icon: "users" }, { title: "About 71 say yes", note: "if the model is calibrated", icon: "tick" }, { title: "A group, never one client", icon: "person" }, { title: "Count them on validation", icon: "magnifier" }],
         followups: ["The model's scores average 0.30, but only 11 percent of clients say yes. What is wrong?", "How does 0.71 become a decision to call or not?"],
         wrong: [{ text: "This client is 71 percent sure to say yes.", why: "One client says yes or no; 0.71 describes the group of clients like them." }, { text: "The model is right 71 percent of the time.", why: "That is accuracy, a property of the whole model, never of one score." }] },
       { kind: "technical", question: "Train, validation, test: what is each for, and which one is spent once?",
-        clarify: { options: ["How big is the data, and does it run over time?", "Which framework do you use?", "Do you prefer 80/20 or 70/30?"], best: 0,
+        clarify: { options: ["How big is the data, and does it run over time?", "Which framework do you use for splitting the rows?", "Do you prefer an 80/20 split or a 70/30 split?"], best: 0,
           why: "Size decides whether three slices leave enough rows, and time order decides whether a random split is honest." },
         steps: ["Train: the rows the model learns from", "Validation: the rows you compare versions on, as often as needed", "Test: sealed, scored once on the chosen model", "State the seed so anyone can rebuild the slices"],
-        answer: { options: ["Test is used to pick the best version", "Validation is the one spent once", "Test is spent once; all the choosing happens on validation"], best: 2,
+        answer: { options: ["Test is used to pick the best version, and then its score is reported", "Validation is the one spent once, at the very end", "Test is spent once; the choosing happens on validation"], best: 2,
           why: "A slice used to choose is optimistic. The one honest estimate is a slice that chose nothing." },
         model: "Train is where the model learns, like practice papers. Validation is where I compare versions and settings, as often as I like, like mock exams. Test is the board exam: sealed, scored once on the chosen model, with the seed stated. If I ever choose using the test score, it has become a validation score, and I cut a fresh slice.",
         board: [{ title: "Train: practice papers", icon: "ledger" }, { title: "Validation: mock exams", note: "choose here, as often as needed", icon: "replay" }, { title: "Test: the board exam", note: "sealed, scored once", icon: "lock" }, { title: "Seed stated", note: "same rows on every laptop", icon: "split" }],
         followups: ["You peeked at the test set by mistake. What do you do now?", "Your rows run from 2008 to 2010. Would you still split at random?"],
         wrong: [{ text: "Test is just more validation data.", why: "A slice used to choose is optimistic: today's peek lifted 0.8971 to 0.9055." }, { text: "Check the test score after each change to track progress.", why: "Each look spends some of its honesty; after sixty looks it measures luck." }] },
       { kind: "technical", question: "The target is yes or no. Would you fit linear or logistic regression, and why?",
-        clarify: { options: ["Do we need a probability, or only a ranking?", "How many columns are there?", "Is the data in a database?"], best: 0,
+        clarify: { options: ["Do we need a probability, or only a ranking?", "How many columns are there, and are they numeric?", "Is the data stored in a database or in files?"], best: 0,
           why: "Both can rank clients, but only the logistic output can be read as a probability between 0 and 1." },
         steps: ["Fit a line to the 0s and 1s and see where it leaves 0 to 1", "Logistic keeps a line underneath: z = a + b × x", "It squeezes z through 1 / (1 + e^(−z))", "Read b's sign as direction and exp(b) as the odds multiplier"],
-        answer: { options: ["Linear, because it is simpler and close enough", "Logistic, because its output stays between 0 and 1 and reads as a probability", "Either, because the outputs mean the same"], best: 1,
+        answer: { options: ["Linear, because it is simpler and close enough on 0s and 1s", "Logistic, because its output stays between 0 and 1", "Either, because both outputs can be read as probabilities"], best: 1,
           why: "The line gives impossible answers at both ends; the S cannot." },
         model: "Logistic. A straight line on 0s and 1s gives impossible answers: on our twelve members it says 1.28 at 8 visits and −0.01 at none. Logistic regression keeps a line underneath and squeezes it through the S, so every output sits between 0 and 1. The sign of b is the direction, and exp(b), 2.85 here, is how much the odds multiply per extra visit.",
         board: [{ title: "The line leaves 0 to 1", note: "1.28 at 8 visits", icon: "trendUp" }, { title: "A line underneath", note: "z = a + b × visits", icon: "chart" }, { title: "Squeeze it into an S", note: "1 / (1 + e^(−z))", icon: "gauge" }, { title: "Read the weight", note: "sign: direction; exp(b): strength", icon: "scale" }],
         followups: ["What does a coefficient of −0.069 on calls already made mean for the campaign manager?", "When would a single S fail on a yes-or-no target?"],
         wrong: [{ text: "Each extra visit adds 1.05 to the probability.", why: "1.05 is added to the log-odds; the odds multiply by 2.85, and the step in probability depends on where you start." }, { text: "Fit a line and clip its answers at 0 and 1.", why: "Clipping hides the misfit; the line's shape is wrong at both ends." }] },
       { kind: "client-facing", question: "Marketing wants the score by Friday. Your model is 0.8971 accurate, and calling nobody is 0.8874. What do you tell them?",
-        clarify: { options: ["Accurate on which rows, and against which bar?", "Can we get more servers?", "Who built the dashboard?"], best: 0,
+        clarify: { options: ["Accurate on which rows, and against which bar?", "Can we get more servers to train a bigger model by Friday?", "Who built the dashboard that will show the score?"], best: 0,
           why: "A one-point edge means nothing until the slice and the bar are named." },
         steps: ["Name the slice and the bar: 0.8971 against 0.8874 on validation", "Say it in rows: 80 more right answers in 8,238", "Offer what ships now: the cheapest rule, with its cost", "Ask for time for better columns, and name the next check"],
-        answer: { options: ["Ship it: 89.7 percent is excellent", "Show both numbers, offer the simple baseline now, and ask for time to improve the model", "Cancel the project"], best: 1,
+        answer: { options: ["Ship it: 89.7 percent accuracy is excellent for a first model", "Show both numbers, ship a simple rule, ask for time", "Cancel the project, since the model only ties doing nothing"], best: 1,
           why: "The model carries a little signal; the honest answer states how little and what would grow it." },
         model: "I would say: on the same 8,238 validation clients, the model gets 80 more right answers than calling nobody, under one point, on a random split. That is not yet worth a rollout. I can ship a simple rule now with its cost stated, and I need time for better columns, with a check date set. Accuracy also hides how many buyers we reach, which I will measure next.",
         board: [{ title: "Name the bar", note: "0.8971 against 0.8874", icon: "target" }, { title: "Say it in rows", note: "80 more of 8,238", icon: "table" }, { title: "Ship the simple rule", note: "with its cost", icon: "rule" }, { title: "Ask for time", note: "and a check date", icon: "calendar" }],
@@ -3960,7 +3990,7 @@ html{scroll-behavior:auto}
         { text: "Spend in July", bin: 1 }, { text: "Spend before 30 June", bin: 0 }, { text: "Date of the next order", bin: 1 }],
         why: "An input may read only rows on or before the cut. The whole log, July's spend and the next order all sit after it." },
       { type: "pick", q: "These are the straight line's mean residuals across five horsepower bands of 392 real cars. What do they say?",
-        options: ["The fit is good, because the misses are small", "The truth bends, and the line missed a curve", "The test set was peeked at"], answer: 1,
+        options: ["The fit is good, because the misses are small", "The truth bends, and the line missed a curve", "The test set was peeked at, so the line is biased"], answer: 1,
         why: "Above zero at both ends and below in the middle: a bow. A pattern in residuals is a shape the model missed; a peek never shows in a residual plot.",
         figure: function (el) {
           var mids = CARS.edges.slice(0, 5).map(function (e, k) { return (e + CARS.edges[k + 1]) / 2; });
@@ -3970,7 +4000,7 @@ html{scroll-behavior:auto}
         } },
       { type: "number", q: "A logistic model has b = 1.05 per visit. By how many times do the odds of buying again multiply for one extra visit? Give two decimals.", answer: 2.85, tolerance: 0.05, unit: "times",
         why: "exp(1.05) is about 2.85: the odds multiply by 2.85 for each extra visit, whatever the starting point. The probability step is not constant." },
-      { type: "pick", q: "Validation rose after the team chose its settings by their test score. What is now broken?", options: ["The training data", "The random seed", "The test score as an estimate of fresh rows"], answer: 2,
+      { type: "pick", q: "Validation rose after the team chose its settings by their test score. What is now broken?", options: ["The training rows, which the model has now memorised", "The seed, which no longer rebuilds the same slices", "The test score as a fair estimate"], answer: 2,
         why: "A test score used to choose anything has become a validation score, optimistic by the luck the choosing bought." },
       { type: "bins", q: "Which slice does each job belong to?", bins: ["Train", "Validation", "Test"], cards: [
         { text: "The model learns its weights here", bin: 0 }, { text: "You compare ten versions here", bin: 1 }, { text: "Scored once, at the end", bin: 2 },
