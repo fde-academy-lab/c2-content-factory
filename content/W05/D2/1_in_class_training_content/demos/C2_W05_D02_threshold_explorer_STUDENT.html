@@ -2814,7 +2814,7 @@ html{scroll-behavior:auto}
   /* A prediction card is built before its stage, so its reveal calls a hook the stage fills in. */
   var ON = {};
   function hook(key) { return function () { if (ON[key]) ON[key](); }; }
-  /* The kit's dot grid prints a fixed legend; a grid whose marks change meaning keeps its own. */
+  /* The kit's dot grid prints a fixed legend; a grid whose dots change meaning keeps its own. */
   function legendLine(el, items) {
     el.textContent = "";
     items.forEach(function (it) {
@@ -2912,15 +2912,21 @@ html{scroll-behavior:auto}
       unit = cur.sc.n > 100 ? 1e5 : 1;
       var small = cur.sc.n <= 60;
       if (small) {
-        humps = W5.chart(hostA, { height: 190, minHeight: 190, x: { min: -0.025, max: 1, ticks: [0, 0.2, 0.4, 0.6, 0.8, 1], label: "Score: the model's chance the customer comes back", fmt: function (v) { return v.toFixed(1); } },
+        humps = W5.chart(hostA, { height: 200, minHeight: 230, x: { min: -0.025, max: 1, ticks: [0, 0.2, 0.4, 0.6, 0.8, 1], label: "Score: the model's chance the customer comes back", fmt: function (v) { return v.toFixed(1); } },
           y: { min: 0, max: 1, ticks: [0.25, 0.75], fmt: function (v) { return v > 0.5 ? "Came back" : "Did not"; } }, numbers: false,
           legend: [{ label: "Found: " + words.acted + ", " + words.posVerb, color: FOUND, kind: "dot" }, { label: "Missed: left alone, " + words.posVerb, color: FOUND, kind: "hollow" },
             { label: "Wasted: " + words.acted + ", " + words.neg, color: WASTED, kind: "dot" }, { label: "Rightly left alone", color: SKIPPED, kind: "dot" }] });
-        var rowY = dodge(cur.score, cur.y);
-        humps.scatter("pts", cur.score.map(function (v, i) { return [v, rowY[i]]; }), { r: 7, style: function (i) {
-          var a = cur.score[i] >= effLine(), yy = cur.y[i];
-          return yy ? { color: FOUND, hollow: !a } : { color: a ? WASTED : SKIPPED, hollow: false };
+        humps.scatter("pts", stripPts(), { r: 7, style: function (i) {
+          var a = cur.score[i] >= effLine(), yy = cur.y[i], rr = humps.w < 520 ? 6 : 7;
+          return yy ? { color: FOUND, hollow: !a, r: rr } : { color: a ? WASTED : SKIPPED, hollow: false, r: rr };
         } });
+        /* The lanes are measured in pixels, so they are redone whenever the chart is laid out again. */
+        var baseLayout = humps.layout;
+        humps.layout = function (w) {
+          baseLayout.call(this, w);
+          var ser = this.byKey.pts;
+          if (ser && ser.g) { ser.data = stripPts(); this.draw(ser, ser.data); }
+        };
       } else {
         var nb = 50, pb = new Array(nb).fill(0), qb = new Array(nb).fill(0);
         cur.score.forEach(function (v, i) { var k = Math.min(nb - 1, Math.floor(v * nb)); (cur.y[i] ? pb : qb)[k]++; });
@@ -2967,15 +2973,16 @@ html{scroll-behavior:auto}
       var bound = budgetOn && cur.budget && x > t + 1e-9;
       return (bound ? "Budget cut " : "Line ") + p3(x) + (x < 0.75 && humps && humps.w > 560 ? ": " + words.act + " to the right" : "");
     }
-    /* Twenty dots on one strip collide near zero, so close neighbours step into the next lane of
-     * their own row: buyers stack upwards from 0.75, the rest downwards from 0.25. */
-    function dodge(score, y) {
-      var out = new Array(score.length), last = { 1: [], 0: [] };
-      range(score.length).sort(function (a, b) { return score[a] - score[b]; }).forEach(function (i) {
-        var lane = 0, used = last[y[i]];
-        while (used.some(function (u) { return u.lane === lane && Math.abs(u.x - score[i]) < 0.028; })) lane++;
-        used.push({ x: score[i], lane: lane });
-        out[i] = y[i] ? 0.75 + lane * 0.11 : 0.25 - lane * 0.11;
+    /* Twenty dots on one strip collide near zero, so a dot closer than one dot's width to a
+     * neighbour in its row steps into the next lane, alternating below and above the row's line. */
+    function stripPts() {
+      var pw = (humps && humps.pw) || 600, ph = (humps && humps.ph) || 140, rr = humps && humps.w < 520 ? 6 : 7;
+      var gx = (2 * rr + 2) / pw * 1.025, gy = (2 * rr + 2) / ph, used = { 1: [], 0: [] }, out = new Array(cur.score.length);
+      range(cur.score.length).sort(function (a, b) { return cur.score[a] - cur.score[b]; }).forEach(function (i) {
+        var lane = 0, row = used[cur.y[i]];
+        while (row.some(function (u) { return u.lane === lane && Math.abs(u.x - cur.score[i]) < gx; })) lane++;
+        row.push({ x: cur.score[i], lane: lane });
+        out[i] = [cur.score[i], (cur.y[i] ? 0.75 : 0.25) + (lane % 2 ? -1 : 1) * Math.ceil(lane / 2) * gy];
       });
       return out;
     }
@@ -3006,7 +3013,7 @@ html{scroll-behavior:auto}
       bill.set("now", [[e, r.b / unit]], 0);
       humps.set("t", e, fromDrag ? 0 : 250); bill.set("t", e, fromDrag ? 0 : 250);
       humps.set("called", [e, 1], 0);
-      if (humps.byKey.pts) humps.set("pts", humps.byKey.pts.data, 0);
+      if (humps.byKey.pts) humps.set("pts", stripPts(), 0);
     }
     function setLine(x) { if (slider) slider.set(x, true); move(x, false); }
 
@@ -3442,14 +3449,14 @@ html{scroll-behavior:auto}
         [0, 0.25, 0.5, 0.75, 1].forEach(function (v) { svg.appendChild(s("line", { x1: sx(v), x2: sx(v), y1: ay - 4, y2: ay + 4, stroke: "#A9A3D2" })); T(svg, sx(v), ay + 20, v.toFixed(2), { anchor: "middle", size: fs * 0.9, fill: "#3F3A66" }); });
         var F1 = f1(P, R), mean = (P + R) / 2, weak = Math.min(P, R);
         svg.appendChild(s("rect", { x: sx(Math.min(F1, weak)), y: ay - 7, width: Math.max(2, Math.abs(sx(F1) - sx(weak))), height: 14, rx: 7, fill: FOUND, opacity: 0.18 }));
-        var marks = [
+        var pins = [
           { v: P, text: "Precision " + P.toFixed(2), color: WASTED, r: 7 },
           { v: R, text: "Recall " + R.toFixed(2), color: COL.teal, r: 7 },
           { v: mean, text: "Plain mean " + mean.toFixed(2), color: INK, r: 6, hollow: true },
           { v: F1, text: "F1 " + F1.toFixed(2), color: FOUND, r: 9 }
         ].sort(function (a, b) { return a.v - b.v; });
         var rows = [];
-        marks.forEach(function (mk) {
+        pins.forEach(function (mk) {
           var wpx = mk.text.length * fs * 0.56 + 10, x = sx(mk.v), left = Math.max(0, Math.min(w - wpx, x - wpx / 2)), row = 0;
           while (rows.some(function (q) { return q.row === row && left < q.right + 6 && q.left < left + wpx + 6; })) row++;
           rows.push({ row: row, left: left, right: left + wpx });
@@ -3457,7 +3464,7 @@ html{scroll-behavior:auto}
           svg.appendChild(s("line", { x1: x, x2: x, y1: ly + 4, y2: ay - mk.r, stroke: mk.color, "stroke-width": 1.2, opacity: 0.7 }));
           T(svg, left + wpx / 2, ly, mk.text, { anchor: "middle", weight: 700, fill: mk.color === COL.teal ? "#007373" : mk.color === WASTED ? "#8A4A00" : mk.color, halo: true });
         });
-        marks.forEach(function (mk) { svg.appendChild(s("circle", { cx: sx(mk.v), cy: ay, r: mk.r, fill: mk.hollow ? "#FFFFFF" : mk.color, stroke: mk.hollow ? mk.color : "#FFFFFF", "stroke-width": 2 })); });
+        pins.forEach(function (mk) { svg.appendChild(s("circle", { cx: sx(mk.v), cy: ay, r: mk.r, fill: mk.hollow ? "#FFFFFF" : mk.color, stroke: mk.hollow ? mk.color : "#FFFFFF", "stroke-width": 2 })); });
       }
       function write() {
         var F1 = f1(P, R), mean = (P + R) / 2, show = seen(api.predict.state);
@@ -3502,7 +3509,7 @@ html{scroll-behavior:auto}
         legend: [{ label: "Saying no to everyone", color: "rose", kind: "line" }, { label: "Where the slider is", color: "violet", kind: "dot" }],
         table: function () { return { head: ["Share who come back", "Free accuracy"], rows: [["4% (Kalpa's row)", "96%"], ["11.3% (the bank)", "88.7%"], ["30% (German Credit's bad loans)", "70%"], ["50% (balanced)", "50%"]] }; } });
       free.line("free", [[0, 100], [50, 50]], { color: "rose", width: 2.4, name: "Free accuracy" });
-      free.scatter("marks", [[4, 96], [11.3, 88.7], [30, 70], [50, 50]], { color: "ink", r: 5, hollow: true });
+      free.scatter("cases", [[4, 96], [11.3, 88.7], [30, 70], [50, 50]], { color: "ink", r: 5, hollow: true });
       free.text("lk", [5.4, 99], { text: "Kalpa's row, 4%" });
       free.text("lb", [13.2, 93], { text: "The bank, 11.3%" });
       free.text("lg", [31.2, 74], { text: "German Credit, 30%" });
@@ -4000,7 +4007,7 @@ html{scroll-behavior:auto}
             else legendLine(lg, [{ fill: FOUND, label: "Fraud, hand-labelled", n: 211 }, { fill: SKIPPED, label: "Not fraud", n: 39 }]);
             api.readout.set(budget === "50" ? [{ value: "50 of 50", label: "**Precision in the top 50**: 1.0", tone: "good" }, { value: "50", label: "**Accounts reviewed**" }]
               : [{ value: show ? "211 of 250" : "?", label: "**Precision in the top 250**" + (show ? ": 84.4%" : ""), tone: show ? "good" : "" }, { value: "250", label: "**Accounts reviewed**: the team's budget" }]);
-            api.say(budget === "250" ? "The paper reports the total for the top 250 and that the first 50 were all fraud, so the marks after the first 50 are drawn in count order, not rank by rank." : "The paper reports precision of 1.0 for the first 50 users.");
+            api.say(budget === "250" ? "The paper reports the total for the top 250 and that the first 50 were all fraud, so the squares after the first 50 are drawn in count order, not rank by rank." : "The paper reports precision of 1.0 for the first 50 users.");
           }
           api.toggle({ label: "Review budget", options: [{ value: "250", label: "Top 250" }, { value: "50", label: "Top 50" }], onChange: function (v) { budget = v; set(1); } });
           ON.f1 = function () { set(1); };
