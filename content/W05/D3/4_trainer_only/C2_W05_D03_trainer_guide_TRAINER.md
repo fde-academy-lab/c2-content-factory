@@ -11,20 +11,20 @@
 
 | Block | Minutes | Slides | Open | What must land | Cut if late |
 |---|---|---|---|---|---|
-| Opening | 10 | cover to S5 | deck | the 0.99 prediction written on the board | S1 roadmap to 30 seconds |
-| Ch 1 Turning raw columns into signals | 22 | S6 to S10 | ch01 | a total ranks the coldest member first; five signals with reasons | S9 bank counts |
-| Ch 2 Teaching a model to read categories | 18 | S11 to S16 | ch02 | one-hot for lines, scaling for distance, trees shrug | S14 table (the row's cut-first item) |
-| Ch 3 Answers from the future | 20 | S17 to S22 | ch03, explorable | the prediction-time question, said twice | S22 rules |
+| Opening | 10 | cover to S5 | deck, explorer `#story`, `#map` | the 0.99 prediction written on the board | S1 roadmap to 30 seconds |
+| Ch 1 Turning raw columns into signals | 22 | S6 to S10 | ch01, explorer `#p1` | a total ranks the coldest member first; five signals with reasons | S9 bank counts |
+| Ch 2 Teaching a model to read categories | 18 | S11 to S16 | ch02, explorer `#p2` | one-hot for lines, scaling for distance, trees shrug | S14 table (the row's cut-first item) |
+| Ch 3 Answers from the future | 20 | S17 to S22 | ch03, explorer `#p3` | the prediction-time question, said twice | S22 rules |
 | Break | 10 | | | | |
-| Ch 4 Interrogating every column | 15 | S23 to S28 | ch04 | five asks; the as-of trap | S27 and S28 drill |
-| Ch 5 What the importance chart can't tell you | 15 | S29 to S32 | ch05 | twins share credit; reliance is no lever | S32 rules |
-| Case 1 The junior's join | 20 | S33 to S36 | case01 | the room predicts before the jump is shown | S36 scaler code |
+| Ch 4 Interrogating every column | 15 | S23 to S28 | ch04, explorer `#p4` | five asks; the as-of trap | S27 and S28 drill |
+| Ch 5 What the importance chart can't tell you | 15 | S29 to S32 | ch05, explorer `#p5` | twins share credit; reliance is no lever | S32 rules |
+| Case 1 The junior's join | 20 | S33 to S36 | case01, explorer `#case` Ch 6 | the room predicts before the jump is shown | S36 scaler code |
 | Guided | 20 | S37 | guided | two flags with reasons; duration called not known | never cut |
-| Case 2 Every column on the timeline | 30 | S38 to S47 | case02 | the audit; honest 0.796; Rs 1.19 lakh promised against Rs 2.82 lakh | S44 poutcome and pdays to one line |
+| Case 2 Every column on the timeline | 30 | S38 to S47 | case02, explorer `#case` Ch 7 tabs | the audit; honest 0.796; Rs 1.19 lakh promised against Rs 2.82 lakh | S44 poutcome and pdays to one line |
 | Lunch | | | | | |
-| Case 3 The sign that flipped | 20 | S48 to S53 | case03 | euribor3m -0.92 to +0.77; importance 0.34 above the 0.30 lift | S51 group shuffle |
+| Case 3 The sign that flipped | 20 | S48 to S53 | case03, explorer `#case` Ch 8 tabs | euribor3m -0.92 to +0.77; importance 0.34 above the 0.30 lift | S51 group shuffle |
 | Unguided | 20 | S53 notes | blank notebook | the audited set rebuilt, 0.796 reproduced | shorten to the audit table only |
-| Interview corner, Kahoot, close | 20 | S54 to S56 | Kahoot | the [D] answer opens with a clarifying question | Kahoot to Q1, Q2, Q5 |
+| Interview corner, Kahoot, close | 20 | S54 to S56 | explorer `#interview`, Kahoot | the [D] answer opens with a clarifying question | Kahoot to Q1, Q2, Q5 |
 | IITGN faculty block W5-3 (tentative) | 120 | | | see the sync block below | |
 | TA-led practice lab | about 90 | | practice lab | the same audit on German Credit | see section 8 |
 
@@ -57,14 +57,14 @@ flowchart LR
 
 | Chapter | Draw first | Ask for a prediction | Misconception to stage | Wrong number, shown exactly, and its fix | The click | Interview line |
 |---|---|---|---|---|---|---|
-| 1 Signals | two members on a line from first order to the nudge morning | who does total spend nudge first? (b, Hari) | "the biggest spender is the best target" | Hari, Rs 26,000, last order 312 days ago; fix: recency and orders per month | ch01 cell 4, then the scatter | "Engineer features from a customer table and justify each" |
-| 2 Categories | three cities on a number line, 1, 2, 3 | is Indore three times Pune? | "label encoding is neutral" | A's nearest neighbour is B at distance 200.1 on raw columns; fix: standardise, nearest becomes C | ch02 scatter pair | "Which encoder for forty values?" |
-| 3 Future | one member's timeline with the nudge morning as a thick line | the settled rule on the nudge morning (c, 6 of 12) | "a high score means a good model" | 12 of 12 on the training table; fix: drop it, the honest rule scores 10 of 12 | the explorable, three clicks | "What is leakage?" |
-| 4 Audit | the five-ask table on the board | how many of nine are dropped? (b, three) | "if it is in the warehouse, it was known" | loyalty tier Gold for M07, written by the purchase; fix: the snapshot as of the morning | ch04 timeline | "Walk me through your feature review" |
-| 5 Importance | a column of 12 values and an arrow moving each six rows down | searches shuffled: how many right? (b, 7) | "the top bar is the driver" | twins alone cost 2 and 4, together 8; fix: shuffle as a group | ch05 bars | "What does importance prove?" |
-| Case 1 | three bars with question marks | what do the two joins add? (b) | "accuracy shows improvement" | accuracy 0.899 to 0.907 while AUC goes 0.795 to 0.932 | case01 table | "Your score jumped overnight" |
-| Case 2 | the week's timeline with an empty slot right of the line | shortest fifth yes-rate (b, 0.5 percent); year-month AUC (c, 0.79) | "known that morning means safe" | the calendar alone scores 0.785; inside one month the honest model ranks at 0.568 | case02 within-month table | "Your model is great offline and poor live" |
-| Case 3 | three overlapping circles for the rate columns | euribor3m's sign with partners (b, positive) | "a coefficient's sign is its effect" | emp.var.rate importance 0.344 against a model lift of 0.295; fix: group shuffle, 0.140 | case03 flip bars | "A sign flipped when you added a feature" |
+| 1 Signals | two members on a line from first order to the nudge morning | who does total spend nudge first? (b, Hari) | "the biggest spender is the best target" | Hari, Rs 26,000, last order 312 days ago; fix: recency and orders per month | ch01 cell 4, then the scatter; `#p1` play to recency | "Engineer features from a customer table and justify each" |
+| 2 Categories | three cities on a number line, 1, 2, 3 | is Indore three times Pune? | "label encoding is neutral" | A's nearest neighbour is B at distance 200.1 on raw columns; fix: standardise, nearest becomes C | ch02 scatter pair; `#p2` Standardise | "Which encoder for forty values?" |
+| 3 Future | one member's timeline with the nudge morning as a thick line | the settled rule on the nudge morning (c, 6 of 12) | "a high score means a good model" | 12 of 12 on the training table; fix: drop it, the honest rule scores 10 of 12 | `#p3`: commit, play, drag the moment to day 0 | "What is leakage?" |
+| 4 Audit | the five-ask table on the board | how many of nine are dropped? (b, three) | "if it is in the warehouse, it was known" | loyalty tier Gold for M07, written by the purchase; fix: the snapshot as of the morning | ch04 timeline; `#p4` stamps | "Walk me through your feature review" |
+| 5 Importance | a column of 12 values and an arrow moving each six rows down | searches shuffled: how many right? (b, 7) | "the top bar is the driver" | twins alone cost 2 and 4, together 8; fix: shuffle as a group | ch05 bars; `#p5` shuffle each twin | "What does importance prove?" |
+| Case 1 | three bars with question marks | what do the two joins add? (b) | "accuracy shows improvement" | accuracy 0.899 to 0.907 while AUC goes 0.795 to 0.932 | case01 table; `#case` Ch 6 feature sets | "Your score jumped overnight" |
+| Case 2 | the week's timeline with an empty slot right of the line | shortest fifth yes-rate (b, 0.5 percent); year-month AUC (c, 0.79) | "known that morning means safe" | the calendar alone scores 0.785; inside one month the honest model ranks at 0.568 | case02 within-month table; `#case` Ch 7 stamps and calendar | "Your model is great offline and poor live" |
+| Case 3 | three overlapping circles for the rate columns | euribor3m's sign with partners (b, positive) | "a coefficient's sign is its effect" | emp.var.rate importance 0.344 against a model lift of 0.295; fix: group shuffle, 0.140 | case03 flip bars; `#case` Ch 8 fits and group shuffle | "A sign flipped when you added a feature" |
 
 **The dataset's own words on `duration`**, read aloud from the UCI page (fetched 28 October 2026, https://archive.ics.uci.edu/dataset/222/bank+marketing, verified 28 October 2026), with one capital letter bracketed so this file passes the house style gate:
 
@@ -146,3 +146,26 @@ DOES NOT REPEAT: the prediction-time question and the leak audit.
 The row stops where the faculty block starts: the close (S56) is the last thing the trainer runs, and the block is mentioned to the room as tentative.
 
 ME1 runs this week as a continuous activity; say its scope aloud on Friday and state no day or slot.
+
+## 11. The explorer, page by page
+
+The file is `1_in_class_training_content/demos/C2_W05_D03_leakage_timeline_explorer_STUDENT.html`. Each page opens from the side menu, from its number key, or by adding its name after the address (`#p3`). Every page asks for a prediction before it shows its answer, so ask the room to commit first. Press P for presenter mode on the projector. Slide S21 pictures `#p3` at the nudge morning.
+
+| Page | When | The clicks | What the room should see |
+|---|---|---|---|
+| `#story` | Opening | Play the five scenes; commit on the card | The bank's ranked columns pile violet right at 0.761, 0.795, 0.932; Kalpa's 0.99 as the twin; the call is to hold both |
+| `#map` | Opening | Play the path; open a page from its box | Five topics in order, resting on recency, Monday's moment, Tuesday's bill and the fair comparison |
+| `#p1` | Ch 1 | Commit; play the six steps; slide Hari's last order | Total spend ranks Hari 1 of 8; recency puts Hari 8 of 8; only recency moves with the slider |
+| `#p2` | Ch 2 | Commit; play to step 3; slide one visit's worth from Rs 1; press Standardise | A's nearest neighbour flips from B to C above about Rs 284 a visit; standardising sets Rs 953 |
+| `#p3` | Ch 3 | Commit; play to step 3; drag the moment from day +13 to day 0, then to day -2 | 12 of 12 on the table and 6 of 12 on the morning; at day 0 both read 10 of 12 |
+| `#p4` | Ch 4 | Commit; play the five asks; stamp the nine columns, or Stamp it the audit's way | Unstamped: 29 of 30 on the table, 20 on the morning; audited: 23 and 23 |
+| `#p5` | Ch 5 | Commit; play; shuffle visits, searches, then both; Shuffle again for random orders | 2, 4 and 8 answers lost; searches is a reliance, a push needs a fair test |
+| `#case` Ch 6 | Case 1 | Commit; add + economy, then + call log | 404, 460, 572 buyers in the first 1,000 calls; AUC 0.761, 0.795, 0.932; the trap card on accuracy |
+| `#case` Ch 7, every column | Case 2 | Commit; stamp the eight cards; then Stamp it the audit's way | Unstamped: AUC 0.932 and Rs 1.19 lakh, which cannot run; audited: 0.796, Rs 2.82 lakh, 462 |
+| `#case` Ch 7, the calendar | Case 2 | Commit; switch the calendar alone, the honest model, inside one month | 0.785, 0.796 and 0.568 |
+| `#case` Ch 8, the sign | Case 3 | Commit; step the four fits | euribor3m -0.92, +0.14, +0.77, +0.36 |
+| `#case` Ch 8, the top bar | Case 3 | Commit; switch to the economy as a group | emp.var.rate 0.344 against a lift of 0.295; the group 0.140 |
+| `#field` | After class | One control per scene; then the six seats | Zech 0.931 to 0.815; Kaggle 0.981 from a crawl; Airbnb's three forms; Uber's last-hour skew of 3.8 minutes on invented orders |
+| `#interview` | Close | Per situation: the question, the order, the answer, then the model answer | The [D] answer opens with "which system writes this column, and when?" |
+| `#check` | After class | Eight checks | The map with today lit, and Thursday's question |
+

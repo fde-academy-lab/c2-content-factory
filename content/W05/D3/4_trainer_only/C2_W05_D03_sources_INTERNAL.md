@@ -95,3 +95,50 @@ study-notes-builder and fde-cheat-sheets (picture first per chapter, the cumulat
 companion-builder and design-taste-frontend (one question, two controls, a wrong default, the
 prediction lock, no hover-only state), concept-packaging (the cold open on the 0.99, paired rules),
 humanizer and llm-tic-scrubber (the style sweep before commit).
+
+## The explorer, rebuilt on the Week 5 kit (29 October 2026)
+
+Rebuilt in place as the day companion of decision `w5-explorer-companion`, on branch `w05-d3-explorer`, with the Week 5 kit (`scripts/companion/w5kit.js` and `w5kit.css`, inlined by `scripts/build_companion.py`) and the briefs `docs/detailing/W05_briefs/explorers/common.md` and `D3.md`. Eleven routes: `#story`, `#map`, `#p1` to `#p5`, `#case` (five tabs), `#field` (four scenes and the six seats), `#interview` (five situations) and `#check` (eight checks).
+
+### Data
+
+| Number on the page | Where it comes from |
+|---|---|
+| The 8,238 validation outcomes and the three score sets the story ranks and case chapter 6 draws | `C2_W05_D03_explorer_data_INTERNAL.py`, which reruns the week's pipeline and today's scorer from case01 and writes `C2_W05_D03_explorer_data_INTERNAL.json`, 96 KB; scores travel as integers out of 1,000 |
+| 0.7613, 0.7946, 0.9324; 0.8971, 0.8986, 0.9074; 0.188, 0.227, 0.420; Rs 279,000, Rs 280,040, Rs 118,800; 404, 460, 572 | the same script, which stops unless each equals case01's output |
+| The AUC, bill and top-1,000 buyers of every keep, fix or drop combination on case chapter 7's eight cards (384 refits on the training rows) | the same script; it stops unless the audited set gives 0.7955, Rs 281,680 and 462, the leaked set 0.9327 and Rs 118,520, and raw pdays 0.7951, as case02 prints |
+| Call-length fifths 0.005 to 0.330, the four calls of 0 seconds, poutcome's three rates, pdays at 999 in 96.32 percent, the calendar's 0.7854, the yes-rate by month and year, euribor3m by month, the nine within-month AUCs and their weighted 0.568 | the same script, checked against case02 |
+| euribor3m at -0.917, +0.144, +0.766, +0.358; the correlations 0.972, 0.944, 0.905; permutation importance 0.3435 down; the group shuffle 0.140; the lift 0.295 | the same script, checked against case03 |
+| The eight members of `#p1`, the six of `#p2`, the twelve of `#p3` and the twelve of `#p5` | typed exactly as notebooks ch01, ch02, ch03 and ch05 type them; `#p3` adds one invented column, coupon_redeemed, written on day +3, labelled on the stage |
+| The nine candidate columns of `#p4` | notebook ch04's table, with its owners, write days and reasons |
+| The thirty invented members `#p4` votes over | found once by a seeded search (seed 3646) so the audited stamps score 23 of 30 on both tables, the junior's unstamped set 29 on the table and 20 on the nudge morning, today's loyalty tier 25 on the table and 23 on the morning, and a kept member_id 20 on both; embedded as a literal |
+| Zech, Kaggle IJCNN 2011, Airbnb, Uber Michelangelo | `docs/detailing/W05_research/W05_cases.md`, each verified 28 October 2026, with the link and date on the page; Airbnb's 400 nightly prices and Uber's nine orders are invented for the picture and labelled invented |
+
+### Decisions
+
+1. **The bank's twenty columns are stamped on case chapter 7, and `#p4` stamps chapter 4's nine invented columns.** D3.md puts the bank's columns on `#p4`, which chapter 4 opens before case 2; stamping `duration` there would name the leak the room finds at S38 and S39. `#p4` keeps chapter 4's table and the as-of trap, and case chapter 7 carries the bank's stamps, with the AUC, the bill and the top 1,000 refitted for every combination.
+2. **euribor3m's sign flip sits on case chapter 8, and `#p5` teaches twins on chapter 5's invented members.** The deck's own decision keeps euribor3m unnamed before case 3 (S48 calls it the row's second discovery), so `#p5` shuffles the invented visits and searches, adds random shuffles averaged as scikit-learn averages repeats, and draws the lever question.
+3. **Zech's control is the test site.** The paper reports 0.931 on the home systems' test images, 0.815 at Indiana and 0.861 for a ranking by hospital prevalence alone; it reports no model with the hospital signal removed, so the toggle switches the test images between home and Indiana instead of switching a hospital feature off.
+4. **The story ranks the bank's calls in columns by score.** Each feature set's ranking piles the 928 buyers further right; Kalpa's 0.99 is told in the caption and the readout, with no rows drawn, since Kalpa's version 6 data was never generated.
+5. **An unstamped card on case chapter 7 counts as the junior's join:** kept, with pdays left out as case01 left it out, so the unstamped board reads 0.932 and Rs 1.19 lakh exactly.
+6. **Answers stay hidden until the reveal.** Every readout, bar or label that states a prediction's answer shows a question mark or a dashed empty bar until the learner commits or reveals; the importance chart on case chapter 8 also hides its column names and colours.
+7. **Every readout ends on its hero number.** The kit spans a lone last card across the row, so each readout lists an even number of small cards before the hero.
+8. **Cut from the old page:** the thirty-member combined rule and its "add a green feature" click; adding features now happens on `#p1` and on case chapter 6, where the real jump is measured.
+9. **The deck's S21** now pictures `#p3` at the nudge morning, cropped at 192 dpi so its smallest label prints at about 14 points, and its notes walk the new clicks. The deck was rebuilt with this folder's `C2_W05_D03_build_deck_INTERNAL.py`; the shared builder no longer places the logo, so the strip removed nothing.
+10. **The README run table and the trainer guide** name the page each chapter opens, and the trainer guide's section 11 lists every page with its clicks and what the room should see.
+
+### Kit gaps, worked around on the page
+
+- A toggle has no setter, so the `#p5` player clicks the toggle's button to move it.
+- The readout spans only a lone last card, so an odd count before a full-width hero leaves a hole; every readout here orders its cards to avoid it.
+- The concept map's panel joins node labels into sentences ("Feeds The feature store"), so the later nodes are named without a leading "The".
+- A chart or drawing built inside a hidden tab is built when the tab first gives it a width (the page's `lazy` helper), so the case tabs log no errors at load.
+- `W5.tween` can pass a slightly negative progress on its first frame, when the animation frame's timestamp precedes its start time; a bar drawn from it took a negative height and logged a console error in one sweep of three, so every player render here clamps its progress at zero.
+- `explorer_shots.py` shoots only a route's first tab; the case, field and interview tabs were shot with a short Playwright script, before and after every reveal.
+- `find_chromium()` in `html_sweep.py` searches `chrome-linux/`, and this container keeps Chromium at `/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`; `deck_check.py` names `chromium-1194`. Both were linked into the expected paths outside the repository for this session.
+
+### Proof
+
+- `python3 content/W05/D3/4_trainer_only/C2_W05_D03_explorer_data_INTERNAL.py`: 25 checks pass against case01 to case03, 384 refits, about 190 seconds.
+- `python3 scripts/html_sweep.py` walks all eleven routes with no inert control and no console error.
+- `python3 scripts/explorer_shots.py --end` at 1366 and 390 wide, plus every tab of `#case`, `#field` and `#interview` before and after its reveals; every picture was looked at, and the overlaps, clipped labels and small type it found were fixed.
