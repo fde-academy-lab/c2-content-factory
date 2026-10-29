@@ -61,6 +61,7 @@ three data links were fetched again by this session's data script the same day.
 | Quotations from Google's rule 29 and from paper titles are left out | `W06_references.md` names rule 29 and the Ascarza paper without their exact words, so the page paraphrases |
 | Upstart's figures are labelled as provided by Upstart and not replicated | As `W06_references.md` 3.3 records |
 | The RBI 2026 model risk guidance is called a draft | Its finalisation was not verified (`W06_references.md` 3.9) |
+| The check page ends on a reading list of the requester's eight references, added 29 October 2026 | The two Ketan Doshi posts are linked on the author's own blog, read and checked that day, with the requester's Medium copies beside them. The other six refused an automated read (`W06_references.md` section 1), so each carries its title as read from the link and a question that judges it against the ladder, and nothing claims what it says. The stage tags are our reading of the titles |
 
 ## Gaps in the kit (not patched)
 

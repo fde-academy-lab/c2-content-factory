@@ -2,6 +2,7 @@
 
 Usage:
     python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py
+    python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py --fetch
     python3 content/W06/D2/4_trainer_only/C2_W06_D02_open_images_INTERNAL.py --check
 
 Decision `w6-open-images` lets a Week 6 pack print an image from Wikimedia Commons when its
@@ -13,6 +14,7 @@ file that opens with no network. The page's own script prints the attribution li
 block. Commons answers HTTP 429 when a shared address asks too often, so every request backs off
 and retries, and both the API answer and the files are cached in ~/.cache/c2_open_images.
 
+--fetch fills the cache and leaves the page alone, for a run that has to wait out Commons.
 --check rebuilds nothing: it reads the page's block and fails when a picture is missing, carries
 a licence outside ALLOWED, or has no author, file page or checked date.
 """
@@ -140,6 +142,12 @@ def build():
     print(f"wrote {len(block)} pictures into {PAGE.name}")
 
 
+def fetch():
+    records = metadata()
+    for key, title in PICTURES.items():
+        print(f"{key}: {len(original(records[title])):,} bytes cached")
+
+
 def check():
     m = BLOCK.search(PAGE.read_text(encoding="utf-8"))
     if not m:
@@ -163,15 +171,18 @@ def check():
 
 
 if __name__ == "__main__":
-    check() if "--check" in sys.argv[1:] else build()
+    args = sys.argv[1:]
+    check() if "--check" in args else fetch() if "--fetch" in args else build()
 
 # Test inputs and expected outcomes:
 # 1. No argument, Commons reachable, cache empty: prints one line per picture with its author,
 #    licence and size, then "wrote 3 pictures into C2_W06_D02_explorer_STUDENT.html".
 # 2. No argument, Commons answering 429: prints "429 from Commons, waiting 30 seconds", doubles the
 #    wait up to five times, then either succeeds as in 1 or stops with the HTTP error.
-# 3. --check after 1: prints "PASS" and exits 0.
-# 4. --check on a page whose block is empty ({}): prints "FAIL workflow is missing" and the other
+# 3. --fetch, Commons reachable: prints "workflow: 26,499 bytes cached" and one line for each of
+#    the other two, and leaves the page unchanged.
+# 4. --check after 1: prints "PASS" and exits 0.
+# 5. --check on a page whose block is empty ({}): prints "FAIL workflow is missing" and the other
 #    two, then "3 failures", and exits 1.
-# 5. A PICTURES entry whose Commons licence is, say, "Fair use": stops with "... is not in
+# 6. A PICTURES entry whose Commons licence is, say, "Fair use": stops with "... is not in
 #    ALLOWED; redraw it instead" and leaves the page unchanged.
