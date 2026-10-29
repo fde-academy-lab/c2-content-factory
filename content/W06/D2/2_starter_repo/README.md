@@ -4,8 +4,10 @@
 
 ## How do you set this repository up?
 
-1. Create an empty repository on GitHub for your group, then copy every file in this folder into
-   it, including the hidden folders `.devcontainer` and `.streamlit` and the file `.gitignore`.
+1. Make your group's own copy. On the starter's GitHub page, click **Use this template**, then
+   **Create a new repository**, and add the other two members as collaborators. If you were given a
+   zip instead, create an empty repository and upload every file in it, including the hidden
+   folders `.devcontainer` and `.streamlit` and the file `.gitignore`.
 2. Open the repository in a Codespace: the green **Code** button, then the **Codespaces** tab, then
    **Create codespace**. While it starts, it installs Python 3.12 and every package in
    `requirements.txt`.
