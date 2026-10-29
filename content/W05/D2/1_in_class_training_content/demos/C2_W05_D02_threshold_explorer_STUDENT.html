@@ -2802,8 +2802,9 @@ html{scroll-behavior:auto}
     return lines;
   }
   /* A stage that switches between invented and real numbers relabels the kit's badge itself. */
-  function relabel(api, kind, source) {
-    var card = api.el.closest(".w5-stagecard"), b = card && card.querySelector(".w5-badge");
+  function relabel(api, kind, source, title) {
+    var card = api.el.closest(".w5-stagecard"), b = card && card.querySelector(".w5-badge"), st = card && card.querySelector(".w5-stagetitle");
+    if (st && title) st.textContent = title;
     if (!b) return;
     b.className = "w5-badge" + (kind === "real" ? " real" : "");
     b.replaceChild(W5.icon(kind === "real" ? "table" : "sliders"), b.firstChild);
@@ -2874,10 +2875,12 @@ html{scroll-behavior:auto}
    *   var scene = lineScene(api, cfg)    api is any kit stage api (a how-it-works page, a case step
    *                                      or a field scene); the scene draws into api.el, adds its
    *                                      controls to api.controls and writes api.readout.
-   *   cfg.sets   [{ key, label, data: "real" | "invented", source, score: [0..1], y: [0 | 1],
-   *                 step, budget: { k, label } or null }]   the first set opens
+   *   cfg.sets   [{ key, label, data: "real" | "invented", source, title, people, score: [0..1],
+   *                 y: [0 | 1], step, budget: { k } or null }]   the first set opens; a set of 60
+   *                 or fewer is drawn as a strip of dots, a larger one as two humps
    *   cfg.costs  { fp: Rs for acting wrongly, fn: Rs for failing to act }
-   *   cfg.words  { pos, neg, act, acted, people }   e.g. "bought", "did not buy", "call", "called", "clients"
+   *   cfg.words  { pos, posOne, posVerb, neg, act, acted, people }
+   *              e.g. "buyers", "buyer", "bought", "did not buy", "call", "called", "clients"
    *   cfg.line   the opening line (0.5, the library default, wrong on purpose)
    *   cfg.hideCurve  true: only the trace of lines visited is drawn until scene.reveal()
    * It returns { reveal(), setLine(t), state() }. Every move writes the readout first, then redraws. */
@@ -2909,9 +2912,9 @@ html{scroll-behavior:auto}
       unit = cur.sc.n > 100 ? 1e5 : 1;
       var small = cur.sc.n <= 60;
       if (small) {
-        humps = W5.chart(hostA, { height: 170, minHeight: 170, x: { min: 0, max: 1, ticks: 10, label: "Score: the model's chance the customer comes back", fmt: function (v) { return v.toFixed(1); } },
-          y: { min: 0, max: 1, hide: true }, numbers: false,
-          legend: [{ label: "Found: " + words.acted + ", " + words.pos, color: FOUND, kind: "dot" }, { label: "Missed: left alone, " + words.pos, color: FOUND, kind: "hollow" },
+        humps = W5.chart(hostA, { height: 190, minHeight: 190, x: { min: -0.025, max: 1, ticks: [0, 0.2, 0.4, 0.6, 0.8, 1], label: "Score: the model's chance the customer comes back", fmt: function (v) { return v.toFixed(1); } },
+          y: { min: 0, max: 1, ticks: [0.25, 0.75], fmt: function (v) { return v > 0.5 ? "Came back" : "Did not"; } }, numbers: false,
+          legend: [{ label: "Found: " + words.acted + ", " + words.posVerb, color: FOUND, kind: "dot" }, { label: "Missed: left alone, " + words.posVerb, color: FOUND, kind: "hollow" },
             { label: "Wasted: " + words.acted + ", " + words.neg, color: WASTED, kind: "dot" }, { label: "Rightly left alone", color: SKIPPED, kind: "dot" }] });
         var rowY = dodge(cur.score, cur.y);
         humps.scatter("pts", cur.score.map(function (v, i) { return [v, rowY[i]]; }), { r: 7, style: function (i) {
@@ -2954,7 +2957,7 @@ html{scroll-behavior:auto}
       var pts = curve();
       if (revealed) drawCurve(pts);
       bill._pts = pts;
-      relabel(api, cur.data, cur.source);
+      relabel(api, cur.data, cur.source, cur.title);
     }
     function drawCurve(pts) {
       bill.line("curve", pts || bill._pts, { color: "violet", width: 2.4, name: "Bill" });
@@ -2964,14 +2967,15 @@ html{scroll-behavior:auto}
       var bound = budgetOn && cur.budget && x > t + 1e-9;
       return (bound ? "Budget cut " : "Line ") + p3(x) + (x < 0.75 && humps && humps.w > 560 ? ": " + words.act + " to the right" : "");
     }
-    /* Twenty dots on one strip collide near zero, so close neighbours step up or down a row. */
+    /* Twenty dots on one strip collide near zero, so close neighbours step into the next lane of
+     * their own row: buyers stack upwards from 0.75, the rest downwards from 0.25. */
     function dodge(score, y) {
       var out = new Array(score.length), last = { 1: [], 0: [] };
       range(score.length).sort(function (a, b) { return score[a] - score[b]; }).forEach(function (i) {
-        var base = y[i] ? 0.72 : 0.28, lane = 0, used = last[y[i]];
-        while (used.some(function (u) { return u.lane === lane && Math.abs(u.x - score[i]) < 0.03; })) lane++;
+        var lane = 0, used = last[y[i]];
+        while (used.some(function (u) { return u.lane === lane && Math.abs(u.x - score[i]) < 0.028; })) lane++;
         used.push({ x: score[i], lane: lane });
-        out[i] = base + (lane % 2 ? -1 : 1) * Math.ceil(lane / 2) * 0.12;
+        out[i] = y[i] ? 0.75 + lane * 0.11 : 0.25 - lane * 0.11;
       });
       return out;
     }
@@ -2980,7 +2984,7 @@ html{scroll-behavior:auto}
       var everyone = cur.sc.N * cfp, nobody = cur.sc.P * cfn, free = Math.min(everyone, nobody);
       var bound = budgetOn && cur.budget && e > t + 1e-9;
       var items = [
-        { value: F.int(acted), label: "**" + words.act.charAt(0).toUpperCase() + words.act.slice(1) + "s** at this line, of " + F.int(n) + " " + words.people },
+        { value: F.int(acted), label: "**" + words.act.charAt(0).toUpperCase() + words.act.slice(1) + "s** at this line, of " + F.int(n) + " " + (cur.people || words.people) },
         { value: F.int(c.tp) + " of " + F.int(cur.sc.P), label: "**Found**: " + words.pos + " on the list, recall " + pctOf(c.tp, cur.sc.P) },
         { value: acted ? pctOf(c.tp, acted) : "none", label: "**Precision**: " + F.int(c.tp) + " of " + F.int(acted) + " " + words.act + "s reached a " + words.posOne },
         bound ? { value: pctOf(cur.sc.P, n), label: "**The base rate**: what " + F.int(acted) + " random " + words.act + "s would reach", tone: "good", sub: "The ranking is worth " + (c.tp / acted / (cur.sc.P / n)).toFixed(1) + " times a random list here." }
@@ -3228,7 +3232,7 @@ html{scroll-behavior:auto}
     kicker: "The confusion matrix, cell by cell",
     heading: "Four boxes that tell the truth: where did each land?",
     lede: "Every customer carries two labels, what the model said and what happened, and two labels make four boxes. Drop twenty invented customers in one at a time, then pour the bank's 8,238 real scores into the same four boxes and move the line.",
-    data: "invented", stageTitle: "Twenty invented Kalpa customers, one tag each: violet came back, a solid edge means the model said nudge",
+    data: "invented", stageTitle: "Twenty invented Kalpa customers, one tag each: violet came back, and a solid edge means the model said nudge",
     predict: { q: "The model was right on **15 of these 20** customers. How many of the **5 real repeaters** did it find?", options: ["5 of 5", "4 of 5", "3 of 5", "1 of 5"], answer: 2,
       why: "It found C02, C05 and C14, and missed C09 and C18. Twelve of its fifteen right answers sit in the easy box, customers it rightly left alone, so 15 of 20 says almost nothing about finding repeaters. The two wrong boxes cost 3 × Rs 40 + 2 × Rs 1,200 = Rs 2,520.", onReveal: hook("p1") },
     stage: function (api) {
@@ -3248,6 +3252,7 @@ html{scroll-behavior:auto}
         var printLines = wrapLines(PRINTOUT, Math.floor(w / (fs * 0.52))).length;
         return { fs: fs, tagW: tagW, tagH: tagH, g: g, per: per, qTop: qTop, gut: gut, top: top, bw: bw, bh: bh, head: head, perBox: perBox, H: top + 2 * bh + 10 + printLines * fs * 1.3, headH: headH, printLines: printLines };
       }
+      var TITLE_A = "Twenty invented Kalpa customers, one tag each: violet came back, and a solid edge means the model said nudge";
       var PRINTOUT = "confusion_matrix(came_back, model_says_nudge) prints [[12, 3], [2, 3]], so its top-left 12 is the true negatives.";
       var READING = "Read it as a sentence: rows say what happened, columns say what the model said, and each box counts customers.";
       var POS_K = { tp: [0, 0], fn: [1, 0], fp: [0, 1], tn: [1, 1] }, POS_S = { tn: [0, 0], fp: [1, 0], fn: [0, 1], tp: [1, 1] };
@@ -3376,8 +3381,8 @@ html{scroll-behavior:auto}
       W5.toggle(api.controls, { label: "Customers", options: [{ value: "twenty", label: "Twenty invented" }, { value: "bank", label: "The bank's 8,238" }], onChange: function (v) {
         mode = v;
         wrapA.hidden = ctlA.hidden = v !== "twenty"; wrapB.hidden = ctlB.hidden = v === "twenty";
-        if (v === "bank") { buildB(); writeB(); relabel(api, "real", SRC); W5.relayout(wrapB, true); }
-        else { pl.pause(); writeA(); relabel(api, "invented"); stA.redraw(); }
+        if (v === "bank") { buildB(); writeB(); relabel(api, "real", SRC, "The bank's 8,238 validation clients, one dot each, in the same four boxes"); W5.relayout(wrapB, true); }
+        else { pl.pause(); writeA(); relabel(api, "invented", "", TITLE_A); stA.redraw(); }
       } });
       api.controls.insertBefore(api.controls.lastChild, api.controls.firstChild);
       writeA();
@@ -3636,11 +3641,11 @@ html{scroll-behavior:auto}
     stage: function (api) {
       p5scene = lineScene(api, {
         sets: [
-          { key: "bank", label: "The bank's 8,238", data: "real", source: SRC, score: SC, y: Y, step: 0.001, budget: { k: 1000 } },
-          { key: "k20", label: "Chapter 5's twenty", data: "invented", score: K20.score, y: K20.y, step: 0.005, budget: null }
+          { key: "bank", label: "The bank's 8,238", data: "real", source: SRC, score: SC, y: Y, step: 0.001, budget: { k: 1000 }, title: "The bank's two humps with the line on them, and the bill wherever the line has been" },
+          { key: "k20", label: "Chapter 5's twenty", data: "invented", score: K20.score, y: K20.y, step: 0.005, budget: null, people: "customers", title: "Chapter 5's twenty invented customers on one strip, and the bill wherever the line has been" }
         ],
         costs: { fp: 40, fn: 1200 }, line: 0.5, hideCurve: true,
-        words: { pos: "buyers", posOne: "buyer", neg: "did not buy", act: "call", acted: "called", people: "clients" }
+        words: { pos: "buyers", posOne: "buyer", posVerb: "bought", neg: "did not buy", act: "call", acted: "called", people: "clients" }
       });
     },
     rule: { text: "The model ranks and the business draws the line: slide it to where the bill of both mistakes is smallest, and when a budget caps the calls, the budget's last score is the line.",
@@ -3856,13 +3861,14 @@ html{scroll-behavior:auto}
           var opts = h("div", { "class": "cs-opts" });
           api.el.appendChild(opts);
           var bc = api.chart({ height: 250, x: { min: 0, max: 1, ticks: 10, label: "The line", fmt: function (v) { return v.toFixed(1); } },
-            y: { min: 0, max: 12, ticks: 4, label: "Bill of mistakes, Rs lakh", fmt: String }, numbers: false,
+            y: { min: 0, max: 14, ticks: [0, 5, 10], label: "Bill of mistakes, Rs lakh", fmt: String }, numbers: false,
             legend: [{ label: "The bill at every line", color: "violet", kind: "line" }, { label: "Call everyone", color: "amber", kind: "line" }, { label: "Call nobody", color: "teal", kind: "line" }] });
           var sc = api.chart({ height: 190, x: { min: 2, max: 40, ticks: [2, 10, 20, 30, 40], label: "A missed buyer costs this many wasted calls", fmt: function (v) { return v + " to 1"; } },
             y: { min: 0, max: 0.45, ticks: [0, 0.1, 0.2, 0.3, 0.4], label: "Saving over the best free rule", fmt: function (v) { return Math.round(v * 100) + "%"; } }, numbers: true,
             numbersLabel: "Show the savings at each ratio you tried",
             legend: [{ label: "A ratio you tried", color: "ink", kind: "dot" }, { label: "Every ratio, after you commit", color: "violet", kind: "line" }],
             table: function () { return { head: ["Ratio", "Line", "Model's bill", "Best free rule", "Saving"], rows: Object.keys(tried).map(Number).sort(function (a, b) { return b - a; }).map(function (k) { var z = sweepAt(k); return [k + " to 1", p3(z.t), F.rs(z.bill), F.rs(z.free), (z.saving * 100).toFixed(1) + "%"]; }) }; } });
+          sc.el.style.marginTop = "1.2rem";
           sc.scatter("tried", [], { color: "ink", r: 4 });
           sc.scatter("now", [[30, 0]], { color: "violet", r: 7 });
           var full = []; for (var k = 2; k <= 40; k++) full.push([k, sweepAt(k).saving]);
