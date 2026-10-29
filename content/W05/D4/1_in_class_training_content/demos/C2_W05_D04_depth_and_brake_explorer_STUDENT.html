@@ -2866,7 +2866,7 @@ html{scroll-behavior:auto}
       { caption: "On the left, **8,238 of the 24,712 customers** the tree learned from, a seeded third drawn so both piles are the same size. On the right, the **8,238 validation customers** it never saw. The test slice stays sealed." },
       { caption: "The tree has no depth limit: up to **37 questions** in a row and **3,662 leaves**, one for every 6.7 customers it learned from. On practice it is right **99.6 percent** of the time, so only " + SAMPLE_WRONG + " of these 8,238 dots turn rose." },
       { caption: "Now the exam, on customers it has never seen. **Commit your guess** in the prediction card before the dots light up: what share will it get right?" },
-      { caption: "Each pile sorts its wrong answers to the foot. The violet outline in the exam pile marks how far the **928 buyers** would reach: the customers that calling nobody gets wrong." }
+      { caption: "Each pile sorts its wrong answers to the foot. The violet outline in the exam pile shows how far the **928 buyers** would reach: the customers that calling nobody gets wrong." }
     ],
     stepMs: 1000, holdMs: 1400,
     setup: function (api) {
@@ -3822,7 +3822,7 @@ html{scroll-behavior:auto}
               sc.hline("base", BASE_ACC, { color: INK, dash: "6 5" });
             }, show: function () { view = "scores"; write(); } },
             { value: "leaves", label: "What the leaves hold", build: function (wrap) {
-              lv = W5.chart(wrap, { height: 250, label: "Leaves by the number of training customers they hold", x: { band: TREE.bands }, y: { min: 0, max: 1800, ticks: [0, 600, 1200, 1800], label: "Leaves", fmt: F.int }, numbers: false, hover: false });
+              lv = W5.chart(wrap, { height: 250, label: "Leaves by the number of training customers they hold", x: { band: TREE.bands }, y: { min: 0, max: 2000, ticks: [0, 500, 1000, 1500, 2000], label: "Leaves", fmt: F.int }, numbers: false, hover: false });
               lv.bars("n", [0].concat(TREE.band_counts.slice(1)), { colors: TREE.band_counts.map(function (v, i) { return i < 2 ? HELD : TRAIN; }), fmt: function (v) { return v ? F.int(v) : ""; }, maxWidth: 46 });
               var cap = h("p", { "class": "d4-sub", text: "Customers in the leaf, along the bottom; how many of the 3,662 leaves hold that many, up the side." });
               wrap.appendChild(cap);

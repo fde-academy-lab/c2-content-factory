@@ -6,23 +6,23 @@ Generalise or memorise, and the honest tuned model. Thursday 5 November 2026.
 
 | Block | Minutes | Who acts | Open | The screen shows |
 |---|---|---|---|---|
-| Opening | 10 | trainer | `1_in_class_training_content/slides/C2_W05_D04_slides_STUDENT.pptx`, S1 to S6 | the ticket: a tree at 99.6 percent on training, its validation score still hidden, 88.7 for calling nobody |
-| Chapter 1: Memorising against learning | 25 | trainer, learners follow | `notebooks/C2_W05_D04_ch01_memorising_against_learning_STUDENT.ipynb`, then the explorable | three students' practice and exam scores; the explorable at degree 12 |
-| Chapter 2: Putting brakes on the model | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch02_putting_brakes_on_the_model_STUDENT.ipynb`, explorable brake slider | the seven-bend curve with and without a brake |
-| Chapter 3: Five exams instead of one | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch03_five_exams_instead_of_one_STUDENT.ipynb`, explorable reshuffle | the 5 by 20 fold grid |
+| Opening | 10 | trainer | `1_in_class_training_content/slides/C2_W05_D04_slides_STUDENT.pptx`, S1 to S6, then the explorable at `#story` (scenes 1 to 3, guesses taken, no reveal) and `#map` | the ticket: a tree at 99.6 percent on training, its validation score still hidden, 88.7 for calling nobody |
+| Chapter 1: Memorising against learning | 25 | trainer, learners follow | `notebooks/C2_W05_D04_ch01_memorising_against_learning_STUDENT.ipynb`, then the explorable at `#p1` | three students' practice and exam scores; the explorable at 12 bends, then the U |
+| Chapter 2: Putting brakes on the model | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch02_putting_brakes_on_the_model_STUDENT.ipynb`, then the explorable at `#p2` | the seven-bend curve with and without a brake; the L1 corner |
+| Chapter 3: Five exams instead of one | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch03_five_exams_instead_of_one_STUDENT.ipynb`, then the explorable at `#p3` | five deals, then the 5 by 20 fold grid |
 | Drill 1 | 15 | learners | the deck, after S22 | four curve pairs to name |
 | Break | 10 | | shut every kernel | |
-| Chapter 4: Trees, forests and groups | 15 | trainer, learners follow | `notebooks/C2_W05_D04_ch04_trees_forests_and_groups_STUDENT.ipynb` | a two-question tree, a forest's vote, k-means groups |
-| Chapter 5: Why the boring model often ships | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch05_why_the_boring_model_often_ships_STUDENT.ipynb` | the two tests and the pneumonia AUCs |
-| Case 1: The tree that aced practice | 30 | learners run, trainer narrates | `notebooks/C2_W05_D04_case01_the_tree_that_aced_practice_STUDENT.ipynb` | the U of validation error against depth |
+| Chapter 4: Trees, forests and groups | 15 | trainer, learners follow | `notebooks/C2_W05_D04_ch04_trees_forests_and_groups_STUDENT.ipynb`, then the explorable at `#p4` | a two-question tree, a forest's vote, k-means groups |
+| Chapter 5: Why the boring model often ships | 20 | trainer, learners follow | `notebooks/C2_W05_D04_ch05_why_the_boring_model_often_ships_STUDENT.ipynb`, then the explorable at `#p5` and `#field` (pneumonia) | the two tests and the pneumonia AUCs |
+| Case 1: The tree that aced practice | 30 | learners run, trainer narrates | `notebooks/C2_W05_D04_case01_the_tree_that_aced_practice_STUDENT.ipynb`, then the explorable at `#story` (the reveal), `#case` chapter 6 and `#field` (Airbnb) | the U of validation error against depth |
 | Guided | 15 | learners | `notebooks/C2_W05_D04_guided_learning_curves_and_one_cv_STUDENT.ipynb` | three mystery learning curves, A, B and C |
-| Case 2: Five exams on the bank's file | 20 | learners run, trainer narrates | `notebooks/C2_W05_D04_case02_five_exams_on_the_bank_file_STUDENT.ipynb` | five deals against five folds; the C sweep |
-| Case 3: The three-way race, with drill 2 | 25 | learners run, trainer narrates | `notebooks/C2_W05_D04_case03_the_three_way_race_STUDENT.ipynb` | four models on the same folds; the rupee break-even |
-| Close: interview corner and quiz | 15 | trainer, then Kahoot | the deck, S53 to S55 | the four interview anchors, then the quiz |
+| Case 2: Five exams on the bank's file | 20 | learners run, trainer narrates | `notebooks/C2_W05_D04_case02_five_exams_on_the_bank_file_STUDENT.ipynb`, then the explorable at `#case` chapter 7 and `#field` (Google Flu Trends) | five deals against five folds; the C sweep |
+| Case 3: The three-way race, with drill 2 | 25 | learners run, trainer narrates | `notebooks/C2_W05_D04_case03_the_three_way_race_STUDENT.ipynb`, then the explorable at `#case` chapter 8 | four models on the same folds; the rupee break-even |
+| Close: interview corner and quiz | 15 | trainer, then Kahoot | the deck, S53 to S55, with the explorable at `#interview` | the four interview anchors, then the quiz |
 | IITGN faculty session (tentative) | 120 | faculty | their own material | the bias-variance decomposition and the penalty shapes |
 | Practice lab | about 90 | TAs | `2_take_home_mandatory/C2_W05_D04_practice_lab_STUDENT.ipynb` | German Credit's lending book |
 
-The notebooks sit in `1_in_class_training_content/notebooks/`. The explorable is `1_in_class_training_content/demos/C2_W05_D04_depth_and_brake_explorer_STUDENT.html`.
+The notebooks sit in `1_in_class_training_content/notebooks/`. The explorable is `1_in_class_training_content/demos/C2_W05_D04_depth_and_brake_explorer_STUDENT.html`: the day's companion in eleven pages, from `#story` and `#map` through `#p1` to `#p5` (one per topic), `#case`, `#field` and `#interview` to `#check`. Its hash opens a page directly, so `C2_W05_D04_depth_and_brake_explorer_STUDENT.html#p3` opens chapter 3's page, and `#check` is the page to work through after class.
 
 ## Before the first slide
 
