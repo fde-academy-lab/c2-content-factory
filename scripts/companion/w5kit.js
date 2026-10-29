@@ -323,6 +323,7 @@
       var kids = r.kind === "p" ? [h("span", { "class": "w5-navnum", text: r.num })] : [icon(r.icon)];
       kids.push(h("span", { "class": "w5-navtext", text: r.label }), h("span", { "class": "w5-seen", "aria-hidden": "true" }));
       r.link = h("a", { "class": "w5-navlink", href: "#" + r.id, title: r.label }, kids);
+      r.link.addEventListener("click", function (e) { e.preventDefault(); goTo(r.id); });
       nav.appendChild(r.link);
     });
 
@@ -345,6 +346,7 @@
     app.main = main;
 
     window.addEventListener("hashchange", function () { go(location.hash.slice(1)); });
+    window.addEventListener("popstate", function () { go(location.hash.slice(1)); });
     document.addEventListener("keydown", onKey);
     var start = location.hash.slice(1);
     go(app.byId[start] ? start : (app.routes[0] && app.routes[0].id), true);
@@ -394,11 +396,23 @@
       navEl.scrollLeft = left;
     }
   }
+  /* Routes change at once, inside the click, so the page has moved before any event loop turns;
+   * the hash follows through pushState, which keeps the browser's back button working. */
+  function goTo(id) {
+    if (!app.byId[id]) return;
+    if (app.current && app.current.id === id) {
+      app.progress.textContent = "You are on " + app.current.label + " already; it is back at its top.";
+      window.scrollTo(0, 0);
+      return;
+    }
+    if (location.hash.slice(1) !== id && history.pushState) history.pushState(null, "", "#" + id);
+    go(id);
+  }
   function goRel(d) {
     var idx = app.routes.indexOf(app.current), next = app.routes[idx + d];
-    if (next) location.hash = next.id;
+    if (next) goTo(next.id);
   }
-  W5.go = function (id) { location.hash = id; };
+  W5.go = goTo;
 
   function onKey(e) {
     if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
@@ -412,7 +426,7 @@
       e.preventDefault();
     } else if (/^[0-9]$/.test(e.key)) {
       var n = e.key === "0" ? 10 : Number(e.key), r = app.routes[n - 1];
-      if (r) { location.hash = r.id; e.preventDefault(); }
+      if (r) { goTo(r.id); e.preventDefault(); }
     } else if (e.key === "p" || e.key === "P") {
       setPresenter(!document.documentElement.classList.contains("w5-present"));
     }
@@ -510,9 +524,9 @@
     var opts = o.options;
     if (type === "direction") opts = opts || ["It goes up", "It goes down", "It stays the same"];
     if (type === "choice" || type === "direction") {
-      var box = h("div", { "class": type === "direction" ? "w5-dirs" : "w5-opts" });
+      var box = h("div", { "class": "w5-opts" + (type === "direction" ? " w5-dirlist" : "") });
       opts.forEach(function (text, i) {
-        var key = type === "direction" ? icon(["trendUp", "trendDown", "minus"][i] || "target") : h("span", { "class": "w5-optkey", text: String.fromCharCode(65 + i) });
+        var key = h("span", { "class": "w5-optkey" }, [type === "direction" ? icon(["trendUp", "trendDown", "minus"][i] || "target") : String.fromCharCode(65 + i)]);
         var b = h("button", { type: "button", "class": "w5-opt", "aria-pressed": "false" }, [key, h("span", { rich: text })]);
         b.addEventListener("click", function () {
           state.pick = i;
@@ -645,8 +659,9 @@
   };
   Player.prototype.label = function () {
     var f = this.frames[this.i] || {};
-    this.count.textContent = this.word + " " + (this.i + 1) + " of " + this.n;
-    this.capStep.textContent = this.word + " " + (this.i + 1);
+    var from = this.o.countFrom === undefined ? 1 : this.o.countFrom;
+    this.count.textContent = this.word + " " + (this.i + from) + " of " + (this.n - 1 + from);
+    this.capStep.textContent = this.word + " " + (this.i + from);
     setRich(this.capText, f.caption || "");
     this.scrub.value = this.i;
     off(this.back, this.i <= 0);
@@ -724,6 +739,7 @@
   function col(c) { return COLORS[c] || c || COLORS.violet; }
 
   /* ================================================================ charts */
+  var clipSeq = 0;
   function Chart(container, o) {
     this.o = o;
     this.series = [];
@@ -736,7 +752,7 @@
     if (o.legend) {
       var lg = h("div", { "class": "w5-legend" });
       o.legend.forEach(function (it) {
-        var sw = h("i", { "class": it.kind === "line" ? "line" : it.kind === "hollow" ? "hollow" : "", style: { background: col(it.color), color: col(it.color) } });
+        var sw = h("i", { "class": it.kind === "line" ? "line" : it.kind === "hollow" ? "hollow" : it.kind === "dot" ? "dot" : "", style: { background: col(it.color), color: col(it.color) } });
         lg.appendChild(h("span", {}, [sw, it.label]));
       });
       this.el.appendChild(lg);
@@ -774,9 +790,13 @@
     } else this.sx = linear(o.x.min, o.x.max, m.l, m.l + this.pw);
     this.sy = linear(o.y.min, o.y.max, m.t + this.ph, m.t);
     this.svg.textContent = "";
+    this.clipId = this.clipId || ("w5clip" + (++clipSeq));
+    var defs = s("defs"), cp = s("clipPath", { id: this.clipId });
+    cp.appendChild(s("rect", { x: m.l, y: m.t - 2, width: this.pw, height: this.ph + 2 }));
+    defs.appendChild(cp); this.svg.appendChild(defs);
     this.gGrid = s("g", { "class": "w5-grid" });
     this.gAxis = s("g", { "class": "w5-axis" });
-    this.gPlot = s("g", {});
+    this.gPlot = s("g", { "clip-path": o.clip === false ? null : "url(#" + this.clipId + ")" });
     this.gTop = s("g", {});
     this.svg.appendChild(this.gGrid); this.svg.appendChild(this.gAxis); this.svg.appendChild(this.gPlot); this.svg.appendChild(this.gTop);
     this.axes();
@@ -875,7 +895,7 @@
         g.appendChild(dot);
       });
     } else if (ser.type === "bars") {
-      var bw = Math.min(o.maxWidth || 46, this.bandW * 0.62);
+      var bw = Math.min(o.maxWidth || 30, this.bandW * 0.62);
       d.forEach(function (v, i) {
         var x = self.sx(i) - bw / 2, y = self.sy(Math.max(v, self.o.y.min)), base = self.sy(self.o.y.min);
         var hh = Math.max(0, base - y), cc = col(o.colors ? o.colors[i] : o.color);
@@ -900,7 +920,7 @@
     } else if (ser.type === "squares") {
       d.forEach(function (q) {
         var px = self.sx(q[0]), py = self.sy(q[1]), pf = self.sy(q[2]), side = Math.abs(py - pf);
-        var left = o.side === "left" ? px - side : px;
+        var mid = self.m.l + self.pw / 2, left = o.side === "left" || (o.side !== "right" && px > mid) ? px - side : px;
         g.appendChild(s("rect", { x: left, y: Math.min(py, pf), width: side, height: side, fill: c, "fill-opacity": o.opacity || 0.16, stroke: c, "stroke-width": 1.2 }));
       });
     } else if (ser.type === "vline") {
@@ -1103,11 +1123,15 @@
     }
     function layout(w) {
       var cols = o.cols || Math.ceil(Math.sqrt(n)), gap = o.gap !== undefined ? o.gap : 3;
-      var size = Math.min(o.maxSize || 22, (w - (cols - 1) * gap) / cols);
+      var fs = rootPx() * 0.78, lw = o.rowLabels ? Math.max.apply(null, o.rowLabels.map(function (l) { return String(l).length; })) * fs * 0.6 + 10 : 0;
+      var size = Math.min(o.maxSize || 22, (w - lw - (cols - 1) * gap) / cols);
       var rows = Math.ceil(n / cols), hh = rows * (size + gap) - gap;
       svg.setAttribute("viewBox", "0 0 " + w + " " + hh); svg.setAttribute("height", hh); svg.setAttribute("width", w);
       svg.textContent = ""; marks = [];
-      var used = cols * (size + gap) - gap, x0 = o.align === "left" ? 0 : (w - used) / 2;
+      var used = cols * (size + gap) - gap + lw, x0 = (o.align === "left" ? 0 : (w - used) / 2) + lw;
+      if (o.rowLabels) o.rowLabels.forEach(function (l, r) {
+        svg.appendChild(s("text", { x: x0 - 8, y: r * (size + gap) + size / 2 + fs * 0.35, "text-anchor": "end", "font-size": fs, "font-weight": 700, fill: "#1A0F5C", text: l }));
+      });
       for (var i = 0; i < n; i++) {
         var cx = x0 + (i % cols) * (size + gap), cy = Math.floor(i / cols) * (size + gap);
         var st = DOTS[states[i]] || DOTS.empty;
@@ -1227,12 +1251,13 @@
     b.style.left = x + "px"; b.style.top = y + "px"; b.style.width = w + "px"; b.style.height = hh + "px";
     return b;
   };
-  Cloud.prototype.label = function (key, x, y, content, cls) {
+  Cloud.prototype.label = function (key, x, y, content, cls, maxW) {
     this.labels = this.labels || {};
     var lab = this.labels[key];
     if (!lab) { lab = this.labels[key] = h("div", { "class": "w5-boxlabel" }); this.over.appendChild(lab); }
     lab.className = "w5-boxlabel" + (cls ? " " + cls : "");
     lab.style.left = x + "px"; lab.style.top = y + "px";
+    lab.style.maxWidth = (maxW || Math.max(60, this.w - x)) + "px";
     lab.textContent = "";
     (Array.isArray(content) ? content : [content]).forEach(function (c) { lab.appendChild(typeof c === "string" ? rich(c) : c); });
     return lab;
@@ -1303,7 +1328,7 @@
       var cls = i < o.today ? "done" : i === o.today ? "today" : "later";
       ol.appendChild(h("li", { "class": cls, "aria-current": i === o.today ? "step" : null }, [
         h("span", { "class": "w5-wdot" }, [i < o.today ? icon("tick") : String(i + 1)]),
-        h("span", { "class": "w5-wname", text: d.name }),
+        h("span", { "class": "w5-wname" }, [h("span", { "class": "w5-long", text: d.name }), h("span", { "class": "w5-short", text: d.short || String(d.name).slice(0, 3) })]),
         h("span", { "class": "w5-wq", text: d.q })
       ]));
     });
@@ -1351,8 +1376,8 @@
       panel.textContent = "";
       if (!n) {
         panel.appendChild(h("div", { "class": "w5-mpnum" }, [icon("map")]));
-        panel.appendChild(h("div", { "class": "w5-mptitle", text: o.intro || "Today's ideas, in the order the day climbs them." }));
-        panel.appendChild(h("div", { "class": "w5-mptext", text: "Press play to walk the path, or pick any idea. Today's ideas open their own page." }));
+        panel.appendChild(h("div", { "class": "w5-mptitle", text: o.player === false ? "Today's ideas, lit in the order the day climbed them." : "Press play to walk the path, one idea at a time." }));
+        panel.appendChild(h("div", { "class": "w5-mptext", text: "Today's ideas open their own page. An earlier or a later idea shows how it connects when you pick it." }));
         return;
       }
       var rel = [];
@@ -1378,6 +1403,7 @@
       var n = b.n, g = s("g", { "class": "w5-node", tabindex: "0", role: "link", "aria-label": n.label + (n.route ? ", opens its page" : "") });
       if (n.route) {
         var a = s("a", { href: "#" + n.route, "aria-label": n.label });
+        a.addEventListener("click", function (e) { e.preventDefault(); W5.go(n.route); });
         a.appendChild(g); svg.appendChild(a);
       } else {
         g.setAttribute("role", "button");
@@ -1436,7 +1462,7 @@
     var boxes = {}, edgeEls = [];
     function layout(w) {
       svg.textContent = ""; placed = []; boxes = {}; edgeEls = []; els = {};
-      var fs = rootPx() * (w < 720 ? 0.84 : 0.8);
+      var fs = rootPx() * (w < 720 ? 0.86 : 0.84);
       var defs = s("defs");
       var mk = s("marker", { id: "w5arrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
       mk.appendChild(s("path", { d: "M0 0L10 5L0 10z", fill: "#5B3FD6" }));
@@ -1447,8 +1473,11 @@
       var earlier = nodes.filter(function (n) { return n.kind === "earlier"; }), later = nodes.filter(function (n) { return n.kind === "later"; });
       var hh;
       if (w >= 720) {
-        var sideW = Math.round(w * 0.2), gapW = Math.round(w * 0.14), midW = w - 2 * sideW - 2 * gapW;
-        var xE = 0, xT = sideW + gapW, xL = xT + midW + gapW, y = 6, gap = Math.round(fs * 2.6);
+        var hasE = earlier.length > 0, hasL = later.length > 0;
+        var sideW = Math.round(w * 0.2), gapW = Math.round(w * 0.14);
+        var midW = w - (hasE ? sideW + gapW : 0) - (hasL ? sideW + gapW : 0);
+        if (midW > w * 0.5 && (!hasE || !hasL)) midW = Math.round(w * 0.5);
+        var xE = 0, xT = hasE ? sideW + gapW : (hasL ? w - sideW - gapW - midW : (w - midW) / 2), xL = xT + midW + gapW, y = 6, gap = Math.round(fs * 2.6);
         today.forEach(function (n, i) { var b = nodeBox(n, xT, y, midW, fs, i + 1); boxes[n.id] = b; y += b.h + gap; });
         var tBottom = y - gap;
         function side(list, x) {
@@ -1511,6 +1540,7 @@
           var b = nodeBox(n, pad, y2, w - pad, fs, i + 1);
           b.rel = rel; b.fwd = fwd;
           var extra = (rel.length ? 1 : 0) + (fwd.length ? 1 : 0);
+          if (extra) b.h += 8;
           var relLines = 0;
           [rel, fwd].forEach(function (lst, k) { if (lst.length) relLines += wrapText((k ? "Feeds " : "Rests on ") + lst.join(", "), Math.floor((w - pad - 50) / (fs * 0.8 * 0.55))).length; });
           b.h += relLines * fs * 0.8 * 1.3 + (extra ? 6 : 0);
@@ -1581,43 +1611,50 @@
     var ol = h("ol", { "class": "w5-order" });
     var status = h("p", { "class": "w5-pstate", "aria-live": "polite", text: o.prompt || "Drag the cards, or use the arrows, until the order is right." });
     container.appendChild(ol);
+    /* One element per item, made once and moved, so a reorder never replaces a control. */
+    var lis = items.map(function (text, idx) {
+      var up = h("button", { type: "button", "class": "w5-mv", "aria-label": "Move up", title: "Move up" }, [icon("arrowUp")]);
+      var dn = h("button", { type: "button", "class": "w5-mv", "aria-label": "Move down", title: "Move down" }, [icon("arrowDown")]);
+      var num = h("span", { "class": "w5-onum" });
+      var li = h("li", { "data-idx": idx }, [h("span", { "class": "w5-grip", "aria-hidden": "true" }, [icon("grip")]), num, h("span", { "class": "w5-otext", rich: text }), up, dn]);
+      up.addEventListener("click", function () { var pos = order.indexOf(idx); move(pos, pos - 1); });
+      dn.addEventListener("click", function () { var pos = order.indexOf(idx); move(pos, pos + 1); });
+      li._num = num; li._up = up; li._dn = dn;
+      drag(li, idx);
+      return li;
+    });
     function render() {
-      ol.textContent = "";
       order.forEach(function (idx, pos) {
-        var up = h("button", { type: "button", "class": "w5-mv", "aria-label": "Move up", title: "Move up" }, [icon("arrowUp")]);
-        var dn = h("button", { type: "button", "class": "w5-mv", "aria-label": "Move down", title: "Move down" }, [icon("arrowDown")]);
-        off(up, pos === 0); off(dn, pos === order.length - 1);
-        up.addEventListener("click", function () { move(pos, pos - 1); });
-        dn.addEventListener("click", function () { move(pos, pos + 1); });
-        var li = h("li", { "data-idx": idx }, [h("span", { "class": "w5-grip", "aria-hidden": "true" }, [icon("grip")]), h("span", { "class": "w5-onum", text: String(pos + 1) }),
-          h("span", { "class": "w5-otext", rich: items[idx] }), up, dn]);
-        drag(li, pos);
+        var li = lis[idx];
         ol.appendChild(li);
+        li._num.textContent = String(pos + 1);
+        off(li._up, pos === 0); off(li._dn, pos === order.length - 1);
+        li.classList.remove("right", "wrong");
       });
     }
     function move(a, b) {
       if (b < 0 || b >= order.length) return;
       var x = order.splice(a, 1)[0]; order.splice(b, 0, x);
       render();
-      status.textContent = "Moved “" + strip(items[x]) + "” to place " + (b + 1) + ".";
+      status.textContent = "Moved \u201c" + strip(items[x]) + "\u201d to place " + (b + 1) + ".";
       if (o.onChange) o.onChange(order.slice());
     }
-    function drag(li, pos) {
+    function drag(li, idx) {
       li.addEventListener("pointerdown", function (e) {
         if (e.target.closest("button")) return;
-        var startY = e.clientY, moved = false, target = pos;
+        var startY = e.clientY, moved = false, pos = order.indexOf(idx), target = pos;
         li.setPointerCapture(e.pointerId);
         function mv(ev) {
           if (!moved && Math.abs(ev.clientY - startY) < 6) return;
           moved = true; li.classList.add("dragging");
-          var lis = Array.prototype.slice.call(ol.children);
-          target = lis.length - 1;
-          for (var k = 0; k < lis.length; k++) { var r = lis[k].getBoundingClientRect(); if (ev.clientY < r.top + r.height / 2) { target = k; break; } }
+          var kids = Array.prototype.slice.call(ol.children);
+          target = kids.length - 1;
+          for (var k = 0; k < kids.length; k++) { var r = kids[k].getBoundingClientRect(); if (ev.clientY < r.top + r.height / 2) { target = k; break; } }
         }
         function up() {
           li.removeEventListener("pointermove", mv); li.removeEventListener("pointerup", up); li.removeEventListener("pointercancel", up);
           li.classList.remove("dragging");
-          if (moved && target !== pos) move(pos, target > pos ? target : target);
+          if (moved && target !== pos) move(pos, target);
         }
         li.addEventListener("pointermove", mv); li.addEventListener("pointerup", up); li.addEventListener("pointercancel", up);
       });
@@ -1629,9 +1666,9 @@
       order: function () { return order.slice(); },
       mark: function () {
         var right = 0;
-        Array.prototype.forEach.call(ol.children, function (li, pos) {
-          var ok = order[pos] === pos; if (ok) right++;
-          li.classList.toggle("right", ok); li.classList.toggle("wrong", !ok);
+        order.forEach(function (idx, pos) {
+          var ok = idx === pos; if (ok) right++;
+          lis[idx].classList.toggle("right", ok); lis[idx].classList.toggle("wrong", !ok);
         });
         return right;
       },
@@ -1935,7 +1972,7 @@
     var card = h("div", { "class": "w5-card w5-seatcard", "aria-live": "polite" });
     var btns = SEATS.map(function (st, i) {
       var a = -Math.PI / 2 + i * Math.PI / 3;
-      var b = h("button", { type: "button", "class": "w5-seat", "aria-pressed": "false", style: { left: (50 + 40 * Math.cos(a)) + "%", top: (50 + 40 * Math.sin(a)) + "%" } },
+      var b = h("button", { type: "button", "class": "w5-seat", "aria-pressed": "false", style: { left: (50 + 38 * Math.cos(a)) + "%", top: (50 + 38 * Math.sin(a)) + "%" } },
         [h("span", { "class": "w5-seatico" }, [icon(st[2])]), h("span", { text: st[1] })]);
       b.addEventListener("click", function () { pick(i); });
       wheel.appendChild(b);
@@ -1984,8 +2021,8 @@
       panes.push(pane); sec.appendChild(pane);
       var grid = h("div", { "class": "w5-hiw" });
       var left = h("div", { "class": "w5-col" }), right = h("div", { "class": "w5-col" });
-      grid.appendChild(left); grid.appendChild(right); pane.appendChild(grid);
-      var story = h("div", { "class": "w5-card" }, [
+      grid.appendChild(left); grid.appendChild(right);
+      var story = h("div", { "class": "w5-card w5-scenestory" }, [
         h("div", { "class": "w5-company" }, [h("span", { "class": "w5-cico" }, [icon(sc.icon || "field")]), h("span", {}, [h("span", { "class": "w5-cname2", text: sc.company }), h("br"), h("span", { "class": "w5-cangle", text: sc.angle || "" })])]),
         h("h3", { rich: sc.title }), h("p", { rich: sc.situation || "" })
       ]);
@@ -1993,11 +2030,10 @@
         story.appendChild(h("div", { "class": "w5-src" }, [icon("ledger"), h("span", {}, [h("b", { text: "Source: " }), rich(src.name + (src.checked ? ", checked " + src.checked : "")),
           src.url ? h("span", {}, [". ", h("a", { href: src.url, target: "_blank", rel: "noopener", text: src.url })]) : null])]));
       }
-      right.appendChild(story);
+      pane.appendChild(story); pane.appendChild(grid);
       var pr = sc.predict ? W5.predict(right, sc.predict) : null;
       var stc = stageCard(left, Object.assign({}, sc, { data: sc.data || "real", source: sc.company }), id + " " + sc.company);
       var ro = W5.readout(right, { title: sc.readoutTitle });
-      right.insertBefore(ro.el, pr ? pr.el.nextSibling : story.nextSibling);
       var api = stageApi(stc.stage, stc.controls, ro, stc.say);
       api.predict = pr;
       if (sc.stage) sc.stage(api);
@@ -2077,15 +2113,16 @@
         var boardSteps = (it.board || (it.steps || []).map(function (st) { return { title: st }; }));
         var stepEls = boardSteps.map(function (b, k) {
           var el = h("div", { "class": "w5-bstep off" }, [
-            k ? h("span", { "class": "w5-barrow", "aria-hidden": "true" }, [icon("arrowRight")]) : null,
-            h("div", { "class": "w5-bbox" }, [h("div", { "class": "w5-btitle" }, [b.icon ? icon(b.icon) : null, h("span", { rich: b.title })]), b.note ? h("div", { "class": "w5-bnote", rich: b.note }) : null])]);
+            h("div", { "class": "w5-bbox" }, [h("div", { "class": "w5-btitle" }, [h("span", { "class": "w5-bnum", text: String(k + 1) }), b.icon ? icon(b.icon) : null, h("span", { rich: b.title })]),
+              b.note ? h("div", { "class": "w5-bnote", rich: b.note }) : null]),
+            k < boardSteps.length - 1 ? h("span", { "class": "w5-barrow", "aria-hidden": "true" }, [icon("arrowRight")]) : null]);
           board.appendChild(el);
           return el;
         });
         var bw = h("div", { "class": "w5-boardwrap" }, [h("div", { "class": "w5-label" }, [icon("chart"), "The whiteboard, step by step"]), board]);
         model.appendChild(bw);
         boardPlayer = W5.player(bw, { frames: [{ caption: "The board starts empty. Press play, or step, to draw the answer the way you would say it." }].concat(boardSteps.map(function (b, k) { return { caption: b.say || ("Step " + (k + 1) + ": " + strip(b.title) + (b.note ? ". " + strip(b.note) : "")) }; })),
-          word: "Board step", stepMs: 500, holdMs: 1100, render: function (k) { stepEls.forEach(function (el, j) { el.classList.toggle("off", j >= k); }); } });
+          word: "Board step", countFrom: 0, stepMs: 500, holdMs: 1100, render: function (k) { stepEls.forEach(function (el, j) { el.classList.toggle("off", j >= k); }); } });
         var lower = h("div", { "class": "w5-ivgrid", style: { marginTop: ".9rem" } });
         var fu = h("div", {}, [h("div", { "class": "w5-label" }, [icon("interview"), "The interviewer's two follow-ups"])]);
         var ul = h("ol", { "class": "w5-follow" });
@@ -2098,7 +2135,10 @@
         lower.appendChild(fu); lower.appendChild(wr);
         model.appendChild(lower);
       }
-      function plain(p) { p.el.classList.remove("w5-card"); p.el.style.padding = "0"; p.el.style.border = "0"; p.el.style.boxShadow = "none"; }
+      function plain(p) {
+        p.el.classList.remove("w5-card"); p.el.style.padding = "0"; p.el.style.border = "0"; p.el.style.boxShadow = "none";
+        var lb = p.el.querySelector(".w5-label"); if (lb) lb.remove();
+      }
       return { pane: pane, clarify: clar, order: ol, answer: ans, showModel: showModel, board: function () { return boardPlayer; } };
     });
     return { items: apis, tabs: t };
