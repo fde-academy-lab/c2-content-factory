@@ -520,7 +520,8 @@ html{scroll-behavior:auto}
 .d1-cut{background:#5B3FD6;border:0;border-radius:2px}
 .d1-zone{background:#F4F2FA;border:1px solid #E4E1F1}
 .d1-zone.ans{background:#FFF3E2;border-color:#F2D3A8}
-.d1-sub{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:1.2rem 0 .35rem;font:700 .95rem/1.3 var(--sans);color:#1A0F5C}
+.d1-sub{display:block;margin:1.2rem 0 .35rem;font:700 .95rem/1.4 var(--sans);color:#1A0F5C}
+.d1-sub .w5-ico{margin-right:.4rem}.d1-sub .w5-badge{margin-left:.4rem;vertical-align:.1em}
 .d1-sub .w5-badge{font-size:.66rem}
 .d1-note{margin:.3rem 0 0;color:#1A1440;font-size:.92rem}
 .d1-table td.leak{color:#A3214B;font-weight:700}
@@ -2986,12 +2987,12 @@ html{scroll-behavior:auto}
     ]),
     path: ["s1", "s2", "s3", "s4", "s5", "s6"],
     steps: [
-      "**Step 1.** Ask three questions in order: is the answer in the rows, can someone write it as a condition, or does it need learning? Only then is it a model.",
-      "**Step 2.** Freeze the prediction moment. Inputs come from rows before it; the target comes from the window after it.",
-      "**Step 3.** Split with a stated seed: train to learn, validation to choose, test sealed. Calling nobody is the bar.",
-      "**Step 4.** For a how-much target, least squares draws the line whose squares add up smallest.",
-      "**Step 5.** For a will-they target, the line is squeezed into an S, so the output is a probability.",
-      "**Step 6.** The residuals show the shape a model missed, and no fit can be trusted outside its data."
+      "Ask three questions in order: is the answer in the rows, can someone write it as a condition, or does it need learning? Only then is it a model.",
+      "Freeze the prediction moment. Inputs come from rows before it; the target comes from the window after it.",
+      "Split with a stated seed: train to learn, validation to choose, test sealed. Calling nobody is the bar.",
+      "For a how-much target, least squares draws the line whose squares add up smallest.",
+      "For a will-they target, the line is squeezed into an S, so the output is a probability.",
+      "The residuals show the shape a model missed, and no fit can be trusted outside its data."
     ],
     predict: { q: "Both model families, the line and the S, rest on one idea from earlier in the day. Which one?",
       options: ["Prediction, rule or query: when a business question is a modelling problem", "Train, validation, test; the seed; the baseline", "Where each model fails; the residual tells"], answer: 1,
@@ -3173,6 +3174,7 @@ html{scroll-behavior:auto}
       function draw(st) {
         var svg = st.svg, w = st.w, H = st.h, fs = px() * 0.84, phone = w < 520, shown = revealed();
         svg.textContent = "";
+        if (tableHost) table();
         var x0 = phone ? 34 : 44, x1 = w - 8, d0 = doy([4, 1]), d1 = doy([12, 31]);
         var sx = function (d) { return x0 + (d - d0) / (d1 - d0) * (x1 - x0); };
         var top = fs * 2.4, rowH = (H - top - fs * 2.6) / 4, cx = sx(cut), wx = sx(Math.min(d1, cut + win));
@@ -3187,6 +3189,7 @@ html{scroll-behavior:auto}
           svg.appendChild(s("line", { x1: x, x2: x, y1: top - 8, y2: top + rowH * 4 - 4, stroke: "#E4E1F1" }));
           if (!phone || m % 2 === 1) tx(svg, x + 2, top + rowH * 4 + fs * 1.15, MNAME[m].slice(0, 3), { size: fs * 0.9, fill: COL.ink });
         }
+        svg.appendChild(s("rect", { x: cx - 2, y: top - 14, width: 4, height: rowH * 4 + 14, rx: 2, fill: COL.violet }));
         ["M1", "M2", "M3", "M4"].forEach(function (lab, k) {
           var y = top + k * rowH + rowH / 2;
           tx(svg, 2, y + fs * 0.35, lab, { weight: 700, size: fs });
@@ -3203,7 +3206,6 @@ html{scroll-behavior:auto}
             tx(svg, close ? x - 12 : x, close ? y + fs * 0.35 : y - 12, dayName(o.t), { anchor: close ? "end" : "middle", size: fs * 0.88, fill: COL.ink, halo: true });
           }
         });
-        svg.appendChild(s("rect", { x: cx - 2, y: top - 14, width: 4, height: rowH * 4 + 14, rx: 2, fill: COL.violet }));
         tx(svg, cx + (cx > w * 0.7 ? -6 : 6), H - 2, "cut: " + dayName(cut), { anchor: cx > w * 0.7 ? "end" : "start", weight: 700, size: fs * 0.95, fill: COL.violet });
         if (legend) legend.textContent = (shown ? "Violet: on or before the cut, so an input. Amber: inside the window, so it decides the target. Hollow: after the window, so it counts for neither." :
           "Violet: on or before the cut, so an input. Grey: after the cut; commit your prediction to colour the window's orders.") +
@@ -3221,16 +3223,17 @@ html{scroll-behavior:auto}
             all: mine.length, target: inWin ? 1 : 0 };
         });
         tableHost.textContent = "";
+        var narrow = (api.el.clientWidth || 600) < 480;
         var t = h("table", { "class": "w5-table d1-table" });
         var hd = h("tr");
-        ["Member", "Before", "Days since", "Spend, Rs", "Whole log", "Target"].forEach(function (c, i) { hd.appendChild(h("th", { "class": i ? "n" : "", text: c })); });
+        (narrow ? ["Member", "Before", "Whole log", "Target"] : ["Member", "Before", "Days since", "Spend, Rs", "Whole log", "Target"]).forEach(function (c, i) { hd.appendChild(h("th", { "class": i ? "n" : "", text: c })); });
         t.appendChild(hd);
         rows.forEach(function (r) {
           var tr = h("tr"), leak = r.all > r.before;
           tr.appendChild(h("td", { text: "M" + (r.m + 1) }));
           tr.appendChild(h("td", { "class": "n", text: String(r.before) }));
-          tr.appendChild(h("td", { "class": "n", text: r.days }));
-          tr.appendChild(h("td", { "class": "n", text: F.int(r.spend) }));
+          if (!narrow) tr.appendChild(h("td", { "class": "n", text: r.days }));
+          if (!narrow) tr.appendChild(h("td", { "class": "n", text: F.int(r.spend) }));
           tr.appendChild(h("td", { "class": "n" + (leak ? " leak" : "") }, leak ? [W5.icon("cross"), " " + r.all + " leaks"] : [String(r.all)]));
           tr.appendChild(h("td", { "class": "n", text: revealed() ? String(r.target) : "?" }));
           t.appendChild(tr);
@@ -3325,9 +3328,10 @@ html{scroll-behavior:auto}
         svg.textContent = "";
         to = g.P;
         if (!from || from.length !== 20) from = to;
-        tx(svg, g.tx, fs * 1.2, "Train: 12", { weight: 700, size: fs * 1.0 });
-        tx(svg, g.vx, fs * 1.2, "Validation: 4", { weight: 700, size: fs * 1.0, fill: "#4E38AB" });
-        tx(svg, g.sx, fs * 1.2, "Test: 4, sealed", { weight: 700, size: fs * 1.0, fill: "#8A4500" });
+        var ph = w < 520;
+        tx(svg, g.tx, fs * 1.2, ph ? "Train" : "Train: 12", { weight: 700, size: fs * 1.0 });
+        tx(svg, g.vx, fs * 1.2, ph ? "Validation" : "Validation: 4", { weight: 700, size: fs * 1.0, fill: "#4E38AB" });
+        tx(svg, g.sx, fs * 1.2, ph ? "Test" : "Test: 4, sealed", { weight: 700, size: fs * 1.0, fill: "#8A4500" });
         var ex = g.sx, ey = g.top + 2, ew = Math.min(g.sw, 2 * (g.size + g.gap) + 20), eh = 2 * (g.size + g.gap) + 22;
         box(svg, ex, ey, ew, eh, { fill: "#FFF3E2", stroke: COL.amber, sw: 2, rx: 6 });
         svg.appendChild(s("path", { d: "M" + ex + " " + ey + "L" + (ex + ew / 2) + " " + (ey + 14) + "L" + (ex + ew) + " " + ey, fill: "none", stroke: COL.amber, "stroke-width": 2 }));
@@ -3365,13 +3369,13 @@ html{scroll-behavior:auto}
       var ys = PEEK.runs.map(function (r) { return r.peek; });
       var ch = W5.chart(peekEl, { height: 260, x: { min: 0, max: 61, label: "Version, in the order tried", ticks: [1, 10, 20, 30, 40, 50, 60] },
         y: { min: 0.64, max: 1.0, label: "Share right", ticks: [0.7, 0.8, 0.9, 1.0], fmt: function (v) { return Math.round(v * 100) + "%"; } },
-        legend: [{ label: "Score on the same 50 members", color: LILAC, kind: "dot" }, { label: "The chosen version", color: "violet", kind: "dot" }, { label: "On 1,000 fresh members", color: "ink", kind: "hollow" }] });
+        legend: [{ label: "Score on the same 50 members", color: LILAC, kind: "dot" }, { label: "The chosen version", color: "violet", kind: "dot" }, { label: "On 1,000 fresh members", color: "ink", kind: "hollow" }, { label: "A typical version, " + F.pct(PEEK.mean, 0), color: "#6B6690", kind: "line" }] });
       var frame = 0;
       function revealed() { return api.predict && api.predict.state.revealed; }
       function paint() {
         ch.remove("peek"); ch.remove("best"); ch.remove("fresh"); ch.remove("drop"); ch.remove("lblB"); ch.remove("lblF"); ch.remove("typ");
         ch.scatter("peek", PEEK.runs.map(function (r, i) { return [i + 1, r.peek]; }), { color: LILAC, r: 4.5, name: function (i) { return "Version " + (i + 1); } });
-        ch.hline("typ", PEEK.mean, { color: "#6B6690", dash: "5 4", width: 1.4, label: "typical version " + F.pct(PEEK.mean, 0) });
+        ch.hline("typ", PEEK.mean, { color: "#6B6690", dash: "5 4", width: 1.4 });
         if (frame >= 1) {
           ch.scatter("best", [[PEEK.best + 1, PB.peek]], { color: "violet", r: 7.5, name: function () { return "Chosen version"; } });
           ch.text("lblB", [PEEK.best - 0.6, PB.peek + 0.004], { text: "kept: " + F.pct(PB.peek, 0), anchor: "end" });
@@ -3498,7 +3502,7 @@ html{scroll-behavior:auto}
         ch.remove("x8"); ch.remove("x8l");
         if (revealed()) {
           ch.scatter("x8", [[8, lineAt(8)]], { color: "rose", r: 7, name: function () { return "The line at 8 visits"; } });
-          ch.text("x8l", [7.85, lineAt(8) + 0.07], { text: "1.28: crossed out", anchor: "end" });
+          ch.text("x8l", [7.85, lineAt(8) + 0.07], { text: "1.28: not a probability", anchor: "end" });
         }
         if (mode === "s") { ch.line("s", curve(), { color: "violet", width: 3.2, name: "Logistic S" }); ch.set("s", curve(), ms); }
         else ch.remove("s");
@@ -3581,13 +3585,14 @@ html{scroll-behavior:auto}
         ch.scatter("askP", [[hpAsk, Math.max(-9.5, yA)]], { color: "ink", r: 6.5, name: function () { return "The fit at " + hpAsk + " hp"; } });
         ch.text("askL", [hpAsk + (hpAsk > 220 ? -6 : 6), Math.max(-6, Math.min(46, yA + 3.5))], { text: hpAsk + " hp: " + F.dp(yA, 1) + " mpg", anchor: hpAsk > 220 ? "end" : "start" });
         var bands = model === "line" ? CARS.band_line : CARS.band_curve;
-        rc.remove("res"); rc.remove("bm"); rc.remove("cur");
+        rc.remove("res"); rc.remove("bm"); rc.remove("cur"); [0, 2, 4].forEach(function (k) { rc.remove("bl" + k); });
         if (revealed()) {
           rc.scatter("res", HP.map(function (x, i) { return [x, MPG[i] - (model === "line" ? mLine(x) : mCurve(x))]; }), { color: "#8F86CC", r: 2.6, name: function (i) { return "Car " + (i + 1); } });
           rc.line("bm", mids.map(function (m, k) { return [m, bands[k]]; }), { color: "violet", width: 3, dots: true, name: "Band mean" });
+          [0, 2, 4].forEach(function (k) { rc.remove("bl" + k); rc.text("bl" + k, [mids[k], bands[k] + (bands[k] >= 0 ? 2.2 : -3.4)], { text: F.signed(bands[k], 1), anchor: "middle" }); });
         } else rc.text("cur", [140, 6], { text: "Commit your prediction to draw the residuals.", anchor: "middle" });
         api.readout.set([
-          { value: revealed() ? bands.map(function (v) { return F.signed(v, 1); }).join("  ") : "?", label: "**Mean residual** in five horsepower bands, lowest to highest", tone: revealed() ? (model === "line" ? "bad" : "good") : "" },
+          { value: revealed() ? (model === "line" ? "A bow" : "Flat") : "?", label: "**Mean residual** by horsepower band, lowest to highest", tone: revealed() ? (model === "line" ? "bad" : "good") : "", sub: revealed() ? bands.map(function (v) { return F.signed(v, 1); }).join(", ") + " mpg." : "Commit your prediction to draw them." },
           { value: F.dp(model === "line" ? CARS.rmse[0] : CARS.rmse[1], 2) + " mpg", label: "**Typical miss** of the " + (model === "line" ? "straight line" : "line plus horsepower squared"), sub: model === "line" ? "Add horsepower squared to see it fall." : "The straight line missed by " + F.dp(CARS.rmse[0], 2) + " mpg." },
           { value: F.dp(yA, 1) + " mpg", label: "the fit's answer at **" + hpAsk + " horsepower**", tone: hpAsk > CARS.hp_max ? "bad" : "", sub: hpAsk > CARS.hp_max ? "No car in the data has more than " + CARS.hp_max + " hp, so this answer is a guess the data never checked." : "" }
         ]);
@@ -3714,10 +3719,11 @@ html{scroll-behavior:auto}
             calls = v; draw();
             api.say("For the campaign manager: each extra call goes with about **7 percent lower odds** of a yes, other columns held. That is an association, and an experiment would prove the cause.");
           } });
-          api.el.appendChild(h("p", { "class": "d1-sub" }, [W5.icon("calendar"), "The caveat: a random split mixes three very different years"]));
-          var yc = api.chart({ height: 200, x: { band: B.years.year.map(String) }, y: { min: 0, max: 0.6, label: "Share of yes", ticks: [0, 0.2, 0.4, 0.6], fmt: function (v) { return Math.round(v * 100) + "%"; } } });
+          var yEl = h("div", {}); api.el.parentNode.appendChild(yEl);
+          yEl.appendChild(h("p", { "class": "d1-sub" }, [W5.icon("calendar"), "The caveat: a random split mixes three very different years"]));
+          var yc = W5.chart(yEl, { height: 200, x: { band: B.years.year.map(String) }, y: { min: 0, max: 0.6, label: "Share of yes", ticks: [0, 0.2, 0.4, 0.6], fmt: function (v) { return Math.round(v * 100) + "%"; } } });
           yc.bars("y", B.years.yes.map(function (y, i) { return y / B.years.calls[i]; }), { colors: [LILAC, "violet", "ink"], maxWidth: 70, fmt: function (v) { return F.pct(v, 1); } });
-          api.el.appendChild(h("p", { "class": "d1-note", text: "Calls per year: " + B.years.year.map(function (y, i) { return y + ", " + F.int(B.years.calls[i]); }).join("; ") + ". The month is one of the 13 columns, so part of the score is the calendar; Friday splits by time." }));
+          yEl.appendChild(h("p", { "class": "d1-note", text: "Calls per year: " + B.years.year.map(function (y, i) { return y + ", " + F.int(B.years.calls[i]); }).join("; ") + ". The month is one of the 13 columns, so part of the score is the calendar; Friday splits by time." }));
           draw();
           HOOK.c8 = draw;
         },
@@ -3750,7 +3756,7 @@ html{scroll-behavior:auto}
               if (revealed()) {
                 ch.segments("drop", [[bx, PK.peek[PK.best] - 0.0008, bx, PK.fresh[PK.best] + 0.0008]], { color: "rose", width: 3 });
                 ch.scatter("fr", [[bx, PK.fresh[PK.best]]], { color: "ink", hollow: true, r: 7.5 });
-                ch.text("l2", [bx - 1.5, PK.fresh[PK.best] - 0.0012], { text: "fresh rows: " + F.dp(PK.fresh[PK.best], 4), anchor: "end" });
+                ch.text("l2", [bx - 1.5, PK.fresh[PK.best] - 0.0034], { text: "fresh rows: " + F.dp(PK.fresh[PK.best], 4), anchor: "end" });
               } else ch.text("l2", [bx - 1.5, PK.peek[PK.best] - 0.006], { text: "fresh rows: ? (commit first)", anchor: "end" });
             }
             if (frame >= 4 && revealed()) ch.scatter("frall", order.map(function (v, i) { return [i + 1, PK.fresh[v]]; }), { color: "ink", hollow: true, r: 3.6, name: function (i) { return "Version " + (order[i] + 1) + " on fresh rows"; } });
