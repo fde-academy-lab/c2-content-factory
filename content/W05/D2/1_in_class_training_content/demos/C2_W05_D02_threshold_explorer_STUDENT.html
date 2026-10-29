@@ -3291,7 +3291,7 @@ html{scroll-behavior:auto}
           says.forEach(function (ln, k) { T(svg, b.x + 10, b.y + fs * (2.75 + k * 1.2), ln, { size: fs * 0.95 }); });
           var costTxt = m.cost ? "Rs " + F.int(m.cost) + " each" + (counts[key] ? ", " + F.rs(m.cost * counts[key]) + " so far" : "") : "costs nothing";
           if (costTxt.length * fs * 0.5 > G.bw - 16) costTxt = m.cost ? (counts[key] ? F.rs(m.cost * counts[key]) + " so far" : "Rs " + F.int(m.cost) + " each") : costTxt;
-          T(svg, b.x + 10, b.y + fs * (2.8 + says.length * 1.2), costTxt, { size: fs * 0.92, fill: m.cost ? COL.rose : COL.green, weight: 700 });
+          T(svg, b.x + 10, b.y + fs * (2.8 + says.length * 1.2), costTxt, { size: fs * 0.92, fill: INK, weight: 700 });
         });
         if (n === 20 && fly >= 1) T(svg, 0, G.qTop + G.tagH * 0.75, "The queue is empty: all twenty customers are in a box.", { size: fs * 0.95, fill: COL.muted, weight: 600 });
         wrapLines(swap >= 0.5 ? PRINTOUT : READING, Math.floor(w / (fs * 0.52))).forEach(function (ln, k) { T(svg, 0, G.top + 2 * G.bh + 8 + fs * (1.1 + k * 1.3), ln, { size: fs * 0.92, weight: 600, fill: swap >= 0.5 ? COL.violet : COL.muted }); });
@@ -3461,8 +3461,8 @@ html{scroll-behavior:auto}
           while (rows.some(function (q) { return q.row === row && left < q.right + 6 && q.left < left + wpx + 6; })) row++;
           rows.push({ row: row, left: left, right: left + wpx });
           var ly = ay - 18 - row * fs * 1.45;
-          svg.appendChild(s("line", { x1: x, x2: x, y1: ly + 4, y2: ay - mk.r, stroke: mk.color, "stroke-width": 1.2, opacity: 0.7 }));
-          T(svg, left + wpx / 2, ly, mk.text, { anchor: "middle", weight: 700, fill: mk.color === COL.teal ? "#007373" : mk.color === WASTED ? "#8A4A00" : mk.color, halo: true });
+          svg.appendChild(s("line", { x1: x, x2: x, y1: ly + 4, y2: ay - mk.r, stroke: mk.color, "stroke-width": 2 }));
+          T(svg, left + wpx / 2, ly, mk.text, { anchor: "middle", weight: 700, fill: INK, halo: true });
         });
         pins.forEach(function (mk) { svg.appendChild(s("circle", { cx: sx(mk.v), cy: ay, r: mk.r, fill: mk.hollow ? "#FFFFFF" : mk.color, stroke: mk.hollow ? mk.color : "#FFFFFF", "stroke-width": 2 })); });
       }
@@ -3506,9 +3506,9 @@ html{scroll-behavior:auto}
       }
       var free = api.chart({ height: 220, x: { min: 0, max: 50, ticks: 5, label: "Share of customers who come back, percent", fmt: function (v) { return v + "%"; } },
         y: { min: 50, max: 100, ticks: 5, label: "Accuracy of saying no to everyone", fmt: function (v) { return v + "%"; } }, right: 20,
-        legend: [{ label: "Saying no to everyone", color: "rose", kind: "line" }, { label: "Where the slider is", color: "violet", kind: "dot" }],
+        legend: [{ label: "Saying no to everyone", color: "amber", kind: "line" }, { label: "Where the slider is", color: "violet", kind: "dot" }],
         table: function () { return { head: ["Share who come back", "Free accuracy"], rows: [["4% (Kalpa's row)", "96%"], ["11.3% (the bank)", "88.7%"], ["30% (German Credit's bad loans)", "70%"], ["50% (balanced)", "50%"]] }; } });
-      free.line("free", [[0, 100], [50, 50]], { color: "rose", width: 2.4, name: "Free accuracy" });
+      free.line("free", [[0, 100], [50, 50]], { color: "amber", width: 2.4, name: "Free accuracy" });
       free.scatter("cases", [[4, 96], [11.3, 88.7], [30, 70], [50, 50]], { color: "ink", r: 5, hollow: true });
       free.text("lk", [5.4, 99], { text: "Kalpa's row, 4%" });
       free.text("lb", [13.2, 93], { text: "The bank, 11.3%" });
