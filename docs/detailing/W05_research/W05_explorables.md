@@ -1,5 +1,7 @@
 # Week 5 explorables: what makes one teach, and five designs
 
+Superseded in part on 29 October 2026 (decision `w5-explorer-companion`): the ten principles in section 1 stand, except the single-question scope, the one or two controls and the 400-line cap, which the day companion's skeleton in `docs/11_Artifact_Set_W05.md` replaces; the five designs in section 2 become the first how-it-works pages of their days, and their three-click run order and invented-only data are dropped.
+
 Research note, INTERNAL, written 28 October 2026. Sources were fetched that day; every URL below carries the date it answered and its licence where the site states one. The repo's own contract for the page is in `docs/11_Artifact_Set_W05.md` (one single-file page per day in `demos/`, plain HTML, CSS and JavaScript, inline SVG or canvas, no library, offline, under about 400 lines, one or two controls, a wrong default, a prediction before the reveal, passes `scripts/html_sweep.py`). The rows are in `docs/curriculum/W5_ML_core_ME1.md`. R2D3 answered HTTP 522 and 523 on every try today, so it is listed as not verified.
 
 ## 1. Ten principles of an explorable that teaches

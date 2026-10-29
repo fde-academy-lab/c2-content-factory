@@ -95,11 +95,28 @@ def fetch(url, name):
     return path
 ```
 
-**The explorable**: one single-file HTML page per day in `demos/`, plain HTML, CSS and
-JavaScript with inline SVG or canvas, no external library, working offline on a projector and a
-phone, under about 400 lines. It answers one question the slides cannot: one or two controls, a
-picture and the numbers that redraw together, a wrong default the trainer starts from, and a
-prediction asked before the reveal. It passes `scripts/html_sweep.py`.
+**The explorable**: one self-contained HTML file per day in `demos/`, the day's visual companion
+from zero to the interview, working offline on a projector and a phone with no library and no
+network. It runs one skeleton of in-page pages, reached from a top nav and a progress rail: the
+story (the day's business situation animated on the real case), the concept map (today's
+subtopics, what they rest on and what they feed, the day's path lit in order), one how-it-works
+page per row subtopic (the mechanism as a motion graphic with play, step and scrub), the case on
+real data (the case steps, the trap shown exactly, the check and the fix), in the field (verified
+company scenes, then what each of the six seats does with the idea), the interview room (the
+learner picks the clarifying question, orders the whiteboard steps and commits the answer before
+the model answer, its two follow-ups and the room's usual wrong answers appear) and check
+yourself. On every page the learner commits a prediction, moves one variable and watches a
+picture and a number change together, and the rule is named last with the condition that flips
+it; a scene that cannot name the row subtopic it serves and the number it changes is cut.
+Concept animations run on invented numbers labelled invented; the case and field pages draw real
+numbers, exported from the public data by `4_trainer_only/C2_W05_D0n_explorer_data_INTERNAL.py`.
+The look and the components live once in `scripts/companion/w5kit.css` and `w5kit.js`, which
+`scripts/build_companion.py` inlines, so a day page never carries a hand copy. Every control
+writes a readout into the page before it animates, nothing waits behind a locked control, and a
+reduced-motion setting shows each animation's end state. It passes `scripts/html_sweep.py`, which
+walks every page of it, and the orchestrating session reviews a screenshot of every page at
+projector and phone width before it merges. The README run table and the trainer guide name the
+page each chapter opens. There is no size cap; the skeleton is the limit.
 
 ## 2. Take-home, mandatory (two to three hours)
 
