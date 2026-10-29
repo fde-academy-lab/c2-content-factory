@@ -103,15 +103,10 @@ def main():
                 out = outdir / f"{stem}.png"
                 shoot(page, out, w, h)
                 written.append(out)
-                if end:
-                    page.evaluate("() => window.W5 && W5.debug && W5.debug.endState()")
-                    page.wait_for_timeout(400)
-                    out2 = outdir / f"{stem}_end.png"
-                    shoot(page, out2, w, h)
-                    written.append(out2)
+                # every tab's opening picture is taken before any reveal, because the end state
+                # reveals every prediction on the route, the other tabs' included
+                count = 0
                 if tabs:
-                    # the case, field and interview pages hold their chapters, companies and
-                    # situations as tabs; every tab after the first gets its own pictures
                     count = page.evaluate(f"() => document.querySelectorAll(\"section[data-route='{r}'] .w5-tab\").length")
                     for k in range(1, count):
                         page.evaluate(f"() => document.querySelectorAll(\"section[data-route='{r}'] .w5-tab\")[{k}].click()")
@@ -120,14 +115,19 @@ def main():
                         out3 = outdir / f"{stem}_tab{k + 1}.png"
                         shoot(page, out3, w, h)
                         written.append(out3)
-                        if end:
-                            page.evaluate("() => window.W5 && W5.debug && W5.debug.endState()")
-                            page.wait_for_timeout(400)
-                            out4 = outdir / f"{stem}_tab{k + 1}_end.png"
-                            shoot(page, out4, w, h)
-                            written.append(out4)
-                    if count > 1:
-                        page.evaluate(f"() => document.querySelectorAll(\"section[data-route='{r}'] .w5-tab\")[0].click()")
+                if end:
+                    for k in range(max(count, 1)):
+                        if count > 1:
+                            page.evaluate(f"() => document.querySelectorAll(\"section[data-route='{r}'] .w5-tab\")[{k}].click()")
+                            page.wait_for_timeout(350)
+                            page.evaluate("() => window.scrollTo(0, 0)")
+                        page.evaluate("() => window.W5 && W5.debug && W5.debug.endState()")
+                        page.wait_for_timeout(400)
+                        out4 = outdir / (f"{stem}_end.png" if k == 0 else f"{stem}_tab{k + 1}_end.png")
+                        shoot(page, out4, w, h)
+                        written.append(out4)
+                if count > 1:
+                    page.evaluate(f"() => document.querySelectorAll(\"section[data-route='{r}'] .w5-tab\")[0].click()")
             ctx.close()
         browser.close()
     for p in written:
