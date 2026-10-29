@@ -75,3 +75,69 @@ Every PNG in `1_in_class_training_content/slides/img/` is drawn by `4_trainer_on
 - PDFs: `python3 scripts/build_doc.py` per STUDENT markdown in folders 2 and 3.
 - Explorable: `python3 scripts/html_sweep.py`, 7 controls, 0 inert, 0 console errors.
 - MCQs: `scripts/distractor_audit.py` does not parse the Week 5 practice-set layout (its items are `**B1.**` with keys in Part C), so the key rules were checked by a script in this session: no key is the strictly longest option on any single-key item, and keys spread a 4, b 3, c 4, d 4 across the fifteen single-key items.
+
+## The explorer, rebuilt on the Week 5 kit (29 October 2026)
+
+Built on branch `w05-d1-explorer` with `scripts/companion/w5kit.js` 1.0.0, by `python3 scripts/build_companion.py`, from `docs/detailing/W05_briefs/explorers/D1.md` and `common.md`. The page keeps its file name, `1_in_class_training_content/demos/C2_W05_D01_drag_the_line_explorer_STUDENT.html`.
+
+### Routes
+
+| Route | What the learner does there |
+|---|---|
+| `#story` | Plays six scenes: 41,188 calls land on the week's picture in month columns (one dot for every ten calls), 4,640 light as yes, the bank's ask and Kalpa's Rs 40 against Rs 1,200 twin, then predicts what calling nobody scores before 88.7 percent appears. |
+| `#map` | Plays the six subtopics in the row's order with three earlier ideas (Week 1 Thursday, Week 2, Week 4 Friday) and five later ones (Tuesday to Friday, Build 2), and predicts which idea both models rest on. |
+| `#p1` | Sorts Kalpa's six asks into query, rule and model bins; each drop plays the mechanism that answers it. |
+| `#p2` | Slides the prediction moment and the 60, 90 or 120-day window over four members' eight orders; the table shows the allowed inputs and the whole-log column that leaks. |
+| `#p3` | Moves the seed (1 to 60) and stratify on twenty members split 12 / 4 / 4 with the test envelope sealed, then plays the junior's 60-version loop. |
+| `#p4` | Drags slope and intercept over 24 customers with every training miss drawn as a square; Mean line, Join first and last, and Least squares buttons. |
+| `#p5` | Reads the straight line at 8 visits, switches to the logistic S, moves its weight, and counts 100 members at the asked visit count. |
+| `#p6` | Switches the Auto MPG fit between the line and the squared term, reads the residual bow, asks the fit about 300 hp, and sees one S fail on a two-ended pattern. |
+| `#case` | Chapter 7 splits with and without a seed; chapter 8 sets the model against calling nobody at full height and as the gap, with the campaign coefficient and the calendar caveat; chapter 9 plays the 60-version peek. Each carries its trap. |
+| `#field` | Uber DeepETA (drag the target from minutes to the engine's miss), Google's Rules of ML (rules 1, 4 and 14), Booking.com (regression against stay classes), then the six seats with the senior ML engineer lit. |
+| `#interview` | Five situations: is this an ML problem, what 0.71 means, the three slices, linear or logistic, and the one-point edge for Marketing. |
+| `#check` | Eight checks, the map with today lit, and Tuesday's question. |
+
+### Numbers the page draws, and where each comes from
+
+| Number on the page | Value | Source |
+|---|---|---|
+| Calls, yes, share | 41,188; 4,640; 0.1127 | the data script, as case01 prints |
+| Calls and yes by month, by year | 26 months; 2008 4.8 percent of 27,690, 2009 19.5 of 11,440, 2010 52.1 of 2,058 | the data script, as case02 recovers the year |
+| Split, shares | 24,712 / 8,238 / 8,238; 11.27, 11.26, 11.26 percent | the data script, as case01 prints |
+| Sixty splits with no seed and no stratify | held-out share of yes 0.1067 to 0.1197 (shuffles drawn with random_state 1000 to 1059, so the run is repeatable) | the data script; case01's five unseeded runs (0.1096 to 0.1133) sit inside this range |
+| Baseline, model, edge | 0.8874 (7,310); 0.8971 (7,390); 80 rows | the data script, as case02 prints |
+| Campaign coefficient | odds × 0.9334 per extra call; mean probability 0.1140 | the data script, as case02 prints |
+| The peek | 0.9055 (version 45, 7 columns) on 2,000 rows, 0.8971 on 6,238 fresh rows; doing nothing 0.8875 and 0.8873; spreads 0.0072 and 0.0052 | the data script, as case03 prints |
+| Auto MPG | 392 of 398 cars; band means +2.73, +0.04, −2.18, −1.74, +0.81 and with hp squared +0.44, +0.05, −0.99, +0.36, +0.10; typical miss 4.89 and 4.36 mpg; 27.8 mpg at 300 hp | the data script, as ch06 prints |
+| Concept pages 1 to 5 and the U-shaped S | invented tables typed in the page: the deck's six asks, four members, twenty members and twelve members; 24 invented customers on page 4; 24 invented members on page 6's S | checked in this session with scikit-learn 1.9.1 (least squares slope −28.5 Rs per day, intercept Rs 4,706; logistic a −3.1988, b 1.0472; one S nearly flat at 0.43 to 0.48, 13 of 24 right; the S with age squared 19 of 24 right) |
+| Uber, Google, Booking.com quotes | as in `docs/detailing/W05_research/W05_cases.md` | each source refetched in this session: the Uber post and Google's guide on 29 October 2026; the Booking.com abstract page on 29 October 2026 and its section 4 text from the mirror PDF named in `W05_cases.md`, read the same day |
+
+### Decisions taken in this build
+
+1. **AUC and the call list's recall stay off the page.** The brief puts AUC 0.761 and 174 of 928 buyers on the case page; the row's STOP BEFORE forbids any metric beyond accuracy today and both are Tuesday's numbers, so the case page ends on Tuesday's question instead: how many of the 928 who said yes did the model put on the list?
+2. **The split by time stays off the page.** The brief's 5.6 against 24.6 percent is Friday's reveal (the pipeline note's correction 2), so a Monday page would spend it. The calendar caveat is told with the deck's yes share by year (S46).
+3. **Page 3's sixty-version loop runs on invented numbers.** A concept page uses invented numbers, so the loop scores sixty equally good invented versions (truly right on 78 to 82 in 100) on the same 50 members with a seeded generator in the page; the bank's 0.9055 falling to 0.8971 is case chapter 9.
+4. **Page 4 uses new invented customers.** The old page's 24 members followed a curve, so a straight line on page 4 would have taught page 6's lesson early. The new 24 sit on a straight trend with noise; slope in Rs per day of recency, as the brief asks. The rule card cites slide S21's six-member contest.
+5. **Page 5 uses the deck's twelve members.** So 1.28 at 8 visits, 0.73 at 4 visits and exp(b) = 2.85 match slides S24 to S28 and notebook ch05. The brief's 71 of 100 near 0.71 moved to interview situation 2; the 100-member grid on page 5 follows the asked visit count instead.
+6. **Page 3's seeds are scikit-learn's.** The split of the twenty members for seeds 1 to 60, stratified and not, was computed with `train_test_split` and typed into the page, so seed 42 puts M06, M08, M10 and M18 in the test envelope, as notebook ch03 does.
+7. **Page 6 also shows the S failing.** One S on a pattern high at both ends (24 invented members, age against home delivery) lies flat and ties saying no to everyone; a squared term bends it into a U. It sits below the real-data stage with its own invented badge.
+8. **No picture or readout states an answer before the prediction.** Page 2 greys the orders after the cut until the reveal; page 4's Least squares button counts as a reveal and says so; page 5 hides the line past 6 visits; page 6 draws the residuals after the reveal; case chapter 8 hides the model's bar; page 3 and case chapter 9 hide the fresh score. The field situations were rewritten so that each quote arrives with its reveal.
+9. **No key is the longest option** in any prediction, interview pick or check on the page, counted by hand in this session.
+10. **The deck's notes for S20 and S26** pointed at the old page's right panel; both now point at `#p4` and `#p5`, and the deck was rebuilt with `scripts/build_deck.py` and no `--footer`, which reproduces the committed build: a text diff of all 63 slides, their pictures and their notes shows only those two notes changed.
+
+### Kit gaps found
+
+- `html_sweep.py` counts console errors raised while a kit page loads in its total line but does not fail on them; this page logged 16 that way (a chart laid out inside a hidden tab) and passed until it was fixed.
+- A cloud label lays out each piece of rich text as its own flex item, so a sentence with bold in it wraps in fragments; the page passes each sentence as one span.
+- A chart cannot change its y range after it is built; case chapter 8 sets `chart.o.y` and calls `layout`.
+- A toggle has no setter; pages 1 and 5 click its button to switch it from another control.
+- The interview whiteboard boxes hold a title, a note and an icon, never a picture, so situation 2's 100 clients cannot be drawn on the board.
+- The map's player counts its opening frame as step 1, so step captions that carry their own number print two numbers.
+- The kit's inlined code uses the word "marks" six times (its dot grid), so `verify.py` prints its marks-language WARN on every Week 5 page; none of the six is in this page's own text.
+- `explorer_shots.py` shoots only a route's first tab; the case, field and interview tabs were checked with a session script.
+
+### Build log for the explorer
+
+- Data: `python3 content/W05/D1/4_trainer_only/C2_W05_D01_explorer_data_INTERNAL.py` writes `C2_W05_D01_explorer_data_INTERNAL.json` (6,317 bytes).
+- Page: `python3 scripts/build_companion.py content/W05/D1/1_in_class_training_content/demos/C2_W05_D01_drag_the_line_explorer_STUDENT.html`.
+- Proofs: `python3 scripts/html_sweep.py` on the page; `python3 scripts/explorer_shots.py <page> <scratch> --end` at 1366 and 390 wide, with `--presenter` at 1366, and every tab of the case, field and interview pages shot before and after its reveals; every picture looked at.

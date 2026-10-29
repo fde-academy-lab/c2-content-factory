@@ -421,8 +421,8 @@ slope (910 minus 290) / 5 = Rs 124 per visit. Write 124 on the board. Transition
 
 ```notes
 LIVE, 2 minutes. Prediction first. Then explain "squared": each miss drawn as a square, so big
-misses count far more than small ones. Click: open the explorable (demos/), whose line starts flat
-at the mean; let one learner drag it, then press least squares. Transition: the answer.
+misses count far more than small ones. Click: open the explorer at #p4, whose line starts flat at
+the mean; let one learner drag it, press Join first and last, then Least squares. Transition: the answer.
 ```
 
 ---
@@ -521,7 +521,7 @@ LIVE, 1 minute. Hands per option. Transition: the S.
 LIVE, 5 minutes. The line says 1.28 at 8 visits and -0.01 at 0: impossible probabilities. Logistic
 regression keeps a line underneath, z = a + b x visits, and squeezes it: p = 1 / (1 + exp(-z)).
 Here z = -3.20 + 1.05 x visits. Click: ch05, the fit cell, model and formula agree at 0.73; then
-the explorable's right panel, slide the member past 130 days and switch to the S.
+the explorer at #p5: ask about 8 visits, switch to the S, and move its weight.
 Transition: what 0.73 means.
 ```
 
