@@ -223,6 +223,10 @@ body.w5{margin:0;background:var(--page);color:var(--night);font:1rem/1.55 var(--
 .w5-rule .w5-ruletext{font:400 1.25rem/1.35 var(--serif);margin:0;color:var(--white)}
 .w5-rule .w5-flips{margin:.35rem 0 0;color:#E4E1F1;font-size:.98rem}
 .w5-rule .w5-flips b{color:var(--lav)}
+.w5-rule .w5-rulehold{display:none}
+.w5-rule.held .w5-ruletext,.w5-rule.held .w5-flips{display:none}
+.w5-rule.held .w5-rulehold{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:.35rem 0 0;color:#E4E1F1;font-size:1.02rem}
+.w5-rule .w5-rulebtn{color:var(--white);border-color:rgba(217,167,255,.55);background:transparent}
 .w5-where{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--line);
   font-size:.86rem;color:var(--night)}
 .w5-where b{color:var(--ink)}
@@ -1001,21 +1005,24 @@ html{scroll-behavior:auto}
     var value = o.value !== undefined ? o.value : o.options[0].value;
     var seg = h("div", { "class": "w5-seg", role: "group", "aria-label": o.label || "Choose one" });
     var note = h("span", { "class": "w5-pstate", style: { margin: "0" }, "aria-live": "polite" });
+    function choose(opt) {
+      if (opt.value === value) { ack(note, opt.label + " is already showing."); return; }
+      value = opt.value;
+      btns.forEach(function (x, i) { x.setAttribute("aria-pressed", o.options[i].value === value ? "true" : "false"); });
+      ack(note, "Showing " + opt.label + ".");
+      if (o.onChange) o.onChange(value);
+    }
     var btns = o.options.map(function (opt) {
       var b = h("button", { type: "button", "aria-pressed": opt.value === value ? "true" : "false", text: opt.label });
-      b.addEventListener("click", function () {
-        if (opt.value === value) { ack(note, opt.label + " is already showing."); return; }
-        value = opt.value;
-        btns.forEach(function (x, i) { x.setAttribute("aria-pressed", o.options[i].value === value ? "true" : "false"); });
-        ack(note, "Showing " + opt.label + ".");
-        if (o.onChange) o.onChange(value);
-      });
+      b.addEventListener("click", function () { choose(opt); });
       seg.appendChild(b);
       return b;
     });
     var wrap = h("div", { "class": "w5-numrow" }, [o.label ? h("span", { "class": "w5-unit", text: o.label }) : null, seg, note]);
     if (container) container.appendChild(wrap);
-    return { el: wrap, get value() { return value; } };
+    // set(v) switches from another control exactly as a click on that option would
+    return { el: wrap, get value() { return value; },
+             set: function (v) { var opt = o.options.filter(function (x) { return x.value === v; })[0]; if (opt) choose(opt); } };
   };
 
   /* ================================================================ the readout panel */
@@ -1145,6 +1152,18 @@ html{scroll-behavior:auto}
     container.appendChild(card);
     return card;
   };
+  // A how-it-works rule is named last: until the page's prediction is committed or revealed the
+  // card holds its text behind one line and a button, so it never states the answer early, and
+  // the button keeps the card reachable without locking anything.
+  function holdRule(card) {
+    var line = h("p", { "class": "w5-rulehold" }, [h("span", { text: "The rule appears once you commit your prediction above, or reveal it." })]);
+    var btn = h("button", { type: "button", "class": "w5-btn quiet w5-rulebtn" }, [icon("eye"), h("span", { text: "Show the rule now" })]);
+    btn.addEventListener("click", function () { releaseRule(card); });
+    line.appendChild(btn);
+    card.appendChild(line);
+    card.classList.add("held");
+  }
+  function releaseRule(card) { if (card) card.classList.remove("held"); }
   W5.where = function (container, o) {
     var row = h("div", { "class": "w5-where" }, [
       h("span", {}, [h("b", { text: "Where you met it: " }), rich(o.deck || "")]),
@@ -1196,7 +1215,7 @@ html{scroll-behavior:auto}
     var from = this.o.countFrom === undefined ? 1 : this.o.countFrom;
     this.count.textContent = this.word + " " + (this.i + from) + " of " + (this.n - 1 + from);
     this.capStep.textContent = this.word + " " + (this.i + from);
-    setRich(this.capText, f.caption || "");
+    setRich(this.capText, (f.caption || "").replace(/^\s*(step|scene|board step)\s+\d+\s*[:.]\s*/i, ""));
     this.scrub.value = this.i;
     off(this.back, this.i <= 0);
     off(this.fwd, this.i >= this.n - 1);
@@ -1300,7 +1319,13 @@ html{scroll-behavior:auto}
     var self = this;
     onLayout(this.el, function (w) { self.layout(w); });
   }
+  Chart.prototype.setY = function (y) {
+    this.o.y = y;
+    if (this._w) this.layout(this._w);
+  };
   Chart.prototype.layout = function (w) {
+    if (w === undefined) w = this._w;
+    this._w = w;
     var o = this.o, fs = rootPx() * 0.8;
     this.fs = fs;
     var hgt = o.height || 300;
@@ -1630,7 +1655,7 @@ html{scroll-behavior:auto}
     return api;
   };
 
-  /* ================================================================ the dot grid of countable marks */
+  /* ================================================================ the dot grid of countable dots */
   var DOTS = {
     yes: { fill: COLORS.violet, stroke: COLORS.violet }, no: { fill: COLORS.rest, stroke: COLORS.rest },
     hit: { fill: COLORS.green, stroke: COLORS.green }, miss: { fill: COLORS.rose, stroke: COLORS.rose },
@@ -1639,12 +1664,12 @@ html{scroll-behavior:auto}
   };
   W5.dotgrid = function (container, o) {
     var wrap = h("div", { "class": "w5-dotgrid" });
-    var svg = s("svg", { "class": "w5-svg", role: "img", "aria-label": o.label || "A grid of countable marks" });
+    var svg = s("svg", { "class": "w5-svg", role: "img", "aria-label": o.label || "A grid of countable dots" });
     var legend = h("div", { "class": "w5-legend", "aria-live": "polite" });
     wrap.appendChild(svg); wrap.appendChild(legend);
     container.appendChild(wrap);
     var n = o.n, states = typeof o.states === "function" ? Array.from({ length: n }, function (_, i) { return o.states(i); }) : (o.states || new Array(n).fill("empty"));
-    var marks = [];
+    var dots = [];
     function legendUpdate() {
       var counts = {};
       states.forEach(function (st) { counts[st] = (counts[st] || 0) + 1; });
@@ -1662,7 +1687,7 @@ html{scroll-behavior:auto}
       var size = Math.min(o.maxSize || 22, (w - lw - (cols - 1) * gap) / cols);
       var rows = Math.ceil(n / cols), hh = rows * (size + gap) - gap;
       svg.setAttribute("viewBox", "0 0 " + w + " " + hh); svg.setAttribute("height", hh); svg.setAttribute("width", w);
-      svg.textContent = ""; marks = [];
+      svg.textContent = ""; dots = [];
       var used = cols * (size + gap) - gap + lw, x0 = (o.align === "left" ? 0 : (w - used) / 2) + lw;
       if (o.rowLabels) o.rowLabels.forEach(function (l, r) {
         svg.appendChild(s("text", { x: x0 - 8, y: r * (size + gap) + size / 2 + fs * 0.35, "text-anchor": "end", "font-size": fs, "font-weight": 700, fill: "#1A0F5C", text: l }));
@@ -1674,7 +1699,7 @@ html{scroll-behavior:auto}
           : s("circle", { cx: cx + size / 2, cy: cy + size / 2, r: Math.max(0.8, size / 2 - 0.9) });
         m.style.fill = st.fill; m.style.stroke = st.stroke; m.style.strokeWidth = size > 8 ? 1.6 : 0.8;
         m.style.transition = "fill .45s cubic-bezier(.45,0,.25,1), stroke .45s cubic-bezier(.45,0,.25,1)";
-        svg.appendChild(m); marks.push(m);
+        svg.appendChild(m); dots.push(m);
       }
     }
     var api = {
@@ -1683,7 +1708,7 @@ html{scroll-behavior:auto}
         states = typeof next === "function" ? states.map(function (_, i) { return next(i); }) : next.slice();
         legendUpdate();
         var stagger = (opts && opts.stagger) || 0, reduced = W5.reduced();
-        marks.forEach(function (m, i) {
+        dots.forEach(function (m, i) {
           var st = DOTS[states[i]] || DOTS.empty;
           m.style.transitionDelay = reduced ? "0s" : (stagger * i / n).toFixed(3) + "s";
           m.style.fill = st.fill; m.style.stroke = st.stroke;
@@ -2382,13 +2407,18 @@ html{scroll-behavior:auto}
     var left = h("div", { "class": "w5-col" }), right = h("div", { "class": "w5-col" });
     grid.appendChild(left); grid.appendChild(right);
     sec.appendChild(grid);
-    var pr = o.predict ? W5.predict(right, o.predict) : null;
+    var ruleCard = null, ruleFree = !o.predict;
+    var pspec = o.predict ? Object.assign({}, o.predict, { onReveal: function (st) {
+      if (o.predict.onReveal) o.predict.onReveal(st);
+      ruleFree = true; releaseRule(ruleCard);
+    } }) : null;
+    var pr = pspec ? W5.predict(right, pspec) : null;
     var sc = stageCard(left, o, id);
     var ro = W5.readout(right, { title: o.readoutTitle });
     var api = stageApi(sc.stage, sc.controls, ro, sc.say);
     api.predict = pr;
     if (o.stage) o.stage(api);
-    if (o.rule) W5.rule(sec, o.rule);
+    if (o.rule) { ruleCard = W5.rule(sec, o.rule); if (!ruleFree) holdRule(ruleCard); }
     if (o.where) W5.where(sec, o.where);
     return api;
   };
@@ -2661,7 +2691,7 @@ html{scroll-behavior:auto}
         });
         var bw = h("div", { "class": "w5-boardwrap" }, [h("div", { "class": "w5-label" }, [icon("chart"), "The whiteboard, step by step"]), board]);
         model.appendChild(bw);
-        boardPlayer = W5.player(bw, { frames: [{ caption: "The board starts empty. Press play, or step, to draw the answer the way you would say it." }].concat(boardSteps.map(function (b, k) { return { caption: b.say || ("Step " + (k + 1) + ": " + strip(b.title) + (b.note ? ". " + strip(b.note) : "")) }; })),
+        boardPlayer = W5.player(bw, { frames: [{ caption: "The board starts empty. Press play, or step, to draw the answer the way you would say it." }].concat(boardSteps.map(function (b, k) { return { caption: b.say || (strip(b.title) + (b.note ? ". " + strip(b.note) : "")) }; })),
           word: "Board step", countFrom: 0, stepMs: 500, holdMs: 1100, render: function (k) { stepEls.forEach(function (el, j) { el.classList.toggle("off", j >= k); }); } });
         var lower = h("div", { "class": "w5-ivgrid", style: { marginTop: ".9rem" } });
         var fu = h("div", {}, [h("div", { "class": "w5-label" }, [icon("interview"), "The interviewer's two follow-ups"])]);
@@ -4132,7 +4162,7 @@ html{scroll-behavior:auto}
     lede: "Four verified scenes, each with one control: a hospital the model learned, a contest won by looking answers up, features that stalled a network, and a definition that must match at training and at serving. Then the six seats, at Kalpa.",
     scenes: [
       { company: "Zech and others, chest X-rays", icon: "heart", angle: "Engineering: the leak shows at a new site", title: "What did a pneumonia model score at a hospital it had never seen?",
-        situation: "A network trained on 158,323 chest X-rays from three hospital systems scored AUC 0.931 on test images from the two systems it learned. The same kind of network identified the hospital system of 99.95 percent of NIH images, partly from a metal token technicians place on the patient, and portable ward films carried more pneumonia, 41.1 percent, than emergency films, 32.8 percent.",
+        situation: "The study gathered 158,323 chest X-rays from three hospital systems. A network trained on two of them, NIH and Mount Sinai, scored AUC 0.931 on test images from those two. The same kind of network identified the hospital system of 99.95 percent of NIH images, partly from a metal token technicians place on the patient, and portable ward films carried more pneumonia, 41.1 percent, than emergency films, 32.8 percent.",
         source: "Zech and others, chest X-ray pneumonia models across NIH, Mount Sinai and Indiana, PLOS Medicine 2018, https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683, checked 28 October 2026",
         stageTitle: "The model's AUC on images from the hospitals it trained on, at a new hospital, and for a ranking by each hospital's pneumonia rate alone",
         predict: { q: "The joint model scored AUC **0.931** on test images from its own two hospital systems. What did it score at **Indiana**, which it had never seen?", type: "number", answer: 0.815, tolerance: 0.03, unit: "AUC", min: 0.5, max: 1, step: 0.001,
