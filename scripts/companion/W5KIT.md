@@ -274,7 +274,8 @@ or a cross. The three series colours passed the dataviz validator against white 
   click is swept on the next pass.
 - `python3 scripts/explorer_shots.py <page> <scratch dir> --end` writes each route at 1366 and 390
   wide, and with `--end` each route again after every reveal and every player's last frame. Look at
-  every picture for overflow, clipping, overlap and type under about 12 pixels.
+  every picture for overflow, clipping, overlap and type under about 12 pixels. `--presenter`
+  shoots the same routes with presenter mode on, and `--route p3 --width 390` shoots one picture.
 
 ## 9. Decisions the kit session made, 29 October 2026
 

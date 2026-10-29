@@ -1952,8 +1952,9 @@ html{scroll-behavior:auto}
       g.appendChild(s("rect", { x: b.x, y: b.y, width: b.w, height: b.h, rx: 10, fill: fill, stroke: stroke, "stroke-width": 1.6, "stroke-dasharray": n.kind === "later" ? "5 4" : null }));
       var tx = b.x + 12;
       if (b.step) {
-        g.appendChild(s("circle", { cx: b.x + 18, cy: b.y + b.h / 2, r: 11, fill: "#5B3FD6" }));
-        g.appendChild(s("text", { x: b.x + 18, y: b.y + b.h / 2 + b.fs * 0.36, "text-anchor": "middle", fill: "#fff", "font-weight": 700, "font-size": b.fs * 0.9, text: String(b.step) }));
+        var cy = b.y + Math.min(b.h / 2, 10 + b.fs * 0.62);
+        g.appendChild(s("circle", { cx: b.x + 18, cy: cy, r: 11, fill: "#5B3FD6" }));
+        g.appendChild(s("text", { x: b.x + 18, y: cy + b.fs * 0.33, "text-anchor": "middle", fill: "#fff", "font-weight": 700, "font-size": b.fs * 0.9, text: String(b.step) }));
         tx = b.x + 38;
       }
       var ty = b.y + 10 + b.fs;
@@ -1979,7 +1980,8 @@ html{scroll-behavior:auto}
     }
     var placed = [];
     function overlaps(r) {
-      return placed.some(function (q) { return r.x < q.x + q.w && q.x < r.x + r.w && r.y < q.y + q.h && q.y < r.y + r.h; });
+      var g = 4;
+      return placed.some(function (q) { return r.x < q.x + q.w + g && q.x < r.x + r.w + g && r.y < q.y + q.h + g && q.y < r.y + r.h + g; });
     }
     function edgeLabel(text, c, fs, edgeEl) {
       var w = text.length * fs * 0.56 + 12, hgt = fs * 1.45, best = null;

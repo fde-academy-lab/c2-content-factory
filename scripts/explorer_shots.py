@@ -10,6 +10,7 @@ Usage:
     python3 scripts/explorer_shots.py <page.html> <outdir> --end        # also the end state of each route
     python3 scripts/explorer_shots.py <page.html> <outdir> --route p3   # one route only
     python3 scripts/explorer_shots.py <page.html> <outdir> --width 1366 # one width only
+    python3 scripts/explorer_shots.py <page.html> <outdir> --presenter  # with presenter mode on
 
 --end shoots a second picture per route after every prediction on it is revealed and every player
 has run to its last frame, which is where most overlap hides. It prints each file it wrote and every
@@ -59,6 +60,7 @@ def main():
         sys.exit(1)
     outdir.mkdir(parents=True, exist_ok=True)
     only_route, only_width, end = arg("--route"), arg("--width"), "--end" in sys.argv
+    presenter = "--presenter" in sys.argv
     from playwright.sync_api import sync_playwright
 
     errors, written = [], []
@@ -74,6 +76,8 @@ def main():
             page.on("pageerror", lambda e, n=name: errors.append(f"{n}: {e}"))
             page.goto(page_path.resolve().as_uri(), wait_until="load")
             page.wait_for_timeout(300)
+            if presenter:
+                page.evaluate("() => window.W5 && W5.presenter && W5.presenter(true)")
             routes = page.evaluate("() => Array.from(document.querySelectorAll('section[data-route]')).map(s => s.getAttribute('data-route'))")
             if not routes:
                 print(f"FAIL  {page_path.name}: no section carries data-route, so this is not a kit page")
@@ -84,7 +88,7 @@ def main():
                 page.evaluate(f"() => {{ location.hash = '{r}'; }}")
                 page.wait_for_timeout(350)
                 page.evaluate("() => window.scrollTo(0, 0)")
-                stem = f"{page_path.stem}_{name}_{r}"
+                stem = f"{page_path.stem}_{name}{'_presenter' if presenter else ''}_{r}"
                 out = outdir / f"{stem}.png"
                 shoot(page, out, w, h)
                 written.append(out)
@@ -116,6 +120,8 @@ if __name__ == "__main__":
 # The same command with --end
 #     Also writes a _end picture per route, taken after every prediction is revealed and every
 #     player has run to its last frame.
+# The same command with --presenter
+#     The same pictures with presenter mode on, named _presenter_, to check the enlarged type.
 # The same command with --route p3 --width 390
 #     Writes only the phone picture of #p3.
 # A page with no section[data-route]
