@@ -347,7 +347,7 @@ flowchart LR
 |---|---|
 | Earliest 70 percent of calls, 28,831 clients | 5.6 percent said yes |
 | Latest 30 percent of calls, 12,357 clients | 24.6 percent said yes |
-| Mean predicted chance of a yes on the latest 30 percent | 0.152 |
+| Mean predicted chance of a yes on the latest 30 percent | 0.159 |
 
 **Exhibit 5B.** Two public cases. Instacart: Fortune, 9 June 2020, and Instacart's engineering blog, 10 July 2023. Booking.com: Bernardi, Mavridis and Estevez, KDD 2019, section 3.
 
@@ -359,7 +359,7 @@ flowchart LR
 
 #### Q18 · Hard · circle one letter · Set the alarm
 
-On the latest 30 percent of calls the model's mean score was 0.152 while 24.6 percent said yes (Exhibit 5A), and Exhibit 5B sets Instacart's case beside it. Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
+On the latest 30 percent of calls the model's mean score was 0.159 while 24.6 percent said yes (Exhibit 5A), and Exhibit 5B sets Instacart's case beside it. Which monitoring rule catches this first, and what happens to the cut on these scores that the cost line sets?
 
 a) Set each month's called yes rate against the mean score, with a stated gap; the cut moves down, as scores run low.
 b) Set each month's called yes rate against the mean score, with a stated gap; the cut moves up, as more clients now say yes.

@@ -46,7 +46,7 @@ RUN = {
     "corr_euribor": {"emp.var.rate": 0.97, "nr.employed": 0.95, "cons.conf.idx": 0.28},
     "poutcome_success_yes": 0.651, "duration_mean_yes": 553, "duration_mean_no": 221,
     "time_early_rows": 28831, "time_late_rows": 12357, "time_early_yes": 0.056,
-    "time_late_yes": 0.246, "time_late_mean_pred": 0.152, "time_late_auc": 0.657,
+    "time_late_yes": 0.246, "time_late_mean_pred": 0.159, "time_late_auc": 0.664,
 }
 LINES = []
 
@@ -138,7 +138,7 @@ def shape():
 def no_giveaways():
     """Numbers a later exhibit or stem would hand to an earlier written item."""
     student = PAPER.split("## Stretch")[0]
-    for leak in ("0.032", "1 / 31", "1 in 31", "348 / 1,196", "0.291", "0.657", "leaky",
+    for leak in ("0.032", "1 / 31", "1 in 31", "348 / 1,196", "0.291", "0.664", "leaky",
                  "discarded", "Known only once the call ends", "752 / 1,792", "1,232 / 3,682",
                  "681,920", "459,920", "222,000", "calibrat"):
         assert leak.lower() not in student.lower().replace("calibrated on recent loans", ""), \
@@ -217,10 +217,10 @@ def exhibits():
     assert RUN["time_early_rows"] == int(RUN["rows"] * 0.7)
     assert t5[f"Earliest 70 percent of calls, {RUN['time_early_rows']:,} clients"] == "5.6 percent said yes"
     assert t5[f"Latest 30 percent of calls, {RUN['time_late_rows']:,} clients"] == "24.6 percent said yes"
-    assert t5["Mean predicted chance of a yes on the latest 30 percent"] == "0.152"
+    assert t5["Mean predicted chance of a yes on the latest 30 percent"] == "0.159"
     # The split by date's AUC stays off the paper: it would tell Part 1's split item its answer.
-    assert len(t5) == 3 and "0.657" not in PAPER.split("## Stretch")[0]
-    print("PASS  Exhibit 5A: 28,831 + 12,357 = 41,188; 5.6 against 24.6 percent; mean score 0.152")
+    assert len(t5) == 3 and "0.664" not in PAPER.split("## Stretch")[0]
+    print("PASS  Exhibit 5A: 28,831 + 12,357 = 41,188; 5.6 against 24.6 percent; mean score 0.159")
     # Exhibit 5B: the public figures as the sources file records them.
     for fact in ("61%", "93%", "about 85%", "-0.1 with 90%", "(-0.45, 0.27)", "23 comparisons"):
         assert fact in SOURCES, fact
@@ -400,8 +400,8 @@ def items():
     assert RUN["time_late_mean_pred"] < RUN["time_late_yes"]
     keyed(i, "a", "yes rate", "mean score", "stated gap", "moves down")
     assert "moves up" in options(i)["b"] and options(i)["a"].split(";")[0] == options(i)["b"].split(";")[0]
-    assert "0.152" in i["text"] and "24.6 percent" in i["text"]
-    ok(i["q"], "stale-rule", "a", "mean score 0.152 under 24.6 percent yes, so the cut on the scores moves down")
+    assert "0.159" in i["text"] and "24.6 percent" in i["text"]
+    ok(i["q"], "stale-rule", "a", "mean score 0.159 under 24.6 percent yes, so the cut on the scores moves down")
 
     i = BY_ID["caveat"]
     assert bsp.letters_of(i["key"]) == ["b", "c"]
@@ -524,8 +524,13 @@ def rerun():
     cut = int(len(bank) * 0.7)
     early, late = bank.iloc[:cut], bank.iloc[cut:]
     ye, yl = y.iloc[:cut], y.iloc[cut:]
-    m = model(honest, early, LogisticRegression(max_iter=2000)).fit(early[honest], ye)
-    pl = m.predict_proba(late[honest])[:, 1]
+    # Friday's case02 notebook fits Wednesday's audited columns: pdays split into a flag and the days
+    bank["never_contacted"] = (bank["pdays"] == 999).astype(int)
+    bank["days_since"] = bank["pdays"].where(bank["pdays"] != 999, 0)
+    audited = honest + ["never_contacted", "days_since"]
+    early, late = bank.iloc[:cut], bank.iloc[cut:]
+    m = model(audited, bank, LogisticRegression(max_iter=3000)).fit(early[audited], ye)
+    pl = m.predict_proba(late[audited])[:, 1]
     assert (len(early), len(late)) == (RUN["time_early_rows"], RUN["time_late_rows"])
     assert (r3(ye.mean()), r3(yl.mean()), r3(pl.mean()), r3(roc_auc_score(yl, pl))) == (
         RUN["time_early_yes"], RUN["time_late_yes"], RUN["time_late_mean_pred"], RUN["time_late_auc"])

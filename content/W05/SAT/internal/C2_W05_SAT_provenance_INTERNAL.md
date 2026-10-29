@@ -102,7 +102,7 @@ and seed 42; `C2_W05_SAT_key_proofs_INTERNAL.py --rerun` recomputes each one and
 | euribor3m's correlation with three indicators | the whole file | employment variation rate 0.97; number employed 0.95; consumer confidence 0.28 |
 | poutcome success | the whole file | 1,373 rows, 65.1 percent yes |
 | Mean call duration | yes; no | 553 seconds; 221 seconds |
-| Split by date | earliest 70 percent of rows to train, latest 30 percent to score | 28,831 and 12,357 rows; yes rates 5.6 and 24.6 percent; mean predicted 0.152; AUC 0.657 |
+| Split by date | earliest 70 percent of rows to train, latest 30 percent to score, the logistic model on Wednesday's audited columns (pdays split into a flag and the days) as Friday's case02 notebook fits it | 28,831 and 12,357 rows; yes rates 5.6 and 24.6 percent; mean predicted 0.159; AUC 0.664 |
 | The error bill at Kalpa's costs | the cost line; calling every validation client | Rs 279,000; Rs 292,400 |
 
 ## How the pack was checked

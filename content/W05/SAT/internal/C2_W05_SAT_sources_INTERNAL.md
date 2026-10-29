@@ -171,3 +171,15 @@ matched the key on all 22 items. These changes came from what it found.
 Kept as they are: Q15 option d, a brake chosen by cross-validation, which the key counts as a brake;
 Q7, whose direction Exhibit 2B hints at while the marked number still needs the working; Q19, which
 rests on Friday's memo lines as the class drew them. The level counts stay at 9 medium and 13 hard.
+
+## Why does the split by date now read 0.159 and 0.664?
+
+On 29 October 2026 the requester asked for the paper to carry Friday's numbers. The paper had taken
+the split by date from the week pipeline's column set: a mean score of 0.152 on the latest 30 percent
+of calls and an AUC of 0.657. Friday's case02 notebook, its study notes and its explorer fit
+Wednesday's audited columns, with pdays split into a flag and the days, and print 0.159 and 0.664.
+The room sees Friday's figures the day before the paper, so the paper now prints them: Exhibit 5A,
+Q18's stem and key, Q4's key and the discussion guide. The rows, the months and the yes rates (28,831
+and 12,357; 5.6 and 24.6 percent) were already the same in both. The key proofs' rerun now fits the
+split by date on Friday's columns and recomputes both figures from the UCI file. No key letter,
+level or minute changed.
