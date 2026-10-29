@@ -292,3 +292,15 @@ or a cross. The three series colours passed the dataviz validator against white 
 | Histograms of two groups of very different sizes are drawn as shares of their own group in the demo. | Drawn as counts, 928 buyers vanish under 7,310 others; the axis says "share of its own group". |
 | The order list moves its elements instead of rebuilding them. | The sweep tracks controls by identity, and a rebuilt list looked like a fresh set of controls on every pass. |
 | A click on the current route rewrites the rail's line and scrolls to the top. | Every control must change the page, including the nav link of the page already open. |
+
+## Changes after the Monday and Tuesday builds (29 October 2026)
+
+| Change | What a day page gets |
+|---|---|
+| The rule card waits for the prediction | On a how-it-works page the rule card holds its text behind one line and a "Show the rule now" button until the page's prediction is committed or revealed, so a rule never states the answer first. Nothing is locked: the button opens it at once, and `W5.debug.endState()` releases it with the reveal. |
+| `toggle.set(value)` | Switches a toggle from another control exactly as a click on that option would, with its readout and `onChange`. |
+| `chart.setY([lo, hi])` | Changes a chart's y range after it is built and lays it out again. |
+| Captions carry no step number | The player prints "Step 3" or "Scene 3" beside the caption, so a caption that opens with its own "Step 3:" has it removed; the interview board's default captions no longer number themselves. |
+| The dot grid speaks of dots | The kit's code no longer uses the word that tripped `verify.py`'s marks-language warning on every page. |
+| `html_sweep.py` fails on load errors | A console error raised while the page loads, such as a chart laid out inside a hidden tab, now fails the sweep instead of only being counted. |
+| `explorer_shots.py --tabs` | Also shoots every tab after a route's first (case chapters, field companies, interview situations), with `_end` pictures under `--end`. |

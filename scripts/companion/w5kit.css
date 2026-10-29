@@ -216,6 +216,10 @@ body.w5{margin:0;background:var(--page);color:var(--night);font:1rem/1.55 var(--
 .w5-rule .w5-ruletext{font:400 1.25rem/1.35 var(--serif);margin:0;color:var(--white)}
 .w5-rule .w5-flips{margin:.35rem 0 0;color:#E4E1F1;font-size:.98rem}
 .w5-rule .w5-flips b{color:var(--lav)}
+.w5-rule .w5-rulehold{display:none}
+.w5-rule.held .w5-ruletext,.w5-rule.held .w5-flips{display:none}
+.w5-rule.held .w5-rulehold{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin:.35rem 0 0;color:#E4E1F1;font-size:1.02rem}
+.w5-rule .w5-rulebtn{color:var(--white);border-color:rgba(217,167,255,.55);background:transparent}
 .w5-where{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--line);
   font-size:.86rem;color:var(--night)}
 .w5-where b{color:var(--ink)}
