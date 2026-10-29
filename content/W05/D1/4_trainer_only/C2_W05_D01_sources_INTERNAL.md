@@ -133,6 +133,7 @@ Built on branch `w05-d1-explorer` with `scripts/companion/w5kit.js` 1.0.0, by `p
 - A toggle has no setter; pages 1 and 5 click its button to switch it from another control.
 - The interview whiteboard boxes hold a title, a note and an icon, never a picture, so situation 2's 100 clients cannot be drawn on the board.
 - The map's player counts its opening frame as step 1, so step captions that carry their own number print two numbers.
+- The kit's inlined code uses the word "marks" six times (its dot grid), so `verify.py` prints its marks-language WARN on every Week 5 page; none of the six is in this page's own text.
 - `explorer_shots.py` shoots only a route's first tab; the case, field and interview tabs were checked with a session script.
 
 ### Build log for the explorer
