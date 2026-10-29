@@ -370,6 +370,9 @@ body.w5{margin:0;background:var(--page);color:var(--night);font:1rem/1.55 var(--
 .w5-seat{position:absolute;width:6.6rem;transform:translate(-50%,-1.5rem);display:flex;flex-direction:column;align-items:center;gap:.2rem;background:transparent;
   border:0;cursor:pointer;color:var(--ink);font-size:.78rem;font-weight:700;line-height:1.15;text-align:center;padding:0}
 .w5-seat > span:last-child{background:rgba(246,244,252,.94);border-radius:6px;padding:0 .2rem}
+.w5-seat{width:7.6rem}
+.w5-seat.up{flex-direction:column-reverse;transform:translate(-50%,calc(-100% + 1.5rem))}
+.w5-wheel .w5-hub{inset:31%}
 .w5-seat .w5-seatico{width:3rem;height:3rem;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--white);border:2px solid var(--lilac);
   color:var(--violet);box-shadow:var(--shadow);transition:transform .2s var(--ease)}
 .w5-seat .w5-seatico .w5-ico{width:1.35rem;height:1.35rem}
@@ -503,3 +506,4 @@ html{scroll-behavior:auto}
   .w5-boxlabel{font-size:.74rem}
   .w5-boxlabel b{font-size:.86rem}
 }
+.w5-readout .w5-ritem:last-child:nth-child(odd){grid-column:1 / -1}

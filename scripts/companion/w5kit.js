@@ -731,6 +731,7 @@
     }
     return out;
   };
+  function tickText(v) { return String(+Number(v).toFixed(6)).replace("-", "\u2212"); }
   var COLORS = {
     violet: "#5B3FD6", amber: "#C96A00", teal: "#00A0A0", rest: "#BDB7DD", ink: "#1A0F5C",
     green: "#1F8A5B", rose: "#D63A6A", lilac: "#CFC9EE", muted: "#6B6690", lav: "#D9A7FF", night: "#1A1440"
@@ -772,7 +773,7 @@
     if (w < 520) hgt = Math.max(o.minHeight || 210, Math.min(hgt, Math.round(w * (o.phoneRatio || 0.82))));
     this.w = w; this.h = hgt;
     var yt = o.y ? ticks(o.y.min, o.y.max, o.y.ticks) : [];
-    var yfmt = (o.y && o.y.fmt) || String;
+    var yfmt = (o.y && o.y.fmt) || tickText;
     var widest = yt.reduce(function (m, v) { return Math.max(m, String(yfmt(v)).length); }, 1);
     var m = this.m = {
       l: o.y && o.y.hide ? 10 : Math.round(widest * fs * 0.62 + 14),
@@ -811,7 +812,7 @@
       ticks(o.y.min, o.y.max, o.y.ticks).forEach(function (v) {
         var y = self.sy(v);
         self.gGrid.appendChild(s("line", { x1: x0, x2: x1, y1: y, y2: y }));
-        self.gAxis.appendChild(s("text", { x: x0 - 6, y: y + fs * 0.35, "text-anchor": "end", text: (o.y.fmt || String)(v) }));
+        self.gAxis.appendChild(s("text", { x: x0 - 6, y: y + fs * 0.35, "text-anchor": "end", text: (o.y.fmt || tickText)(v) }));
       });
     }
     if (o.y && o.y.label) self.gAxis.appendChild(s("text", { "class": "w5-axtitle", x: 0, y: fs * 1.05, text: o.y.label }));
@@ -824,7 +825,7 @@
       });
     } else {
       var xt = ticks(o.x.min, o.x.max, o.x.ticks);
-      var room = this.pw / Math.max(1, xt.length - 1), fmtx = o.x.fmt || String;
+      var room = this.pw / Math.max(1, xt.length - 1), fmtx = o.x.fmt || tickText;
       var widest = xt.reduce(function (mm, v) { return Math.max(mm, String(fmtx(v)).length); }, 1) * fs * 0.6 + 8;
       var every = Math.max(1, Math.ceil(widest / room));
       xt.forEach(function (v, i) {
@@ -1202,21 +1203,23 @@
     var r = this.place(this.w, this.h, this.to, this);
     if (r) this.r = r;
   };
+  /* One sprite per colour key; o.sizes can make a key's dots larger, for a group the scene picks out. */
   Cloud.prototype.sprites = function () {
-    var self = this, dpr = this.dpr, rr = this.r * dpr, size = Math.ceil(rr * 2 + 2);
+    var self = this, dpr = this.dpr, sizes = this.o.sizes || {};
     this.spr = this.keys.map(function (k) {
+      var rr = self.r * (sizes[k] || 1) * dpr, size = Math.ceil(rr * 2 + 2);
       var c = document.createElement("canvas"); c.width = c.height = size;
       var x = c.getContext("2d"); x.fillStyle = self.palette[k];
       x.beginPath(); x.arc(size / 2, size / 2, rr, 0, Math.PI * 2); x.fill();
       return c;
     });
-    this.sprSize = size;
+    this.half = this.spr.map(function (c) { return c.width / 2; });
   };
   Cloud.prototype.draw = function () {
     var ctx = this.ctx; if (!ctx) return;
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    var dpr = this.dpr, half = this.sprSize / 2, cur = this.cur, idx = this.cIdx, spr = this.spr;
-    for (var i = 0; i < this.n; i++) ctx.drawImage(spr[idx[i]], cur[2 * i] * dpr - half, cur[2 * i + 1] * dpr - half);
+    var dpr = this.dpr, half = this.half, cur = this.cur, idx = this.cIdx, spr = this.spr;
+    for (var i = 0; i < this.n; i++) { var k = idx[i]; ctx.drawImage(spr[k], cur[2 * i] * dpr - half[k], cur[2 * i + 1] * dpr - half[k]); }
   };
   Cloud.prototype.recolor = function (fn, silent) {
     var keys = this.keys;
@@ -1230,6 +1233,7 @@
     if (opts.color) this.recolor(opts.color, true);
     if (!this.w) return;
     this.computeTargets();
+    if (opts.color && this.r === oldR) this.sprites();
     if (this.r !== oldR) this.sprites();
     if (this.tw) this.tw.cancel();
     this.from.set(this.cur);
@@ -1972,7 +1976,7 @@
     var card = h("div", { "class": "w5-card w5-seatcard", "aria-live": "polite" });
     var btns = SEATS.map(function (st, i) {
       var a = -Math.PI / 2 + i * Math.PI / 3;
-      var b = h("button", { type: "button", "class": "w5-seat", "aria-pressed": "false", style: { left: (50 + 38 * Math.cos(a)) + "%", top: (50 + 38 * Math.sin(a)) + "%" } },
+      var b = h("button", { type: "button", "class": "w5-seat" + (Math.sin(a) < -0.1 ? " up" : ""), "aria-pressed": "false", style: { left: (50 + 38 * Math.cos(a)) + "%", top: (50 + 38 * Math.sin(a)) + "%" } },
         [h("span", { "class": "w5-seatico" }, [icon(st[2])]), h("span", { text: st[1] })]);
       b.addEventListener("click", function () { pick(i); });
       wheel.appendChild(b);
@@ -2033,7 +2037,7 @@
       pane.appendChild(story); pane.appendChild(grid);
       var pr = sc.predict ? W5.predict(right, sc.predict) : null;
       var stc = stageCard(left, Object.assign({}, sc, { data: sc.data || "real", source: sc.company }), id + " " + sc.company);
-      var ro = W5.readout(right, { title: sc.readoutTitle });
+      var ro = W5.readout(left, { title: sc.readoutTitle });
       var api = stageApi(stc.stage, stc.controls, ro, stc.say);
       api.predict = pr;
       if (sc.stage) sc.stage(api);
