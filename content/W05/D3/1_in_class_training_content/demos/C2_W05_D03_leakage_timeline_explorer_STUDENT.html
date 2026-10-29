@@ -2923,17 +2923,17 @@ html{scroll-behavior:auto}
   /* ================================================================ #map */
   var MAP_NODES = [
     { id: "rfm", label: "Recency, frequency, monetary", sub: "Week 2", kind: "earlier", story: "Week 2 counted how recently, how often and how much each customer bought." },
-    { id: "mon", label: "The prediction moment", sub: "Monday", kind: "earlier", story: "Monday fixed the morning the call list is made, and split the rows before any model saw them." },
+    { id: "mon", label: "Prediction moment", sub: "Monday", kind: "earlier", story: "Monday fixed the morning the call list is made, and split the rows before any model saw them." },
     { id: "tue", label: "AUC, recall and the bill", sub: "Tuesday", kind: "earlier", story: "Tuesday read every model through recall and a bill of Rs 40 a call and Rs 1,200 a missed buyer." },
-    { id: "w1", label: "The fair comparison", sub: "Week 1", kind: "earlier", story: "Week 1 changed a lever for a random half and compared the halves." },
+    { id: "w1", label: "A fair comparison", sub: "Week 1", kind: "earlier", story: "Week 1 changed a lever for a random half and compared the halves." },
     { id: "s1", label: "Feature engineering from the customer table", kind: "today", route: "p1", story: "Raw totals become recency, counts, cohort age, ratios and basket signals, each measured from the nudge morning." },
     { id: "s2", label: "Encoding categoricals; scaling numerics", kind: "today", route: "p2", story: "A city becomes one-hot switches, and rupees and visits are put on one scale, for the models that care." },
     { id: "s3", label: "Leakage and the prediction-time question", kind: "today", route: "p3", story: "On the morning the model is used, do we know this value for this customer?" },
     { id: "s4", label: "The column audit", kind: "today", route: "p4", story: "Five asks of every column, and a verdict on one line: keep, fix or drop." },
     { id: "s5", label: "Feature importance and its limits", kind: "today", route: "p5", story: "Shuffle a column and count what the model loses: reliance, never a lever." },
     { id: "thu", label: "Overfitting and the simpler model", sub: "Thursday", kind: "later", story: "Thursday tunes models on today's audited set of twenty columns." },
-    { id: "fri", label: "The split by time", sub: "Friday", kind: "later", story: "Friday splits by time and prices the calendar flag the audit leaves today." },
-    { id: "fs", label: "The feature store", sub: "Later weeks", kind: "later", story: "A feature store computes one definition the same way at training and at serving." }
+    { id: "fri", label: "Split by time, and staleness", sub: "Friday", kind: "later", story: "Friday splits by time, prices the calendar flag the audit leaves today, and asks when a model goes stale." },
+    { id: "fs", label: "A feature store", sub: "Later weeks", kind: "later", story: "A feature store computes one definition the same way at training and at serving." }
   ];
   var MAP_EDGES = [
     { from: "rfm", to: "s1", label: "becomes features in" },
@@ -3364,10 +3364,13 @@ html{scroll-behavior:auto}
           T(svg, sx(e[0]) + (e[2] === "end" ? -4 : 0), ay - fs * 0.7, e[1], { anchor: e[2], size: fs * 0.95, fill: "#3F3A66" });
         });
         COLS3.forEach(function (c, i) {
-          var ok = c.day < m, y = ay + fs * 0.7 + i * fs * 1.95, cw = textW(c.name, fs * 0.95) + 34, cx;
+          var y = ay + fs * 0.7 + i * fs * 1.95;
+          svg.appendChild(s("line", { x1: sx(c.day), x2: sx(c.day), y1: ay, y2: y + 4, stroke: c.day < m ? GREEN : ROSE, "stroke-width": 1, "stroke-dasharray": "2 3" }));
+        });
+        COLS3.forEach(function (c, i) {
+          var ok = c.day < m, y = ay + fs * 0.7 + i * fs * 1.95, cw = c.name.length * fs * 0.95 * 0.62 + 36, cx;
           cx = c.day < 0 ? sx(c.day) + 8 - cw : sx(c.day) - 8;
           cx = Math.max(0, Math.min(w - cw, cx));
-          svg.appendChild(s("line", { x1: sx(c.day), x2: sx(c.day), y1: ay, y2: y + 4, stroke: ok ? GREEN : ROSE, "stroke-width": 1, "stroke-dasharray": "2 3" }));
           var lead = S.rule === c;
           svg.appendChild(s("rect", { x: cx, y: y, width: cw, height: fs * 1.6, rx: 7, fill: ok ? (lead ? "#D9F0E3" : "#E8F5EE") : "#FCEBF0", stroke: ok ? GREEN : ROSE, "stroke-width": lead ? 2.5 : 1.2 }));
           mark(svg, cx + 12, y + fs * 0.8, ok, 7);
@@ -3380,7 +3383,7 @@ html{scroll-behavior:auto}
         var headers = { orders: phone ? "orders" : "orders_90d", days: "days since last order", coupon: "coupon", settled: phone ? "settled" : "settlement" };
         var mw = phone ? 36 : 54, rest = w - mw, tail = phone ? 3 : 3, cwid = rest / (cols.length + tail);
         var heads = cols.map(function (c) { return headers[c]; }).concat([phone ? "bought" : "bought in 90 days", phone ? "table" : "rule on the training table", phone ? "morning" : "rule on the nudge morning"]);
-        if (phone) T(svg, 0, gy0 - fs * 1.4, "Right or wrong on the training table and on the nudge morning:", { size: fs * 0.95, fill: "#3F3A66" });
+        if (phone) T(svg, 0, gy0 - fs * 1.4, "Right on the table, and on the morning:", { size: fs * 0.95, fill: "#3F3A66" });
         heads.forEach(function (hd, j) {
           var x = mw + j * cwid + cwid / 2, col = j < cols.length ? COLS3.filter(function (c) { return c.key === cols[j]; })[0] : null, out = col && col.day >= m;
           wrapLines(hd, Math.max(6, Math.floor(cwid / (fs * 0.55)))).forEach(function (ln, k2) { T(svg, x, gy0 + k2 * fs * 1.15, ln, { anchor: "middle", size: fs * 0.95, weight: 700, fill: out ? "#A3214B" : INK, deco: out ? "line-through" : null }); });

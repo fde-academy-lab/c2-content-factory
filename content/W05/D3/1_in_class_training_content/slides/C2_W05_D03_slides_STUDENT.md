@@ -423,17 +423,18 @@ it looks.
 ---
 
 ## S21. The explorable: slide the prediction moment
-*Open demos/C2_W05_D03_leakage_timeline_explorer_STUDENT.html*
+*Open the explorer at #p3: every column pinned at the day it is written*
 
-```timeline
-label: Click 1 | title: Start after delivery | body: The payment flag is green and the score reads 30 of 30.
-label: Click 2 | title: Drag to the nudge morning | body: The flag turns red, drops out, and the score falls.
-label: Click 3 | title: Add a green feature | body: A feature known that morning earns its place with a reason.
-```
+![The explorer's page 3 at the nudge morning: the two columns written after it turn red and leave](img/C2_W05_D03_explorer_STUDENT.png)
 
 ```notes
-LIVE, 4 minutes. Before click 2, ask for a number: what will 30 of 30 become? Write it down. After
-the drag, land the day's line: the score fell and the model got better.
+LIVE, 4 minutes. Open demos/C2_W05_D03_leakage_timeline_explorer_STUDENT.html at #p3 and press P
+for presenter mode. The room has S18's answer, so commit it on the prediction card first. Press
+play: the training table gives the settlement rule 12 of 12, the nudge morning blanks the column,
+and the rule falls to 6 of 12. Then drag the prediction moment from day +13 to day 0:
+coupon_redeemed and settlement_status turn red and leave, and the rule becomes orders_90d of 2 or
+more, 10 of 12 on both tables. Land the day's line: the score fell and the model got better. Drag
+on to day -2 for the flip: before last night's columns are written, the model knows nothing.
 ```
 
 ---
