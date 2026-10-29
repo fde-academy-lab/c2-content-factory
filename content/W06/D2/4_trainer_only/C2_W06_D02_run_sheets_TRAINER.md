@@ -105,8 +105,8 @@ below ready to paste.
 | 55 | 61 | 6 | Readiness check, as a group | | Visits breakouts | Visits breakouts | Groups agree one letter string |
 | 61 | 66 | 5 | Readiness key | Reads the key; explains the most-missed item | Names groups under five of six | | A group under five of six rereads the ticket with TA1 during the question writing |
 | 66 | 76 | 10 | Question writing | Reads the four rules once (below) | Rereads with any group under five | Visits breakouts | Workbook, the discovery-call page |
-| 76 | 80 | 4 | Move to call rooms | Opens room A | Opens room B | Moves G1, G6 and G10 into rooms; the others stay in breakouts | |
-| 80 | 124 | 44 | Discovery calls, three rooms at once | Rohan in room A: G1 to G5 | Rohan in room B: G6 to G9, then reserve | Rohan in room C: G10 to G13, then reserve; between calls moves the next group | Call slots below; groups waiting start workbook page 1 on paper |
+| 76 | 80 | 4 | Move to call rooms | Opens room A | Opens room B | Pastes the slot table below in chat; every group joins its call room itself at its slot, and the others stay in their breakouts | The slot table |
+| 80 | 124 | 44 | Discovery calls, three rooms at once | Rohan in room A: G1 to G5 | Rohan in room B: G6 to G9, then reserve | Rohan in room C: G10 to G13, then reserve | Call slots below; groups waiting start workbook page 1 on paper |
 | 124 | 134 | 10 | Break | | | | |
 | 134 | 180 | 46 | Stages 0 to 2 on paper, no AI | Visits G1 to G5 | Visits G6 to G9 | Visits G10 to G13 | Workbook pages 1 to 3 |
 
