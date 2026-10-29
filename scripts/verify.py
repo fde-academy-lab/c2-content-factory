@@ -81,6 +81,12 @@ W05_DIRS = {
     "2_take_home_mandatory", "3_study_material_for_students", "4_trainer_only",
 }
 W05_SHAPE = "Week 5 teaching day"
+# From Week 6 on a build week ships one pack on its launch day (docs/12_Build_Week_W06.md): a README
+# at the root and four folders named by what a learner opens. The starter repo is a template the
+# learners copy into their own repositories, so its files keep the repository's own names.
+W06_BUILD_DIRS = {"1_project", "2_starter_repo", "3_explorer", "4_trainer_only"}
+W06_BUILD_SHAPE = "build pack from Week 6 on"
+STARTER = "2_starter_repo"
 
 
 # Week 0 is the baseline week: teaching-day folders plus the diagnostic papers and their keys.
@@ -108,6 +114,8 @@ def folder_shape(week, day_label):
     if kind == "teaching" and day_label == "SAT":
         # A Saturday that teaches, which only Week 16 has, takes the teaching-day shape.
         return "teaching day", TEACHING_DIRS
+    if week in BUILD_WEEKS and week >= 6:
+        return W06_BUILD_SHAPE, W06_BUILD_DIRS
     if week in BUILD_WEEKS:
         return ("build day" if day_label != "SAT" else "build week Saturday"), BUILD_DIRS
     if day_label == "SAT":
@@ -118,12 +126,20 @@ def folder_shape(week, day_label):
 
 
 def w05_day(target):
-    """Whether the folder is a teaching day built in the Week 5 artifact set."""
+    """Whether the folder is a teaching day in the Week 5 artifact set or a build pack from Week 6 on."""
     m = DAY_FOLDER.search(str(target).rstrip("/\\"))
     if not m or m.group(2) == "SAT":
         return False
     week = int(m.group(1))
-    return folder_shape(week, f"D{int(m.group(3)):02d}")[0] == W05_SHAPE
+    return folder_shape(week, f"D{int(m.group(3)):02d}")[0] in (W05_SHAPE, W06_BUILD_SHAPE)
+
+
+def in_starter(target, p):
+    """Whether a file sits in a build pack's starter repo, whose files keep the repository's names."""
+    try:
+        return p.relative_to(target).parts[0] == STARTER
+    except ValueError:
+        return False
 
 
 def check_layout(target, files):
@@ -138,7 +154,9 @@ def check_layout(target, files):
     shape_name, allowed = folder_shape(week, day_label)
     fails = 0
     for p in files:
-        if shape_name == W05_SHAPE and p.name == "README.md" and p.parent == target:
+        if shape_name in (W05_SHAPE, W06_BUILD_SHAPE) and p.name == "README.md" and p.parent == target:
+            continue
+        if shape_name == W06_BUILD_SHAPE and in_starter(target, p):
             continue
         found = DAY_STEM.match(p.name)
         if not found:
@@ -241,7 +259,7 @@ def run_proofs(target):
         # The practice set and the study material are read as PDFs as often as on GitHub, so each
         # STUDENT markdown file in those two folders needs its PDF, built after its last change.
         printed = [p for p in files if p.suffix == ".md" and "_STUDENT" in p.name
-                   and p.parent.name in ("2_take_home_mandatory", "3_study_material_for_students")]
+                   and p.parent.name in ("2_take_home_mandatory", "3_study_material_for_students", "1_project")]
         for md in printed:
             pdf = md.with_suffix(".pdf")
             if not pdf.exists():
@@ -373,6 +391,8 @@ def main():
     for p in files:
         name = p.name
         if name == "README.md" and w05_day(target) and p.parent == target:
+            pass
+        elif w05_day(target) and in_starter(target, p):
             pass
         elif not re.search(r"_(STUDENT|TRAINER|INTERNAL)\.", name):
             print(f"FAIL  {name}: missing audience tag in filename"); fails += 1
