@@ -111,7 +111,7 @@ Rebuilt in place as the day companion of decision `w5-explorer-companion`, on br
 9. **Answers stay hidden until the reveal.** Every readout, legend or chart that states a prediction's answer shows a question mark, hollow marks or no curve until the learner commits or reveals; the bill curve on `#p5` and `#case` chapter 8 is drawn only as the trace of lines tried until then.
 10. **Option lengths are balanced** so no key is the longest option, as the distractor audit asks of exercises, though it does not run on pages.
 11. **Cut from the old page:** the typed guess box (the kit's prediction card replaces it), the lending switch on German Credit (decision 2), and the square-root bar heights, replaced by honest shares of each group.
-12. **The deck still pictures the old page.** Slide 30 (S24) shows a screenshot of the earlier page and its notes describe the old clicks. Rebuilding the deck was outside this branch, so the trainer guide's section 11 names the current clicks; the orchestrating session may refresh the slide's picture.
+12. **The deck pictured the old page.** Slide 30 (S24) showed a screenshot of the earlier page; the orchestrating session replaced it with page 5 of this explorer and rewrote its notes for the new clicks.
 
 ### Proof
 

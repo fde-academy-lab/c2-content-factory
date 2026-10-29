@@ -449,14 +449,14 @@ differently?
 ## S24. The explorable: drag the line on the bank's scores
 *It opens on the wrong default: 0.5, and 754 buyers left alone.*
 
-![The threshold explorer in its opening state](img/C2_W05_D02_explorer_STUDENT.png)
+![The explorer's page 5: the bank's two score humps with the line at the default 0.5](img/C2_W05_D02_explorer_STUDENT.png)
 
 ```notes
-LIVE, 6 minutes. Open demos/C2_W05_D02_threshold_explorer_STUDENT.html. Before any click, each
-learner types a guess of the cheapest line and locks it. Click 1: read the default aloud, 174 found
-and Rs 904,800 of missed margin. Click 2: drag the line left and watch the bill fall until about
-0.03. Click 3 waits for case 2: tighten the ratio from 30:1 to 8:1. Keep the loan switch for
-chapter 6. If the projector fails, show the case02 notebook's bill chart instead.
+LIVE, 6 minutes. Open the explorer at #p5. Before any click, the room picks the cheapest line on
+the prediction card and commits it. Then read the default aloud: 268 calls, 174 of 928 buyers
+found, a bill of Rs 908,560. Drag the line left and watch the bill trace down to about 0.03, press
+Line from the prices to land on it, then set the budget to 1,000 calls. Keep #p6 for chapter 6. If
+the projector fails, show the case02 notebook's bill chart instead.
 ```
 
 ---
