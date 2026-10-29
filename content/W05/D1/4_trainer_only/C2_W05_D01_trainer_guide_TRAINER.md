@@ -13,19 +13,19 @@ Posts to <!-- sync:module:W05/D1 -->Module 2: Applied Machine Learning<!-- /sync
 
 | Block | Min | Slides | Open | What must land | Cut if late |
 |---|---|---|---|---|---|
-| One: opening | 8 | S1 to S6 | deck | the timeline picture on the board; the envelope sealed and taped up | S6 map to 30 seconds |
-| One: ch 1 | 15 | SEC 1, S7 to S10 | ch01 | two of six need a model; the three tests | S10's Uber card (the second framing example) |
-| One: ch 2 | 22 | SEC 2, S11 to S14 | ch02 | M4 bought again and still scores 0; the all-time count leaks | the ch02 timeline run (show the slide instead) |
-| One: ch 3 | 20 | SEC 3, S15 to S18 | ch03 | test is spent once; the seed is the shuffle; 75 percent from nothing | the two-seed cell |
-| One: ch 4 | 22 | SEC 4, S19 to S23 | ch04 | least squares beats the eye, 5,200 against 5,480; Rs 120 per visit as an association | S23 code slide |
+| One: opening | 8 | S1 to S6 | deck; explorer `#story` (the bank's calls on the week's picture, then the 88.7 percent prediction) and `#map` | the timeline picture on the board; the envelope sealed and taped up | S6 map to 30 seconds |
+| One: ch 1 | 15 | SEC 1, S7 to S10 | ch01; explorer `#p1` (sort the six asks) | two of six need a model; the three tests | S10's Uber card (the second framing example) |
+| One: ch 2 | 22 | SEC 2, S11 to S14 | ch02; explorer `#p2` (slide the cut, stretch the window to 120 days) | M4 bought again and still scores 0; the all-time count leaks | the ch02 timeline run (show the slide instead) |
+| One: ch 3 | 20 | SEC 3, S15 to S18 | ch03; explorer `#p3` (seed, stratify, the junior's loop) | test is spent once; the seed is the shuffle; 75 percent from nothing | the two-seed cell |
+| One: ch 4 | 22 | SEC 4, S19 to S23 | ch04; explorer `#p4` (drag the line, then Least squares) | least squares beats the eye, 5,200 against 5,480; Rs 120 per visit as an association | S23 code slide |
 | One: break | 10 | | | kernels shut | |
-| One: ch 5 | 22 | SEC 5, S24 to S28 | ch05 | 1.28 is impossible; 0.73 means 73 of 100; exp(b) = 2.85 | the odds table's last row |
-| One: ch 6 | 18 | SEC 6, S29 to S34a | ch06 | the bow (+2.7, -2.2) and its fix; the fix fails past 190 hp | S33 extrapolation (say it, skip the slide) |
-| One: case 1 | 43 | SEC 7, S35 to S40 | case01, guided | 13 columns known that morning; split 24,712 / 8,238 / 8,238; guided baseline 0.8874 | S36 twin table (say it in one line) |
-| Two: case 2 | 25 | SEC 8, S41 to S46 | case02 | 80 more right answers in 8,238; campaign x 0.93 per call; the calendar caveat | S44 histogram |
-| Two: case 3 | 15 | SEC 9, S47 to S49 | case03 | 0.9055 peeked, 0.8971 fresh; the test is spent once | never cut |
-| Two: interview, seat | 7 | S50 to S51 | deck | the [D] answer opens on a clarifying question | S51 to one sentence |
-| Two: quiz, close | 13 | S52 to S53 | Kahoot | Q3 and Q4 | the return question |
+| One: ch 5 | 22 | SEC 5, S24 to S28 | ch05; explorer `#p5` (the line at 8 visits, then the S and its weight) | 1.28 is impossible; 0.73 means 73 of 100; exp(b) = 2.85 | the odds table's last row |
+| One: ch 6 | 18 | SEC 6, S29 to S34a | ch06; explorer `#p6` (the bow, the squared term, 300 hp) | the bow (+2.7, -2.2) and its fix; the fix fails past 190 hp | S33 extrapolation (say it, skip the slide) |
+| One: case 1 | 43 | SEC 7, S35 to S40 | case01, guided; explorer `#case`, chapter 7 | 13 columns known that morning; split 24,712 / 8,238 / 8,238; guided baseline 0.8874 | S36 twin table (say it in one line) |
+| Two: case 2 | 25 | SEC 8, S41 to S46 | case02; explorer `#case`, chapter 8 | 80 more right answers in 8,238; campaign x 0.93 per call; the calendar caveat | S44 histogram |
+| Two: case 3 | 15 | SEC 9, S47 to S49 | case03; explorer `#case`, chapter 9 | 0.9055 peeked, 0.8971 fresh; the test is spent once | never cut |
+| Two: interview, seat | 7 | S50 to S51 | deck; explorer `#interview`, then the six seats at `#field` | the [D] answer opens on a clarifying question | S51 to one sentence |
+| Two: quiz, close | 13 | S52 to S53 | Kahoot; explorer `#check` for anyone who finishes early | Q3 and Q4 | the return question |
 | Faculty block (tentative) | 120 | | | W5-1, IITGN faculty | see section 9 if it does not run |
 | TA practice lab | 85 | | case03, then the lab | section 8 | section 8's cut order |
 
@@ -138,8 +138,8 @@ Length: 85 minutes. First 10 minutes: re-run `case03` on the projector cold, top
 |---|---|
 | downloads fail for part of the room | pair them with a neighbour; project the executed outputs, which are saved in every notebook |
 | kernels hang | shut every kernel at the break; one notebook open at a time |
-| the projector machine has no network | open the explorable `demos/C2_W05_D01_drag_the_line_explorer_STUDENT.html` as a local file; it needs nothing |
-| the faculty block (tentative) does not run | the 120 minutes: the lab's steps 2 and 3 in class (40); the residual-plot match from the practice set, problem 6 (15); the explorable sandbox in pairs (15); interview rehearsal in pairs, the five anchors with the 30-second version and two follow-ups each (35); practice set warm-ups started (15) |
+| the projector machine has no network | open the explorer `demos/C2_W05_D01_drag_the_line_explorer_STUDENT.html` as a local file; it needs nothing, and the case pages carry the bank's numbers |
+| the faculty block (tentative) does not run | the 120 minutes: the lab's steps 2 and 3 in class (40); the residual-plot match from the practice set, problem 6 (15); the explorer's `#p1` to `#p6` in pairs, one prediction each before any slider moves (15); interview rehearsal in pairs, the five anchors with the 30-second version and two follow-ups each (35); practice set warm-ups started (15) |
 
 ## 10. The IITGN block
 

@@ -516,7 +516,7 @@ html{scroll-behavior:auto}
 .w5-readout .w5-ritem:last-child:nth-child(odd){grid-column:1 / -1}
 </style>
 <style>
-/* Monday's own marks: the cut line and the two zones of the story, and the column table of page 2. */
+/* Monday's own styles: the cut line and the two zones of the story, and the column table of page 2. */
 .d1-cut{background:#5B3FD6;border:0;border-radius:2px}
 .d1-zone{background:#F4F2FA;border:1px solid #E4E1F1}
 .d1-zone.ans{background:#FFF3E2;border-color:#F2D3A8}
@@ -526,7 +526,7 @@ html{scroll-behavior:auto}
 .d1-note{margin:.3rem 0 0;color:#1A1440;font-size:.92rem}
 .d1-table td.leak{color:#A3214B;font-weight:700}
 .d1-table td.ok{color:#15663F;font-weight:700}
-.d1-table th{white-space:nowrap}
+.d1-table th,.d1-table td{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -2995,7 +2995,7 @@ html{scroll-behavior:auto}
       "The residuals show the shape a model missed, and no fit can be trusted outside its data."
     ],
     predict: { q: "Both model families, the line and the S, rest on one idea from earlier in the day. Which one?",
-      options: ["Prediction, rule or query: when a business question is a modelling problem", "Train, validation, test; the seed; the baseline", "Where each model fails; the residual tells"], answer: 1,
+      options: ["Where each model fails; the residual tells", "Prediction, rule or query: when a business question is a modelling problem", "Train, validation, test; the seed; the baseline"], answer: 2,
       why: "A fit means nothing until it is scored on rows it did not learn from and set against the bar of doing nothing. The split and the baseline come first, and both models are judged by them." }
   });
 
@@ -3223,7 +3223,7 @@ html{scroll-behavior:auto}
             all: mine.length, target: inWin ? 1 : 0 };
         });
         tableHost.textContent = "";
-        var narrow = (api.el.clientWidth || 600) < 480;
+        var narrow = (api.el.clientWidth || 600) / px() < 34;
         var t = h("table", { "class": "w5-table d1-table" });
         var hd = h("tr");
         (narrow ? ["Member", "Before", "Whole log", "Target"] : ["Member", "Before", "Days since", "Spend, Rs", "Whole log", "Target"]).forEach(function (c, i) { hd.appendChild(h("th", { "class": i ? "n" : "", text: c })); });
@@ -3299,12 +3299,12 @@ html{scroll-behavior:auto}
     stageTitle: "Twenty members split by a seed, then sixty versions scored on one slice",
     predict: { q: "The junior keeps whichever of 60 versions scores best on the same 50 validation members, and reports that score. On 1,000 fresh members, the chosen version scores:",
       onReveal: onRev("p3"),
-      options: ["About the same as its best score, since the version is fixed", "Lower, back near a typical version", "Higher, because the best version keeps improving on new rows"], answer: 1,
+      options: ["Lower, back near a typical version", "About the same as its best score, since the version is fixed", "Higher, because the best version keeps improving on new rows"], answer: 0,
       why: "Its **" + F.pct(PB.peek, 0) + "** on 50 members was its real skill plus the luckiest draw of sixty. On 1,000 fresh members the luck is gone and it scores **" + F.pct(PB.fresh, 1) + "**, about what every version scores. The case page shows the same fall on the bank's rows: 0.9055 peeked, 0.8971 fresh." },
     stage: function (api) {
       var seed = 42, strat = true, pos = null, tw = null;
       var pic = api.svg({ height: function (w) { return w < 520 ? 200 : 172; }, label: "Twenty members in three slices: train, validation and the sealed test envelope", draw: function (st) { draw(st); } });
-      api.el.appendChild(h("p", { "class": "d1-note", text: "Y marks a member who came back within 90 days. The test envelope keeps its four outcomes hidden until the end." }));
+      api.el.appendChild(h("p", { "class": "d1-note", text: "Y is a member who came back within 90 days. The test envelope keeps its four outcomes hidden until the end." }));
       function assign() { return (strat ? SPLITS.strat : SPLITS.plain)[seed - 1]; }
       function layout(st) {
         var w = st.w, phone = w < 520, fs = px() * 0.8, top = fs * 2.4;
@@ -3564,7 +3564,7 @@ html{scroll-behavior:auto}
     stageTitle: "Miles per gallon against horsepower, the fit, and what each car missed by",
     predict: { q: "The straight line fits 392 cars. What shape will its residuals take against horsepower?",
       onReveal: onRev("p6"),
-      options: ["Even scatter around zero, as a good line leaves", "A bow: above zero at both ends, below in the middle", "Below zero everywhere, because the line overshoots every car"], answer: 1,
+      options: ["Below zero everywhere, because the line overshoots every car", "Even scatter around zero, as a good line leaves", "A bow: above zero at both ends, below in the middle"], answer: 2,
       why: "**A bow.** The lowest-power cars beat the line by " + F.dp(CARS.band_line[0], 1) + " mpg on average, the middle band sits " + F.dp(-CARS.band_line[2], 1) + " below it, and the top band climbs back to " + F.signed(CARS.band_line[4], 1) + ". A pattern in residuals is a shape the model missed; the truth bends and a line cannot." },
     stage: function (api) {
       var model = "line", hpAsk = 150;
@@ -3647,7 +3647,7 @@ html{scroll-behavior:auto}
         text: "Whom to call is a prediction: the client table is known on the morning of the call, the yes arrives when the call ends, and the call list moves with the score. The test slice is cut first and sealed; the rest splits 75 to 25.",
         stageTitle: "The week's split, and the held-out share of yes split after split",
         predict: { q: "Teammates split the 41,188 rows with no seed and no stratify, one run each. What happens to the held-out share of yes?",
-          options: ["It matches to four decimal places, because the rows are the same", "It moves a little, so each teammate gets a different bar", "It moves by ten points or more, enough to flip any model comparison"], answer: 1,
+          options: ["It moves a little, so each teammate gets a different bar", "It matches to four decimal places, because the rows are the same", "It moves by ten points or more, enough to flip any model comparison"], answer: 0,
           why: "Across 60 unseeded runs the held-out share of yes runs from **" + F.dp(UNS_LO, 4) + " to " + F.dp(UNS_HI, 4) + "**, so the baseline to beat runs from " + F.pct(1 - UNS_HI, 2) + " to " + F.pct(1 - UNS_LO, 2) + ". Two teammates then argue about a gap that is only the shuffle." },
         stage: function (api) {
           var seeded = true, runs = [], k = 0;
@@ -3683,7 +3683,8 @@ html{scroll-behavior:auto}
           check: "Run the split twice. If the held-out share of yes changes, the rows changed, and so did the bar.",
           fix: "Seed 42 and stratify on y, written in the notebook's first cells, so everyone gets " + F.int(SPL.train) + " / " + F.int(SPL.val) + " / " + F.int(SPL.test) + " rows with 11.26 percent yes in each held-out slice.",
           honest: F.pct(BASE.acc, 2) + " on the seed-42 validation slice, every run, on every laptop.",
-          why: "A baseline is only a bar if everyone measures it on the same rows." } },
+          why: "A baseline is only a bar if everyone measures it on the same rows.",
+          options: ["Yes, ship it: the number is sound as it stands", "No, check it first"], answer: 1 } },
       { chapter: "Chapter 8: beat the dumbest model", title: "Does the logistic model beat calling nobody, and by how much?",
         applies: ["Train, validation, test; the seed; the baseline", "Logistic regression: probability, direction, strength"],
         text: "Calling nobody is right whenever the client would have said no anyway. The logistic model reads the 13 columns and calls a client when its probability of yes reaches 0.5. Both are scored on the same " + F.int(SPL.val) + " validation clients; the test slice stays sealed.",
@@ -3732,13 +3733,14 @@ html{scroll-behavior:auto}
           check: "Put the baseline beside it on the same rows: " + F.dp(MOD.acc, 4) + " against " + F.dp(BASE.acc, 4) + ".",
           fix: "Write it as: under one point above calling nobody, " + (MOD.right - BASE.right) + " more right answers in " + F.int(SPL.val) + ", on a random split.",
           honest: "+" + F.dp((MOD.acc - BASE.acc) * 100, 2) + " points, " + (MOD.right - BASE.right) + " more right answers in " + F.int(SPL.val) + ".",
-          why: "On an 11 percent base rate, doing nothing is already 88.7 percent right, so 89.7 alone says almost nothing." } },
+          why: "On an 11 percent base rate, doing nothing is already 88.7 percent right, so 89.7 alone says almost nothing.",
+          options: ["No, check it first", "Yes, ship it: the number is sound as it stands"], answer: 0 } },
       { chapter: "Chapter 9: the peek", title: "What did the peek buy, and what is left on fresh rows?",
         applies: ["Train, validation, test; the seed; the baseline"],
         text: "A junior short of time tries 60 versions, each a random list of 3 to 13 of the 13 columns, scores each on the same 2,000-row practice envelope carved from validation, and keeps the best. The real envelope stays sealed; the other 6,238 validation rows play the fresh slice.",
         stageTitle: "Sixty versions: the score that chose each one, and the chosen one on fresh rows",
         predict: { q: "The chosen version scored " + F.dp(PK.peek[PK.best], 4) + " on the 2,000-row practice envelope. On the 6,238 fresh rows it scores about:",
-          options: ["0.906 again", "About 0.897", "About 0.887, the same as doing nothing", "0.80"], answer: 1, onReveal: onRev("c9"),
+          options: ["0.80", "About 0.887, the same as doing nothing", "About 0.897", "0.906 again"], answer: 2, onReveal: onRev("c9"),
           why: "**" + F.dp(PK.fresh[PK.best], 4) + " on fresh rows**, " + F.dp((PK.fresh[PK.best] - PK.base_fresh) * 100, 2) + " points above doing nothing, the same edge chapter 8 measured honestly. The extra points were luck: among 60 versions scored on the same 2,000 rows, one was bound to be lucky there, and the loop picked the luckiest." },
         stage: function (api) {
           var frame = 0, order = range(60).sort(function (a, b) { return PK.peek[a] - PK.peek[b]; }), rank = {};
@@ -3756,7 +3758,7 @@ html{scroll-behavior:auto}
               if (revealed()) {
                 ch.segments("drop", [[bx, PK.peek[PK.best] - 0.0008, bx, PK.fresh[PK.best] + 0.0008]], { color: "rose", width: 3 });
                 ch.scatter("fr", [[bx, PK.fresh[PK.best]]], { color: "ink", hollow: true, r: 7.5 });
-                ch.text("l2", [bx - 1.5, PK.fresh[PK.best] - 0.0034], { text: "fresh rows: " + F.dp(PK.fresh[PK.best], 4), anchor: "end" });
+                ch.text("l2", [bx - 1.5, PK.fresh[PK.best] - 0.0047], { text: "fresh rows: " + F.dp(PK.fresh[PK.best], 4), anchor: "end" });
               } else ch.text("l2", [bx - 1.5, PK.peek[PK.best] - 0.006], { text: "fresh rows: ? (commit first)", anchor: "end" });
             }
             if (frame >= 4 && revealed()) ch.scatter("frall", order.map(function (v, i) { return [i + 1, PK.fresh[v]]; }), { color: "ink", hollow: true, r: 3.6, name: function (i) { return "Version " + (order[i] + 1) + " on fresh rows"; } });
@@ -3780,7 +3782,8 @@ html{scroll-behavior:auto}
           check: "Score the chosen version on rows that played no part in the choice.",
           fix: "Choose on validation as often as you like; score the test slice once, at the end, with its seed. A slice used to choose is validation from then on.",
           honest: F.dp(PK.fresh[PK.best], 4) + " on 6,238 fresh rows, " + F.dp((PK.fresh[PK.best] - PK.base_fresh) * 100, 2) + " points above doing nothing.",
-          why: "Sixty looks at one small slice measure luck as much as skill." } }
+          why: "Sixty looks at one small slice measure luck as much as skill.",
+          options: ["Yes, ship it: the number is sound as it stands", "No, check it first"], answer: 1 } }
     ],
     rule: { text: "A score means nothing without its bar. Report the baseline on the same rows, the seed, and the edge in rows as well as points, and keep the test slice sealed until the model is chosen.",
       flips: "the metric changes what counts as right: accuracy rewards saying no on an 11 percent base rate, so Tuesday asks how many of the " + F.int(SPL.val_yes) + " validation clients who said yes this model actually put on the call list." }
@@ -3798,7 +3801,7 @@ html{scroll-behavior:auto}
         situation: "Uber's routing engine already gives every trip an arrival time from the map. Uber built DeepETA, a deep learning model, on top of it. To ship, the new model had to improve mean absolute error significantly over the incumbent XGBoost model and return an answer within a few milliseconds. Uber publishes no accuracy figures, so the trips drawn here are invented.",
         source: "Uber Engineering, DeepETA: How Uber Predicts Arrival Times Using Deep Learning, 10 February 2022, https://www.uber.com/blog/deepeta-how-uber-predicts-arrival-times/, checked 29 October 2026",
         data: "invented", stageTitle: "Sixteen invented trips: what the model is asked to learn",
-        predict: { q: "Uber's DeepETA is trained to predict which of these?", options: ["The trip's minutes, from scratch, with the map as one input", "How wrong the routing engine's estimate is", "The driver's average speed on each road of the trip"], answer: 1,
+        predict: { q: "Uber's DeepETA is trained to predict which of these?", options: ["How wrong the routing engine's estimate is", "The trip's minutes, from scratch, with the map as one input", "The driver's average speed on each road of the trip"], answer: 0,
           why: "**The engine's miss.** In Uber's words, \"we then use machine learning to predict the residual between the routing engine ETA and real-world observed outcomes\". The engine stays as the baseline, and the model learns only the correction on top of it." },
         stage: function (api) {
           var m = 0, tw = null;
@@ -3875,7 +3878,7 @@ html{scroll-behavior:auto}
         situation: "Bernardi, Mavridis and Estevez reviewed about 150 successful customer-facing models at Booking.com. One lesson: the problem set-up is itself a choice. \"A simple example is a regression predicting the length of a stay, turned in to a multiclass classification problem.\" The team then needs a test for which set-up to keep. The stays drawn here are invented.",
         source: "Bernardi, Mavridis and Estevez, 150 Successful Machine Learning Models: 6 Lessons Learned at Booking.com, KDD 2019, https://www.kdd.org/kdd2019/accepted-papers/view/150-successful-machine-learning-models-6-lessons-learned-at-booking.com, checked 29 October 2026",
         data: "invented", stageTitle: "Twelve invented stays, framed two ways",
-        predict: { q: "One way Booking.com compares two set-ups of the same question is by:", options: ["Which set-up lets the most complex and accurate model be trained", "Whether a simple model clearly beats a trivial baseline", "Which set-up has the most rows of labelled training data"], answer: 1,
+        predict: { q: "One way Booking.com compares two set-ups of the same question is by:", options: ["Which set-up lets the most complex and accurate model be trained", "Which set-up has the most rows of labelled training data", "Whether a simple model clearly beats a trivial baseline"], answer: 2,
           why: "**A simple model against a trivial baseline.** The paper compares \"the performance of simple models against trivial baselines like random and popularity. Setups where simple models can do significantly better than trivial models are preferred.\" It is today's test: does the model beat calling nobody?" },
         stage: function (api) {
           var NIGHTS = [1, 1, 2, 2, 2, 3, 3, 4, 5, 7, 7, 12], cls = false;
@@ -3927,10 +3930,10 @@ html{scroll-behavior:auto}
     lede: "Five situations from today, in the four kinds. Pick the clarifying question, put the whiteboard steps in order, commit your answer, then compare with the 30-second version as the board builds.",
     items: [
       { kind: "techno-functional", question: "Kalpa's marketing head asks you to use AI for two things: count how many members bought in September, and find which members will buy again in the next 90 days. Which needs a model, and how do you decide?",
-        clarify: { options: ["Which cloud will the model run on, and at what cost?", "What will Marketing do differently with each answer, and when?", "How many rows and columns does the warehouse hold for each member today?"], best: 1,
+        clarify: { options: ["Which cloud will the model run on, and at what cost?", "How many rows and columns does the warehouse hold for each member today?", "What will Marketing do differently with each answer, and when?"], best: 2,
           why: "A model earns its place only when a decision moves with a score made before the outcome is known; asking what changes, and when, settles both asks." },
         steps: ["Ask whether the answer already sits in the rows", "Ask whether someone can write the decision as a condition", "Check the three signs: input known now, target known later, a decision that moves", "Name the cheap baseline the model must beat"],
-        answer: { options: ["Both need a model, because both questions are about members and both use member data", "September's count is a query; only the 90-day repeat needs a model", "Neither, because a rule written by Marketing is always enough for both"], best: 1,
+        answer: { options: ["September's count is a query; only the 90-day repeat needs a model", "Both need a model, because both questions are about members and both use member data", "Neither, because a rule written by Marketing is always enough for both"], best: 0,
           why: "Counting September needs no learning. The repeat question has the input today, the answer in ninety days and a decision, whom to nudge, that waits on the score." },
         model: "The September count is already in the rows, so it is a query: one SQL count. The 90-day repeat question has the input today, the answer in ninety days, and a decision, whom to nudge, that moves with the score, so it is a prediction. Before building it I would name the bar: calling nobody, or a simple rule such as two or more past orders.",
         board: [{ title: "In the rows already?", note: "September's count: yes, a query", icon: "table" }, { title: "A condition someone writes?", note: "not for the repeat question", icon: "rule" },
@@ -3941,7 +3944,7 @@ html{scroll-behavior:auto}
         clarify: { options: ["Is the model calibrated on clients like this one?", "Which library and which version produced the score?", "Is 0.71 above the threshold the campaign team uses?"], best: 0,
           why: "0.71 reads as a frequency only if the model's scores match what happens to similar clients, so that is the first thing to ask." },
         steps: ["Picture 100 clients who all score about 0.71", "If the model is calibrated, about 71 of them say yes", "So it describes a group, never a promise about one client", "Check it by counting the yeses among clients scored near 0.71"],
-        answer: { options: ["This client will say yes, because 0.71 is well above one half", "About 71 in 100 clients like this one say yes, if calibrated", "The model is right on 71 percent of the clients it scores"], best: 1,
+        answer: { options: ["This client will say yes, because 0.71 is well above one half", "The model is right on 71 percent of the clients it scores", "About 71 in 100 clients like this one say yes, if calibrated"], best: 2,
           why: "A probability is a statement about many similar cases; one client still says yes or no." },
         model: "If the model is calibrated, 0.71 means that among clients who look like this one, about 71 in 100 say yes. It is a statement about a group, never a promise about this client, and I would check it by grouping validation clients scored near 0.71 and counting how many said yes.",
         board: [{ title: "100 clients scored near 0.71", icon: "users" }, { title: "About 71 say yes", note: "if the model is calibrated", icon: "tick" }, { title: "A group, never one client", icon: "person" }, { title: "Count them on validation", icon: "magnifier" }],
@@ -3961,7 +3964,7 @@ html{scroll-behavior:auto}
         clarify: { options: ["Do we need a probability, or only a ranking?", "How many columns are there, and are they numeric?", "Is the data stored in a database or in files?"], best: 0,
           why: "Both can rank clients, but only the logistic output can be read as a probability between 0 and 1." },
         steps: ["Fit a line to the 0s and 1s and see where it leaves 0 to 1", "Logistic keeps a line underneath: z = a + b × x", "It squeezes z through 1 / (1 + e^(−z))", "Read b's sign as direction and exp(b) as the odds multiplier"],
-        answer: { options: ["Linear, because it is simpler and close enough on 0s and 1s", "Logistic, because its output stays between 0 and 1", "Either, because both outputs can be read as probabilities"], best: 1,
+        answer: { options: ["Logistic, because its output stays between 0 and 1", "Linear, because it is simpler and close enough on 0s and 1s", "Either, because both outputs can be read as probabilities"], best: 0,
           why: "The line gives impossible answers at both ends; the S cannot." },
         model: "Logistic. A straight line on 0s and 1s gives impossible answers: on our twelve members it says 1.28 at 8 visits and −0.01 at none. Logistic regression keeps a line underneath and squeezes it through the S, so every output sits between 0 and 1. The sign of b is the direction, and exp(b), 2.85 here, is how much the odds multiply per extra visit.",
         board: [{ title: "The line leaves 0 to 1", note: "1.28 at 8 visits", icon: "trendUp" }, { title: "A line underneath", note: "z = a + b × visits", icon: "chart" }, { title: "Squeeze it into an S", note: "1 / (1 + e^(−z))", icon: "gauge" }, { title: "Read the weight", note: "sign: direction; exp(b): strength", icon: "scale" }],
@@ -3971,7 +3974,7 @@ html{scroll-behavior:auto}
         clarify: { options: ["Accurate on which rows, and against which bar?", "Can we get more servers to train a bigger model by Friday?", "Who built the dashboard that will show the score?"], best: 0,
           why: "A one-point edge means nothing until the slice and the bar are named." },
         steps: ["Name the slice and the bar: 0.8971 against 0.8874 on validation", "Say it in rows: 80 more right answers in 8,238", "Offer what ships now: the cheapest rule, with its cost", "Ask for time for better columns, and name the next check"],
-        answer: { options: ["Ship it: 89.7 percent accuracy is excellent for a first model", "Show both numbers, ship a simple rule, ask for time", "Cancel the project, since the model only ties doing nothing"], best: 1,
+        answer: { options: ["Ship it: 89.7 percent accuracy is excellent for a first model", "Cancel the project, since the model only ties doing nothing", "Show both numbers, ship a simple rule, ask for time"], best: 2,
           why: "The model carries a little signal; the honest answer states how little and what would grow it." },
         model: "I would say: on the same 8,238 validation clients, the model gets 80 more right answers than calling nobody, under one point, on a random split. That is not yet worth a rollout. I can ship a simple rule now with its cost stated, and I need time for better columns, with a check date set. Accuracy also hides how many buyers we reach, which I will measure next.",
         board: [{ title: "Name the bar", note: "0.8971 against 0.8874", icon: "target" }, { title: "Say it in rows", note: "80 more of 8,238", icon: "table" }, { title: "Ship the simple rule", note: "with its cost", icon: "rule" }, { title: "Ask for time", note: "and a check date", icon: "calendar" }],
@@ -3996,7 +3999,7 @@ html{scroll-behavior:auto}
         { text: "Spend in July", bin: 1 }, { text: "Spend before 30 June", bin: 0 }, { text: "Date of the next order", bin: 1 }],
         why: "An input may read only rows on or before the cut. The whole log, July's spend and the next order all sit after it." },
       { type: "pick", q: "These are the straight line's mean residuals across five horsepower bands of 392 real cars. What do they say?",
-        options: ["The fit is good, because the misses are small", "The truth bends, and the line missed a curve", "The test set was peeked at, so the line is biased"], answer: 1,
+        options: ["The truth bends, and the line missed a curve", "The fit is good, because the misses are small", "The test set was peeked at, so the line is biased"], answer: 0,
         why: "Above zero at both ends and below in the middle: a bow. A pattern in residuals is a shape the model missed; a peek never shows in a residual plot.",
         figure: function (el) {
           var mids = CARS.edges.slice(0, 5).map(function (e, k) { return (e + CARS.edges[k + 1]) / 2; });
