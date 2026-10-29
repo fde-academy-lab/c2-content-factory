@@ -225,6 +225,10 @@ def walk_scope(page, scope, route, errors):
 def walk_kit(page, path, errors):
     """The route walk for a Week 5 kit page: the shell once, then every route, one line each."""
     fails = 0
+    if errors:
+        # errors raised while the page loaded belong to no route, so they are reported once here
+        print(f"FAIL  {path.name}: {len(errors)} console errors while the page loaded, first is {errors[0][:110]}")
+        fails += 1
     routes = page.evaluate("() => Array.from(document.querySelectorAll('section[data-route]')).map(s => s.getAttribute('data-route'))")
     totals = [0, 0, 0]
     blocks = [("shell", "[data-w5-shell]", None)] + [(f"#{r}", f"section[data-route='{r}']", r) for r in routes]
