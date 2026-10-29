@@ -2770,7 +2770,7 @@ html{scroll-behavior:auto}
   "use strict";
   var D = W5.data, F = W5.fmt, h = W5.h, s = W5.s, COL = W5.colors;
   var FX = D.facts;
-  var SRC = "UCI Bank Marketing (CC BY 4.0), the week's validation slice, scored by Monday's model";
+  var SRC = "UCI Bank Marketing (CC BY 4.0)";
   var FOUND = COL.violet, WASTED = COL.amber, SKIPPED = COL.rest, INK = COL.ink;
 
   W5.app({ week: 5, day: "Tuesday", question: "Why can 89 percent accuracy find nobody, and where should the line go?" });
@@ -2780,6 +2780,7 @@ html{scroll-behavior:auto}
   function rem() { return parseFloat(getComputedStyle(document.documentElement).fontSize) || 17; }
   function lakh(v, d) { return "Rs " + (v / 1e5).toFixed(d === undefined ? 2 : d) + " lakh"; }
   function p3(x) { return Number(x).toFixed(3); }
+  function nice(x, d) { return Math.abs(x - Math.round(x)) < 1e-9 ? F.int(x) : F.dp(x, d === undefined ? 2 : d); }
   function pctOf(k, n, d) { return n ? (k / n * 100).toFixed(d === undefined ? 1 : d) + "%" : "none"; }
   function T(svg, x, y, text, o) {
     o = o || {};
@@ -2791,7 +2792,8 @@ html{scroll-behavior:auto}
     return t;
   }
   function wrapLines(text, perLine) {
-    var words = String(text).split(/\s+/), lines = [], line = "";
+    var raw = String(text).split(/\s+/), words = [], lines = [], line = "";
+    raw.forEach(function (w) { if (words.length && words[words.length - 1] === "Rs") words[words.length - 1] += " " + w; else words.push(w); });
     words.forEach(function (w) {
       if (line && (line + " " + w).length > perLine) { lines.push(line); line = w; }
       else line = line ? line + " " + w : w;
@@ -2935,7 +2937,7 @@ html{scroll-behavior:auto}
       humps.band("called", [effLine(), 1], { color: "ink", opacity: 0.06 });
       humps.vline("t", effLine(), { color: "ink", label: lineLabel, drag: function (x) { move(x, true); }, snap: cur.step || 0.001, dragLabel: "Drag the line" });
       var everyone = cur.sc.N * cfp, nobody = cur.sc.P * cfn;
-      var ymax = Math.max(everyone, nobody) / unit * 1.08;
+      var ymax = Math.max(everyone, nobody) / unit * 1.22;
       bill = W5.chart(hostB, { height: 230, x: { min: 0, max: 1, ticks: 10, label: "The line", fmt: function (v) { return v.toFixed(1); } },
         y: { min: 0, max: unit === 1 ? Math.ceil(ymax / 1000) * 1000 : Math.ceil(ymax), ticks: 4, label: unit === 1 ? "Bill of mistakes, Rs" : "Bill of mistakes, Rs lakh", fmt: function (v) { return unit === 1 ? F.int(v) : String(v); } },
         legend: [{ label: "Bill at a line you tried", color: "ink", kind: "dot" }, { label: "Call everyone", color: "amber", kind: "line" }, { label: "Call nobody", color: "teal", kind: "line" }],
@@ -2960,7 +2962,7 @@ html{scroll-behavior:auto}
     }
     function lineLabel(x) {
       var bound = budgetOn && cur.budget && x > t + 1e-9;
-      return (bound ? "Budget cut " : "Line ") + p3(x) + (x < 0.75 ? ": " + words.act + " to the right" : "");
+      return (bound ? "Budget cut " : "Line ") + p3(x) + (x < 0.75 && humps && humps.w > 560 ? ": " + words.act + " to the right" : "");
     }
     /* Twenty dots on one strip collide near zero, so close neighbours step up or down a row. */
     function dodge(score, y) {
@@ -2976,17 +2978,17 @@ html{scroll-behavior:auto}
     function write() {
       var e = effLine(), c = cur.sc.cells(e), b = billOf(c, cfp, cfn), n = cur.sc.n, acted = c.tp + c.fp;
       var everyone = cur.sc.N * cfp, nobody = cur.sc.P * cfn, free = Math.min(everyone, nobody);
+      var bound = budgetOn && cur.budget && e > t + 1e-9;
       var items = [
         { value: F.int(acted), label: "**" + words.act.charAt(0).toUpperCase() + words.act.slice(1) + "s** at this line, of " + F.int(n) + " " + words.people },
         { value: F.int(c.tp) + " of " + F.int(cur.sc.P), label: "**Found**: " + words.pos + " on the list, recall " + pctOf(c.tp, cur.sc.P) },
         { value: acted ? pctOf(c.tp, acted) : "none", label: "**Precision**: " + F.int(c.tp) + " of " + F.int(acted) + " " + words.act + "s reached a " + words.posOne },
-        { value: pctOf(c.tp + c.tn, n), label: "**Accuracy**: " + F.int(c.tp + c.tn) + " of " + F.int(n) + " in a right box" },
-        { value: F.rs(b), label: "**Bill of mistakes**: " + F.int(c.fp) + " wasted × " + F.rs(cfp) + " + " + F.int(c.fn) + " missed × " + F.rs(cfn), tone: "hero" },
+        bound ? { value: pctOf(cur.sc.P, n), label: "**The base rate**: what " + F.int(acted) + " random " + words.act + "s would reach", tone: "good", sub: "The ranking is worth " + (c.tp / acted / (cur.sc.P / n)).toFixed(1) + " times a random list here." }
+          : { value: pctOf(c.tp + c.tn, n), label: "**Accuracy**: " + F.int(c.tp + c.tn) + " of " + F.int(n) + " in a right box" },
         { value: F.rs(free), label: "**" + (everyone <= nobody ? "Call everyone" : "Call nobody") + "**, the cheaper rule that needs no model", sub: b < free ? "This line beats it by " + F.rs(free - b) + "." : "This line does not beat it." },
-        { value: revealed ? (best.from === best.to ? p3(best.from) : p3(best.from) + " to " + p3(best.to)) : "?", label: "**Cheapest line** on this " + (cur.sc.n > 100 ? "slice" : "table"), sub: revealed ? "Bill there: " + F.rs(best.bill) + "." : "Commit your prediction to see it." }
+        { value: revealed ? (best.from === best.to ? p3(best.from) : p3(best.from) + " to " + p3(best.to)) : "?", label: "**Cheapest line** on this " + (cur.sc.n > 100 ? "slice" : "table"), sub: revealed ? "Bill there: " + F.rs(best.bill) + "." : "Commit your prediction to see it." },
+        { value: F.rs(b), label: "**Bill of mistakes**: " + F.int(c.fp) + " wasted × " + F.rs(cfp) + " + " + F.int(c.fn) + " missed × " + F.rs(cfn), tone: "hero" }
       ];
-      if (budgetOn && cur.budget) items.splice(4, 0, { value: pctOf(c.tp, acted) + " against " + pctOf(cur.sc.P, n), label: "**Precision at " + F.int(cur.budget.k) + "** against the base rate", tone: "good" });
-      var bound = budgetOn && cur.budget && e > t + 1e-9;
       api.readout.set(items, bound ? "The budget binds: only " + F.int(cur.budget.k) + " " + words.act + "s are allowed, so the line sits at the " + F.int(cur.budget.k) + "th score, " + p3(e) + ", whatever the prices say."
         : "At " + p3(e) + " the model " + words.act + "s " + F.int(acted) + " and finds " + F.int(c.tp) + " of the " + F.int(cur.sc.P) + " " + words.pos + ".");
       return { c: c, b: b, e: e };
@@ -3044,39 +3046,38 @@ html{scroll-behavior:auto}
    * drawScale(svg, w, top, o) draws a beam on a fulcrum with a pile of small coins on one pan and
    * one heavy weight on the other, tilted by the difference. Pages 4 and 6 and the Stripe scene use it. */
   function drawScale(svg, w, top, o) {
-    var fs = rem() * 0.8, cx = w / 2, L = Math.min(w * 0.36, 250), beamY = top + 34;
+    var fs = rem() * 0.8, cx = w / 2, L = Math.min(w * 0.34, 230), beamY = top + 14, drop = 92;
     var lsum = o.left.n * o.left.unit, rsum = o.right.n * o.right.unit;
-    var tilt = o.show === false ? 0 : Math.max(-1, Math.min(1, (rsum - lsum) / Math.max(lsum, rsum, 1)));
-    var ang = tilt * 9 * Math.PI / 180, dx = Math.cos(ang) * L, dy = Math.sin(ang) * L;
-    var lx = cx - dx, ly = beamY - dy, rx = cx + dx, ry = beamY + dy, drop = 36;
-    svg.appendChild(s("path", { d: "M" + cx + " " + (beamY + 4) + "L" + (cx - 22) + " " + (top + 150) + "L" + (cx + 22) + " " + (top + 150) + "Z", fill: "#EEEAFB", stroke: COL.violet, "stroke-width": 1.5 }));
+    var tilt = Math.max(-1, Math.min(1, (rsum - lsum) / Math.max(lsum, rsum, 1)));
+    var ang = tilt * 8 * Math.PI / 180, dx = Math.cos(ang) * L, dy = Math.sin(ang) * L;
+    var lx = cx - dx, ly = beamY - dy, rx = cx + dx, ry = beamY + dy, panW = Math.min(170, L * 0.95), base = beamY + drop + 36;
+    svg.appendChild(s("rect", { x: cx - 3, y: beamY, width: 6, height: base - beamY, fill: COL.violet, opacity: 0.55 }));
+    svg.appendChild(s("path", { d: "M" + (cx - 34) + " " + base + "L" + (cx - 14) + " " + (base - 10) + "L" + (cx + 14) + " " + (base - 10) + "L" + (cx + 34) + " " + base + "Z", fill: "#EEEAFB", stroke: COL.violet, "stroke-width": 1.5 }));
     svg.appendChild(s("line", { x1: lx, y1: ly, x2: rx, y2: ry, stroke: INK, "stroke-width": 4, "stroke-linecap": "round" }));
     svg.appendChild(s("circle", { cx: cx, cy: beamY, r: 5, fill: INK }));
-    [[lx, ly], [rx, ry]].forEach(function (p) {
-      svg.appendChild(s("line", { x1: p[0], y1: p[1], x2: p[0] - 40, y2: p[1] + drop, stroke: COL.muted, "stroke-width": 1.2 }));
-      svg.appendChild(s("line", { x1: p[0], y1: p[1], x2: p[0] + 40, y2: p[1] + drop, stroke: COL.muted, "stroke-width": 1.2 }));
-      svg.appendChild(s("path", { d: "M" + (p[0] - 52) + " " + (p[1] + drop) + "Q" + p[0] + " " + (p[1] + drop + 16) + " " + (p[0] + 52) + " " + (p[1] + drop), fill: "none", stroke: INK, "stroke-width": 2.5 }));
+    [[lx, ly], [rx, ry]].forEach(function (q) {
+      svg.appendChild(s("line", { x1: q[0], y1: q[1], x2: q[0] - panW / 2 + 6, y2: q[1] + drop, stroke: COL.muted, "stroke-width": 1.2 }));
+      svg.appendChild(s("line", { x1: q[0], y1: q[1], x2: q[0] + panW / 2 - 6, y2: q[1] + drop, stroke: COL.muted, "stroke-width": 1.2 }));
+      svg.appendChild(s("path", { d: "M" + (q[0] - panW / 2) + " " + (q[1] + drop) + "Q" + q[0] + " " + (q[1] + drop + 14) + " " + (q[0] + panW / 2) + " " + (q[1] + drop), fill: "none", stroke: INK, "stroke-width": 2.5 }));
     });
-    var shown = o.left.n, whole = Math.floor(shown + 1e-9), part = shown - whole, cap = o.cap || 40;
-    var r = Math.max(5, Math.min(9, L / 22)), per = Math.max(4, Math.floor(96 / (2 * r + 1))), drawn = Math.min(whole, cap);
-    var rows = Math.ceil((drawn + (part > 0.02 && drawn < cap ? 1 : 0)) / per);
-    for (var k = 0; k < drawn + (part > 0.02 && drawn < cap ? 1 : 0); k++) {
-      var row = Math.floor(k / per), col = k % per, inRow = Math.min(per, drawn + (part > 0.02 ? 1 : 0) - row * per);
-      var x = lx - (inRow - 1) * (r + 0.5) + col * (2 * r + 1), y = ly + drop - r - 2 - row * (2 * r - 1);
-      var isPart = k === drawn;
+    var whole = Math.floor(o.left.n + 1e-9), part = o.left.n - whole, cap = o.cap || 40, drawn = Math.min(whole, cap);
+    var withPart = part > 0.02 && drawn < cap, count = drawn + (withPart ? 1 : 0);
+    var r = Math.max(5, Math.min(8, L / 26)), per = Math.max(4, Math.floor(panW * 0.9 / (2 * r + 1))), rows = Math.ceil(count / per);
+    for (var k = 0; k < count; k++) {
+      var row = Math.floor(k / per), col = k % per, inRow = Math.min(per, count - row * per);
+      var x = lx - (inRow - 1) * (r + 0.5) + col * (2 * r + 1), y = ly + drop - r - 1 - row * (2 * r - 0.5), isPart = withPart && k === count - 1;
       svg.appendChild(s("circle", { cx: x, cy: y, r: r, fill: isPart ? "#FFFFFF" : o.left.color, stroke: o.left.color, "stroke-width": 1.5, "stroke-dasharray": isPart ? "2 2" : null }));
     }
-    var extra = whole - drawn;
-    if (extra > 0) T(svg, lx, ly + drop - rows * (2 * r - 1) - 2 * r - 4, "+ " + F.int(extra) + " more", { anchor: "middle", size: fs * 0.9, weight: 700, halo: true });
-    if (o.right.n > 0 && o.weightIn !== false) {
-      var ww = Math.min(92, L * 0.62), wh = 30;
-      svg.appendChild(s("rect", { x: rx - ww / 2, y: ry + drop - wh - 2, width: ww, height: wh, rx: 8, fill: o.right.color, stroke: o.right.color }));
-      T(svg, rx, ry + drop - 11, o.right.chip, { anchor: "middle", fill: "#FFFFFF", weight: 700, size: fs * 0.92 });
+    if (whole > drawn) T(svg, lx, ly + drop - rows * (2 * r - 0.5) - r - 6, "+ " + F.int(whole - drawn) + " more", { anchor: "middle", size: fs * 0.92, weight: 700, halo: true });
+    if (o.right.n > 0) {
+      var ww = Math.max(Math.min(104, panW * 0.8), o.right.chip.length * fs * 0.56 + 16), wh = Math.round(fs * 2.2);
+      svg.appendChild(s("rect", { x: rx - ww / 2, y: ry + drop - wh - 1, width: ww, height: wh, rx: 8, fill: o.right.color }));
+      T(svg, rx, ry + drop - wh / 2 + fs * 0.32, o.right.chip, { anchor: "middle", fill: "#FFFFFF", weight: 700, size: fs * 0.95 });
     }
-    var lab = top + 150 + fs * 1.5;
-    wrapLines(o.left.label, Math.max(16, Math.floor((w / 2 - 12) / (fs * 0.52)))).forEach(function (ln, i) { T(svg, w * 0.25, lab + i * fs * 1.25, ln, { anchor: "middle", weight: i ? null : 600 }); });
-    wrapLines(o.right.label, Math.max(16, Math.floor((w / 2 - 12) / (fs * 0.52)))).forEach(function (ln, i) { T(svg, w * 0.75, lab + i * fs * 1.25, ln, { anchor: "middle", weight: i ? null : 600 }); });
-    return lab + fs * 2.6;
+    var per2 = Math.max(14, Math.floor((w / 2 - 12) / (fs * 0.53))), y0 = base + fs * 1.6, n1 = 0, n2 = 0;
+    wrapLines(o.left.label, per2).forEach(function (ln, i) { T(svg, Math.max(w * 0.25, cx - L), y0 + i * fs * 1.3, ln, { anchor: "middle", weight: 600 }); n1++; });
+    wrapLines(o.right.label, per2).forEach(function (ln, i) { T(svg, Math.min(w * 0.75, cx + L), y0 + i * fs * 1.3, ln, { anchor: "middle", weight: 600 }); n2++; });
+    return y0 + (Math.max(n1, n2) - 1) * fs * 1.3 + fs * 0.6;
   }
 
   /* ================================================================ #story */
@@ -3098,7 +3099,7 @@ html{scroll-behavior:auto}
       var frame = -1;
       api.revealed = false;
       api.cloud = api.cloud({ n: N, height: 330, phoneHeight: 320, label: "8,238 bank clients, one dot each",
-        palette: { no: "#BDB7DD", yes: FOUND, faded: "#DCD8EE", call: INK, callYes: FOUND, callNo: "#A9A3D2", miss: FOUND },
+        palette: { no: "#BDB7DD", yes: FOUND, faded: "#E7E4F3", call: INK, callYes: FOUND, callNo: "#A9A3D2", miss: FOUND },
         sizes: { call: 2.4, callYes: 2.4, callNo: 2.4 }, color: function () { return "no"; },
         place: function (w, hh, out) { return W5.pack.grid(range(N), { x: 0, y: 30, w: w, h: hh - 30 }, out) * 0.4; } });
       var cl = api.cloud;
@@ -3125,7 +3126,7 @@ html{scroll-behavior:auto}
             var box = { x: left + 18, y: 36, w: w2 - left - 26, h: h2 - 70 }, p2 = W5.pack.pitch(box, called.length);
             W5.pack.grid(called, box, out, { pitch: p2 });
             var k = Math.max(1, p2 * 0.4 / rr);
-            cl.o.sizes = { call: k, callYes: k, callNo: k };
+            cl.o.sizes = { call: k, callYes: k, callNo: k, miss: Math.max(2.4, Math.min(k, 3.2)) };
             return rr;
           }, { ms: ms, stagger: 0.25, color: function (j) {
             var c = SC[j] >= 0.5;
@@ -3191,7 +3192,7 @@ html{scroll-behavior:auto}
     { from: "s3", to: "s4", label: "is settled by" },
     { from: "s4", to: "s5", label: "sets the line in" },
     { from: "s5", to: "s6", label: "flips sides in" },
-    { from: "s2", to: "wed", label: "is rescored in" },
+    { from: "s1", to: "wed", label: "is recounted in" },
     { from: "s2", to: "thu", label: "judges the models in" },
     { from: "s5", to: "fri", label: "is priced in" },
     { from: "s6", to: "b2", label: "is briefed again in" }
@@ -3209,7 +3210,7 @@ html{scroll-behavior:auto}
       "**Step 5.** The line is a business decision: slide it to where the bill is smallest, or to where the call budget runs out.",
       "**Step 6.** In lending the dear mistake changes sides, so the same formula puts Rohan's line at P(repay) above 0.952."
     ],
-    predict: { q: "Which of today's six ideas takes over from accuracy as the judge of the model?", options: ["The confusion matrix", "Precision, recall and F1", "The prices of the two mistakes", "The lending transfer"], answer: 2,
+    predict: { q: "Which of today's six ideas takes over from accuracy as the judge of the model?", options: ["The confusion matrix, cell by cell", "Precision, recall and F1 together", "The prices of the two mistakes", "The transfer to a lending business"], answer: 2,
       why: "The matrix and its ratios describe what the model did. The prices of the two mistakes decide which mistake matters, and so which metric leads and where the line goes. That is step 4, and steps 5 and 6 follow from it." }
   });
 
@@ -3241,11 +3242,14 @@ html{scroll-behavior:auto}
         var qTop = 4, qH = qRows * (tagH + g);
         var gut = Math.round(fs * 1.7), headH = Math.round(fs * 1.9), top = qTop + qH + 18 + headH;
         var bw = (w - gut - 8) / 2, perBox = Math.max(1, Math.floor((bw - 14 + g) / (tagW + g)));
-        var sayLines = Math.max(wrapLines(BOXW.tn.says, Math.floor((bw - 16) / (fs * 0.5))).length, 1);
-        var head = Math.round(fs * (2.9 + sayLines * 1.15));
+        var sayLines = Math.max(wrapLines(BOXW.tn.says, Math.floor((bw - 18) / (fs * 0.52))).length, 1);
+        var head = Math.round(fs * (3.75 + sayLines * 1.2));
         var bh = head + Math.ceil(12 / perBox) * (tagH + g) + 8;
-        return { fs: fs, tagW: tagW, tagH: tagH, g: g, per: per, qTop: qTop, gut: gut, top: top, bw: bw, bh: bh, head: head, perBox: perBox, H: top + 2 * bh + 8 + fs * 1.2, headH: headH };
+        var printLines = wrapLines(PRINTOUT, Math.floor(w / (fs * 0.52))).length;
+        return { fs: fs, tagW: tagW, tagH: tagH, g: g, per: per, qTop: qTop, gut: gut, top: top, bw: bw, bh: bh, head: head, perBox: perBox, H: top + 2 * bh + 10 + printLines * fs * 1.3, headH: headH, printLines: printLines };
       }
+      var PRINTOUT = "confusion_matrix(came_back, model_says_nudge) prints [[12, 3], [2, 3]], so its top-left 12 is the true negatives.";
+      var READING = "Read it as a sentence: rows say what happened, columns say what the model said, and each box counts customers.";
       var POS_K = { tp: [0, 0], fn: [1, 0], fp: [0, 1], tn: [1, 1] }, POS_S = { tn: [0, 0], fp: [1, 0], fn: [0, 1], tp: [1, 1] };
       function boxXY(G, key) {
         var a = POS_K[key], b = POS_S[key], c = a[0] + (b[0] - a[0]) * swap, r = a[1] + (b[1] - a[1]) * swap;
@@ -3267,20 +3271,25 @@ html{scroll-behavior:auto}
           var b = boxXY(G, key), right = key === "tp" || key === "tn", m = BOXW[key];
           svg.appendChild(s("rect", { x: b.x, y: b.y, width: G.bw, height: G.bh, rx: 10, fill: right ? "#F1F9F4" : "#FDF3F6", stroke: right ? "#BFE3CF" : "#F3C5D3", "stroke-width": 2 }));
           svg.appendChild(s("path", { d: right ? "M" + (b.x + 10) + " " + (b.y + fs * 1.05) + "l4 4 8 -9" : "M" + (b.x + 10) + " " + (b.y + fs * 0.45) + "l9 9M" + (b.x + 19) + " " + (b.y + fs * 0.45) + "l-9 9", stroke: right ? COL.green : COL.rose, "stroke-width": 2.2, fill: "none", "stroke-linecap": "round" }));
-          T(svg, b.x + 28, b.y + fs * 1.35, m.name + " (" + m.tag + ")", { weight: 700, size: fs * 0.92 });
-          T(svg, b.x + G.bw - 10, b.y + fs * 1.5, String(counts[key]), { anchor: "end", weight: 700, size: fs * 1.7 });
-          wrapLines(m.says, Math.floor((G.bw - 16) / (fs * 0.5))).forEach(function (ln, k) { T(svg, b.x + 10, b.y + fs * (2.65 + k * 1.15), ln, { size: fs * 0.86 }); });
-          var lines = wrapLines(m.says, Math.floor((G.bw - 16) / (fs * 0.5))).length;
-          T(svg, b.x + 10, b.y + fs * (2.65 + lines * 1.15), m.cost ? "Rs " + F.int(m.cost) + " each" + (counts[key] ? ", " + F.rs(m.cost * counts[key]) + " so far" : "") : "costs nothing", { size: fs * 0.8, fill: m.cost ? COL.rose : COL.green, weight: 600 });
+          var nm = m.name + " (" + m.tag + ")";
+          if ((nm.length + 3) * fs * 0.56 + 30 > G.bw) nm = (key === "tn" ? "Left alone" : m.name) + " (" + m.tag + ")";
+          T(svg, b.x + 28, b.y + fs * 1.4, nm, { weight: 700, size: fs });
+          T(svg, b.x + G.bw - 10, b.y + fs * 1.6, String(counts[key]), { anchor: "end", weight: 700, size: fs * 1.75 });
+          var says = wrapLines(m.says, Math.floor((G.bw - 18) / (fs * 0.52)));
+          says.forEach(function (ln, k) { T(svg, b.x + 10, b.y + fs * (2.75 + k * 1.2), ln, { size: fs * 0.95 }); });
+          var costTxt = m.cost ? "Rs " + F.int(m.cost) + " each" + (counts[key] ? ", " + F.rs(m.cost * counts[key]) + " so far" : "") : "costs nothing";
+          if (costTxt.length * fs * 0.5 > G.bw - 16) costTxt = m.cost ? (counts[key] ? F.rs(m.cost * counts[key]) + " so far" : "Rs " + F.int(m.cost) + " each") : costTxt;
+          T(svg, b.x + 10, b.y + fs * (2.8 + says.length * 1.2), costTxt, { size: fs * 0.92, fill: m.cost ? COL.rose : COL.green, weight: 700 });
         });
-        T(svg, 0, G.H - 4, swap < 0.5 ? "" : "confusion_matrix(came_back, model_says_nudge) prints [[12, 3], [2, 3]]: the top-left 12 is TN.", { size: fs * 0.82, weight: 600, fill: COL.violet });
+        if (n === 20 && fly >= 1) T(svg, 0, G.qTop + G.tagH * 0.75, "The queue is empty: all twenty customers are in a box.", { size: fs * 0.95, fill: COL.muted, weight: 600 });
+        wrapLines(swap >= 0.5 ? PRINTOUT : READING, Math.floor(w / (fs * 0.52))).forEach(function (ln, k) { T(svg, 0, G.top + 2 * G.bh + 8 + fs * (1.1 + k * 1.3), ln, { size: fs * 0.92, weight: 600, fill: swap >= 0.5 ? COL.violet : COL.muted }); });
         CUST.forEach(function (c, i) {
           var at;
           if (i < n) { var k = slot[c.box] = (slot[c.box] || 0); slot[c.box]++; at = slotXY(G, c.box, k); if (i === n - 1 && fly < 1) { var qp = queueXY(G, i); at = { x: qp.x + (at.x - qp.x) * fly, y: qp.y + (at.y - qp.y) * fly }; } }
           else at = queueXY(G, i);
           var g = s("g", {});
           g.appendChild(s("rect", { x: at.x, y: at.y, width: G.tagW, height: G.tagH, rx: 6, fill: c.back ? FOUND : "#FFFFFF", stroke: c.nudge ? INK : "#A9A3D2", "stroke-width": c.nudge ? 2.4 : 1.4, "stroke-dasharray": c.nudge ? null : "4 3" }));
-          T(g, at.x + G.tagW / 2, at.y + G.tagH / 2 + fs * 0.34, c.name, { anchor: "middle", weight: 700, size: fs * 0.86, fill: c.back ? "#FFFFFF" : INK });
+          T(g, at.x + G.tagW / 2, at.y + G.tagH / 2 + fs * 0.34, c.name, { anchor: "middle", weight: 700, size: fs * 0.92, fill: c.back ? "#FFFFFF" : INK });
           svg.appendChild(g);
         });
       }
@@ -3292,8 +3301,9 @@ html{scroll-behavior:auto}
         var done = n === 20 || seen(api.predict && api.predict.state);
         api.readout.set([
           { value: n + " of 20", label: "**Customers placed** in a box" },
-          { value: F.int(c.tp + c.tn) + " of " + n, label: "**Right so far**: found plus rightly left alone" },
+          { value: n ? F.int(c.tp + c.tn) + " of " + n : "none yet", label: "**Right so far**: found plus rightly left alone" },
           { value: done ? "3 of 5" : (n ? F.int(c.tp) + " so far" : "?"), label: "**Repeaters found**", sub: done ? "C09 and C18 were never nudged." : "The count grows as the tags land." },
+          { value: n ? F.int(c.tp + c.fp) + " of " + n : "none yet", label: "**Nudged so far**: the model's column of flags", sub: n ? "Of those nudged, " + F.int(c.tp) + " came back." : "" },
           { value: F.rs(c.fp * 40 + c.fn * 1200), label: "**Bill so far**: " + c.fp + " wasted × Rs 40 + " + c.fn + " missed × Rs 1,200", tone: n === 20 ? "hero" : "" }
         ], swap > 0.5 ? "scikit-learn prints rows for the truth and columns for the prediction, sorted 0 then 1, so its top-left cell is the true negatives. The check: the bottom row must add up to the five real repeaters." : "");
       }
@@ -3418,7 +3428,7 @@ html{scroll-behavior:auto}
         frac(); write();
       } });
       pl.el.style.marginBottom = "1rem";
-      var line = api.svg({ height: function (w) { return w < 520 ? 186 : 170; }, label: "Precision, recall, their plain mean and F1 on one line from 0 to 1", draw: function (st) { draw(st); } });
+      var line = api.svg({ height: function (w) { return w < 520 ? 150 : 128; }, label: "Precision, recall, their plain mean and F1 on one line from 0 to 1", draw: function (st) { draw(st); } });
       function f1(p, r) { return p + r ? 2 * p * r / (p + r) : 0; }
       function draw(st) {
         var svg = st.svg, w = st.w, fs = rem() * 0.8, x0 = 14, x1 = w - 14, ay = st.h - 34, sx = function (v) { return x0 + v * (x1 - x0); };
@@ -3489,9 +3499,9 @@ html{scroll-behavior:auto}
       free.line("free", [[0, 100], [50, 50]], { color: "rose", width: 2.4, name: "Free accuracy" });
       free.scatter("marks", [[4, 96], [11.3, 88.7], [30, 70], [50, 50]], { color: "ink", r: 5, hollow: true });
       free.text("lk", [5.4, 99], { text: "Kalpa's row, 4%" });
-      free.text("lb", [12.6, 84.5], { text: "The bank, 11.3%" });
+      free.text("lb", [13.2, 93], { text: "The bank, 11.3%" });
       free.text("lg", [31.2, 74], { text: "German Credit, 30%" });
-      free.text("le", [48.8, 55], { text: "Balanced", anchor: "end" });
+      free.text("le", [49.5, 63], { text: "Balanced, 50%", anchor: "end" });
       free.scatter("now", [[11, 89]], { color: "violet", r: 7 });
       function states(i) {
         if (frame === 0) return i < k ? "yes" : "no";
@@ -3552,19 +3562,19 @@ html{scroll-behavior:auto}
         var missDear = cfn >= cfp, R = missDear ? cfn / cfp : cfp / cfn, line = cfp / (cfp + cfn);
         return { missDear: missDear, R: R, line: line, N: R + 1 };
       }
-      var st = api.svg({ height: function (w) { return w < 520 ? 400 : 370; }, label: "A row of lookalike customers above a balance scale and a line from 0 to 1", draw: function (g) { draw(g); } });
+      var st = api.svg({ height: function (w) { return w < 520 ? 362 : 338; }, label: "A row of lookalike customers above a balance scale and a line from 0 to 1", draw: function (g) { draw(g); } });
       function draw(g) {
         var svg = g.svg, w = g.w, fs = rem() * 0.8, tm = terms(), people = Math.round(tm.N);
         var show = frame >= 1 || moved;
-        var cnt = Math.min(people, 60), pitch = Math.min(22, (w - 8) / Math.min(cnt, w < 520 ? 16 : 31)), per = Math.max(1, Math.floor((w - 8) / pitch)), r = Math.max(4, pitch / 2 - 2);
+        var per = w < 520 ? 16 : 31, pitch = Math.min(22, (w - 8) / per), cnt = Math.min(people, per * 2), r = Math.max(4, pitch / 2 - 2);
         T(svg, 0, fs, show ? (tm.missDear ? "Nudge " + F.int(people) + " lookalikes: one comes back" : F.int(people) + " lookalikes: one nudge is wasted") : "Thirty-one lookalike customers, each with the same small chance", { weight: 700, size: fs * 0.95 });
         for (var i = 0; i < cnt; i++) {
           var x = 4 + r + (i % per) * pitch, y = fs * 1.9 + r + Math.floor(i / per) * pitch;
           var lit = show && (tm.missDear ? i === 0 : i > 0), waste = show && (tm.missDear ? i > 0 : i === 0);
           svg.appendChild(s("circle", { cx: x, cy: y, r: r, fill: lit ? FOUND : waste && frame >= 2 || waste && moved ? WASTED : "#FFFFFF", stroke: lit ? FOUND : waste ? WASTED : "#A9A3D2", "stroke-width": 1.6 }));
         }
-        if (people > 60) T(svg, w - 2, fs * 1.9 + pitch * Math.ceil(cnt / per) + fs * 0.6, "+ " + F.int(people - 60) + " more", { anchor: "end", size: fs * 0.85, weight: 700 });
-        var rowsH = Math.ceil(cnt / per) * pitch, top = fs * 2.4 + rowsH + 6;
+        if (people > cnt) T(svg, w - 2, fs * 1.9 + 2 * pitch + fs * 0.75, "+ " + F.int(people - cnt) + " more", { anchor: "end", size: fs * 0.85, weight: 700 });
+        var top = fs * 2.4 + 2 * pitch + 6;
         var coinsShown = frame >= 2 || moved;
         var o = tm.missDear ? {
           left: { n: coinsShown ? tm.R : 0, unit: cfp, color: WASTED, label: (coinsShown ? F.dp(tm.R, tm.R % 1 ? 2 : 0) : "No") + " wasted nudges × " + F.rs(cfp) + (coinsShown ? " = " + F.rs(tm.R * cfp) : " yet") },
@@ -3572,7 +3582,7 @@ html{scroll-behavior:auto}
           : { left: { n: coinsShown ? tm.R : 0, unit: cfn, color: FOUND, label: (coinsShown ? F.dp(tm.R, tm.R % 1 ? 2 : 0) : "No") + " found repeaters × " + F.rs(cfn) + (coinsShown ? " = " + F.rs(tm.R * cfn) : " yet") },
             right: { n: show ? 1 : 0, unit: cfp, color: WASTED, chip: F.rs(cfp), label: show ? "1 wasted action = " + F.rs(cfp) : "No wasted action yet" } };
         var after = drawScale(svg, w, top, o);
-        var ay = after + 26, x0 = 14, x1 = w - 14, sx = function (v) { return x0 + v * (x1 - x0); };
+        var ay = after + 40, x0 = 14, x1 = w - 14, sx = function (v) { return x0 + v * (x1 - x0); };
         svg.appendChild(s("line", { x1: x0, x2: x1, y1: ay, y2: ay, stroke: "#CFC9EE", "stroke-width": 2 }));
         [0, 0.5, 1].forEach(function (v) { T(svg, sx(v), ay + 18, v.toFixed(1), { anchor: v === 0 ? "start" : v === 1 ? "end" : "middle", size: fs * 0.88, fill: "#3F3A66" }); });
         T(svg, x1, ay + fs * 2.6, "the chance of coming back", { anchor: "end", size: fs * 0.85, fill: "#3F3A66" });
@@ -3587,8 +3597,8 @@ html{scroll-behavior:auto}
       function write() {
         var tm = terms(), show = seen(api.predict.state) || frame >= 3 || moved;
         api.readout.set([
+          { value: show ? (tm.missDear ? "1 in " + F.dp(tm.N, tm.N % 1 ? 1 : 0) : F.dp(tm.R, tm.R % 1 ? 1 : 0) + " in " + F.dp(tm.N, tm.N % 1 ? 1 : 0)) : "?", label: "**The 1-in-N test**: act above this chance", tone: show ? "good" : "" },
           { value: F.dp(tm.R, tm.R % 1 ? 2 : 0), label: tm.missDear ? "**Wasted nudges** one found repeater pays for" : "**Found repeaters** it takes to pay for one wasted action" },
-          { value: show ? (tm.missDear ? "1 in " + F.dp(tm.N, tm.N % 1 ? 1 : 0) : F.dp(tm.R, tm.R % 1 ? 1 : 0) + " in " + F.dp(tm.N, tm.N % 1 ? 1 : 0)) : "?", label: "**The 1-in-N test**: act above this chance", tone: "hero" },
           { value: show ? p3(tm.line) : "?", label: "**The line**: " + F.rs(cfp) + " / (" + F.rs(cfp) + " + " + F.rs(cfn) + ")" },
           { value: cfn > cfp ? "Recall" : cfn < cfp ? "Precision" : "Neither", label: "**Metric that leads**", sub: cfn > cfp ? "A miss is the dearer mistake, so find them all." : cfn < cfp ? "Acting wrongly is dearer, so be sure before you act." : "Equal prices: 0.5 and F1 are fair here." }
         ]);
@@ -3603,7 +3613,7 @@ html{scroll-behavior:auto}
       api.slider({ label: "A missed repeater costs", min: 100, max: 3000, step: 100, value: cfn, fmt: F.rs, onInput: function (v) { cfn = v; moved = true; write(); st.redraw(); say(); } });
       function say() {
         var tm = terms();
-        api.say(cfp === 400 && cfn === 1200 ? "A Rs 400 gift hamper: one repeater pays for three wasted hampers, so act above 1 in 4, 0.25." : cfp === cfn ? "Equal prices put the line at 0.5, the library's default. That default is right only here." : tm.missDear ? "One repeater pays for " + F.dp(tm.R, 2) + " wasted nudges, so the line sits at " + p3(tm.line) + "." : "Acting wrongly is now the dearer mistake: it takes " + F.dp(tm.R, 2) + " found repeaters to pay for one, so the line climbs to " + p3(tm.line) + ".");
+        api.say(cfp === 400 && cfn === 1200 ? "A Rs 400 gift hamper: one repeater pays for three wasted hampers, so act above 1 in 4, 0.25." : cfp === cfn ? "Equal prices put the line at 0.5, the library's default. That default is right only here." : tm.missDear ? "One repeater pays for " + nice(tm.R) + " wasted nudges, so the line sits at " + p3(tm.line) + "." : "Acting wrongly is now the dearer mistake: it takes " + nice(tm.R) + " found repeaters to pay for one, so the line climbs to " + p3(tm.line) + ".");
       }
       ON.p4 = function () { write(); st.redraw(); };
       write();
@@ -3655,13 +3665,13 @@ html{scroll-behavior:auto}
       why: "One default wipes out twenty good loans' interest, 20 × Rs 3,000 = Rs 60,000, so Rohan needs at least 20 repayers in every 21 approvals: P(repay) above 60,000 / 63,000 = 0.952. The formula is the nudge's formula; the dear mistake changed sides, so the line moved to the other end.", onReveal: hook("p6") },
     stage: function (api) {
       var frame = 0, loss = 60000, moved = false;
-      var st = api.svg({ height: function (w) { return w < 520 ? 420 : 380; }, label: "Rohan's book, his balance scale, and the probability axis with twenty applicants", draw: function (g) { draw(g); } });
+      var st = api.svg({ height: function (w) { return w < 520 ? 392 : 330; }, label: "Rohan's book, his balance scale, and the probability axis with twenty applicants", draw: function (g) { draw(g); } });
       function rohanLine() { return loss / (loss + 3000); }
       function draw(g) {
         var svg = g.svg, w = g.w, fs = rem() * 0.8;
         if (frame <= 1) return waterfall(svg, w, fs);
         if (frame === 2) {
-          T(svg, 0, fs, "One default against the interest on good loans", { weight: 700, size: fs * 0.95 });
+          T(svg, 0, fs, w < 520 ? "One default against good loans" : "One default against the interest on good loans", { weight: 700, size: fs * 0.95 });
           var R = loss / 3000;
           drawScale(svg, w, fs * 2.2, { cap: 40, left: { n: R, unit: 3000, color: FOUND, label: F.dp(R, R % 1 ? 1 : 0) + " good loans × Rs 3,000 = " + F.rs(R * 3000) },
             right: { n: 1, unit: loss, color: WASTED, chip: F.rs(loss), label: "1 default = " + F.rs(loss) } });
@@ -3671,7 +3681,7 @@ html{scroll-behavior:auto}
       }
       function waterfall(svg, w, fs) {
         var rows = [["Interest earned", 16, "in"], ["Cost of funds", -8, "out"], ["Net interest income", 8, "sum"], ["Fees", 1, "in"], ["Operating cost", -4, "out"], ["Credit cost", -2, "out"], ["Profit before tax", 3, "sum"]];
-        T(svg, 0, fs, "Rohan's book, per Rs 100 lent for a year (illustrative)", { weight: 700, size: fs * 0.95 });
+        T(svg, 0, fs, w < 520 ? "Per Rs 100 lent for a year (illustrative)" : "Rohan's book, per Rs 100 lent for a year (illustrative)", { weight: 700, size: fs * 0.95 });
         var lw = Math.min(150, w * 0.38), x0 = lw + 8, x1 = w - 52, sx = function (v) { return x0 + v / 17 * (x1 - x0); }, rh = Math.round(fs * 2.05), y0 = fs * 2.1, run = 0;
         rows.forEach(function (r, i) {
           var y = y0 + i * rh, a, b;
@@ -3691,9 +3701,9 @@ html{scroll-behavior:auto}
         } else T(svg, 0, yb, "Interest in, the cost of funds out, then running costs and losses: about Rs 3 is left.", { size: fs * 0.92 });
       }
       function axis(svg, w, fs) {
-        var line = frame === 3 ? 40 / 1240 : rohanLine(), x0 = 12, x1 = w - 12, sx = function (v) { return x0 + v * (x1 - x0); }, ay = 250;
-        T(svg, 0, fs, "Twenty invented applicants on the chance of the good outcome", { weight: 700, size: fs * 0.95 });
-        var r = 6.5, rows = [];
+        var line = frame === 3 ? 40 / 1240 : rohanLine(), x0 = 12, x1 = w - 12, sx = function (v) { return x0 + v * (x1 - x0); }, ay = w < 520 ? 262 : 236;
+        T(svg, 0, fs, w < 520 ? "Twenty invented applicants" : "Twenty invented applicants on the chance of the good outcome", { weight: 700, size: fs * 0.95 });
+        var r = w < 520 ? 7 : 9, rows = [];
         APP.map(function (p, i) { return i; }).sort(function (a, b) { return APP[a] - APP[b]; }).forEach(function (i) {
           var x = sx(APP[i]), lane = 0;
           while (rows.some(function (q) { return q.lane === lane && Math.abs(q.x - x) < 2 * r + 2; })) lane++;
@@ -3701,7 +3711,7 @@ html{scroll-behavior:auto}
         });
         svg.appendChild(s("rect", { x: sx(line), y: fs * 4.4, width: x1 - sx(line), height: ay - fs * 4.4, fill: FOUND, opacity: 0.07 }));
         rows.forEach(function (q) {
-          var lent = APP[q.i] >= line, ok = REPAID[q.i], cy = ay - 12 - q.lane * (2 * r + 2);
+          var lent = APP[q.i] >= line, ok = REPAID[q.i], cy = ay - r - 4 - q.lane * (2 * r + 2);
           var fill = lent ? (ok ? FOUND : WASTED) : (ok ? "#FFFFFF" : SKIPPED), stroke = ok ? FOUND : lent ? WASTED : SKIPPED;
           svg.appendChild(s("circle", { cx: q.x, cy: cy, r: r, fill: fill, stroke: stroke, "stroke-width": 1.8 }));
         });
@@ -3717,7 +3727,7 @@ html{scroll-behavior:auto}
         var lg = [[FOUND, FOUND, "Lent, repaid"], [WASTED, WASTED, "Lent, defaulted"], ["#FFFFFF", FOUND, "Turned away, would repay"], [SKIPPED, SKIPPED, "Turned away, would default"]];
         var lx = 0, ly = ay + fs * 2.8;
         lg.forEach(function (l) {
-          var tw = l[2].length * fs * 0.52 + 26;
+          var tw = l[2].length * fs * 0.5 + 26;
           if (lx + tw > w) { lx = 0; ly += fs * 1.5; }
           svg.appendChild(s("circle", { cx: lx + 7, cy: ly - fs * 0.32, r: 6, fill: l[0], stroke: l[1], "stroke-width": 1.8 }));
           T(svg, lx + 18, ly, l[2], { size: fs * 0.86 });
@@ -3726,11 +3736,13 @@ html{scroll-behavior:auto}
       }
       function write() {
         var show = seen(api.predict.state) || frame >= 4 || moved, lineR = rohanLine(), at = loanBill(lineR, loss), cp = loanBill(40 / 1240, loss);
+        var R = loss / 3000;
         api.readout.set([
           { value: "0.032", label: "**Retail's line** on P(buy): 1 in 31" },
-          { value: show ? p3(lineR) : "?", label: "**Rohan's line** on P(repay): " + F.rs(loss) + " / (" + F.rs(loss) + " + Rs 3,000)", tone: "hero", sub: show ? "Said the other way: lend when P(default) is below " + p3(1 - lineR) + "." : "Commit your prediction, or play to the last step." },
+          { value: F.dp(R, R % 1 ? 1 : 0), label: "**Good loans' interest** one default wipes out" },
           { value: show ? F.rs(at.bill) : "?", label: "**Bill at Rohan's line**", sub: show ? at.lent + " lent, " + at.bad + " defaults approved, " + at.goodAway + " good borrowers turned away." : "" },
-          { value: F.rs(cp.bill), label: "**Bill if Retail's line is copied**", tone: "bad", sub: cp.lent + " lent, " + cp.bad + " defaults approved." }
+          { value: F.rs(cp.bill), label: "**Bill if Retail's line is copied**", tone: "bad", sub: cp.lent + " lent, " + cp.bad + " defaults approved." },
+          { value: show ? p3(lineR) : "?", label: "**Rohan's line** on P(repay): " + F.rs(loss) + " / (" + F.rs(loss) + " + Rs 3,000)", tone: "hero", sub: show ? F.dp(R, R % 1 ? 1 : 0) + " in " + F.dp(R + 1, R % 1 ? 1 : 0) + " must repay. Said the other way: lend when P(default) is below " + p3(1 - lineR) + "." : "Commit your prediction, or play to the last step." }
         ]);
       }
       var pl = api.player({ word: "Step", countFrom: 1, stepMs: 700, holdMs: 1600, frames: [
@@ -3837,7 +3849,7 @@ html{scroll-behavior:auto}
         applies: ["Choosing the metric from business cost; the 1-in-N test (course construction)", "Threshold selection as a business decision"],
         text: "Four ways a team could set the line, sized on the bank's clients. Then the ratio slider asks when the model starts to matter at all.",
         stageTitle: "The bill at every line for the price ratio you choose, and the saving over the best rule with no model",
-        predict: { q: "Of four ways to set the line, which leaves the lowest bill on the bank's 8,238 clients?", options: ["Keep 0.5, the default", "The F1 threshold, 0.154", "The cost threshold, 0.032", "Call everyone"], answer: 2,
+        predict: { q: "Of four ways to set the line, which leaves the lowest bill on the bank's 8,238 clients?", options: ["Keep 0.5, the library default", "The F1 threshold, 0.154", "The cost threshold, 0.032", "Call everyone"], answer: 2,
           why: "Keep 0.5: 268 calls, Rs 908,560. F1's line, 0.154: 1,226 calls, Rs 599,680, because F1 counts a Rs 40 waste and a Rs 1,200 miss as equal. The cost line, 0.032: 7,438 calls, 913 buyers found, Rs 279,000. Calling everyone: Rs 292,400. The cost line wins, and only just.", onReveal: hook("c2") },
         stage: function (api) {
           var r = 30, tried = {};
@@ -3846,7 +3858,7 @@ html{scroll-behavior:auto}
           var bc = api.chart({ height: 250, x: { min: 0, max: 1, ticks: 10, label: "The line", fmt: function (v) { return v.toFixed(1); } },
             y: { min: 0, max: 12, ticks: 4, label: "Bill of mistakes, Rs lakh", fmt: String }, numbers: false,
             legend: [{ label: "The bill at every line", color: "violet", kind: "line" }, { label: "Call everyone", color: "amber", kind: "line" }, { label: "Call nobody", color: "teal", kind: "line" }] });
-          var sc = api.chart({ height: 190, x: { min: 2, max: 40, ticks: [2, 5, 10, 15, 20, 30, 40], label: "A missed buyer costs this many wasted calls", fmt: function (v) { return v + " to 1"; } },
+          var sc = api.chart({ height: 190, x: { min: 2, max: 40, ticks: [2, 10, 20, 30, 40], label: "A missed buyer costs this many wasted calls", fmt: function (v) { return v + " to 1"; } },
             y: { min: 0, max: 0.45, ticks: [0, 0.1, 0.2, 0.3, 0.4], label: "Saving over the best free rule", fmt: function (v) { return Math.round(v * 100) + "%"; } }, numbers: true,
             numbersLabel: "Show the savings at each ratio you tried",
             legend: [{ label: "A ratio you tried", color: "ink", kind: "dot" }, { label: "Every ratio, after you commit", color: "violet", kind: "line" }],
@@ -3866,7 +3878,7 @@ html{scroll-behavior:auto}
             r = rr; tried[r] = 1;
             var z = sweepAt(r), show = seen(api.predict.state), base = r === 30 && !show;
             api.readout.set([
-              { value: "1 in " + (r + 1) + " = " + p3(z.t), label: "**The cost line** at " + r + " to 1" },
+              { value: p3(z.t), label: "**The cost line** at " + r + " to 1: act above 1 in " + (r + 1) },
               { value: F.int(z.c.tp + z.c.fp) + " calls", label: "**List at the cost line**: " + F.int(z.c.tp) + " of 928 buyers found" },
               { value: base ? "?" : F.rs(z.bill), label: "**The model's bill** at that line" },
               { value: F.rs(z.free), label: "**Best free rule**: " + z.freeName },
@@ -3997,17 +4009,17 @@ html{scroll-behavior:auto}
         stage: function (api) {
           var m = 8;
           function nums() { var profit = 26 * m / 100, loss = 26 - profit + 15, R = loss / profit; return { profit: profit, loss: loss, R: R, be: 1 / (1 + R) }; }
-          var st = api.svg({ height: function (w) { return w < 520 ? 250 : 236; }, label: "A balance scale: one missed fraud against good sales", draw: function (g) {
+          var st = api.svg({ height: function (w) { return w < 520 ? 222 : 198; }, label: "A balance scale: one missed fraud against good sales", draw: function (g) {
             var z = nums();
             drawScale(g.svg, g.w, 4, { cap: 40, left: { n: z.R, unit: z.profit, color: FOUND, label: F.dp(z.R, 2) + " good sales × " + F.dp(z.profit, 2) + " dollars of profit" },
-              right: { n: 1, unit: z.loss, color: WASTED, chip: F.dp(z.loss, 2) + " $", label: "1 missed fraud = " + F.dp(z.loss, 2) + " dollars" } });
+              right: { n: 1, unit: z.loss, color: WASTED, chip: F.dp(z.loss, 2) + " dollars", label: "1 missed fraud = " + F.dp(z.loss, 2) + " dollars" } });
           } });
           function set() {
             var z = nums(), hide = m === 8 && !seen(api.predict.state);
             api.readout.set([
               { value: F.dp(z.R, 2), label: "**Good sales** one missed fraud wipes out" },
-              { value: hide ? "?" : F.dp(z.be * 100, 2) + "%", label: "**Break-even precision** of a block rule", tone: "hero", sub: hide ? "Commit your prediction, or move the margin." : "1 / (1 + " + F.dp(z.R, 2) + ")" },
-              { value: F.dp(z.profit, 2) + " dollars", label: "**Profit** on one 26 dollar sale" }
+              { value: F.dp(z.profit, 2) + " dollars", label: "**Profit** on one 26 dollar sale" },
+              { value: hide ? "?" : F.dp(z.be * 100, 2) + "%", label: "**Break-even precision** of a block rule", tone: "hero", sub: hide ? "Commit your prediction, or move the margin." : "1 / (1 + " + F.dp(z.R, 2) + ")" }
             ], m === 8 ? "These are Stripe's own figures." : "Other margins follow Stripe's arithmetic; only the 8 percent case is Stripe's own figure.");
             st.redraw();
           }
@@ -4019,7 +4031,7 @@ html{scroll-behavior:auto}
         situation: "PhonePe's engineers wrote in July 2022 that they must design fraud prevention systems at very high precision, because a false positive blocks a genuine transfer. They recorded precision and recall for each version, had operations staff call senders to check labels, and cut the fraud rate on consumer-to-consumer transactions by 40 percent and daily fraud complaints by 38 percent. The fraud rate and the final precision are not published.",
         source: "PhonePe engineering, Building PhonePe's Real-Time Transaction Model to prevent Frauds: A Journey, https://tech.phonepe.com/building-phonepes-real-time-transaction-model-to-prevent-frauds-a-journey/, checked 28 October 2026",
         stageTitle: "One hundred blocked transfers at the precision you set (invented volume)", data: "invented",
-        predict: { q: "A PhonePe block stops a transfer on the spot. Which did its team say it designs for?", options: ["Very high recall: catch every fraud, whatever is blocked", "Very high precision: block only what is almost surely fraud", "The highest accuracy over all transfers"], answer: 1,
+        predict: { q: "A PhonePe block stops a transfer on the spot. Which did its team say it designs for?", options: ["Very high recall: catch every fraud, whatever is blocked", "Very high precision: block only near-certain fraud", "The highest accuracy across all the transfers"], answer: 1,
           why: "A wrong block is a customer who cannot pay a friend, so PhonePe tuned for very high precision first, and still cut fraud by 40 percent. Accuracy is useless here: fraud is a sliver of transfers, so blocking nothing is almost perfectly accurate." },
         stage: function (api) {
           var prec = 90;
@@ -4081,57 +4093,77 @@ html{scroll-behavior:auto}
     lede: "Five situations from today's row: a staple, a trap, a design question, one where nobody has priced anything, and Rohan himself. Pick the clarifying question, order the whiteboard, commit your answer, then compare with the model answer as the board builds.",
     items: [
       { kind: "technical", question: "Precision or recall for a fraud model, and why?",
-        clarify: { options: ["What happens to a payment when the model flags it: blocked, or sent to a reviewer?", "Which algorithm is the model?", "How many payments a day does it score?"], best: 0,
+        clarify: { options: ["What happens to a payment when the model flags it?", "Which algorithm does the fraud model use?", "How many payments does it score in a day?"], best: 0,
           why: "What a flag does decides what each mistake costs, and the costs decide the metric. Ask it before anything else." },
-        steps: ["Ask what a flag does: block, review or a step-up check", "Price the two mistakes: a missed fraud and a wrongly flagged customer", "Turn the prices into a line: act above 1 in N", "Name the metric that leads and report it at the alert budget"],
-        answer: { options: ["Recall, always: missing fraud is the worst thing", "It depends on what a flag does: with a reviewer recall leads, with an automatic block precision matters more", "Accuracy, because it covers both mistakes"], best: 1,
+        steps: ["Ask what a flag does", "Price the two mistakes", "Turn the prices into a line", "Report the leading metric at the alert budget"],
+        answer: { options: ["Recall always, since a missed fraud is the worst outcome", "It depends on what a flag does and what each mistake costs", "Accuracy, since it counts both kinds of mistake together"], best: 1,
           why: "The metric follows the dearer mistake, and what a flag does sets which mistake is dearer." },
         model: "It depends on what a flag does. If a flag sends the payment to a reviewer, a false flag costs a few minutes and a missed fraud costs the goods and a fee, so recall leads at the review budget. If a flag blocks the customer outright, a false flag costs a customer, and precision leads; PhonePe tunes for very high precision for that reason. Stripe's arithmetic puts the break-even precision near 5 percent for a 26 dollar sale at an 8 percent margin.",
-        board: [{ title: "What a flag does", note: "block, review, or a step-up check", icon: "shield" }, { title: "Price both mistakes", note: "missed fraud against a wrongly flagged customer", icon: "coin" }, { title: "The line", note: "act above 1 in N", icon: "scale" }, { title: "Report at the budget", note: "precision and recall at the alert volume", icon: "chart" }],
+        board: [
+          { title: "What a flag does", note: "A block, a review or a step-up check.", icon: "shield", say: "First ask what a flag does: a block, a review or a step-up check." },
+          { title: "Price both mistakes", note: "A missed fraud against a wrongly flagged customer.", icon: "coin", say: "Then price both mistakes: a missed fraud against a wrongly flagged customer." },
+          { title: "The line", note: "Act above 1 in N.", icon: "scale", say: "The two prices give the line: act above 1 in N." },
+          { title: "Report at the budget", note: "Precision and recall at the alert volume.", icon: "chart", say: "Report precision and recall at the alert volume the team can review." }],
         followups: ["Your fraud team can review 500 alerts a day. What exactly do you report?", "Fraud labels arrive weeks later as disputes. How does that change your recall number?"],
         wrong: [{ text: "Recall, because fraud is rare.", why: "Rarity says accuracy will mislead; it says nothing about which mistake costs more." },
           { text: "Accuracy, because it counts both mistakes.", why: "If 1 payment in 200 is fraud, flagging nothing is 99.5 percent accurate." }] },
       { kind: "technical", question: "Accuracy is 96 percent on a 96 to 4 split. Is it a good model?",
-        clarify: { options: ["What is in the true-positive cell of the confusion matrix?", "Which library computed the accuracy?", "How long did training take?"], best: 0,
-          why: "On a 96 to 4 split, saying no to everyone already scores 96, so the first thing to ask for is the cell that shows whether anyone was found." },
-        steps: ["Name the base rate: 96 to 4", "Say what saying no to everyone scores: 96 percent", "Ask for the matrix and its true-positive cell", "Judge on recall and the bill at the business's line"],
-        answer: { options: ["Yes: 96 percent is excellent", "Not yet known: 96 percent is what doing nothing scores, so I need the true-positive cell and the recall", "No: 96 percent is too low to ship"], best: 1,
+        clarify: { options: ["What is in the true-positive cell of the matrix?", "Which library computed the accuracy figure?", "How long did the model take to train?"], best: 0,
+          why: "On a 96 to 4 split, saying no to everyone already scores 96, so ask first for the cell that shows whether anyone was found." },
+        steps: ["Name the base rate", "Say what doing nothing scores", "Ask for the true-positive cell", "Judge on recall and the bill"],
+        answer: { options: ["Yes: 96 percent is an excellent score to ship", "Unknown yet: doing nothing also scores 96 percent", "No: 96 percent is too low for a real model"], best: 1,
           why: "The number matches the do-nothing baseline exactly, so on its own it shows nothing learned." },
         model: "On a 96 to 4 split, saying no to everyone is 96 percent accurate, so this number tells me nothing yet. I would ask for the confusion matrix: if the true-positive cell is near zero, the model learned the base rate and nothing else. Then I would judge it on recall and on the bill at the line the business would actually use.",
-        board: [{ title: "The base rate", note: "96 to 4", icon: "users" }, { title: "The free score", note: "saying no to everyone: 96%", icon: "gauge" }, { title: "The TP cell", note: "did it find anyone?", icon: "table" }, { title: "Recall and the bill", note: "at the business's line", icon: "coin" }],
+        board: [
+          { title: "The base rate", note: "96 to 4.", icon: "users", say: "Name the base rate first: 96 to 4." },
+          { title: "The free score", note: "Saying no to everyone: 96 percent.", icon: "gauge", say: "Saying no to everyone scores 96 percent, the same number." },
+          { title: "The true-positive cell", note: "Did it find anyone?", icon: "table", say: "So ask for the true-positive cell: did it find anyone at all?" },
+          { title: "Recall and the bill", note: "At the business's line.", icon: "coin", say: "Judge it on recall and on the bill at the business's line." }],
         followups: ["The true-positive cell holds 30 of the 40 positives. Now what do you say?", "When is accuracy a fair summary?"],
         wrong: [{ text: "Yes, 96 percent is a strong model.", why: "A rule that does nothing scores the same 96." },
           { text: "No, 96 percent is a bad model.", why: "It might be good; you cannot tell without the matrix. Ask before judging." }] },
       { kind: "techno-functional", question: "How do you set a threshold when the two errors cost differently?",
-        clarify: { options: ["What does each mistake cost the business, in rupees?", "Is the data imbalanced?", "Which model family are we using?"], best: 0,
+        clarify: { options: ["What does each mistake cost the business, in rupees?", "Is the outcome rare, or close to 50 to 50?", "Which model family is producing the scores?"], best: 0,
           why: "The line comes from the two prices, so without them there is nothing to set it from." },
-        steps: ["Get the price of acting wrongly and of failing to act", "Compute the line: wrong action / (wrong action + missed action)", "Check the bill at that line against calling everyone and calling nobody", "Apply any budget, and check the probabilities are honest"],
-        answer: { options: ["Keep 0.5, the library's default", "Set it from the prices, 40 / 1,240 = 0.032 for Kalpa, then check the bill against the free rules", "Pick the line where accuracy peaks"], best: 1,
+        steps: ["Get the two prices", "Compute the line from them", "Check the bill against the free rules", "Apply the budget and check calibration"],
+        answer: { options: ["Keep the library's default of 0.5 for both", "Set it from the prices, then check it against the free rules", "Pick the line where the validation accuracy peaks"], best: 1,
           why: "0.5 is the line for equal costs, and accuracy peaks near 0.57 on the bank's data, where the bill is one of the dearest." },
         model: "I get the two prices from the business, say Rs 40 for a wasted nudge and Rs 1,200 for a missed buyer, and set the line at 40 / 1,240, about 0.032: one buyer pays for thirty wasted nudges. Then I check the bill at that line on validation against calling everyone and calling nobody; on the bank's file the model saves only Rs 13,400 over calling everyone. If calls are capped, the budget sets the line instead. The formula assumes honest probabilities, so I check calibration too.",
-        board: [{ title: "Two prices", note: "Rs 40 and Rs 1,200", icon: "coin" }, { title: "The line", note: "40 / 1,240 = 0.032", icon: "scale" }, { title: "Against free rules", note: "Rs 279,000 against Rs 292,400", icon: "bars" }, { title: "Budget and honesty", note: "the cap binds; check calibration", icon: "gauge" }],
+        board: [
+          { title: "Two prices", note: "Rs 40 and Rs 1,200.", icon: "coin", say: "Get the two prices: Rs 40 for a wasted nudge, Rs 1,200 for a missed buyer." },
+          { title: "The line", note: "40 / 1,240 = 0.032.", icon: "scale", say: "The line is 40 / 1,240, which is 0.032, or 1 in 31." },
+          { title: "Against the free rules", note: "Rs 279,000 against Rs 292,400.", icon: "bars", say: "Check the bill against the free rules: Rs 279,000 against Rs 292,400 for calling everyone." },
+          { title: "Budget and honesty", note: "A cap binds; check calibration.", icon: "gauge", say: "A call budget binds when it is stricter, and the formula needs calibrated scores." }],
         followups: ["Marketing can make only 1,000 calls. Which line wins now?", "Why not just maximise F1?"],
         wrong: [{ text: "Use 0.5; it is the standard threshold.", why: "0.5 assumes the two mistakes cost the same, and Kalpa's differ thirty times over." },
           { text: "Pick the threshold with the best accuracy.", why: "On the bank's data that line, near 0.57, leaves a bill above Rs 9 lakh." }] },
       { kind: "scenario", question: "Nobody has priced the errors yet, and your manager wants one number for the model. Do you report F1?",
-        clarify: { options: ["Can Finance give even a rough price for each mistake, or is there a call budget?", "Which F1 variant does the dashboard use?", "Can we report accuracy instead?"], best: 0,
+        clarify: { options: ["Can Finance give a rough price for each mistake, or a budget?", "Which F1 variant does the team's dashboard use?", "Could we report the accuracy figure instead?"], best: 0,
           why: "F1 is a stand-in for missing prices. The moment a rough price or a budget exists, a better number exists." },
-        steps: ["Say that F1 weighs the two mistakes as equal", "Report precision and recall with their counts beside F1", "Ask for rough prices or a budget", "Switch to the bill, or to precision at the budget, once they arrive"],
-        answer: { options: ["F1 is always the right single number", "Yes, as a placeholder that weighs the mistakes as equal, with precision and recall beside it until a price or a budget arrives", "Refuse to report anything until the prices arrive"], best: 1,
+        steps: ["Say what F1 assumes", "Show precision and recall with counts", "Ask for rough prices or a budget", "Switch metric once they arrive"],
+        answer: { options: ["Yes, F1 is the right single number in every case", "Yes, as a labelled placeholder with its two parts beside it", "No, report nothing until the prices have arrived"], best: 1,
           why: "A placeholder said as one is honest; F1 presented as final is a choice of prices nobody made." },
         model: "Yes, as a placeholder, and I would say what it assumes: F1 treats a wasted call and a missed buyer as equally bad. I would put precision and recall with their counts beside it, ask Finance for even rough prices, and switch to the bill or to precision at the budget once I have them. On the bank's file the F1 line is 0.154 and calls 1,226 clients; Anand's prices put the line at 0.032 and call 7,438, which shows how much the hidden assumption matters.",
-        board: [{ title: "What F1 assumes", note: "the two mistakes cost the same", icon: "scale" }, { title: "Show the parts", note: "precision and recall, with counts", icon: "table" }, { title: "Ask for a price", note: "or a budget", icon: "coin" }, { title: "Switch the metric", note: "to the bill or precision at k", icon: "chart" }],
+        board: [
+          { title: "What F1 assumes", note: "The two mistakes cost the same.", icon: "scale", say: "Say what F1 assumes: the two mistakes cost the same." },
+          { title: "Show the parts", note: "Precision and recall, with counts.", icon: "table", say: "Show precision and recall beside it, with their counts." },
+          { title: "Ask for a price", note: "Or for a budget.", icon: "coin", say: "Ask Finance for a rough price for each mistake, or for a budget." },
+          { title: "Switch the metric", note: "To the bill, or precision at k.", icon: "chart", say: "Once a price arrives, switch to the bill; once a budget arrives, to precision at k." }],
         followups: ["Finance says a miss costs about thirty times a call. What changes?", "Why the harmonic mean, and not the plain mean?"],
         wrong: [{ text: "F1 balances precision and recall, so it is always fair.", why: "It balances them by assuming equal prices, which is a business decision nobody made." },
           { text: "Report nothing until the prices arrive.", why: "A labelled placeholder with its parts beside it is more useful than silence." }] },
       { kind: "client-facing", company: "Kalpa Financial", question: "Rohan asks: Retail's model works, so can we use it for loans with Retail's threshold?",
-        clarify: { options: ["What does approving a defaulter cost you, and what does turning away a good borrower cost?", "Which bureau do you pull from?", "How many loans did you approve last month?"], best: 0,
-          why: "The line comes from his two prices, and they are the opposite way round from Retail's." },
-        steps: ["Price Rohan's two mistakes: Rs 60,000 and Rs 3,000", "Derive his line: 60,000 / 63,000 = 0.952 on P(repay)", "Say both lines on the chance of the good outcome", "Show what copying Retail's line costs, and check the scores on lending data"],
-        answer: { options: ["Yes, the model is the same, so the line is too", "The method carries over, the line does not: you lend only above P(repay) 0.952, because one default costs twenty good loans' interest", "No, lending always needs a different kind of model"], best: 1,
+        clarify: { options: ["What do a bad approval and a wrong rejection each cost you?", "Which credit bureau do you pull your reports from?", "How many loans did you approve last month?"], best: 0,
+          why: "The line comes from his two prices, and they sit the opposite way round from Retail's." },
+        steps: ["Price Rohan's two mistakes", "Derive his line", "Say both lines on one quantity", "Show what the copied line costs"],
+        answer: { options: ["Yes: the model is the same, so the line is too", "The method carries over; the line moves to 0.952", "No: lending always needs a different kind of model"], best: 1,
           why: "Same formula, opposite end: the dear mistake changed sides." },
         model: "The method carries over and the line does not. In Retail the dear mistake is missing a buyer, so the line sits low, at 0.032. In your book a default costs Rs 60,000 and a wrongful rejection Rs 3,000, so we lend only when at least 20 in 21 applicants like this one repay: P(repay) above 0.952. Copying Retail's line would approve every defaulter; on twenty applicants that is Rs 360,000 against Rs 18,000. Before any line is trusted, the scores need checking on your own lending data.",
-        board: [{ title: "His two prices", note: "Rs 60,000 and Rs 3,000", icon: "coin" }, { title: "His line", note: "60,000 / 63,000 = 0.952", icon: "scale" }, { title: "One quantity", note: "the chance of the good outcome", icon: "target" }, { title: "The copied line", note: "Rs 360,000 against Rs 18,000", icon: "alert" }],
+        board: [
+          { title: "His two prices", note: "Rs 60,000 and Rs 3,000.", icon: "coin", say: "Price Rohan's two mistakes: Rs 60,000 for a default, Rs 3,000 for a wrongful rejection." },
+          { title: "His line", note: "60,000 / 63,000 = 0.952.", icon: "scale", say: "His line is 60,000 / 63,000, which is 0.952: 20 in 21 must repay." },
+          { title: "One quantity", note: "The chance of the good outcome.", icon: "target", say: "Say both lines on the chance of the good outcome: P(buy) for Retail, P(repay) for Rohan." },
+          { title: "The copied line", note: "Rs 360,000 against Rs 18,000.", icon: "alert", say: "Copying Retail's line costs Rs 360,000 on twenty applicants, against Rs 18,000 at his own." }],
         followups: ["Your loss on a default halves to Rs 30,000. Where does the line go?", "You only see outcomes for loans you approved. How does that bias the model?"],
         wrong: [{ text: "Use 0.032; the model is the same.", why: "It approves every one of chapter 6's six defaulters: Rs 360,000 against Rs 18,000." },
           { text: "Lend when P(default) is above 0.05.", why: "Wrong quantity and wrong direction: lend when P(default) is below 0.048." }] }
@@ -4145,7 +4177,7 @@ html{scroll-behavior:auto}
     items: [
       { type: "number", q: "Accuracy is **7,390 of 8,238**, the model calls **268** clients, and **928** bought. How many buyers did it find?", answer: 174, tolerance: 2, unit: "buyers",
         why: "Right answers are found plus rightly left alone. Rightly left alone is the 7,310 non-buyers less the wasted calls, and wasted calls are 268 less the found. So found + 7,310 − (268 − found) = 7,390, and found = 174." },
-      { type: "pick", q: "scikit-learn prints this confusion matrix for twenty customers. Which cell does its top-left 12 count?", options: ["True positives: nudged and came back", "True negatives: left alone, did not come back", "False positives: nudged, did not come back"], answer: 1,
+      { type: "pick", q: "scikit-learn prints this confusion matrix for twenty customers. Which cell does its top-left 12 count?", options: ["True positives: nudged, and they came back", "True negatives: left alone, stayed away", "False positives: nudged, then stayed away"], answer: 1,
         why: "Rows are the truth and columns the prediction, both sorted 0 then 1, so the top-left cell is truth 0 and prediction 0: the true negatives. The check is that the bottom row adds up to the 5 real repeaters.",
         figure: function (el) { el.appendChild(h("pre", { "class": "ck-pre", text: "confusion_matrix(came_back, model_says_nudge)\n[[12  3]\n [ 2  3]]" })); } },
       { type: "pick", q: "TP 30, FP 20, FN 70, TN 880. What is the recall?", options: ["0.60", "0.30", "0.03", "0.91"], answer: 1,
@@ -4158,7 +4190,7 @@ html{scroll-behavior:auto}
         { text: "Kalpa's Rs 40 nudge against a Rs 1,200 buyer", bin: 0 }, { text: "Rohan's Rs 60,000 default against Rs 3,000 of interest", bin: 1 },
         { text: "A cancer screen followed by a cheap second test", bin: 0 }, { text: "A payment block that stops a genuine transfer on the spot", bin: 1 }],
         why: "When a miss is the dearer mistake, find them all and recall leads; when acting wrongly is dearer, be sure first and precision leads." },
-      { type: "pick", q: "Retail nudges above P(buy) 0.032 and Rohan lends above P(repay) 0.952. A colleague says Rohan's line is 0.048. When is the colleague right?", options: ["Never: 0.048 is Retail's number", "When the line is said on P(default): lend when P(default) is below 0.048", "Only if Rohan's loss on a default halves"], answer: 1,
+      { type: "pick", q: "Retail nudges above P(buy) 0.032 and Rohan lends above P(repay) 0.952. A colleague says Rohan's line is 0.048. When is the colleague right?", options: ["Never: 0.048 belongs to a different business", "When the line is said on P(default) instead", "Only once Rohan's loss on a default halves"], answer: 1,
         why: "P(default) is 1 minus P(repay), so lending above 0.952 on P(repay) is lending below 0.048 on P(default). Same line, said on the other quantity; say which quantity every time.",
         figure: function (el) {
           W5.svgStage(el, { height: 92, label: "Two lines on the chance of the good outcome", draw: function (st) {
@@ -4194,7 +4226,8 @@ html{scroll-behavior:auto}
 .w5 .p2-row span{color:var(--night);font-size:.9rem}
 .w5 .p2-row.slip b,.w5 .p2-row.slip code{color:var(--rose-ink);text-decoration:line-through;text-decoration-thickness:2px}
 .w5 .w5-matrix.p2-all .w5-cell{box-shadow:0 0 0 3px var(--rose)}
-.w5 .cs-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.5rem;margin:0 0 .9rem}
+.w5 .cs-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:0 0 .9rem}
+@media (max-width:1100px){.w5 .cs-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .w5 .cs-opt{display:flex;flex-direction:column;gap:.15rem;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:.5rem .65rem;font-size:.88rem}
 .w5 .cs-opt b{color:var(--ink);font-size:.95rem}
 .w5 .cs-opt .cs-bill{font-weight:700;color:var(--ink);font-size:1.05rem}
