@@ -2780,7 +2780,7 @@ html{scroll-behavior:auto}
   /* Type in a drawing never prints under 12 pixels, whatever the stage width. */
   function fz(k) { return Math.max(12, rem() * 0.8 * (k || 1)); }
   function lakh(v) { return "Rs " + (v / 1e5).toFixed(2) + " lakh"; }
-  function d3(x) { return Number(x).toFixed(3); }
+  function d3(x) { return (Number(x) + (x >= 0 ? 1e-9 : -1e-9)).toFixed(3); }
   function T(svg, x, y, text, o) {
     o = o || {};
     var a = { x: x, y: y, text: text, "font-size": o.size || fz(), fill: o.fill || INK, "text-anchor": o.anchor || "start", "font-weight": o.weight || null };
@@ -2802,6 +2802,8 @@ html{scroll-behavior:auto}
     return lines;
   }
   function textW(text, size) { return String(text).length * size * 0.56; }
+  /* A drawing's title in full where it fits, and its short form on a narrow screen. */
+  function fit(full, short, w, size) { return textW(full, size || fz()) <= w ? full : short; }
   /* A tick or a cross in a small disc, so right and wrong never rest on colour alone. */
   function mark(svg, x, y, ok, r) {
     r = r || 8;
@@ -2900,9 +2902,9 @@ html{scroll-behavior:auto}
           { value: d3(st.auc), label: "**Validation AUC**: the chance a random buyer is ranked above a random non-buyer", tone: "hero" },
           { value: d3(st.acc), label: "**Accuracy at 0.5**", sub: "Calling nobody scores 0.887." },
           { value: F.int(st.top) + " of 1,000", label: "**Buyers in the first 1,000 calls** down the ranked list" },
-          { value: String(st.columns), label: "**Columns** the model reads" }
+          { value: d3(st.recall), label: "**Recall at 0.5**: buyers the model would call" },
+          i === 4 ? { value: "0.99", label: "**Kalpa's validation score** with settlement_status", sub: "Kalpa's story: its rows are not drawn." } : { value: String(st.columns), label: "**Columns** the model reads" }
         ];
-        if (i === 4) items.push({ value: "0.99", label: "**Kalpa's validation score** with settlement_status", sub: "Kalpa's story: its rows are not drawn." });
         api.readout.set(items);
       };
       api.frame = function (i, p) { if (i !== frame) { frame = i; api.write(i); api.layout(i, p < 1 ? 1100 : 0); } };
@@ -2997,14 +2999,14 @@ html{scroll-behavior:auto}
     predict: { q: "Total spend ranks **Hari** first, at Rs 26,000. Ranked by **recency**, warmest first, where does Hari land?", options: ["1st of 8, still the top", "4th of 8, in the middle", "8th of 8, the coldest"], answer: 2,
       why: "Hari last ordered on 24 December 2025, 312 days before the nudge morning: the coldest member on the table. A total grows with time, so it ranks the oldest members first. Recency is measured from the nudge morning and puts Dev, Asha and Bilal, who ordered within a week, at the top.", onReveal: hook("p1") },
     stage: function (api) {
-      var frame = 0, prog = 1, sig = null, order = p1Order(null), ys = null, tw = null, hariDays = 312, manual = false;
+      var frame = 0, prog = 1, sig = SIG[0], ranked = false, order = p1Order(null), ys = null, tw = null, hariDays = 312;
       function rowH() { return Math.round(fz() * 2.5); }
       function topY() { return fz() * 3.3; }
       function targetYs() { var t = []; order.forEach(function (i, r) { t[i] = topY() + r * rowH(); }); return t; }
-      var st = api.svg({ height: function () { return topY() + MEM.length * rowH() + fz() * 2.2; }, label: "Eight invented members, their time with Kalpa and the signal", draw: function (g) { draw(g); } });
+      var st = api.svg({ height: function () { return topY() + MEM.length * rowH() + fz() * 3.6; }, label: "Eight invented members, their time with Kalpa and the signal", draw: function (g) { draw(g); } });
       function resort(animate) {
         var from = ys || targetYs();
-        order = p1Order(sig);
+        order = p1Order(ranked ? sig : null);
         var to = targetYs();
         if (tw) tw.cancel();
         if (!animate) { ys = to; st.redraw(); return; }
@@ -3018,9 +3020,10 @@ html{scroll-behavior:auto}
         var t0 = Date.UTC(2022, 0, 1), t1 = NUDGE + 40 * DAY;
         function sx(t) { return lx0 + (t - t0) / (t1 - t0) * (lx1 - lx0); }
         var nx = sx(NUDGE);
-        T(svg, lx0, fs * 1.1, phone ? "Time with Kalpa" : "Each member's time with Kalpa, first order to last", { weight: 700, size: fs });
-        T(svg, lx1 + gap, fs * 1.1, sig ? sig.label : "The signal", { weight: 700, size: fs });
-        T(svg, lx1 + gap, fs * 2.3, sig ? sig.head : "press play", { size: fs * 0.95, fill: MUTED });
+        var laneHead = textW("Each member's time with Kalpa", fs) < lx1 - lx0 - 12 ? "Each member's time with Kalpa" : "Time with Kalpa";
+        T(svg, lx0, fs * 1.1, laneHead, { weight: 700, size: fs });
+        T(svg, lx1 + gap, fs * 1.1, sig.label, { weight: 700, size: fs });
+        T(svg, lx1 + gap, fs * 2.3, ranked ? sig.head : "in the table's order", { size: fs * 0.95, fill: MUTED });
         T(svg, nx - 5, fs * 2.3, phone ? "nudge" : "nudge morning", { anchor: "end", weight: 700, size: fs * 0.95 });
         [2022, 2023, 2024, 2025, 2026].forEach(function (yr) {
           if (phone && yr % 2) return;
@@ -3029,41 +3032,43 @@ html{scroll-behavior:auto}
           T(svg, x, bottom + fs * 1.4, String(yr), { anchor: "middle", size: fs * 0.95, fill: "#3F3A66" });
         });
         svg.appendChild(s("line", { x1: nx, x2: nx, y1: top - 6, y2: bottom, stroke: INK, "stroke-width": 3 }));
-        var lead = sig ? order[0] : -1, vals = sig ? f.map(function (x) { return x[sig.key]; }) : null, max = vals ? Math.max.apply(null, vals) : 1;
+        var lead = ranked ? order[0] : -1, vals = f.map(function (x) { return x[sig.key]; }), max = Math.max.apply(null, vals);
         MEM.forEach(function (m, i) {
           var y = ys[i], cy = y + rh / 2, isHari = i === HARI, rank = order.indexOf(i) + 1;
           if (i === lead) svg.appendChild(s("rect", { x: 0, y: y + 2, width: w, height: rh - 4, rx: 8, fill: "#EEEAFB" }));
           else if (isHari) svg.appendChild(s("rect", { x: 0, y: y + 2, width: w, height: rh - 4, rx: 8, fill: "#FFF3E2" }));
-          if (sig) T(svg, 0, cy + fs * 0.35, rank + ".", { size: fs * 0.95, fill: MUTED, weight: 700 });
-          T(svg, sig ? fs * 1.6 : 0, cy + fs * 0.35, m.name, { weight: isHari || i === lead ? 700 : 600 });
+          if (ranked) T(svg, 0, cy + fs * 0.35, rank + ".", { size: fs * 0.95, fill: MUTED, weight: 700 });
+          T(svg, ranked ? fs * 1.6 : 0, cy + fs * 0.35, m.name, { weight: isHari || i === lead ? 700 : 600 });
           var a = sx(m.first), b = sx(m.last);
-          if (sig && sig.key === "recency") {
+          if (ranked && sig.key === "recency") {
             var rx = nx - (nx - b) * prog;
             svg.appendChild(s("rect", { x: Math.min(rx, nx), y: cy - 6, width: Math.abs(nx - rx), height: 12, rx: 6, fill: f[i].recency > 90 ? AMB : TEAL, opacity: 0.35 }));
           }
-          if (sig && sig.key === "cohort") {
+          if (ranked && sig.key === "cohort") {
             var cx0 = nx - (nx - a) * prog;
             svg.appendChild(s("rect", { x: cx0, y: cy - 6, width: nx - cx0, height: 12, rx: 6, fill: TEAL, opacity: 0.25 }));
           }
           svg.appendChild(s("line", { x1: a, x2: b, y1: cy, y2: cy, stroke: "#7B62E8", "stroke-width": 3, "stroke-linecap": "round" }));
           svg.appendChild(s("circle", { cx: a, cy: cy, r: 4, fill: "#FFFFFF", stroke: VIO, "stroke-width": 2 }));
           svg.appendChild(s("circle", { cx: b, cy: cy, r: 5, fill: VIO }));
-          if (sig) {
+          {
             var txt = sig.fmt(vals[i]), tw2 = textW(txt, fs * 0.95) + 8, room = Math.max(10, sigW - tw2), len = Math.max(3, room * (vals[i] / max) * prog);
             svg.appendChild(s("rect", { x: lx1 + gap, y: cy - 7, width: len, height: 14, rx: 4, fill: i === lead ? INK : VIO, opacity: i === lead ? 1 : 0.75 }));
             T(svg, lx1 + gap + len + 6, cy + fs * 0.35, txt, { size: fs * 0.95, weight: i === lead || isHari ? 700 : 400 });
           }
         });
-        T(svg, 0, bottom + fs * 1.4, phone ? "" : "hollow: first order, filled: last order", { size: fs * 0.95, fill: MUTED });
+        T(svg, 0, bottom + fs * 3, "Hollow dot: first order. Filled dot: last order.", { size: fs * 0.95, fill: MUTED });
       }
       function write() {
-        var f = MEM.map(feats), show = seen(api.predict.state) || (sig && sig.key === "recency");
-        if (!sig) {
+        var f = MEM.map(feats), show = seen(api.predict.state) || (ranked && sig.key === "recency");
+        if (!ranked) {
           api.readout.set([
             { value: "8", label: "**Invented members** on Kalpa's table" },
             { value: "1 Nov 2026", label: "**The nudge morning**, also invented: every signal is measured from it" },
+            { value: "Rs 26,000", label: "**Hari's total spend**, the largest on the table" },
+            { value: "40", label: "**Hari's orders**, also the most" },
             { value: "Rs 40", label: "**One nudge**, wasted on a member who will not answer it", tone: "hero" }
-          ], "Press play: the raw table first, then five signals, each with its formula and its reason.");
+          ], "Press play: the raw total first, then five signals, each with its formula and its reason.");
           return;
         }
         var lead = order[0], hr = order.indexOf(HARI) + 1, byRec = p1Order(SIG[1]).indexOf(HARI) + 1;
@@ -3085,17 +3090,15 @@ html{scroll-behavior:auto}
       ], render: function (i, p) {
         var was = frame;
         frame = i; prog = p;
-        var next = i === 0 ? null : SIG[i - 1];
-        if (next !== sig || was !== i) { sig = next; write(); resort(i !== was && !W5.reduced()); }
+        if (was !== i) { sig = i === 0 ? SIG[0] : SIG[i - 1]; ranked = i > 0; write(); resort(!W5.reduced()); }
         else st.redraw();
-        if (!manual) st.redraw();
       } });
-      var hs = api.slider({ label: "Hari's last order", min: 1, max: 400, step: 1, value: 312, fmt: function (v) { return v + " days before the nudge"; }, onInput: function (v) {
+      var hs = api.slider({ label: "Hari's last order", min: 1, max: 400, step: 1, value: 312, fmt: function (v) { return v + " days"; }, onInput: function (v) {
         hariDays = v;
         MEM[HARI].last = NUDGE - v * DAY;
         var f = MEM.map(feats), recRank = p1Order(SIG[1]).indexOf(HARI) + 1;
         write();
-        api.say(sig && sig.key !== "recency" ? "Hari's last order moved to " + v + " days before the nudge morning, and the " + sig.label.toLowerCase() + " ranking did not move. Only recency sees it: Hari would be " + recRank + " of 8 there." : "Hari's last order is now " + v + " days before the nudge morning, so recency puts Hari " + recRank + " of 8. Total spend still says 1 of 8: a total cannot see that a member went quiet.");
+        api.say(!ranked || sig.key !== "recency" ? "Hari's last order moved to " + v + " days before the nudge morning, and the " + (ranked ? sig.label.toLowerCase() : "total spend") + " ranking did not move. Only recency sees it: Hari would be " + recRank + " of 8 there." : "Hari's last order is now " + v + " days before the nudge morning, so recency puts Hari " + recRank + " of 8. Total spend still says 1 of 8: a total cannot see that a member went quiet.");
         resort(true);
       } });
       W5.button(api.controls, { label: "Hari as the table has it", icon: "replay", quiet: true, onClick: function () {
@@ -3147,7 +3150,7 @@ html{scroll-behavior:auto}
         var svg = g.svg, w = g.w, fs = fz(), phone = w < 560;
         var x0 = phone ? 40 : 90, x1 = w - (phone ? 40 : 90), xs = [x0, (x0 + x1) / 2, x1], names = ["Pune", "Surat", "Indore"];
         if (frame === 0 || frame === 1) {
-          var ay = frame === 0 ? 120 : 250;
+          var ay = frame === 0 ? 150 : 250;
           T(svg, 0, fs * 1.1, frame === 0 ? "A label code turns each city into a number" : "A line multiplies the code by one weight, w", { weight: 700 });
           svg.appendChild(s("line", { x1: x0 - 20, x2: x1 + 20, y1: ay, y2: ay, stroke: "#CFC9EE", "stroke-width": 2 }));
           names.forEach(function (nm, i) {
@@ -3167,11 +3170,11 @@ html{scroll-behavior:auto}
             });
             wrapLines("The codes follow the order the cities first appeared in the table. Nobody chose that Surat sits between Pune and Indore, or that the gaps are equal.", Math.floor(w / (fs * 0.53))).forEach(function (ln, j) { T(svg, 0, ay + fs * 4 + j * fs * 1.35, ln, { fill: "#3F3A66" }); });
           } else {
-            T(svg, 0, ay + fs * 3.6, "Whatever Surat adds over Pune, Indore adds again: 3 × w is three times Pune's push.", { fill: "#3F3A66", size: fs * (phone ? 0.95 : 1) });
+            wrapLines("Whatever Surat adds over Pune, Indore adds again: 3 × w is three times Pune's push.", Math.floor(w / (fs * 0.53))).forEach(function (ln, j) { T(svg, 0, ay + fs * 3.6 + j * fs * 1.3, ln, { fill: "#3F3A66" }); });
           }
           return;
         }
-        T(svg, 0, fs * 1.1, "One-hot: a switch per city, and a weight per switch", { weight: 700 });
+        T(svg, 0, fs * 1.1, fit("One-hot: a switch per city, and a weight per switch", "One-hot: a switch and a weight per city", w), { weight: 700 });
         var cols = ["city_Pune", "city_Surat", "city_Indore"], cw = Math.min(118, (w - 60) / 3), gx = 44, gy = fs * 2.6, rhh = fs * 1.85;
         cols.forEach(function (c, j) { T(svg, gx + j * cw + cw / 2, gy + fs * 0.4, phone ? c.replace("city_", "") : c, { anchor: "middle", weight: 700, size: fs * 0.95, family: "ui-monospace, Menlo, monospace" }); });
         M6.forEach(function (m, i) {
@@ -3184,7 +3187,7 @@ html{scroll-behavior:auto}
           });
         });
         var by = gy + 7 * rhh + fs * 1.2;
-        T(svg, 0, by, "Every row holds exactly one 1, and each city gets its own weight, learned from the rows.", { size: fs * (phone ? 0.92 : 1), fill: "#3F3A66" });
+        wrapLines("Every row holds exactly one 1, and each city gets its own weight, learned from the rows.", Math.floor(w / (fs * 0.53))).forEach(function (ln, j) { T(svg, 0, by + j * fs * 1.3, ln, { fill: "#3F3A66" }); });
       }
       function scatter(g) {
         var svg = g.svg, w = g.w, fs = fz(), phone = w < 560;
@@ -3193,7 +3196,7 @@ html{scroll-behavior:auto}
         var ox = padL + (pw - ow) / 2, oy = padT + ph;
         function px(v) { return ox + v * sc; }
         function py(v) { return oy - v * k * sc; }
-        T(svg, 0, fs * 1.1, "Equal axes, as a distance sees them: one visit counts as Rs " + F.int(k), { weight: 700, size: fs * (phone ? 0.95 : 1) });
+        T(svg, 0, fs * 1.1, fit("Equal axes, as a distance sees them: one visit counts as Rs " + F.int(k), "One visit counts as Rs " + F.int(k), w), { weight: 700 });
         svg.appendChild(s("rect", { x: ox, y: oy - oh, width: ow, height: oh, fill: "#F4F2FA" }));
         svg.appendChild(s("line", { x1: ox, x2: ox + ow, y1: oy, y2: oy, stroke: "#A9A3D2", "stroke-width": 1.5 }));
         svg.appendChild(s("line", { x1: ox, x2: ox, y1: oy, y2: oy - oh, stroke: "#A9A3D2", "stroke-width": 1.5 }));
@@ -3311,10 +3314,10 @@ html{scroll-behavior:auto}
   var K12 = { days: [3, 40, 6, 12, 75, 2, 30, 9, 55, 4, 20, 90], orders: [6, 1, 4, 3, 0, 7, 2, 4, 1, 5, 2, 0],
     coupon: [1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0], settled: [1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0], bought: [1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0] };
   var COLS3 = [
-    { key: "orders", name: "orders_90d", day: -1, rule: "orders_90d of 2 or more", says: function (i) { return K12.orders[i] >= 2 ? 1 : 0; }, morning: true },
-    { key: "days", name: "days_since_last_order", day: -1, rule: "days_since_last_order of 6 or fewer", says: function (i) { return K12.days[i] <= 6 ? 1 : 0; }, morning: true },
-    { key: "coupon", name: "coupon_redeemed", day: 3, rule: "the nudge coupon was used", says: function (i) { return K12.coupon[i]; }, morning: false },
-    { key: "settled", name: "settlement_status", day: 12, rule: "settlement_status is settled", says: function (i) { return K12.settled[i]; }, morning: false }
+    { key: "orders", name: "orders_90d", short: "2+ orders", day: -1, rule: "orders_90d of 2 or more", says: function (i) { return K12.orders[i] >= 2 ? 1 : 0; }, morning: true },
+    { key: "days", name: "days_since_last_order", short: "6 days", day: -1, rule: "days_since_last_order of 6 or fewer", says: function (i) { return K12.days[i] <= 6 ? 1 : 0; }, morning: true },
+    { key: "coupon", name: "coupon_redeemed", short: "coupon", day: 3, rule: "the nudge coupon was used", says: function (i) { return K12.coupon[i]; }, morning: false },
+    { key: "settled", name: "settlement_status", short: "settled", day: 12, rule: "settlement_status is settled", says: function (i) { return K12.settled[i]; }, morning: false }
   ];
   function p3State(m) {
     var readable = COLS3.filter(function (c) { return c.day < m; }), best = null, bestScore = -1;
@@ -3338,14 +3341,15 @@ html{scroll-behavior:auto}
     stage: function (api) {
       var frame = 0, prog = 1, m = 13, fromSlider = false;
       var st = api.svg({ height: function () { return p3H(); }, label: "A timeline of when each column is written, and twelve members scored by the rule", draw: function (g) { draw(g); } });
-      function p3H() { var fs = fz(); return fs * 4 + 4 * fs * 1.95 + fs * 2.6 + fs * 3.6 + 13 * fs * 1.8 + fs * 1.2; }
+      function p3H() { var fs = fz(); return fs * 4 + 4 * fs * 1.95 + fs * 4.6 + fs * 3.6 + 13 * fs * 1.8 + fs * 1.2; }
       function view() { return frame === 2 || frame === 3 ? "morning" : "table"; }
       function draw(g) {
         var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, S = p3State(m), hideM = S.rule && !S.rule.morning && !seen(api.predict.state) && frame < 3;
         var x0 = 6, x1 = w - (phone ? 52 : 80), dmin = -5, dmax = 16;
         function sx(d) { return x0 + (d - dmin) / (dmax - dmin) * (x1 - x0); }
-        var ay = fs * 3.4, mx = sx(m);
-        svg.appendChild(s("rect", { x: mx, y: fs * 2.5, width: w - mx, height: ay + 4 * fs * 1.95 + fs * 0.6 - fs * 2.5, fill: "#FCEBF0" }));
+        var ay = fs * 3.4, mx = sx(m), mTop = ay - fs * 0.4, mBot = ay + 4 * fs * 1.95 + fs * 0.4;
+        svg.appendChild(s("rect", { x: mx, y: mTop, width: w - mx, height: mBot - mTop, fill: "#FCEBF0" }));
+        svg.appendChild(s("line", { x1: mx, x2: mx, y1: mTop, y2: mBot, stroke: VIO, "stroke-width": 4 }));
         svg.appendChild(s("line", { x1: x0, x2: x1, y1: ay, y2: ay, stroke: "#A9A3D2", "stroke-width": 2 }));
         svg.appendChild(s("path", { d: "M" + (x1 + 6) + " " + (ay - 6) + "l6 12M" + (x1 + 13) + " " + (ay - 6) + "l6 12", stroke: "#A9A3D2", "stroke-width": 2 }));
         svg.appendChild(s("line", { x1: x1 + 22, x2: w - 4, y1: ay, y2: ay, stroke: "#A9A3D2", "stroke-width": 2 }));
@@ -3368,15 +3372,14 @@ html{scroll-behavior:auto}
           mark(svg, cx + 12, y + fs * 0.8, ok, 7);
           T(svg, cx + 24, y + fs * 1.15, c.name, { size: fs * 0.95, weight: lead ? 700 : 400, fill: ok ? "#15663F" : "#A3214B", family: "ui-monospace, Menlo, monospace", deco: ok ? null : "line-through" });
         });
-        var mTop = fs * 2.5, mBot = ay + 4 * fs * 1.95 + fs * 0.4;
-        svg.appendChild(s("line", { x1: mx, x2: mx, y1: mTop, y2: mBot, stroke: VIO, "stroke-width": 4 }));
         var lab = "the prediction moment: " + dayText(m), lw = textW(lab, fs * 0.95);
         T(svg, Math.max(lw / 2 + 2, Math.min(w - lw / 2 - 2, mx)), mBot + fs * 1.3, lab, { anchor: "middle", size: fs * 0.95, weight: 700, fill: VIO, halo: true });
         /* the twelve members */
-        var gy0 = mBot + fs * 2.4, cols = phone ? ["orders", "coupon", "settled"] : ["orders", "days", "coupon", "settled"];
-        var headers = { orders: "orders_90d", days: phone ? "days" : "days since last order", coupon: "coupon", settled: "settlement" };
-        var mw = phone ? 40 : 54, rest = w - mw, tail = phone ? 3 : 3, cwid = rest / (cols.length + tail);
+        var gy0 = mBot + fs * (phone ? 4.4 : 3.2), cols = phone ? ["orders", "coupon", "settled"] : ["orders", "days", "coupon", "settled"];
+        var headers = { orders: phone ? "orders" : "orders_90d", days: "days since last order", coupon: "coupon", settled: phone ? "settled" : "settlement" };
+        var mw = phone ? 36 : 54, rest = w - mw, tail = phone ? 3 : 3, cwid = rest / (cols.length + tail);
         var heads = cols.map(function (c) { return headers[c]; }).concat([phone ? "bought" : "bought in 90 days", phone ? "table" : "rule on the training table", phone ? "morning" : "rule on the nudge morning"]);
+        if (phone) T(svg, 0, gy0 - fs * 1.4, "Right or wrong on the training table and on the nudge morning:", { size: fs * 0.95, fill: "#3F3A66" });
         heads.forEach(function (hd, j) {
           var x = mw + j * cwid + cwid / 2, col = j < cols.length ? COLS3.filter(function (c) { return c.key === cols[j]; })[0] : null, out = col && col.day >= m;
           wrapLines(hd, Math.max(6, Math.floor(cwid / (fs * 0.55)))).forEach(function (ln, k2) { T(svg, x, gy0 + k2 * fs * 1.15, ln, { anchor: "middle", size: fs * 0.95, weight: 700, fill: out ? "#A3214B" : INK, deco: out ? "line-through" : null }); });
@@ -3414,7 +3417,7 @@ html{scroll-behavior:auto}
         api.readout.set([
           { value: "day " + F.signed(m, 0), label: "**The prediction moment**", sub: m === 0 ? "The nudge morning itself." : m > 0 ? "After the nudge: the table knows things the morning cannot." : "Before last night's columns are written." },
           { value: S.readable.length + " of 4", label: "**Columns the model may read**: written before the moment" },
-          { value: S.rule ? S.rule.name : "none", label: "**The rule it learns**: " + (S.rule ? "bought if " + S.rule.rule : "predict that nobody buys") },
+          { value: S.rule ? S.rule.short : "nobody", label: "**The rule it learns**: " + (S.rule ? "bought if " + S.rule.rule : "predict that nobody buys") },
           { value: S.train + " of 12", label: "**Right on the training table**, built 90 days after the nudge" },
           { value: hideM ? "?" : S.morning + " of 12", label: "**Right on the nudge morning**, when the model runs", tone: "hero", sub: hideM ? "Commit your prediction, or play to step 3." : S.train === S.morning ? "No gap: this rule can deliver its score." : "A gap of " + (S.train - S.morning) + ": the table promised answers the morning cannot give." }
         ]);
@@ -3437,7 +3440,7 @@ html{scroll-behavior:auto}
         }
         write(); st.redraw();
       } });
-      sl = api.slider({ label: "The prediction moment", min: -3, max: 15, step: 1, value: 13, fmt: function (v) { return dayText(v); }, onInput: function (v) {
+      sl = api.slider({ label: "The prediction moment", min: -3, max: 15, step: 1, value: 13, fmt: function (v) { return "day " + F.signed(v, 0); }, onInput: function (v) {
         m = v; fromSlider = true;
         if (pl.i < 4) pl.go(5, false); else { write(); st.redraw(); }
         fromSlider = false;
@@ -3481,7 +3484,7 @@ html{scroll-behavior:auto}
       var btns = h("div", { "class": "sb-stamps", role: "group", "aria-label": "Stamp " + r.name });
       var fb = h("p", { "class": "sb-why", "aria-live": "polite" });
       var bs = ["keep", "fix", "drop"].map(function (k) {
-        var b = h("button", { type: "button", "class": "sb-b sb-" + k, "aria-pressed": "false" }, [W5.icon(k === "keep" ? "tick" : k === "fix" ? "rule" : "cross"), h("span", { text: cfg.labels[k] })]);
+        var b = h("button", { type: "button", "class": "sb-b sb-" + k, "aria-pressed": "false" }, [W5.icon(k === "keep" ? "tick" : k === "fix" ? "implementation" : "cross"), h("span", { text: cfg.labels[k] })]);
         b.addEventListener("click", function () {
           if (stamps[i] === k) { fb.textContent = r.name + " is already stamped " + cfg.labels[k].toLowerCase() + "."; return; }
           stamps[i] = k;
@@ -3568,7 +3571,7 @@ html{scroll-behavior:auto}
       var grow = 1;
       function drawAsOf(g) {
         var svg = g.svg, w = g.w, fs = fz(), phone = w < 560;
-        T(svg, 0, fs * 1.1, "The as-of trap: one member's tier, overwritten by the purchase", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+        T(svg, 0, fs * 1.1, fit("The as-of trap: one member's tier, overwritten by the purchase", "The as-of trap: a tier the purchase rewrote", w), { weight: 700 });
         var x0 = phone ? 50 : 60, x1 = w - 8, y1 = fs * 3.2, y2 = y1 + fs * 2.2;
         function sx(f) { return x0 + f * (x1 - x0); }
         [["M04", y1, false], ["M07", y2, true]].forEach(function (r) {
@@ -3578,7 +3581,7 @@ html{scroll-behavior:auto}
           if (r[2]) {
             var gx = sx(0.45), gw = (sx(1) - gx) * grow;
             svg.appendChild(s("rect", { x: gx, y: r[1] - 8, width: gw, height: 16, rx: 4, fill: AMB }));
-            if (grow > 0.5) T(svg, gx + 6, r[1] + fs * 0.35, "Gold", { size: fs * 0.95, weight: 700, fill: "#FFFFFF" });
+            if (grow > 0.5) T(svg, gx + 12, r[1] + fs * 0.35, "Gold", { size: fs * 0.95, weight: 700, fill: "#FFFFFF" });
             svg.appendChild(s("circle", { cx: gx, cy: r[1], r: 6, fill: VIO, stroke: "#FFFFFF", "stroke-width": 2 }));
           }
         });
@@ -3593,6 +3596,7 @@ html{scroll-behavior:auto}
         api.readout.set([
           { value: done + " of 9", label: "**Columns stamped**", sub: done < 9 ? "Unstamped columns count as kept, as the junior kept them." : wrong ? wrong + " of your stamps differ from the audit." : "Every stamp matches the audit." },
           { value: String(dropped), label: "**Dropped by you**" },
+          { value: String(9 - dropped), label: "**Columns the vote reads**" },
           { value: train + " of 30", label: "**Right on the training table**, built after the outcome" },
           { value: morn + " of 30", label: "**Right on the nudge morning**, when the vote runs", tone: "hero", sub: train > morn ? "A gap of " + (train - morn) + ": the training table promises answers the morning cannot give." : "No gap: every column the vote reads exists on the nudge morning." }
         ]);
@@ -3640,7 +3644,8 @@ html{scroll-behavior:auto}
     stage: function (api) {
       var frame = 0, prog = 1, mode = "none", perm = { visits: IDN.slice(), searches: IDN.slice() }, from = { visits: IDN.slice(), searches: IDN.slice() };
       var tried = {}, rnd = W5.seeded(5), draws = { visits: [], searches: [], both: [] }, tog = null, fromPlayer = false;
-      var st = api.svg({ height: function (w) { var fs = fz(); return fs * 3 + 12 * fs * 1.8 + fs * 2.4 + (w < 560 ? 250 : 210) + 180; }, label: "Twelve members with their columns, the answers lost, and what the chart cannot say", draw: function (g) { draw(g); } });
+      function bandH() { var fs = fz(); return fs * 1.2 + 3 * fs * 2.8 + fs * 1.6; }
+      var st = api.svg({ height: function (w) { var fs = fz(); return fs * 3 + 12 * fs * 1.8 + fs * 3.5 + bandH(w) + fs * 4.2 + fs * 4.4 + 64; }, label: "Twelve members with their columns, the answers lost, and what the chart cannot say", draw: function (g) { draw(g); } });
       function draw(g) {
         var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, rh = fs * 1.8, top = fs * 3;
         var cols = ["visits", "searches", "sum", "says", "bought", "right"], heads = ["visits", "searches", phone ? "sum" : "visits + searches", phone ? "says" : "rule says", "bought", "right?"];
@@ -3671,7 +3676,7 @@ html{scroll-behavior:auto}
         var ty = top + 12 * rh + fs * 1.3;
         T(svg, 0, ty, prog >= 1 ? "Right: " + right + " of 12" : "Rescoring...", { weight: 700 });
         /* the answers lost, drawn only for the shuffles tried so far */
-        var by = ty + fs * 2.2, bh = phone ? 210 : 170;
+        var by = ty + fs * 2.2, bh = bandH(w);
         T(svg, 0, by, "Answers lost when the column is shuffled six rows over", { weight: 700, size: fs * (phone ? 0.95 : 1) });
         var bars = [["visits", 2], ["searches", 4], ["both", 8]], lw = phone ? 76 : 96, bx0 = lw, bx1 = w - 60, sx = function (v) { return bx0 + v / 10 * (bx1 - bx0); }, bar = fs * 1.5;
         bars.forEach(function (b, k) {
@@ -3692,7 +3697,7 @@ html{scroll-behavior:auto}
         /* what the chart cannot say */
         var ly = by + bh + fs * 0.6, lit = frame === 5;
         T(svg, 0, ly, "The top bar is a reliance, not a lever", { weight: 700, size: fs * (phone ? 0.95 : 1) });
-        var bw = phone ? 104 : 150, bhh = fs * 2.2, gx = [0, (w - bw) / 2, w - bw], gy1 = ly + fs * 1.2, gy2 = gy1 + bhh + 46;
+        var bw = phone ? 104 : 150, bhh = fs * 2.2, gx = [0, (w - bw) / 2, w - bw], gy1 = ly + fs * 3.6, gy2 = gy1 + bhh + 46;
         function box(x, y, text, fill, stroke, ink) {
           svg.appendChild(s("rect", { x: x, y: y, width: bw, height: bhh, rx: 9, fill: fill, stroke: stroke, "stroke-width": 1.6 }));
           T(svg, x + bw / 2, y + bhh / 2 + fs * 0.35, text, { anchor: "middle", weight: 700, size: fs * 0.95, fill: ink || INK });
@@ -3814,7 +3819,7 @@ html{scroll-behavior:auto}
         stage: function (api) {
           var upto = 0, KEYS = ["customer", "economy", "calllog"], COLR = { customer: REST, economy: TEAL, calllog: VIO };
           function gains(key) { var pts = [[0, 0]], cum = 0; RANK[key].order.forEach(function (i, q) { cum += Y[i]; if ((q + 1) % 50 === 0 || q === N - 1) pts.push([q + 1, cum]); }); return pts; }
-          var gc = api.chart({ height: 280, x: { min: 0, max: N, ticks: [0, 1000, 2000, 4000, 6000, 8238], label: "Calls made, down the ranked list", fmt: F.int },
+          var gc = api.chart({ height: 280, x: { min: 0, max: N, ticks: [0, 2000, 4000, 6000, 8238], label: "Calls made, down the ranked list", fmt: F.int },
             y: { min: 0, max: 928, ticks: [0, 200, 400, 600, 800, 928], label: "Buyers found, of 928", fmt: F.int }, right: 16,
             legend: [{ label: "A random list", color: "amber", kind: "line" }, { label: "Customer table", color: REST, kind: "line" }, { label: "+ economy", color: "teal", kind: "line" }, { label: "+ economy + call log", color: "violet", kind: "line" }],
             numbersLabel: "Show the buyers found at 1,000, 2,000 and 4,000 calls",
@@ -3822,11 +3827,11 @@ html{scroll-behavior:auto}
           gc.line("random", [[0, 0], [N, POS]], { color: "amber", dash: "6 5", width: 2, name: "A random list" });
           gc.vline("budget", 1000, { color: "ink", width: 1.5, label: "1,000 calls" });
           gc.line("customer", gains("customer"), { color: REST, width: 2.6, name: "Customer table" });
-          var board = api.svg({ height: function (w) { return w < 560 ? 200 : 170; }, label: "AUC and accuracy at 0.5 for the feature sets added so far", draw: function (g) { drawBoard(g); } });
+          var board = api.svg({ height: function (w) { return w < 560 ? 215 : 190; }, label: "AUC and accuracy at 0.5 for the feature sets added so far", draw: function (g) { drawBoard(g); } });
           function drawBoard(g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, show = seen(api.predict.state), lw = phone ? 0 : 150, x0 = lw + 4, x1 = w - 64;
             function sx(v) { return x0 + (v - 0.5) / 0.5 * (x1 - x0); }
-            T(svg, 0, fs * 1.1, "The scoreboard: 0.5 on the left is a coin for AUC", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, fs * 1.1, fit("The scoreboard: 0.5 on the left is a coin for AUC", "The scoreboard: 0.5 is a coin for AUC", w), { weight: 700 });
             var y = fs * 2.2;
             [["AUC", "auc"], ["Accuracy at 0.5", "acc"]].forEach(function (grp) {
               T(svg, 0, y + fs * 0.8, grp[0], { weight: 700, fill: VIO });
@@ -3837,7 +3842,7 @@ html{scroll-behavior:auto}
                 else svg.appendChild(s("rect", { x: x0, y: by, width: x1 - x0, height: fs * 0.95, rx: 3, fill: "none", stroke: "#CFC9EE", "stroke-dasharray": "4 3" }));
                 T(svg, x1 + 6, by + fs * 0.85, on && !hide ? d3(v) : "?", { weight: 700, size: fs * 0.95 });
               });
-              if (grp[1] === "acc") { var nx = sx(D.nobody); svg.appendChild(s("line", { x1: nx, x2: nx, y1: y - 4, y2: y + 3 * fs * 1.25, stroke: INK, "stroke-width": 2, "stroke-dasharray": "3 3" })); T(svg, nx - 4, y - 6, "call nobody 0.887", { anchor: "end", size: fs * 0.95, halo: true }); }
+              if (grp[1] === "acc") { var nx = sx(D.nobody); svg.appendChild(s("line", { x1: nx, x2: nx, y1: y - 4, y2: y + 3 * fs * 1.25, stroke: INK, "stroke-width": 2, "stroke-dasharray": "3 3" })); T(svg, nx, y + 3 * fs * 1.25 + fs * 1.1, "calling nobody: 0.887", { anchor: "end", size: fs * 0.95, halo: true }); }
               y += 3 * fs * 1.25 + fs * 1.2;
             });
           }
@@ -3876,7 +3881,7 @@ html{scroll-behavior:auto}
           var fifths = api.svg({ height: function (w) { return w < 560 ? 230 : 210; }, label: "Yes-rate by call-length fifth", draw: function (g) { drawFifths(g); } });
           function drawFifths(g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, show = seen(api.predict.state), FX = D.fifths;
-            T(svg, 0, fs * 1.1, "Calls in five equal groups by length: share that ended in a deposit", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, fs * 1.1, fit("Calls in five equal groups by length: share that ended in a deposit", "Share ending in a deposit, by call length", w), { weight: 700 });
             var labels = ["up to 89 s", "90 to 146 s", "147 to 222 s", "223 to 368 s", "369 s or more"], top = fs * 2.6, base = g.h - fs * 3.2, cw = w / 5, maxV = 0.36;
             labels.forEach(function (lb, i) {
               var x = i * cw + cw * 0.18, bw = cw * 0.64, v = FX.rate[i], hgt = (base - top) * v / maxV;
@@ -3933,7 +3938,7 @@ html{scroll-behavior:auto}
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, n = MONTHS.length, x0 = phone ? 40 : 52, x1 = w - 8, bw = (x1 - x0) / n;
             function bx(i) { return x0 + i * bw; }
             var tA = fs * 2.2, hA = phone ? 150 : 140, bA = tA + hA;
-            T(svg, 0, fs * 1.1, "Share of calls that said yes, by month (file order)", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, fs * 1.1, fit("Share of calls that said yes, by month (file order)", "Share of calls that said yes, by month", w), { weight: 700 });
             [0, 0.25, 0.5].forEach(function (v) { var y = bA - hA * v / 0.65; svg.appendChild(s("line", { x1: x0, x2: x1, y1: y, y2: y, stroke: "#EEEAFB" })); T(svg, x0 - 6, y + fs * 0.35, Math.round(v * 100) + "%", { anchor: "end", size: fs * 0.95, fill: "#3F3A66" }); });
             MONTHS.forEach(function (m, i) {
               var hh = hA * m[2] / 0.65, inside = INSIDE.some(function (r) { return r[0] === m[0]; });
@@ -3942,13 +3947,13 @@ html{scroll-behavior:auto}
             var yrs = {}; MONTHS.forEach(function (m, i) { var yr = m[0].slice(0, 4); if (!(yr in yrs)) yrs[yr] = i; });
             Object.keys(yrs).forEach(function (yr) { var x = bx(yrs[yr]); svg.appendChild(s("line", { x1: x, x2: x, y1: tA - 4, y2: bA + 6, stroke: "#A9A3D2", "stroke-dasharray": "3 3" })); T(svg, x + 4, bA + fs * 1.3, yr, { size: fs * 0.95, weight: 700, fill: "#3F3A66" }); });
             var tB = bA + fs * 3.6, hB = phone ? 90 : 84, bB = tB + hB;
-            T(svg, 0, tB - fs * 0.6, "euribor3m, the three-month interbank rate, by month", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, tB - fs * 0.6, fit("euribor3m, the three-month interbank rate, by month", "euribor3m, the interbank rate, by month", w), { weight: 700 });
             [0, 2.5, 5].forEach(function (v) { var y = bB - hB * v / 5.2; svg.appendChild(s("line", { x1: x0, x2: x1, y1: y, y2: y, stroke: "#EEEAFB" })); T(svg, x0 - 6, y + fs * 0.35, String(v), { anchor: "end", size: fs * 0.95, fill: "#3F3A66" }); });
             var path = MONTHS.map(function (m, i) { return (i ? "L" : "M") + (bx(i) + bw / 2).toFixed(1) + " " + (bB - hB * m[3] / 5.2).toFixed(1); }).join("");
             svg.appendChild(s("path", { d: path, fill: "none", stroke: AMB, "stroke-width": 2.4 }));
             T(svg, x1, tB + fs * 0.9, phone ? "falls in 2009" : "it falls from about 4.9 to under 1 in 2009", { anchor: "end", size: fs * 0.95, fill: "#3F3A66", halo: true });
             var tC = bB + fs * 3.4;
-            T(svg, 0, tC - fs * 0.6, "The honest model's AUC inside each month with 100 or more validation calls", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, tC - fs * 0.6, fit("The honest model's AUC inside each month with 100 or more validation calls", "The honest model's AUC inside each month", w), { weight: 700 });
             var cx0 = phone ? 64 : 84, cx1 = w - 60;
             function cx(v) { return cx0 + (v - 0.5) / 0.35 * (cx1 - cx0); }
             var rhC = fs * 1.45;
@@ -4002,7 +4007,7 @@ html{scroll-behavior:auto}
           lazy(holder, function () { st = W5.svgStage(holder, { height: function (w) { return w < 560 ? 470 : 400; }, label: "A correlation grid and four coefficient bars", draw: function (g) { draw(g); } }); });
           function draw(g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, show = seen(api.predict.state);
-            T(svg, 0, fs * 1.1, "Correlation on the 24,712 training rows", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, fs * 1.1, "Correlation on the 24,712 training rows", { weight: 700 });
             var lab = phone ? 92 : 116, cell = Math.min(phone ? 66 : 84, (w - lab) / 3), gy = fs * 2.2;
             TRIO.forEach(function (a, i) {
               T(svg, lab - 6, gy + fs * 1.6 + i * (fs * 2.2) + fs * 0.35, a, { anchor: "end", size: fs * 0.95, family: "ui-monospace, Menlo, monospace" });
@@ -4012,9 +4017,9 @@ html{scroll-behavior:auto}
                 T(svg, x + cell / 2, y + fs * 1.35, v.toFixed(2), { anchor: "middle", weight: 700, fill: v > 0.6 ? "#FFFFFF" : INK, size: fs * 0.95 });
               });
             });
-            if (!phone) TRIO.forEach(function (b, j) { T(svg, lab + j * cell + cell / 2, gy + fs * 0.6 + 3 * fs * 2.2 + fs * 1.1, b, { anchor: "middle", size: fs * 0.95, family: "ui-monospace, Menlo, monospace" }); });
-            var top = gy + 3 * fs * 2.2 + fs * (phone ? 2 : 3.6);
-            T(svg, 0, top, "euribor3m's coefficient, in standard deviations of log-odds", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, lab + 3 * cell + 10, gy + fs * 0.6 + fs * 1.35, phone ? "" : "columns in the same order", { size: fs * 0.95, fill: "#3F3A66" });
+            var top = gy + 3 * fs * 2.2 + fs * 2.6;
+            T(svg, 0, top, fit("euribor3m's coefficient, in standard deviations of log-odds", "euribor3m's coefficient", w), { weight: 700 });
             var pt = top + fs * 1.4, pb = g.h - fs * 3, y0 = pt + (pb - pt) * 1.0 / 2.2, sc = (pb - pt) / 2.2;
             function yv(v) { return y0 - v * sc; }
             svg.appendChild(s("line", { x1: 0, x2: w, y1: y0, y2: y0, stroke: INK, "stroke-width": 1.5 }));
@@ -4076,18 +4081,18 @@ html{scroll-behavior:auto}
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, show = seen(api.predict.state);
             var lab = phone ? 112 : 230, x0 = lab, x1 = w - 58;
             function sx(v) { return x0 + Math.max(0, v) / 0.4 * (x1 - x0); }
-            T(svg, 0, fs * 1.1, group ? "The economy shuffled as a group, beside the other columns" : "One column shuffled at a time", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, fs * 1.1, group ? fit("The economy shuffled as a group, beside the other columns", "The economy shuffled as a group", w) : "One column shuffled at a time", { weight: 700 });
             var top = fs * 2.6, rh = fs * 2.1;
             rows().forEach(function (r, i) {
               var y = top + i * rh, name = show ? r.name : "column " + (i + 1);
               wrapLines(name, Math.floor((lab - 10) / (fs * 0.56))).slice(0, 2).forEach(function (ln, j, arr) { T(svg, lab - 8, y + fs * 0.95 + (j - (arr.length - 1) / 2) * fs * 1.1, ln, { anchor: "end", size: fs * 0.95, weight: r.grp ? 700 : 400, family: show && !r.grp ? "ui-monospace, Menlo, monospace" : null }); });
-              svg.appendChild(s("rect", { x: x0, y: y + 2, width: Math.max(2, sx(r.v) - x0), height: fs * 1.2, rx: 3, fill: r.econ ? VIO : "#A9A3D2" }));
+              svg.appendChild(s("rect", { x: x0, y: y + 2, width: Math.max(2, sx(r.v) - x0), height: fs * 1.2, rx: 3, fill: !show && !group ? INK : r.econ ? VIO : "#A9A3D2" }));
               T(svg, sx(r.v) + 6, y + fs * 1.05, d3(r.v), { size: fs * 0.95, weight: 700 });
             });
             var lx = sx(IMP.lift), bot = top + 8 * rh;
             svg.appendChild(s("line", { x1: lx, x2: lx, y1: top - 6, y2: bot, stroke: AMB, "stroke-width": 2.5, "stroke-dasharray": "5 4" }));
             T(svg, Math.min(lx, w - 4), bot + fs * 1.3, phone ? "the model's lift: 0.295" : "the model's whole lift above a coin: 0.295", { anchor: lx > w * 0.6 ? "end" : "middle", size: fs * 0.95, weight: 700, fill: AMB, halo: true });
-            T(svg, 0, bot + fs * 2.8, "Violet: economy columns. Grey: the client and the call.", { size: fs * 0.95, fill: "#3F3A66" });
+            T(svg, 0, bot + fs * 2.8, show || group ? "Violet: economy columns. Grey: the client and the call." : "Names and colours appear when you commit.", { size: fs * 0.95, fill: "#3F3A66" });
           }
           function write() {
             var show = seen(api.predict.state);
@@ -4129,11 +4134,11 @@ html{scroll-behavior:auto}
           why: "0.815. Part of the 0.931 was the hospital itself: a model ranking images only by each hospital's average pneumonia rate reached 0.861 on the joint test set. At a new site the hospital stops predicting the label, and the score falls. The question that catches it is today's: is this signal there, and does it mean the same thing, where the model will be used?", onReveal: hook("f1") },
         stage: function (api) {
           var site = "home";
-          var st = api.svg({ height: function (w) { return w < 560 ? 290 : 250; }, label: "AUC markers and three hospital systems", draw: function (g) { draw(g); } });
+          var st = api.svg({ height: function (w) { return w < 560 ? 380 : 320; }, label: "Three hospital systems and three AUC scores on one line", draw: function (g) { draw(g); } });
           function draw(g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, show = seen(api.predict.state);
             var hosp = [["NIH", 112120], ["Mount Sinai", 42396], ["Indiana", 3807]], maxA = 112120, side = phone ? 70 : 84;
-            T(svg, 0, fs * 1.1, "Images per hospital system, as squares of equal area per image", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            T(svg, 0, fs * 1.1, fit("Images per hospital system, as squares of equal area per image", "Images per hospital system", w), { weight: 700 });
             var x = 0;
             hosp.forEach(function (hs, i) {
               var a = Math.max(8, side * Math.sqrt(hs[1] / maxA)), lit = (site === "home" && i < 2) || (site === "new" && i === 2), y = fs * 2 + (side - a);
@@ -4142,24 +4147,29 @@ html{scroll-behavior:auto}
               T(svg, x, fs * 2 + side + fs * 2.5, F.int(hs[1]), { size: fs * 0.95, fill: "#3F3A66" });
               x += Math.max(a, textW(hs[0], fs * 0.95)) + (phone ? 16 : 30);
             });
-            var ay = fs * 2 + side + fs * 5.2, x0 = 12, x1 = w - 12;
+            var top = fs * 2 + side + fs * 5.6, lw = phone ? 0 : 250, x0 = lw + 10, x1 = w - 52, rh = phone ? fs * 3.1 : fs * 2.3;
             function sx(v) { return x0 + (v - 0.5) / 0.5 * (x1 - x0); }
-            svg.appendChild(s("line", { x1: x0, x2: x1, y1: ay, y2: ay, stroke: "#CFC9EE", "stroke-width": 2 }));
-            [0.5, 0.75, 1].forEach(function (v) { T(svg, sx(v), ay + fs * 1.4, v.toFixed(2), { anchor: v === 0.5 ? "start" : v === 1 ? "end" : "middle", size: fs * 0.95, fill: "#3F3A66" }); });
-            var marks = [[0.931, phone ? "own hospitals 0.931" : "its own hospitals' test images: 0.931", site === "home", 1], [0.861, phone ? "rate only 0.861" : "the hospital's pneumonia rate alone: 0.861", false, 2], [0.815, show ? (phone ? "Indiana 0.815" : "Indiana, never seen: 0.815") : "Indiana: ?", site === "new", 3]];
-            marks.forEach(function (m) {
-              var mx = sx(m[0]), ly = ay - fs * (1.0 + m[3] * 1.35), hid = m[0] === 0.815 && !show;
-              if (!hid) svg.appendChild(s("circle", { cx: mx, cy: ay, r: m[2] ? 9 : 6, fill: m[2] ? VIO : "#FFFFFF", stroke: m[0] === 0.861 ? AMB : VIO, "stroke-width": 2.5 }));
-              svg.appendChild(s("line", { x1: hid ? sx(0.82) : mx, x2: hid ? sx(0.82) : mx, y1: ly + 4, y2: ay - 9, stroke: "#CFC9EE" }));
-              var lw2 = textW(m[1], fs * 0.95), lx = Math.max(0, Math.min(w - lw2, (hid ? sx(0.82) : mx) - lw2 / 2));
-              T(svg, lx, ly, m[1], { size: fs * 0.95, weight: m[2] ? 700 : 400, halo: true });
+            T(svg, 0, top - fs * 0.9, "AUC on a line from 0.5, a coin, to 1", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            var rows = [[0.931, "Its own hospitals' test images", site === "home", VIO], [0.861, "Each hospital's pneumonia rate alone", false, AMB], [0.815, "Indiana, a hospital it never saw", site === "new", VIO]];
+            rows.forEach(function (r, i) {
+              var y = top + i * rh + (phone ? fs * 1.6 : fs * 0.8), hid = r[0] === 0.815 && !show;
+              if (phone) T(svg, 0, y - fs * 0.9, r[1], { size: fs * 0.95, weight: r[2] ? 700 : 400 });
+              else T(svg, lw, y + fs * 0.35, r[1], { anchor: "end", size: fs * 0.95, weight: r[2] ? 700 : 400 });
+              svg.appendChild(s("line", { x1: x0, x2: x1, y1: y, y2: y, stroke: "#E4E1F1", "stroke-width": 1.5 }));
+              if (hid) { T(svg, sx(0.75), y + fs * 0.35, "?", { anchor: "middle", weight: 700, fill: MUTED }); return; }
+              svg.appendChild(s("line", { x1: x0, x2: sx(r[0]), y1: y, y2: y, stroke: r[3], "stroke-width": 3, opacity: 0.35 }));
+              svg.appendChild(s("circle", { cx: sx(r[0]), cy: y, r: r[2] ? 9 : 7, fill: r[2] ? r[3] : "#FFFFFF", stroke: r[3], "stroke-width": 2.5 }));
+              T(svg, sx(r[0]) + 14, y + fs * 0.35, d3(r[0]), { weight: 700, size: fs * 0.95 });
             });
+            var ay = top + 3 * rh + (phone ? fs * 0.8 : 0);
+            [0.5, 0.75, 1].forEach(function (v) { T(svg, sx(v), ay + fs * 0.4, v.toFixed(2), { anchor: v === 0.5 ? "start" : v === 1 ? "end" : "middle", size: fs * 0.95, fill: "#3F3A66" }); });
           }
           function write() {
             var show = seen(api.predict.state);
             api.readout.set([
               { value: site === "home" ? "0.931" : show ? "0.815" : "?", label: "**AUC** on " + (site === "home" ? "test images from its two training systems" : "Indiana, a hospital it never saw"), tone: "hero" },
               { value: "99.95%", label: "**NIH images** whose hospital system a network identified: 22,050 of 22,062" },
+              { value: "158,323", label: "**Chest X-rays** from three hospital systems" },
               { value: "0.861", label: "**A ranking by each hospital's pneumonia rate alone**, on the joint test set" }
             ]);
             st.redraw();
@@ -4178,12 +4188,10 @@ html{scroll-behavior:auto}
           var crawl = false;
           var st = api.svg({ height: function (w) { return w < 560 ? 270 : 250; }, label: "Two squares: the challenge graph and the team's crawl", draw: function (g) {
             var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, big = Math.min(phone ? 200 : 200, w * 0.5), small = big * Math.sqrt(7237983 / 163579517), y0 = fs * 1.2;
-            if (crawl) {
-              svg.appendChild(s("rect", { x: 0, y: y0, width: big, height: big, rx: 6, fill: "#FFF3E2", stroke: AMB, "stroke-width": 2 }));
-              T(svg, 8, y0 + fs * 1.4, "their Flickr crawl", { size: fs * 0.95, weight: 700, fill: "#8A4A00" });
-              T(svg, 8, y0 + fs * 2.6, "163.6 million edges", { size: fs * 0.95 });
-            }
-            svg.appendChild(s("rect", { x: big - small - 10, y: y0 + big - small - 10, width: small, height: small, rx: 3, fill: VIO }));
+            svg.appendChild(s("rect", { x: 0, y: y0, width: big, height: big, rx: 6, fill: crawl ? "#FFF3E2" : "#FFFFFF", stroke: crawl ? AMB : "#CFC9EE", "stroke-width": 2, "stroke-dasharray": crawl ? null : "6 5" }));
+            T(svg, 8, y0 + big - fs * 1.6, crawl ? "their Flickr crawl" : "outside data", { size: fs * 0.95, weight: 700, fill: crawl ? "#8A4A00" : MUTED });
+            T(svg, 8, y0 + big - fs * 0.5, crawl ? "163.6 million edges" : "not read", { size: fs * 0.95, fill: crawl ? INK : MUTED });
+            svg.appendChild(s("rect", { x: 10, y: y0 + 10, width: small, height: small, rx: 3, fill: VIO }));
             var tx = big + 16, ty = y0 + fs;
             [["The challenge graph", "7.2 million edges, anonymised", VIO], ["The test set", "8,960 edges, half true, half fake", INK]].forEach(function (r, i) {
               T(svg, tx, ty + i * fs * 3, r[0], { weight: 700, fill: r[2], size: fs * (phone ? 0.95 : 1) });
@@ -4196,7 +4204,8 @@ html{scroll-behavior:auto}
             api.readout.set([
               { value: crawl ? (show ? "0.981" : "?") : "inside", label: crawl ? "**Combined test AUC** of the winning entry" : "**The intended input**: the anonymised challenge graph only", tone: "hero", sub: crawl && !show ? "Commit your prediction to see it." : "" },
               { value: "22.6 ×", label: "**More edges** in their crawl than in the challenge graph" },
-              { value: "119", label: "**Teams** in the challenge" }
+              { value: "119", label: "**Teams** in the challenge" },
+              { value: "8,960", label: "**Test edges**, half true and half fake" }
             ]);
             st.redraw();
           }
@@ -4211,24 +4220,31 @@ html{scroll-behavior:auto}
           why: "The features were not normalised, so a few large-valued columns swamped the rest. Standardising bell-shaped features and taking the log ratio to the median for power-law ones let training proceed, and plotting each feature's distribution exposed the logging bugs as spikes." },
         stage: function (api) {
           var form = "raw", rnd = W5.seeded(28), PR = [];
-          for (var i = 0; i < 400; i++) { var u = rnd() + rnd() + rnd() - 1.5, v = Math.round(Math.exp(4.7 + 0.45 * u * 1.6)); PR.push(i < 20 ? v * 30 : v); }
+          for (var i = 0; i < 400; i++) { var u = rnd() + rnd() + rnd() - 1.5, v = Math.round(Math.exp(4.7 + 0.45 * u * 1.6)); PR.push(i < 20 ? Math.round((112 + rnd() * 16) * 30) : v); }
           var sorted = PR.slice().sort(function (a, b) { return a - b; }), med = sorted[200], mean = PR.reduce(function (a, b) { return a + b; }, 0) / 400, sdv = sd(PR);
           function tf(v) { return form === "raw" ? v : form === "z" ? (v - mean) / sdv : Math.log((1 + v) / (1 + med)); }
           var st = api.svg({ height: function (w) { return w < 560 ? 250 : 230; }, label: "A histogram of invented nightly prices", draw: function (g) {
             var svg = g.svg, w = g.w, fs = fz(), vals = PR.map(tf), lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), nb = 40, counts = W5.bin(vals, lo, hi + 1e-9, nb), mx = Math.max.apply(null, counts);
             var top = fs * 1.8, base = g.h - fs * 2.8, bw = w / nb;
             T(svg, 0, fs * 1.1, form === "raw" ? "As logged, in dollars a night (invented)" : form === "z" ? "(value minus mean) / standard deviation" : "log((1 + value) / (1 + median))", { weight: 700 });
-            counts.forEach(function (c, k) { var hh = (base - top) * c / mx; if (c) svg.appendChild(s("rect", { x: k * bw + 1, y: base - hh, width: Math.max(1, bw - 2), height: hh, rx: 2, fill: (lo + (k + 0.5) * (hi - lo) / nb) > tf(1000) ? AMB : VIO })); });
+            var spikeX = null;
+            counts.forEach(function (c, k) {
+              if (!c) return;
+              var hh = Math.max(4, (base - top) * c / mx), bug = (lo + (k + 0.5) * (hi - lo) / nb) > tf(1000);
+              svg.appendChild(s("rect", { x: k * bw + 1, y: base - hh, width: Math.max(2, bw - 2), height: hh, rx: 2, fill: bug ? AMB : VIO }));
+              if (bug && spikeX === null) spikeX = k * bw + bw / 2;
+            });
+            if (spikeX !== null) T(svg, Math.min(spikeX, w - 4), base - fs * 2.2, "the 20 monthly prices", { anchor: spikeX > w * 0.7 ? "end" : "middle", size: fs * 0.95, weight: 700, fill: "#8A4A00", halo: true });
             svg.appendChild(s("line", { x1: 0, x2: w, y1: base, y2: base, stroke: "#A9A3D2" }));
-            T(svg, 0, base + fs * 1.3, F.dp(lo, form === "raw" ? 0 : 1), { size: fs * 0.95, fill: "#3F3A66" });
-            T(svg, w, base + fs * 1.3, F.dp(hi, form === "raw" ? 0 : 1), { anchor: "end", size: fs * 0.95, fill: "#3F3A66" });
-            T(svg, w / 2, base + fs * 1.3, "amber: the twenty monthly prices", { anchor: "middle", size: fs * 0.95, fill: "#8A4A00", weight: 700 });
+            T(svg, 0, base + fs * 1.3, form === "raw" ? F.int(lo) : F.dp(lo, 1), { size: fs * 0.95, fill: "#3F3A66" });
+            T(svg, w, base + fs * 1.3, form === "raw" ? F.int(hi) : F.dp(hi, 1), { anchor: "end", size: fs * 0.95, fill: "#3F3A66" });
           } });
           function write() {
             var vals = PR.map(tf), lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), main = sorted.slice(20, 380).map(tf);
             api.readout.set([
-              { value: F.dp(hi - lo, form === "raw" ? 0 : 1), label: "**Range** of the column in this form", tone: "hero" },
-              { value: F.dp(main[main.length - 1] - main[0], form === "raw" ? 0 : 2), label: "**Range of the middle 90 percent**, where most listings sit" },
+              { value: form === "raw" ? F.int(hi - lo) : F.dp(hi - lo, 1), label: "**Range** of the column in this form", tone: "hero" },
+              { value: form === "raw" ? F.int(main[main.length - 1] - main[0]) : F.dp(main[main.length - 1] - main[0], 2), label: "**Range of the middle 90 percent**, where most listings sit" },
+              { value: form === "raw" ? F.int(med) + " dollars" : F.dp(tf(med), 2), label: "**The median listing** in this form" },
               { value: "20 of 400", label: "**Listings logged at the monthly price**, the spike on the right" }
             ], form === "raw" ? "As logged, one column spans thousands while others span single digits, and the monthly-price bug is a spike far to the right." : form === "z" ? "Standardised, the middle sits near zero, but the spike still stretches the scale: a power-law column needs the log form." : "The log ratio to the median pulls the column onto one readable scale, and the bug still shows as its own lump.");
             st.redraw();
@@ -4249,15 +4265,16 @@ html{scroll-behavior:auto}
           function avg(list) { return list.reduce(function (a, o) { return a + o[1]; }, 0) / list.length; }
           var svc = ORD.filter(done), nb2 = ORD;
           var st = api.svg({ height: function (w) { return w < 560 ? 300 : 270; }, label: "Orders over the last hour as bars from placed to ready", draw: function (g) {
-            var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, x0 = phone ? 6 : 10, x1 = w - (phone ? 50 : 90);
-            function sx(m) { return x0 + (m + 60) / 90 * (x1 - x0); }
-            T(svg, 0, fs * 1.1, "Each bar runs from when an order was placed to when it was ready", { weight: 700, size: fs * (phone ? 0.95 : 1) });
+            var svg = g.svg, w = g.w, fs = fz(), phone = w < 560, x0 = 4, x1 = w * (phone ? 0.6 : 0.66);
+            function sx(m) { return x0 + (m + 60) / 85 * (x1 - x0); }
+            T(svg, 0, fs * 1.1, fit("Each bar runs from when an order was placed to when it was ready", "Each bar: order placed to order ready", w), { weight: 700 });
             var nx = sx(0), top = fs * 2.2, rh = fs * 1.55;
-            svg.appendChild(s("rect", { x: nx, y: top - 4, width: w - nx, height: ORD.length * rh + 8, fill: "#FCEBF0" }));
+            svg.appendChild(s("rect", { x: nx, y: top - 4, width: x1 - nx, height: ORD.length * rh + 8, fill: "#FCEBF0" }));
             ORD.forEach(function (o, i) {
               var y = top + i * rh, inc = how === "service" ? done(o) : true, fin = done(o);
               svg.appendChild(s("rect", { x: sx(o[0]), y: y, width: sx(o[0] + o[1]) - sx(o[0]), height: fs * 1.05, rx: 4, fill: inc ? (fin ? VIO : ROSE) : "#E7E4F3", stroke: inc ? "none" : "#CFC9EE" }));
-              T(svg, sx(o[0] + o[1]) + 5, y + fs * 0.9, o[1] + " min" + (fin ? "" : phone ? ", later" : ", known only later"), { size: fs * 0.95, weight: inc ? 700 : 400, fill: inc ? INK : MUTED });
+              if (fin) T(svg, sx(o[0]) + 5, y + fs * 0.85, o[1] + " min", { size: fs * 0.95, weight: 700, fill: "#FFFFFF" });
+              else T(svg, sx(o[0] + o[1]) + 5, y + fs * 0.85, o[1] + " min" + (phone ? ", later" : ", known only later"), { size: fs * 0.95, weight: inc ? 700 : 400, fill: inc ? "#A3214B" : MUTED });
             });
             svg.appendChild(s("line", { x1: nx, x2: nx, y1: top - 10, y2: top + ORD.length * rh + 6, stroke: INK, "stroke-width": 3 }));
             var by = top + ORD.length * rh + fs * 1.6;
@@ -4269,6 +4286,7 @@ html{scroll-behavior:auto}
             api.readout.set([
               { value: F.dp(a, 1) + " min", label: "**Average prep time over the last hour**, " + (how === "service" ? "as the live service sees it" : "as a notebook built from tonight's table computes it"), tone: "hero" },
               { value: (how === "service" ? svc.length : nb2.length) + " of 9", label: "**Orders in the average**" },
+              { value: "3", label: "**Orders still cooking** when the new order arrived" },
               { value: F.dp(avg(nb2) - avg(svc), 1) + " min", label: "**The skew** between the two definitions", sub: "The extra orders were still cooking when the new order arrived." }
             ], how === "service" ? "The service averages only the six orders already ready when the new order arrives." : "The notebook averages every order placed in the hour, including three whose times were known only after the new order arrived.");
             st.redraw();
@@ -4278,7 +4296,7 @@ html{scroll-behavior:auto}
         } }
     ],
     seatsHeading: "Six seats at Kalpa: what does each person do with settlement_status?",
-    seats: { hub: "Kalpa's 0.99: settlement_status", intro: "Kalpa's junior joined settlement_status and validation read 0.99. Pick a seat to read what that person does with the column and the question they bring to the meeting.", seats: {
+    seats: { hub: "Kalpa's 0.99 from the payments feed", intro: "Kalpa's junior joined settlement_status and validation read 0.99. Pick a seat to read what that person does with the column and the question they bring to the meeting.", seats: {
       owner: { does: "Wants the nudge model shipped, and decides on the honest score in rupees: Rs 40 a nudge against Rs 1,200 of margin, at the score the model can deliver on the nudge morning.", asks: "What will this model really save on the morning it runs?" },
       pm: { does: "Decides when the nudge goes out and what a nudged member sees, which fixes the prediction moment every column is measured from.", asks: "At what moment does the member get the nudge, and what do we know about them then?" },
       architect: { does: "Decides which feeds the scoring service may read, and checks that each column is there, on the morning it scores, in the feed the service reads.", asks: "Is settlement_status in any feed the service can read on the nudge morning?" },
